@@ -1,6 +1,10 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.DataTypes.SetVariableData;
+
 import java.util.List;
 import javax.annotation.Generated;
 

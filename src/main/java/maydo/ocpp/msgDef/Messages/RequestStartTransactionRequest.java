@@ -1,6 +1,10 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+import maydo.ocpp.msgDef.DataTypes.ChargingProfile;
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.DataTypes.IdToken;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")

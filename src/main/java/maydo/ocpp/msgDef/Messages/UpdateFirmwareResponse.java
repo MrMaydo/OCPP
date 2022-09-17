@@ -1,6 +1,11 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.Enumerations.UpdateFirmwareStatusEnum;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")

@@ -1,6 +1,7 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+import maydo.ocpp.msgDef.DataTypes.CustomData;
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
