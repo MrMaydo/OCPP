@@ -1,14 +1,18 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.Iso15118EVCertificateStatusEnum;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.JsonInterface;
 
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Get15118EVCertificateResponse {
+public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -110,4 +114,14 @@ public class Get15118EVCertificateResponse {
         this.exiResponse = exiResponse;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonElement toJsonObject(){
+        JsonElement jsonObject= new Gson().toJsonTree(this);
+        return jsonObject;
+    }
 }

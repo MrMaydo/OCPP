@@ -1,6 +1,11 @@
 
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import maydo.ocpp.msgDef.JsonInterface;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -11,7 +16,7 @@ import javax.annotation.Generated;
  * 
  */
 @Generated("jsonschema2pojo")
-public class CustomData {
+public class CustomData implements JsonInterface {
 
     /**
      * 
@@ -47,4 +52,14 @@ public class CustomData {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonElement toJsonObject(){
+        JsonElement jsonObject= new Gson().toJsonTree(this);
+        return jsonObject;
+    }
 }
