@@ -1,16 +1,12 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the type of log file that the Charging Station
  * should send.
- * 
- * 
  */
 public enum LogEnum {
 
@@ -20,7 +16,7 @@ public enum LogEnum {
     private final static Map<String, LogEnum> CONSTANTS = new HashMap<String, LogEnum>();
 
     static {
-        for (LogEnum c: values()) {
+        for (LogEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

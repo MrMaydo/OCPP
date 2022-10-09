@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the status of the log upload.
- * 
- * 
  */
 public enum UploadLogStatusEnum {
 
@@ -25,7 +21,7 @@ public enum UploadLogStatusEnum {
     private final static Map<String, UploadLogStatusEnum> CONSTANTS = new HashMap<String, UploadLogStatusEnum>();
 
     static {
-        for (UploadLogStatusEnum c: values()) {
+        for (UploadLogStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

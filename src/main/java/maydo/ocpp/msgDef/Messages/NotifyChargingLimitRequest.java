@@ -1,9 +1,5 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingLimit;
 import maydo.ocpp.msgDef.DataTypes.ChargingSchedule;
@@ -12,34 +8,28 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 public class NotifyChargingLimitRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     private List<ChargingSchedule> chargingSchedule = null;
     /**
      * The charging schedule contained in this notification applies to an EVSE. evseId must be &gt; 0.
-     * 
-     * 
      */
     private Integer evseId;
     /**
      * Charging_ Limit
      * urn:x-enexis:ecdm:uid:2:234489
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private ChargingLimit chargingLimit;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -47,7 +37,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -63,8 +52,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
 
     /**
      * The charging schedule contained in this notification applies to an EVSE. evseId must be &gt; 0.
-     * 
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -72,8 +59,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
 
     /**
      * The charging schedule contained in this notification applies to an EVSE. evseId must be &gt; 0.
-     * 
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -82,9 +67,8 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     /**
      * Charging_ Limit
      * urn:x-enexis:ecdm:uid:2:234489
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public ChargingLimit getChargingLimit() {
         return chargingLimit;
@@ -93,9 +77,8 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     /**
      * Charging_ Limit
      * urn:x-enexis:ecdm:uid:2:234489
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setChargingLimit(ChargingLimit chargingLimit) {
         this.chargingLimit = chargingLimit;
@@ -107,7 +90,7 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

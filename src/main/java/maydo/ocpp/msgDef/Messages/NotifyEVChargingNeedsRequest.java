@@ -1,48 +1,37 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingNeeds;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Contains the maximum schedule tuples the car supports per schedule.
-     * 
-     * 
      */
     private Integer maxScheduleTuples;
     /**
      * Charging_ Needs
      * urn:x-oca:ocpp:uid:2:233249
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private ChargingNeeds chargingNeeds;
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evseId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -50,7 +39,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -58,8 +46,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Contains the maximum schedule tuples the car supports per schedule.
-     * 
-     * 
      */
     public Integer getMaxScheduleTuples() {
         return maxScheduleTuples;
@@ -67,8 +53,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Contains the maximum schedule tuples the car supports per schedule.
-     * 
-     * 
      */
     public void setMaxScheduleTuples(Integer maxScheduleTuples) {
         this.maxScheduleTuples = maxScheduleTuples;
@@ -77,9 +61,8 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * Charging_ Needs
      * urn:x-oca:ocpp:uid:2:233249
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public ChargingNeeds getChargingNeeds() {
         return chargingNeeds;
@@ -88,9 +71,8 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * Charging_ Needs
      * urn:x-oca:ocpp:uid:2:233249
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setChargingNeeds(ChargingNeeds chargingNeeds) {
         this.chargingNeeds = chargingNeeds;
@@ -98,9 +80,8 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -108,9 +89,8 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -122,7 +102,7 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

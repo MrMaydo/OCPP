@@ -1,60 +1,48 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 
 /**
  * A monitoring setting for a variable.
- * 
- * 
  */
 public class VariableMonitoring implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer id;
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
-     * 
      */
     private Boolean transaction;
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Float value;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
-     * 
      */
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -76,15 +64,13 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer severity;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -92,7 +78,6 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -100,9 +85,8 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getId() {
         return id;
@@ -110,29 +94,26 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
-     * 
      */
     public Boolean getTransaction() {
         return transaction;
     }
 
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
-     * 
      */
     public void setTransaction(Boolean transaction) {
         this.transaction = transaction;
@@ -141,9 +122,8 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Float getValue() {
         return value;
@@ -152,29 +132,26 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setValue(Float value) {
         this.value = value;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
-     * 
      */
     public MonitorEnum getType() {
         return type;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
-     * 
      */
     public void setType(MonitorEnum type) {
         this.type = type;
@@ -182,7 +159,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -204,9 +181,8 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getSeverity() {
         return severity;
@@ -214,7 +190,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -236,9 +212,8 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setSeverity(Integer severity) {
         this.severity = severity;
@@ -250,7 +225,7 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

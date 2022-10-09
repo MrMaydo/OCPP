@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates whether the Local Controller succeeded in unpublishing the firmware.
- * 
- * 
  */
 public enum UnpublishFirmwareStatusEnum {
 
@@ -20,7 +16,7 @@ public enum UnpublishFirmwareStatusEnum {
     private final static Map<String, UnpublishFirmwareStatusEnum> CONSTANTS = new HashMap<String, UnpublishFirmwareStatusEnum>();
 
     static {
-        for (UnpublishFirmwareStatusEnum c: values()) {
+        for (UnpublishFirmwareStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

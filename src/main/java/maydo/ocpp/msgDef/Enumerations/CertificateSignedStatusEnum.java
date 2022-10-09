@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Returns whether certificate signing has been accepted, otherwise rejected.
- * 
- * 
  */
 public enum CertificateSignedStatusEnum {
 
@@ -19,7 +15,7 @@ public enum CertificateSignedStatusEnum {
     private final static Map<String, CertificateSignedStatusEnum> CONSTANTS = new HashMap<String, CertificateSignedStatusEnum>();
 
     static {
-        for (CertificateSignedStatusEnum c: values()) {
+        for (CertificateSignedStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

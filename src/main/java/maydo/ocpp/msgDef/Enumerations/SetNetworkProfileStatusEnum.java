@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Result of operation.
- * 
- * 
  */
 public enum SetNetworkProfileStatusEnum {
 
@@ -20,7 +16,7 @@ public enum SetNetworkProfileStatusEnum {
     private final static Map<String, SetNetworkProfileStatusEnum> CONSTANTS = new HashMap<String, SetNetworkProfileStatusEnum>();
 
     static {
-        for (SetNetworkProfileStatusEnum c: values()) {
+        for (SetNetworkProfileStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

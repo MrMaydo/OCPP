@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the reason for sending this message to the CSMS.
- * 
- * 
  */
 public enum BootReasonEnum {
 
@@ -26,7 +22,7 @@ public enum BootReasonEnum {
     private final static Map<String, BootReasonEnum> CONSTANTS = new HashMap<String, BootReasonEnum>();
 
     static {
-        for (BootReasonEnum c: values()) {
+        for (BootReasonEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

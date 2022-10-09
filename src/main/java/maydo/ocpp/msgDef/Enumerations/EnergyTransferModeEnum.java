@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Charging_ Needs. Requested. Energy_ Transfer_ Mode_ Code
  * urn:x-oca:ocpp:uid:1:569209
  * Mode of energy transfer requested by the EV.
- * 
- * 
  */
 public enum EnergyTransferModeEnum {
 
@@ -23,7 +19,7 @@ public enum EnergyTransferModeEnum {
     private final static Map<String, EnergyTransferModeEnum> CONSTANTS = new HashMap<String, EnergyTransferModeEnum>();
 
     static {
-        for (EnergyTransferModeEnum c: values()) {
+        for (EnergyTransferModeEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

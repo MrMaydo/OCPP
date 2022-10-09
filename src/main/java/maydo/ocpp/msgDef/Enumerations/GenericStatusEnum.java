@@ -1,16 +1,12 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * The Charging Station will indicate if it was
  * able to process the request
- * 
- * 
  */
 public enum GenericStatusEnum {
 
@@ -20,7 +16,7 @@ public enum GenericStatusEnum {
     private final static Map<String, GenericStatusEnum> CONSTANTS = new HashMap<String, GenericStatusEnum>();
 
     static {
-        for (GenericStatusEnum c: values()) {
+        for (GenericStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import static maydo.ocpp.utils.JsonTools.toJsonObject;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonToolsTest {
     JsonObject jsonObject;
@@ -113,7 +113,7 @@ class JsonToolsTest {
     void toJsonObject_Date() {
         DateObject object = new DateObject();
         expectedJsonString = "{\"dateValue\":\"2022-12-03T21:46:59.123Z\"}";
-        object.setDateValue(createDate(2022,12,3,21,46,59,123));
+        object.setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         assertEquals(expectedJsonString, toJsonObject(object).toString(),
                 "Failed at converting Date");
     }
@@ -190,7 +190,7 @@ class JsonToolsTest {
 
         object.getIntObject().setIntValue(6);
         object.getStrObject().setStrValue("abc");
-        object.getDateObject().setDateValue(createDate(2022,12,3,21,46,59,123));
+        object.getDateObject().setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         object.getListObject().setListValue(list);
 
         expectedJsonString = "{" +
@@ -249,7 +249,7 @@ class JsonToolsTest {
 
         item1.getIntObject().setIntValue(6);
         item1.getStrObject().setStrValue("abc");
-        item1.getDateObject().setDateValue(createDate(2022,12,3,21,46,59,123));
+        item1.getDateObject().setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         item1.getListObject().setListValue(itemList1);
 
 
@@ -290,10 +290,10 @@ class JsonToolsTest {
                 "Failed at converting Object with nested JsonObject");
     }
 
-    Date createDate(int y, int m, int d, int h, int min, int s, int ms){
+    Date createDate(int y, int m, int d, int h, int min, int s, int ms) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, y);
-        cal.set(Calendar.MONTH, m-1);
+        cal.set(Calendar.MONTH, m - 1);
         cal.set(Calendar.DATE, d);
         cal.set(Calendar.HOUR_OF_DAY, h);
         cal.set(Calendar.MINUTE, min);

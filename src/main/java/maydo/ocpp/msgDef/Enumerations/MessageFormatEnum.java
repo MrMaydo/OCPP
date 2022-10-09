@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Message_ Content. Format. Message_ Format_ Code
  * urn:x-enexis:ecdm:uid:1:570848
  * Format of the message.
- * 
- * 
  */
 public enum MessageFormatEnum {
 
@@ -23,7 +19,7 @@ public enum MessageFormatEnum {
     private final static Map<String, MessageFormatEnum> CONSTANTS = new HashMap<String, MessageFormatEnum>();
 
     static {
-        for (MessageFormatEnum c: values()) {
+        for (MessageFormatEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,16 +1,12 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the progress status of the publishfirmware
  * installation.
- * 
- * 
  */
 public enum PublishFirmwareStatusEnum {
 
@@ -28,7 +24,7 @@ public enum PublishFirmwareStatusEnum {
     private final static Map<String, PublishFirmwareStatusEnum> CONSTANTS = new HashMap<String, PublishFirmwareStatusEnum>();
 
     static {
-        for (PublishFirmwareStatusEnum c: values()) {
+        for (PublishFirmwareStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Result status of getting the variable.
- * 
- * 
- * 
  */
 public enum GetVariableStatusEnum {
 
@@ -23,7 +18,7 @@ public enum GetVariableStatusEnum {
     private final static Map<String, GetVariableStatusEnum> CONSTANTS = new HashMap<String, GetVariableStatusEnum>();
 
     static {
-        for (GetVariableStatusEnum c: values()) {
+        for (GetVariableStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

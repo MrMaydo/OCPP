@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates if the Charging Station has Display Messages that match the request criteria in the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt;
- * 
- * 
  */
 public enum GetDisplayMessagesStatusEnum {
 
@@ -19,7 +15,7 @@ public enum GetDisplayMessagesStatusEnum {
     private final static Map<String, GetDisplayMessagesStatusEnum> CONSTANTS = new HashMap<String, GetDisplayMessagesStatusEnum>();
 
     static {
-        for (GetDisplayMessagesStatusEnum c: values()) {
+        for (GetDisplayMessagesStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

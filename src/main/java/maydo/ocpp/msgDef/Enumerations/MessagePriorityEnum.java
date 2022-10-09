@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * If provided the Charging Station shall return Display Messages with the given priority only.
- * 
- * 
  */
 public enum MessagePriorityEnum {
 
@@ -20,7 +16,7 @@ public enum MessagePriorityEnum {
     private final static Map<String, MessagePriorityEnum> CONSTANTS = new HashMap<String, MessagePriorityEnum>();
 
     static {
-        for (MessagePriorityEnum c: values()) {
+        for (MessagePriorityEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

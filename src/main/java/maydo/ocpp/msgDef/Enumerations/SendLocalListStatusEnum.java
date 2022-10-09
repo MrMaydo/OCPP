@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the Charging Station has successfully received and applied the update of the Local Authorization List.
- * 
- * 
  */
 public enum SendLocalListStatusEnum {
 
@@ -20,7 +16,7 @@ public enum SendLocalListStatusEnum {
     private final static Map<String, SendLocalListStatusEnum> CONSTANTS = new HashMap<String, SendLocalListStatusEnum>();
 
     static {
-        for (SendLocalListStatusEnum c: values()) {
+        for (SendLocalListStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

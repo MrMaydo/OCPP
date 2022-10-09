@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Applicable Network Interface.
- * 
- * 
  */
 public enum OCPPInterfaceEnum {
 
@@ -25,7 +21,7 @@ public enum OCPPInterfaceEnum {
     private final static Map<String, OCPPInterfaceEnum> CONSTANTS = new HashMap<String, OCPPInterfaceEnum>();
 
     static {
-        for (OCPPInterfaceEnum c: values()) {
+        for (OCPPInterfaceEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

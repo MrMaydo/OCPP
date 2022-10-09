@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Transaction. Stopped_ Reason. EOT_ Reason_ Code
  * urn:x-oca:ocpp:uid:1:569413
  * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
- * 
- * 
  */
 public enum ReasonEnum {
 
@@ -38,7 +34,7 @@ public enum ReasonEnum {
     private final static Map<String, ReasonEnum> CONSTANTS = new HashMap<String, ReasonEnum>();
 
     static {
-        for (ReasonEnum c: values()) {
+        for (ReasonEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

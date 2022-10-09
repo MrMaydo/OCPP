@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the Charging Station is able to display the message.
- * 
- * 
  */
 public enum DisplayMessageStatusEnum {
 
@@ -23,7 +19,7 @@ public enum DisplayMessageStatusEnum {
     private final static Map<String, DisplayMessageStatusEnum> CONSTANTS = new HashMap<String, DisplayMessageStatusEnum>();
 
     static {
-        for (DisplayMessageStatusEnum c: values()) {
+        for (DisplayMessageStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

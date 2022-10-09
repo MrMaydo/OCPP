@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Charging_ Profile. Recurrency_ Kind. Recurrency_ Kind_ Code
  * urn:x-oca:ocpp:uid:1:569233
  * Indicates the start point of a recurrence.
- * 
- * 
  */
 public enum RecurrencyKindEnum {
 
@@ -21,7 +17,7 @@ public enum RecurrencyKindEnum {
     private final static Map<String, RecurrencyKindEnum> CONSTANTS = new HashMap<String, RecurrencyKindEnum>();
 
     static {
-        for (RecurrencyKindEnum c: values()) {
+        for (RecurrencyKindEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Reason the Charging Station sends this message to the CSMS
- * 
- * 
  */
 public enum TriggerReasonEnum {
 
@@ -38,7 +34,7 @@ public enum TriggerReasonEnum {
     private final static Map<String, TriggerReasonEnum> CONSTANTS = new HashMap<String, TriggerReasonEnum>();
 
     static {
-        for (TriggerReasonEnum c: values()) {
+        for (TriggerReasonEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,8 +1,5 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.EVSE;
@@ -10,34 +7,27 @@ import maydo.ocpp.msgDef.Enumerations.MessageTriggerEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     private EVSE evse;
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private MessageTriggerEnum requestedMessage;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -45,7 +35,6 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -55,8 +44,6 @@ public class TriggerMessageRequest implements JsonInterface {
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     public EVSE getEvse() {
         return evse;
@@ -66,8 +53,6 @@ public class TriggerMessageRequest implements JsonInterface {
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     public void setEvse(EVSE evse) {
         this.evse = evse;
@@ -75,9 +60,8 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public MessageTriggerEnum getRequestedMessage() {
         return requestedMessage;
@@ -85,9 +69,8 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRequestedMessage(MessageTriggerEnum requestedMessage) {
         this.requestedMessage = requestedMessage;
@@ -99,7 +82,7 @@ public class TriggerMessageRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

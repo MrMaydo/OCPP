@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * APN. APN_ Authentication. APN_ Authentication_ Code
  * urn:x-oca:ocpp:uid:1:568828
  * Authentication method.
- * 
- * 
  */
 public enum APNAuthenticationEnum {
 
@@ -23,7 +19,7 @@ public enum APNAuthenticationEnum {
     private final static Map<String, APNAuthenticationEnum> CONSTANTS = new HashMap<String, APNAuthenticationEnum>();
 
     static {
-        for (APNAuthenticationEnum c: values()) {
+        for (APNAuthenticationEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

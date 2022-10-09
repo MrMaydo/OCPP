@@ -1,70 +1,56 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * AC_ Charging_ Parameters
  * urn:x-oca:ocpp:uid:2:233250
  * EV AC charging parameters.
- * 
- * 
- * 
  */
 public class ACChargingParameters implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
      * urn:x-oca:ocpp:uid:1:569211
      * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer energyAmount;
     /**
      * AC_ Charging_ Parameters. EV_ Min. Current
      * urn:x-oca:ocpp:uid:1:569212
      * Minimum current (amps) supported by the electric vehicle (per phase).
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evMinCurrent;
     /**
      * AC_ Charging_ Parameters. EV_ Max. Current
      * urn:x-oca:ocpp:uid:1:569213
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evMaxCurrent;
     /**
      * AC_ Charging_ Parameters. EV_ Max. Voltage
      * urn:x-oca:ocpp:uid:1:569214
      * Maximum voltage supported by the electric vehicle
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evMaxVoltage;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -72,7 +58,6 @@ public class ACChargingParameters implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -82,9 +67,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
      * urn:x-oca:ocpp:uid:1:569211
      * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEnergyAmount() {
         return energyAmount;
@@ -94,9 +78,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
      * urn:x-oca:ocpp:uid:1:569211
      * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEnergyAmount(Integer energyAmount) {
         this.energyAmount = energyAmount;
@@ -106,9 +89,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Min. Current
      * urn:x-oca:ocpp:uid:1:569212
      * Minimum current (amps) supported by the electric vehicle (per phase).
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvMinCurrent() {
         return evMinCurrent;
@@ -118,9 +100,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Min. Current
      * urn:x-oca:ocpp:uid:1:569212
      * Minimum current (amps) supported by the electric vehicle (per phase).
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvMinCurrent(Integer evMinCurrent) {
         this.evMinCurrent = evMinCurrent;
@@ -130,9 +111,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Max. Current
      * urn:x-oca:ocpp:uid:1:569213
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvMaxCurrent() {
         return evMaxCurrent;
@@ -142,9 +122,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Max. Current
      * urn:x-oca:ocpp:uid:1:569213
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvMaxCurrent(Integer evMaxCurrent) {
         this.evMaxCurrent = evMaxCurrent;
@@ -154,9 +133,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Max. Voltage
      * urn:x-oca:ocpp:uid:1:569214
      * Maximum voltage supported by the electric vehicle
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvMaxVoltage() {
         return evMaxVoltage;
@@ -166,9 +144,8 @@ public class ACChargingParameters implements JsonInterface {
      * AC_ Charging_ Parameters. EV_ Max. Voltage
      * urn:x-oca:ocpp:uid:1:569214
      * Maximum voltage supported by the electric vehicle
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvMaxVoltage(Integer evMaxVoltage) {
         this.evMaxVoltage = evMaxVoltage;
@@ -180,7 +157,7 @@ public class ACChargingParameters implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

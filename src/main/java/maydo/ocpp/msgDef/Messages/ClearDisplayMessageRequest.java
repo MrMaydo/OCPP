@@ -1,33 +1,25 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer id;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -35,7 +27,6 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -43,9 +34,8 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getId() {
         return id;
@@ -53,9 +43,8 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -67,7 +56,7 @@ public class ClearDisplayMessageRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,9 +1,5 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;
@@ -11,100 +7,77 @@ import maydo.ocpp.msgDef.Enumerations.TriggerReasonEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Generated;
-
-import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class TransactionEventRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private TransactionEventEnum eventType;
     private List<MeterValue> meterValue = null;
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Date timestamp;
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private TriggerReasonEnum triggerReason;
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer seqNo;
     /**
      * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     * 
-     * 
      */
     private Boolean offline = false;
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it. When omitted the CSMS may be able to determine the number of phases used via device management.
-     * 
-     * 
      */
     private Integer numberOfPhasesUsed;
     /**
      * The maximum current of the connected cable in Ampere (A).
-     * 
-     * 
      */
     private Integer cableMaxCurrent;
     /**
      * This contains the Id of the reservation that terminates as a result of this transaction.
-     * 
-     * 
      */
     private Integer reservationId;
     /**
      * Transaction
      * urn:x-oca:ocpp:uid:2:233318
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Transaction transactionInfo;
     /**
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     private EVSE evse;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
-     * 
      */
     private IdToken idToken;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -112,7 +85,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -121,9 +93,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public TransactionEventEnum getEventType() {
         return eventType;
@@ -132,9 +103,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEventType(TransactionEventEnum eventType) {
         this.eventType = eventType;
@@ -150,9 +120,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Date getTimestamp() {
         return timestamp;
@@ -160,9 +129,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
@@ -170,9 +138,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public TriggerReasonEnum getTriggerReason() {
         return triggerReason;
@@ -180,9 +147,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setTriggerReason(TriggerReasonEnum triggerReason) {
         this.triggerReason = triggerReason;
@@ -190,9 +156,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getSeqNo() {
         return seqNo;
@@ -200,9 +165,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setSeqNo(Integer seqNo) {
         this.seqNo = seqNo;
@@ -210,8 +174,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     * 
-     * 
      */
     public Boolean getOffline() {
         return offline;
@@ -219,8 +181,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     * 
-     * 
      */
     public void setOffline(Boolean offline) {
         this.offline = offline;
@@ -228,8 +188,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it. When omitted the CSMS may be able to determine the number of phases used via device management.
-     * 
-     * 
      */
     public Integer getNumberOfPhasesUsed() {
         return numberOfPhasesUsed;
@@ -237,8 +195,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it. When omitted the CSMS may be able to determine the number of phases used via device management.
-     * 
-     * 
      */
     public void setNumberOfPhasesUsed(Integer numberOfPhasesUsed) {
         this.numberOfPhasesUsed = numberOfPhasesUsed;
@@ -246,8 +202,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The maximum current of the connected cable in Ampere (A).
-     * 
-     * 
      */
     public Integer getCableMaxCurrent() {
         return cableMaxCurrent;
@@ -255,8 +209,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The maximum current of the connected cable in Ampere (A).
-     * 
-     * 
      */
     public void setCableMaxCurrent(Integer cableMaxCurrent) {
         this.cableMaxCurrent = cableMaxCurrent;
@@ -264,8 +216,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * This contains the Id of the reservation that terminates as a result of this transaction.
-     * 
-     * 
      */
     public Integer getReservationId() {
         return reservationId;
@@ -273,8 +223,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * This contains the Id of the reservation that terminates as a result of this transaction.
-     * 
-     * 
      */
     public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
@@ -283,9 +231,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * Transaction
      * urn:x-oca:ocpp:uid:2:233318
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Transaction getTransactionInfo() {
         return transactionInfo;
@@ -294,9 +241,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * Transaction
      * urn:x-oca:ocpp:uid:2:233318
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setTransactionInfo(Transaction transactionInfo) {
         this.transactionInfo = transactionInfo;
@@ -306,8 +252,6 @@ public class TransactionEventRequest implements JsonInterface {
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     public EVSE getEvse() {
         return evse;
@@ -317,8 +261,6 @@ public class TransactionEventRequest implements JsonInterface {
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
-     * 
-     * 
      */
     public void setEvse(EVSE evse) {
         this.evse = evse;
@@ -326,8 +268,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
-     * 
      */
     public IdToken getIdToken() {
         return idToken;
@@ -335,8 +275,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
-     * 
      */
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
@@ -348,7 +286,7 @@ public class TransactionEventRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

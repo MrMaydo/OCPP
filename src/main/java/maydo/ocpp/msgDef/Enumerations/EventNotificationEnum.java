@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Specifies the event notification type of the message.
- * 
- * 
- * 
  */
 public enum EventNotificationEnum {
 
@@ -22,7 +17,7 @@ public enum EventNotificationEnum {
     private final static Map<String, EventNotificationEnum> CONSTANTS = new HashMap<String, EventNotificationEnum>();
 
     static {
-        for (EventNotificationEnum c: values()) {
+        for (EventNotificationEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

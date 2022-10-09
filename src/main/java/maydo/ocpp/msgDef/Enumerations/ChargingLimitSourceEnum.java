@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Source of the charging limit.
- * 
- * 
  */
 public enum ChargingLimitSourceEnum {
 
@@ -21,7 +17,7 @@ public enum ChargingLimitSourceEnum {
     private final static Map<String, ChargingLimitSourceEnum> CONSTANTS = new HashMap<String, ChargingLimitSourceEnum>();
 
     static {
-        for (ChargingLimitSourceEnum c: values()) {
+        for (ChargingLimitSourceEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

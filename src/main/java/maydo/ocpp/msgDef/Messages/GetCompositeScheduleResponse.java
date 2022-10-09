@@ -1,50 +1,38 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CompositeSchedule;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.Enumerations.GenericStatusEnum;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.Enumerations.GenericStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private GenericStatusEnum status;
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     private StatusInfo statusInfo;
     /**
      * Composite_ Schedule
      * urn:x-oca:ocpp:uid:2:233362
-     * 
-     * 
      */
     private CompositeSchedule schedule;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -52,7 +40,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -61,9 +48,8 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public GenericStatusEnum getStatus() {
         return status;
@@ -72,9 +58,8 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setStatus(GenericStatusEnum status) {
         this.status = status;
@@ -82,8 +67,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public StatusInfo getStatusInfo() {
         return statusInfo;
@@ -91,8 +74,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
@@ -101,8 +82,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * Composite_ Schedule
      * urn:x-oca:ocpp:uid:2:233362
-     * 
-     * 
      */
     public CompositeSchedule getSchedule() {
         return schedule;
@@ -111,8 +90,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * Composite_ Schedule
      * urn:x-oca:ocpp:uid:2:233362
-     * 
-     * 
      */
     public void setSchedule(CompositeSchedule schedule) {
         this.schedule = schedule;
@@ -124,7 +101,7 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Cost. Cost_ Kind. Cost_ Kind_ Code
  * urn:x-oca:ocpp:uid:1:569243
  * The kind of cost referred to in the message element amount
- * 
- * 
  */
 public enum CostKindEnum {
 
@@ -22,7 +18,7 @@ public enum CostKindEnum {
     private final static Map<String, CostKindEnum> CONSTANTS = new HashMap<String, CostKindEnum>();
 
     static {
-        for (CostKindEnum c: values()) {
+        for (CostKindEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

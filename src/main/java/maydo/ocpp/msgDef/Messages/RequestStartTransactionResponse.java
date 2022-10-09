@@ -1,47 +1,35 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.Enumerations.RequestStartStopStatusEnum;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.Enumerations.RequestStartStopStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private RequestStartStopStatusEnum status;
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     private StatusInfo statusInfo;
     /**
      * When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
-     * 
-     * 
      */
     private String transactionId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -49,7 +37,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -57,9 +44,8 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public RequestStartStopStatusEnum getStatus() {
         return status;
@@ -67,9 +53,8 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setStatus(RequestStartStopStatusEnum status) {
         this.status = status;
@@ -77,8 +62,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public StatusInfo getStatusInfo() {
         return statusInfo;
@@ -86,8 +69,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
@@ -95,8 +76,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
-     * 
-     * 
      */
     public String getTransactionId() {
         return transactionId;
@@ -104,8 +83,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
-     * 
-     * 
      */
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
@@ -117,7 +94,7 @@ public class RequestStartTransactionResponse implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,55 +1,43 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class SetVariableData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     * 
-     * 
      */
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Value to be assigned to attribute of variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
-     * 
      */
     private String attributeValue;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Variable variable;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -57,7 +45,6 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -65,8 +52,6 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     * 
-     * 
      */
     public AttributeEnum getAttributeType() {
         return attributeType;
@@ -74,8 +59,6 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     * 
-     * 
      */
     public void setAttributeType(AttributeEnum attributeType) {
         this.attributeType = attributeType;
@@ -83,11 +66,10 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Value to be assigned to attribute of variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
-     * 
      */
     public String getAttributeValue() {
         return attributeValue;
@@ -95,11 +77,10 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Value to be assigned to attribute of variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
-     * 
      */
     public void setAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
@@ -107,9 +88,8 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -117,9 +97,8 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -127,9 +106,8 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -137,9 +115,8 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
@@ -151,7 +128,7 @@ public class SetVariableData implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

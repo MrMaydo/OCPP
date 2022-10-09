@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Type of message to be triggered.
- * 
- * 
  */
 public enum MessageTriggerEnum {
 
@@ -28,7 +24,7 @@ public enum MessageTriggerEnum {
     private final static Map<String, MessageTriggerEnum> CONSTANTS = new HashMap<String, MessageTriggerEnum>();
 
     static {
-        for (MessageTriggerEnum c: values()) {
+        for (MessageTriggerEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

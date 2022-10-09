@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates the success or failure of the data transfer.
- * 
- * 
  */
 public enum DataTransferStatusEnum {
 
@@ -21,7 +17,7 @@ public enum DataTransferStatusEnum {
     private final static Map<String, DataTransferStatusEnum> CONSTANTS = new HashMap<String, DataTransferStatusEnum>();
 
     static {
-        for (DataTransferStatusEnum c: values()) {
+        for (DataTransferStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Sampled_ Value. Measurand. Measurand_ Code
  * urn:x-oca:ocpp:uid:1:569263
  * Type of measurement. Default = "Energy.Active.Import.Register"
- * 
- * 
  */
 public enum MeasurandEnum {
 
@@ -44,7 +40,7 @@ public enum MeasurandEnum {
     private final static Map<String, MeasurandEnum> CONSTANTS = new HashMap<String, MeasurandEnum>();
 
     static {
-        for (MeasurandEnum c: values()) {
+        for (MeasurandEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

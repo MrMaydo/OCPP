@@ -1,41 +1,32 @@
-
 package maydo.ocpp.msgDef.Messages;
 
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evseId;
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer connectorId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -43,7 +34,6 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -51,9 +41,8 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -61,9 +50,8 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -71,9 +59,8 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getConnectorId() {
         return connectorId;
@@ -81,9 +68,8 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setConnectorId(Integer connectorId) {
         this.connectorId = connectorId;
@@ -95,7 +81,7 @@ public class UnlockConnectorRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Enumeration of possible idToken types.
- * 
- * 
  */
 public enum IdTokenEnum {
 
@@ -25,7 +21,7 @@ public enum IdTokenEnum {
     private final static Map<String, IdTokenEnum> CONSTANTS = new HashMap<String, IdTokenEnum>();
 
     static {
-        for (IdTokenEnum c: values()) {
+        for (IdTokenEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

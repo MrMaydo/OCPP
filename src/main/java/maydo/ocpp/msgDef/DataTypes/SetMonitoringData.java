@@ -1,62 +1,46 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 
 /**
  * Class to hold parameters of SetVariableMonitoring request.
- * 
- * 
  */
 public class SetMonitoringData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
-     * 
-     * 
      */
     private Integer id;
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
-     * 
-     * 
      */
     private Boolean transaction = false;
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     private Float value;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -78,30 +62,26 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     private Integer severity;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Variable variable;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -109,7 +89,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -117,9 +96,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
-     * 
-     * 
      */
     public Integer getId() {
         return id;
@@ -127,9 +103,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
-     * 
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -137,9 +110,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
-     * 
-     * 
      */
     public Boolean getTransaction() {
         return transaction;
@@ -147,9 +117,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
-     * 
-     * 
      */
     public void setTransaction(Boolean transaction) {
         this.transaction = transaction;
@@ -158,10 +125,9 @@ public class SetMonitoringData implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Float getValue() {
         return value;
@@ -170,32 +136,29 @@ public class SetMonitoringData implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setValue(Float value) {
         this.value = value;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public MonitorEnum getType() {
         return type;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setType(MonitorEnum type) {
         this.type = type;
@@ -203,7 +166,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -225,10 +188,9 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Integer getSeverity() {
         return severity;
@@ -236,7 +198,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -258,10 +220,9 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setSeverity(Integer severity) {
         this.severity = severity;
@@ -269,9 +230,8 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -279,9 +239,8 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -289,9 +248,8 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -299,9 +257,8 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
@@ -313,7 +270,7 @@ public class SetMonitoringData implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

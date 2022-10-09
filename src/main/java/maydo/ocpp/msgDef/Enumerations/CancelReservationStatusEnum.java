@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates the success or failure of the canceling of a reservation by CSMS.
- * 
- * 
  */
 public enum CancelReservationStatusEnum {
 
@@ -19,7 +15,7 @@ public enum CancelReservationStatusEnum {
     private final static Map<String, CancelReservationStatusEnum> CONSTANTS = new HashMap<String, CancelReservationStatusEnum>();
 
     static {
-        for (CancelReservationStatusEnum c: values()) {
+        for (CancelReservationStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates whether the Charging Station will send the requested notification or not.
- * 
- * 
  */
 public enum TriggerMessageStatusEnum {
 
@@ -20,7 +16,7 @@ public enum TriggerMessageStatusEnum {
     private final static Map<String, TriggerMessageStatusEnum> CONSTANTS = new HashMap<String, TriggerMessageStatusEnum>();
 
     static {
-        for (TriggerMessageStatusEnum c: values()) {
+        for (TriggerMessageStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

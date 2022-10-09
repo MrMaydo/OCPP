@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the charging station was able to retrieve the OCSP certificate status.
- * 
- * 
  */
 public enum GetCertificateStatusEnum {
 
@@ -19,7 +15,7 @@ public enum GetCertificateStatusEnum {
     private final static Map<String, GetCertificateStatusEnum> CONSTANTS = new HashMap<String, GetCertificateStatusEnum>();
 
     static {
-        for (GetCertificateStatusEnum c: values()) {
+        for (GetCertificateStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

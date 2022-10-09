@@ -1,20 +1,12 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Generated;
-
-import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 
 /**
@@ -217,7 +209,7 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

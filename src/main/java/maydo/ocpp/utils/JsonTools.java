@@ -1,15 +1,11 @@
 package maydo.ocpp.utils;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +24,7 @@ public class JsonTools {
             }
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-        }
-        catch (InvocationTargetException e) {
+        } catch (InvocationTargetException e) {
             throw new RuntimeException(e);
         }
         return jsonObject;
@@ -39,48 +34,41 @@ public class JsonTools {
         String fieldType = field.getType().getSimpleName();
         String fieldName = field.getName();
 
-        if (field.get(object) == null){
+        if (field.get(object) == null) {
             jsonObject.addProperty(fieldName, (String) null);
             return;
         }
 
-        if(fieldType.equals("Integer")){
+        if (fieldType.equals("Integer")) {
             Integer value = (Integer) field.get(object);
             jsonObject.addProperty(fieldName, value);
-        }
-        else if(fieldType.equals("Float")){
+        } else if (fieldType.equals("Float")) {
             Float value = (Float) field.get(object);
             jsonObject.addProperty(fieldName, value);
-        }
-        else if (fieldType.equals("Boolean")) {
+        } else if (fieldType.equals("Boolean")) {
             Boolean value = (Boolean) field.get(object);
             jsonObject.addProperty(fieldName, value);
-        }
-        else if (fieldType.equals("String")) {
+        } else if (fieldType.equals("String")) {
             String value = (String) field.get(object);
             jsonObject.addProperty(fieldName, value);
-        }
-        else if (fieldType.equals("Date")) {
+        } else if (fieldType.equals("Date")) {
             Date value = (Date) field.get(object);
             SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
             jsonObject.addProperty(fieldName, dateFormat.format(value));
-        }
-        else if (fieldType.equals("List")) {
+        } else if (fieldType.equals("List")) {
             JsonArray jsonArray = new JsonArray();
             List<?> list = (List) field.get(object);
             copyListToJsonArray(jsonArray, list);
             jsonObject.add(fieldName, jsonArray);
-        }
-        else if (field.getType().getSuperclass().getSimpleName().equals("Enum")){
+        } else if (field.getType().getSuperclass().getSimpleName().equals("Enum")) {
             Enum value = (Enum) field.get(object);
             jsonObject.addProperty(fieldName, value.toString());
-        }
-        else {
+        } else {
             jsonObject.add(fieldName, toJsonObject(field.get(object)));
         }
     }
 
-    private static void copyListToJsonArray(JsonArray jsonArray, List<?> list){
+    private static void copyListToJsonArray(JsonArray jsonArray, List<?> list) {
         for (Object item : list) {
             if (item == null) {
                 jsonArray.add((String) null);
@@ -88,27 +76,21 @@ public class JsonTools {
             }
             String itemType = item.getClass().getSimpleName();
 
-            if(itemType.equals("Integer")){
+            if (itemType.equals("Integer")) {
                 jsonArray.add((Integer) item);
-            }
-            else if(itemType.equals("Float")){
+            } else if (itemType.equals("Float")) {
                 jsonArray.add((Float) item);
-            }
-            else if (itemType.equals("Boolean")) {
+            } else if (itemType.equals("Boolean")) {
                 jsonArray.add((Boolean) item);
-            }
-            else if (itemType.equals("String")) {
+            } else if (itemType.equals("String")) {
                 jsonArray.add((String) item);
-            }
-            else if (itemType.equals("Date")) {
+            } else if (itemType.equals("Date")) {
                 Date dateValue = (Date) item;
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
                 jsonArray.add(dateFormat.format(dateValue));
-            }
-            else if (itemType.equals("Enum")){
+            } else if (itemType.equals("Enum")) {
                 jsonArray.add(item.toString());
-            }
-            else {
+            } else {
                 jsonArray.add(toJsonObject(item));
             }
         }

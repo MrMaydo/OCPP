@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
- * 
- * 
  */
 public enum SetMonitoringStatusEnum {
 
@@ -23,7 +19,7 @@ public enum SetMonitoringStatusEnum {
     private final static Map<String, SetMonitoringStatusEnum> CONSTANTS = new HashMap<String, SetMonitoringStatusEnum>();
 
     static {
-        for (SetMonitoringStatusEnum c: values()) {
+        for (SetMonitoringStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Can be used to force a power or current profile.
- * 
- * 
- * 
  */
 public enum ChargingRateUnitEnum {
 
@@ -20,7 +15,7 @@ public enum ChargingRateUnitEnum {
     private final static Map<String, ChargingRateUnitEnum> CONSTANTS = new HashMap<String, ChargingRateUnitEnum>();
 
     static {
-        for (ChargingRateUnitEnum c: values()) {
+        for (ChargingRateUnitEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

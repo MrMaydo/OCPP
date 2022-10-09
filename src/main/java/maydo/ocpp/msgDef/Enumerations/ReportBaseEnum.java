@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This field specifies the report base.
- * 
- * 
  */
 public enum ReportBaseEnum {
 
@@ -20,7 +16,7 @@ public enum ReportBaseEnum {
     private final static Map<String, ReportBaseEnum> CONSTANTS = new HashMap<String, ReportBaseEnum>();
 
     static {
-        for (ReportBaseEnum c: values()) {
+        for (ReportBaseEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

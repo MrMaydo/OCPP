@@ -1,26 +1,20 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 public class SetMonitoringLevelRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * The Charging Station SHALL only report events with a severity number lower than or equal to this severity.
      * The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -42,17 +36,15 @@ public class SetMonitoringLevelRequest implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     private Integer severity;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -60,7 +52,6 @@ public class SetMonitoringLevelRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -69,7 +60,7 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     /**
      * The Charging Station SHALL only report events with a severity number lower than or equal to this severity.
      * The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -91,11 +82,10 @@ public class SetMonitoringLevelRequest implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Integer getSeverity() {
         return severity;
@@ -104,7 +94,7 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     /**
      * The Charging Station SHALL only report events with a severity number lower than or equal to this severity.
      * The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -126,11 +116,10 @@ public class SetMonitoringLevelRequest implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setSeverity(Integer severity) {
         this.severity = severity;
@@ -142,7 +131,7 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

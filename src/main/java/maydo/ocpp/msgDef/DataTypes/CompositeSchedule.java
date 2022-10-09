@@ -1,39 +1,26 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Generated;
-
-import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 
 /**
  * Composite_ Schedule
  * urn:x-oca:ocpp:uid:2:233362
- * 
- * 
  */
 public class CompositeSchedule implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
-     * 
      * (Required)
-     * 
      */
     private List<ChargingSchedulePeriod> chargingSchedulePeriod = null;
     /**
@@ -41,39 +28,34 @@ public class CompositeSchedule implements JsonInterface {
      * schedule is requested. When evseid=0, the
      * Charging Station calculated the expected
      * consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer evseId;
     /**
      * Duration of the schedule in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Integer duration;
     /**
      * Composite_ Schedule. Start. Date_ Time
      * urn:x-oca:ocpp:uid:1:569456
      * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private Date scheduleStart;
     /**
      * The unit of measure Limit is
      * expressed in.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private ChargingRateUnitEnum chargingRateUnit;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -81,25 +63,20 @@ public class CompositeSchedule implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public List<ChargingSchedulePeriod> getChargingSchedulePeriod() {
         return chargingSchedulePeriod;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public void setChargingSchedulePeriod(List<ChargingSchedulePeriod> chargingSchedulePeriod) {
         this.chargingSchedulePeriod = chargingSchedulePeriod;
@@ -110,9 +87,8 @@ public class CompositeSchedule implements JsonInterface {
      * schedule is requested. When evseid=0, the
      * Charging Station calculated the expected
      * consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -123,9 +99,8 @@ public class CompositeSchedule implements JsonInterface {
      * schedule is requested. When evseid=0, the
      * Charging Station calculated the expected
      * consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -133,9 +108,8 @@ public class CompositeSchedule implements JsonInterface {
 
     /**
      * Duration of the schedule in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getDuration() {
         return duration;
@@ -143,9 +117,8 @@ public class CompositeSchedule implements JsonInterface {
 
     /**
      * Duration of the schedule in seconds.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setDuration(Integer duration) {
         this.duration = duration;
@@ -155,9 +128,8 @@ public class CompositeSchedule implements JsonInterface {
      * Composite_ Schedule. Start. Date_ Time
      * urn:x-oca:ocpp:uid:1:569456
      * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Date getScheduleStart() {
         return scheduleStart;
@@ -167,9 +139,8 @@ public class CompositeSchedule implements JsonInterface {
      * Composite_ Schedule. Start. Date_ Time
      * urn:x-oca:ocpp:uid:1:569456
      * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setScheduleStart(Date scheduleStart) {
         this.scheduleStart = scheduleStart;
@@ -178,9 +149,8 @@ public class CompositeSchedule implements JsonInterface {
     /**
      * The unit of measure Limit is
      * expressed in.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
@@ -189,9 +159,8 @@ public class CompositeSchedule implements JsonInterface {
     /**
      * The unit of measure Limit is
      * expressed in.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
@@ -203,7 +172,7 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

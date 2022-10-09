@@ -1,87 +1,71 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.VPNEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * VPN
  * urn:x-oca:ocpp:uid:2:233268
  * VPN Configuration settings
- * 
- * 
  */
 public class VPN implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * VPN. Server. URI
      * urn:x-oca:ocpp:uid:1:569272
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private String server;
     /**
      * VPN. User. User_ Name
      * urn:x-oca:ocpp:uid:1:569273
      * VPN User
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private String user;
     /**
      * VPN. Group. Group_ Name
      * urn:x-oca:ocpp:uid:1:569274
      * VPN group.
-     * 
-     * 
      */
     private String group;
     /**
      * VPN. Password. Password
      * urn:x-oca:ocpp:uid:1:569275
      * VPN Password.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private String password;
     /**
      * VPN. Key. VPN_ Key
      * urn:x-oca:ocpp:uid:1:569276
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private String key;
     /**
      * VPN. Type. VPN_ Code
      * urn:x-oca:ocpp:uid:1:569277
      * Type of VPN
-     * 
+     * <p>
      * (Required)
-     * 
      */
     private VPNEnum type;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -89,7 +73,6 @@ public class VPN implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -99,9 +82,8 @@ public class VPN implements JsonInterface {
      * VPN. Server. URI
      * urn:x-oca:ocpp:uid:1:569272
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getServer() {
         return server;
@@ -111,9 +93,8 @@ public class VPN implements JsonInterface {
      * VPN. Server. URI
      * urn:x-oca:ocpp:uid:1:569272
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setServer(String server) {
         this.server = server;
@@ -123,9 +104,8 @@ public class VPN implements JsonInterface {
      * VPN. User. User_ Name
      * urn:x-oca:ocpp:uid:1:569273
      * VPN User
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getUser() {
         return user;
@@ -135,9 +115,8 @@ public class VPN implements JsonInterface {
      * VPN. User. User_ Name
      * urn:x-oca:ocpp:uid:1:569273
      * VPN User
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setUser(String user) {
         this.user = user;
@@ -147,8 +126,6 @@ public class VPN implements JsonInterface {
      * VPN. Group. Group_ Name
      * urn:x-oca:ocpp:uid:1:569274
      * VPN group.
-     * 
-     * 
      */
     public String getGroup() {
         return group;
@@ -158,8 +135,6 @@ public class VPN implements JsonInterface {
      * VPN. Group. Group_ Name
      * urn:x-oca:ocpp:uid:1:569274
      * VPN group.
-     * 
-     * 
      */
     public void setGroup(String group) {
         this.group = group;
@@ -169,9 +144,8 @@ public class VPN implements JsonInterface {
      * VPN. Password. Password
      * urn:x-oca:ocpp:uid:1:569275
      * VPN Password.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getPassword() {
         return password;
@@ -181,9 +155,8 @@ public class VPN implements JsonInterface {
      * VPN. Password. Password
      * urn:x-oca:ocpp:uid:1:569275
      * VPN Password.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setPassword(String password) {
         this.password = password;
@@ -193,9 +166,8 @@ public class VPN implements JsonInterface {
      * VPN. Key. VPN_ Key
      * urn:x-oca:ocpp:uid:1:569276
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getKey() {
         return key;
@@ -205,9 +177,8 @@ public class VPN implements JsonInterface {
      * VPN. Key. VPN_ Key
      * urn:x-oca:ocpp:uid:1:569276
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setKey(String key) {
         this.key = key;
@@ -217,9 +188,8 @@ public class VPN implements JsonInterface {
      * VPN. Type. VPN_ Code
      * urn:x-oca:ocpp:uid:1:569277
      * Type of VPN
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public VPNEnum getType() {
         return type;
@@ -229,9 +199,8 @@ public class VPN implements JsonInterface {
      * VPN. Type. VPN_ Code
      * urn:x-oca:ocpp:uid:1:569277
      * Type of VPN
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setType(VPNEnum type) {
         this.type = type;
@@ -243,7 +212,7 @@ public class VPN implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

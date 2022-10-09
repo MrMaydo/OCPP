@@ -1,66 +1,47 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.Enumerations.MutabilityEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.utils.JsonTools;
 
-import javax.annotation.Generated;
-
 
 /**
  * Attribute data of a variable.
- * 
- * 
  */
 public class VariableAttribute implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     private CustomData customData;
     /**
      * Attribute: Actual, MinSet, MaxSet, etc.
      * Defaults to Actual if absent.
-     * 
-     * 
      */
     private AttributeEnum type = AttributeEnum.fromValue("Actual");
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     private String value;
     /**
      * Defines the mutability of this attribute. Default is ReadWrite when omitted.
-     * 
-     * 
      */
     private MutabilityEnum mutability = MutabilityEnum.fromValue("ReadWrite");
     /**
      * If true, value will be persistent across system reboots or power down. Default when omitted is false.
-     * 
-     * 
      */
     private Boolean persistent = false;
     /**
      * If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
-     * 
-     * 
      */
     private Boolean constant = false;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -68,7 +49,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -77,8 +57,6 @@ public class VariableAttribute implements JsonInterface {
     /**
      * Attribute: Actual, MinSet, MaxSet, etc.
      * Defaults to Actual if absent.
-     * 
-     * 
      */
     public AttributeEnum getType() {
         return type;
@@ -87,8 +65,6 @@ public class VariableAttribute implements JsonInterface {
     /**
      * Attribute: Actual, MinSet, MaxSet, etc.
      * Defaults to Actual if absent.
-     * 
-     * 
      */
     public void setType(AttributeEnum type) {
         this.type = type;
@@ -96,10 +72,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     public String getValue() {
         return value;
@@ -107,10 +81,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     public void setValue(String value) {
         this.value = value;
@@ -118,8 +90,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Defines the mutability of this attribute. Default is ReadWrite when omitted.
-     * 
-     * 
      */
     public MutabilityEnum getMutability() {
         return mutability;
@@ -127,8 +97,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Defines the mutability of this attribute. Default is ReadWrite when omitted.
-     * 
-     * 
      */
     public void setMutability(MutabilityEnum mutability) {
         this.mutability = mutability;
@@ -136,8 +104,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * If true, value will be persistent across system reboots or power down. Default when omitted is false.
-     * 
-     * 
      */
     public Boolean getPersistent() {
         return persistent;
@@ -145,8 +111,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * If true, value will be persistent across system reboots or power down. Default when omitted is false.
-     * 
-     * 
      */
     public void setPersistent(Boolean persistent) {
         this.persistent = persistent;
@@ -154,8 +118,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
-     * 
-     * 
      */
     public Boolean getConstant() {
         return constant;
@@ -163,8 +125,6 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
-     * 
-     * 
      */
     public void setConstant(Boolean constant) {
         this.constant = constant;
@@ -176,7 +136,7 @@ public class VariableAttribute implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

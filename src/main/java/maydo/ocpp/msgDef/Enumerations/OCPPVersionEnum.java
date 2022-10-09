@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Communication_ Function. OCPP_ Version. OCPP_ Version_ Code
  * urn:x-oca:ocpp:uid:1:569355
  * Defines the OCPP version used for this communication function.
- * 
- * 
  */
 public enum OCPPVersionEnum {
 
@@ -23,7 +19,7 @@ public enum OCPPVersionEnum {
     private final static Map<String, OCPPVersionEnum> CONSTANTS = new HashMap<String, OCPPVersionEnum>();
 
     static {
-        for (OCPPVersionEnum c: values()) {
+        for (OCPPVersionEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

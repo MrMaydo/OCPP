@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Data type of this variable.
- * 
- * 
  */
 public enum DataEnum {
 
@@ -25,7 +21,7 @@ public enum DataEnum {
     private final static Map<String, DataEnum> CONSTANTS = new HashMap<String, DataEnum>();
 
     static {
-        for (DataEnum c: values()) {
+        for (DataEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

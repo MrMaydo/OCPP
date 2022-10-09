@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Result of the clear request for this monitor, identified by its Id.
- * 
- * 
- * 
  */
 public enum ClearMonitoringStatusEnum {
 
@@ -21,7 +16,7 @@ public enum ClearMonitoringStatusEnum {
     private final static Map<String, ClearMonitoringStatusEnum> CONSTANTS = new HashMap<String, ClearMonitoringStatusEnum>();
 
     static {
-        for (ClearMonitoringStatusEnum c: values()) {
+        for (ClearMonitoringStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
