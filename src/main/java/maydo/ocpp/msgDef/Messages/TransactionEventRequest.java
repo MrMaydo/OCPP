@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;
 import maydo.ocpp.msgDef.Enumerations.TriggerReasonEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -348,8 +349,7 @@ public class TransactionEventRequest implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

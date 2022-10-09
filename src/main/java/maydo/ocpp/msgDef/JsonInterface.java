@@ -1,7 +1,7 @@
 package maydo.ocpp.msgDef;
 
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 public interface JsonInterface {
-    public JsonElement toJsonObject();
+    public JsonObject toJsonObject();
 }

@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AuthorizationStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -289,8 +290,7 @@ public class IdTokenInfo implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

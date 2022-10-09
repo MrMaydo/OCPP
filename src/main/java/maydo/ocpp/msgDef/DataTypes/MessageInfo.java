@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -299,8 +300,7 @@ public class MessageInfo implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPVersionEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import javax.annotation.Generated;
 
@@ -302,8 +303,7 @@ public class NetworkConnectionProfile implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

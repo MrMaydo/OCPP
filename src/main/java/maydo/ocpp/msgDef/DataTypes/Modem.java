@@ -108,8 +108,7 @@ public class Modem implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

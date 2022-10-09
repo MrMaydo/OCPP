@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -182,8 +183,7 @@ public class ChargingNeeds implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }

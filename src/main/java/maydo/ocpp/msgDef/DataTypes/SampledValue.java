@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.Enumerations.MeasurandEnum;
 import maydo.ocpp.msgDef.Enumerations.PhaseEnum;
 import maydo.ocpp.msgDef.Enumerations.ReadingContextEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import javax.annotation.Generated;
 
@@ -260,8 +261,7 @@ public class SampledValue implements JsonInterface {
     }
 
     @Override
-    public JsonElement toJsonObject(){
-        JsonElement jsonObject= new Gson().toJsonTree(this);
-        return jsonObject;
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
     }
 }
