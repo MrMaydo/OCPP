@@ -12,7 +12,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum LogEnum {
 
     DIAGNOSTICS_LOG("DiagnosticsLog"),

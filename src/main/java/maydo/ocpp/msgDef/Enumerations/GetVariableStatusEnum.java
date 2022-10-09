@@ -12,7 +12,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum GetVariableStatusEnum {
 
     ACCEPTED("Accepted"),

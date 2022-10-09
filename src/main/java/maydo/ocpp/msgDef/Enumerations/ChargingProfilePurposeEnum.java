@@ -13,7 +13,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum ChargingProfilePurposeEnum {
 
     CHARGING_STATION_EXTERNAL_CONSTRAINTS("ChargingStationExternalConstraints"),

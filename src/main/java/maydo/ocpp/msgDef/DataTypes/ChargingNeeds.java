@@ -1,8 +1,15 @@
 
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
+import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.Generated;
 
@@ -13,8 +20,7 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
-public class ChargingNeeds {
+public class ChargingNeeds implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -170,4 +176,13 @@ public class ChargingNeeds {
         this.departureTime = departureTime;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
+    }
 }

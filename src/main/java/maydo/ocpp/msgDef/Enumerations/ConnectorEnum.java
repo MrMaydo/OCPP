@@ -11,7 +11,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum ConnectorEnum {
 
     C_CCS_1("cCCS1"),

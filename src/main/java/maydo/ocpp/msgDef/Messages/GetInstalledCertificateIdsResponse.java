@@ -1,16 +1,21 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CertificateHashDataChain;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.GetInstalledCertificateStatusEnum;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
-public class GetInstalledCertificateIdsResponse {
+public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -94,4 +99,13 @@ public class GetInstalledCertificateIdsResponse {
         this.certificateHashDataChain = certificateHashDataChain;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
+    }
 }

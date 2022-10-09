@@ -13,7 +13,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum VPNEnum {
 
     IK_EV_2("IKEv2"),

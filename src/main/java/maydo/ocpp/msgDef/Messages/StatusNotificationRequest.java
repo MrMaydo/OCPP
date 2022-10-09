@@ -1,14 +1,21 @@
 
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ConnectorStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.utils.JsonTools;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
-public class StatusNotificationRequest {
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
+
+public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -140,4 +147,13 @@ public class StatusNotificationRequest {
         this.connectorId = connectorId;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject(){
+        return JsonTools.toJsonObject(this);
+    }
 }

@@ -11,7 +11,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum InstallCertificateUseEnum {
 
     V_2_G_ROOT_CERTIFICATE("V2GRootCertificate"),

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
 public enum ComponentCriterionEnum {
 
     ACTIVE("Active"),

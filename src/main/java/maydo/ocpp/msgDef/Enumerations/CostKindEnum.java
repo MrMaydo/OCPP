@@ -13,7 +13,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum CostKindEnum {
 
     CARBON_DIOXIDE_EMISSION("CarbonDioxideEmission"),
