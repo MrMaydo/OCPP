@@ -14,7 +14,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum LocationEnum {
 
     BODY("Body"),

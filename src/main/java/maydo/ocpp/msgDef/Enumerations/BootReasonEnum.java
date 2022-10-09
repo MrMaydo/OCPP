@@ -11,7 +11,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum BootReasonEnum {
 
     APPLICATION_RESET("ApplicationReset"),

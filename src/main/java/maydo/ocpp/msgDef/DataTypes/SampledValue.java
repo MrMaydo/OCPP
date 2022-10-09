@@ -23,7 +23,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class SampledValue implements JsonInterface {
 
     /**

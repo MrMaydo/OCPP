@@ -16,7 +16,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class VariableCharacteristics implements JsonInterface {
 
     /**

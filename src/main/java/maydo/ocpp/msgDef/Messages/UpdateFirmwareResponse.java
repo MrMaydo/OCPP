@@ -13,7 +13,6 @@ import maydo.ocpp.utils.JsonTools;
 
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
 public class UpdateFirmwareResponse implements JsonInterface {
 
     /**

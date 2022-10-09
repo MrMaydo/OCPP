@@ -19,7 +19,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class SalesTariff implements JsonInterface {
 
     /**

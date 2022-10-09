@@ -18,7 +18,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class VPN implements JsonInterface {
 
     /**

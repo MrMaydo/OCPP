@@ -20,7 +20,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class APN implements JsonInterface {
 
     /**

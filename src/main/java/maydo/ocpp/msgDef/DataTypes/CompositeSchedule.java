@@ -23,7 +23,6 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class CompositeSchedule implements JsonInterface {
 
     /**

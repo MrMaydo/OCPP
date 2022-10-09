@@ -14,7 +14,6 @@ import maydo.ocpp.utils.JsonTools;
 import java.util.List;
 import javax.annotation.Generated;
 
-@Generated("jsonschema2pojo")
 public class GetMonitoringReportRequest implements JsonInterface {
 
     /**

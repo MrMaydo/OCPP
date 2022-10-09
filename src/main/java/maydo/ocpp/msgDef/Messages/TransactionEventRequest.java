@@ -18,7 +18,6 @@ import javax.annotation.Generated;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
-@Generated("jsonschema2pojo")
 public class TransactionEventRequest implements JsonInterface {
 
     /**

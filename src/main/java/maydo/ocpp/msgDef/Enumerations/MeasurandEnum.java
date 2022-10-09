@@ -13,7 +13,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public enum MeasurandEnum {
 
     CURRENT_EXPORT("Current.Export"),

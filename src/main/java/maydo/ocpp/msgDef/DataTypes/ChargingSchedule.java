@@ -22,7 +22,6 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
  * urn:x-oca:ocpp:uid:2:233256
  * Charging schedule structure defines a list of charging periods, as used in: GetCompositeSchedule.conf and ChargingProfile.
  */
-@Generated("jsonschema2pojo")
 public class ChargingSchedule implements JsonInterface {
 
     /**

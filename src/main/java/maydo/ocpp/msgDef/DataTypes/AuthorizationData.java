@@ -15,7 +15,6 @@ import javax.annotation.Generated;
  * 
  * 
  */
-@Generated("jsonschema2pojo")
 public class AuthorizationData implements JsonInterface {
 
     /**
