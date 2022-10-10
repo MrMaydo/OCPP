@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ReservationUpdateStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class ReservationStatusUpdateRequest implements JsonInterface {
@@ -11,18 +13,21 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The ID of the reservation.
      * <p>
      * (Required)
      */
+    @Required
     private Integer reservationId;
     /**
      * The updated reservation status.
      * <p>
      * (Required)
      */
+    @Required
     private ReservationUpdateStatusEnum reservationUpdateStatus;
 
     /**

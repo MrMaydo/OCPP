@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.PublishFirmwareStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -13,6 +15,7 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the progress status of the publishfirmware
@@ -20,10 +23,12 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private PublishFirmwareStatusEnum status;
     /**
      * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
      */
+    @Optional
     private List<String> location = null;
     /**
      * The request id that was

@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AuthorizationStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -20,6 +22,7 @@ public class IdTokenInfo implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * ID_ Token. Status. Authorization_ Status
@@ -28,42 +31,50 @@ public class IdTokenInfo implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private AuthorizationStatusEnum status;
     /**
      * ID_ Token. Expiry. Date_ Time
      * urn:x-oca:ocpp:uid:1:569373
      * Date and Time after which the token must be considered invalid.
      */
+    @Optional
     private Date cacheExpiryDateTime;
     /**
      * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
      */
+    @Optional
     private Integer chargingPriority;
     /**
      * ID_ Token. Language1. Language_ Code
      * urn:x-oca:ocpp:uid:1:569374
      * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
      */
+    @Optional
     private String language1;
     /**
      * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
      */
+    @Optional
     private List<Integer> evseId = null;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      */
+    @Optional
     private IdToken groupIdToken;
     /**
      * ID_ Token. Language2. Language_ Code
      * urn:x-oca:ocpp:uid:1:569375
      * Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
      */
+    @Optional
     private String language2;
     /**
      * Message_ Content
      * urn:x-enexis:ecdm:uid:2:234490
      * Contains message details, for a message to be displayed on a Charging Station.
      */
+    @Optional
     private MessageContent personalMessage;
 
     /**

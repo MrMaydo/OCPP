@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -19,10 +21,12 @@ public class MessageInfo implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * A physical or logical component
      */
+    @Optional
     private Component display;
     /**
      * Identified_ Object. MRID. Numeric_ Identifier
@@ -31,6 +35,7 @@ public class MessageInfo implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Message_ Info. Priority. Message_ Priority_ Code
@@ -39,30 +44,35 @@ public class MessageInfo implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private MessagePriorityEnum priority;
     /**
      * Message_ Info. State. Message_ State_ Code
      * urn:x-enexis:ecdm:uid:1:569254
      * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
      */
+    @Optional
     private MessageStateEnum state;
     /**
      * Message_ Info. Start. Date_ Time
      * urn:x-enexis:ecdm:uid:1:569256
      * From what date-time should this message be shown. If omitted: directly.
      */
+    @Optional
     private Date startDateTime;
     /**
      * Message_ Info. End. Date_ Time
      * urn:x-enexis:ecdm:uid:1:569257
      * Until what date-time should this message be shown, after this date/time this message SHALL be removed.
      */
+    @Optional
     private Date endDateTime;
     /**
      * During which transaction shall this message be shown.
      * Message SHALL be removed by the Charging Station after transaction has
      * ended.
      */
+    @Optional
     private String transactionId;
     /**
      * Message_ Content
@@ -72,6 +82,7 @@ public class MessageInfo implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private MessageContent message;
 
     /**

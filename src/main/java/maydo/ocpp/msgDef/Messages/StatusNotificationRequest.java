@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ConnectorStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -13,30 +15,35 @@ public class StatusNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The time for which the status is reported. If absent time of receipt of the message will be assumed.
      * <p>
      * (Required)
      */
+    @Required
     private Date timestamp;
     /**
      * This contains the current status of the Connector.
      * <p>
      * (Required)
      */
+    @Required
     private ConnectorStatusEnum connectorStatus;
     /**
      * The id of the EVSE to which the connector belongs for which the the status is reported.
      * <p>
      * (Required)
      */
+    @Required
     private Integer evseId;
     /**
      * The id of the connector within the EVSE for which the status is reported.
      * <p>
      * (Required)
      */
+    @Required
     private Integer connectorId;
 
     /**

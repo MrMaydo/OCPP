@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.APNAuthenticationEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -18,6 +20,7 @@ public class APN implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * APN. APN. URI
@@ -26,30 +29,35 @@ public class APN implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String apn;
     /**
      * APN. APN. User_ Name
      * urn:x-oca:ocpp:uid:1:568818
      * APN username.
      */
+    @Optional
     private String apnUserName;
     /**
      * APN. APN. Password
      * urn:x-oca:ocpp:uid:1:568819
      * APN Password.
      */
+    @Optional
     private String apnPassword;
     /**
      * APN. SIMPIN. PIN_ Code
      * urn:x-oca:ocpp:uid:1:568821
      * SIM card pin code.
      */
+    @Optional
     private Integer simPin;
     /**
      * APN. Preferred_ Network. Mobile_ Network_ ID
      * urn:x-oca:ocpp:uid:1:568822
      * Preferred network, written as MCC and MNC concatenated. See note.
      */
+    @Optional
     private String preferredNetwork;
     /**
      * APN. Use_ Only_ Preferred_ Network. Indicator
@@ -57,6 +65,7 @@ public class APN implements JsonInterface {
      * Default: false. Use only the preferred Network, do
      * not dial in when not available. See Note.
      */
+    @Optional
     private Boolean useOnlyPreferredNetwork = false;
     /**
      * APN. APN_ Authentication. APN_ Authentication_ Code
@@ -65,6 +74,7 @@ public class APN implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private APNAuthenticationEnum apnAuthentication;
 
     /**

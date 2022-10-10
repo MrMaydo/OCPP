@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.NetworkConnectionProfile;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetNetworkProfileRequest implements JsonInterface {
@@ -11,12 +13,14 @@ public class SetNetworkProfileRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Slot in which the configuration should be stored.
      * <p>
      * (Required)
      */
+    @Required
     private Integer configurationSlot;
     /**
      * Communication_ Function
@@ -25,6 +29,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private NetworkConnectionProfile connectionData;
 
     /**

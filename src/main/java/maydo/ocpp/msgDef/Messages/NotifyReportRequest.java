@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.ReportData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -14,29 +16,36 @@ public class NotifyReportRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
      * <p>
      * (Required)
      */
+    @Required
     private Date generatedAt;
+
+    @Optional
     private List<ReportData> reportData = null;
     /**
      * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
      */
+    @Optional
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
      * <p>
      * (Required)
      */
+    @Required
     private Integer seqNo;
 
     /**

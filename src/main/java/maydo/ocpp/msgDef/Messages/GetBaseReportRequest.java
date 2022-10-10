@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ReportBaseEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class GetBaseReportRequest implements JsonInterface {
@@ -11,18 +13,21 @@ public class GetBaseReportRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The Id of the request.
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
     /**
      * This field specifies the report base.
      * <p>
      * (Required)
      */
+    @Required
     private ReportBaseEnum reportBase;
 
     /**

@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.Enumerations.MeasurandEnum;
 import maydo.ocpp.msgDef.Enumerations.PhaseEnum;
 import maydo.ocpp.msgDef.Enumerations.ReadingContextEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -21,6 +23,7 @@ public class SampledValue implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Sampled_ Value. Value. Measure
@@ -30,38 +33,45 @@ public class SampledValue implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Float value;
     /**
      * Sampled_ Value. Context. Reading_ Context_ Code
      * urn:x-oca:ocpp:uid:1:569261
      * Type of detail value: start, end or sample. Default = "Sample.Periodic"
      */
+    @Optional
     private ReadingContextEnum context = ReadingContextEnum.fromValue("Sample.Periodic");
     /**
      * Sampled_ Value. Measurand. Measurand_ Code
      * urn:x-oca:ocpp:uid:1:569263
      * Type of measurement. Default = "Energy.Active.Import.Register"
      */
+    @Optional
     private MeasurandEnum measurand = MeasurandEnum.fromValue("Energy.Active.Import.Register");
     /**
      * Sampled_ Value. Phase. Phase_ Code
      * urn:x-oca:ocpp:uid:1:569264
      * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N) Please note that not all values of phase are applicable to all Measurands. When phase is absent, the measured value is interpreted as an overall value.
      */
+    @Optional
     private PhaseEnum phase;
     /**
      * Sampled_ Value. Location. Location_ Code
      * urn:x-oca:ocpp:uid:1:569265
      * Indicates where the measured value has been sampled. Default =  "Outlet"
      */
+    @Optional
     private LocationEnum location = LocationEnum.fromValue("Outlet");
     /**
      * Represent a signed version of the meter value.
      */
+    @Optional
     private SignedMeterValue signedMeterValue;
     /**
      * Represents a UnitOfMeasure with a multiplier
      */
+    @Optional
     private UnitOfMeasure unitOfMeasure;
 
     /**

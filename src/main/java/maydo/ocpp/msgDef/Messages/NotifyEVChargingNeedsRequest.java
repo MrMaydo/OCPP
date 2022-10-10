@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingNeeds;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class NotifyEVChargingNeedsRequest implements JsonInterface {
@@ -11,10 +13,12 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Contains the maximum schedule tuples the car supports per schedule.
      */
+    @Optional
     private Integer maxScheduleTuples;
     /**
      * Charging_ Needs
@@ -22,12 +26,14 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingNeeds chargingNeeds;
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
      * <p>
      * (Required)
      */
+    @Required
     private Integer evseId;
 
     /**

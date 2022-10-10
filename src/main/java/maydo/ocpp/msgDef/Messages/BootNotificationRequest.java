@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.ChargingStation;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.BootReasonEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class BootNotificationRequest implements JsonInterface {
@@ -12,6 +14,7 @@ public class BootNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Charge_ Point
@@ -20,12 +23,14 @@ public class BootNotificationRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingStation chargingStation;
     /**
      * This contains the reason for sending this message to the CSMS.
      * <p>
      * (Required)
      */
+    @Required
     private BootReasonEnum reason;
 
     /**

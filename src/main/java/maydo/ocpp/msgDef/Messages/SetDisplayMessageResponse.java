@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.DisplayMessageStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetDisplayMessageResponse implements JsonInterface {
@@ -12,16 +14,19 @@ public class SetDisplayMessageResponse implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This indicates whether the Charging Station is able to display the message.
      * <p>
      * (Required)
      */
+    @Required
     private DisplayMessageStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

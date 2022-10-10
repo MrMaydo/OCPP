@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.Messages;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -12,22 +14,26 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Type of the security event. This value should be taken from the Security events list.
      * <p>
      * (Required)
      */
+    @Required
     private String type;
     /**
      * Date and time at which the event occurred.
      * <p>
      * (Required)
      */
+    @Required
     private Date timestamp;
     /**
      * Additional information about the occurred security event.
      */
+    @Optional
     private String techInfo;
 
     /**

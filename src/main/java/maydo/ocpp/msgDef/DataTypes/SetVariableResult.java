@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.Enumerations.SetVariableStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetVariableResult implements JsonInterface {
@@ -11,32 +13,38 @@ public class SetVariableResult implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
      */
+    @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Result status of setting the variable.
      * <p>
      * (Required)
      */
+    @Required
     private SetVariableStatusEnum attributeStatus;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo attributeStatusInfo;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
 
     /**

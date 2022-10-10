@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,18 +16,21 @@ public class Modem implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Wireless_ Communication_ Module. ICCID. CI20_ Text
      * urn:x-oca:ocpp:uid:1:569327
      * This contains the ICCID of the modem’s SIM card.
      */
+    @Optional
     private String iccid;
     /**
      * Wireless_ Communication_ Module. IMSI. CI20_ Text
      * urn:x-oca:ocpp:uid:1:569328
      * This contains the IMSI of the modem’s SIM card.
      */
+    @Optional
     private String imsi;
 
     /**

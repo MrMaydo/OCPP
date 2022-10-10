@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetVariableData implements JsonInterface {
@@ -10,10 +12,12 @@ public class SetVariableData implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
      */
+    @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Value to be assigned to attribute of variable.
@@ -22,18 +26,21 @@ public class SetVariableData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String attributeValue;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
 
     /**

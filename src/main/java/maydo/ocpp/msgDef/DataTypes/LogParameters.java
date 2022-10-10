@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -17,6 +19,7 @@ public class LogParameters implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Log. Remote_ Location. URI
@@ -25,18 +28,21 @@ public class LogParameters implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String remoteLocation;
     /**
      * Log. Oldest_ Timestamp. Date_ Time
      * urn:x-enexis:ecdm:uid:1:569477
      * This contains the date and time of the oldest logging information to include in the diagnostics.
      */
+    @Optional
     private Date oldestTimestamp;
     /**
      * Log. Latest_ Timestamp. Date_ Time
      * urn:x-enexis:ecdm:uid:1:569482
      * This contains the date and time of the latest logging information to include in the diagnostics.
      */
+    @Optional
     private Date latestTimestamp;
 
     /**

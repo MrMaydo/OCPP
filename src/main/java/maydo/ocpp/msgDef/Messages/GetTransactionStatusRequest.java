@@ -3,6 +3,7 @@ package maydo.ocpp.msgDef.Messages;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
 public class GetTransactionStatusRequest implements JsonInterface {
@@ -10,10 +11,12 @@ public class GetTransactionStatusRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The Id of the transaction for which the status is requested.
      */
+    @Optional
     private String transactionId;
 
     /**

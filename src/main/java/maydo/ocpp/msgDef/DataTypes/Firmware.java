@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -17,6 +19,7 @@ public class Firmware implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Firmware. Location. URI
@@ -25,6 +28,7 @@ public class Firmware implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String location;
     /**
      * Firmware. Retrieve. Date_ Time
@@ -33,23 +37,27 @@ public class Firmware implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Date retrieveDateTime;
     /**
      * Firmware. Install. Date_ Time
      * urn:x-enexis:ecdm:uid:1:569462
      * Date and time at which the firmware shall be installed.
      */
+    @Optional
     private Date installDateTime;
     /**
      * Certificate with which the firmware was signed.
      * PEM encoded X.509 certificate.
      */
+    @Optional
     private String signingCertificate;
     /**
      * Firmware. Signature. Signature
      * urn:x-enexis:ecdm:uid:1:569464
      * Base64 encoded firmware signature.
      */
+    @Optional
     private String signature;
 
     /**

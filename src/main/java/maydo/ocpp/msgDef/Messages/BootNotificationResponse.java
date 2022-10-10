@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.RegistrationStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -14,18 +16,21 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the CSMS’s current time.
      * <p>
      * (Required)
      */
+    @Required
     private Date currentTime;
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
      * <p>
      * (Required)
      */
+    @Required
     private Integer interval;
     /**
      * This contains whether the Charging Station has been registered
@@ -33,10 +38,12 @@ public class BootNotificationResponse implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private RegistrationStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

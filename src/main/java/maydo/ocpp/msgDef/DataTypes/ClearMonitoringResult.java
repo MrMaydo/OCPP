@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ClearMonitoringStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class ClearMonitoringResult implements JsonInterface {
@@ -10,6 +12,7 @@ public class ClearMonitoringResult implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Result of the clear request for this monitor, identified by its Id.
@@ -17,6 +20,7 @@ public class ClearMonitoringResult implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ClearMonitoringStatusEnum status;
     /**
      * Id of the monitor of which a clear was requested.
@@ -24,10 +28,12 @@ public class ClearMonitoringResult implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

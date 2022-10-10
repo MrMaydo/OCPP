@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingSchedule;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -13,12 +15,14 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Periods contained in the charging profile are relative to this point in time.
      * <p>
      * (Required)
      */
+    @Required
     private Date timeBase;
     /**
      * Charging_ Schedule
@@ -27,12 +31,14 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingSchedule chargingSchedule;
     /**
      * The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
      * <p>
      * (Required)
      */
+    @Required
     private Integer evseId;
 
     /**

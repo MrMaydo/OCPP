@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -17,18 +19,21 @@ public class ChargingNeeds implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * AC_ Charging_ Parameters
      * urn:x-oca:ocpp:uid:2:233250
      * EV AC charging parameters.
      */
+    @Optional
     private ACChargingParameters acChargingParameters;
     /**
      * DC_ Charging_ Parameters
      * urn:x-oca:ocpp:uid:2:233251
      * EV DC charging parameters
      */
+    @Optional
     private DCChargingParameters dcChargingParameters;
     /**
      * Charging_ Needs. Requested. Energy_ Transfer_ Mode_ Code
@@ -37,12 +42,14 @@ public class ChargingNeeds implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private EnergyTransferModeEnum requestedEnergyTransfer;
     /**
      * Charging_ Needs. Departure_ Time. Date_ Time
      * urn:x-oca:ocpp:uid:1:569223
      * Estimated departure time of the EV.
      */
+    @Optional
     private Date departureTime;
 
     /**

@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.Messages;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetMonitoringLevelRequest implements JsonInterface {
@@ -10,6 +12,7 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The Charging Station SHALL only report events with a severity number lower than or equal to this severity.
@@ -41,6 +44,7 @@ public class SetMonitoringLevelRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer severity;
 
     /**

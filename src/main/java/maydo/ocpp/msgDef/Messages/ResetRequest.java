@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ResetEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class ResetRequest implements JsonInterface {
@@ -11,16 +13,19 @@ public class ResetRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the type of reset that the Charging Station or EVSE should perform.
      * <p>
      * (Required)
      */
+    @Required
     private ResetEnum type;
     /**
      * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
      */
+    @Optional
     private Integer evseId;
 
     /**

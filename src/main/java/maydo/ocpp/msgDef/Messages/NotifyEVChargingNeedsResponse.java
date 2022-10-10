@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.NotifyEVChargingNeedsStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class NotifyEVChargingNeedsResponse implements JsonInterface {
@@ -12,16 +14,19 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
      * <p>
      * (Required)
      */
+    @Required
     private NotifyEVChargingNeedsStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

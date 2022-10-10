@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -14,6 +16,7 @@ public class RelativeTimeInterval implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Relative_ Timer_ Interval. Start. Elapsed_ Time
@@ -22,12 +25,14 @@ public class RelativeTimeInterval implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer start;
     /**
      * Relative_ Timer_ Interval. Duration. Elapsed_ Time
      * urn:x-oca:ocpp:uid:1:569280
      * Duration of the interval, in seconds.
      */
+    @Optional
     private Integer duration;
 
     /**

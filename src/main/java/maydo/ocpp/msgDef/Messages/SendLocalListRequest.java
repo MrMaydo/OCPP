@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.AuthorizationData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.UpdateEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -14,19 +16,24 @@ public class SendLocalListRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
+
+    @Optional
     private List<AuthorizationData> localAuthorizationList = null;
     /**
      * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
      * <p>
      * (Required)
      */
+    @Required
     private Integer versionNumber;
     /**
      * This contains the type of update (full or differential) of this request.
      * <p>
      * (Required)
      */
+    @Required
     private UpdateEnum updateType;
 
     /**

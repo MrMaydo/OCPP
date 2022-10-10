@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.ChargingLimit;
 import maydo.ocpp.msgDef.DataTypes.ChargingSchedule;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -14,11 +16,15 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
+
+    @Optional
     private List<ChargingSchedule> chargingSchedule = null;
     /**
      * The charging schedule contained in this notification applies to an EVSE. evseId must be &gt; 0.
      */
+    @Optional
     private Integer evseId;
     /**
      * Charging_ Limit
@@ -26,6 +32,7 @@ public class NotifyChargingLimitRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingLimit chargingLimit;
 
     /**

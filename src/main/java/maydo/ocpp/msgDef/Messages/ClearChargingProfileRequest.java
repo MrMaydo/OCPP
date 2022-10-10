@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ClearChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
 public class ClearChargingProfileRequest implements JsonInterface {
@@ -11,16 +12,19 @@ public class ClearChargingProfileRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * The Id of the charging profile to clear.
      */
+    @Optional
     private Integer chargingProfileId;
     /**
      * Charging_ Profile
      * urn:x-oca:ocpp:uid:2:233255
      * A ChargingProfile consists of a ChargingSchedule, describing the amount of power or current that can be delivered per time interval.
      */
+    @Optional
     private ClearChargingProfile chargingProfileCriteria;
 
     /**

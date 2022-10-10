@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,6 +17,7 @@ public class ChargingSchedulePeriod implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Charging_ Schedule_ Period. Start_ Period. Elapsed_ Time
@@ -23,6 +26,7 @@ public class ChargingSchedulePeriod implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer startPeriod;
     /**
      * Charging_ Schedule_ Period. Limit. Measure
@@ -31,16 +35,19 @@ public class ChargingSchedulePeriod implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Float limit;
     /**
      * Charging_ Schedule_ Period. Number_ Phases. Counter
      * urn:x-oca:ocpp:uid:1:569242
      * The number of phases that can be used for charging. If a number of phases is needed, numberPhases=3 will be assumed unless another number is given.
      */
+    @Optional
     private Integer numberPhases;
     /**
      * Values: 1..3, Used if numberPhases=1 and if the EVSE is capable of switching the phase connected to the EV, i.e. ACPhaseSwitchingSupported is defined and true. It’s not allowed unless both conditions above are true. If both conditions are true, and phaseToUse is omitted, the Charging Station / EVSE will make the selection on its own.
      */
+    @Optional
     private Integer phaseToUse;
 
     /**

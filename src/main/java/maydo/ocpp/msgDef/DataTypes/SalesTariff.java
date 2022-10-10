@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class SalesTariff implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identified_ Object. MRID. Numeric_ Identifier
@@ -25,22 +28,26 @@ public class SalesTariff implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Sales_ Tariff. Sales. Tariff_ Description
      * urn:x-oca:ocpp:uid:1:569283
      * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
      */
+    @Optional
     private String salesTariffDescription;
     /**
      * Sales_ Tariff. Num_ E_ Price_ Levels. Counter
      * urn:x-oca:ocpp:uid:1:569284
      * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
      */
+    @Optional
     private Integer numEPriceLevels;
     /**
      * (Required)
      */
+    @Required
     private List<SalesTariffEntry> salesTariffEntry = null;
 
     /**

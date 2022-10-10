@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.HashMap;
@@ -16,7 +18,10 @@ public class CustomData implements JsonInterface {
     /**
      * (Required)
      */
+    @Required
     private String vendorId;
+
+    @Optional
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**

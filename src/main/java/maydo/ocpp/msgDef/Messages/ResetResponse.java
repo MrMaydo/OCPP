@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.ResetStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class ResetResponse implements JsonInterface {
@@ -12,16 +14,19 @@ public class ResetResponse implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This indicates whether the Charging Station is able to perform the reset.
      * <p>
      * (Required)
      */
+    @Required
     private ResetStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

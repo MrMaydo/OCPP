@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.FirmwareStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class FirmwareStatusNotificationRequest implements JsonInterface {
@@ -11,18 +13,21 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the progress status of the firmware installation.
      * <p>
      * (Required)
      */
+    @Required
     private FirmwareStatusEnum status;
     /**
      * The request id that was provided in the
      * UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
      */
+    @Optional
     private Integer requestId;
 
     /**

@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.ChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ChargingLimitSourceEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -14,32 +16,38 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
     /**
      * Source that has installed this charging profile.
      * <p>
      * (Required)
      */
+    @Required
     private ChargingLimitSourceEnum chargingLimitSource;
     /**
      * (Required)
      */
+    @Required
     private List<ChargingProfile> chargingProfile = null;
     /**
      * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
      */
+    @Optional
     private Boolean tbc = false;
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
      * <p>
      * (Required)
      */
+    @Required
     private Integer evseId;
 
     /**

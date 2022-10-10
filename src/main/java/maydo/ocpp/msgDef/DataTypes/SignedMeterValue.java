@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -13,30 +15,35 @@ public class SignedMeterValue implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Base64 encoded, contains the signed data which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
      * <p>
      * (Required)
      */
+    @Required
     private String signedMeterData;
     /**
      * Method used to create the digital signature.
      * <p>
      * (Required)
      */
+    @Required
     private String signingMethod;
     /**
      * Method used to encode the meter values before applying the digital signature algorithm.
      * <p>
      * (Required)
      */
+    @Required
     private String encodingMethod;
     /**
      * Base64 encoded, sending depends on configuration variable _PublicKeyWithSignedMeterValue_.
      * <p>
      * (Required)
      */
+    @Required
     private String publicKey;
 
     /**

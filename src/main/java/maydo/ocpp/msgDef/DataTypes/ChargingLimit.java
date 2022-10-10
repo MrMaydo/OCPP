@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingLimitSourceEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,6 +17,7 @@ public class ChargingLimit implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Charging_ Limit. Charging_ Limit_ Source. Charging_ Limit_ Source_ Code
@@ -23,12 +26,14 @@ public class ChargingLimit implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingLimitSourceEnum chargingLimitSource;
     /**
      * Charging_ Limit. Is_ Grid_ Critical. Indicator
      * urn:x-enexis:ecdm:uid:1:570847
      * Indicates whether the charging limit is critical for the grid.
      */
+    @Optional
     private Boolean isGridCritical;
 
     /**

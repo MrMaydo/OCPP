@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -13,12 +15,14 @@ public class AuthorizationData implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      * <p>
      * (Required)
      */
+    @Required
     private IdToken idToken;
     /**
      * ID_ Token
@@ -26,6 +30,7 @@ public class AuthorizationData implements JsonInterface {
      * Contains status information about an identifier.
      * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
      */
+    @Optional
     private IdTokenInfo idTokenInfo;
 
     /**

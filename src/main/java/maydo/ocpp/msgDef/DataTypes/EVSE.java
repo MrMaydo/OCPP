@@ -2,6 +2,8 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,6 +17,7 @@ public class EVSE implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identified_ Object. MRID. Numeric_ Identifier
@@ -23,10 +26,12 @@ public class EVSE implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * An id to designate a specific connector (on an EVSE) by connector index number.
      */
+    @Optional
     private Integer connectorId;
 
     /**

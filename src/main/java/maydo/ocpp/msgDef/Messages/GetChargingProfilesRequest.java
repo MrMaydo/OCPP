@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingProfileCriterion;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class GetChargingProfilesRequest implements JsonInterface {
@@ -11,16 +13,19 @@ public class GetChargingProfilesRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
     /**
      * For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported.
      */
+    @Optional
     private Integer evseId;
     /**
      * Charging_ Profile
@@ -29,6 +34,7 @@ public class GetChargingProfilesRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingProfileCriterion chargingProfile;
 
     /**

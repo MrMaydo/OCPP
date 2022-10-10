@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.CancelReservationStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class CancelReservationResponse implements JsonInterface {
@@ -18,10 +20,12 @@ public class CancelReservationResponse implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private CancelReservationStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

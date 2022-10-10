@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.Enumerations.GetVariableStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,10 +17,12 @@ public class GetVariableResult implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo attributeStatusInfo;
     /**
      * Result status of getting the variable.
@@ -26,28 +30,33 @@ public class GetVariableResult implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private GetVariableStatusEnum attributeStatus;
     /**
      * Attribute type for which value is requested. When absent, default Actual is assumed.
      */
+    @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Value of requested attribute type of component-variable. This field can only be empty when the given status is NOT accepted.
      * <p>
      * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
+    @Optional
     private String attributeValue;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
 
     /**

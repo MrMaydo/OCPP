@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.Enumerations.SetMonitoringStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,20 +17,24 @@ public class SetMonitoringResult implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
      */
+    @Optional
     private Integer id;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
      * <p>
      * (Required)
      */
+    @Required
     private SetMonitoringStatusEnum status;
     /**
      * The type of this monitor, e.g. a threshold, delta or periodic monitor.
@@ -36,18 +42,21 @@ public class SetMonitoringResult implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private MonitorEnum type;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
@@ -77,6 +86,7 @@ public class SetMonitoringResult implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer severity;
 
     /**

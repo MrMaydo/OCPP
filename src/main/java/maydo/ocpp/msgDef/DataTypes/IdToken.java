@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.IdTokenEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -16,19 +18,24 @@ public class IdToken implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
+
+    @Optional
     private List<AdditionalInfo> additionalInfo = null;
     /**
      * IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
      * <p>
      * (Required)
      */
+    @Required
     private String idToken;
     /**
      * Enumeration of possible idToken types.
      * <p>
      * (Required)
      */
+    @Required
     private IdTokenEnum type;
 
     /**

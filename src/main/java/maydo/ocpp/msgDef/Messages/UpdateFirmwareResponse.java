@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.UpdateFirmwareStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class UpdateFirmwareResponse implements JsonInterface {
@@ -13,6 +15,7 @@ public class UpdateFirmwareResponse implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This field indicates whether the Charging Station was able to accept the request.
@@ -20,10 +23,12 @@ public class UpdateFirmwareResponse implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private UpdateFirmwareStatusEnum status;
     /**
      * Element providing more information about the status.
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**

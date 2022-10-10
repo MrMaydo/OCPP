@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.EventNotificationEnum;
 import maydo.ocpp.msgDef.Enumerations.EventTriggerEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -17,6 +19,7 @@ public class EventData implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identifies the event. This field can be referred to as a cause by other events.
@@ -24,12 +27,14 @@ public class EventData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer eventId;
     /**
      * Timestamp of the moment the report was generated.
      * <p>
      * (Required)
      */
+    @Required
     private Date timestamp;
     /**
      * Type of monitor that triggered this event, e.g. exceeding a threshold value.
@@ -37,10 +42,12 @@ public class EventData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private EventTriggerEnum trigger;
     /**
      * Refers to the Id of an event that is considered to be the cause for this event.
      */
+    @Optional
     private Integer cause;
     /**
      * Actual value (_attributeType_ Actual) of the variable.
@@ -50,32 +57,39 @@ public class EventData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String actualValue;
     /**
      * Technical (error) code as reported by component.
      */
+    @Optional
     private String techCode;
     /**
      * Technical detail information as reported by component.
      */
+    @Optional
     private String techInfo;
     /**
      * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
      */
+    @Optional
     private Boolean cleared;
     /**
      * If an event notification is linked to a specific transaction, this field can be used to specify its transactionId.
      */
+    @Optional
     private String transactionId;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Identifies the VariableMonitoring which triggered the event.
      */
+    @Optional
     private Integer variableMonitoringId;
     /**
      * Specifies the event notification type of the message.
@@ -83,12 +97,14 @@ public class EventData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private EventNotificationEnum eventNotificationType;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
 
     /**

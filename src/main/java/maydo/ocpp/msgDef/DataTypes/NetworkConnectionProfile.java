@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPVersionEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -18,6 +20,7 @@ public class NetworkConnectionProfile implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * APN
@@ -26,6 +29,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * <p>
      * NOTE: When asking a GSM modem to dial in, it is possible to specify which mobile operator should be used. This can be done with the mobile country code (MCC) in combination with a mobile network code (MNC). Example: If your preferred network is Vodafone Netherlands, the MCC=204 and the MNC=04 which means the key PreferredNetwork = 20404 Some modems allows to specify a preferred network, which means, if this network is not available, a different network is used. If you specify UseOnlyPreferredNetwork and this network is not available, the modem will not dial in.
      */
+    @Optional
     private APN apn;
     /**
      * Communication_ Function. OCPP_ Version. OCPP_ Version_ Code
@@ -34,6 +38,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private OCPPVersionEnum ocppVersion;
     /**
      * Communication_ Function. OCPP_ Transport. OCPP_ Transport_ Code
@@ -42,6 +47,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private OCPPTransportEnum ocppTransport;
     /**
      * Communication_ Function. OCPP_ Central_ System_ URL. URI
@@ -50,6 +56,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String ocppCsmsUrl;
     /**
      * Duration in seconds before a message send by the Charging Station via this network connection times-out.
@@ -58,24 +65,28 @@ public class NetworkConnectionProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer messageTimeout;
     /**
      * This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
      * <p>
      * (Required)
      */
+    @Required
     private Integer securityProfile;
     /**
      * Applicable Network Interface.
      * <p>
      * (Required)
      */
+    @Required
     private OCPPInterfaceEnum ocppInterface;
     /**
      * VPN
      * urn:x-oca:ocpp:uid:2:233268
      * VPN Configuration settings
      */
+    @Optional
     private VPN vpn;
 
     /**

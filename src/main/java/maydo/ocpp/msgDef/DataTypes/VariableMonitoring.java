@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -14,18 +16,21 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identifies the monitor.
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
      * <p>
      * (Required)
      */
+    @Required
     private Boolean transaction;
     /**
      * Value for threshold or delta monitoring.
@@ -33,12 +38,14 @@ public class VariableMonitoring implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Float value;
     /**
      * The type of this monitor, e.g. a threshold, delta or periodic monitor.
      * <p>
      * (Required)
      */
+    @Required
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
@@ -67,6 +74,7 @@ public class VariableMonitoring implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer severity;
 
     /**

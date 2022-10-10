@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MessageFormatEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -16,6 +18,7 @@ public class MessageContent implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Message_ Content. Format. Message_ Format_ Code
@@ -24,12 +27,14 @@ public class MessageContent implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private MessageFormatEnum format;
     /**
      * Message_ Content. Language. Language_ Code
      * urn:x-enexis:ecdm:uid:1:570849
      * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
      */
+    @Optional
     private String language;
     /**
      * Message_ Content. Content. Message
@@ -39,6 +44,7 @@ public class MessageContent implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String content;
 
     /**

@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;
 import maydo.ocpp.msgDef.Enumerations.TriggerReasonEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -15,6 +17,7 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the type of this event.
@@ -22,41 +25,51 @@ public class TransactionEventRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private TransactionEventEnum eventType;
+
+    @Optional
     private List<MeterValue> meterValue = null;
     /**
      * The date and time at which this transaction event occurred.
      * <p>
      * (Required)
      */
+    @Required
     private Date timestamp;
     /**
      * Reason the Charging Station sends this message to the CSMS
      * <p>
      * (Required)
      */
+    @Required
     private TriggerReasonEnum triggerReason;
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
      * <p>
      * (Required)
      */
+    @Required
     private Integer seqNo;
     /**
      * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
      */
+    @Optional
     private Boolean offline = false;
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it. When omitted the CSMS may be able to determine the number of phases used via device management.
      */
+    @Optional
     private Integer numberOfPhasesUsed;
     /**
      * The maximum current of the connected cable in Ampere (A).
      */
+    @Optional
     private Integer cableMaxCurrent;
     /**
      * This contains the Id of the reservation that terminates as a result of this transaction.
      */
+    @Optional
     private Integer reservationId;
     /**
      * Transaction
@@ -64,16 +77,19 @@ public class TransactionEventRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Transaction transactionInfo;
     /**
      * EVSE
      * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
+    @Optional
     private EVSE evse;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      */
+    @Optional
     private IdToken idToken;
 
     /**

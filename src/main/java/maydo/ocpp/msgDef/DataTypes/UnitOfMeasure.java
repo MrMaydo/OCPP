@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -13,16 +14,19 @@ public class UnitOfMeasure implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
      * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices.
      * If an applicable unit is available in that list, otherwise a "custom" unit might be used.
      */
+    @Optional
     private String unit = "Wh";
     /**
      * Multiplier, this value represents the exponent to base 10. I.e. multiplier 3 means 10 raised to the 3rd power. Default is 0.
      */
+    @Optional
     private Integer multiplier = 0;
 
     /**

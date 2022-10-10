@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -14,14 +16,17 @@ public class SetMonitoringData implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
      */
+    @Optional
     private Integer id;
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
      */
+    @Optional
     private Boolean transaction = false;
     /**
      * Value for threshold or delta monitoring.
@@ -30,6 +35,7 @@ public class SetMonitoringData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Float value;
     /**
      * The type of this monitor, e.g. a threshold, delta or periodic monitor.
@@ -37,6 +43,7 @@ public class SetMonitoringData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
@@ -66,18 +73,21 @@ public class SetMonitoringData implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer severity;
     /**
      * A physical or logical component
      * <p>
      * (Required)
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
      * <p>
      * (Required)
      */
+    @Required
     private Variable variable;
 
     /**

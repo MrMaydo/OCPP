@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.Messages;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class DataTransferRequest implements JsonInterface {
@@ -10,14 +12,17 @@ public class DataTransferRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * May be used to indicate a specific message or implementation.
      */
+    @Optional
     private String messageId;
     /**
      * Data without specified length or format. This needs to be decided by both parties (Open to implementation).
      */
+    @Optional
     private Object data;
     /**
      * This identifies the Vendor specific implementation
@@ -25,6 +30,7 @@ public class DataTransferRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private String vendorId;
 
     /**

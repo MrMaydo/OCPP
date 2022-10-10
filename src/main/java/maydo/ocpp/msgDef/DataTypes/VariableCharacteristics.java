@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DataEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -14,24 +16,29 @@ public class VariableCharacteristics implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
      */
+    @Optional
     private String unit;
     /**
      * Data type of this variable.
      * <p>
      * (Required)
      */
+    @Required
     private DataEnum dataType;
     /**
      * Minimum possible value of this variable.
      */
+    @Optional
     private Float minLimit;
     /**
      * Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
      */
+    @Optional
     private Float maxLimit;
     /**
      * Allowed values when variable is Option/Member/SequenceList.
@@ -46,12 +53,14 @@ public class VariableCharacteristics implements JsonInterface {
      * <p>
      * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
      */
+    @Optional
     private String valuesList;
     /**
      * Flag indicating if this variable supports monitoring.
      * <p>
      * (Required)
      */
+    @Required
     private Boolean supportsMonitoring;
 
     /**

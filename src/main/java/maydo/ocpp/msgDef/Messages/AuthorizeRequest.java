@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdToken;
 import maydo.ocpp.msgDef.DataTypes.OCSPRequestData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -14,17 +16,22 @@ public class AuthorizeRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      * <p>
      * (Required)
      */
+    @Required
     private IdToken idToken;
     /**
      * The X.509 certificated presented by EV and encoded in PEM format.
      */
+    @Optional
     private String certificate;
+
+    @Optional
     private List<OCSPRequestData> iso15118CertificateHashData = null;
 
     /**

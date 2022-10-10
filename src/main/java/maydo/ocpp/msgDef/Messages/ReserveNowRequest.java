@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdToken;
 import maydo.ocpp.msgDef.Enumerations.ConnectorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -14,36 +16,43 @@ public class ReserveNowRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Id of reservation.
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Date and time at which the reservation expires.
      * <p>
      * (Required)
      */
+    @Required
     private Date expiryDateTime;
     /**
      * This field specifies the connector type.
      */
+    @Optional
     private ConnectorEnum connectorType;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      * <p>
      * (Required)
      */
+    @Required
     private IdToken idToken;
     /**
      * This contains ID of the evse to be reserved.
      */
+    @Optional
     private Integer evseId;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
      */
+    @Optional
     private IdToken groupIdToken;
 
     /**

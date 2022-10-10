@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.Enumerations.RecurrencyKindEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -21,6 +23,7 @@ public class ChargingProfile implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identified_ Object. MRID. Numeric_ Identifier
@@ -29,6 +32,7 @@ public class ChargingProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Charging_ Profile. Stack_ Level. Counter
@@ -37,6 +41,7 @@ public class ChargingProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer stackLevel;
     /**
      * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
@@ -45,6 +50,7 @@ public class ChargingProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingProfilePurposeEnum chargingProfilePurpose;
     /**
      * Charging_ Profile. Charging_ Profile_ Kind. Charging_ Profile_ Kind_ Code
@@ -53,28 +59,33 @@ public class ChargingProfile implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingProfileKindEnum chargingProfileKind;
     /**
      * Charging_ Profile. Recurrency_ Kind. Recurrency_ Kind_ Code
      * urn:x-oca:ocpp:uid:1:569233
      * Indicates the start point of a recurrence.
      */
+    @Optional
     private RecurrencyKindEnum recurrencyKind;
     /**
      * Charging_ Profile. Valid_ From. Date_ Time
      * urn:x-oca:ocpp:uid:1:569234
      * Point in time at which the profile starts to be valid. If absent, the profile is valid as soon as it is received by the Charging Station.
      */
+    @Optional
     private Date validFrom;
     /**
      * Charging_ Profile. Valid_ To. Date_ Time
      * urn:x-oca:ocpp:uid:1:569235
      * Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
      */
+    @Optional
     private Date validTo;
     /**
      * (Required)
      */
+    @Required
     private List<ChargingSchedule> chargingSchedule = null;
     /**
      * SHALL only be included if ChargingProfilePurpose is set to TxProfile. The transactionId is used to match the profile to a specific transaction.

@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
@@ -14,24 +16,29 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
      */
+    @Optional
     private List<Integer> id = null;
     /**
      * The Id of this request.
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
     /**
      * If provided the Charging Station shall return Display Messages with the given priority only.
      */
+    @Optional
     private MessagePriorityEnum priority;
     /**
      * If provided the Charging Station shall return Display Messages with the given state only.
      */
+    @Optional
     private MessageStateEnum state;
 
     /**

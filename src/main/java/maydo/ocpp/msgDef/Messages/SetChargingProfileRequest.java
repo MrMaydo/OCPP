@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class SetChargingProfileRequest implements JsonInterface {
@@ -11,12 +13,14 @@ public class SetChargingProfileRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
      * <p>
      * (Required)
      */
+    @Required
     private Integer evseId;
     /**
      * Charging_ Profile
@@ -25,6 +29,7 @@ public class SetChargingProfileRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingProfile chargingProfile;
 
     /**

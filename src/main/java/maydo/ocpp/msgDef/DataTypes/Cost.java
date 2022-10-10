@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.DataTypes;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.CostKindEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 
@@ -15,6 +17,7 @@ public class Cost implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Cost. Cost_ Kind. Cost_ Kind_ Code
@@ -23,6 +26,7 @@ public class Cost implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private CostKindEnum costKind;
     /**
      * Cost. Amount. Amount
@@ -31,12 +35,14 @@ public class Cost implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer amount;
     /**
      * Cost. Amount_ Multiplier. Integer
      * urn:x-oca:ocpp:uid:1:569245
      * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
      */
+    @Optional
     private Integer amountMultiplier;
 
     /**

@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.UploadLogStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 public class LogStatusNotificationRequest implements JsonInterface {
@@ -11,17 +13,20 @@ public class LogStatusNotificationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the status of the log upload.
      * <p>
      * (Required)
      */
+    @Required
     private UploadLogStatusEnum status;
     /**
      * The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
      * unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
      */
+    @Optional
     private Integer requestId;
 
     /**

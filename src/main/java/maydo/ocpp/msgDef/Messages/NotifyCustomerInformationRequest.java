@@ -3,6 +3,8 @@ package maydo.ocpp.msgDef.Messages;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
@@ -12,28 +14,33 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
      * <p>
      * (Required)
      */
+    @Required
     private String data;
     /**
      * “to be continued” indicator. Indicates whether another part of the monitoringData follows in an upcoming notifyMonitoringReportRequest message. Default value when omitted is false.
      */
+    @Optional
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
      * <p>
      * (Required)
      */
+    @Required
     private Integer seqNo;
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
      * <p>
      * (Required)
      */
+    @Required
     private Date generatedAt;
     /**
      * The Id of the request.
@@ -41,6 +48,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private Integer requestId;
 
     /**
