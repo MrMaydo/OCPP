@@ -1,16 +1,12 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the type of this event.
  * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
- * 
- * 
  */
 public enum TransactionEventEnum {
 
@@ -21,7 +17,7 @@ public enum TransactionEventEnum {
     private final static Map<String, TransactionEventEnum> CONSTANTS = new HashMap<String, TransactionEventEnum>();
 
     static {
-        for (TransactionEventEnum c: values()) {
+        for (TransactionEventEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

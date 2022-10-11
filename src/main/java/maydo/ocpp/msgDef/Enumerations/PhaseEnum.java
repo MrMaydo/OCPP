@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Sampled_ Value. Phase. Phase_ Code
  * urn:x-oca:ocpp:uid:1:569264
  * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N) Please note that not all values of phase are applicable to all Measurands. When phase is absent, the measured value is interpreted as an overall value.
- * 
- * 
  */
 public enum PhaseEnum {
 
@@ -29,7 +25,7 @@ public enum PhaseEnum {
     private final static Map<String, PhaseEnum> CONSTANTS = new HashMap<String, PhaseEnum>();
 
     static {
-        for (PhaseEnum c: values()) {
+        for (PhaseEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

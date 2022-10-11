@@ -1,59 +1,51 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 
 /**
  * Class to report components, variables and variable attributes and characteristics.
- * 
- * 
  */
 public class ReportData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Variable variable;
     /**
-     * 
      * (Required)
-     * 
      */
+    @Required
     private List<VariableAttribute> variableAttribute = null;
     /**
      * Fixed read-only parameters of a variable.
-     * 
-     * 
      */
+    @Optional
     private VariableCharacteristics variableCharacteristics;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -61,7 +53,6 @@ public class ReportData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -69,9 +60,8 @@ public class ReportData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -79,9 +69,8 @@ public class ReportData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -89,9 +78,8 @@ public class ReportData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -99,27 +87,22 @@ public class ReportData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public List<VariableAttribute> getVariableAttribute() {
         return variableAttribute;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public void setVariableAttribute(List<VariableAttribute> variableAttribute) {
         this.variableAttribute = variableAttribute;
@@ -127,8 +110,6 @@ public class ReportData implements JsonInterface {
 
     /**
      * Fixed read-only parameters of a variable.
-     * 
-     * 
      */
     public VariableCharacteristics getVariableCharacteristics() {
         return variableCharacteristics;
@@ -136,8 +117,6 @@ public class ReportData implements JsonInterface {
 
     /**
      * Fixed read-only parameters of a variable.
-     * 
-     * 
      */
     public void setVariableCharacteristics(VariableCharacteristics variableCharacteristics) {
         this.variableCharacteristics = variableCharacteristics;
@@ -149,7 +128,7 @@ public class ReportData implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

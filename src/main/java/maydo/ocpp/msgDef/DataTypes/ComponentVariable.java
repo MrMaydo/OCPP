@@ -1,44 +1,37 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * Class to report components, variables and variable attributes and characteristics.
- * 
- * 
  */
 public class ComponentVariable implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
-     * 
      */
+    @Optional
     private Variable variable;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -46,7 +39,6 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -54,9 +46,8 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -64,9 +55,8 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -74,8 +64,6 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -83,8 +71,6 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
@@ -96,7 +82,7 @@ public class ComponentVariable implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

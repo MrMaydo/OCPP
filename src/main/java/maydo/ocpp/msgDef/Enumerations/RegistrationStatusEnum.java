@@ -1,16 +1,12 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains whether the Charging Station has been registered
  * within the CSMS.
- * 
- * 
  */
 public enum RegistrationStatusEnum {
 
@@ -21,7 +17,7 @@ public enum RegistrationStatusEnum {
     private final static Map<String, RegistrationStatusEnum> CONSTANTS = new HashMap<String, RegistrationStatusEnum>();
 
     static {
-        for (RegistrationStatusEnum c: values()) {
+        for (RegistrationStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

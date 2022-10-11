@@ -1,59 +1,48 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * Charging_ Profile
  * urn:x-oca:ocpp:uid:2:233255
  * A ChargingProfile consists of a ChargingSchedule, describing the amount of power or current that can be delivered per time interval.
- * 
- * 
  */
 public class ClearChargingProfile implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Identified_ Object. MRID. Numeric_ Identifier
      * urn:x-enexis:ecdm:uid:1:569198
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
-     * 
-     * 
      */
+    @Optional
     private Integer evseId;
     /**
      * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
      * urn:x-oca:ocpp:uid:1:569231
      * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
+    @Optional
     private ChargingProfilePurposeEnum chargingProfilePurpose;
     /**
      * Charging_ Profile. Stack_ Level. Counter
      * urn:x-oca:ocpp:uid:1:569230
      * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
+    @Optional
     private Integer stackLevel;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -61,7 +50,6 @@ public class ClearChargingProfile implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -71,9 +59,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Identified_ Object. MRID. Numeric_ Identifier
      * urn:x-enexis:ecdm:uid:1:569198
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
-     * 
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -83,9 +68,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Identified_ Object. MRID. Numeric_ Identifier
      * urn:x-enexis:ecdm:uid:1:569198
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
-     * 
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -95,8 +77,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
      * urn:x-oca:ocpp:uid:1:569231
      * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
     public ChargingProfilePurposeEnum getChargingProfilePurpose() {
         return chargingProfilePurpose;
@@ -106,8 +86,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
      * urn:x-oca:ocpp:uid:1:569231
      * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
     public void setChargingProfilePurpose(ChargingProfilePurposeEnum chargingProfilePurpose) {
         this.chargingProfilePurpose = chargingProfilePurpose;
@@ -117,8 +95,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Charging_ Profile. Stack_ Level. Counter
      * urn:x-oca:ocpp:uid:1:569230
      * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
     public Integer getStackLevel() {
         return stackLevel;
@@ -128,8 +104,6 @@ public class ClearChargingProfile implements JsonInterface {
      * Charging_ Profile. Stack_ Level. Counter
      * urn:x-oca:ocpp:uid:1:569230
      * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     * 
-     * 
      */
     public void setStackLevel(Integer stackLevel) {
         this.stackLevel = stackLevel;
@@ -141,7 +115,7 @@ public class ClearChargingProfile implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

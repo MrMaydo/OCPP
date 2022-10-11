@@ -1,53 +1,46 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 
 /**
  * Class to hold parameters of SetVariableMonitoring request.
- * 
- * 
  */
 public class MonitoringData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Variable variable;
     /**
-     * 
      * (Required)
-     * 
      */
+    @Required
     private List<VariableMonitoring> variableMonitoring = null;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -55,7 +48,6 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -63,9 +55,8 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -73,9 +64,8 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -83,9 +73,8 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -93,27 +82,22 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public List<VariableMonitoring> getVariableMonitoring() {
         return variableMonitoring;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public void setVariableMonitoring(List<VariableMonitoring> variableMonitoring) {
         this.variableMonitoring = variableMonitoring;
@@ -125,7 +109,7 @@ public class MonitoringData implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

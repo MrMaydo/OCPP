@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 import static maydo.ocpp.utils.JsonTools.toJsonObject;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonToolsTest {
     JsonObject jsonObject;
@@ -113,7 +113,7 @@ class JsonToolsTest {
     void toJsonObject_Date() {
         DateObject object = new DateObject();
         expectedJsonString = "{\"dateValue\":\"2022-12-03T21:46:59.123Z\"}";
-        object.setDateValue(createDate(2022,12,3,21,46,59,123));
+        object.setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         assertEquals(expectedJsonString, toJsonObject(object).toString(),
                 "Failed at converting Date");
     }
@@ -168,6 +168,38 @@ class JsonToolsTest {
     }
 
     @Test
+    void toJsonObject_ListDate() {
+        ListObject object = new ListObject();
+        List<Date> list = new ArrayList<>();
+        list.add(createDate(2022, 12, 3, 21, 46, 59, 123));
+        list.add(createDate(2022, 1, 31, 8, 3, 9, 13));
+        object.setListValue(list);
+        expectedJsonString = "{\"listValue\":[" +
+                "\"2022-12-03T21:46:59.123Z\"," +
+                "\"2022-01-31T08:03:09.13Z\"" +
+                "]}";
+        assertEquals(expectedJsonString, toJsonObject(object).toString(),
+                "Failed at converting List<Date>");
+    }
+
+    @Test
+    void toJsonObject_ListEnum() {
+        ListObject object = new ListObject();
+        List<TestEnum> list = new ArrayList<>();
+        list.add(TestEnum.BOOLEAN);
+        list.add(TestEnum.INTEGER);
+        list.add(TestEnum.STRING);
+        object.setListValue(list);
+        expectedJsonString = "{\"listValue\":[" +
+                "\"boolean\"," +
+                "\"integer\"," +
+                "\"string\"" +
+                "]}";
+        assertEquals(expectedJsonString, toJsonObject(object).toString(),
+                "Failed at converting List<Enum>");
+    }
+
+    @Test
     void toJsonObject_NullList() {
         ListObject object = new ListObject();
         expectedJsonString = "{\"listValue\":null}";
@@ -190,7 +222,7 @@ class JsonToolsTest {
 
         object.getIntObject().setIntValue(6);
         object.getStrObject().setStrValue("abc");
-        object.getDateObject().setDateValue(createDate(2022,12,3,21,46,59,123));
+        object.getDateObject().setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         object.getListObject().setListValue(list);
 
         expectedJsonString = "{" +
@@ -249,7 +281,7 @@ class JsonToolsTest {
 
         item1.getIntObject().setIntValue(6);
         item1.getStrObject().setStrValue("abc");
-        item1.getDateObject().setDateValue(createDate(2022,12,3,21,46,59,123));
+        item1.getDateObject().setDateValue(createDate(2022, 12, 3, 21, 46, 59, 123));
         item1.getListObject().setListValue(itemList1);
 
 
@@ -281,7 +313,6 @@ class JsonToolsTest {
 
                 "{\"intObject\":null," +
                 "\"strObject\":null," +
-                "\"dateObject\":null," +
                 "\"listObject\":null" +
                 "}" +
                 "]}";
@@ -290,10 +321,10 @@ class JsonToolsTest {
                 "Failed at converting Object with nested JsonObject");
     }
 
-    Date createDate(int y, int m, int d, int h, int min, int s, int ms){
+    Date createDate(int y, int m, int d, int h, int min, int s, int ms) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, y);
-        cal.set(Calendar.MONTH, m-1);
+        cal.set(Calendar.MONTH, m - 1);
         cal.set(Calendar.DATE, d);
         cal.set(Calendar.HOUR_OF_DAY, h);
         cal.set(Calendar.MINUTE, min);

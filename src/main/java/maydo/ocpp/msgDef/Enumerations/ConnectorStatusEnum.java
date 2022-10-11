@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the current status of the Connector.
- * 
- * 
  */
 public enum ConnectorStatusEnum {
 
@@ -22,7 +18,7 @@ public enum ConnectorStatusEnum {
     private final static Map<String, ConnectorStatusEnum> CONSTANTS = new HashMap<String, ConnectorStatusEnum>();
 
     static {
-        for (ConnectorStatusEnum c: values()) {
+        for (ConnectorStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

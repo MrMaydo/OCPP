@@ -1,46 +1,40 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class DataTransferRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * May be used to indicate a specific message or implementation.
-     * 
-     * 
      */
+    @Optional
     private String messageId;
     /**
      * Data without specified length or format. This needs to be decided by both parties (Open to implementation).
-     * 
-     * 
      */
+    @Optional
     private Object data;
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private String vendorId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -48,7 +42,6 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -56,8 +49,6 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * May be used to indicate a specific message or implementation.
-     * 
-     * 
      */
     public String getMessageId() {
         return messageId;
@@ -65,8 +56,6 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * May be used to indicate a specific message or implementation.
-     * 
-     * 
      */
     public void setMessageId(String messageId) {
         this.messageId = messageId;
@@ -74,8 +63,6 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * Data without specified length or format. This needs to be decided by both parties (Open to implementation).
-     * 
-     * 
      */
     public Object getData() {
         return data;
@@ -83,8 +70,6 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * Data without specified length or format. This needs to be decided by both parties (Open to implementation).
-     * 
-     * 
      */
     public void setData(Object data) {
         this.data = data;
@@ -92,10 +77,9 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public String getVendorId() {
         return vendorId;
@@ -103,10 +87,9 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setVendorId(String vendorId) {
         this.vendorId = vendorId;
@@ -118,7 +101,7 @@ public class DataTransferRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

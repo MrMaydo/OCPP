@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
- * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
- * 
- * 
+ * The type of this monitor, e.g. a threshold, delta or periodic monitor.
  */
 public enum MonitorEnum {
 
@@ -22,7 +18,7 @@ public enum MonitorEnum {
     private final static Map<String, MonitorEnum> CONSTANTS = new HashMap<String, MonitorEnum>();
 
     static {
-        for (MonitorEnum c: values()) {
+        for (MonitorEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

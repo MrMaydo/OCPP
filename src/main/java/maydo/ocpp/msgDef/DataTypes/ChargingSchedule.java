@@ -1,20 +1,14 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.annotation.Generated;
-
-import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 
 /**
@@ -27,24 +21,28 @@ public class ChargingSchedule implements JsonInterface {
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
+    @Optional
     private CustomData customData;
     /**
      * Identifies the ChargingSchedule.
      * <p>
      * (Required)
      */
+    @Required
     private Integer id;
     /**
      * Charging_ Schedule. Start_ Schedule. Date_ Time
      * urn:x-oca:ocpp:uid:1:569237
      * Starting point of an absolute schedule. If absent the schedule will be relative to start of charging.
      */
+    @Optional
     private Date startSchedule;
     /**
      * Charging_ Schedule. Duration. Elapsed_ Time
      * urn:x-oca:ocpp:uid:1:569236
      * Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction if chargingProfilePurpose = TxProfile.
      */
+    @Optional
     private Integer duration;
     /**
      * Charging_ Schedule. Charging_ Rate_ Unit. Charging_ Rate_ Unit_ Code
@@ -53,22 +51,26 @@ public class ChargingSchedule implements JsonInterface {
      * <p>
      * (Required)
      */
+    @Required
     private ChargingRateUnitEnum chargingRateUnit;
     /**
      * (Required)
      */
+    @Required
     private List<ChargingSchedulePeriod> chargingSchedulePeriod = null;
     /**
      * Charging_ Schedule. Min_ Charging_ Rate. Numeric
      * urn:x-oca:ocpp:uid:1:569239
      * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates. Accepts at most one digit fraction (e.g. 8.1)
      */
+    @Optional
     private Float minChargingRate;
     /**
      * Sales_ Tariff
      * urn:x-oca:ocpp:uid:2:233272
      * NOTE: This dataType is based on dataTypes from &lt;&lt;ref-ISOIEC15118-2,ISO 15118-2&gt;&gt;.
      */
+    @Optional
     private SalesTariff salesTariff;
 
     /**
@@ -217,7 +219,7 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

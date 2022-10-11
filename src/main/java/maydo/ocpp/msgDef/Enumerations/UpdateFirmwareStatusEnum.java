@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This field indicates whether the Charging Station was able to accept the request.
- * 
- * 
- * 
  */
 public enum UpdateFirmwareStatusEnum {
 
@@ -23,7 +18,7 @@ public enum UpdateFirmwareStatusEnum {
     private final static Map<String, UpdateFirmwareStatusEnum> CONSTANTS = new HashMap<String, UpdateFirmwareStatusEnum>();
 
     static {
-        for (UpdateFirmwareStatusEnum c: values()) {
+        for (UpdateFirmwareStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

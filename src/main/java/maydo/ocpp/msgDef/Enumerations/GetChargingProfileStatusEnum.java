@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the Charging Station is able to process this request and will send &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; messages.
- * 
- * 
  */
 public enum GetChargingProfileStatusEnum {
 
@@ -19,7 +15,7 @@ public enum GetChargingProfileStatusEnum {
     private final static Map<String, GetChargingProfileStatusEnum> CONSTANTS = new HashMap<String, GetChargingProfileStatusEnum>();
 
     static {
-        for (GetChargingProfileStatusEnum c: values()) {
+        for (GetChargingProfileStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

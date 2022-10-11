@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Specify which monitoring base will be set
- * 
- * 
  */
 public enum MonitoringBaseEnum {
 
@@ -20,7 +16,7 @@ public enum MonitoringBaseEnum {
     private final static Map<String, MonitoringBaseEnum> CONSTANTS = new HashMap<String, MonitoringBaseEnum>();
 
     static {
-        for (MonitoringBaseEnum c: values()) {
+        for (MonitoringBaseEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

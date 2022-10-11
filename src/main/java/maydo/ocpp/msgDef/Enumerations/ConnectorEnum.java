@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This field specifies the connector type.
- * 
- * 
  */
 public enum ConnectorEnum {
 
@@ -39,7 +35,7 @@ public enum ConnectorEnum {
     private final static Map<String, ConnectorEnum> CONSTANTS = new HashMap<String, ConnectorEnum>();
 
     static {
-        for (ConnectorEnum c: values()) {
+        for (ConnectorEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

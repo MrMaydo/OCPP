@@ -1,64 +1,58 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.Enumerations.LogEnum;
 import maydo.ocpp.msgDef.DataTypes.LogParameters;
+import maydo.ocpp.msgDef.Enumerations.LogEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class GetLogRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Log
      * urn:x-enexis:ecdm:uid:2:233373
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private LogParameters log;
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private LogEnum logType;
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer requestId;
     /**
      * This specifies how many times the Charging Station must try to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
+    @Optional
     private Integer retries;
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
+    @Optional
     private Integer retryInterval;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -66,7 +60,6 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -76,9 +69,8 @@ public class GetLogRequest implements JsonInterface {
      * Log
      * urn:x-enexis:ecdm:uid:2:233373
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public LogParameters getLog() {
         return log;
@@ -88,9 +80,8 @@ public class GetLogRequest implements JsonInterface {
      * Log
      * urn:x-enexis:ecdm:uid:2:233373
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setLog(LogParameters log) {
         this.log = log;
@@ -99,9 +90,8 @@ public class GetLogRequest implements JsonInterface {
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public LogEnum getLogType() {
         return logType;
@@ -110,9 +100,8 @@ public class GetLogRequest implements JsonInterface {
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setLogType(LogEnum logType) {
         this.logType = logType;
@@ -120,9 +109,8 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getRequestId() {
         return requestId;
@@ -130,9 +118,8 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
@@ -140,8 +127,6 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * This specifies how many times the Charging Station must try to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
     public Integer getRetries() {
         return retries;
@@ -149,8 +134,6 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * This specifies how many times the Charging Station must try to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
     public void setRetries(Integer retries) {
         this.retries = retries;
@@ -158,8 +141,6 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
     public Integer getRetryInterval() {
         return retryInterval;
@@ -167,8 +148,6 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
     public void setRetryInterval(Integer retryInterval) {
         this.retryInterval = retryInterval;
@@ -180,7 +159,7 @@ public class GetLogRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,49 +1,43 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer duration;
     /**
      * Can be used to force a power or current profile.
-     * 
-     * 
-     * 
      */
+    @Optional
     private ChargingRateUnitEnum chargingRateUnit;
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer evseId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -51,7 +45,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -59,10 +52,9 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Integer getDuration() {
         return duration;
@@ -70,10 +62,9 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setDuration(Integer duration) {
         this.duration = duration;
@@ -81,9 +72,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Can be used to force a power or current profile.
-     * 
-     * 
-     * 
      */
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
@@ -91,9 +79,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Can be used to force a power or current profile.
-     * 
-     * 
-     * 
      */
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
@@ -101,9 +86,8 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -111,9 +95,8 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -125,7 +108,7 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

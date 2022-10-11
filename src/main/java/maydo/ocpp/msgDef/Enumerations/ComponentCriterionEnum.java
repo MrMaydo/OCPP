@@ -1,9 +1,7 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 public enum ComponentCriterionEnum {
 
@@ -15,7 +13,7 @@ public enum ComponentCriterionEnum {
     private final static Map<String, ComponentCriterionEnum> CONSTANTS = new HashMap<String, ComponentCriterionEnum>();
 
     static {
-        for (ComponentCriterionEnum c: values()) {
+        for (ComponentCriterionEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This field indicates whether the Charging Station was able to accept the request.
- * 
- * 
  */
 public enum LogStatusEnum {
 
@@ -20,7 +16,7 @@ public enum LogStatusEnum {
     private final static Map<String, LogStatusEnum> CONSTANTS = new HashMap<String, LogStatusEnum>();
 
     static {
-        for (LogStatusEnum c: values()) {
+        for (LogStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

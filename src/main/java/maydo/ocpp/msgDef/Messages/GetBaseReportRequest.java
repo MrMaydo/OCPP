@@ -1,41 +1,37 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ReportBaseEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer requestId;
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private ReportBaseEnum reportBase;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -43,7 +39,6 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -51,9 +46,8 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getRequestId() {
         return requestId;
@@ -61,9 +55,8 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
@@ -71,9 +64,8 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public ReportBaseEnum getReportBase() {
         return reportBase;
@@ -81,9 +73,8 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setReportBase(ReportBaseEnum reportBase) {
         this.reportBase = reportBase;
@@ -95,7 +86,7 @@ public class GetBaseReportRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

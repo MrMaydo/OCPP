@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Sampled_ Value. Context. Reading_ Context_ Code
  * urn:x-oca:ocpp:uid:1:569261
  * Type of detail value: start, end or sample. Default = "Sample.Periodic"
- * 
- * 
  */
 public enum ReadingContextEnum {
 
@@ -27,7 +23,7 @@ public enum ReadingContextEnum {
     private final static Map<String, ReadingContextEnum> CONSTANTS = new HashMap<String, ReadingContextEnum>();
 
     static {
-        for (ReadingContextEnum c: values()) {
+        for (ReadingContextEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

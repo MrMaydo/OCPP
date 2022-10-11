@@ -1,8 +1,12 @@
 package maydo.ocpp.utils.testObjects;
 
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
+
 public class ComplexObject {
     IntObject intObject;
     StrObject strObject;
+    @Optional
     DateObject dateObject;
     ListObject listObject;
 

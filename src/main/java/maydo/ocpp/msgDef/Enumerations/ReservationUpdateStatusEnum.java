@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * The updated reservation status.
- * 
- * 
  */
 public enum ReservationUpdateStatusEnum {
 
@@ -19,7 +15,7 @@ public enum ReservationUpdateStatusEnum {
     private final static Map<String, ReservationUpdateStatusEnum> CONSTANTS = new HashMap<String, ReservationUpdateStatusEnum>();
 
     static {
-        for (ReservationUpdateStatusEnum c: values()) {
+        for (ReservationUpdateStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

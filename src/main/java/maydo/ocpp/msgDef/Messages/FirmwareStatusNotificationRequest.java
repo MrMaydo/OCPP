@@ -1,42 +1,37 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.FirmwareStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private FirmwareStatusEnum status;
     /**
      * The request id that was provided in the
      * UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     * 
-     * 
      */
+    @Optional
     private Integer requestId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -44,7 +39,6 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -52,9 +46,8 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public FirmwareStatusEnum getStatus() {
         return status;
@@ -62,9 +55,8 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setStatus(FirmwareStatusEnum status) {
         this.status = status;
@@ -74,8 +66,6 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
      * The request id that was provided in the
      * UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     * 
-     * 
      */
     public Integer getRequestId() {
         return requestId;
@@ -85,8 +75,6 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
      * The request id that was provided in the
      * UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     * 
-     * 
      */
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
@@ -98,7 +86,7 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

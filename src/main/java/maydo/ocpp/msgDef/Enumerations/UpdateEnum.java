@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the type of update (full or differential) of this request.
- * 
- * 
  */
 public enum UpdateEnum {
 
@@ -19,7 +15,7 @@ public enum UpdateEnum {
     private final static Map<String, UpdateEnum> CONSTANTS = new HashMap<String, UpdateEnum>();
 
     static {
-        for (UpdateEnum c: values()) {
+        for (UpdateEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

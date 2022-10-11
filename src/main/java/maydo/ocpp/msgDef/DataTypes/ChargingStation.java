@@ -1,72 +1,62 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * Charge_ Point
  * urn:x-oca:ocpp:uid:2:233122
  * The physical system where an Electrical Vehicle (EV) can be charged.
- * 
- * 
  */
 public class ChargingStation implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Device. Serial_ Number. Serial_ Number
      * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
-     * 
-     * 
      */
+    @Optional
     private String serialNumber;
     /**
      * Device. Model. CI20_ Text
      * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private String model;
     /**
      * Wireless_ Communication_ Module
      * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
-     * 
-     * 
      */
+    @Optional
     private Modem modem;
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private String vendorName;
     /**
      * This contains the firmware version of the Charging Station.
-     * 
-     * 
-     * 
      */
+    @Optional
     private String firmwareVersion;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -74,7 +64,6 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -84,8 +73,6 @@ public class ChargingStation implements JsonInterface {
      * Device. Serial_ Number. Serial_ Number
      * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
-     * 
-     * 
      */
     public String getSerialNumber() {
         return serialNumber;
@@ -95,8 +82,6 @@ public class ChargingStation implements JsonInterface {
      * Device. Serial_ Number. Serial_ Number
      * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
-     * 
-     * 
      */
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
@@ -106,9 +91,8 @@ public class ChargingStation implements JsonInterface {
      * Device. Model. CI20_ Text
      * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getModel() {
         return model;
@@ -118,9 +102,8 @@ public class ChargingStation implements JsonInterface {
      * Device. Model. CI20_ Text
      * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setModel(String model) {
         this.model = model;
@@ -130,8 +113,6 @@ public class ChargingStation implements JsonInterface {
      * Wireless_ Communication_ Module
      * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
-     * 
-     * 
      */
     public Modem getModem() {
         return modem;
@@ -141,8 +122,6 @@ public class ChargingStation implements JsonInterface {
      * Wireless_ Communication_ Module
      * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
-     * 
-     * 
      */
     public void setModem(Modem modem) {
         this.modem = modem;
@@ -150,9 +129,8 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public String getVendorName() {
         return vendorName;
@@ -160,9 +138,8 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVendorName(String vendorName) {
         this.vendorName = vendorName;
@@ -170,9 +147,6 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * This contains the firmware version of the Charging Station.
-     * 
-     * 
-     * 
      */
     public String getFirmwareVersion() {
         return firmwareVersion;
@@ -180,9 +154,6 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * This contains the firmware version of the Charging Station.
-     * 
-     * 
-     * 
      */
     public void setFirmwareVersion(String firmwareVersion) {
         this.firmwareVersion = firmwareVersion;
@@ -194,7 +165,7 @@ public class ChargingStation implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

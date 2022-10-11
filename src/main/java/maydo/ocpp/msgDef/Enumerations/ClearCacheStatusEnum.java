@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Accepted if the Charging Station has executed the request, otherwise rejected.
- * 
- * 
  */
 public enum ClearCacheStatusEnum {
 
@@ -19,7 +15,7 @@ public enum ClearCacheStatusEnum {
     private final static Map<String, ClearCacheStatusEnum> CONSTANTS = new HashMap<String, ClearCacheStatusEnum>();
 
     static {
-        for (ClearCacheStatusEnum c: values()) {
+        for (ClearCacheStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

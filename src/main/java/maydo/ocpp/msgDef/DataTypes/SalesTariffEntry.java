@@ -1,51 +1,45 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 
 /**
  * Sales_ Tariff_ Entry
  * urn:x-oca:ocpp:uid:2:233271
- * 
- * 
  */
 public class SalesTariffEntry implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Relative_ Timer_ Interval
      * urn:x-oca:ocpp:uid:2:233270
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private RelativeTimeInterval relativeTimeInterval;
     /**
      * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
      * urn:x-oca:ocpp:uid:1:569281
      * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     * 
-     * 
      */
+    @Optional
     private Integer ePriceLevel;
+    @Optional
     private List<ConsumptionCost> consumptionCost = null;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -53,7 +47,6 @@ public class SalesTariffEntry implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -62,9 +55,8 @@ public class SalesTariffEntry implements JsonInterface {
     /**
      * Relative_ Timer_ Interval
      * urn:x-oca:ocpp:uid:2:233270
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public RelativeTimeInterval getRelativeTimeInterval() {
         return relativeTimeInterval;
@@ -73,9 +65,8 @@ public class SalesTariffEntry implements JsonInterface {
     /**
      * Relative_ Timer_ Interval
      * urn:x-oca:ocpp:uid:2:233270
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
         this.relativeTimeInterval = relativeTimeInterval;
@@ -85,8 +76,6 @@ public class SalesTariffEntry implements JsonInterface {
      * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
      * urn:x-oca:ocpp:uid:1:569281
      * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     * 
-     * 
      */
     public Integer getePriceLevel() {
         return ePriceLevel;
@@ -96,8 +85,6 @@ public class SalesTariffEntry implements JsonInterface {
      * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
      * urn:x-oca:ocpp:uid:1:569281
      * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     * 
-     * 
      */
     public void setePriceLevel(Integer ePriceLevel) {
         this.ePriceLevel = ePriceLevel;
@@ -117,7 +104,7 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

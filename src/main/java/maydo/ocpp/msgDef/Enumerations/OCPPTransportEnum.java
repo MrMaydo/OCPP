@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Communication_ Function. OCPP_ Transport. OCPP_ Transport_ Code
  * urn:x-oca:ocpp:uid:1:569356
  * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.0, but is supported by other versions of OCPP.
- * 
- * 
  */
 public enum OCPPTransportEnum {
 
@@ -21,7 +17,7 @@ public enum OCPPTransportEnum {
     private final static Map<String, OCPPTransportEnum> CONSTANTS = new HashMap<String, OCPPTransportEnum>();
 
     static {
-        for (OCPPTransportEnum c: values()) {
+        for (OCPPTransportEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

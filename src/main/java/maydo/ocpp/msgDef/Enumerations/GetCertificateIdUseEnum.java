@@ -1,9 +1,7 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 public enum GetCertificateIdUseEnum {
 
@@ -16,7 +14,7 @@ public enum GetCertificateIdUseEnum {
     private final static Map<String, GetCertificateIdUseEnum> CONSTANTS = new HashMap<String, GetCertificateIdUseEnum>();
 
     static {
-        for (GetCertificateIdUseEnum c: values()) {
+        for (GetCertificateIdUseEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

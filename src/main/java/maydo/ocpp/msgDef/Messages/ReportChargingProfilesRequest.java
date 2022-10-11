@@ -1,63 +1,57 @@
-
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ChargingLimitSourceEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
-import javax.annotation.Generated;
 
 public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer requestId;
     /**
      * Source that has installed this charging profile.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private ChargingLimitSourceEnum chargingLimitSource;
     /**
-     * 
      * (Required)
-     * 
      */
+    @Required
     private List<ChargingProfile> chargingProfile = null;
     /**
      * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     * 
-     * 
      */
+    @Optional
     private Boolean tbc = false;
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer evseId;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -65,7 +59,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -73,9 +66,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getRequestId() {
         return requestId;
@@ -83,9 +75,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
@@ -93,9 +84,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Source that has installed this charging profile.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public ChargingLimitSourceEnum getChargingLimitSource() {
         return chargingLimitSource;
@@ -103,27 +93,22 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Source that has installed this charging profile.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setChargingLimitSource(ChargingLimitSourceEnum chargingLimitSource) {
         this.chargingLimitSource = chargingLimitSource;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public List<ChargingProfile> getChargingProfile() {
         return chargingProfile;
     }
 
     /**
-     * 
      * (Required)
-     * 
      */
     public void setChargingProfile(List<ChargingProfile> chargingProfile) {
         this.chargingProfile = chargingProfile;
@@ -131,8 +116,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     * 
-     * 
      */
     public Boolean getTbc() {
         return tbc;
@@ -140,8 +123,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     * 
-     * 
      */
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
@@ -149,9 +130,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -159,9 +139,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -173,7 +152,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

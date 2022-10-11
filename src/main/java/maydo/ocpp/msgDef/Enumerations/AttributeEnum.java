@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Attribute type for which value is requested. When absent, default Actual is assumed.
- * 
- * 
  */
 public enum AttributeEnum {
 
@@ -21,7 +17,7 @@ public enum AttributeEnum {
     private final static Map<String, AttributeEnum> CONSTANTS = new HashMap<String, AttributeEnum>();
 
     static {
-        for (AttributeEnum c: values()) {
+        for (AttributeEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

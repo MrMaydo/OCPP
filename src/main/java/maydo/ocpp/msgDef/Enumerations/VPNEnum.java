@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * VPN. Type. VPN_ Code
  * urn:x-oca:ocpp:uid:1:569277
  * Type of VPN
- * 
- * 
  */
 public enum VPNEnum {
 
@@ -23,7 +19,7 @@ public enum VPNEnum {
     private final static Map<String, VPNEnum> CONSTANTS = new HashMap<String, VPNEnum>();
 
     static {
-        for (VPNEnum c: values()) {
+        for (VPNEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

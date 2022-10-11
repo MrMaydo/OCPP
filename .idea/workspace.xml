@@ -1,24 +1,285 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7376ad97-76f0-4ce1-a0ce-493a27b8485b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ACChargingParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ACChargingParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/APN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/APN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/AdditionalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/AdditionalInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/AuthorizationData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/AuthorizationData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CertificateHashData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CertificateHashData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CertificateHashDataChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CertificateHashDataChain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingLimit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingLimit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingNeeds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingNeeds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingProfileCriterion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingProfileCriterion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingSchedulePeriod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingSchedulePeriod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ChargingStation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ClearChargingProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ClearChargingProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ClearMonitoringResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ClearMonitoringResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ComponentVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ComponentVariable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CompositeSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CompositeSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ConsumptionCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ConsumptionCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Cost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Cost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CustomData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/CustomData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/DCChargingParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/DCChargingParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/EVSE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/EVSE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/EventData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/EventData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Firmware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Firmware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/GetVariableData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/GetVariableData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/GetVariableResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/GetVariableResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/IdToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/IdToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/IdTokenInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/IdTokenInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/LogParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/LogParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MessageContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MessageContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MessageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MessageInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MeterValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MeterValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Modem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Modem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MonitoringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/MonitoringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/NetworkConnectionProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/NetworkConnectionProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/OCSPRequestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/OCSPRequestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/RelativeTimeInterval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/RelativeTimeInterval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ReportData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/ReportData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SalesTariff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SalesTariff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SalesTariffEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SalesTariffEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SampledValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SampledValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetMonitoringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetMonitoringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetMonitoringResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetMonitoringResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetVariableData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetVariableData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetVariableResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SetVariableResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SignedMeterValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/SignedMeterValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/StatusInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/StatusInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/UnitOfMeasure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/UnitOfMeasure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VPN.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VPN.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableCharacteristics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableCharacteristics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableMonitoring.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/DataTypes/VariableMonitoring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/APNAuthenticationEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/APNAuthenticationEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AttributeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AttributeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AuthorizationStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AuthorizationStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AuthorizeCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/AuthorizeCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/BootReasonEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/BootReasonEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CancelReservationStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CancelReservationStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateActionEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateActionEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateSignedStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateSignedStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateSigningUseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CertificateSigningUseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChangeAvailabilityStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChangeAvailabilityStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingLimitSourceEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingLimitSourceEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfileKindEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfileKindEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfilePurposeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfilePurposeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfileStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingProfileStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingRateUnitEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingRateUnitEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingStateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ChargingStateEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearCacheStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearCacheStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearChargingProfileStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearChargingProfileStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearMessageStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearMessageStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearMonitoringStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ClearMonitoringStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ComponentCriterionEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ComponentCriterionEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ConnectorEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ConnectorEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ConnectorStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ConnectorStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CostKindEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CostKindEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CustomerInformationStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/CustomerInformationStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DataEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DataEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DataTransferStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DataTransferStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DeleteCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DeleteCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DisplayMessageStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/DisplayMessageStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EnergyTransferModeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EnergyTransferModeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EventNotificationEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EventNotificationEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EventTriggerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/EventTriggerEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/FirmwareStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/FirmwareStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GenericDeviceModelStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GenericDeviceModelStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GenericStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GenericStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetCertificateIdUseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetCertificateIdUseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetChargingProfileStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetChargingProfileStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetDisplayMessagesStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetDisplayMessagesStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetInstalledCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetInstalledCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetVariableStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/GetVariableStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/HashAlgorithmEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/HashAlgorithmEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/IdTokenEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/IdTokenEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/InstallCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/InstallCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/InstallCertificateUseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/InstallCertificateUseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/Iso15118EVCertificateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/Iso15118EVCertificateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LocationEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LocationEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LogEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LogEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LogStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/LogStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MeasurandEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MeasurandEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageFormatEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageFormatEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessagePriorityEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessagePriorityEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageStateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageStateEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageTriggerEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MessageTriggerEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitorEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitorEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitoringBaseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitoringBaseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitoringCriterionEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MonitoringCriterionEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MutabilityEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/MutabilityEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/NotifyEVChargingNeedsStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/NotifyEVChargingNeedsStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPInterfaceEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPInterfaceEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPTransportEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPTransportEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPVersionEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OCPPVersionEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OperationalStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/OperationalStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/PhaseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/PhaseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/PublishFirmwareStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/PublishFirmwareStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReadingContextEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReadingContextEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReasonEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReasonEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RecurrencyKindEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RecurrencyKindEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RegistrationStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RegistrationStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReportBaseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReportBaseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RequestStartStopStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/RequestStartStopStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReservationUpdateStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReservationUpdateStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReserveNowStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ReserveNowStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ResetEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ResetEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ResetStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/ResetStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SendLocalListStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SendLocalListStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetMonitoringStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetMonitoringStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetNetworkProfileStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetNetworkProfileStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetVariableStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/SetVariableStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TransactionEventEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TransactionEventEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TriggerMessageStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TriggerMessageStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TriggerReasonEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/TriggerReasonEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UnlockStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UnlockStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UnpublishFirmwareStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UnpublishFirmwareStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UpdateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UpdateEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UpdateFirmwareStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UpdateFirmwareStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UploadLogStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/UploadLogStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/VPNEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Enumerations/VPNEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/AuthorizeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/AuthorizeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/AuthorizeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/AuthorizeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/BootNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/BootNotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/BootNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/BootNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CancelReservationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CancelReservationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CancelReservationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CancelReservationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CertificateSignedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CertificateSignedRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CertificateSignedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CertificateSignedResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ChangeAvailabilityRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ChangeAvailabilityRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ChangeAvailabilityResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ChangeAvailabilityResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearCacheRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearCacheRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearCacheResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearCacheResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearChargingProfileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearChargingProfileRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearChargingProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearChargingProfileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearDisplayMessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearDisplayMessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearDisplayMessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearDisplayMessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearVariableMonitoringRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearVariableMonitoringRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearVariableMonitoringResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearVariableMonitoringResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearedChargingLimitRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearedChargingLimitRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearedChargingLimitResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ClearedChargingLimitResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CostUpdatedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CostUpdatedRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CostUpdatedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CostUpdatedResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CustomerInformationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CustomerInformationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CustomerInformationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/CustomerInformationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DataTransferRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DataTransferRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DataTransferResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DataTransferResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DeleteCertificateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DeleteCertificateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DeleteCertificateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/DeleteCertificateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/FirmwareStatusNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/FirmwareStatusNotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/FirmwareStatusNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/FirmwareStatusNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/Get15118EVCertificateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/Get15118EVCertificateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/Get15118EVCertificateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/Get15118EVCertificateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetBaseReportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetBaseReportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetBaseReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetBaseReportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCertificateStatusRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCertificateStatusRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCertificateStatusResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCertificateStatusResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetChargingProfilesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetChargingProfilesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetChargingProfilesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetChargingProfilesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCompositeScheduleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCompositeScheduleRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCompositeScheduleResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetCompositeScheduleResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetDisplayMessagesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetDisplayMessagesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetDisplayMessagesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetDisplayMessagesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetInstalledCertificateIdsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetInstalledCertificateIdsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetInstalledCertificateIdsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetInstalledCertificateIdsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLocalListVersionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLocalListVersionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLocalListVersionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLocalListVersionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLogRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLogRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLogResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetLogResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetMonitoringReportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetMonitoringReportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetMonitoringReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetMonitoringReportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetReportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetReportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetReportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetTransactionStatusRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetTransactionStatusRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetTransactionStatusResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetTransactionStatusResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetVariablesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetVariablesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetVariablesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/GetVariablesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/HeartbeatRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/HeartbeatRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/HeartbeatResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/HeartbeatResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/InstallCertificateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/InstallCertificateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/InstallCertificateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/InstallCertificateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/LogStatusNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/LogStatusNotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/LogStatusNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/LogStatusNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/MeterValuesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/MeterValuesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/MeterValuesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/MeterValuesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyChargingLimitRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyChargingLimitRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyChargingLimitResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyChargingLimitResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyCustomerInformationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyCustomerInformationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyCustomerInformationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyCustomerInformationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyDisplayMessagesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyDisplayMessagesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyDisplayMessagesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyDisplayMessagesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingNeedsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingNeedsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingNeedsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingNeedsResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingScheduleRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingScheduleRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingScheduleResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEVChargingScheduleResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEventRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEventRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEventResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyEventResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyMonitoringReportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyMonitoringReportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyMonitoringReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyMonitoringReportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyReportRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyReportRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyReportResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/NotifyReportResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareStatusNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareStatusNotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareStatusNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/PublishFirmwareStatusNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReportChargingProfilesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReportChargingProfilesRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReportChargingProfilesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReportChargingProfilesResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStartTransactionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStartTransactionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStartTransactionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStartTransactionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStopTransactionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStopTransactionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStopTransactionResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStopTransactionResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReservationStatusUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReservationStatusUpdateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReservationStatusUpdateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReservationStatusUpdateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReserveNowRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReserveNowRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReserveNowResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ReserveNowResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ResetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ResetRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ResetResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/ResetResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SecurityEventNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SecurityEventNotificationRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SecurityEventNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SecurityEventNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SendLocalListRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SendLocalListRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SendLocalListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SendLocalListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetChargingProfileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetChargingProfileRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetChargingProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetChargingProfileResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetDisplayMessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetDisplayMessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetDisplayMessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetDisplayMessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringBaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringBaseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringBaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringBaseResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringLevelRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringLevelRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringLevelResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetMonitoringLevelResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetNetworkProfileRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetNetworkProfileRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetNetworkProfileResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetNetworkProfileResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariableMonitoringRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariableMonitoringRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariableMonitoringResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariableMonitoringResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariablesRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariablesRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariablesResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SetVariablesResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SignCertificateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SignCertificateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SignCertificateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/SignCertificateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/StatusNotificationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/StatusNotificationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/StatusNotificationResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/StatusNotificationResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TransactionEventRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TransactionEventRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TransactionEventResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TransactionEventResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TriggerMessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TriggerMessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TriggerMessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/TriggerMessageResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnlockConnectorRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnlockConnectorRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnlockConnectorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnlockConnectorResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnpublishFirmwareRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnpublishFirmwareRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnpublishFirmwareResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UnpublishFirmwareResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UpdateFirmwareRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UpdateFirmwareRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UpdateFirmwareResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/UpdateFirmwareResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/maydo/ocpp/utils/JsonTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/maydo/ocpp/utils/JsonTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/maydo/ocpp/utils/JsonToolsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/maydo/ocpp/utils/JsonToolsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/maydo/ocpp/utils/testObjects/StrObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/maydo/ocpp/utils/testObjects/StrObject.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,9 +287,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,6 +328,9 @@
     <option name="y" value="91" />
     <option name="width" value="1026" />
     <option name="height" value="546" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -157,18 +418,6 @@
       <recent name="maydo.ocpp.msgDef.Enumerations" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -212,6 +461,29 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.google.gson.JsonObject" memberName="members" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ocpp$IdTokenInfoTest_toString1.ic" NAME="IdTokenInfoTest.toString1 Coverage Results" MODIFIED="1664308473356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>maydo.ocpp.msgDef.DataTypes.*</FILTER>
+    </SUITE>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/maydo/ocpp/msgDef/Messages/RequestStopTransactionRequest.java">

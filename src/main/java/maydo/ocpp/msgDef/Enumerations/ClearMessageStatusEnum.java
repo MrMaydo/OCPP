@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Returns whether the Charging Station has been able to remove the message.
- * 
- * 
  */
 public enum ClearMessageStatusEnum {
 
@@ -19,7 +15,7 @@ public enum ClearMessageStatusEnum {
     private final static Map<String, ClearMessageStatusEnum> CONSTANTS = new HashMap<String, ClearMessageStatusEnum>();
 
     static {
-        for (ClearMessageStatusEnum c: values()) {
+        for (ClearMessageStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

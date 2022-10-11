@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
- * 
- * 
  */
 public enum NotifyEVChargingNeedsStatusEnum {
 
@@ -20,7 +16,7 @@ public enum NotifyEVChargingNeedsStatusEnum {
     private final static Map<String, NotifyEVChargingNeedsStatusEnum> CONSTANTS = new HashMap<String, NotifyEVChargingNeedsStatusEnum>();
 
     static {
-        for (NotifyEVChargingNeedsStatusEnum c: values()) {
+        for (NotifyEVChargingNeedsStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

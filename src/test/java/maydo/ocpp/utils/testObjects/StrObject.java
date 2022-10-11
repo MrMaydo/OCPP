@@ -1,7 +1,7 @@
 package maydo.ocpp.utils.testObjects;
 
 public class StrObject {
-    private String  strValue;
+    private String strValue;
 
     public String getStrValue() {
         return strValue;

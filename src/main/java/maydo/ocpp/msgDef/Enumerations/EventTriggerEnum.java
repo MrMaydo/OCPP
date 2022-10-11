@@ -1,16 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Type of monitor that triggered this event, e.g. exceeding a threshold value.
- * 
- * 
- * 
  */
 public enum EventTriggerEnum {
 
@@ -21,7 +16,7 @@ public enum EventTriggerEnum {
     private final static Map<String, EventTriggerEnum> CONSTANTS = new HashMap<String, EventTriggerEnum>();
 
     static {
-        for (EventTriggerEnum c: values()) {
+        for (EventTriggerEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

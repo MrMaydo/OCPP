@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Defines whether certificate needs to be installed or updated.
- * 
- * 
  */
 public enum CertificateActionEnum {
 
@@ -19,7 +15,7 @@ public enum CertificateActionEnum {
     private final static Map<String, CertificateActionEnum> CONSTANTS = new HashMap<String, CertificateActionEnum>();
 
     static {
-        for (CertificateActionEnum c: values()) {
+        for (CertificateActionEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

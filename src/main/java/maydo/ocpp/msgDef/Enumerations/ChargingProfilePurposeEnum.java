@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
  * urn:x-oca:ocpp:uid:1:569231
  * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
- * 
- * 
  */
 public enum ChargingProfilePurposeEnum {
 
@@ -23,7 +19,7 @@ public enum ChargingProfilePurposeEnum {
     private final static Map<String, ChargingProfilePurposeEnum> CONSTANTS = new HashMap<String, ChargingProfilePurposeEnum>();
 
     static {
-        for (ChargingProfilePurposeEnum c: values()) {
+        for (ChargingProfilePurposeEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

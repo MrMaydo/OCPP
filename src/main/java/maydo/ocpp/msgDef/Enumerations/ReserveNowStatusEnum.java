@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates the success or failure of the reservation.
- * 
- * 
  */
 public enum ReserveNowStatusEnum {
 
@@ -22,7 +18,7 @@ public enum ReserveNowStatusEnum {
     private final static Map<String, ReserveNowStatusEnum> CONSTANTS = new HashMap<String, ReserveNowStatusEnum>();
 
     static {
-        for (ReserveNowStatusEnum c: values()) {
+        for (ReserveNowStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

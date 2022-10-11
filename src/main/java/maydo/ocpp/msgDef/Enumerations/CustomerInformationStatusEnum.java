@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates whether the request was accepted.
- * 
- * 
  */
 public enum CustomerInformationStatusEnum {
 
@@ -20,7 +16,7 @@ public enum CustomerInformationStatusEnum {
     private final static Map<String, CustomerInformationStatusEnum> CONSTANTS = new HashMap<String, CustomerInformationStatusEnum>();
 
     static {
-        for (CustomerInformationStatusEnum c: values()) {
+        for (CustomerInformationStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

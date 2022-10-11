@@ -1,48 +1,43 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ClearMonitoringStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private ClearMonitoringStatusEnum status;
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer id;
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
+    @Optional
     private StatusInfo statusInfo;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -50,7 +45,6 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -58,10 +52,9 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public ClearMonitoringStatusEnum getStatus() {
         return status;
@@ -69,10 +62,9 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setStatus(ClearMonitoringStatusEnum status) {
         this.status = status;
@@ -80,10 +72,9 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Integer getId() {
         return id;
@@ -91,10 +82,9 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -102,8 +92,6 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public StatusInfo getStatusInfo() {
         return statusInfo;
@@ -111,8 +99,6 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
@@ -124,7 +110,7 @@ public class ClearMonitoringResult implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates whether the message was processed properly.
- * 
- * 
  */
 public enum Iso15118EVCertificateStatusEnum {
 
@@ -19,7 +15,7 @@ public enum Iso15118EVCertificateStatusEnum {
     private final static Map<String, Iso15118EVCertificateStatusEnum> CONSTANTS = new HashMap<String, Iso15118EVCertificateStatusEnum>();
 
     static {
-        for (Iso15118EVCertificateStatusEnum c: values()) {
+        for (Iso15118EVCertificateStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

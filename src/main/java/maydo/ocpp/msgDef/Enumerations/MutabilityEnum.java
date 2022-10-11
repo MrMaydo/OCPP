@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Defines the mutability of this attribute. Default is ReadWrite when omitted.
- * 
- * 
  */
 public enum MutabilityEnum {
 
@@ -20,7 +16,7 @@ public enum MutabilityEnum {
     private final static Map<String, MutabilityEnum> CONSTANTS = new HashMap<String, MutabilityEnum>();
 
     static {
-        for (MutabilityEnum c: values()) {
+        for (MutabilityEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

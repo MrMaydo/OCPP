@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the Charging Station has unlocked the connector.
- * 
- * 
  */
 public enum UnlockStatusEnum {
 
@@ -21,7 +17,7 @@ public enum UnlockStatusEnum {
     private final static Map<String, UnlockStatusEnum> CONSTANTS = new HashMap<String, UnlockStatusEnum>();
 
     static {
-        for (UnlockStatusEnum c: values()) {
+        for (UnlockStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

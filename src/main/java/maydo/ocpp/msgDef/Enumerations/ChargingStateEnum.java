@@ -1,9 +1,7 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
@@ -11,8 +9,6 @@ import javax.annotation.Generated;
  * urn:x-oca:ocpp:uid:1:569419
  * Current charging state, is required when state
  * has changed.
- * 
- * 
  */
 public enum ChargingStateEnum {
 
@@ -25,7 +21,7 @@ public enum ChargingStateEnum {
     private final static Map<String, ChargingStateEnum> CONSTANTS = new HashMap<String, ChargingStateEnum>();
 
     static {
-        for (ChargingStateEnum c: values()) {
+        for (ChargingStateEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This contains the type of reset that the Charging Station or EVSE should perform.
- * 
- * 
  */
 public enum ResetEnum {
 
@@ -19,7 +15,7 @@ public enum ResetEnum {
     private final static Map<String, ResetEnum> CONSTANTS = new HashMap<String, ResetEnum>();
 
     static {
-        for (ResetEnum c: values()) {
+        for (ResetEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

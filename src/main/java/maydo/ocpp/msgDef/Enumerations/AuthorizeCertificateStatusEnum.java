@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
- * Certificate status information. 
+ * Certificate status information.
  * - if all certificates are valid: return 'Accepted'.
  * - if one of the certificates was revoked, return 'CertificateRevoked'.
- * 
- * 
  */
 public enum AuthorizeCertificateStatusEnum {
 
@@ -26,7 +22,7 @@ public enum AuthorizeCertificateStatusEnum {
     private final static Map<String, AuthorizeCertificateStatusEnum> CONSTANTS = new HashMap<String, AuthorizeCertificateStatusEnum>();
 
     static {
-        for (AuthorizeCertificateStatusEnum c: values()) {
+        for (AuthorizeCertificateStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

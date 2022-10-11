@@ -1,17 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * ID_ Token. Status. Authorization_ Status
  * urn:x-oca:ocpp:uid:1:569372
  * Current status of the ID Token.
- * 
- * 
  */
 public enum AuthorizationStatusEnum {
 
@@ -29,7 +25,7 @@ public enum AuthorizationStatusEnum {
     private final static Map<String, AuthorizationStatusEnum> CONSTANTS = new HashMap<String, AuthorizationStatusEnum>();
 
     static {
-        for (AuthorizationStatusEnum c: values()) {
+        for (AuthorizationStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

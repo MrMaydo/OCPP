@@ -1,73 +1,66 @@
-
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.Enumerations.SetMonitoringStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 
 /**
  * Class to hold result of SetVariableMonitoring request.
- * 
- * 
  */
 public class SetMonitoringResult implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
-     * 
-     * 
      */
+    @Optional
     private Integer id;
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
+    @Optional
     private StatusInfo statusInfo;
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private SetMonitoringStatusEnum status;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private MonitorEnum type;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Variable variable;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -89,16 +82,15 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer severity;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -106,7 +98,6 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -114,8 +105,6 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
-     * 
-     * 
      */
     public Integer getId() {
         return id;
@@ -123,8 +112,6 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
-     * 
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -132,8 +119,6 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public StatusInfo getStatusInfo() {
         return statusInfo;
@@ -141,8 +126,6 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Element providing more information about the status.
-     * 
-     * 
      */
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
@@ -150,9 +133,8 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public SetMonitoringStatusEnum getStatus() {
         return status;
@@ -160,31 +142,28 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setStatus(SetMonitoringStatusEnum status) {
         this.status = status;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public MonitorEnum getType() {
         return type;
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setType(MonitorEnum type) {
         this.type = type;
@@ -192,9 +171,8 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Component getComponent() {
         return component;
@@ -202,9 +180,8 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setComponent(Component component) {
         this.component = component;
@@ -212,9 +189,8 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Variable getVariable() {
         return variable;
@@ -222,9 +198,8 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
@@ -232,7 +207,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -254,10 +229,9 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public Integer getSeverity() {
         return severity;
@@ -265,7 +239,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -287,10 +261,9 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
-     * 
      */
     public void setSeverity(Integer severity) {
         this.severity = severity;
@@ -302,7 +275,7 @@ public class SetMonitoringResult implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

@@ -1,56 +1,50 @@
-
 package maydo.ocpp.msgDef.Messages;
 
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.Firmware;
 import maydo.ocpp.msgDef.JsonInterface;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
-
-import javax.annotation.Generated;
 
 public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
+    @Optional
     private CustomData customData;
     /**
      * This specifies how many times Charging Station must try to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
+    @Optional
     private Integer retries;
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
+    @Optional
     private Integer retryInterval;
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Integer requestId;
     /**
      * Firmware
      * urn:x-enexis:ecdm:uid:2:233291
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
+    @Required
     private Firmware firmware;
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public CustomData getCustomData() {
         return customData;
@@ -58,7 +52,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     * 
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
@@ -66,8 +59,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * This specifies how many times Charging Station must try to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
     public Integer getRetries() {
         return retries;
@@ -75,8 +66,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * This specifies how many times Charging Station must try to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * 
-     * 
      */
     public void setRetries(Integer retries) {
         this.retries = retries;
@@ -84,8 +73,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
     public Integer getRetryInterval() {
         return retryInterval;
@@ -93,8 +80,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     * 
-     * 
      */
     public void setRetryInterval(Integer retryInterval) {
         this.retryInterval = retryInterval;
@@ -102,9 +87,8 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Integer getRequestId() {
         return requestId;
@@ -112,9 +96,8 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
@@ -124,9 +107,8 @@ public class UpdateFirmwareRequest implements JsonInterface {
      * Firmware
      * urn:x-enexis:ecdm:uid:2:233291
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public Firmware getFirmware() {
         return firmware;
@@ -136,9 +118,8 @@ public class UpdateFirmwareRequest implements JsonInterface {
      * Firmware
      * urn:x-enexis:ecdm:uid:2:233291
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
-     * 
      */
     public void setFirmware(Firmware firmware) {
         this.firmware = firmware;
@@ -150,7 +131,7 @@ public class UpdateFirmwareRequest implements JsonInterface {
     }
 
     @Override
-    public JsonObject toJsonObject(){
+    public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
     }
 }

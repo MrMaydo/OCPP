@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * This indicates whether the Charging Station is able to perform the availability change.
- * 
- * 
  */
 public enum ChangeAvailabilityStatusEnum {
 
@@ -20,7 +16,7 @@ public enum ChangeAvailabilityStatusEnum {
     private final static Map<String, ChangeAvailabilityStatusEnum> CONSTANTS = new HashMap<String, ChangeAvailabilityStatusEnum>();
 
     static {
-        for (ChangeAvailabilityStatusEnum c: values()) {
+        for (ChangeAvailabilityStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

@@ -1,18 +1,13 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Sampled_ Value. Location. Location_ Code
  * urn:x-oca:ocpp:uid:1:569265
  * Indicates where the measured value has been sampled. Default =  "Outlet"
- * 
- * 
- * 
  */
 public enum LocationEnum {
 
@@ -25,7 +20,7 @@ public enum LocationEnum {
     private final static Map<String, LocationEnum> CONSTANTS = new HashMap<String, LocationEnum>();
 
     static {
-        for (LocationEnum c: values()) {
+        for (LocationEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

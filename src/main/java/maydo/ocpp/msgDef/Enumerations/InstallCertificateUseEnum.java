@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Indicates the certificate type that is sent.
- * 
- * 
  */
 public enum InstallCertificateUseEnum {
 
@@ -21,7 +17,7 @@ public enum InstallCertificateUseEnum {
     private final static Map<String, InstallCertificateUseEnum> CONSTANTS = new HashMap<String, InstallCertificateUseEnum>();
 
     static {
-        for (InstallCertificateUseEnum c: values()) {
+        for (InstallCertificateUseEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }

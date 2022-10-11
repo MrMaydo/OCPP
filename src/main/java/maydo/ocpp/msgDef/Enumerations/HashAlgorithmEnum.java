@@ -1,15 +1,11 @@
-
 package maydo.ocpp.msgDef.Enumerations;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
 
 
 /**
  * Used algorithms for the hashes provided.
- * 
- * 
  */
 public enum HashAlgorithmEnum {
 
@@ -20,7 +16,7 @@ public enum HashAlgorithmEnum {
     private final static Map<String, HashAlgorithmEnum> CONSTANTS = new HashMap<String, HashAlgorithmEnum>();
 
     static {
-        for (HashAlgorithmEnum c: values()) {
+        for (HashAlgorithmEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
