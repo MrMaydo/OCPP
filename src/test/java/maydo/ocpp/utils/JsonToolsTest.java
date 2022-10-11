@@ -281,7 +281,6 @@ class JsonToolsTest {
 
                 "{\"intObject\":null," +
                 "\"strObject\":null," +
-                "\"dateObject\":null," +
                 "\"listObject\":null" +
                 "}" +
                 "]}";

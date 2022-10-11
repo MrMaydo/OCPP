@@ -2,6 +2,7 @@ package maydo.ocpp.utils;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +36,9 @@ public class JsonTools {
         String fieldName = field.getName();
 
         if (field.get(object) == null) {
+            if(field.isAnnotationPresent(Optional.class))
+                return;
+
             jsonObject.addProperty(fieldName, (String) null);
             return;
         }
