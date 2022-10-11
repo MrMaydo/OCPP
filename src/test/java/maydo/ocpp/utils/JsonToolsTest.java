@@ -179,7 +179,24 @@ class JsonToolsTest {
                 "\"2022-01-31T08:03:09.13Z\"" +
                 "]}";
         assertEquals(expectedJsonString, toJsonObject(object).toString(),
-                "Failed at converting List<String>");
+                "Failed at converting List<Date>");
+    }
+
+    @Test
+    void toJsonObject_ListEnum() {
+        ListObject object = new ListObject();
+        List<TestEnum> list = new ArrayList<>();
+        list.add(TestEnum.BOOLEAN);
+        list.add(TestEnum.INTEGER);
+        list.add(TestEnum.STRING);
+        object.setListValue(list);
+        expectedJsonString = "{\"listValue\":[" +
+                "\"boolean\"," +
+                "\"integer\"," +
+                "\"string\"" +
+                "]}";
+        assertEquals(expectedJsonString, toJsonObject(object).toString(),
+                "Failed at converting List<Enum>");
     }
 
     @Test

@@ -42,7 +42,6 @@ public class JsonTools {
             jsonObject.addProperty(fieldName, (String) null);
             return;
         }
-
         Object fieldValue = field.get(object);
         if (fieldType.equals("Integer")) {
             jsonObject.addProperty(fieldName, (Integer) fieldValue);
@@ -85,7 +84,7 @@ public class JsonTools {
             } else if (itemType.equals("Date")) {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
                 jsonArray.add(dateFormat.format(item));
-            } else if (itemType.equals("Enum")) {
+            } else if (item.getClass().getSuperclass().getSimpleName().equals("Enum")) {
                 jsonArray.add(item.toString());
             } else {
                 jsonArray.add(toJsonObject(item));
