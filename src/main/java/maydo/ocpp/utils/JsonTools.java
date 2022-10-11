@@ -43,32 +43,26 @@ public class JsonTools {
             return;
         }
 
+        Object fieldValue = field.get(object);
         if (fieldType.equals("Integer")) {
-            Integer value = (Integer) field.get(object);
-            jsonObject.addProperty(fieldName, value);
+            jsonObject.addProperty(fieldName, (Integer) fieldValue);
         } else if (fieldType.equals("Float")) {
-            Float value = (Float) field.get(object);
-            jsonObject.addProperty(fieldName, value);
+            jsonObject.addProperty(fieldName, (Float) fieldValue);
         } else if (fieldType.equals("Boolean")) {
-            Boolean value = (Boolean) field.get(object);
-            jsonObject.addProperty(fieldName, value);
+            jsonObject.addProperty(fieldName, (Boolean) fieldValue);
         } else if (fieldType.equals("String")) {
-            String value = (String) field.get(object);
-            jsonObject.addProperty(fieldName, value);
+            jsonObject.addProperty(fieldName, (String) fieldValue);
         } else if (fieldType.equals("Date")) {
-            Date value = (Date) field.get(object);
             SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-            jsonObject.addProperty(fieldName, dateFormat.format(value));
+            jsonObject.addProperty(fieldName, dateFormat.format(fieldValue));
         } else if (fieldType.equals("List")) {
             JsonArray jsonArray = new JsonArray();
-            List<?> list = (List) field.get(object);
-            copyListToJsonArray(jsonArray, list);
+            copyListToJsonArray(jsonArray, (List) fieldValue);
             jsonObject.add(fieldName, jsonArray);
         } else if (field.getType().getSuperclass().getSimpleName().equals("Enum")) {
-            Enum value = (Enum) field.get(object);
-            jsonObject.addProperty(fieldName, value.toString());
+            jsonObject.addProperty(fieldName, fieldValue.toString());
         } else {
-            jsonObject.add(fieldName, toJsonObject(field.get(object)));
+            jsonObject.add(fieldName, toJsonObject(fieldValue));
         }
     }
 
@@ -89,9 +83,8 @@ public class JsonTools {
             } else if (itemType.equals("String")) {
                 jsonArray.add((String) item);
             } else if (itemType.equals("Date")) {
-                Date dateValue = (Date) item;
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                jsonArray.add(dateFormat.format(dateValue));
+                jsonArray.add(dateFormat.format(item));
             } else if (itemType.equals("Enum")) {
                 jsonArray.add(item.toString());
             } else {
