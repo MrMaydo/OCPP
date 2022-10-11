@@ -168,6 +168,21 @@ class JsonToolsTest {
     }
 
     @Test
+    void toJsonObject_ListDate() {
+        ListObject object = new ListObject();
+        List<Date> list = new ArrayList<>();
+        list.add(createDate(2022, 12, 3, 21, 46, 59, 123));
+        list.add(createDate(2022, 1, 31, 8, 3, 9, 13));
+        object.setListValue(list);
+        expectedJsonString = "{\"listValue\":[" +
+                "\"2022-12-03T21:46:59.123Z\"," +
+                "\"2022-01-31T08:03:09.13Z\"" +
+                "]}";
+        assertEquals(expectedJsonString, toJsonObject(object).toString(),
+                "Failed at converting List<String>");
+    }
+
+    @Test
     void toJsonObject_NullList() {
         ListObject object = new ListObject();
         expectedJsonString = "{\"listValue\":null}";
