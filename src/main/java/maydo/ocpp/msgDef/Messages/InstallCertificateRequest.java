@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class InstallCertificateRequest implements JsonInterface {
 
     /**
@@ -88,5 +90,22 @@ public class InstallCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof InstallCertificateRequest))
+            return false;
+        InstallCertificateRequest that = (InstallCertificateRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && certificateType == that.certificateType
+                && Objects.equals(certificate, that.certificate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, certificateType, certificate);
     }
 }

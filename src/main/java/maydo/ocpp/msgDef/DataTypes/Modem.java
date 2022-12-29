@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Wireless_ Communication_ Module
@@ -91,5 +93,22 @@ public class Modem implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Modem))
+            return false;
+        Modem that = (Modem) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(iccid, that.iccid)
+                && Objects.equals(imsi, that.imsi);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, iccid, imsi);
     }
 }

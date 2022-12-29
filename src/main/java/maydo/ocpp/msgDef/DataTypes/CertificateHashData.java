@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class CertificateHashData implements JsonInterface {
 
     /**
@@ -140,5 +142,24 @@ public class CertificateHashData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof CertificateHashData))
+            return false;
+        CertificateHashData that = (CertificateHashData) obj;
+        return Objects.equals(customData, that.customData)
+                && hashAlgorithm == that.hashAlgorithm
+                && Objects.equals(issuerNameHash, that.issuerNameHash)
+                && Objects.equals(issuerKeyHash, that.issuerKeyHash)
+                && Objects.equals(serialNumber, that.serialNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, hashAlgorithm, issuerNameHash, issuerKeyHash, serialNumber);
     }
 }

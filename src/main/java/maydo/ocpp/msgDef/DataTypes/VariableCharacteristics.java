@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Fixed read-only parameters of a variable.
@@ -197,5 +199,26 @@ public class VariableCharacteristics implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof VariableCharacteristics))
+            return false;
+        VariableCharacteristics that = (VariableCharacteristics) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(unit, that.unit)
+                && dataType == that.dataType
+                && Objects.equals(minLimit, that.minLimit)
+                && Objects.equals(maxLimit, that.maxLimit)
+                && Objects.equals(valuesList, that.valuesList)
+                && Objects.equals(supportsMonitoring, that.supportsMonitoring);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, unit, dataType, minLimit, maxLimit, valuesList, supportsMonitoring);
     }
 }

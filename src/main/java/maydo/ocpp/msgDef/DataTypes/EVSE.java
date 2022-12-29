@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * EVSE
@@ -92,5 +94,22 @@ public class EVSE implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof EVSE))
+            return false;
+        EVSE that = (EVSE) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(connectorId, that.connectorId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, connectorId);
     }
 }

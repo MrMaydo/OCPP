@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Charging_ Profile
@@ -117,5 +119,23 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ClearChargingProfile))
+            return false;
+        ClearChargingProfile that = (ClearChargingProfile) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evseId, that.evseId)
+                && chargingProfilePurpose == that.chargingProfilePurpose
+                && Objects.equals(stackLevel, that.stackLevel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, evseId, chargingProfilePurpose, stackLevel);
     }
 }

@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Class to hold result of SetVariableMonitoring request.
@@ -277,5 +279,26 @@ public class SetMonitoringResult implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SetMonitoringResult))
+            return false;
+        SetMonitoringResult that = (SetMonitoringResult) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(statusInfo, that.statusInfo)
+                && status == that.status && type == that.type
+                && Objects.equals(component, that.component)
+                && Objects.equals(variable, that.variable)
+                && Objects.equals(severity, that.severity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, statusInfo, status, type, component, variable, severity);
     }
 }

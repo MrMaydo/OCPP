@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class OCSPRequestData implements JsonInterface {
 
     /**
@@ -168,5 +170,25 @@ public class OCSPRequestData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof OCSPRequestData))
+            return false;
+        OCSPRequestData that = (OCSPRequestData) obj;
+        return Objects.equals(customData, that.customData)
+                && hashAlgorithm == that.hashAlgorithm
+                && Objects.equals(issuerNameHash, that.issuerNameHash)
+                && Objects.equals(issuerKeyHash, that.issuerKeyHash)
+                && Objects.equals(serialNumber, that.serialNumber)
+                && Objects.equals(responderURL, that.responderURL);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, hashAlgorithm, issuerNameHash, issuerKeyHash, serialNumber, responderURL);
     }
 }

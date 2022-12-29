@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
@@ -110,5 +112,23 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetCompositeScheduleRequest))
+            return false;
+        GetCompositeScheduleRequest that = (GetCompositeScheduleRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(duration, that.duration)
+                && chargingRateUnit == that.chargingRateUnit
+                && Objects.equals(evseId, that.evseId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, duration, chargingRateUnit, evseId);
     }
 }

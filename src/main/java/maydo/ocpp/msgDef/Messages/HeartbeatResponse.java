@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class HeartbeatResponse implements JsonInterface {
 
@@ -64,5 +65,21 @@ public class HeartbeatResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof HeartbeatResponse))
+            return false;
+        HeartbeatResponse that = (HeartbeatResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(currentTime, that.currentTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, currentTime);
     }
 }

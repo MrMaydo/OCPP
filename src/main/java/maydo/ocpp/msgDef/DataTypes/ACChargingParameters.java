@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * AC_ Charging_ Parameters
@@ -166,5 +168,24 @@ public class ACChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ACChargingParameters))
+            return false;
+        ACChargingParameters that = (ACChargingParameters) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(energyAmount, that.energyAmount)
+                && Objects.equals(evMinCurrent, that.evMinCurrent)
+                && Objects.equals(evMaxCurrent, that.evMaxCurrent)
+                && Objects.equals(evMaxVoltage, that.evMaxVoltage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, energyAmount, evMinCurrent, evMaxCurrent, evMaxVoltage);
     }
 }

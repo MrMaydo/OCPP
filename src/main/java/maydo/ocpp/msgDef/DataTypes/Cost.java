@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Cost
@@ -129,5 +131,23 @@ public class Cost implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Cost))
+            return false;
+        Cost that = (Cost) obj;
+        return Objects.equals(customData, that.customData)
+                && costKind == that.costKind
+                && Objects.equals(amount, that.amount)
+                && Objects.equals(amountMultiplier, that.amountMultiplier);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, costKind, amount, amountMultiplier);
     }
 }

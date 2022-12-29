@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class StatusNotificationRequest implements JsonInterface {
 
@@ -140,5 +141,24 @@ public class StatusNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof StatusNotificationRequest))
+            return false;
+        StatusNotificationRequest that = (StatusNotificationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(timestamp, that.timestamp)
+                && connectorStatus == that.connectorStatus
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(connectorId, that.connectorId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, timestamp, connectorStatus, evseId, connectorId);
     }
 }

@@ -11,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
@@ -97,5 +98,23 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetInstalledCertificateIdsResponse))
+            return false;
+        GetInstalledCertificateIdsResponse that = (GetInstalledCertificateIdsResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(statusInfo, that.statusInfo)
+                && Objects.equals(certificateHashDataChain, that.certificateHashDataChain);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, statusInfo, certificateHashDataChain);
     }
 }

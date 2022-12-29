@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -261,5 +262,29 @@ public class MessageInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof MessageInfo))
+            return false;
+        MessageInfo that = (MessageInfo) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(display, that.display)
+                && Objects.equals(id, that.id)
+                && priority == that.priority
+                && state == that.state
+                && Objects.equals(startDateTime, that.startDateTime)
+                && Objects.equals(endDateTime, that.endDateTime)
+                && Objects.equals(transactionId, that.transactionId)
+                && Objects.equals(message, that.message);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, display, id, priority, state,
+                startDateTime, endDateTime, transactionId, message);
     }
 }

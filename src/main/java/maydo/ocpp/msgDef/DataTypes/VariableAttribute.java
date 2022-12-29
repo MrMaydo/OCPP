@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Attribute data of a variable.
@@ -145,5 +147,25 @@ public class VariableAttribute implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof VariableAttribute))
+            return false;
+        VariableAttribute that = (VariableAttribute) obj;
+        return Objects.equals(customData, that.customData)
+                && type == that.type
+                && Objects.equals(value, that.value)
+                && mutability == that.mutability
+                && Objects.equals(persistent, that.persistent)
+                && Objects.equals(constant, that.constant);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, type, value, mutability, persistent, constant);
     }
 }

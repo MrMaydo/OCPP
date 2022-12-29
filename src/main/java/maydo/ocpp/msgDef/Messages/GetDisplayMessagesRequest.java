@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GetDisplayMessagesRequest implements JsonInterface {
 
@@ -123,5 +124,24 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetDisplayMessagesRequest))
+            return false;
+        GetDisplayMessagesRequest that = (GetDisplayMessagesRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(requestId, that.requestId)
+                && priority == that.priority
+                && state == that.state;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, requestId, priority, state);
     }
 }

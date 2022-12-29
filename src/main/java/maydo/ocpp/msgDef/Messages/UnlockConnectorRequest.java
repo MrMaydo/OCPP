@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class UnlockConnectorRequest implements JsonInterface {
 
     /**
@@ -88,5 +90,22 @@ public class UnlockConnectorRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof UnlockConnectorRequest))
+            return false;
+        UnlockConnectorRequest that = (UnlockConnectorRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(connectorId, that.connectorId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, evseId, connectorId);
     }
 }

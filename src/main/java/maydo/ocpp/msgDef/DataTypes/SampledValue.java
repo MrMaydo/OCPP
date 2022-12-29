@@ -10,6 +10,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Sampled_ Value
@@ -220,5 +222,27 @@ public class SampledValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SampledValue))
+            return false;
+        SampledValue that = (SampledValue) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(value, that.value)
+                && context == that.context
+                && measurand == that.measurand
+                && phase == that.phase
+                && location == that.location
+                && Objects.equals(signedMeterValue, that.signedMeterValue)
+                && Objects.equals(unitOfMeasure, that.unitOfMeasure);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, value, context, measurand, phase, location, signedMeterValue, unitOfMeasure);
     }
 }

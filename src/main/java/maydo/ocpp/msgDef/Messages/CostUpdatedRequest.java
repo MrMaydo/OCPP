@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class CostUpdatedRequest implements JsonInterface {
 
     /**
@@ -93,5 +95,22 @@ public class CostUpdatedRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof CostUpdatedRequest))
+            return false;
+        CostUpdatedRequest that = (CostUpdatedRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(totalCost, that.totalCost)
+                && Objects.equals(transactionId, that.transactionId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, totalCost, transactionId);
     }
 }

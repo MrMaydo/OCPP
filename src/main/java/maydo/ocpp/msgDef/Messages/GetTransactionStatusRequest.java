@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class GetTransactionStatusRequest implements JsonInterface {
 
     /**
@@ -55,5 +57,21 @@ public class GetTransactionStatusRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetTransactionStatusRequest))
+            return false;
+        GetTransactionStatusRequest that = (GetTransactionStatusRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(transactionId, that.transactionId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, transactionId);
     }
 }

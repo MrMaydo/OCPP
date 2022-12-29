@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
@@ -116,5 +118,22 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Get15118EVCertificateRequest))
+            return false;
+        Get15118EVCertificateRequest that = (Get15118EVCertificateRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(iso15118SchemaVersion, that.iso15118SchemaVersion)
+                && action == that.action && Objects.equals(exiRequest, that.exiRequest);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, iso15118SchemaVersion, action, exiRequest);
     }
 }

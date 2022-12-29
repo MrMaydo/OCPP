@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
@@ -92,5 +94,22 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChangeAvailabilityRequest))
+            return false;
+        ChangeAvailabilityRequest that = (ChangeAvailabilityRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evse, that.evse)
+                && operationalStatus == that.operationalStatus;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, evse, operationalStatus);
     }
 }

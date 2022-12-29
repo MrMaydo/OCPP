@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -351,5 +352,34 @@ public class EventData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof EventData))
+            return false;
+        EventData that = (EventData) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(eventId, that.eventId)
+                && Objects.equals(timestamp, that.timestamp)
+                && trigger == that.trigger
+                && Objects.equals(cause, that.cause)
+                && Objects.equals(actualValue, that.actualValue)
+                && Objects.equals(techCode, that.techCode)
+                && Objects.equals(techInfo, that.techInfo)
+                && Objects.equals(cleared, that.cleared)
+                && Objects.equals(transactionId, that.transactionId)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variableMonitoringId, that.variableMonitoringId)
+                && eventNotificationType == that.eventNotificationType
+                && Objects.equals(variable, that.variable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, eventId, timestamp, trigger, cause, actualValue, techCode, techInfo,
+                cleared, transactionId, component, variableMonitoringId, eventNotificationType, variable);
     }
 }

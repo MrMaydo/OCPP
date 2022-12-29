@@ -9,6 +9,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -182,5 +183,25 @@ public class CompositeSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof CompositeSchedule))
+            return false;
+        CompositeSchedule that = (CompositeSchedule) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(chargingSchedulePeriod, that.chargingSchedulePeriod)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(duration, that.duration)
+                && Objects.equals(scheduleStart, that.scheduleStart)
+                && chargingRateUnit == that.chargingRateUnit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, chargingSchedulePeriod, evseId, duration, scheduleStart, chargingRateUnit);
     }
 }

@@ -11,6 +11,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class TransactionEventRequest implements JsonInterface {
 
@@ -304,5 +305,33 @@ public class TransactionEventRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof TransactionEventRequest))
+            return false;
+        TransactionEventRequest that = (TransactionEventRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && eventType == that.eventType
+                && Objects.equals(meterValue, that.meterValue)
+                && Objects.equals(timestamp, that.timestamp)
+                && triggerReason == that.triggerReason
+                && Objects.equals(seqNo, that.seqNo)
+                && Objects.equals(offline, that.offline)
+                && Objects.equals(numberOfPhasesUsed, that.numberOfPhasesUsed)
+                && Objects.equals(cableMaxCurrent, that.cableMaxCurrent)
+                && Objects.equals(reservationId, that.reservationId)
+                && Objects.equals(transactionInfo, that.transactionInfo)
+                && Objects.equals(evse, that.evse)
+                && Objects.equals(idToken, that.idToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, eventType, meterValue, timestamp, triggerReason, seqNo, offline,
+                numberOfPhasesUsed, cableMaxCurrent, reservationId, transactionInfo, evse, idToken);
     }
 }

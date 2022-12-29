@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ClearVariableMonitoringRequest implements JsonInterface {
 
@@ -64,5 +65,21 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ClearVariableMonitoringRequest))
+            return false;
+        ClearVariableMonitoringRequest that = (ClearVariableMonitoringRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id);
     }
 }

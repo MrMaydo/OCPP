@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Communication_ Function
@@ -275,5 +277,29 @@ public class NetworkConnectionProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NetworkConnectionProfile))
+            return false;
+        NetworkConnectionProfile that = (NetworkConnectionProfile) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(apn, that.apn)
+                && ocppVersion == that.ocppVersion
+                && ocppTransport == that.ocppTransport
+                && Objects.equals(ocppCsmsUrl, that.ocppCsmsUrl)
+                && Objects.equals(messageTimeout, that.messageTimeout)
+                && Objects.equals(securityProfile, that.securityProfile)
+                && ocppInterface == that.ocppInterface
+                && Objects.equals(vpn, that.vpn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, apn, ocppVersion, ocppTransport, ocppCsmsUrl,
+                messageTimeout, securityProfile, ocppInterface, vpn);
     }
 }

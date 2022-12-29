@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class DataTransferResponse implements JsonInterface {
 
     /**
@@ -102,5 +104,23 @@ public class DataTransferResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof DataTransferResponse))
+            return false;
+        DataTransferResponse that = (DataTransferResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(statusInfo, that.statusInfo)
+                && Objects.equals(data, that.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, statusInfo, data);
     }
 }

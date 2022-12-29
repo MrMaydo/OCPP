@@ -11,6 +11,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -284,5 +285,30 @@ public class ChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingProfile))
+            return false;
+        ChargingProfile that = (ChargingProfile) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(stackLevel, that.stackLevel)
+                && chargingProfilePurpose == that.chargingProfilePurpose
+                && chargingProfileKind == that.chargingProfileKind
+                && recurrencyKind == that.recurrencyKind
+                && Objects.equals(validFrom, that.validFrom)
+                && Objects.equals(validTo, that.validTo)
+                && Objects.equals(chargingSchedule, that.chargingSchedule)
+                && Objects.equals(transactionId, that.transactionId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, stackLevel, chargingProfilePurpose, chargingProfileKind,
+                recurrencyKind, validFrom, validTo, chargingSchedule, transactionId);
     }
 }

@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -133,5 +134,24 @@ public class ChargingProfileCriterion implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingProfileCriterion))
+            return false;
+        ChargingProfileCriterion that = (ChargingProfileCriterion) obj;
+        return Objects.equals(customData, that.customData)
+                && chargingProfilePurpose == that.chargingProfilePurpose
+                && Objects.equals(stackLevel, that.stackLevel)
+                && Objects.equals(chargingProfileId, that.chargingProfileId)
+                && Objects.equals(chargingLimitSource, that.chargingLimitSource);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, chargingProfilePurpose, stackLevel, chargingProfileId, chargingLimitSource);
     }
 }

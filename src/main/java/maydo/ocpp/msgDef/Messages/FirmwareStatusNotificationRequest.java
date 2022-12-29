@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
@@ -88,5 +90,22 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof FirmwareStatusNotificationRequest))
+            return false;
+        FirmwareStatusNotificationRequest that = (FirmwareStatusNotificationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(requestId, that.requestId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, requestId);
     }
 }

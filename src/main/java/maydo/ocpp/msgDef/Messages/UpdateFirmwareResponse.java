@@ -10,6 +10,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class UpdateFirmwareResponse implements JsonInterface {
 
     /**
@@ -87,5 +89,22 @@ public class UpdateFirmwareResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof UpdateFirmwareResponse))
+            return false;
+        UpdateFirmwareResponse that = (UpdateFirmwareResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(statusInfo, that.statusInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, statusInfo);
     }
 }

@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Class to hold parameters of SetVariableMonitoring request.
@@ -282,5 +284,27 @@ public class SetMonitoringData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SetMonitoringData))
+            return false;
+        SetMonitoringData that = (SetMonitoringData) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(transaction, that.transaction)
+                && Objects.equals(value, that.value)
+                && type == that.type
+                && Objects.equals(severity, that.severity)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variable, that.variable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, transaction, value, type, severity, component, variable);
     }
 }

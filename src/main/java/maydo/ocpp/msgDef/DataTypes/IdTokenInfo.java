@@ -9,6 +9,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -235,5 +236,29 @@ public class IdTokenInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof IdTokenInfo))
+            return false;
+        IdTokenInfo that = (IdTokenInfo) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(cacheExpiryDateTime, that.cacheExpiryDateTime)
+                && Objects.equals(chargingPriority, that.chargingPriority)
+                && Objects.equals(language1, that.language1)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(groupIdToken, that.groupIdToken)
+                && Objects.equals(language2, that.language2)
+                && Objects.equals(personalMessage, that.personalMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, cacheExpiryDateTime, chargingPriority,
+                language1, evseId, groupIdToken, language2, personalMessage);
     }
 }

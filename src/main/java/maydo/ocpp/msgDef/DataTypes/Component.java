@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * A physical or logical component
@@ -109,5 +111,23 @@ public class Component implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Component))
+            return false;
+        Component that = (Component) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evse, that.evse)
+                && Objects.equals(name, that.name)
+                && Objects.equals(instance, that.instance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, evse, name, instance);
     }
 }

@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GetVariablesResponse implements JsonInterface {
 
@@ -59,5 +60,21 @@ public class GetVariablesResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetVariablesResponse))
+            return false;
+        GetVariablesResponse that = (GetVariablesResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(getVariableResult, that.getVariableResult);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, getVariableResult);
     }
 }

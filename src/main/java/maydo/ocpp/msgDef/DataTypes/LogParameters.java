@@ -7,6 +7,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -125,5 +126,23 @@ public class LogParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof LogParameters))
+            return false;
+        LogParameters that = (LogParameters) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(remoteLocation, that.remoteLocation)
+                && Objects.equals(oldestTimestamp, that.oldestTimestamp)
+                && Objects.equals(latestTimestamp, that.latestTimestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, remoteLocation, oldestTimestamp, latestTimestamp);
     }
 }

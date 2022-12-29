@@ -8,6 +8,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -95,5 +96,22 @@ public class MeterValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof MeterValue))
+            return false;
+        MeterValue that = (MeterValue) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(sampledValue, that.sampledValue)
+                && Objects.equals(timestamp, that.timestamp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, sampledValue, timestamp);
     }
 }

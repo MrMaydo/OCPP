@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * DC_ Charging_ Parameters
@@ -254,5 +256,29 @@ public class DCChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof DCChargingParameters))
+            return false;
+        DCChargingParameters that = (DCChargingParameters) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evMaxCurrent, that.evMaxCurrent)
+                && Objects.equals(evMaxVoltage, that.evMaxVoltage)
+                && Objects.equals(energyAmount, that.energyAmount)
+                && Objects.equals(evMaxPower, that.evMaxPower)
+                && Objects.equals(stateOfCharge, that.stateOfCharge)
+                && Objects.equals(evEnergyCapacity, that.evEnergyCapacity)
+                && Objects.equals(fullSoC, that.fullSoC)
+                && Objects.equals(bulkSoC, that.bulkSoC);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, evMaxCurrent, evMaxVoltage, energyAmount,
+                evMaxPower, stateOfCharge, evEnergyCapacity, fullSoC, bulkSoC);
     }
 }

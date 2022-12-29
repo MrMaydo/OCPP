@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * APN
@@ -235,5 +237,28 @@ public class APN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof APN))
+            return false;
+        APN that = (APN) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(apn, that.apn)
+                && Objects.equals(apnUserName, that.apnUserName)
+                && Objects.equals(apnPassword, that.apnPassword)
+                && Objects.equals(simPin, that.simPin)
+                && Objects.equals(preferredNetwork, that.preferredNetwork)
+                && Objects.equals(useOnlyPreferredNetwork, that.useOnlyPreferredNetwork)
+                && apnAuthentication == that.apnAuthentication;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, apn, apnUserName, apnPassword, simPin,
+                preferredNetwork, useOnlyPreferredNetwork, apnAuthentication);
     }
 }

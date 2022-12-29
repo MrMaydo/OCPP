@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Charge_ Point
@@ -167,5 +169,25 @@ public class ChargingStation implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingStation))
+            return false;
+        ChargingStation that = (ChargingStation) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(serialNumber, that.serialNumber)
+                && Objects.equals(model, that.model)
+                && Objects.equals(modem, that.modem)
+                && Objects.equals(vendorName, that.vendorName)
+                && Objects.equals(firmwareVersion, that.firmwareVersion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, serialNumber, model, modem, vendorName, firmwareVersion);
     }
 }

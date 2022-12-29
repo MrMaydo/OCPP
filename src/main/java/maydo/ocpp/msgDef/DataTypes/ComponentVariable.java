@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Class to report components, variables and variable attributes and characteristics.
@@ -84,5 +86,22 @@ public class ComponentVariable implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ComponentVariable))
+            return false;
+        ComponentVariable that = (ComponentVariable) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variable, that.variable);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, component, variable);
     }
 }

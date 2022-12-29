@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class GetChargingProfilesResponse implements JsonInterface {
 
     /**
@@ -83,5 +85,22 @@ public class GetChargingProfilesResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetChargingProfilesResponse))
+            return false;
+        GetChargingProfilesResponse that = (GetChargingProfilesResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(statusInfo, that.statusInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, status, statusInfo);
     }
 }

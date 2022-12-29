@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ReserveNowRequest implements JsonInterface {
 
@@ -173,5 +174,26 @@ public class ReserveNowRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ReserveNowRequest))
+            return false;
+        ReserveNowRequest that = (ReserveNowRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(expiryDateTime, that.expiryDateTime)
+                && connectorType == that.connectorType
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(groupIdToken, that.groupIdToken);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, id, expiryDateTime, connectorType, idToken, evseId, groupIdToken);
     }
 }

@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class ClearedChargingLimitRequest implements JsonInterface {
 
     /**
@@ -82,5 +84,22 @@ public class ClearedChargingLimitRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ClearedChargingLimitRequest))
+            return false;
+        ClearedChargingLimitRequest that = (ClearedChargingLimitRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && chargingLimitSource == that.chargingLimitSource
+                && Objects.equals(evseId, that.evseId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, chargingLimitSource, evseId);
     }
 }

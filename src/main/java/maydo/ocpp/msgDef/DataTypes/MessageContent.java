@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Message_ Content
@@ -133,5 +135,23 @@ public class MessageContent implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof MessageContent))
+            return false;
+        MessageContent that = (MessageContent) obj;
+        return Objects.equals(customData, that.customData)
+                && format == that.format
+                && Objects.equals(language, that.language)
+                && Objects.equals(content, that.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customData, format, language, content);
     }
 }
