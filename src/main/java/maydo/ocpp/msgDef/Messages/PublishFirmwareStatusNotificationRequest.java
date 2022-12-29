@@ -132,6 +132,10 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, status, location, requestId);
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

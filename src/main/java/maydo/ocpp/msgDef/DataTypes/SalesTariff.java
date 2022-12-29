@@ -163,6 +163,11 @@ public class SalesTariff implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, salesTariffDescription, numEPriceLevels, salesTariffEntry);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (salesTariffDescription != null ? salesTariffDescription.hashCode() : 0);
+        result = 31 * result + (numEPriceLevels != null ? numEPriceLevels.hashCode() : 0);
+        result = 31 * result + (salesTariffEntry != null ? salesTariffEntry.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

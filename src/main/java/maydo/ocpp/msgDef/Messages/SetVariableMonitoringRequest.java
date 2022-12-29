@@ -76,6 +76,8 @@ public class SetVariableMonitoringRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, setMonitoringData);
+        int result = (setMonitoringData != null ? setMonitoringData.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

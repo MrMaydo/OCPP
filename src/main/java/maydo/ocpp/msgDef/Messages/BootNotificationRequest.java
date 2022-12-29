@@ -113,6 +113,9 @@ public class BootNotificationRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, chargingStation, reason);
+        int result = (chargingStation != null ? chargingStation.hashCode() : 0);
+        result = 31 * result + (reason != null ? reason.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

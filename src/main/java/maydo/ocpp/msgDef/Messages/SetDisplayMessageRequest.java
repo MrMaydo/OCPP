@@ -85,6 +85,8 @@ public class SetDisplayMessageRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, message);
+        int result = (message != null ? message.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

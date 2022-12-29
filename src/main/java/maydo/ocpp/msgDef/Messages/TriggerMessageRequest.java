@@ -107,6 +107,9 @@ public class TriggerMessageRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, evse, requestedMessage);
+        int result = (evse != null ? evse.hashCode() : 0);
+        result = 31 * result + (requestedMessage != null ? requestedMessage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

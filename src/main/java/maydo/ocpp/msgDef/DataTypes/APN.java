@@ -258,7 +258,14 @@ public class APN implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, apn, apnUserName, apnPassword, simPin,
-                preferredNetwork, useOnlyPreferredNetwork, apnAuthentication);
+        int result = (apn != null ? apn.hashCode() : 0);
+        result = 31 * result + (apnUserName != null ? apnUserName.hashCode() : 0);
+        result = 31 * result + (apnPassword != null ? apnPassword.hashCode() : 0);
+        result = 31 * result + (simPin != null ? simPin.hashCode() : 0);
+        result = 31 * result + (preferredNetwork != null ? preferredNetwork.hashCode() : 0);
+        result = 31 * result + (useOnlyPreferredNetwork != null ? useOnlyPreferredNetwork.hashCode() : 0);
+        result = 31 * result + (apnAuthentication != null ? apnAuthentication.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

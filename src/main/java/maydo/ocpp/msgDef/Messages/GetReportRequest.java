@@ -114,6 +114,10 @@ public class GetReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, componentVariable, requestId, componentCriteria);
+        int result = (componentVariable != null ? componentVariable.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (componentCriteria != null ? componentCriteria.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

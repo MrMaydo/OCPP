@@ -152,6 +152,11 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, chargingProfilePurpose, stackLevel, chargingProfileId, chargingLimitSource);
+        int result = (chargingProfilePurpose != null ? chargingProfilePurpose.hashCode() : 0);
+        result = 31 * result + (stackLevel != null ? stackLevel.hashCode() : 0);
+        result = 31 * result + (chargingProfileId != null ? chargingProfileId.hashCode() : 0);
+        result = 31 * result + (chargingLimitSource != null ? chargingLimitSource.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

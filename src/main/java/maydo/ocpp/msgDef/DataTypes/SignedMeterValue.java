@@ -160,6 +160,11 @@ public class SignedMeterValue implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, signedMeterData, signingMethod, encodingMethod, publicKey);
+        int result = (signedMeterData != null ? signedMeterData.hashCode() : 0);
+        result = 31 * result + (signingMethod != null ? signingMethod.hashCode() : 0);
+        result = 31 * result + (encodingMethod != null ? encodingMethod.hashCode() : 0);
+        result = 31 * result + (publicKey != null ? publicKey.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

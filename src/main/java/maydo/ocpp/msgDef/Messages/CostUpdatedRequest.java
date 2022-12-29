@@ -111,6 +111,9 @@ public class CostUpdatedRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, totalCost, transactionId);
+        int result = (totalCost != null ? totalCost.hashCode() : 0);
+        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

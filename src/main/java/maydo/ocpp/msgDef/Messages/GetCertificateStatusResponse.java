@@ -121,6 +121,10 @@ public class GetCertificateStatusResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, status, statusInfo, ocspResult);
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
+        result = 31 * result + (ocspResult != null ? ocspResult.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -80,6 +80,8 @@ public class UnpublishFirmwareRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, checksum);
+        int result = (checksum != null ? checksum.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -115,6 +115,9 @@ public class RelativeTimeInterval implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, start, duration);
+        int result = (start != null ? start.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

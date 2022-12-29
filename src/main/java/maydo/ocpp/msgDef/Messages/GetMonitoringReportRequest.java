@@ -114,6 +114,10 @@ public class GetMonitoringReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, componentVariable, requestId, monitoringCriteria);
+        int result = (componentVariable != null ? componentVariable.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (monitoringCriteria != null ? monitoringCriteria.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

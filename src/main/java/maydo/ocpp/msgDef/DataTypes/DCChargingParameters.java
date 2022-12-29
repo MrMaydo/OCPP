@@ -278,7 +278,15 @@ public class DCChargingParameters implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, evMaxCurrent, evMaxVoltage, energyAmount,
-                evMaxPower, stateOfCharge, evEnergyCapacity, fullSoC, bulkSoC);
+        int result = (evMaxCurrent != null ? evMaxCurrent.hashCode() : 0);
+        result = 31 * result + (evMaxVoltage != null ? evMaxVoltage.hashCode() : 0);
+        result = 31 * result + (energyAmount != null ? energyAmount.hashCode() : 0);
+        result = 31 * result + (evMaxPower != null ? evMaxPower.hashCode() : 0);
+        result = 31 * result + (stateOfCharge != null ? stateOfCharge.hashCode() : 0);
+        result = 31 * result + (evEnergyCapacity != null ? evEnergyCapacity.hashCode() : 0);
+        result = 31 * result + (fullSoC != null ? fullSoC.hashCode() : 0);
+        result = 31 * result + (bulkSoC != null ? bulkSoC.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

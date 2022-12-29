@@ -166,6 +166,12 @@ public class VariableAttribute implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, type, value, mutability, persistent, constant);
+        int result = (type != null ? type.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        result = 31 * result + (mutability != null ? mutability.hashCode() : 0);
+        result = 31 * result + (persistent != null ? persistent.hashCode() : 0);
+        result = 31 * result + (constant != null ? constant.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

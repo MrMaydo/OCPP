@@ -243,7 +243,14 @@ public class ChargingSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, startSchedule, duration, chargingRateUnit,
-                chargingSchedulePeriod, minChargingRate, salesTariff);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (startSchedule != null ? startSchedule.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (chargingRateUnit != null ? chargingRateUnit.hashCode() : 0);
+        result = 31 * result + (chargingSchedulePeriod != null ? chargingSchedulePeriod.hashCode() : 0);
+        result = 31 * result + (minChargingRate != null ? minChargingRate.hashCode() : 0);
+        result = 31 * result + (salesTariff != null ? salesTariff.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

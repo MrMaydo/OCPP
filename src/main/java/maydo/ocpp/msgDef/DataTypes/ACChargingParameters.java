@@ -186,6 +186,11 @@ public class ACChargingParameters implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, energyAmount, evMinCurrent, evMaxCurrent, evMaxVoltage);
+        int result = (energyAmount != null ? energyAmount.hashCode() : 0);
+        result = 31 * result + (evMinCurrent != null ? evMinCurrent.hashCode() : 0);
+        result = 31 * result + (evMaxCurrent != null ? evMaxCurrent.hashCode() : 0);
+        result = 31 * result + (evMaxVoltage != null ? evMaxVoltage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

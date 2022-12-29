@@ -299,7 +299,15 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, apn, ocppVersion, ocppTransport, ocppCsmsUrl,
-                messageTimeout, securityProfile, ocppInterface, vpn);
+        int result = (apn != null ? apn.hashCode() : 0);
+        result = 31 * result + (ocppVersion != null ? ocppVersion.hashCode() : 0);
+        result = 31 * result + (ocppTransport != null ? ocppTransport.hashCode() : 0);
+        result = 31 * result + (ocppCsmsUrl != null ? ocppCsmsUrl.hashCode() : 0);
+        result = 31 * result + (messageTimeout != null ? messageTimeout.hashCode() : 0);
+        result = 31 * result + (securityProfile != null ? securityProfile.hashCode() : 0);
+        result = 31 * result + (ocppInterface != null ? ocppInterface.hashCode() : 0);
+        result = 31 * result + (vpn != null ? vpn.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

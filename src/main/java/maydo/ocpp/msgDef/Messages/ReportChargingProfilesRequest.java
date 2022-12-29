@@ -173,6 +173,12 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, requestId, chargingLimitSource, chargingProfile, tbc, evseId);
+        int result = (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (chargingLimitSource != null ? chargingLimitSource.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

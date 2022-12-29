@@ -128,6 +128,10 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, status, statusInfo, schedule);
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
+        result = 31 * result + (schedule != null ? schedule.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

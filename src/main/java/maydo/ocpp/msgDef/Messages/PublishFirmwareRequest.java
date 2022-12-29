@@ -195,6 +195,12 @@ public class PublishFirmwareRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, location, retries, checksum, requestId, retryInterval);
+        int result = (location != null ? location.hashCode() : 0);
+        result = 31 * result + (retries != null ? retries.hashCode() : 0);
+        result = 31 * result + (checksum != null ? checksum.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (retryInterval != null ? retryInterval.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

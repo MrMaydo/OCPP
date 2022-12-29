@@ -159,6 +159,11 @@ public class StatusNotificationRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, timestamp, connectorStatus, evseId, connectorId);
+        int result = (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (connectorStatus != null ? connectorStatus.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (connectorId != null ? connectorId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

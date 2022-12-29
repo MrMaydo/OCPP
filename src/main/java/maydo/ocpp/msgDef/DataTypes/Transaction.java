@@ -186,6 +186,12 @@ public class Transaction implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, transactionId, chargingState, timeSpentCharging, stoppedReason, remoteStartId);
+        int result = (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (chargingState != null ? chargingState.hashCode() : 0);
+        result = 31 * result + (timeSpentCharging != null ? timeSpentCharging.hashCode() : 0);
+        result = 31 * result + (stoppedReason != null ? stoppedReason.hashCode() : 0);
+        result = 31 * result + (remoteStartId != null ? remoteStartId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

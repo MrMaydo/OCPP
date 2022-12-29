@@ -243,6 +243,14 @@ public class SampledValue implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, value, context, measurand, phase, location, signedMeterValue, unitOfMeasure);
+        int result = (value != null ? value.hashCode() : 0);
+        result = 31 * result + (context != null ? context.hashCode() : 0);
+        result = 31 * result + (measurand != null ? measurand.hashCode() : 0);
+        result = 31 * result + (phase != null ? phase.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (signedMeterValue != null ? signedMeterValue.hashCode() : 0);
+        result = 31 * result + (unitOfMeasure != null ? unitOfMeasure.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

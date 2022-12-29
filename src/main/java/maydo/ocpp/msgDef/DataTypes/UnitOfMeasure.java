@@ -101,6 +101,9 @@ public class UnitOfMeasure implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, unit, multiplier);
+        int result = (unit != null ? unit.hashCode() : 0);
+        result = 31 * result + (multiplier != null ? multiplier.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

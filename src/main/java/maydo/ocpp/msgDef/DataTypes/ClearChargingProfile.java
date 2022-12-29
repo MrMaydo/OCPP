@@ -136,6 +136,10 @@ public class ClearChargingProfile implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, evseId, chargingProfilePurpose, stackLevel);
+        int result = (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (chargingProfilePurpose != null ? chargingProfilePurpose.hashCode() : 0);
+        result = 31 * result + (stackLevel != null ? stackLevel.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -79,6 +79,8 @@ public class GetLocalListVersionResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, versionNumber);
+        int result = (versionNumber != null ? versionNumber.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

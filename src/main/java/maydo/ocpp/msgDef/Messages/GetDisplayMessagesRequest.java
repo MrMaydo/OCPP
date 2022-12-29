@@ -142,6 +142,11 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, requestId, priority, state);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (priority != null ? priority.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -169,7 +169,11 @@ public class ChargingNeeds implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, acChargingParameters, dcChargingParameters,
-                requestedEnergyTransfer, departureTime);
+        int result = (acChargingParameters != null ? acChargingParameters.hashCode() : 0);
+        result = 31 * result + (dcChargingParameters != null ? dcChargingParameters.hashCode() : 0);
+        result = 31 * result + (requestedEnergyTransfer != null ? requestedEnergyTransfer.hashCode() : 0);
+        result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

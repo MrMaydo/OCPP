@@ -149,6 +149,11 @@ public class ReportData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, component, variable, variableAttribute, variableCharacteristics);
+        int result = (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (variableAttribute != null ? variableAttribute.hashCode() : 0);
+        result = 31 * result + (variableCharacteristics != null ? variableCharacteristics.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

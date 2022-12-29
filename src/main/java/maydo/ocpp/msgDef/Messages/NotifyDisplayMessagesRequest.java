@@ -113,6 +113,10 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, messageInfo, requestId, tbc);
+        int result = (messageInfo != null ? messageInfo.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -143,6 +143,10 @@ public class LogParameters implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, remoteLocation, oldestTimestamp, latestTimestamp);
+        int result = (remoteLocation != null ? remoteLocation.hashCode() : 0);
+        result = 31 * result + (oldestTimestamp != null ? oldestTimestamp.hashCode() : 0);
+        result = 31 * result + (latestTimestamp != null ? latestTimestamp.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

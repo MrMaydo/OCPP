@@ -112,6 +112,9 @@ public class MeterValue implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, sampledValue, timestamp);
+        int result = (sampledValue != null ? sampledValue.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

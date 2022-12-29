@@ -102,6 +102,9 @@ public class Variable implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, name, instance);
+        int result = (name != null ? name.hashCode() : 0);
+        result = 31 * result + (instance != null ? instance.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

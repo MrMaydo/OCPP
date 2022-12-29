@@ -173,6 +173,12 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, evseId, groupIdToken, idToken, remoteStartId, chargingProfile);
+        int result = (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (remoteStartId != null ? remoteStartId.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

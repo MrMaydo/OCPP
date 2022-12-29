@@ -198,6 +198,12 @@ public class Firmware implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, location, retrieveDateTime, installDateTime, signingCertificate, signature);
+        int result = (location != null ? location.hashCode() : 0);
+        result = 31 * result + (retrieveDateTime != null ? retrieveDateTime.hashCode() : 0);
+        result = 31 * result + (installDateTime != null ? installDateTime.hashCode() : 0);
+        result = 31 * result + (signingCertificate != null ? signingCertificate.hashCode() : 0);
+        result = 31 * result + (signature != null ? signature.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -126,6 +126,10 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, type, timestamp, techInfo);
+        int result = (type != null ? type.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

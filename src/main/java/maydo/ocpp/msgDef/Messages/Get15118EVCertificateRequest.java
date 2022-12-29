@@ -134,6 +134,10 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, iso15118SchemaVersion, action, exiRequest);
+        int result = (iso15118SchemaVersion != null ? iso15118SchemaVersion.hashCode() : 0);
+        result = 31 * result + (action != null ? action.hashCode() : 0);
+        result = 31 * result + (exiRequest != null ? exiRequest.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

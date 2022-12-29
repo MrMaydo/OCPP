@@ -70,6 +70,8 @@ public class CustomData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(vendorId, additionalProperties);
+        int result = vendorId != null ? vendorId.hashCode() : 0;
+        result = 31 * result + (additionalProperties != null ? additionalProperties.hashCode() : 0);
+        return result;
     }
 }

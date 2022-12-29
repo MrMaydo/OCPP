@@ -99,6 +99,9 @@ public class ClearChargingProfileRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, chargingProfileId, chargingProfileCriteria);
+        int result = (chargingProfileId != null ? chargingProfileId.hashCode() : 0);
+        result = 31 * result + (chargingProfileCriteria != null ? chargingProfileCriteria.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -106,6 +106,9 @@ public class InstallCertificateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, certificateType, certificate);
+        int result = (certificateType != null ? certificateType.hashCode() : 0);
+        result = 31 * result + (certificate != null ? certificate.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

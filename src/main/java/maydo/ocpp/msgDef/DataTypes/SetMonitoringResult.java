@@ -299,6 +299,14 @@ public class SetMonitoringResult implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, statusInfo, status, type, component, variable, severity);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (severity != null ? severity.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

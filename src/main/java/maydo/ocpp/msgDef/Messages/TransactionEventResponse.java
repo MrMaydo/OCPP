@@ -150,6 +150,11 @@ public class TransactionEventResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, totalCost, chargingPriority, idTokenInfo, updatedPersonalMessage);
+        int result = (totalCost != null ? totalCost.hashCode() : 0);
+        result = 31 * result + (chargingPriority != null ? chargingPriority.hashCode() : 0);
+        result = 31 * result + (idTokenInfo != null ? idTokenInfo.hashCode() : 0);
+        result = 31 * result + (updatedPersonalMessage != null ? updatedPersonalMessage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

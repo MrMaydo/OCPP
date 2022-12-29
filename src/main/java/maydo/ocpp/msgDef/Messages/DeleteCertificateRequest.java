@@ -74,6 +74,8 @@ public class DeleteCertificateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, certificateHashData);
+        int result = (certificateHashData != null ? certificateHashData.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

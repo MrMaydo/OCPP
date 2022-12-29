@@ -79,6 +79,8 @@ public class UnpublishFirmwareResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, status);
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

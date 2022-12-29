@@ -114,6 +114,10 @@ public class AuthorizeRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, idToken, certificate, iso15118CertificateHashData);
+        int result = (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (certificate != null ? certificate.hashCode() : 0);
+        result = 31 * result + (iso15118CertificateHashData != null ? iso15118CertificateHashData.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

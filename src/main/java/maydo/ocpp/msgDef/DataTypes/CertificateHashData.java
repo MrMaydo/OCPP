@@ -160,6 +160,11 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, hashAlgorithm, issuerNameHash, issuerKeyHash, serialNumber);
+        int result = (hashAlgorithm != null ? hashAlgorithm.hashCode() : 0);
+        result = 31 * result + (issuerNameHash != null ? issuerNameHash.hashCode() : 0);
+        result = 31 * result + (issuerKeyHash != null ? issuerKeyHash.hashCode() : 0);
+        result = 31 * result + (serialNumber != null ? serialNumber.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

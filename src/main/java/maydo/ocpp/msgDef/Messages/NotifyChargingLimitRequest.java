@@ -117,6 +117,10 @@ public class NotifyChargingLimitRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, chargingSchedule, evseId, chargingLimit);
+        int result = (chargingSchedule != null ? chargingSchedule.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (chargingLimit != null ? chargingLimit.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

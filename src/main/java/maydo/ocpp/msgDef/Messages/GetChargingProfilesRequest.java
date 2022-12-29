@@ -132,6 +132,10 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, requestId, evseId, chargingProfile);
+        int result = (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

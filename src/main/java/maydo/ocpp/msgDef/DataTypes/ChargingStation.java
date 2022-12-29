@@ -188,6 +188,12 @@ public class ChargingStation implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, serialNumber, model, modem, vendorName, firmwareVersion);
+        int result = (serialNumber != null ? serialNumber.hashCode() : 0);
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (modem != null ? modem.hashCode() : 0);
+        result = 31 * result + (vendorName != null ? vendorName.hashCode() : 0);
+        result = 31 * result + (firmwareVersion != null ? firmwareVersion.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

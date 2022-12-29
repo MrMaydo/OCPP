@@ -152,6 +152,10 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, format, language, content);
+        int result = (format != null ? format.hashCode() : 0);
+        result = 31 * result + (language != null ? language.hashCode() : 0);
+        result = 31 * result + (content != null ? content.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

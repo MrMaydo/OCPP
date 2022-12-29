@@ -331,7 +331,19 @@ public class TransactionEventRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, eventType, meterValue, timestamp, triggerReason, seqNo, offline,
-                numberOfPhasesUsed, cableMaxCurrent, reservationId, transactionInfo, evse, idToken);
+        int result = (eventType != null ? eventType.hashCode() : 0);
+        result = 31 * result + (meterValue != null ? meterValue.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (triggerReason != null ? triggerReason.hashCode() : 0);
+        result = 31 * result + (seqNo != null ? seqNo.hashCode() : 0);
+        result = 31 * result + (offline != null ? offline.hashCode() : 0);
+        result = 31 * result + (numberOfPhasesUsed != null ? numberOfPhasesUsed.hashCode() : 0);
+        result = 31 * result + (cableMaxCurrent != null ? cableMaxCurrent.hashCode() : 0);
+        result = 31 * result + (reservationId != null ? reservationId.hashCode() : 0);
+        result = 31 * result + (transactionInfo != null ? transactionInfo.hashCode() : 0);
+        result = 31 * result + (evse != null ? evse.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

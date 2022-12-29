@@ -99,6 +99,9 @@ public class GetTransactionStatusResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, ongoingIndicator, messagesInQueue);
+        int result = (ongoingIndicator != null ? ongoingIndicator.hashCode() : 0);
+        result = 31 * result + (messagesInQueue != null ? messagesInQueue.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

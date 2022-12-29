@@ -157,6 +157,11 @@ public class SetVariableData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, attributeType, attributeValue, component, variable);
+        int result = (attributeType != null ? attributeType.hashCode() : 0);
+        result = 31 * result + (attributeValue != null ? attributeValue.hashCode() : 0);
+        result = 31 * result + (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

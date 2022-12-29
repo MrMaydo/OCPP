@@ -169,6 +169,12 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, monitor, requestId, tbc, seqNo, generatedAt);
+        int result = (monitor != null ? monitor.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (seqNo != null ? seqNo.hashCode() : 0);
+        result = 31 * result + (generatedAt != null ? generatedAt.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

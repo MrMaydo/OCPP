@@ -256,6 +256,12 @@ public class VariableMonitoring implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, transaction, value, type, severity);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (transaction != null ? transaction.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (severity != null ? severity.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

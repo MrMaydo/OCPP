@@ -124,6 +124,10 @@ public class SalesTariffEntry implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, relativeTimeInterval, ePriceLevel, consumptionCost);
+        int result = (relativeTimeInterval != null ? relativeTimeInterval.hashCode() : 0);
+        result = 31 * result + (ePriceLevel != null ? ePriceLevel.hashCode() : 0);
+        result = 31 * result + (consumptionCost != null ? consumptionCost.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

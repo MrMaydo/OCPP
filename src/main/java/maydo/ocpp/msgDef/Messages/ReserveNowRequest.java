@@ -194,6 +194,13 @@ public class ReserveNowRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, expiryDateTime, connectorType, idToken, evseId, groupIdToken);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (expiryDateTime != null ? expiryDateTime.hashCode() : 0);
+        result = 31 * result + (connectorType != null ? connectorType.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

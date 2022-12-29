@@ -308,7 +308,16 @@ public class ChargingProfile implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, id, stackLevel, chargingProfilePurpose, chargingProfileKind,
-                recurrencyKind, validFrom, validTo, chargingSchedule, transactionId);
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (stackLevel != null ? stackLevel.hashCode() : 0);
+        result = 31 * result + (chargingProfilePurpose != null ? chargingProfilePurpose.hashCode() : 0);
+        result = 31 * result + (chargingProfileKind != null ? chargingProfileKind.hashCode() : 0);
+        result = 31 * result + (recurrencyKind != null ? recurrencyKind.hashCode() : 0);
+        result = 31 * result + (validFrom != null ? validFrom.hashCode() : 0);
+        result = 31 * result + (validTo != null ? validTo.hashCode() : 0);
+        result = 31 * result + (chargingSchedule != null ? chargingSchedule.hashCode() : 0);
+        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

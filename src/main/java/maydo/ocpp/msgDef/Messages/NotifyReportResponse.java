@@ -53,6 +53,6 @@ public class NotifyReportResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData);
+        return customData != null ? customData.hashCode() : 0;
     }
 }

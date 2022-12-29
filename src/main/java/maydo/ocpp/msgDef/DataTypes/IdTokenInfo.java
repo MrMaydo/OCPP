@@ -258,7 +258,15 @@ public class IdTokenInfo implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, status, cacheExpiryDateTime, chargingPriority,
-                language1, evseId, groupIdToken, language2, personalMessage);
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (cacheExpiryDateTime != null ? cacheExpiryDateTime.hashCode() : 0);
+        result = 31 * result + (chargingPriority != null ? chargingPriority.hashCode() : 0);
+        result = 31 * result + (language1 != null ? language1.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (language2 != null ? language2.hashCode() : 0);
+        result = 31 * result + (personalMessage != null ? personalMessage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

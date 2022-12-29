@@ -182,6 +182,12 @@ public class GetLogRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, log, logType, requestId, retries, retryInterval);
+        int result = (log != null ? log.hashCode() : 0);
+        result = 31 * result + (logType != null ? logType.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (retries != null ? retries.hashCode() : 0);
+        result = 31 * result + (retryInterval != null ? retryInterval.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

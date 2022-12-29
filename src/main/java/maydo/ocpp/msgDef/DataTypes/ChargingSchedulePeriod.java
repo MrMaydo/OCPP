@@ -168,6 +168,11 @@ public class ChargingSchedulePeriod implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, startPeriod, limit, numberPhases, phaseToUse);
+        int result = (startPeriod != null ? startPeriod.hashCode() : 0);
+        result = 31 * result + (limit != null ? limit.hashCode() : 0);
+        result = 31 * result + (numberPhases != null ? numberPhases.hashCode() : 0);
+        result = 31 * result + (phaseToUse != null ? phaseToUse.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -202,6 +202,12 @@ public class CompositeSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, chargingSchedulePeriod, evseId, duration, scheduleStart, chargingRateUnit);
+        int result = (chargingSchedulePeriod != null ? chargingSchedulePeriod.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (scheduleStart != null ? scheduleStart.hashCode() : 0);
+        result = 31 * result + (chargingRateUnit != null ? chargingRateUnit.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

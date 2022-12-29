@@ -75,6 +75,8 @@ public class GetVariablesRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, getVariableData);
+        int result = (getVariableData != null ? getVariableData.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

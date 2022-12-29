@@ -102,6 +102,9 @@ public class StatusInfo implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, reasonCode, additionalInfo);
+        int result = (reasonCode != null ? reasonCode.hashCode() : 0);
+        result = 31 * result + (additionalInfo != null ? additionalInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

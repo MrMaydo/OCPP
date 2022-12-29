@@ -72,6 +72,8 @@ public class GetTransactionStatusRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, transactionId);
+        int result = (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

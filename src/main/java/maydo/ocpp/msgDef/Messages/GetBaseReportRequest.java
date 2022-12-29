@@ -106,6 +106,9 @@ public class GetBaseReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, requestId, reportBase);
+        int result = (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (reportBase != null ? reportBase.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -106,6 +106,9 @@ public class CertificateSignedRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, certificateChain, certificateType);
+        int result = (certificateChain != null ? certificateChain.hashCode() : 0);
+        result = 31 * result + (certificateType != null ? certificateType.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

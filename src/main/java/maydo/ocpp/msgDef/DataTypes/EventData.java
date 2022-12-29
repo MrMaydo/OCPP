@@ -379,7 +379,20 @@ public class EventData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customData, eventId, timestamp, trigger, cause, actualValue, techCode, techInfo,
-                cleared, transactionId, component, variableMonitoringId, eventNotificationType, variable);
+        int result = (eventId != null ? eventId.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
+        result = 31 * result + (cause != null ? cause.hashCode() : 0);
+        result = 31 * result + (actualValue != null ? actualValue.hashCode() : 0);
+        result = 31 * result + (techCode != null ? techCode.hashCode() : 0);
+        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
+        result = 31 * result + (cleared != null ? cleared.hashCode() : 0);
+        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variableMonitoringId != null ? variableMonitoringId.hashCode() : 0);
+        result = 31 * result + (eventNotificationType != null ? eventNotificationType.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }
