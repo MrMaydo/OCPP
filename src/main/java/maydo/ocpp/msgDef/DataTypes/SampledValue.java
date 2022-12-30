@@ -10,6 +10,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Sampled_ Value
@@ -220,5 +222,35 @@ public class SampledValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SampledValue))
+            return false;
+        SampledValue that = (SampledValue) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(value, that.value)
+                && context == that.context
+                && measurand == that.measurand
+                && phase == that.phase
+                && location == that.location
+                && Objects.equals(signedMeterValue, that.signedMeterValue)
+                && Objects.equals(unitOfMeasure, that.unitOfMeasure);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (value != null ? value.hashCode() : 0);
+        result = 31 * result + (context != null ? context.hashCode() : 0);
+        result = 31 * result + (measurand != null ? measurand.hashCode() : 0);
+        result = 31 * result + (phase != null ? phase.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (signedMeterValue != null ? signedMeterValue.hashCode() : 0);
+        result = 31 * result + (unitOfMeasure != null ? unitOfMeasure.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

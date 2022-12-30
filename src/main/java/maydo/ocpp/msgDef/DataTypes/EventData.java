@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -351,5 +352,47 @@ public class EventData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof EventData))
+            return false;
+        EventData that = (EventData) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(eventId, that.eventId)
+                && Objects.equals(timestamp, that.timestamp)
+                && trigger == that.trigger
+                && Objects.equals(cause, that.cause)
+                && Objects.equals(actualValue, that.actualValue)
+                && Objects.equals(techCode, that.techCode)
+                && Objects.equals(techInfo, that.techInfo)
+                && Objects.equals(cleared, that.cleared)
+                && Objects.equals(transactionId, that.transactionId)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variableMonitoringId, that.variableMonitoringId)
+                && eventNotificationType == that.eventNotificationType
+                && Objects.equals(variable, that.variable);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (eventId != null ? eventId.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
+        result = 31 * result + (cause != null ? cause.hashCode() : 0);
+        result = 31 * result + (actualValue != null ? actualValue.hashCode() : 0);
+        result = 31 * result + (techCode != null ? techCode.hashCode() : 0);
+        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
+        result = 31 * result + (cleared != null ? cleared.hashCode() : 0);
+        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variableMonitoringId != null ? variableMonitoringId.hashCode() : 0);
+        result = 31 * result + (eventNotificationType != null ? eventNotificationType.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

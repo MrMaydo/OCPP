@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class DataTransferRequest implements JsonInterface {
 
     /**
@@ -103,5 +105,27 @@ public class DataTransferRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof DataTransferRequest))
+            return false;
+        DataTransferRequest that = (DataTransferRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(messageId, that.messageId)
+                && Objects.equals(data, that.data)
+                && Objects.equals(vendorId, that.vendorId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (messageId != null ? messageId.hashCode() : 0);
+        result = 31 * result + (data != null ? data.hashCode() : 0);
+        result = 31 * result + (vendorId != null ? vendorId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

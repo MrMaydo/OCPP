@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -104,5 +105,27 @@ public class IdToken implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof IdToken))
+            return false;
+        IdToken that = (IdToken) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(additionalInfo, that.additionalInfo)
+                && Objects.equals(idToken, that.idToken)
+                && type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (additionalInfo != null ? additionalInfo.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

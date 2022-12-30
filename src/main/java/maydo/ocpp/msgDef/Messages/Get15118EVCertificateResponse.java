@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
@@ -108,5 +110,27 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Get15118EVCertificateResponse))
+            return false;
+        Get15118EVCertificateResponse that = (Get15118EVCertificateResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(statusInfo, that.statusInfo)
+                && Objects.equals(exiResponse, that.exiResponse);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
+        result = 31 * result + (exiResponse != null ? exiResponse.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

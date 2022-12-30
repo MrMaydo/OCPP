@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class CustomerInformationRequest implements JsonInterface {
 
     /**
@@ -169,5 +171,33 @@ public class CustomerInformationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof CustomerInformationRequest))
+            return false;
+        CustomerInformationRequest that = (CustomerInformationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(customerCertificate, that.customerCertificate)
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(requestId, that.requestId)
+                && Objects.equals(report, that.report)
+                && Objects.equals(clear, that.clear)
+                && Objects.equals(customerIdentifier, that.customerIdentifier);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (customerCertificate != null ? customerCertificate.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (report != null ? report.hashCode() : 0);
+        result = 31 * result + (clear != null ? clear.hashCode() : 0);
+        result = 31 * result + (customerIdentifier != null ? customerIdentifier.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Charging_ Limit
@@ -98,5 +100,25 @@ public class ChargingLimit implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingLimit))
+            return false;
+        ChargingLimit that = (ChargingLimit) obj;
+        return Objects.equals(customData, that.customData)
+                && chargingLimitSource == that.chargingLimitSource
+                && Objects.equals(isGridCritical, that.isGridCritical);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (chargingLimitSource != null ? chargingLimitSource.hashCode() : 0);
+        result = 31 * result + (isGridCritical != null ? isGridCritical.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

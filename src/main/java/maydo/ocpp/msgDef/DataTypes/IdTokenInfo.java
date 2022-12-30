@@ -9,6 +9,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -235,5 +236,37 @@ public class IdTokenInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof IdTokenInfo))
+            return false;
+        IdTokenInfo that = (IdTokenInfo) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(cacheExpiryDateTime, that.cacheExpiryDateTime)
+                && Objects.equals(chargingPriority, that.chargingPriority)
+                && Objects.equals(language1, that.language1)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(groupIdToken, that.groupIdToken)
+                && Objects.equals(language2, that.language2)
+                && Objects.equals(personalMessage, that.personalMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (cacheExpiryDateTime != null ? cacheExpiryDateTime.hashCode() : 0);
+        result = 31 * result + (chargingPriority != null ? chargingPriority.hashCode() : 0);
+        result = 31 * result + (language1 != null ? language1.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (language2 != null ? language2.hashCode() : 0);
+        result = 31 * result + (personalMessage != null ? personalMessage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

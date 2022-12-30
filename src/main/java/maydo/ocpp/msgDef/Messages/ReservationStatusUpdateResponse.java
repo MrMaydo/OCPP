@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class ReservationStatusUpdateResponse implements JsonInterface {
 
     /**
@@ -36,5 +38,20 @@ public class ReservationStatusUpdateResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ReservationStatusUpdateResponse))
+            return false;
+        ReservationStatusUpdateResponse that = (ReservationStatusUpdateResponse) obj;
+        return Objects.equals(customData, that.customData);
+    }
+
+    @Override
+    public int hashCode() {
+        return customData != null ? customData.hashCode() : 0;
     }
 }

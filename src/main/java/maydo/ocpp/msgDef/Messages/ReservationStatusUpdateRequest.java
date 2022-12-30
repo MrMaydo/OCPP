@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
@@ -88,5 +90,25 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ReservationStatusUpdateRequest))
+            return false;
+        ReservationStatusUpdateRequest that = (ReservationStatusUpdateRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(reservationId, that.reservationId)
+                && reservationUpdateStatus == that.reservationUpdateStatus;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (reservationId != null ? reservationId.hashCode() : 0);
+        result = 31 * result + (reservationUpdateStatus != null ? reservationUpdateStatus.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

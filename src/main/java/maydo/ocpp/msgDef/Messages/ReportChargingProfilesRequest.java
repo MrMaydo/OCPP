@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ReportChargingProfilesRequest implements JsonInterface {
 
@@ -154,5 +155,30 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ReportChargingProfilesRequest))
+            return false;
+        ReportChargingProfilesRequest that = (ReportChargingProfilesRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(requestId, that.requestId)
+                && chargingLimitSource == that.chargingLimitSource
+                && Objects.equals(chargingProfile, that.chargingProfile)
+                && Objects.equals(tbc, that.tbc) && Objects.equals(evseId, that.evseId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (chargingLimitSource != null ? chargingLimitSource.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

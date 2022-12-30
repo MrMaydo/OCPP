@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Contains the identifier to use for authorization.
@@ -94,5 +96,25 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof AuthorizationData))
+            return false;
+        AuthorizationData that = (AuthorizationData) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(idTokenInfo, that.idTokenInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (idTokenInfo != null ? idTokenInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

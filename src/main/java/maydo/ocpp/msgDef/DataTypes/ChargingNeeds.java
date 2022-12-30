@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 
 /**
@@ -150,5 +151,29 @@ public class ChargingNeeds implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingNeeds))
+            return false;
+        ChargingNeeds that = (ChargingNeeds) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(acChargingParameters, that.acChargingParameters)
+                && Objects.equals(dcChargingParameters, that.dcChargingParameters)
+                && requestedEnergyTransfer == that.requestedEnergyTransfer
+                && Objects.equals(departureTime, that.departureTime);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (acChargingParameters != null ? acChargingParameters.hashCode() : 0);
+        result = 31 * result + (dcChargingParameters != null ? dcChargingParameters.hashCode() : 0);
+        result = 31 * result + (requestedEnergyTransfer != null ? requestedEnergyTransfer.hashCode() : 0);
+        result = 31 * result + (departureTime != null ? departureTime.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -9,6 +9,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -221,5 +222,35 @@ public class ChargingSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingSchedule))
+            return false;
+        ChargingSchedule that = (ChargingSchedule) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(startSchedule, that.startSchedule)
+                && Objects.equals(duration, that.duration)
+                && chargingRateUnit == that.chargingRateUnit
+                && Objects.equals(chargingSchedulePeriod, that.chargingSchedulePeriod)
+                && Objects.equals(minChargingRate, that.minChargingRate)
+                && Objects.equals(salesTariff, that.salesTariff);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (startSchedule != null ? startSchedule.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (chargingRateUnit != null ? chargingRateUnit.hashCode() : 0);
+        result = 31 * result + (chargingSchedulePeriod != null ? chargingSchedulePeriod.hashCode() : 0);
+        result = 31 * result + (minChargingRate != null ? minChargingRate.hashCode() : 0);
+        result = 31 * result + (salesTariff != null ? salesTariff.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

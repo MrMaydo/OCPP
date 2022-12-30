@@ -10,6 +10,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class NotifyMonitoringReportRequest implements JsonInterface {
 
@@ -149,5 +150,31 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NotifyMonitoringReportRequest))
+            return false;
+        NotifyMonitoringReportRequest that = (NotifyMonitoringReportRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(monitor, that.monitor)
+                && Objects.equals(requestId, that.requestId)
+                && Objects.equals(tbc, that.tbc)
+                && Objects.equals(seqNo, that.seqNo)
+                && Objects.equals(generatedAt, that.generatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (monitor != null ? monitor.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (seqNo != null ? seqNo.hashCode() : 0);
+        result = 31 * result + (generatedAt != null ? generatedAt.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NotifyChargingLimitRequest implements JsonInterface {
 
@@ -99,5 +100,27 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NotifyChargingLimitRequest))
+            return false;
+        NotifyChargingLimitRequest that = (NotifyChargingLimitRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(chargingSchedule, that.chargingSchedule)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(chargingLimit, that.chargingLimit);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (chargingSchedule != null ? chargingSchedule.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (chargingLimit != null ? chargingLimit.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

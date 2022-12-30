@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class PublishFirmwareRequest implements JsonInterface {
 
     /**
@@ -174,5 +176,31 @@ public class PublishFirmwareRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof PublishFirmwareRequest))
+            return false;
+        PublishFirmwareRequest that = (PublishFirmwareRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(location, that.location)
+                && Objects.equals(retries, that.retries)
+                && Objects.equals(checksum, that.checksum)
+                && Objects.equals(requestId, that.requestId)
+                && Objects.equals(retryInterval, that.retryInterval);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (location != null ? location.hashCode() : 0);
+        result = 31 * result + (retries != null ? retries.hashCode() : 0);
+        result = 31 * result + (checksum != null ? checksum.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (retryInterval != null ? retryInterval.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

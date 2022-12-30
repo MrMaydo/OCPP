@@ -7,6 +7,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -111,5 +112,27 @@ public class MonitoringData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof MonitoringData))
+            return false;
+        MonitoringData that = (MonitoringData) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variable, that.variable)
+                && Objects.equals(variableMonitoring, that.variableMonitoring);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (variableMonitoring != null ? variableMonitoring.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class SecurityEventNotificationRequest implements JsonInterface {
 
@@ -108,5 +109,27 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SecurityEventNotificationRequest))
+            return false;
+        SecurityEventNotificationRequest that = (SecurityEventNotificationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(type, that.type)
+                && Objects.equals(timestamp, that.timestamp)
+                && Objects.equals(techInfo, that.techInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (type != null ? type.hashCode() : 0);
+        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
+        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

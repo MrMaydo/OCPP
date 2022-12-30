@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class SetChargingProfileRequest implements JsonInterface {
 
     /**
@@ -94,5 +96,25 @@ public class SetChargingProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SetChargingProfileRequest))
+            return false;
+        SetChargingProfileRequest that = (SetChargingProfileRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(chargingProfile, that.chargingProfile);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

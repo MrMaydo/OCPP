@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SendLocalListRequest implements JsonInterface {
 
@@ -102,5 +103,27 @@ public class SendLocalListRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SendLocalListRequest))
+            return false;
+        SendLocalListRequest that = (SendLocalListRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(localAuthorizationList, that.localAuthorizationList)
+                && Objects.equals(versionNumber, that.versionNumber)
+                && updateType == that.updateType;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (localAuthorizationList != null ? localAuthorizationList.hashCode() : 0);
+        result = 31 * result + (versionNumber != null ? versionNumber.hashCode() : 0);
+        result = 31 * result + (updateType != null ? updateType.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

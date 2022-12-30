@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * DC_ Charging_ Parameters
@@ -254,5 +256,37 @@ public class DCChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof DCChargingParameters))
+            return false;
+        DCChargingParameters that = (DCChargingParameters) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evMaxCurrent, that.evMaxCurrent)
+                && Objects.equals(evMaxVoltage, that.evMaxVoltage)
+                && Objects.equals(energyAmount, that.energyAmount)
+                && Objects.equals(evMaxPower, that.evMaxPower)
+                && Objects.equals(stateOfCharge, that.stateOfCharge)
+                && Objects.equals(evEnergyCapacity, that.evEnergyCapacity)
+                && Objects.equals(fullSoC, that.fullSoC)
+                && Objects.equals(bulkSoC, that.bulkSoC);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (evMaxCurrent != null ? evMaxCurrent.hashCode() : 0);
+        result = 31 * result + (evMaxVoltage != null ? evMaxVoltage.hashCode() : 0);
+        result = 31 * result + (energyAmount != null ? energyAmount.hashCode() : 0);
+        result = 31 * result + (evMaxPower != null ? evMaxPower.hashCode() : 0);
+        result = 31 * result + (stateOfCharge != null ? stateOfCharge.hashCode() : 0);
+        result = 31 * result + (evEnergyCapacity != null ? evEnergyCapacity.hashCode() : 0);
+        result = 31 * result + (fullSoC != null ? fullSoC.hashCode() : 0);
+        result = 31 * result + (bulkSoC != null ? bulkSoC.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ReserveNowRequest implements JsonInterface {
 
@@ -173,5 +174,33 @@ public class ReserveNowRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ReserveNowRequest))
+            return false;
+        ReserveNowRequest that = (ReserveNowRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(id, that.id)
+                && Objects.equals(expiryDateTime, that.expiryDateTime)
+                && connectorType == that.connectorType
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(groupIdToken, that.groupIdToken);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (id != null ? id.hashCode() : 0);
+        result = 31 * result + (expiryDateTime != null ? expiryDateTime.hashCode() : 0);
+        result = 31 * result + (connectorType != null ? connectorType.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

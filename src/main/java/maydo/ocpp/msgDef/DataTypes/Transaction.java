@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Transaction
@@ -165,5 +167,31 @@ public class Transaction implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Transaction))
+            return false;
+        Transaction that = (Transaction) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(transactionId, that.transactionId)
+                && chargingState == that.chargingState
+                && Objects.equals(timeSpentCharging, that.timeSpentCharging)
+                && stoppedReason == that.stoppedReason
+                && Objects.equals(remoteStartId, that.remoteStartId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (transactionId != null ? transactionId.hashCode() : 0);
+        result = 31 * result + (chargingState != null ? chargingState.hashCode() : 0);
+        result = 31 * result + (timeSpentCharging != null ? timeSpentCharging.hashCode() : 0);
+        result = 31 * result + (stoppedReason != null ? stoppedReason.hashCode() : 0);
+        result = 31 * result + (remoteStartId != null ? remoteStartId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

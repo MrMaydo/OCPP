@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class BootNotificationResponse implements JsonInterface {
 
@@ -138,5 +139,28 @@ public class BootNotificationResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof BootNotificationResponse))
+            return false;
+        BootNotificationResponse that = (BootNotificationResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(currentTime, that.currentTime)
+                && Objects.equals(interval, that.interval)
+                && status == that.status && Objects.equals(statusInfo, that.statusInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (currentTime != null ? currentTime.hashCode() : 0);
+        result = 31 * result + (interval != null ? interval.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

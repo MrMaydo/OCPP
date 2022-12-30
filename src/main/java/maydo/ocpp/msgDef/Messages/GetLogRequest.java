@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class GetLogRequest implements JsonInterface {
 
     /**
@@ -161,5 +163,31 @@ public class GetLogRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetLogRequest))
+            return false;
+        GetLogRequest that = (GetLogRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(log, that.log)
+                && logType == that.logType
+                && Objects.equals(requestId, that.requestId)
+                && Objects.equals(retries, that.retries)
+                && Objects.equals(retryInterval, that.retryInterval);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (log != null ? log.hashCode() : 0);
+        result = 31 * result + (logType != null ? logType.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (retries != null ? retries.hashCode() : 0);
+        result = 31 * result + (retryInterval != null ? retryInterval.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

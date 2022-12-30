@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Element providing more information about the status.
@@ -84,5 +86,25 @@ public class StatusInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof StatusInfo))
+            return false;
+        StatusInfo that = (StatusInfo) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(reasonCode, that.reasonCode)
+                && Objects.equals(additionalInfo, that.additionalInfo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (reasonCode != null ? reasonCode.hashCode() : 0);
+        result = 31 * result + (additionalInfo != null ? additionalInfo.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

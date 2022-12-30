@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class SetMonitoringLevelRequest implements JsonInterface {
 
     /**
@@ -137,5 +139,23 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SetMonitoringLevelRequest))
+            return false;
+        SetMonitoringLevelRequest that = (SetMonitoringLevelRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(severity, that.severity);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (severity != null ? severity.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

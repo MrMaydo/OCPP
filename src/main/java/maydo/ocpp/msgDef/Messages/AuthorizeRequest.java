@@ -10,6 +10,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class AuthorizeRequest implements JsonInterface {
 
@@ -96,5 +97,27 @@ public class AuthorizeRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof AuthorizeRequest))
+            return false;
+        AuthorizeRequest that = (AuthorizeRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(certificate, that.certificate)
+                && Objects.equals(iso15118CertificateHashData, that.iso15118CertificateHashData);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (certificate != null ? certificate.hashCode() : 0);
+        result = 31 * result + (iso15118CertificateHashData != null ? iso15118CertificateHashData.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

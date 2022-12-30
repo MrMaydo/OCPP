@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class ClearChargingProfileRequest implements JsonInterface {
 
     /**
@@ -81,5 +83,25 @@ public class ClearChargingProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ClearChargingProfileRequest))
+            return false;
+        ClearChargingProfileRequest that = (ClearChargingProfileRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(chargingProfileId, that.chargingProfileId)
+                && Objects.equals(chargingProfileCriteria, that.chargingProfileCriteria);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (chargingProfileId != null ? chargingProfileId.hashCode() : 0);
+        result = 31 * result + (chargingProfileCriteria != null ? chargingProfileCriteria.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

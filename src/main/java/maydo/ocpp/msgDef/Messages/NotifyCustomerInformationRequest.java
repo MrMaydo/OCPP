@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class NotifyCustomerInformationRequest implements JsonInterface {
 
@@ -161,5 +162,31 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NotifyCustomerInformationRequest))
+            return false;
+        NotifyCustomerInformationRequest that = (NotifyCustomerInformationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(data, that.data)
+                && Objects.equals(tbc, that.tbc)
+                && Objects.equals(seqNo, that.seqNo)
+                && Objects.equals(generatedAt, that.generatedAt)
+                && Objects.equals(requestId, that.requestId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (data != null ? data.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (seqNo != null ? seqNo.hashCode() : 0);
+        result = 31 * result + (generatedAt != null ? generatedAt.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
@@ -152,5 +154,31 @@ public class RequestStartTransactionRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof RequestStartTransactionRequest))
+            return false;
+        RequestStartTransactionRequest that = (RequestStartTransactionRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(groupIdToken, that.groupIdToken)
+                && Objects.equals(idToken, that.idToken)
+                && Objects.equals(remoteStartId, that.remoteStartId)
+                && Objects.equals(chargingProfile, that.chargingProfile);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
+        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+        result = 31 * result + (remoteStartId != null ? remoteStartId.hashCode() : 0);
+        result = 31 * result + (chargingProfile != null ? chargingProfile.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class TransactionEventResponse implements JsonInterface {
 
     /**
@@ -130,5 +132,29 @@ public class TransactionEventResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof TransactionEventResponse))
+            return false;
+        TransactionEventResponse that = (TransactionEventResponse) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(totalCost, that.totalCost)
+                && Objects.equals(chargingPriority, that.chargingPriority)
+                && Objects.equals(idTokenInfo, that.idTokenInfo)
+                && Objects.equals(updatedPersonalMessage, that.updatedPersonalMessage);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (totalCost != null ? totalCost.hashCode() : 0);
+        result = 31 * result + (chargingPriority != null ? chargingPriority.hashCode() : 0);
+        result = 31 * result + (idTokenInfo != null ? idTokenInfo.hashCode() : 0);
+        result = 31 * result + (updatedPersonalMessage != null ? updatedPersonalMessage.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

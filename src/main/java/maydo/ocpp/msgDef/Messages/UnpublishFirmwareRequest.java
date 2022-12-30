@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class UnpublishFirmwareRequest implements JsonInterface {
 
     /**
@@ -63,5 +65,23 @@ public class UnpublishFirmwareRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof UnpublishFirmwareRequest))
+            return false;
+        UnpublishFirmwareRequest that = (UnpublishFirmwareRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(checksum, that.checksum);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (checksum != null ? checksum.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

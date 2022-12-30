@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Fixed read-only parameters of a variable.
@@ -197,5 +199,33 @@ public class VariableCharacteristics implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof VariableCharacteristics))
+            return false;
+        VariableCharacteristics that = (VariableCharacteristics) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(unit, that.unit)
+                && dataType == that.dataType
+                && Objects.equals(minLimit, that.minLimit)
+                && Objects.equals(maxLimit, that.maxLimit)
+                && Objects.equals(valuesList, that.valuesList)
+                && Objects.equals(supportsMonitoring, that.supportsMonitoring);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (unit != null ? unit.hashCode() : 0);
+        result = 31 * result + (dataType != null ? dataType.hashCode() : 0);
+        result = 31 * result + (minLimit != null ? minLimit.hashCode() : 0);
+        result = 31 * result + (maxLimit != null ? maxLimit.hashCode() : 0);
+        result = 31 * result + (valuesList != null ? valuesList.hashCode() : 0);
+        result = 31 * result + (supportsMonitoring != null ? supportsMonitoring.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

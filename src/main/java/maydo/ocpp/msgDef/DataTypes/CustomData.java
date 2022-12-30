@@ -8,6 +8,7 @@ import maydo.ocpp.utils.JsonTools;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -54,5 +55,23 @@ public class CustomData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof CustomData))
+            return false;
+        CustomData that = (CustomData) obj;
+        return Objects.equals(vendorId, that.vendorId)
+                && Objects.equals(additionalProperties, that.additionalProperties);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = vendorId != null ? vendorId.hashCode() : 0;
+        result = 31 * result + (additionalProperties != null ? additionalProperties.hashCode() : 0);
+        return result;
     }
 }

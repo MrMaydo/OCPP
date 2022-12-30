@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Charging_ Schedule_ Period
@@ -148,5 +150,29 @@ public class ChargingSchedulePeriod implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ChargingSchedulePeriod))
+            return false;
+        ChargingSchedulePeriod that = (ChargingSchedulePeriod) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(startPeriod, that.startPeriod)
+                && Objects.equals(limit, that.limit)
+                && Objects.equals(numberPhases, that.numberPhases)
+                && Objects.equals(phaseToUse, that.phaseToUse);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (startPeriod != null ? startPeriod.hashCode() : 0);
+        result = 31 * result + (limit != null ? limit.hashCode() : 0);
+        result = 31 * result + (numberPhases != null ? numberPhases.hashCode() : 0);
+        result = 31 * result + (phaseToUse != null ? phaseToUse.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

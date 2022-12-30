@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Reference key to a component-variable.
@@ -84,5 +86,25 @@ public class Variable implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Variable))
+            return false;
+        Variable that = (Variable) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(name, that.name)
+                && Objects.equals(instance, that.instance);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (name != null ? name.hashCode() : 0);
+        result = 31 * result + (instance != null ? instance.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

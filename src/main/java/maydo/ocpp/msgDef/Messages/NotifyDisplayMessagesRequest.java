@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class NotifyDisplayMessagesRequest implements JsonInterface {
 
@@ -95,5 +96,27 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NotifyDisplayMessagesRequest))
+            return false;
+        NotifyDisplayMessagesRequest that = (NotifyDisplayMessagesRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(messageInfo, that.messageInfo)
+                && Objects.equals(requestId, that.requestId)
+                && Objects.equals(tbc, that.tbc);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (messageInfo != null ? messageInfo.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

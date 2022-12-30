@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Represent a signed version of the meter value.
@@ -140,5 +142,29 @@ public class SignedMeterValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof SignedMeterValue))
+            return false;
+        SignedMeterValue that = (SignedMeterValue) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(signedMeterData, that.signedMeterData)
+                && Objects.equals(signingMethod, that.signingMethod)
+                && Objects.equals(encodingMethod, that.encodingMethod)
+                && Objects.equals(publicKey, that.publicKey);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (signedMeterData != null ? signedMeterData.hashCode() : 0);
+        result = 31 * result + (signingMethod != null ? signingMethod.hashCode() : 0);
+        result = 31 * result + (encodingMethod != null ? encodingMethod.hashCode() : 0);
+        result = 31 * result + (publicKey != null ? publicKey.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

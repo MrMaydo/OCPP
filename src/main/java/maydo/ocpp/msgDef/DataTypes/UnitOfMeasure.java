@@ -5,6 +5,8 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Represents a UnitOfMeasure with a multiplier
@@ -83,5 +85,25 @@ public class UnitOfMeasure implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof UnitOfMeasure))
+            return false;
+        UnitOfMeasure that = (UnitOfMeasure) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(unit, that.unit)
+                && Objects.equals(multiplier, that.multiplier);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (unit != null ? unit.hashCode() : 0);
+        result = 31 * result + (multiplier != null ? multiplier.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

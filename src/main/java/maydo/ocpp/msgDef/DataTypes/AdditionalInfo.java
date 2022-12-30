@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
@@ -90,5 +92,25 @@ public class AdditionalInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof AdditionalInfo))
+            return false;
+        AdditionalInfo that = (AdditionalInfo) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(additionalIdToken, that.additionalIdToken)
+                && Objects.equals(type, that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        int result =  (additionalIdToken != null ? additionalIdToken.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -8,6 +8,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Class to hold results of GetVariables request.
@@ -183,5 +185,33 @@ public class GetVariableResult implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetVariableResult))
+            return false;
+        GetVariableResult that = (GetVariableResult) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(attributeStatusInfo, that.attributeStatusInfo)
+                && attributeStatus == that.attributeStatus
+                && attributeType == that.attributeType
+                && Objects.equals(attributeValue, that.attributeValue)
+                && Objects.equals(component, that.component)
+                && Objects.equals(variable, that.variable);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (attributeStatusInfo != null ? attributeStatusInfo.hashCode() : 0);
+        result = 31 * result + (attributeStatus != null ? attributeStatus.hashCode() : 0);
+        result = 31 * result + (attributeType != null ? attributeType.hashCode() : 0);
+        result = 31 * result + (attributeValue != null ? attributeValue.hashCode() : 0);
+        result = 31 * result + (component != null ? component.hashCode() : 0);
+        result = 31 * result + (variable != null ? variable.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Communication_ Function
@@ -275,5 +277,37 @@ public class NetworkConnectionProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NetworkConnectionProfile))
+            return false;
+        NetworkConnectionProfile that = (NetworkConnectionProfile) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(apn, that.apn)
+                && ocppVersion == that.ocppVersion
+                && ocppTransport == that.ocppTransport
+                && Objects.equals(ocppCsmsUrl, that.ocppCsmsUrl)
+                && Objects.equals(messageTimeout, that.messageTimeout)
+                && Objects.equals(securityProfile, that.securityProfile)
+                && ocppInterface == that.ocppInterface
+                && Objects.equals(vpn, that.vpn);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (apn != null ? apn.hashCode() : 0);
+        result = 31 * result + (ocppVersion != null ? ocppVersion.hashCode() : 0);
+        result = 31 * result + (ocppTransport != null ? ocppTransport.hashCode() : 0);
+        result = 31 * result + (ocppCsmsUrl != null ? ocppCsmsUrl.hashCode() : 0);
+        result = 31 * result + (messageTimeout != null ? messageTimeout.hashCode() : 0);
+        result = 31 * result + (securityProfile != null ? securityProfile.hashCode() : 0);
+        result = 31 * result + (ocppInterface != null ? ocppInterface.hashCode() : 0);
+        result = 31 * result + (vpn != null ? vpn.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

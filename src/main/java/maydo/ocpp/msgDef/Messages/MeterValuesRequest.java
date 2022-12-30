@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -95,5 +96,25 @@ public class MeterValuesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof MeterValuesRequest))
+            return false;
+        MeterValuesRequest that = (MeterValuesRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(evseId, that.evseId)
+                && Objects.equals(meterValue, that.meterValue);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (meterValue != null ? meterValue.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

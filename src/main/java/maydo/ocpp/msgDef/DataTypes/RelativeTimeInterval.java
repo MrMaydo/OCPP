@@ -6,6 +6,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * Relative_ Timer_ Interval
@@ -97,5 +99,25 @@ public class RelativeTimeInterval implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof RelativeTimeInterval))
+            return false;
+        RelativeTimeInterval that = (RelativeTimeInterval) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(start, that.start)
+                && Objects.equals(duration, that.duration);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (start != null ? start.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

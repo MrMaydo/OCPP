@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
@@ -121,5 +122,27 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof NotifyEVChargingScheduleRequest))
+            return false;
+        NotifyEVChargingScheduleRequest that = (NotifyEVChargingScheduleRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(timeBase, that.timeBase)
+                && Objects.equals(chargingSchedule, that.chargingSchedule)
+                && Objects.equals(evseId, that.evseId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (timeBase != null ? timeBase.hashCode() : 0);
+        result = 31 * result + (chargingSchedule != null ? chargingSchedule.hashCode() : 0);
+        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

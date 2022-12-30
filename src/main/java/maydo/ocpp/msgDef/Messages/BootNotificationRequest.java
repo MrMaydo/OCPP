@@ -9,6 +9,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 public class BootNotificationRequest implements JsonInterface {
 
     /**
@@ -95,5 +97,25 @@ public class BootNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof BootNotificationRequest))
+            return false;
+        BootNotificationRequest that = (BootNotificationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(chargingStation, that.chargingStation)
+                && reason == that.reason;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (chargingStation != null ? chargingStation.hashCode() : 0);
+        result = 31 * result + (reason != null ? reason.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

@@ -7,6 +7,8 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
+import java.util.Objects;
+
 
 /**
  * VPN
@@ -223,5 +225,33 @@ public class VPN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof VPN))
+            return false;
+        VPN that = (VPN) obj;
+        return Objects.equals(customData, that.customData)
+                && Objects.equals(server, that.server)
+                && Objects.equals(user, that.user)
+                && Objects.equals(group, that.group)
+                && Objects.equals(password, that.password)
+                && Objects.equals(key, that.key)
+                && type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (server != null ? server.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        result = 31 * result + (group != null ? group.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (key != null ? key.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }

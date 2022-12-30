@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
+import java.util.Objects;
 
 public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
@@ -114,5 +115,27 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof PublishFirmwareStatusNotificationRequest))
+            return false;
+        PublishFirmwareStatusNotificationRequest that = (PublishFirmwareStatusNotificationRequest) obj;
+        return Objects.equals(customData, that.customData)
+                && status == that.status
+                && Objects.equals(location, that.location)
+                && Objects.equals(requestId, that.requestId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (status != null ? status.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
+        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        return result;
     }
 }
