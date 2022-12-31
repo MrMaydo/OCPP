@@ -16,25 +16,19 @@ public class IntObject {
 
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        }
-
-        if (this.getClass() != obj.getClass()) {
+        if (!(o instanceof IntObject))
             return false;
-        }
 
-        final IntObject other = (IntObject) obj;
-        if (this.intValue.equals(other.intValue)) {
-            return false;
-        }
+        IntObject intObject = (IntObject) o;
 
-        return true;
+        return Objects.equals(intValue, intObject.intValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(intValue);
+        return intValue != null ? intValue.hashCode() : 0;
     }
 }

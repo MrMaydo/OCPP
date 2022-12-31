@@ -14,26 +14,21 @@ public class DateObject {
         this.dateValue = dateValue;
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof DateObject))
             return false;
-        }
 
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
+        DateObject that = (DateObject) o;
 
-        final DateObject other = (DateObject) obj;
-        if (!Objects.equals(this.dateValue, other.dateValue)) {
-            return false;
-        }
-
-        return true;
+        return Objects.equals(dateValue, that.dateValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateValue);
+        return dateValue != null ? dateValue.hashCode() : 0;
     }
 }

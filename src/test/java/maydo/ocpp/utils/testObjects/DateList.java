@@ -16,16 +16,21 @@ public class DateList {
         this.listValue = listValue;
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof DateList))
+            return false;
+
         DateList dateList = (DateList) o;
+
         return Objects.equals(listValue, dateList.listValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listValue);
+        return listValue != null ? listValue.hashCode() : 0;
     }
 }

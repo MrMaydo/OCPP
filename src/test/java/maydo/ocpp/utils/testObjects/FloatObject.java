@@ -13,26 +13,21 @@ public class FloatObject {
         this.floatValue = floatValue;
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        }
-
-        if (this.getClass() != obj.getClass()) {
+        if (!(o instanceof FloatObject))
             return false;
-        }
 
-        final FloatObject other = (FloatObject) obj;
-        if (Float.compare(this.floatValue, other.floatValue) != 0) {
-            return false;
-        }
+        FloatObject that = (FloatObject) o;
 
-        return true;
+        return Objects.equals(floatValue, that.floatValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(floatValue);
+        return floatValue != null ? floatValue.hashCode() : 0;
     }
 }

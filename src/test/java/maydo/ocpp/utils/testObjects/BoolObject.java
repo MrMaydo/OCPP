@@ -13,26 +13,21 @@ public class BoolObject {
         this.boolValue = boolValue;
     }
 
+
     @Override
-    public int hashCode() {
-        return Objects.hash(boolValue);
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof BoolObject))
+            return false;
+
+        BoolObject that = (BoolObject) o;
+
+        return Objects.equals(boolValue, that.boolValue);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-
-        if (this.getClass() != obj.getClass()) {
-            return false;
-        }
-
-        final BoolObject other = (BoolObject) obj;
-        if (this.boolValue.equals(other.boolValue)) {
-            return false;
-        }
-
-        return true;
+    public int hashCode() {
+        return boolValue != null ? boolValue.hashCode() : 0;
     }
 }

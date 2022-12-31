@@ -16,25 +16,19 @@ public class EnumObject {
 
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof EnumObject))
             return false;
-        }
 
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
+        EnumObject that = (EnumObject) o;
 
-        final EnumObject other = (EnumObject) obj;
-        if (!Objects.equals(this.enumValue, other.enumValue)) {
-            return false;
-        }
-
-        return true;
+        return enumValue == that.enumValue;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(enumValue);
+        return enumValue != null ? enumValue.hashCode() : 0;
     }
 }

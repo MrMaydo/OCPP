@@ -1,5 +1,6 @@
 package maydo.ocpp.utils.testObjects;
 
+import maydo.ocpp.msgDef.DataTypes.AdditionalInfo;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
@@ -47,16 +48,28 @@ public class ComplexObject {
         this.listObject = listObject;
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof ComplexObject))
+            return false;
+
         ComplexObject that = (ComplexObject) o;
-        return Objects.equals(intObject, that.intObject) && Objects.equals(strObject, that.strObject) && Objects.equals(dateObject, that.dateObject) && Objects.equals(listObject, that.listObject);
+
+        if (!Objects.equals(intObject, that.intObject)) return false;
+        if (!Objects.equals(strObject, that.strObject)) return false;
+        if (!Objects.equals(dateObject, that.dateObject)) return false;
+        return Objects.equals(listObject, that.listObject);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(intObject, strObject, dateObject, listObject);
+        int result = intObject != null ? intObject.hashCode() : 0;
+        result = 31 * result + (strObject != null ? strObject.hashCode() : 0);
+        result = 31 * result + (dateObject != null ? dateObject.hashCode() : 0);
+        result = 31 * result + (listObject != null ? listObject.hashCode() : 0);
+        return result;
     }
 }

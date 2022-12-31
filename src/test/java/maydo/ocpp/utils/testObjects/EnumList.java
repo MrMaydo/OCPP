@@ -16,16 +16,21 @@ public class EnumList {
         this.listValue = listValue;
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof EnumList))
+            return false;
+
         EnumList enumList = (EnumList) o;
+
         return Objects.equals(listValue, enumList.listValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listValue);
+        return listValue != null ? listValue.hashCode() : 0;
     }
 }

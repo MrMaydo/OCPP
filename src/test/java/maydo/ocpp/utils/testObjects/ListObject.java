@@ -17,25 +17,19 @@ public class ListObject {
 
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof ListObject))
             return false;
-        }
 
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
+        ListObject that = (ListObject) o;
 
-        final ListObject other = (ListObject) obj;
-        if (!Objects.equals(this.listValue, other.listValue)) {
-            return false;
-        }
-
-        return true;
+        return Objects.equals(listValue, that.listValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listValue);
+        return listValue != null ? listValue.hashCode() : 0;
     }
 }

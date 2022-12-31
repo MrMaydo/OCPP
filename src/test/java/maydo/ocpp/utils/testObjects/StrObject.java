@@ -13,26 +13,21 @@ public class StrObject {
         this.strValue = strValue;
     }
 
+
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o)
             return true;
-        }
-
-        if (this.getClass() != obj.getClass()) {
+        if (!(o instanceof StrObject))
             return false;
-        }
 
-        final StrObject other = (StrObject) obj;
-        if (this.strValue.equals(other.strValue)) {
-            return false;
-        }
+        StrObject strObject = (StrObject) o;
 
-        return true;
+        return Objects.equals(strValue, strObject.strValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(strValue);
+        return strValue != null ? strValue.hashCode() : 0;
     }
 }

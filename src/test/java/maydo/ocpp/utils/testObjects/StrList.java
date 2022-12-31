@@ -15,16 +15,21 @@ public class StrList {
         this.listValue = listValue;
     }
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof StrList))
+            return false;
+
         StrList strList = (StrList) o;
+
         return Objects.equals(listValue, strList.listValue);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(listValue);
+        return listValue != null ? listValue.hashCode() : 0;
     }
 }
