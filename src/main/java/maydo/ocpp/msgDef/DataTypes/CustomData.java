@@ -1,6 +1,7 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
@@ -55,6 +56,17 @@ public class CustomData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+        JsonTools.fromJsonObject(this, jsonObject);
     }
 
     @Override
