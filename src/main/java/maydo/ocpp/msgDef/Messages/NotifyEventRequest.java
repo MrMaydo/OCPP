@@ -1,6 +1,7 @@
 package maydo.ocpp.msgDef.Messages;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.EventData;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -130,6 +131,17 @@ public class NotifyEventRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+        JsonTools.fromJsonObject(this, jsonObject);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPVersionEnum;
@@ -277,6 +278,17 @@ public class NetworkConnectionProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         return JsonTools.toJsonObject(this);
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+        JsonTools.fromJsonObject(this, jsonObject);
     }
 
     @Override
