@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.Enumerations.RecurrencyKindEnum;

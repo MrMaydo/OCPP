@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ControlModeEnum;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
 import maydo.ocpp.msgDef.Enumerations.MobilityNeedsModeEnum;

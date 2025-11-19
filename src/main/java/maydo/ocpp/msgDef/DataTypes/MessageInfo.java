@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
 import maydo.ocpp.msgDef.JsonInterface;

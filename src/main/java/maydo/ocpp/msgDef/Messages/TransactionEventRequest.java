@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.PreconditioningStatusEnum;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;

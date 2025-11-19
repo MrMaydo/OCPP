@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.EventNotificationEnum;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ClearMonitoringResult;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
@@ -95,30 +96,43 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
         this.customData = customData;
     }
 
-    
-
-    
-
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
 
     @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (!(obj instanceof EVAbsolutePriceScheduleEntry))
-                return false;
-            EVAbsolutePriceScheduleEntry that = (EVAbsolutePriceScheduleEntry) obj;
-            return Objects.equals(this.duration, that.duration)
-                    && Objects.equals(this.evPriceRule, that.evPriceRule)
-                    && Objects.equals(this.customData, that.customData) ;
-        }
+    public JsonObject toJsonObject() {
+        return null;
+    }
 
     @Override
-        public int hashCode() {
-            int result = 1;
-            result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-            result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-            result = 31 * result + (this.evPriceRule != null ? this.evPriceRule.hashCode() : 0);
-            return result;
-        }
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof EVAbsolutePriceScheduleEntry))
+            return false;
+        EVAbsolutePriceScheduleEntry that = (EVAbsolutePriceScheduleEntry) obj;
+        return Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.evPriceRule, that.evPriceRule)
+                && Objects.equals(this.customData, that.customData) ;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.evPriceRule != null ? this.evPriceRule.hashCode() : 0);
+        return result;
+    }
 
 }

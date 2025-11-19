@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.AuthorizationData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.UpdateEnum;

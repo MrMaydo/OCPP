@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingStateEnum;
 import maydo.ocpp.msgDef.Enumerations.OperationModeEnum;
 import maydo.ocpp.msgDef.Enumerations.ReasonEnum;

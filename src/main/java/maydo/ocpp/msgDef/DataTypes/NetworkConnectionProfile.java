@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPVersionEnum;
