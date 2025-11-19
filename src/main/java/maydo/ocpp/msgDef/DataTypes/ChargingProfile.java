@@ -3,6 +3,7 @@ package maydo.ocpp.msgDef.DataTypes;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.Enumerations.RecurrencyKindEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class ChargingProfile {
+public class ChargingProfile implements JsonInterface {
 
     /**
      * Id of ChargingProfile. Unique within charging station. Id can have a negative value. This is useful to distinguish charging profiles from an external actor (external constraints) from charging profiles received from CSMS.
@@ -419,6 +420,24 @@ public class ChargingProfile {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

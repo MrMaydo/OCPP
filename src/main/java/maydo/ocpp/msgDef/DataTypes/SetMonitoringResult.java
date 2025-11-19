@@ -2,12 +2,13 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.Enumerations.SetMonitoringStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class SetMonitoringResult {
+public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
@@ -314,6 +315,24 @@ public class SetMonitoringResult {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

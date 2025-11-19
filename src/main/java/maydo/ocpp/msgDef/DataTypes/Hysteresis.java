@@ -1,10 +1,11 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
-public class Hysteresis {
+public class Hysteresis implements JsonInterface {
 
     /**
      * High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
@@ -164,6 +165,24 @@ public class Hysteresis {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
@@ -10,7 +11,7 @@ import java.util.Objects;
  * 
  * 
  */
-public class Variable {
+public class Variable implements JsonInterface {
 
     /**
      * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
@@ -98,6 +99,24 @@ public class Variable {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

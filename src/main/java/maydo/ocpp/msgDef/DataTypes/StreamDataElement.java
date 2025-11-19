@@ -1,11 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class StreamDataElement {
+public class StreamDataElement implements JsonInterface {
 
     /**
      * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
@@ -93,6 +94,24 @@ public class StreamDataElement {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

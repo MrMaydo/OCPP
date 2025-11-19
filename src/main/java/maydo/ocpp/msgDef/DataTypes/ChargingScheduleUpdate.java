@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
@@ -10,7 +11,7 @@ import java.util.Objects;
  * 
  * 
  */
-public class ChargingScheduleUpdate {
+public class ChargingScheduleUpdate implements JsonInterface {
 
     /**
      * Optional only when not required by the _operationMode_, as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency,  LocalLoadBalancing. +
@@ -350,6 +351,24 @@ public class ChargingScheduleUpdate {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

@@ -1,13 +1,14 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 import maydo.ocpp.msgDef.Enumerations.OperationModeEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ChargingSchedulePeriod {
+public class ChargingSchedulePeriod implements JsonInterface {
 
     /**
      * Start of the period, in seconds from the start of schedule. The value of StartPeriod also defines the stop time of the previous period.
@@ -549,6 +550,24 @@ public class ChargingSchedulePeriod {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

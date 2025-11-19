@@ -1,12 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ConsumptionCost {
+public class ConsumptionCost implements JsonInterface {
 
     /**
      * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
@@ -94,6 +95,24 @@ public class ConsumptionCost {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

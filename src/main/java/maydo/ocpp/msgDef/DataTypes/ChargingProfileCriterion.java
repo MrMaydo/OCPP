@@ -1,12 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ChargingProfileCriterion {
+public class ChargingProfileCriterion implements JsonInterface {
 
     /**
      * Defines the purpose of the schedule transferred by this profile
@@ -135,6 +136,24 @@ public class ChargingProfileCriterion {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

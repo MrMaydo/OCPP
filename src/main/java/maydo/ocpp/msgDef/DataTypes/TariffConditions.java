@@ -2,12 +2,13 @@ package maydo.ocpp.msgDef.DataTypes;
 
 import maydo.ocpp.msgDef.Enumerations.DayOfWeekEnum;
 import maydo.ocpp.msgDef.Enumerations.EvseKindEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TariffConditions {
+public class TariffConditions implements JsonInterface {
 
     /**
      * Start time of day in local time. +
@@ -590,6 +591,24 @@ public class TariffConditions {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

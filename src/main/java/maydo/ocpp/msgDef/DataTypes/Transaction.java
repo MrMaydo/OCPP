@@ -3,12 +3,13 @@ package maydo.ocpp.msgDef.DataTypes;
 import maydo.ocpp.msgDef.Enumerations.ChargingStateEnum;
 import maydo.ocpp.msgDef.Enumerations.OperationModeEnum;
 import maydo.ocpp.msgDef.Enumerations.ReasonEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class Transaction {
+public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
@@ -234,6 +235,24 @@ public class Transaction {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

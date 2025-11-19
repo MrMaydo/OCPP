@@ -1,10 +1,11 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
-public class PeriodicEventStreamParams {
+public class PeriodicEventStreamParams implements JsonInterface {
 
     /**
      * Time in seconds after which stream data is sent.
@@ -86,6 +87,24 @@ public class PeriodicEventStreamParams {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

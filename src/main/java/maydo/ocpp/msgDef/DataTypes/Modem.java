@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
@@ -9,7 +10,7 @@ import java.util.Objects;
  * 
  * 
  */
-public class Modem {
+public class Modem implements JsonInterface {
 
     /**
      * This contains the ICCID of the modem’s SIM card.
@@ -91,6 +92,24 @@ public class Modem {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

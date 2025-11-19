@@ -1,12 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class EVAbsolutePriceScheduleEntry {
+public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.

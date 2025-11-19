@@ -3,12 +3,13 @@ package maydo.ocpp.msgDef.DataTypes;
 import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPVersionEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class NetworkConnectionProfile {
+public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Collection of configuration data needed to make a data-connection over a cellular network.
@@ -307,6 +308,24 @@ public class NetworkConnectionProfile {
         this.customData = customData;
     }
 
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
