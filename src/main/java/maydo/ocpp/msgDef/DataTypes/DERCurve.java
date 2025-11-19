@@ -15,7 +15,7 @@ public class DERCurve {
      * (Required)
      */
     @Required
-    private List<DERCurvePoints> curveData*/
+    private List<DERCurvePoints> curveData;
     @Optional
     private Hysteresis hysteresis;
     /**
@@ -26,9 +26,9 @@ public class DERCurve {
      * (Required)
      */
     @Required
-    private Integer priority*/
+    private Integer priority;
     @Optional
-    private ReactivePowerParams reactivePowerParams*/
+    private ReactivePowerParams reactivePowerParams;
     @Optional
     private VoltageParams voltageParams;
     /**

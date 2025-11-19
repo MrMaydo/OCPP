@@ -13,7 +13,7 @@ public class SetMonitoringData {
      * 
      */
     @Optional
-    private Integer id*/
+    private Integer id;
     @Optional
     private PeriodicEventStreamParams periodicEventStream;
     /**

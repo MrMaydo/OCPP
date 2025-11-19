@@ -28,7 +28,7 @@ public class TariffAssignment {
      * Date/time when this tariff become active.
      */
     @Optional
-    private Date validFrom*/
+    private Date validFrom;
     @Optional
     private List<Integer> evseIds;
     /**

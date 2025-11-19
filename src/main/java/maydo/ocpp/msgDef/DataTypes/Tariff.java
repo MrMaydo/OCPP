@@ -15,7 +15,7 @@ public class Tariff {
      * (Required)
      */
     @Required
-    private String tariffId*/
+    private String tariffId;
     @Optional
     private List<MessageContent> description;
     /**
@@ -46,7 +46,7 @@ public class Tariff {
      * 
      */
     @Optional
-    private TariffTime idleTime*/
+    private TariffTime idleTime;
     @Optional
     private TariffFixed fixedFee;
     /**
@@ -54,7 +54,7 @@ public class Tariff {
      * 
      */
     @Optional
-    private TariffTime reservationTime*/
+    private TariffTime reservationTime;
     @Optional
     private TariffFixed reservationFixed;
     /**

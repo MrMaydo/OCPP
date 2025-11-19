@@ -59,7 +59,7 @@ public class MessageInfo {
      * (Required)
      */
     @Required
-    private MessageContent message*/
+    private MessageContent message;
     @Optional
     private List<MessageContent> messageExtra;
     /**

@@ -13,7 +13,7 @@ public class TariffEnergy {
      * (Required)
      */
     @Required
-    private List<TariffEnergyPrice> prices*/
+    private List<TariffEnergyPrice> prices;
     @Optional
     private List<TaxRate> taxRates;
     /**
