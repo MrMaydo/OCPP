@@ -1,26 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.Enumerations.MutabilityEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
+public class VariableAttribute {
 
-/**
- * Attribute data of a variable.
- */
-public class VariableAttribute implements JsonInterface {
-
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Attribute: Actual, MinSet, MaxSet, etc.
      * Defaults to Actual if absent.
@@ -29,8 +16,8 @@ public class VariableAttribute implements JsonInterface {
     private AttributeEnum type = AttributeEnum.fromValue("Actual");
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
      */
     @Optional
     private String value;
@@ -49,18 +36,39 @@ public class VariableAttribute implements JsonInterface {
      */
     @Optional
     private Boolean constant = false;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public VariableAttribute() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param constant
+     *     If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
+     *     .
+     * @param persistent
+     *     If true, value will be persistent across system reboots or power down. Default when omitted is false.
+     *     .
+     * @param value
+     *     Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
+     *     
+     *     The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public VariableAttribute(AttributeEnum type, String value, MutabilityEnum mutability, Boolean persistent, Boolean constant, CustomData customData) {
+        super();
+        this.type = type;
+        this.value = value;
+        this.mutability = mutability;
+        this.persistent = persistent;
+        this.constant = constant;
         this.customData = customData;
     }
 
@@ -82,8 +90,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
      */
     public String getValue() {
         return value;
@@ -91,8 +99,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
      */
     public void setValue(String value) {
         this.value = value;
@@ -140,25 +148,18 @@ public class VariableAttribute implements JsonInterface {
         this.constant = constant;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -168,22 +169,23 @@ public class VariableAttribute implements JsonInterface {
         if (!(obj instanceof VariableAttribute))
             return false;
         VariableAttribute that = (VariableAttribute) obj;
-        return Objects.equals(customData, that.customData)
-                && type == that.type
-                && Objects.equals(value, that.value)
-                && mutability == that.mutability
-                && Objects.equals(persistent, that.persistent)
-                && Objects.equals(constant, that.constant);
+        return Objects.equals(this.constant, that.constant)
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.mutability, that.mutability) 
+                && Objects.equals(this.type, that.type) 
+                && Objects.equals(this.persistent, that.persistent) 
+                && Objects.equals(this.value, that.value);
     }
 
     @Override
     public int hashCode() {
-        int result = (type != null ? type.hashCode() : 0);
-        result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (mutability != null ? mutability.hashCode() : 0);
-        result = 31 * result + (persistent != null ? persistent.hashCode() : 0);
-        result = 31 * result + (constant != null ? constant.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.constant != null ? this.constant.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.mutability != null ? this.mutability.hashCode() : 0);
+        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
+        result = 31 * result + (this.persistent != null ? this.persistent.hashCode() : 0);
+        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
         return result;
     }
 }

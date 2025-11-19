@@ -1,54 +1,38 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingStateEnum;
+import maydo.ocpp.msgDef.Enumerations.OperationModeEnum;
 import maydo.ocpp.msgDef.Enumerations.ReasonEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
+public class Transaction {
 
-/**
- * Transaction
- * urn:x-oca:ocpp:uid:2:233318
- */
-public class Transaction implements JsonInterface {
-
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * This contains the Id of the transaction.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private String transactionId;
     /**
-     * Transaction. State. Transaction_ State_ Code
-     * urn:x-oca:ocpp:uid:1:569419
      * Current charging state, is required when state
-     * has changed.
+     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
      */
     @Optional
     private ChargingStateEnum chargingState;
     /**
-     * Transaction. Time_ Spent_ Charging. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569415
      * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
      */
     @Optional
     private Integer timeSpentCharging;
     /**
-     * Transaction. Stopped_ Reason. EOT_ Reason_ Code
-     * urn:x-oca:ocpp:uid:1:569413
-     * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
+     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
+     * MAY only be omitted when _stoppedReason_ is "Local"
+     * 
+     * 
      */
     @Optional
     private ReasonEnum stoppedReason;
@@ -57,24 +41,64 @@ public class Transaction implements JsonInterface {
      */
     @Optional
     private Integer remoteStartId;
-
+    /**
+     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
+     */
+    @Optional
+    private OperationModeEnum operationMode;
+    /**
+     * *(2.1)* Id of tariff in use for transaction
+     */
+    @Optional
+    private String tariffId;
+    /**
+     * Cost, energy, time or SoC limit for a transaction.
+     */
+    @Optional
+    private TransactionLimit transactionLimit;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Transaction() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param remoteStartId
+     *     The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
+     *     .
+     * @param tariffId
+     *     *(2.1)* Id of tariff in use for transaction
+     *     .
+     * @param transactionId
+     *     This contains the Id of the transaction.
+     *     .
+     * @param timeSpentCharging
+     *     Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public Transaction(String transactionId, ChargingStateEnum chargingState, Integer timeSpentCharging, ReasonEnum stoppedReason, Integer remoteStartId, OperationModeEnum operationMode, String tariffId, TransactionLimit transactionLimit, CustomData customData) {
+        super();
+        this.transactionId = transactionId;
+        this.chargingState = chargingState;
+        this.timeSpentCharging = timeSpentCharging;
+        this.stoppedReason = stoppedReason;
+        this.remoteStartId = remoteStartId;
+        this.operationMode = operationMode;
+        this.tariffId = tariffId;
+        this.transactionLimit = transactionLimit;
         this.customData = customData;
     }
 
     /**
      * This contains the Id of the transaction.
-     * <p>
+     * 
      * (Required)
      */
     public String getTransactionId() {
@@ -83,7 +107,7 @@ public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
-     * <p>
+     * 
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -91,28 +115,22 @@ public class Transaction implements JsonInterface {
     }
 
     /**
-     * Transaction. State. Transaction_ State_ Code
-     * urn:x-oca:ocpp:uid:1:569419
      * Current charging state, is required when state
-     * has changed.
+     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
      */
     public ChargingStateEnum getChargingState() {
         return chargingState;
     }
 
     /**
-     * Transaction. State. Transaction_ State_ Code
-     * urn:x-oca:ocpp:uid:1:569419
      * Current charging state, is required when state
-     * has changed.
+     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
      */
     public void setChargingState(ChargingStateEnum chargingState) {
         this.chargingState = chargingState;
     }
 
     /**
-     * Transaction. Time_ Spent_ Charging. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569415
      * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
      */
     public Integer getTimeSpentCharging() {
@@ -120,8 +138,6 @@ public class Transaction implements JsonInterface {
     }
 
     /**
-     * Transaction. Time_ Spent_ Charging. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569415
      * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
      */
     public void setTimeSpentCharging(Integer timeSpentCharging) {
@@ -129,18 +145,20 @@ public class Transaction implements JsonInterface {
     }
 
     /**
-     * Transaction. Stopped_ Reason. EOT_ Reason_ Code
-     * urn:x-oca:ocpp:uid:1:569413
-     * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
+     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
+     * MAY only be omitted when _stoppedReason_ is "Local"
+     * 
+     * 
      */
     public ReasonEnum getStoppedReason() {
         return stoppedReason;
     }
 
     /**
-     * Transaction. Stopped_ Reason. EOT_ Reason_ Code
-     * urn:x-oca:ocpp:uid:1:569413
-     * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
+     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
+     * MAY only be omitted when _stoppedReason_ is "Local"
+     * 
+     * 
      */
     public void setStoppedReason(ReasonEnum stoppedReason) {
         this.stoppedReason = stoppedReason;
@@ -160,25 +178,60 @@ public class Transaction implements JsonInterface {
         this.remoteStartId = remoteStartId;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
+     */
+    public OperationModeEnum getOperationMode() {
+        return operationMode;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+    /**
+     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
+     */
+    public void setOperationMode(OperationModeEnum operationMode) {
+        this.operationMode = operationMode;
     }
 
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
+    /**
+     * *(2.1)* Id of tariff in use for transaction
+     */
+    public String getTariffId() {
+        return tariffId;
     }
 
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * *(2.1)* Id of tariff in use for transaction
+     */
+    public void setTariffId(String tariffId) {
+        this.tariffId = tariffId;
+    }
+
+    /**
+     * Cost, energy, time or SoC limit for a transaction.
+     */
+    public TransactionLimit getTransactionLimit() {
+        return transactionLimit;
+    }
+
+    /**
+     * Cost, energy, time or SoC limit for a transaction.
+     */
+    public void setTransactionLimit(TransactionLimit transactionLimit) {
+        this.transactionLimit = transactionLimit;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -188,22 +241,29 @@ public class Transaction implements JsonInterface {
         if (!(obj instanceof Transaction))
             return false;
         Transaction that = (Transaction) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(transactionId, that.transactionId)
-                && chargingState == that.chargingState
-                && Objects.equals(timeSpentCharging, that.timeSpentCharging)
-                && stoppedReason == that.stoppedReason
-                && Objects.equals(remoteStartId, that.remoteStartId);
+        return Objects.equals(this.operationMode, that.operationMode)
+                && Objects.equals(this.remoteStartId, that.remoteStartId) 
+                && Objects.equals(this.stoppedReason, that.stoppedReason) 
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.tariffId, that.tariffId) 
+                && Objects.equals(this.transactionLimit, that.transactionLimit) 
+                && Objects.equals(this.transactionId, that.transactionId) 
+                && Objects.equals(this.timeSpentCharging, that.timeSpentCharging) 
+                && Objects.equals(this.chargingState, that.chargingState);
     }
 
     @Override
     public int hashCode() {
-        int result = (transactionId != null ? transactionId.hashCode() : 0);
-        result = 31 * result + (chargingState != null ? chargingState.hashCode() : 0);
-        result = 31 * result + (timeSpentCharging != null ? timeSpentCharging.hashCode() : 0);
-        result = 31 * result + (stoppedReason != null ? stoppedReason.hashCode() : 0);
-        result = 31 * result + (remoteStartId != null ? remoteStartId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.operationMode != null ? this.operationMode.hashCode() : 0);
+        result = 31 * result + (this.remoteStartId != null ? this.remoteStartId.hashCode() : 0);
+        result = 31 * result + (this.stoppedReason != null ? this.stoppedReason.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
+        result = 31 * result + (this.transactionLimit != null ? this.transactionLimit.hashCode() : 0);
+        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
+        result = 31 * result + (this.timeSpentCharging != null ? this.timeSpentCharging.hashCode() : 0);
+        result = 31 * result + (this.chargingState != null ? this.chargingState.hashCode() : 0);
         return result;
     }
 }

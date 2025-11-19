@@ -1,79 +1,95 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.Enumerations.GetVariableStatusEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Class to hold results of GetVariables request.
- */
-public class GetVariableResult implements JsonInterface {
+public class GetVariableResult {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Element providing more information about the status.
-     */
-    @Optional
-    private StatusInfo attributeStatusInfo;
-    /**
-     * Result status of getting the variable.
-     * <p>
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private GetVariableStatusEnum attributeStatus;
     /**
-     * Attribute type for which value is requested. When absent, default Actual is assumed.
+     * Element providing more information about the status.
      */
+    @Optional
+    private StatusInfo attributeStatusInfo;
     @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Value of requested attribute type of component-variable. This field can only be empty when the given status is NOT accepted.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * 
      */
     @Optional
     private String attributeValue;
     /**
      * A physical or logical component
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Variable variable;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetVariableResult() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param attributeValue
+     *     Value of requested attribute type of component-variable. This field can only be empty when the given status is NOT accepted.
+     *     
+     *     The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     *     
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public GetVariableResult(GetVariableStatusEnum attributeStatus, StatusInfo attributeStatusInfo, AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
+        super();
+        this.attributeStatus = attributeStatus;
+        this.attributeStatusInfo = attributeStatusInfo;
+        this.attributeType = attributeType;
+        this.attributeValue = attributeValue;
+        this.component = component;
+        this.variable = variable;
         this.customData = customData;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public GetVariableStatusEnum getAttributeStatus() {
+        return attributeStatus;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public void setAttributeStatus(GetVariableStatusEnum attributeStatus) {
+        this.attributeStatus = attributeStatus;
     }
 
     /**
@@ -90,44 +106,19 @@ public class GetVariableResult implements JsonInterface {
         this.attributeStatusInfo = attributeStatusInfo;
     }
 
-    /**
-     * Result status of getting the variable.
-     * <p>
-     * <p>
-     * (Required)
-     */
-    public GetVariableStatusEnum getAttributeStatus() {
-        return attributeStatus;
-    }
-
-    /**
-     * Result status of getting the variable.
-     * <p>
-     * <p>
-     * (Required)
-     */
-    public void setAttributeStatus(GetVariableStatusEnum attributeStatus) {
-        this.attributeStatus = attributeStatus;
-    }
-
-    /**
-     * Attribute type for which value is requested. When absent, default Actual is assumed.
-     */
     public AttributeEnum getAttributeType() {
         return attributeType;
     }
 
-    /**
-     * Attribute type for which value is requested. When absent, default Actual is assumed.
-     */
     public void setAttributeType(AttributeEnum attributeType) {
         this.attributeType = attributeType;
     }
 
     /**
      * Value of requested attribute type of component-variable. This field can only be empty when the given status is NOT accepted.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * 
      */
     public String getAttributeValue() {
         return attributeValue;
@@ -135,8 +126,9 @@ public class GetVariableResult implements JsonInterface {
 
     /**
      * Value of requested attribute type of component-variable. This field can only be empty when the given status is NOT accepted.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * 
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * 
      */
     public void setAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
@@ -144,7 +136,7 @@ public class GetVariableResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * <p>
+     * 
      * (Required)
      */
     public Component getComponent() {
@@ -153,7 +145,7 @@ public class GetVariableResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * <p>
+     * 
      * (Required)
      */
     public void setComponent(Component component) {
@@ -162,7 +154,7 @@ public class GetVariableResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * <p>
+     * 
      * (Required)
      */
     public Variable getVariable() {
@@ -171,32 +163,25 @@ public class GetVariableResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * <p>
+     * 
      * (Required)
      */
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -206,24 +191,25 @@ public class GetVariableResult implements JsonInterface {
         if (!(obj instanceof GetVariableResult))
             return false;
         GetVariableResult that = (GetVariableResult) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(attributeStatusInfo, that.attributeStatusInfo)
-                && attributeStatus == that.attributeStatus
-                && attributeType == that.attributeType
-                && Objects.equals(attributeValue, that.attributeValue)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable);
+        return Objects.equals(this.attributeStatus, that.attributeStatus)
+                && Objects.equals(this.attributeStatusInfo, that.attributeStatusInfo) 
+                && Objects.equals(this.component, that.component) 
+                && Objects.equals(this.attributeValue, that.attributeValue) 
+                && Objects.equals(this.attributeType, that.attributeType) 
+                && Objects.equals(this.variable, that.variable) 
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (attributeStatusInfo != null ? attributeStatusInfo.hashCode() : 0);
-        result = 31 * result + (attributeStatus != null ? attributeStatus.hashCode() : 0);
-        result = 31 * result + (attributeType != null ? attributeType.hashCode() : 0);
-        result = 31 * result + (attributeValue != null ? attributeValue.hashCode() : 0);
-        result = 31 * result + (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.attributeStatus != null ? this.attributeStatus.hashCode() : 0);
+        result = 31 * result + (this.attributeStatusInfo != null ? this.attributeStatusInfo.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.attributeValue != null ? this.attributeValue.hashCode() : 0);
+        result = 31 * result + (this.attributeType != null ? this.attributeType.hashCode() : 0);
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

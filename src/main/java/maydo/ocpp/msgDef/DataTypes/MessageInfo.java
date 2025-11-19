@@ -1,70 +1,46 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
+public class MessageInfo {
 
-/**
- * Message_ Info
- * urn:x-enexis:ecdm:uid:2:233264
- * Contains message details, for a message to be displayed on a Charging Station.
- */
-public class MessageInfo implements JsonInterface {
-
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * A physical or logical component
      */
     @Optional
     private Component display;
     /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
-     * Master resource identifier, unique within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * <p>
+     * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
+     * 
      * (Required)
      */
     @Required
     private Integer id;
     /**
-     * Message_ Info. Priority. Message_ Priority_ Code
-     * urn:x-enexis:ecdm:uid:1:569253
      * With what priority should this message be shown
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private MessagePriorityEnum priority;
     /**
-     * Message_ Info. State. Message_ State_ Code
-     * urn:x-enexis:ecdm:uid:1:569254
      * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
      */
     @Optional
     private MessageStateEnum state;
     /**
-     * Message_ Info. Start. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569256
      * From what date-time should this message be shown. If omitted: directly.
      */
     @Optional
     private Date startDateTime;
     /**
-     * Message_ Info. End. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569257
      * Until what date-time should this message be shown, after this date/time this message SHALL be removed.
      */
     @Optional
@@ -77,27 +53,55 @@ public class MessageInfo implements JsonInterface {
     @Optional
     private String transactionId;
     /**
-     * Message_ Content
-     * urn:x-enexis:ecdm:uid:2:234490
      * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     @Required
-    private MessageContent message;
-
+    private MessageContent message*/
+    @Optional
+    private List<MessageContent> messageExtra;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public MessageInfo() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param startDateTime
+     *     From what date-time should this message be shown. If omitted: directly.
+     *     .
+     * @param id
+     *     Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
+     *     .
+     * @param endDateTime
+     *     Until what date-time should this message be shown, after this date/time this message SHALL be removed.
+     *     .
+     * @param transactionId
+     *     During which transaction shall this message be shown.
+     *     Message SHALL be removed by the Charging Station after transaction has
+     *     ended.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public MessageInfo(Component display, Integer id, MessagePriorityEnum priority, MessageStateEnum state, Date startDateTime, Date endDateTime, String transactionId, MessageContent message, List<MessageContent> messageExtra, CustomData customData) {
+        super();
+        this.display = display;
+        this.id = id;
+        this.priority = priority;
+        this.state = state;
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.transactionId = transactionId;
+        this.message = message;
+        this.messageExtra = messageExtra;
         this.customData = customData;
     }
 
@@ -116,10 +120,8 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
-     * Master resource identifier, unique within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * <p>
+     * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
+     * 
      * (Required)
      */
     public Integer getId() {
@@ -127,10 +129,8 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
-     * Master resource identifier, unique within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * <p>
+     * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
+     * 
      * (Required)
      */
     public void setId(Integer id) {
@@ -138,10 +138,8 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. Priority. Message_ Priority_ Code
-     * urn:x-enexis:ecdm:uid:1:569253
      * With what priority should this message be shown
-     * <p>
+     * 
      * (Required)
      */
     public MessagePriorityEnum getPriority() {
@@ -149,10 +147,8 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. Priority. Message_ Priority_ Code
-     * urn:x-enexis:ecdm:uid:1:569253
      * With what priority should this message be shown
-     * <p>
+     * 
      * (Required)
      */
     public void setPriority(MessagePriorityEnum priority) {
@@ -160,8 +156,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. State. Message_ State_ Code
-     * urn:x-enexis:ecdm:uid:1:569254
      * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
      */
     public MessageStateEnum getState() {
@@ -169,8 +163,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. State. Message_ State_ Code
-     * urn:x-enexis:ecdm:uid:1:569254
      * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
      */
     public void setState(MessageStateEnum state) {
@@ -178,8 +170,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. Start. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569256
      * From what date-time should this message be shown. If omitted: directly.
      */
     public Date getStartDateTime() {
@@ -187,8 +177,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. Start. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569256
      * From what date-time should this message be shown. If omitted: directly.
      */
     public void setStartDateTime(Date startDateTime) {
@@ -196,8 +184,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. End. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569257
      * Until what date-time should this message be shown, after this date/time this message SHALL be removed.
      */
     public Date getEndDateTime() {
@@ -205,8 +191,6 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Info. End. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569257
      * Until what date-time should this message be shown, after this date/time this message SHALL be removed.
      */
     public void setEndDateTime(Date endDateTime) {
@@ -232,11 +216,9 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Content
-     * urn:x-enexis:ecdm:uid:2:234490
      * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public MessageContent getMessage() {
@@ -244,36 +226,35 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * Message_ Content
-     * urn:x-enexis:ecdm:uid:2:234490
      * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public void setMessage(MessageContent message) {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    public List<MessageContent> getMessageExtra() {
+        return messageExtra;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+    public void setMessageExtra(List<MessageContent> messageExtra) {
+        this.messageExtra = messageExtra;
     }
 
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -283,28 +264,31 @@ public class MessageInfo implements JsonInterface {
         if (!(obj instanceof MessageInfo))
             return false;
         MessageInfo that = (MessageInfo) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(display, that.display)
-                && Objects.equals(id, that.id)
-                && priority == that.priority
-                && state == that.state
-                && Objects.equals(startDateTime, that.startDateTime)
-                && Objects.equals(endDateTime, that.endDateTime)
-                && Objects.equals(transactionId, that.transactionId)
-                && Objects.equals(message, that.message);
+        return Objects.equals(this.messageExtra, that.messageExtra)
+                && Objects.equals(this.startDateTime, that.startDateTime) 
+                && Objects.equals(this.display, that.display) 
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.state, that.state) 
+                && Objects.equals(this.priority, that.priority) 
+                && Objects.equals(this.endDateTime, that.endDateTime) 
+                && Objects.equals(this.message, that.message) 
+                && Objects.equals(this.transactionId, that.transactionId);
     }
 
     @Override
     public int hashCode() {
-        int result = (display != null ? display.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (priority != null ? priority.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + (startDateTime != null ? startDateTime.hashCode() : 0);
-        result = 31 * result + (endDateTime != null ? endDateTime.hashCode() : 0);
-        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
-        result = 31 * result + (message != null ? message.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.messageExtra != null ? this.messageExtra.hashCode() : 0);
+        result = 31 * result + (this.startDateTime != null ? this.startDateTime.hashCode() : 0);
+        result = 31 * result + (this.display != null ? this.display.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.state != null ? this.state.hashCode() : 0);
+        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
+        result = 31 * result + (this.endDateTime != null ? this.endDateTime.hashCode() : 0);
+        result = 31 * result + (this.message != null ? this.message.hashCode() : 0);
+        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
         return result;
     }
 }

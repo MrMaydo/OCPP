@@ -1,56 +1,130 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-
-/**
- * Sales_ Tariff
- * urn:x-oca:ocpp:uid:2:233272
- * NOTE: This dataType is based on dataTypes from &lt;&lt;ref-ISOIEC15118-2,ISO 15118-2&gt;&gt;.
- */
-public class SalesTariff implements JsonInterface {
+public class SalesTariff {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
      * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Integer id;
     /**
-     * Sales_ Tariff. Sales. Tariff_ Description
-     * urn:x-oca:ocpp:uid:1:569283
      * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
      */
     @Optional
     private String salesTariffDescription;
     /**
-     * Sales_ Tariff. Num_ E_ Price_ Levels. Counter
-     * urn:x-oca:ocpp:uid:1:569284
      * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
      */
     @Optional
     private Integer numEPriceLevels;
     /**
+     * 
      * (Required)
      */
     @Required
-    private List<SalesTariffEntry> salesTariffEntry = null;
+    private List<SalesTariffEntry> salesTariffEntry;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SalesTariff() {
+    }
+
+    /**
+     * 
+     * @param salesTariffDescription
+     *     A human readable title/short description of the sales tariff e.g. for HMI display purposes.
+     *     .
+     * @param numEPriceLevels
+     *     Defines the overall number of distinct price levels used across all provided SalesTariff elements.
+     *     .
+     * @param id
+     *     SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
+     *     .
+     */
+    public SalesTariff(Integer id, String salesTariffDescription, Integer numEPriceLevels, List<SalesTariffEntry> salesTariffEntry, CustomData customData) {
+        super();
+        this.id = id;
+        this.salesTariffDescription = salesTariffDescription;
+        this.numEPriceLevels = numEPriceLevels;
+        this.salesTariffEntry = salesTariffEntry;
+        this.customData = customData;
+    }
+
+    /**
+     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
+     * 
+     * (Required)
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
+     * 
+     * (Required)
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
+     */
+    public String getSalesTariffDescription() {
+        return salesTariffDescription;
+    }
+
+    /**
+     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
+     */
+    public void setSalesTariffDescription(String salesTariffDescription) {
+        this.salesTariffDescription = salesTariffDescription;
+    }
+
+    /**
+     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
+     */
+    public Integer getNumEPriceLevels() {
+        return numEPriceLevels;
+    }
+
+    /**
+     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
+     */
+    public void setNumEPriceLevels(Integer numEPriceLevels) {
+        this.numEPriceLevels = numEPriceLevels;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public List<SalesTariffEntry> getSalesTariffEntry() {
+        return salesTariffEntry;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public void setSalesTariffEntry(List<SalesTariffEntry> salesTariffEntry) {
+        this.salesTariffEntry = salesTariffEntry;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -66,99 +140,6 @@ public class SalesTariff implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
-     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
-     * (Required)
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Identified_ Object. MRID. Numeric_ Identifier
-     * urn:x-enexis:ecdm:uid:1:569198
-     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
-     * (Required)
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * Sales_ Tariff. Sales. Tariff_ Description
-     * urn:x-oca:ocpp:uid:1:569283
-     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     */
-    public String getSalesTariffDescription() {
-        return salesTariffDescription;
-    }
-
-    /**
-     * Sales_ Tariff. Sales. Tariff_ Description
-     * urn:x-oca:ocpp:uid:1:569283
-     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     */
-    public void setSalesTariffDescription(String salesTariffDescription) {
-        this.salesTariffDescription = salesTariffDescription;
-    }
-
-    /**
-     * Sales_ Tariff. Num_ E_ Price_ Levels. Counter
-     * urn:x-oca:ocpp:uid:1:569284
-     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     */
-    public Integer getNumEPriceLevels() {
-        return numEPriceLevels;
-    }
-
-    /**
-     * Sales_ Tariff. Num_ E_ Price_ Levels. Counter
-     * urn:x-oca:ocpp:uid:1:569284
-     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     */
-    public void setNumEPriceLevels(Integer numEPriceLevels) {
-        this.numEPriceLevels = numEPriceLevels;
-    }
-
-    /**
-     * (Required)
-     */
-    public List<SalesTariffEntry> getSalesTariffEntry() {
-        return salesTariffEntry;
-    }
-
-    /**
-     * (Required)
-     */
-    public void setSalesTariffEntry(List<SalesTariffEntry> salesTariffEntry) {
-        this.salesTariffEntry = salesTariffEntry;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -166,20 +147,21 @@ public class SalesTariff implements JsonInterface {
         if (!(obj instanceof SalesTariff))
             return false;
         SalesTariff that = (SalesTariff) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id)
-                && Objects.equals(salesTariffDescription, that.salesTariffDescription)
-                && Objects.equals(numEPriceLevels, that.numEPriceLevels)
-                && Objects.equals(salesTariffEntry, that.salesTariffEntry);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.salesTariffEntry, that.salesTariffEntry) 
+                && Objects.equals(this.salesTariffDescription, that.salesTariffDescription) 
+                && Objects.equals(this.numEPriceLevels, that.numEPriceLevels);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (salesTariffDescription != null ? salesTariffDescription.hashCode() : 0);
-        result = 31 * result + (numEPriceLevels != null ? numEPriceLevels.hashCode() : 0);
-        result = 31 * result + (salesTariffEntry != null ? salesTariffEntry.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.salesTariffEntry != null ? this.salesTariffEntry.hashCode() : 0);
+        result = 31 * result + (this.salesTariffDescription != null ? this.salesTariffDescription.hashCode() : 0);
+        result = 31 * result + (this.numEPriceLevels != null ? this.numEPriceLevels.hashCode() : 0);
         return result;
     }
 }

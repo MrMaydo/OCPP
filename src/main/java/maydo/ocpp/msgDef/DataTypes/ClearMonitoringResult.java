@@ -1,34 +1,25 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ClearMonitoringStatusEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-public class ClearMonitoringResult implements JsonInterface {
+public class ClearMonitoringResult {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     @Required
     private ClearMonitoringStatusEnum status;
     /**
      * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     @Required
@@ -38,25 +29,37 @@ public class ClearMonitoringResult implements JsonInterface {
      */
     @Optional
     private StatusInfo statusInfo;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ClearMonitoringResult() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param id
+     *     Id of the monitor of which a clear was requested.
+     *     
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public ClearMonitoringResult(ClearMonitoringStatusEnum status, Integer id, StatusInfo statusInfo, CustomData customData) {
+        super();
+        this.status = status;
+        this.id = id;
+        this.statusInfo = statusInfo;
         this.customData = customData;
     }
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public ClearMonitoringStatusEnum getStatus() {
@@ -65,8 +68,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public void setStatus(ClearMonitoringStatusEnum status) {
@@ -75,8 +78,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public Integer getId() {
@@ -85,8 +88,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public void setId(Integer id) {
@@ -107,25 +110,18 @@ public class ClearMonitoringResult implements JsonInterface {
         this.statusInfo = statusInfo;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -135,18 +131,19 @@ public class ClearMonitoringResult implements JsonInterface {
         if (!(obj instanceof ClearMonitoringResult))
             return false;
         ClearMonitoringResult that = (ClearMonitoringResult) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(id, that.id)
-                && Objects.equals(statusInfo, that.statusInfo);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

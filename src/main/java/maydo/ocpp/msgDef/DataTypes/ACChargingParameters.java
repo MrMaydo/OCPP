@@ -1,63 +1,205 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
 /**
- * AC_ Charging_ Parameters
- * urn:x-oca:ocpp:uid:2:233250
- * EV AC charging parameters.
+ * EV AC charging parameters for ISO 15118-2
+ * 
+ * 
+ * 
  */
-public class ACChargingParameters implements JsonInterface {
+public class ACChargingParameters {
 
+    /**
+     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
+     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     * 
+     * 
+     * (Required)
+     */
+    @Required
+    private Float energyAmount;
+    /**
+     * Minimum current (amps) supported by the electric vehicle (per phase).
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
+     * 
+     * 
+     * (Required)
+     */
+    @Required
+    private Float evMinCurrent;
+    /**
+     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
+     * 
+     * 
+     * (Required)
+     */
+    @Required
+    private Float evMaxCurrent;
+    /**
+     * Maximum voltage supported by the electric vehicle.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
+     * 
+     * 
+     * (Required)
+     */
+    @Required
+    private Float evMaxVoltage;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
+
     /**
-     * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
-     * urn:x-oca:ocpp:uid:1:569211
+     * No args constructor for use in serialization
+     */
+    public ACChargingParameters() {
+    }
+
+    /**
+     * 
+     * @param evMaxCurrent
+     *     Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
+     *     Relates to: +
+     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
+     *     
+     *     .
+     * @param evMinCurrent
+     *     Minimum current (amps) supported by the electric vehicle (per phase).
+     *     Relates to: +
+     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
+     *     
+     *     .
+     * @param evMaxVoltage
+     *     Maximum voltage supported by the electric vehicle.
+     *     Relates to: +
+     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
+     *     
+     *     .
+     * @param energyAmount
+     *     Amount of energy requested (in Wh). This includes energy required for preconditioning.
+     *     Relates to: +
+     *     *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
+     *     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     *     
+     *     .
+     */
+    public ACChargingParameters(Float energyAmount, Float evMinCurrent, Float evMaxCurrent, Float evMaxVoltage, CustomData customData) {
+        super();
+        this.energyAmount = energyAmount;
+        this.evMinCurrent = evMinCurrent;
+        this.evMaxCurrent = evMaxCurrent;
+        this.evMaxVoltage = evMaxVoltage;
+        this.customData = customData;
+    }
+
+    /**
      * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * <p>
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
+     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     * 
+     * 
      * (Required)
      */
-    @Required
-    private Integer energyAmount;
+    public Float getEnergyAmount() {
+        return energyAmount;
+    }
+
     /**
-     * AC_ Charging_ Parameters. EV_ Min. Current
-     * urn:x-oca:ocpp:uid:1:569212
+     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
+     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     * 
+     * 
+     * (Required)
+     */
+    public void setEnergyAmount(Float energyAmount) {
+        this.energyAmount = energyAmount;
+    }
+
+    /**
      * Minimum current (amps) supported by the electric vehicle (per phase).
-     * <p>
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
+     * 
+     * 
      * (Required)
      */
-    @Required
-    private Integer evMinCurrent;
+    public Float getEvMinCurrent() {
+        return evMinCurrent;
+    }
+
     /**
-     * AC_ Charging_ Parameters. EV_ Max. Current
-     * urn:x-oca:ocpp:uid:1:569213
+     * Minimum current (amps) supported by the electric vehicle (per phase).
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
+     * 
+     * 
+     * (Required)
+     */
+    public void setEvMinCurrent(Float evMinCurrent) {
+        this.evMinCurrent = evMinCurrent;
+    }
+
+    /**
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * <p>
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
+     * 
+     * 
      * (Required)
      */
-    @Required
-    private Integer evMaxCurrent;
+    public Float getEvMaxCurrent() {
+        return evMaxCurrent;
+    }
+
     /**
-     * AC_ Charging_ Parameters. EV_ Max. Voltage
-     * urn:x-oca:ocpp:uid:1:569214
-     * Maximum voltage supported by the electric vehicle
-     * <p>
+     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
+     * 
+     * 
      * (Required)
      */
-    @Required
-    private Integer evMaxVoltage;
+    public void setEvMaxCurrent(Float evMaxCurrent) {
+        this.evMaxCurrent = evMaxCurrent;
+    }
+
+    /**
+     * Maximum voltage supported by the electric vehicle.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
+     * 
+     * 
+     * (Required)
+     */
+    public Float getEvMaxVoltage() {
+        return evMaxVoltage;
+    }
+
+    /**
+     * Maximum voltage supported by the electric vehicle.
+     * Relates to: +
+     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
+     * 
+     * 
+     * (Required)
+     */
+    public void setEvMaxVoltage(Float evMaxVoltage) {
+        this.evMaxVoltage = evMaxVoltage;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -73,115 +215,6 @@ public class ACChargingParameters implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
-     * urn:x-oca:ocpp:uid:1:569211
-     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * <p>
-     * (Required)
-     */
-    public Integer getEnergyAmount() {
-        return energyAmount;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. Energy_ Amount. Energy_ Amount
-     * urn:x-oca:ocpp:uid:1:569211
-     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * <p>
-     * (Required)
-     */
-    public void setEnergyAmount(Integer energyAmount) {
-        this.energyAmount = energyAmount;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Min. Current
-     * urn:x-oca:ocpp:uid:1:569212
-     * Minimum current (amps) supported by the electric vehicle (per phase).
-     * <p>
-     * (Required)
-     */
-    public Integer getEvMinCurrent() {
-        return evMinCurrent;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Min. Current
-     * urn:x-oca:ocpp:uid:1:569212
-     * Minimum current (amps) supported by the electric vehicle (per phase).
-     * <p>
-     * (Required)
-     */
-    public void setEvMinCurrent(Integer evMinCurrent) {
-        this.evMinCurrent = evMinCurrent;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Max. Current
-     * urn:x-oca:ocpp:uid:1:569213
-     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * <p>
-     * (Required)
-     */
-    public Integer getEvMaxCurrent() {
-        return evMaxCurrent;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Max. Current
-     * urn:x-oca:ocpp:uid:1:569213
-     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * <p>
-     * (Required)
-     */
-    public void setEvMaxCurrent(Integer evMaxCurrent) {
-        this.evMaxCurrent = evMaxCurrent;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Max. Voltage
-     * urn:x-oca:ocpp:uid:1:569214
-     * Maximum voltage supported by the electric vehicle
-     * <p>
-     * (Required)
-     */
-    public Integer getEvMaxVoltage() {
-        return evMaxVoltage;
-    }
-
-    /**
-     * AC_ Charging_ Parameters. EV_ Max. Voltage
-     * urn:x-oca:ocpp:uid:1:569214
-     * Maximum voltage supported by the electric vehicle
-     * <p>
-     * (Required)
-     */
-    public void setEvMaxVoltage(Integer evMaxVoltage) {
-        this.evMaxVoltage = evMaxVoltage;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -189,20 +222,21 @@ public class ACChargingParameters implements JsonInterface {
         if (!(obj instanceof ACChargingParameters))
             return false;
         ACChargingParameters that = (ACChargingParameters) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(energyAmount, that.energyAmount)
-                && Objects.equals(evMinCurrent, that.evMinCurrent)
-                && Objects.equals(evMaxCurrent, that.evMaxCurrent)
-                && Objects.equals(evMaxVoltage, that.evMaxVoltage);
+        return Objects.equals(this.energyAmount, that.energyAmount)
+                && Objects.equals(this.evMaxCurrent, that.evMaxCurrent)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.evMinCurrent, that.evMinCurrent)
+                && Objects.equals(this.evMaxVoltage, that.evMaxVoltage);
     }
 
     @Override
     public int hashCode() {
-        int result = (energyAmount != null ? energyAmount.hashCode() : 0);
-        result = 31 * result + (evMinCurrent != null ? evMinCurrent.hashCode() : 0);
-        result = 31 * result + (evMaxCurrent != null ? evMaxCurrent.hashCode() : 0);
-        result = 31 * result + (evMaxVoltage != null ? evMaxVoltage.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.energyAmount != null ? this.energyAmount.hashCode() : 0);
+        result = 31 * result + (this.evMaxCurrent != null ? this.evMaxCurrent.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.evMinCurrent != null ? this.evMinCurrent.hashCode() : 0);
+        result = 31 * result + (this.evMaxVoltage != null ? this.evMaxVoltage.hashCode() : 0);
         return result;
     }
 }

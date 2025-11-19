@@ -1,35 +1,25 @@
 package maydo.ocpp.msgDef.DataTypes;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
 /**
  * A physical or logical component
+ * 
+ * 
  */
-public class Component implements JsonInterface {
+public class Component {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     @Optional
     private EVSE evse;
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -39,24 +29,36 @@ public class Component implements JsonInterface {
      */
     @Optional
     private String instance;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Component() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param instance
+     *     Name of instance in case the component exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
+     *     .
+     * @param name
+     *     Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public Component(EVSE evse, String name, String instance, CustomData customData) {
+        super();
+        this.evse = evse;
+        this.name = name;
+        this.instance = instance;
         this.customData = customData;
     }
 
     /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     public EVSE getEvse() {
@@ -64,8 +66,6 @@ public class Component implements JsonInterface {
     }
 
     /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     public void setEvse(EVSE evse) {
@@ -74,7 +74,7 @@ public class Component implements JsonInterface {
 
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
+     * 
      * (Required)
      */
     public String getName() {
@@ -83,7 +83,7 @@ public class Component implements JsonInterface {
 
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
+     * 
      * (Required)
      */
     public void setName(String name) {
@@ -104,25 +104,18 @@ public class Component implements JsonInterface {
         this.instance = instance;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -132,18 +125,19 @@ public class Component implements JsonInterface {
         if (!(obj instanceof Component))
             return false;
         Component that = (Component) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(evse, that.evse)
-                && Objects.equals(name, that.name)
-                && Objects.equals(instance, that.instance);
+        return Objects.equals(this.name, that.name)
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.instance, that.instance) 
+                && Objects.equals(this.evse, that.evse);
     }
 
     @Override
     public int hashCode() {
-        int result = (evse != null ? evse.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (instance != null ? instance.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.instance != null ? this.instance.hashCode() : 0);
+        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
         return result;
     }
 }
