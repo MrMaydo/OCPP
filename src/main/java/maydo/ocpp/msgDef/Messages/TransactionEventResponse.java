@@ -4,12 +4,13 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdTokenInfo;
 import maydo.ocpp.msgDef.DataTypes.MessageContent;
 import maydo.ocpp.msgDef.DataTypes.TransactionLimit;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.List;
 import java.util.Objects;
 
-public class TransactionEventResponse {
+public class TransactionEventResponse implements JsonInterface {
 
     /**
      * When _eventType_ of TransactionEventRequest is Updated, then this value contains the running cost. When _eventType_ of TransactionEventRequest is Ended, then this contains the final total cost of this transaction, including taxes, in the currency configured with the Configuration Variable: Currency. Absence of this value does not imply that the transaction was free. To indicate a free transaction, the CSMS SHALL send a value of 0.00.
@@ -166,6 +167,24 @@ public class TransactionEventResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

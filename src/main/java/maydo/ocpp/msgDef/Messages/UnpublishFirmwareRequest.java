@@ -1,12 +1,13 @@
 package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class UnpublishFirmwareRequest {
+public class UnpublishFirmwareRequest implements JsonInterface {
 
     /**
      * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
@@ -69,6 +70,24 @@ public class UnpublishFirmwareRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

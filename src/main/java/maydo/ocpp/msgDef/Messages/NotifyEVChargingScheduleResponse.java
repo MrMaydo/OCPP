@@ -3,12 +3,13 @@ package maydo.ocpp.msgDef.Messages;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.GenericStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class NotifyEVChargingScheduleResponse {
+public class NotifyEVChargingScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply any approval of the charging schedule.
@@ -85,6 +86,24 @@ public class NotifyEVChargingScheduleResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

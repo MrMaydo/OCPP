@@ -3,12 +3,13 @@ package maydo.ocpp.msgDef.Messages;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.GetDisplayMessagesStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class GetDisplayMessagesResponse {
+public class GetDisplayMessagesResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station has Display Messages that match the request criteria in the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt;
@@ -85,6 +86,24 @@ public class GetDisplayMessagesResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

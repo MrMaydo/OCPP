@@ -5,13 +5,14 @@ import maydo.ocpp.msgDef.DataTypes.IdTokenInfo;
 import maydo.ocpp.msgDef.DataTypes.Tariff;
 import maydo.ocpp.msgDef.Enumerations.AuthorizeCertificateStatusEnum;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class AuthorizeResponse {
+public class AuthorizeResponse implements JsonInterface {
 
     /**
      * Contains status information about an identifier.
@@ -178,6 +179,24 @@ public class AuthorizeResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

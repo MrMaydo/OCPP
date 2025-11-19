@@ -3,13 +3,14 @@ package maydo.ocpp.msgDef.Messages;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class GetDisplayMessagesRequest {
+public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
@@ -139,6 +140,24 @@ public class GetDisplayMessagesRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

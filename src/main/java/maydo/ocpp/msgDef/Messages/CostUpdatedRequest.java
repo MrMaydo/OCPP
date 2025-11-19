@@ -1,12 +1,13 @@
 package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class CostUpdatedRequest {
+public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
@@ -106,6 +107,24 @@ public class CostUpdatedRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

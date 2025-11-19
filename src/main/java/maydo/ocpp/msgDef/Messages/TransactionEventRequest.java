@@ -4,6 +4,7 @@ import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.PreconditioningStatusEnum;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;
 import maydo.ocpp.msgDef.Enumerations.TriggerReasonEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class TransactionEventRequest {
+public class TransactionEventRequest implements JsonInterface {
 
     /**
      * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
@@ -412,6 +413,24 @@ public class TransactionEventRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

@@ -3,12 +3,13 @@ package maydo.ocpp.msgDef.Messages;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.ResetStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class ResetResponse {
+public class ResetResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the reset.
@@ -85,6 +86,24 @@ public class ResetResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

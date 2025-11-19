@@ -2,12 +2,13 @@ package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.OCSPRequestData;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class GetCertificateStatusRequest {
+public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
      * Information about a certificate for an OCSP check.
@@ -64,6 +65,24 @@ public class GetCertificateStatusRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

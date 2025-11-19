@@ -2,13 +2,14 @@ package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.ChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ReportChargingProfilesRequest {
+public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
@@ -175,6 +176,24 @@ public class ReportChargingProfilesRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

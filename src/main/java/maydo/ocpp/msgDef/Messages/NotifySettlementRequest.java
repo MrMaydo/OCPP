@@ -3,13 +3,14 @@ package maydo.ocpp.msgDef.Messages;
 import maydo.ocpp.msgDef.DataTypes.Address;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.PaymentStatusEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class NotifySettlementRequest {
+public class NotifySettlementRequest implements JsonInterface {
 
     /**
      * The _transactionId_ that the settlement belongs to. Can be empty if the payment transaction is canceled prior to the start of the OCPP transaction.
@@ -310,6 +311,24 @@ public class NotifySettlementRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

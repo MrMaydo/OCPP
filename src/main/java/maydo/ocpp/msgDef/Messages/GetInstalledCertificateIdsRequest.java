@@ -2,12 +2,13 @@ package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.GetCertificateIdUseEnum;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.List;
 import java.util.Objects;
 
-public class GetInstalledCertificateIdsRequest {
+public class GetInstalledCertificateIdsRequest implements JsonInterface {
 
     /**
      * Indicates the type of certificates requested. When omitted, all certificate types are requested.
@@ -64,6 +65,24 @@ public class GetInstalledCertificateIdsRequest {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override

@@ -2,12 +2,13 @@ package maydo.ocpp.msgDef.Messages;
 
 import maydo.ocpp.msgDef.DataTypes.ConstantStreamData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.List;
 import java.util.Objects;
 
-public class GetPeriodicEventStreamResponse {
+public class GetPeriodicEventStreamResponse implements JsonInterface {
 
     private List<ConstantStreamData> constantStreamData;
     /**
@@ -48,6 +49,24 @@ public class GetPeriodicEventStreamResponse {
      */
     public void setCustomData(CustomData customData) {
         this.customData = customData;
+    }
+
+    @Override
+    public String toString() {
+        return toJsonObject().toString();
+    }
+
+    @Override
+    public JsonObject toJsonObject() {
+        return null;
+    }
+
+    @Override
+    public void fromString(String jsonString) {
+    }
+
+    @Override
+    public void fromJsonObject(JsonObject jsonObject) {
     }
 
     @Override
