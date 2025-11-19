@@ -5,15 +5,14 @@ import java.util.Map;
 
 
 /**
- * Charging_ Profile. Charging_ Profile_ Kind. Charging_ Profile_ Kind_ Code
- * urn:x-oca:ocpp:uid:1:569232
  * Indicates the kind of schedule.
  */
 public enum ChargingProfileKindEnum {
 
     ABSOLUTE("Absolute"),
     RECURRING("Recurring"),
-    RELATIVE("Relative");
+    RELATIVE("Relative"),
+    DYNAMIC("Dynamic");
     private final String value;
     private final static Map<String, ChargingProfileKindEnum> CONSTANTS = new HashMap<String, ChargingProfileKindEnum>();
 

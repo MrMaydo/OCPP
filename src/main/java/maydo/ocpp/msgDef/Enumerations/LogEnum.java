@@ -11,7 +11,8 @@ import java.util.Map;
 public enum LogEnum {
 
     DIAGNOSTICS_LOG("DiagnosticsLog"),
-    SECURITY_LOG("SecurityLog");
+    SECURITY_LOG("SecurityLog"),
+    DATA_COLLECTOR_LOG("DataCollectorLog");
     private final String value;
     private final static Map<String, LogEnum> CONSTANTS = new HashMap<String, LogEnum>();
 

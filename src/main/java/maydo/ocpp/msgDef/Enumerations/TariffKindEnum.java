@@ -5,22 +5,22 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Kind of tariff (driver/default)
  */
-public enum ChargingProfileStatusEnum {
+public enum TariffKindEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    DEFAULT_TARIFF("DefaultTariff"),
+    DRIVER_TARIFF("DriverTariff");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, TariffKindEnum> CONSTANTS = new HashMap<String, TariffKindEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (TariffKindEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    TariffKindEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +33,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static TariffKindEnum fromValue(String value) {
+        TariffKindEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

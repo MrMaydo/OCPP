@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * Applicable Network Interface.
+ * Applicable Network Interface. Charging Station is allowed to use a different network interface to connect if the given one does not work.
  */
 public enum OCPPInterfaceEnum {
 
@@ -16,7 +16,8 @@ public enum OCPPInterfaceEnum {
     WIRELESS_0("Wireless0"),
     WIRELESS_1("Wireless1"),
     WIRELESS_2("Wireless2"),
-    WIRELESS_3("Wireless3");
+    WIRELESS_3("Wireless3"),
+    ANY("Any");
     private final String value;
     private final static Map<String, OCPPInterfaceEnum> CONSTANTS = new HashMap<String, OCPPInterfaceEnum>();
 

@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * Message_ Content. Format. Message_ Format_ Code
- * urn:x-enexis:ecdm:uid:1:570848
  * Format of the message.
  */
 public enum MessageFormatEnum {
@@ -14,7 +12,8 @@ public enum MessageFormatEnum {
     ASCII("ASCII"),
     HTML("HTML"),
     URI("URI"),
-    UTF_8("UTF8");
+    UTF8("UTF8"),
+    QRCODE("QRCODE");
     private final String value;
     private final static Map<String, MessageFormatEnum> CONSTANTS = new HashMap<String, MessageFormatEnum>();
 

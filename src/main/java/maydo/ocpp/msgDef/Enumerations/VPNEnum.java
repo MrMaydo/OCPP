@@ -5,15 +5,13 @@ import java.util.Map;
 
 
 /**
- * VPN. Type. VPN_ Code
- * urn:x-oca:ocpp:uid:1:569277
  * Type of VPN
  */
 public enum VPNEnum {
 
-    IK_EV_2("IKEv2"),
-    IP_SEC("IPSec"),
-    L_2_TP("L2TP"),
+    IKEV2("IKEv2"),
+    IPSEC("IPSec"),
+    L2TP("L2TP"),
     PPTP("PPTP");
     private final String value;
     private final static Map<String, VPNEnum> CONSTANTS = new HashMap<String, VPNEnum>();

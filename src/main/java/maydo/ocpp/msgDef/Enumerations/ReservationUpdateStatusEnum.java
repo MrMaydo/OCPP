@@ -10,7 +10,8 @@ import java.util.Map;
 public enum ReservationUpdateStatusEnum {
 
     EXPIRED("Expired"),
-    REMOVED("Removed");
+    REMOVED("Removed"),
+    NO_TRANSACTION("NoTransaction");
     private final String value;
     private final static Map<String, ReservationUpdateStatusEnum> CONSTANTS = new HashMap<String, ReservationUpdateStatusEnum>();
 

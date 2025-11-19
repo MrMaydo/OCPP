@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * Attribute type for which value is requested. When absent, default Actual is assumed.
+ * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
  */
 public enum AttributeEnum {
 

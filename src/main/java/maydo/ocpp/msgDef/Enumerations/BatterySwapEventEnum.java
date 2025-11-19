@@ -5,24 +5,23 @@ import java.util.Map;
 
 
 /**
- * Source of the charging limit.
+ * Battery in/out
  */
-public enum ChargingLimitSourceEnum {
+public enum BatterySwapEventEnum {
 
-    EMS("EMS"),
-    OTHER("Other"),
-    SO("SO"),
-    CSO("CSO");
+    BATTERY_IN("BatteryIn"),
+    BATTERY_OUT("BatteryOut"),
+    BATTERY_OUT_TIMEOUT("BatteryOutTimeout");
     private final String value;
-    private final static Map<String, ChargingLimitSourceEnum> CONSTANTS = new HashMap<String, ChargingLimitSourceEnum>();
+    private final static Map<String, BatterySwapEventEnum> CONSTANTS = new HashMap<String, BatterySwapEventEnum>();
 
     static {
-        for (ChargingLimitSourceEnum c : values()) {
+        for (BatterySwapEventEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingLimitSourceEnum(String value) {
+    BatterySwapEventEnum(String value) {
         this.value = value;
     }
 
@@ -35,8 +34,8 @@ public enum ChargingLimitSourceEnum {
         return this.value;
     }
 
-    public static ChargingLimitSourceEnum fromValue(String value) {
-        ChargingLimitSourceEnum constant = CONSTANTS.get(value);
+    public static BatterySwapEventEnum fromValue(String value) {
+        BatterySwapEventEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

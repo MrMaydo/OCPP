@@ -3,10 +3,6 @@ package maydo.ocpp.msgDef.Enumerations;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Result status of getting the variable.
- */
 public enum GetVariableStatusEnum {
 
     ACCEPTED("Accepted"),

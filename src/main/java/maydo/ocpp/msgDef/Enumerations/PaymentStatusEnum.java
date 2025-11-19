@@ -5,22 +5,24 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * The status of the settlement attempt.
  */
-public enum ChargingProfileStatusEnum {
+public enum PaymentStatusEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    SETTLED("Settled"),
+    CANCELED("Canceled"),
+    REJECTED("Rejected"),
+    FAILED("Failed");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, PaymentStatusEnum> CONSTANTS = new HashMap<String, PaymentStatusEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (PaymentStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    PaymentStatusEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +35,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static PaymentStatusEnum fromValue(String value) {
+        PaymentStatusEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

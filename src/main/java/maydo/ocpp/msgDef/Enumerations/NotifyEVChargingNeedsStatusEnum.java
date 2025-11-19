@@ -11,7 +11,8 @@ public enum NotifyEVChargingNeedsStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
-    PROCESSING("Processing");
+    PROCESSING("Processing"),
+    NO_CHARGING_PROFILE("NoChargingProfile");
     private final String value;
     private final static Map<String, NotifyEVChargingNeedsStatusEnum> CONSTANTS = new HashMap<String, NotifyEVChargingNeedsStatusEnum>();
 

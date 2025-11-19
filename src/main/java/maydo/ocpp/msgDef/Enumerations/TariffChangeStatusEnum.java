@@ -5,24 +5,26 @@ import java.util.Map;
 
 
 /**
- * Indicates whether the Charging Station was able to accept the request.
+ * Status of the operation
  */
-public enum GenericDeviceModelStatusEnum {
+public enum TariffChangeStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
-    NOT_SUPPORTED("NotSupported"),
-    EMPTY_RESULT_SET("EmptyResultSet");
+    TOO_MANY_ELEMENTS("TooManyElements"),
+    CONDITION_NOT_SUPPORTED("ConditionNotSupported"),
+    TX_NOT_FOUND("TxNotFound"),
+    NO_CURRENCY_CHANGE("NoCurrencyChange");
     private final String value;
-    private final static Map<String, GenericDeviceModelStatusEnum> CONSTANTS = new HashMap<String, GenericDeviceModelStatusEnum>();
+    private final static Map<String, TariffChangeStatusEnum> CONSTANTS = new HashMap<String, TariffChangeStatusEnum>();
 
     static {
-        for (GenericDeviceModelStatusEnum c : values()) {
+        for (TariffChangeStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    GenericDeviceModelStatusEnum(String value) {
+    TariffChangeStatusEnum(String value) {
         this.value = value;
     }
 
@@ -35,8 +37,8 @@ public enum GenericDeviceModelStatusEnum {
         return this.value;
     }
 
-    public static GenericDeviceModelStatusEnum fromValue(String value) {
-        GenericDeviceModelStatusEnum constant = CONSTANTS.get(value);
+    public static TariffChangeStatusEnum fromValue(String value) {
+        TariffChangeStatusEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

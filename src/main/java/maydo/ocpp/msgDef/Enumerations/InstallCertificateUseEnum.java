@@ -9,10 +9,11 @@ import java.util.Map;
  */
 public enum InstallCertificateUseEnum {
 
-    V_2_G_ROOT_CERTIFICATE("V2GRootCertificate"),
+    V2G_ROOT_CERTIFICATE("V2GRootCertificate"),
     MO_ROOT_CERTIFICATE("MORootCertificate"),
+    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate"),
     CSMS_ROOT_CERTIFICATE("CSMSRootCertificate"),
-    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate");
+    OEM_ROOT_CERTIFICATE("OEMRootCertificate");
     private final String value;
     private final static Map<String, InstallCertificateUseEnum> CONSTANTS = new HashMap<String, InstallCertificateUseEnum>();
 

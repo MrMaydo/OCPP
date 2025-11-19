@@ -5,22 +5,22 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Type of EVSE (AC, DC) this tariff applies to.
  */
-public enum ChargingProfileStatusEnum {
+public enum EvseKindEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    AC("AC"),
+    DC("DC");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, EvseKindEnum> CONSTANTS = new HashMap<String, EvseKindEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (EvseKindEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    EvseKindEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +33,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static EvseKindEnum fromValue(String value) {
+        EvseKindEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

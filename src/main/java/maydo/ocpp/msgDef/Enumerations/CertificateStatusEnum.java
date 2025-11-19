@@ -5,22 +5,24 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Status of certificate: good, revoked or unknown.
  */
-public enum ChargingProfileStatusEnum {
+public enum CertificateStatusEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    GOOD("Good"),
+    REVOKED("Revoked"),
+    UNKNOWN("Unknown"),
+    FAILED("Failed");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, CertificateStatusEnum> CONSTANTS = new HashMap<String, CertificateStatusEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (CertificateStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    CertificateStatusEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +35,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static CertificateStatusEnum fromValue(String value) {
+        CertificateStatusEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * Type of monitor that triggered this event, e.g. exceeding a threshold value.
+ * Type of trigger for this event, e.g. exceeding a threshold value.
  */
 public enum EventTriggerEnum {
 

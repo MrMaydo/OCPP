@@ -5,11 +5,12 @@ import java.util.Map;
 
 public enum GetCertificateIdUseEnum {
 
-    V_2_G_ROOT_CERTIFICATE("V2GRootCertificate"),
+    V2G_ROOT_CERTIFICATE("V2GRootCertificate"),
     MO_ROOT_CERTIFICATE("MORootCertificate"),
     CSMS_ROOT_CERTIFICATE("CSMSRootCertificate"),
-    V_2_G_CERTIFICATE_CHAIN("V2GCertificateChain"),
-    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate");
+    V2G_CERTIFICATE_CHAIN("V2GCertificateChain"),
+    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate"),
+    OEM_ROOT_CERTIFICATE("OEMRootCertificate");
     private final String value;
     private final static Map<String, GetCertificateIdUseEnum> CONSTANTS = new HashMap<String, GetCertificateIdUseEnum>();
 

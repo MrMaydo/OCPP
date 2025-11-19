@@ -3,24 +3,25 @@ package maydo.ocpp.msgDef.Enumerations;
 import java.util.HashMap;
 import java.util.Map;
 
+public enum DayOfWeekEnum {
 
-/**
- * Returns whether message was processed successfully.
- */
-public enum ChargingProfileStatusEnum {
-
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    MONDAY("Monday"),
+    TUESDAY("Tuesday"),
+    WEDNESDAY("Wednesday"),
+    THURSDAY("Thursday"),
+    FRIDAY("Friday"),
+    SATURDAY("Saturday"),
+    SUNDAY("Sunday");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, DayOfWeekEnum> CONSTANTS = new HashMap<String, DayOfWeekEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (DayOfWeekEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    DayOfWeekEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +34,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static DayOfWeekEnum fromValue(String value) {
+        DayOfWeekEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

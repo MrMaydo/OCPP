@@ -10,7 +10,8 @@ import java.util.Map;
 public enum ClearMessageStatusEnum {
 
     ACCEPTED("Accepted"),
-    UNKNOWN("Unknown");
+    UNKNOWN("Unknown"),
+    REJECTED("Rejected");
     private final String value;
     private final static Map<String, ClearMessageStatusEnum> CONSTANTS = new HashMap<String, ClearMessageStatusEnum>();
 

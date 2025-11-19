@@ -3,24 +3,21 @@ package maydo.ocpp.msgDef.Enumerations;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Returns whether message was processed successfully.
- */
-public enum ChargingProfileStatusEnum {
+public enum TariffClearStatusEnum {
 
     ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    REJECTED("Rejected"),
+    NO_TARIFF("NoTariff");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, TariffClearStatusEnum> CONSTANTS = new HashMap<String, TariffClearStatusEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (TariffClearStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    TariffClearStatusEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +30,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static TariffClearStatusEnum fromValue(String value) {
+        TariffClearStatusEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

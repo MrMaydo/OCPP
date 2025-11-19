@@ -5,15 +5,13 @@ import java.util.Map;
 
 
 /**
- * Transaction. State. Transaction_ State_ Code
- * urn:x-oca:ocpp:uid:1:569419
  * Current charging state, is required when state
- * has changed.
+ * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
  */
 public enum ChargingStateEnum {
 
-    CHARGING("Charging"),
     EV_CONNECTED("EVConnected"),
+    CHARGING("Charging"),
     SUSPENDED_EV("SuspendedEV"),
     SUSPENDED_EVSE("SuspendedEVSE"),
     IDLE("Idle");

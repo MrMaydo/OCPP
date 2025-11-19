@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * Certificate status information.
+ * Certificate status information. 
  * - if all certificates are valid: return 'Accepted'.
  * - if one of the certificates was revoked, return 'CertificateRevoked'.
  */

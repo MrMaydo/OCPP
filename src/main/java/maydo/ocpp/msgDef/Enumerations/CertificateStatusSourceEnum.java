@@ -5,22 +5,22 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Source of status: OCSP, CRL
  */
-public enum ChargingProfileStatusEnum {
+public enum CertificateStatusSourceEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    CRL("CRL"),
+    OCSP("OCSP");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, CertificateStatusSourceEnum> CONSTANTS = new HashMap<String, CertificateStatusSourceEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (CertificateStatusSourceEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    CertificateStatusSourceEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +33,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static CertificateStatusSourceEnum fromValue(String value) {
+        CertificateStatusSourceEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

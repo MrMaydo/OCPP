@@ -15,11 +15,13 @@ public enum MessageTriggerEnum {
     HEARTBEAT("Heartbeat"),
     METER_VALUES("MeterValues"),
     SIGN_CHARGING_STATION_CERTIFICATE("SignChargingStationCertificate"),
-    SIGN_V_2_G_CERTIFICATE("SignV2GCertificate"),
+    SIGN_V2G_CERTIFICATE("SignV2GCertificate"),
+    SIGN_V2G_20_CERTIFICATE("SignV2G20Certificate"),
     STATUS_NOTIFICATION("StatusNotification"),
     TRANSACTION_EVENT("TransactionEvent"),
     SIGN_COMBINED_CERTIFICATE("SignCombinedCertificate"),
-    PUBLISH_FIRMWARE_STATUS_NOTIFICATION("PublishFirmwareStatusNotification");
+    PUBLISH_FIRMWARE_STATUS_NOTIFICATION("PublishFirmwareStatusNotification"),
+    CUSTOM_TRIGGER("CustomTrigger");
     private final String value;
     private final static Map<String, MessageTriggerEnum> CONSTANTS = new HashMap<String, MessageTriggerEnum>();
 

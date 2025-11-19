@@ -5,14 +5,16 @@ import java.util.Map;
 
 
 /**
- * If provided the Charging Station shall return Display Messages with the given state only.
+ * If provided the Charging Station shall return Display Messages with the given state only. 
  */
 public enum MessageStateEnum {
 
     CHARGING("Charging"),
     FAULTED("Faulted"),
     IDLE("Idle"),
-    UNAVAILABLE("Unavailable");
+    UNAVAILABLE("Unavailable"),
+    SUSPENDED("Suspended"),
+    DISCHARGING("Discharging");
     private final String value;
     private final static Map<String, MessageStateEnum> CONSTANTS = new HashMap<String, MessageStateEnum>();
 

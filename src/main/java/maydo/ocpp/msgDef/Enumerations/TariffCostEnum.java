@@ -5,22 +5,23 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Type of cost: normal or the minimum or maximum cost.
  */
-public enum ChargingProfileStatusEnum {
+public enum TariffCostEnum {
 
-    ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    NORMAL_COST("NormalCost"),
+    MIN_COST("MinCost"),
+    MAX_COST("MaxCost");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, TariffCostEnum> CONSTANTS = new HashMap<String, TariffCostEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (TariffCostEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    TariffCostEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +34,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static TariffCostEnum fromValue(String value) {
+        TariffCostEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

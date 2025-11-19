@@ -5,8 +5,7 @@ import java.util.Map;
 
 
 /**
- * The Charging Station will indicate if it was
- * able to process the request
+ * Status of operation.
  */
 public enum GenericStatusEnum {
 

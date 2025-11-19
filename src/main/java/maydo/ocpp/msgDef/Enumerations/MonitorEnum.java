@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+ * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
  */
 public enum MonitorEnum {
 
@@ -13,7 +13,9 @@ public enum MonitorEnum {
     LOWER_THRESHOLD("LowerThreshold"),
     DELTA("Delta"),
     PERIODIC("Periodic"),
-    PERIODIC_CLOCK_ALIGNED("PeriodicClockAligned");
+    PERIODIC_CLOCK_ALIGNED("PeriodicClockAligned"),
+    TARGET_DELTA("TargetDelta"),
+    TARGET_DELTA_RELATIVE("TargetDeltaRelative");
     private final String value;
     private final static Map<String, MonitorEnum> CONSTANTS = new HashMap<String, MonitorEnum>();
 

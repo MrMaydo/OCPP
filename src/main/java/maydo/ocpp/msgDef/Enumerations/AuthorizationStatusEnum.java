@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * ID_ Token. Status. Authorization_ Status
- * urn:x-oca:ocpp:uid:1:569372
  * Current status of the ID Token.
  */
 public enum AuthorizationStatusEnum {

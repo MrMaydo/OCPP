@@ -10,7 +10,8 @@ import java.util.Map;
 public enum ResetEnum {
 
     IMMEDIATE("Immediate"),
-    ON_IDLE("OnIdle");
+    ON_IDLE("OnIdle"),
+    IMMEDIATE_AND_RESUME("ImmediateAndResume");
     private final String value;
     private final static Map<String, ResetEnum> CONSTANTS = new HashMap<String, ResetEnum>();
 

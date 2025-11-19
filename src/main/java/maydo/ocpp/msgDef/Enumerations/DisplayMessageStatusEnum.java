@@ -14,7 +14,8 @@ public enum DisplayMessageStatusEnum {
     REJECTED("Rejected"),
     NOT_SUPPORTED_PRIORITY("NotSupportedPriority"),
     NOT_SUPPORTED_STATE("NotSupportedState"),
-    UNKNOWN_TRANSACTION("UnknownTransaction");
+    UNKNOWN_TRANSACTION("UnknownTransaction"),
+    LANGUAGE_NOT_SUPPORTED("LanguageNotSupported");
     private final String value;
     private final static Map<String, DisplayMessageStatusEnum> CONSTANTS = new HashMap<String, DisplayMessageStatusEnum>();
 

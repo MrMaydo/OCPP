@@ -5,21 +5,21 @@ import java.util.Map;
 
 
 /**
- * Transaction. Stopped_ Reason. EOT_ Reason_ Code
- * urn:x-oca:ocpp:uid:1:569413
- * This contains the reason why the transaction was stopped. MAY only be omitted when Reason is "Local".
+ * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
+ * MAY only be omitted when _stoppedReason_ is "Local"
+ * 
  */
 public enum ReasonEnum {
 
-    DE_AUTHORIZED("DeAuthorized"),
+    DEAUTHORIZED("DeAuthorized"),
     EMERGENCY_STOP("EmergencyStop"),
     ENERGY_LIMIT_REACHED("EnergyLimitReached"),
     EV_DISCONNECTED("EVDisconnected"),
     GROUND_FAULT("GroundFault"),
     IMMEDIATE_RESET("ImmediateReset"),
+    MASTER_PASS("MasterPass"),
     LOCAL("Local"),
     LOCAL_OUT_OF_CREDIT("LocalOutOfCredit"),
-    MASTER_PASS("MasterPass"),
     OTHER("Other"),
     OVERCURRENT_FAULT("OvercurrentFault"),
     POWER_LOSS("PowerLoss"),
@@ -29,7 +29,8 @@ public enum ReasonEnum {
     SOC_LIMIT_REACHED("SOCLimitReached"),
     STOPPED_BY_EV("StoppedByEV"),
     TIME_LIMIT_REACHED("TimeLimitReached"),
-    TIMEOUT("Timeout");
+    TIMEOUT("Timeout"),
+    REQ_ENERGY_TRANSFER_REJECTED("ReqEnergyTransferRejected");
     private final String value;
     private final static Map<String, ReasonEnum> CONSTANTS = new HashMap<String, ReasonEnum>();
 

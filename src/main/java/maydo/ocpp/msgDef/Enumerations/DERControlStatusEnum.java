@@ -5,22 +5,24 @@ import java.util.Map;
 
 
 /**
- * Returns whether message was processed successfully.
+ * Result of operation.
  */
-public enum ChargingProfileStatusEnum {
+public enum DERControlStatusEnum {
 
     ACCEPTED("Accepted"),
-    REJECTED("Rejected");
+    REJECTED("Rejected"),
+    NOT_SUPPORTED("NotSupported"),
+    NOT_FOUND("NotFound");
     private final String value;
-    private final static Map<String, ChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ChargingProfileStatusEnum>();
+    private final static Map<String, DERControlStatusEnum> CONSTANTS = new HashMap<String, DERControlStatusEnum>();
 
     static {
-        for (ChargingProfileStatusEnum c : values()) {
+        for (DERControlStatusEnum c : values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ChargingProfileStatusEnum(String value) {
+    DERControlStatusEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +35,8 @@ public enum ChargingProfileStatusEnum {
         return this.value;
     }
 
-    public static ChargingProfileStatusEnum fromValue(String value) {
-        ChargingProfileStatusEnum constant = CONSTANTS.get(value);
+    public static DERControlStatusEnum fromValue(String value) {
+        DERControlStatusEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {
