@@ -14,7 +14,7 @@ public class CancelReservationResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the canceling of a reservation by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class CancelReservationResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the canceling of a reservation by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public CancelReservationStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class CancelReservationResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the canceling of a reservation by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(CancelReservationStatusEnum status) {
@@ -115,7 +115,7 @@ public class CancelReservationResponse implements JsonInterface {
             return false;
         CancelReservationResponse that = (CancelReservationResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -9,8 +9,6 @@ import java.util.Objects;
 
 /**
  * A physical or logical component
- * 
- * 
  */
 public class Component implements JsonInterface {
 
@@ -21,7 +19,7 @@ public class Component implements JsonInterface {
     private EVSE evse;
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -44,13 +42,10 @@ public class Component implements JsonInterface {
     }
 
     /**
-     * 
-     * @param instance
-     *     Name of instance in case the component exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
-     *     .
-     * @param name
-     *     Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     *     .
+     * @param instance Name of instance in case the component exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
+     * @param name     Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
      */
     public Component(EVSE evse, String name, String instance, CustomData customData) {
         super();
@@ -76,7 +71,7 @@ public class Component implements JsonInterface {
 
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     public String getName() {
@@ -85,7 +80,7 @@ public class Component implements JsonInterface {
 
     /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     public void setName(String name) {
@@ -137,7 +132,7 @@ public class Component implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -146,8 +141,8 @@ public class Component implements JsonInterface {
             return false;
         Component that = (Component) obj;
         return Objects.equals(this.name, that.name)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.instance, that.instance) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.instance, that.instance)
                 && Objects.equals(this.evse, that.evse);
     }
 

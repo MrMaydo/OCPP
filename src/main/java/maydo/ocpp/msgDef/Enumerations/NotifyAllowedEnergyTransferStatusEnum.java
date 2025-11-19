@@ -7,7 +7,6 @@ public enum NotifyAllowedEnergyTransferStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected");
-    private final String value;
     private final static Map<String, NotifyAllowedEnergyTransferStatusEnum> CONSTANTS = new HashMap<String, NotifyAllowedEnergyTransferStatusEnum>();
 
     static {
@@ -16,17 +15,10 @@ public enum NotifyAllowedEnergyTransferStatusEnum {
         }
     }
 
+    private final String value;
+
     NotifyAllowedEnergyTransferStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static NotifyAllowedEnergyTransferStatusEnum fromValue(String value) {
@@ -36,6 +28,15 @@ public enum NotifyAllowedEnergyTransferStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

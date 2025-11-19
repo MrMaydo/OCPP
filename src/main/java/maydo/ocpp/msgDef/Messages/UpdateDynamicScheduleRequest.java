@@ -13,15 +13,15 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer chargingProfileId;
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,10 +39,8 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingProfileId
-     *     Id of charging profile to update.
-     *     .
+     * @param chargingProfileId Id of charging profile to update.
+     *                          .
      */
     public UpdateDynamicScheduleRequest(Integer chargingProfileId, ChargingScheduleUpdate scheduleUpdate, CustomData customData) {
         super();
@@ -53,7 +51,7 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getChargingProfileId() {
@@ -62,7 +60,7 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingProfileId(Integer chargingProfileId) {
@@ -71,8 +69,8 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public ChargingScheduleUpdate getScheduleUpdate() {
@@ -81,8 +79,8 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setScheduleUpdate(ChargingScheduleUpdate scheduleUpdate) {
@@ -129,7 +127,7 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
             return false;
         UpdateDynamicScheduleRequest that = (UpdateDynamicScheduleRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate) 
+                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate)
                 && Objects.equals(this.chargingProfileId, that.chargingProfileId);
     }
 

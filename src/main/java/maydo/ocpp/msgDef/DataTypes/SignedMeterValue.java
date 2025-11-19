@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Represent a signed version of the meter value.
- * 
- * 
  */
 public class SignedMeterValue implements JsonInterface {
 
     /**
      * Base64 encoded, contains the signed data from the meter in the format specified in _encodingMethod_, which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -28,7 +26,7 @@ public class SignedMeterValue implements JsonInterface {
     private String signingMethod;
     /**
      * Format used by the energy meter to encode the meter data. For example: OCMF or EDL.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -51,19 +49,14 @@ public class SignedMeterValue implements JsonInterface {
     }
 
     /**
-     * 
-     * @param signedMeterData
-     *     Base64 encoded, contains the signed data from the meter in the format specified in _encodingMethod_, which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
-     *     .
-     * @param publicKey
-     *     *(2.1)* Base64 encoded, sending depends on configuration variable _PublicKeyWithSignedMeterValue_.
-     *     .
-     * @param signingMethod
-     *     *(2.1)* Method used to create the digital signature. Optional, if already included in _signedMeterData_. Standard values for this are defined in Appendix as SigningMethodEnumStringType.
-     *     .
-     * @param encodingMethod
-     *     Format used by the energy meter to encode the meter data. For example: OCMF or EDL.
-     *     .
+     * @param signedMeterData Base64 encoded, contains the signed data from the meter in the format specified in _encodingMethod_, which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
+     *                        .
+     * @param publicKey       *(2.1)* Base64 encoded, sending depends on configuration variable _PublicKeyWithSignedMeterValue_.
+     *                        .
+     * @param signingMethod   *(2.1)* Method used to create the digital signature. Optional, if already included in _signedMeterData_. Standard values for this are defined in Appendix as SigningMethodEnumStringType.
+     *                        .
+     * @param encodingMethod  Format used by the energy meter to encode the meter data. For example: OCMF or EDL.
+     *                        .
      */
     public SignedMeterValue(String signedMeterData, String signingMethod, String encodingMethod, String publicKey, CustomData customData) {
         super();
@@ -76,7 +69,7 @@ public class SignedMeterValue implements JsonInterface {
 
     /**
      * Base64 encoded, contains the signed data from the meter in the format specified in _encodingMethod_, which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
-     * 
+     * <p>
      * (Required)
      */
     public String getSignedMeterData() {
@@ -85,7 +78,7 @@ public class SignedMeterValue implements JsonInterface {
 
     /**
      * Base64 encoded, contains the signed data from the meter in the format specified in _encodingMethod_, which might contain more then just the meter value. It can contain information like timestamps, reference to a customer etc.
-     * 
+     * <p>
      * (Required)
      */
     public void setSignedMeterData(String signedMeterData) {
@@ -108,7 +101,7 @@ public class SignedMeterValue implements JsonInterface {
 
     /**
      * Format used by the energy meter to encode the meter data. For example: OCMF or EDL.
-     * 
+     * <p>
      * (Required)
      */
     public String getEncodingMethod() {
@@ -117,7 +110,7 @@ public class SignedMeterValue implements JsonInterface {
 
     /**
      * Format used by the energy meter to encode the meter data. For example: OCMF or EDL.
-     * 
+     * <p>
      * (Required)
      */
     public void setEncodingMethod(String encodingMethod) {
@@ -169,7 +162,7 @@ public class SignedMeterValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -178,9 +171,9 @@ public class SignedMeterValue implements JsonInterface {
             return false;
         SignedMeterValue that = (SignedMeterValue) obj;
         return Objects.equals(this.signedMeterData, that.signedMeterData)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.publicKey, that.publicKey) 
-                && Objects.equals(this.signingMethod, that.signingMethod) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.publicKey, that.publicKey)
+                && Objects.equals(this.signingMethod, that.signingMethod)
                 && Objects.equals(this.encodingMethod, that.encodingMethod);
     }
 

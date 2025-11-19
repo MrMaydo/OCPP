@@ -14,7 +14,7 @@ public class UpdateDynamicScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether message was processed successfully.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class UpdateDynamicScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether message was processed successfully.
-     * 
+     * <p>
      * (Required)
      */
     public ChargingProfileStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class UpdateDynamicScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether message was processed successfully.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ChargingProfileStatusEnum status) {
@@ -115,7 +115,7 @@ public class UpdateDynamicScheduleResponse implements JsonInterface {
             return false;
         UpdateDynamicScheduleResponse that = (UpdateDynamicScheduleResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -12,7 +12,6 @@ public enum MessagePriorityEnum {
     ALWAYS_FRONT("AlwaysFront"),
     IN_FRONT("InFront"),
     NORMAL_CYCLE("NormalCycle");
-    private final String value;
     private final static Map<String, MessagePriorityEnum> CONSTANTS = new HashMap<String, MessagePriorityEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum MessagePriorityEnum {
         }
     }
 
+    private final String value;
+
     MessagePriorityEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MessagePriorityEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum MessagePriorityEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

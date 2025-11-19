@@ -11,17 +11,17 @@ public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the X-axis (independent) variable, depending on the curve type.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float x;
     /**
      * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,16 +39,13 @@ public class DERCurvePoints implements JsonInterface {
     }
 
     /**
-     * 
-     * @param x
-     *     The data value of the X-axis (independent) variable, depending on the curve type.
-     *     
-     *     
-     *     .
-     * @param y
-     *     The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     *     
-     *     .
+     * @param x The data value of the X-axis (independent) variable, depending on the curve type.
+     *          <p>
+     *          <p>
+     *          .
+     * @param y The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
+     *          <p>
+     *          .
      */
     public DERCurvePoints(Float x, Float y, CustomData customData) {
         super();
@@ -59,9 +56,9 @@ public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the X-axis (independent) variable, depending on the curve type.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getX() {
@@ -70,9 +67,9 @@ public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the X-axis (independent) variable, depending on the curve type.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setX(Float x) {
@@ -81,8 +78,8 @@ public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getY() {
@@ -91,8 +88,8 @@ public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setY(Float y) {
@@ -130,7 +127,7 @@ public class DERCurvePoints implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -139,7 +136,7 @@ public class DERCurvePoints implements JsonInterface {
             return false;
         DERCurvePoints that = (DERCurvePoints) obj;
         return Objects.equals(this.x, that.x)
-                && Objects.equals(this.y, that.y) 
+                && Objects.equals(this.y, that.y)
                 && Objects.equals(this.customData, that.customData);
     }
 

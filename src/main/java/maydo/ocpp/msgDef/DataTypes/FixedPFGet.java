@@ -10,28 +10,27 @@ import java.util.Objects;
 public class FixedPFGet implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private FixedPF fixedPF;
     /**
      * Id of setting.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String id;
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Boolean isDefault;
     /**
      * True if this setting is superseded by a lower priority setting.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -49,16 +48,12 @@ public class FixedPFGet implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True if setting is a default control.
-     *     .
-     * @param isSuperseded
-     *     True if this setting is superseded by a lower priority setting.
-     *     .
-     * @param id
-     *     Id of setting.
-     *     .
+     * @param isDefault    True if setting is a default control.
+     *                     .
+     * @param isSuperseded True if this setting is superseded by a lower priority setting.
+     *                     .
+     * @param id           Id of setting.
+     *                     .
      */
     public FixedPFGet(FixedPF fixedPF, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
         super();
@@ -70,7 +65,6 @@ public class FixedPFGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public FixedPF getFixedPF() {
@@ -78,7 +72,6 @@ public class FixedPFGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setFixedPF(FixedPF fixedPF) {
@@ -87,7 +80,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * Id of setting.
-     * 
+     * <p>
      * (Required)
      */
     public String getId() {
@@ -96,7 +89,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * Id of setting.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(String id) {
@@ -105,7 +98,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getIsDefault() {
@@ -114,7 +107,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     public void setIsDefault(Boolean isDefault) {
@@ -123,7 +116,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a lower priority setting.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getIsSuperseded() {
@@ -132,7 +125,7 @@ public class FixedPFGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a lower priority setting.
-     * 
+     * <p>
      * (Required)
      */
     public void setIsSuperseded(Boolean isSuperseded) {
@@ -170,7 +163,7 @@ public class FixedPFGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -179,9 +172,9 @@ public class FixedPFGet implements JsonInterface {
             return false;
         FixedPFGet that = (FixedPFGet) obj;
         return Objects.equals(this.fixedPF, that.fixedPF)
-                && Objects.equals(this.isDefault, that.isDefault) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.isDefault, that.isDefault)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.isSuperseded, that.isSuperseded);
     }
 

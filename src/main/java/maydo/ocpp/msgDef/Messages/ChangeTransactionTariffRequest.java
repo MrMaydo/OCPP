@@ -22,14 +22,14 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Tariff tariff;
     /**
      * Transaction id for new tariff.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -47,10 +47,8 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param transactionId
-     *     Transaction id for new tariff.
-     *     .
+     * @param transactionId Transaction id for new tariff.
+     *                      .
      */
     public ChangeTransactionTariffRequest(Tariff tariff, String transactionId, CustomData customData) {
         super();
@@ -70,7 +68,7 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     public Tariff getTariff() {
@@ -88,7 +86,7 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     public void setTariff(Tariff tariff) {
@@ -97,7 +95,7 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
 
     /**
      * Transaction id for new tariff.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -106,7 +104,7 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
 
     /**
      * Transaction id for new tariff.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -153,7 +151,7 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
             return false;
         ChangeTransactionTariffRequest that = (ChangeTransactionTariffRequest) obj;
         return Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.transactionId, that.transactionId);
     }
 

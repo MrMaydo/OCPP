@@ -12,14 +12,14 @@ public class Cost implements JsonInterface {
 
     /**
      * The kind of cost referred to in the message element amount
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private CostKindEnum costKind;
     /**
      * The estimated or actual cost per kWh
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,13 +42,10 @@ public class Cost implements JsonInterface {
     }
 
     /**
-     * 
-     * @param amount
-     *     The estimated or actual cost per kWh
-     *     .
-     * @param amountMultiplier
-     *     Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     *     .
+     * @param amount           The estimated or actual cost per kWh
+     *                         .
+     * @param amountMultiplier Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
+     *                         .
      */
     public Cost(CostKindEnum costKind, Integer amount, Integer amountMultiplier, CustomData customData) {
         super();
@@ -60,7 +57,7 @@ public class Cost implements JsonInterface {
 
     /**
      * The kind of cost referred to in the message element amount
-     * 
+     * <p>
      * (Required)
      */
     public CostKindEnum getCostKind() {
@@ -69,7 +66,7 @@ public class Cost implements JsonInterface {
 
     /**
      * The kind of cost referred to in the message element amount
-     * 
+     * <p>
      * (Required)
      */
     public void setCostKind(CostKindEnum costKind) {
@@ -78,7 +75,7 @@ public class Cost implements JsonInterface {
 
     /**
      * The estimated or actual cost per kWh
-     * 
+     * <p>
      * (Required)
      */
     public Integer getAmount() {
@@ -87,7 +84,7 @@ public class Cost implements JsonInterface {
 
     /**
      * The estimated or actual cost per kWh
-     * 
+     * <p>
      * (Required)
      */
     public void setAmount(Integer amount) {
@@ -139,7 +136,7 @@ public class Cost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -148,8 +145,8 @@ public class Cost implements JsonInterface {
             return false;
         Cost that = (Cost) obj;
         return Objects.equals(this.costKind, that.costKind)
-                && Objects.equals(this.amount, that.amount) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.amount, that.amount)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.amountMultiplier, that.amountMultiplier);
     }
 

@@ -13,7 +13,7 @@ public class UnpublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +38,7 @@ public class UnpublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public UnpublishFirmwareStatusEnum getStatus() {
@@ -47,7 +47,7 @@ public class UnpublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(UnpublishFirmwareStatusEnum status) {

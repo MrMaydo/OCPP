@@ -13,7 +13,6 @@ public enum DERControlStatusEnum {
     REJECTED("Rejected"),
     NOT_SUPPORTED("NotSupported"),
     NOT_FOUND("NotFound");
-    private final String value;
     private final static Map<String, DERControlStatusEnum> CONSTANTS = new HashMap<String, DERControlStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum DERControlStatusEnum {
         }
     }
 
+    private final String value;
+
     DERControlStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DERControlStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum DERControlStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

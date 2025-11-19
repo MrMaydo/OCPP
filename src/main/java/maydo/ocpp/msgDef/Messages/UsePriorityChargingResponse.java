@@ -14,7 +14,7 @@ public class UsePriorityChargingResponse implements JsonInterface {
 
     /**
      * Result of the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class UsePriorityChargingResponse implements JsonInterface {
 
     /**
      * Result of the request.
-     * 
+     * <p>
      * (Required)
      */
     public PriorityChargingStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class UsePriorityChargingResponse implements JsonInterface {
 
     /**
      * Result of the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(PriorityChargingStatusEnum status) {
@@ -115,7 +115,7 @@ public class UsePriorityChargingResponse implements JsonInterface {
             return false;
         UsePriorityChargingResponse that = (UsePriorityChargingResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

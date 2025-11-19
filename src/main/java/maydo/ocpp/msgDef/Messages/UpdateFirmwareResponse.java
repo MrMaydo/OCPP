@@ -14,8 +14,8 @@ public class UpdateFirmwareResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -46,8 +46,8 @@ public class UpdateFirmwareResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public UpdateFirmwareStatusEnum getStatus() {
@@ -56,8 +56,8 @@ public class UpdateFirmwareResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStatus(UpdateFirmwareStatusEnum status) {
@@ -118,7 +118,7 @@ public class UpdateFirmwareResponse implements JsonInterface {
             return false;
         UpdateFirmwareResponse that = (UpdateFirmwareResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

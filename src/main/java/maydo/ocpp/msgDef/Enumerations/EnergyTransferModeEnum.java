@@ -16,7 +16,6 @@ public enum EnergyTransferModeEnum {
     DC_ACDP("DC_ACDP"),
     DC_ACDP_BPT("DC_ACDP_BPT"),
     WPT("WPT");
-    private final String value;
     private final static Map<String, EnergyTransferModeEnum> CONSTANTS = new HashMap<String, EnergyTransferModeEnum>();
 
     static {
@@ -25,17 +24,10 @@ public enum EnergyTransferModeEnum {
         }
     }
 
+    private final String value;
+
     EnergyTransferModeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static EnergyTransferModeEnum fromValue(String value) {
@@ -45,6 +37,15 @@ public enum EnergyTransferModeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

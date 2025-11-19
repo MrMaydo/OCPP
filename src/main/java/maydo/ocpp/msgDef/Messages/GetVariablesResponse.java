@@ -13,7 +13,6 @@ import java.util.Objects;
 public class GetVariablesResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -37,7 +36,6 @@ public class GetVariablesResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<GetVariableResult> getGetVariableResult() {
@@ -45,7 +43,6 @@ public class GetVariablesResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setGetVariableResult(List<GetVariableResult> getVariableResult) {

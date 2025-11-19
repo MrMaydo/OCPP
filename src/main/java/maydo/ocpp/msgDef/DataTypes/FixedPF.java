@@ -12,21 +12,21 @@ public class FixedPF implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
      * Power factor, cos(phi), as value between 0..1.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float displacement;
     /**
      * True when absorbing reactive power (under-excited), false when injecting reactive power (over-excited).
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -54,22 +54,16 @@ public class FixedPF implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration in seconds that this setting is active.
-     *     .
-     * @param excitation
-     *     True when absorbing reactive power (under-excited), false when injecting reactive power (over-excited).
-     *     .
-     * @param displacement
-     *     Power factor, cos(phi), as value between 0..1.
-     *     .
-     * @param startTime
-     *     Time when this setting becomes active
-     *     .
-     * @param priority
-     *     Priority of setting (0=highest)
-     *     .
+     * @param duration     Duration in seconds that this setting is active.
+     *                     .
+     * @param excitation   True when absorbing reactive power (under-excited), false when injecting reactive power (over-excited).
+     *                     .
+     * @param displacement Power factor, cos(phi), as value between 0..1.
+     *                     .
+     * @param startTime    Time when this setting becomes active
+     *                     .
+     * @param priority     Priority of setting (0=highest)
+     *                     .
      */
     public FixedPF(Integer priority, Float displacement, Boolean excitation, Date startTime, Float duration, CustomData customData) {
         super();
@@ -83,7 +77,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -92,7 +86,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -101,7 +95,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * Power factor, cos(phi), as value between 0..1.
-     * 
+     * <p>
      * (Required)
      */
     public Float getDisplacement() {
@@ -110,7 +104,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * Power factor, cos(phi), as value between 0..1.
-     * 
+     * <p>
      * (Required)
      */
     public void setDisplacement(Float displacement) {
@@ -119,7 +113,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * True when absorbing reactive power (under-excited), false when injecting reactive power (over-excited).
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getExcitation() {
@@ -128,7 +122,7 @@ public class FixedPF implements JsonInterface {
 
     /**
      * True when absorbing reactive power (under-excited), false when injecting reactive power (over-excited).
-     * 
+     * <p>
      * (Required)
      */
     public void setExcitation(Boolean excitation) {
@@ -194,7 +188,7 @@ public class FixedPF implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -203,10 +197,10 @@ public class FixedPF implements JsonInterface {
             return false;
         FixedPF that = (FixedPF) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.excitation, that.excitation) 
-                && Objects.equals(this.displacement, that.displacement) 
-                && Objects.equals(this.startTime, that.startTime) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.excitation, that.excitation)
+                && Objects.equals(this.displacement, that.displacement)
+                && Objects.equals(this.startTime, that.startTime)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.priority, that.priority);
     }
 

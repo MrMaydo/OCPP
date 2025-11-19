@@ -25,21 +25,20 @@ public class VatNumberValidationResponse implements JsonInterface {
     private StatusInfo statusInfo;
     /**
      * VAT number that was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String vatNumber;
     /**
-     * EVSE id for which check was requested. 
-     * 
+     * EVSE id for which check was requested.
      */
     @Optional
     private Integer evseId;
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -57,15 +56,12 @@ public class VatNumberValidationResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE id for which check was requested. 
-     *     
-     *     .
-     * @param vatNumber
-     *     VAT number that was requested.
-     *     
-     *     .
+     * @param evseId    EVSE id for which check was requested.
+     *                  <p>
+     *                  .
+     * @param vatNumber VAT number that was requested.
+     *                  <p>
+     *                  .
      */
     public VatNumberValidationResponse(Address company, StatusInfo statusInfo, String vatNumber, Integer evseId, GenericStatusEnum status, CustomData customData) {
         super();
@@ -107,8 +103,8 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     /**
      * VAT number that was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getVatNumber() {
@@ -117,8 +113,8 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     /**
      * VAT number that was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setVatNumber(String vatNumber) {
@@ -126,16 +122,14 @@ public class VatNumberValidationResponse implements JsonInterface {
     }
 
     /**
-     * EVSE id for which check was requested. 
-     * 
+     * EVSE id for which check was requested.
      */
     public Integer getEvseId() {
         return evseId;
     }
 
     /**
-     * EVSE id for which check was requested. 
-     * 
+     * EVSE id for which check was requested.
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -143,7 +137,7 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -152,7 +146,7 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -199,10 +193,10 @@ public class VatNumberValidationResponse implements JsonInterface {
             return false;
         VatNumberValidationResponse that = (VatNumberValidationResponse) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.company, that.company) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.vatNumber, that.vatNumber) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.company, that.company)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.vatNumber, that.vatNumber)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -14,7 +14,7 @@ public class PublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class PublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class PublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -115,7 +115,7 @@ public class PublishFirmwareResponse implements JsonInterface {
             return false;
         PublishFirmwareResponse that = (PublishFirmwareResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

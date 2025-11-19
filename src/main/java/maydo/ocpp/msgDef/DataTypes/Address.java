@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * *(2.1)* A generic address format.
- * 
- * 
  */
 public class Address implements JsonInterface {
 
     /**
      * Name of person/company
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String name;
     /**
      * Address line 1
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -35,7 +33,7 @@ public class Address implements JsonInterface {
     private String address2;
     /**
      * City
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -47,7 +45,7 @@ public class Address implements JsonInterface {
     private String postalCode;
     /**
      * Country name
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -65,25 +63,18 @@ public class Address implements JsonInterface {
     }
 
     /**
-     * 
-     * @param country
-     *     Country name
-     *     .
-     * @param address2
-     *     Address line 2
-     *     .
-     * @param city
-     *     City
-     *     .
-     * @param address1
-     *     Address line 1
-     *     .
-     * @param postalCode
-     *     Postal code
-     *     .
-     * @param name
-     *     Name of person/company
-     *     .
+     * @param country    Country name
+     *                   .
+     * @param address2   Address line 2
+     *                   .
+     * @param city       City
+     *                   .
+     * @param address1   Address line 1
+     *                   .
+     * @param postalCode Postal code
+     *                   .
+     * @param name       Name of person/company
+     *                   .
      */
     public Address(String name, String address1, String address2, String city, String postalCode, String country, CustomData customData) {
         super();
@@ -98,7 +89,7 @@ public class Address implements JsonInterface {
 
     /**
      * Name of person/company
-     * 
+     * <p>
      * (Required)
      */
     public String getName() {
@@ -107,7 +98,7 @@ public class Address implements JsonInterface {
 
     /**
      * Name of person/company
-     * 
+     * <p>
      * (Required)
      */
     public void setName(String name) {
@@ -116,7 +107,7 @@ public class Address implements JsonInterface {
 
     /**
      * Address line 1
-     * 
+     * <p>
      * (Required)
      */
     public String getAddress1() {
@@ -125,7 +116,7 @@ public class Address implements JsonInterface {
 
     /**
      * Address line 1
-     * 
+     * <p>
      * (Required)
      */
     public void setAddress1(String address1) {
@@ -148,7 +139,7 @@ public class Address implements JsonInterface {
 
     /**
      * City
-     * 
+     * <p>
      * (Required)
      */
     public String getCity() {
@@ -157,7 +148,7 @@ public class Address implements JsonInterface {
 
     /**
      * City
-     * 
+     * <p>
      * (Required)
      */
     public void setCity(String city) {
@@ -180,7 +171,7 @@ public class Address implements JsonInterface {
 
     /**
      * Country name
-     * 
+     * <p>
      * (Required)
      */
     public String getCountry() {
@@ -189,7 +180,7 @@ public class Address implements JsonInterface {
 
     /**
      * Country name
-     * 
+     * <p>
      * (Required)
      */
     public void setCountry(String country) {
@@ -227,7 +218,7 @@ public class Address implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -248,9 +239,9 @@ public class Address implements JsonInterface {
     public int hashCode() {
         int result = 1;
         result = 31 * result + (this.country != null ? this.country.hashCode() : 0);
-        result = 31 * result + (this.address2 != null ? this.address2 .hashCode() : 0);
+        result = 31 * result + (this.address2 != null ? this.address2.hashCode() : 0);
         result = 31 * result + (this.city != null ? this.city.hashCode() : 0);
-        result = 31 * result + (this.address1 != null ? this.address1 .hashCode() : 0);
+        result = 31 * result + (this.address1 != null ? this.address1.hashCode() : 0);
         result = 31 * result + (this.postalCode != null ? this.postalCode.hashCode() : 0);
         result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
         result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);

@@ -29,10 +29,8 @@ public class GetInstalledCertificateIdsRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param certificateType
-     *     Indicates the type of certificates requested. When omitted, all certificate types are requested.
-     *     .
+     * @param certificateType Indicates the type of certificates requested. When omitted, all certificate types are requested.
+     *                        .
      */
     public GetInstalledCertificateIdsRequest(List<GetCertificateIdUseEnum> certificateType, CustomData customData) {
         super();

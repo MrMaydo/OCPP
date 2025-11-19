@@ -13,24 +13,24 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * True if this is a default DER control
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean isDefault;
     /**
      * Unique id of this control, e.g. UUID
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String controlId;
     /**
      * Type of control.  Determines which setting field below is used.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -64,15 +64,12 @@ public class SetDERControlRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True if this is a default DER control
-     *     
-     *     .
-     * @param controlId
-     *     Unique id of this control, e.g. UUID
-     *     
-     *     .
+     * @param isDefault True if this is a default DER control
+     *                  <p>
+     *                  .
+     * @param controlId Unique id of this control, e.g. UUID
+     *                  <p>
+     *                  .
      */
     public SetDERControlRequest(Boolean isDefault, String controlId, DERControlEnum controlType, DERCurve curve, EnterService enterService, FixedPF fixedPFAbsorb, FixedPF fixedPFInject, FixedVar fixedVar, FreqDroop freqDroop, Gradient gradient, LimitMaxDischarge limitMaxDischarge, CustomData customData) {
         super();
@@ -92,8 +89,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * True if this is a default DER control
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getIsDefault() {
@@ -102,8 +99,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * True if this is a default DER control
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIsDefault(Boolean isDefault) {
@@ -112,8 +109,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * Unique id of this control, e.g. UUID
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getControlId() {
@@ -122,8 +119,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * Unique id of this control, e.g. UUID
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setControlId(String controlId) {
@@ -132,8 +129,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * Type of control.  Determines which setting field below is used.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public DERControlEnum getControlType() {
@@ -142,8 +139,8 @@ public class SetDERControlRequest implements JsonInterface {
 
     /**
      * Type of control.  Determines which setting field below is used.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setControlType(DERControlEnum controlType) {
@@ -254,16 +251,16 @@ public class SetDERControlRequest implements JsonInterface {
             return false;
         SetDERControlRequest that = (SetDERControlRequest) obj;
         return Objects.equals(this.curve, that.curve)
-                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb) 
-                && Objects.equals(this.fixedPFInject, that.fixedPFInject) 
-                && Objects.equals(this.gradient, that.gradient) 
-                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.controlId, that.controlId) 
-                && Objects.equals(this.freqDroop, that.freqDroop) 
-                && Objects.equals(this.isDefault, that.isDefault) 
-                && Objects.equals(this.controlType, that.controlType) 
-                && Objects.equals(this.enterService, that.enterService) 
+                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb)
+                && Objects.equals(this.fixedPFInject, that.fixedPFInject)
+                && Objects.equals(this.gradient, that.gradient)
+                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.controlId, that.controlId)
+                && Objects.equals(this.freqDroop, that.freqDroop)
+                && Objects.equals(this.isDefault, that.isDefault)
+                && Objects.equals(this.controlType, that.controlType)
+                && Objects.equals(this.enterService, that.enterService)
                 && Objects.equals(this.fixedVar, that.fixedVar);
     }
 

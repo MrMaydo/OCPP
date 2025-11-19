@@ -14,7 +14,7 @@ public class ClearChargingProfileResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station was able to execute the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ClearChargingProfileResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station was able to execute the request.
-     * 
+     * <p>
      * (Required)
      */
     public ClearChargingProfileStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ClearChargingProfileResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station was able to execute the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ClearChargingProfileStatusEnum status) {
@@ -115,7 +115,7 @@ public class ClearChargingProfileResponse implements JsonInterface {
             return false;
         ClearChargingProfileResponse that = (ClearChargingProfileResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

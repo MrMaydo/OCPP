@@ -13,23 +13,23 @@ public class FixedVar implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
-     * The value specifies a target var output interpreted as a signed percentage (-100 to 100). 
-     *     A negative value refers to charging, whereas a positive one refers to discharging.
-     *     The value type is determined by the unit field.
-     * 
+     * The value specifies a target var output interpreted as a signed percentage (-100 to 100).
+     * A negative value refers to charging, whereas a positive one refers to discharging.
+     * The value type is determined by the unit field.
+     * <p>
      * (Required)
      */
     @Required
     private Float setpoint;
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -57,21 +57,16 @@ public class FixedVar implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration in seconds that this setting is active.
-     *     .
-     * @param setpoint
-     *     The value specifies a target var output interpreted as a signed percentage (-100 to 100). 
-     *         A negative value refers to charging, whereas a positive one refers to discharging.
-     *         The value type is determined by the unit field.
-     *     .
-     * @param startTime
-     *     Time when this setting becomes active.
-     *     .
-     * @param priority
-     *     Priority of setting (0=highest)
-     *     .
+     * @param duration  Duration in seconds that this setting is active.
+     *                  .
+     * @param setpoint  The value specifies a target var output interpreted as a signed percentage (-100 to 100).
+     *                  A negative value refers to charging, whereas a positive one refers to discharging.
+     *                  The value type is determined by the unit field.
+     *                  .
+     * @param startTime Time when this setting becomes active.
+     *                  .
+     * @param priority  Priority of setting (0=highest)
+     *                  .
      */
     public FixedVar(Integer priority, Float setpoint, DERUnitEnum unit, Date startTime, Float duration, CustomData customData) {
         super();
@@ -85,7 +80,7 @@ public class FixedVar implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -94,7 +89,7 @@ public class FixedVar implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -102,10 +97,10 @@ public class FixedVar implements JsonInterface {
     }
 
     /**
-     * The value specifies a target var output interpreted as a signed percentage (-100 to 100). 
-     *     A negative value refers to charging, whereas a positive one refers to discharging.
-     *     The value type is determined by the unit field.
-     * 
+     * The value specifies a target var output interpreted as a signed percentage (-100 to 100).
+     * A negative value refers to charging, whereas a positive one refers to discharging.
+     * The value type is determined by the unit field.
+     * <p>
      * (Required)
      */
     public Float getSetpoint() {
@@ -113,10 +108,10 @@ public class FixedVar implements JsonInterface {
     }
 
     /**
-     * The value specifies a target var output interpreted as a signed percentage (-100 to 100). 
-     *     A negative value refers to charging, whereas a positive one refers to discharging.
-     *     The value type is determined by the unit field.
-     * 
+     * The value specifies a target var output interpreted as a signed percentage (-100 to 100).
+     * A negative value refers to charging, whereas a positive one refers to discharging.
+     * The value type is determined by the unit field.
+     * <p>
      * (Required)
      */
     public void setSetpoint(Float setpoint) {
@@ -125,7 +120,7 @@ public class FixedVar implements JsonInterface {
 
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     public DERUnitEnum getUnit() {
@@ -134,7 +129,7 @@ public class FixedVar implements JsonInterface {
 
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     public void setUnit(DERUnitEnum unit) {
@@ -200,7 +195,7 @@ public class FixedVar implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -209,10 +204,10 @@ public class FixedVar implements JsonInterface {
             return false;
         FixedVar that = (FixedVar) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.unit, that.unit) 
-                && Objects.equals(this.setpoint, that.setpoint) 
-                && Objects.equals(this.startTime, that.startTime) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.unit, that.unit)
+                && Objects.equals(this.setpoint, that.setpoint)
+                && Objects.equals(this.startTime, that.startTime)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.priority, that.priority);
     }
 

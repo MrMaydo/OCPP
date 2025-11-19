@@ -12,7 +12,7 @@ public class GetTariffsRequest implements JsonInterface {
 
     /**
      * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class GetTariffsRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     *     .
+     * @param evseId EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
+     *               .
      */
     public GetTariffsRequest(Integer evseId, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class GetTariffsRequest implements JsonInterface {
 
     /**
      * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -52,7 +50,7 @@ public class GetTariffsRequest implements JsonInterface {
 
     /**
      * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {

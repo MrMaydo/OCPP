@@ -15,14 +15,14 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date currentTime;
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,7 +30,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -53,13 +53,10 @@ public class BootNotificationResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param currentTime
-     *     This contains the CSMS’s current time.
-     *     .
-     * @param interval
-     *     When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     *     .
+     * @param currentTime This contains the CSMS’s current time.
+     *                    .
+     * @param interval    When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
+     *                    .
      */
     public BootNotificationResponse(Date currentTime, Integer interval, RegistrationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
         super();
@@ -72,7 +69,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * 
+     * <p>
      * (Required)
      */
     public Date getCurrentTime() {
@@ -81,7 +78,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * 
+     * <p>
      * (Required)
      */
     public void setCurrentTime(Date currentTime) {
@@ -90,7 +87,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getInterval() {
@@ -99,7 +96,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * 
+     * <p>
      * (Required)
      */
     public void setInterval(Integer interval) {
@@ -109,7 +106,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public RegistrationStatusEnum getStatus() {
@@ -119,7 +116,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(RegistrationStatusEnum status) {
@@ -180,9 +177,9 @@ public class BootNotificationResponse implements JsonInterface {
             return false;
         BootNotificationResponse that = (BootNotificationResponse) obj;
         return Objects.equals(this.currentTime, that.currentTime)
-                && Objects.equals(this.interval, that.interval) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.interval, that.interval)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

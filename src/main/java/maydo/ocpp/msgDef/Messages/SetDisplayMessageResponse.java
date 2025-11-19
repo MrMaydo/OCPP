@@ -14,7 +14,7 @@ public class SetDisplayMessageResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to display the message.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class SetDisplayMessageResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to display the message.
-     * 
+     * <p>
      * (Required)
      */
     public DisplayMessageStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class SetDisplayMessageResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to display the message.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(DisplayMessageStatusEnum status) {
@@ -115,7 +115,7 @@ public class SetDisplayMessageResponse implements JsonInterface {
             return false;
         SetDisplayMessageResponse that = (SetDisplayMessageResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

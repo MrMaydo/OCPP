@@ -13,14 +13,14 @@ public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the certificate type that is sent.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private InstallCertificateUseEnum certificateType;
     /**
      * A PEM encoded X.509 certificate.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,10 +38,8 @@ public class InstallCertificateRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param certificate
-     *     A PEM encoded X.509 certificate.
-     *     .
+     * @param certificate A PEM encoded X.509 certificate.
+     *                    .
      */
     public InstallCertificateRequest(InstallCertificateUseEnum certificateType, String certificate, CustomData customData) {
         super();
@@ -52,7 +50,7 @@ public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the certificate type that is sent.
-     * 
+     * <p>
      * (Required)
      */
     public InstallCertificateUseEnum getCertificateType() {
@@ -61,7 +59,7 @@ public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the certificate type that is sent.
-     * 
+     * <p>
      * (Required)
      */
     public void setCertificateType(InstallCertificateUseEnum certificateType) {
@@ -70,7 +68,7 @@ public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * A PEM encoded X.509 certificate.
-     * 
+     * <p>
      * (Required)
      */
     public String getCertificate() {
@@ -79,7 +77,7 @@ public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * A PEM encoded X.509 certificate.
-     * 
+     * <p>
      * (Required)
      */
     public void setCertificate(String certificate) {
@@ -126,7 +124,7 @@ public class InstallCertificateRequest implements JsonInterface {
             return false;
         InstallCertificateRequest that = (InstallCertificateRequest) obj;
         return Objects.equals(this.certificate, that.certificate)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.certificateType, that.certificateType);
     }
 

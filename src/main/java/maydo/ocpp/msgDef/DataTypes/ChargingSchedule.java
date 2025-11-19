@@ -13,7 +13,6 @@ import java.util.Objects;
 public class ChargingSchedule implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -32,19 +31,18 @@ public class ChargingSchedule implements JsonInterface {
     private Integer duration;
     /**
      * The unit of measure in which limits and setpoints are expressed.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private ChargingRateUnitEnum chargingRateUnit;
     /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates. 
+     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
      */
     @Optional
     private Float minChargingRate;
     /**
      * *(2.1)* Power tolerance when following EVPowerProfile.
-     * 
      */
     @Optional
     private Float powerTolerance;
@@ -60,20 +58,17 @@ public class ChargingSchedule implements JsonInterface {
     private String digestValue;
     /**
      * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     *  This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     * 
+     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
      */
     @Optional
     private Boolean useLocalTime;
     /**
-     * 
      * (Required)
      */
     @Required
     private List<ChargingSchedulePeriod> chargingSchedulePeriod;
     /**
      * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     * 
      */
     @Optional
     private Integer randomizedDelay;
@@ -85,9 +80,8 @@ public class ChargingSchedule implements JsonInterface {
     private SalesTariff salesTariff;
     /**
      * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * 
+     * <p>
      * image::images/AbsolutePriceSchedule-Simple.png[]
-     * 
      */
     @Optional
     private AbsolutePriceSchedule absolutePriceSchedule;
@@ -109,35 +103,26 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
-     *     .
-     * @param minChargingRate
-     *     Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates. 
-     *     .
-     * @param digestValue
-     *     *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
-     *     .
-     * @param startSchedule
-     *     Starting point of an absolute schedule or recurring schedule.
-     *     .
-     * @param useLocalTime
-     *     *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     *      This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     *     
-     *     .
-     * @param randomizedDelay
-     *     *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     *     
-     *     .
-     * @param powerTolerance
-     *     *(2.1)* Power tolerance when following EVPowerProfile.
-     *     
-     *     .
-     * @param signatureId
-     *     *(2.1)* Id of this element for referencing in a signature.
-     *     .
+     * @param duration        Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
+     *                        .
+     * @param minChargingRate Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
+     *                        .
+     * @param digestValue     *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
+     *                        .
+     * @param startSchedule   Starting point of an absolute schedule or recurring schedule.
+     *                        .
+     * @param useLocalTime    *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
+     *                        This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
+     *                        <p>
+     *                        .
+     * @param randomizedDelay *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
+     *                        <p>
+     *                        .
+     * @param powerTolerance  *(2.1)* Power tolerance when following EVPowerProfile.
+     *                        <p>
+     *                        .
+     * @param signatureId     *(2.1)* Id of this element for referencing in a signature.
+     *                        .
      */
     public ChargingSchedule(Integer id, LimitAtSoC limitAtSoC, Date startSchedule, Integer duration, ChargingRateUnitEnum chargingRateUnit, Float minChargingRate, Float powerTolerance, Integer signatureId, String digestValue, Boolean useLocalTime, List<ChargingSchedulePeriod> chargingSchedulePeriod, Integer randomizedDelay, SalesTariff salesTariff, AbsolutePriceSchedule absolutePriceSchedule, PriceLevelSchedule priceLevelSchedule, CustomData customData) {
         super();
@@ -160,7 +145,6 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Integer getId() {
@@ -168,7 +152,6 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setId(Integer id) {
@@ -213,7 +196,7 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * The unit of measure in which limits and setpoints are expressed.
-     * 
+     * <p>
      * (Required)
      */
     public ChargingRateUnitEnum getChargingRateUnit() {
@@ -222,7 +205,7 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * The unit of measure in which limits and setpoints are expressed.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
@@ -230,14 +213,14 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates. 
+     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
      */
     public Float getMinChargingRate() {
         return minChargingRate;
     }
 
     /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates. 
+     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
      */
     public void setMinChargingRate(Float minChargingRate) {
         this.minChargingRate = minChargingRate;
@@ -245,7 +228,6 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Power tolerance when following EVPowerProfile.
-     * 
      */
     public Float getPowerTolerance() {
         return powerTolerance;
@@ -253,7 +235,6 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Power tolerance when following EVPowerProfile.
-     * 
      */
     public void setPowerTolerance(Float powerTolerance) {
         this.powerTolerance = powerTolerance;
@@ -289,8 +270,7 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     *  This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     * 
+     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
      */
     public Boolean getUseLocalTime() {
         return useLocalTime;
@@ -298,15 +278,13 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     *  This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     * 
+     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
      */
     public void setUseLocalTime(Boolean useLocalTime) {
         this.useLocalTime = useLocalTime;
     }
 
     /**
-     * 
      * (Required)
      */
     public List<ChargingSchedulePeriod> getChargingSchedulePeriod() {
@@ -314,7 +292,6 @@ public class ChargingSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingSchedulePeriod(List<ChargingSchedulePeriod> chargingSchedulePeriod) {
@@ -323,7 +300,6 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     * 
      */
     public Integer getRandomizedDelay() {
         return randomizedDelay;
@@ -331,7 +307,6 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     * 
      */
     public void setRandomizedDelay(Integer randomizedDelay) {
         this.randomizedDelay = randomizedDelay;
@@ -355,9 +330,8 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * 
+     * <p>
      * image::images/AbsolutePriceSchedule-Simple.png[]
-     * 
      */
     public AbsolutePriceSchedule getAbsolutePriceSchedule() {
         return absolutePriceSchedule;
@@ -365,9 +339,8 @@ public class ChargingSchedule implements JsonInterface {
 
     /**
      * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * 
+     * <p>
      * image::images/AbsolutePriceSchedule-Simple.png[]
-     * 
      */
     public void setAbsolutePriceSchedule(AbsolutePriceSchedule absolutePriceSchedule) {
         this.absolutePriceSchedule = absolutePriceSchedule;
@@ -418,7 +391,7 @@ public class ChargingSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -427,20 +400,20 @@ public class ChargingSchedule implements JsonInterface {
             return false;
         ChargingSchedule that = (ChargingSchedule) obj;
         return Objects.equals(this.startSchedule, that.startSchedule)
-                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod) 
-                && Objects.equals(this.salesTariff, that.salesTariff) 
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit) 
-                && Objects.equals(this.powerTolerance, that.powerTolerance) 
-                && Objects.equals(this.signatureId, that.signatureId) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.limitAtSoC, that.limitAtSoC) 
-                && Objects.equals(this.duration, that.duration) 
-                && Objects.equals(this.minChargingRate, that.minChargingRate) 
-                && Objects.equals(this.digestValue, that.digestValue) 
-                && Objects.equals(this.useLocalTime, that.useLocalTime) 
-                && Objects.equals(this.priceLevelSchedule, that.priceLevelSchedule) 
-                && Objects.equals(this.randomizedDelay, that.randomizedDelay) 
-                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod)
+                && Objects.equals(this.salesTariff, that.salesTariff)
+                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit)
+                && Objects.equals(this.powerTolerance, that.powerTolerance)
+                && Objects.equals(this.signatureId, that.signatureId)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.limitAtSoC, that.limitAtSoC)
+                && Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.minChargingRate, that.minChargingRate)
+                && Objects.equals(this.digestValue, that.digestValue)
+                && Objects.equals(this.useLocalTime, that.useLocalTime)
+                && Objects.equals(this.priceLevelSchedule, that.priceLevelSchedule)
+                && Objects.equals(this.randomizedDelay, that.randomizedDelay)
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.absolutePriceSchedule, that.absolutePriceSchedule);
     }
 

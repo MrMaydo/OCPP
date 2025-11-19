@@ -14,7 +14,7 @@ public class ResetResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the reset.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ResetResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the reset.
-     * 
+     * <p>
      * (Required)
      */
     public ResetStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ResetResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the reset.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ResetStatusEnum status) {
@@ -115,7 +115,7 @@ public class ResetResponse implements JsonInterface {
             return false;
         ResetResponse that = (ResetResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -11,7 +11,7 @@ public class RelativeTimeInterval implements JsonInterface {
 
     /**
      * Start of the interval, in seconds from NOW.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -34,13 +34,10 @@ public class RelativeTimeInterval implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration of the interval, in seconds.
-     *     .
-     * @param start
-     *     Start of the interval, in seconds from NOW.
-     *     .
+     * @param duration Duration of the interval, in seconds.
+     *                 .
+     * @param start    Start of the interval, in seconds from NOW.
+     *                 .
      */
     public RelativeTimeInterval(Integer start, Integer duration, CustomData customData) {
         super();
@@ -51,7 +48,7 @@ public class RelativeTimeInterval implements JsonInterface {
 
     /**
      * Start of the interval, in seconds from NOW.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getStart() {
@@ -60,7 +57,7 @@ public class RelativeTimeInterval implements JsonInterface {
 
     /**
      * Start of the interval, in seconds from NOW.
-     * 
+     * <p>
      * (Required)
      */
     public void setStart(Integer start) {
@@ -112,7 +109,7 @@ public class RelativeTimeInterval implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -121,7 +118,7 @@ public class RelativeTimeInterval implements JsonInterface {
             return false;
         RelativeTimeInterval that = (RelativeTimeInterval) obj;
         return Objects.equals(this.start, that.start)
-                && Objects.equals(this.duration, that.duration) 
+                && Objects.equals(this.duration, that.duration)
                 && Objects.equals(this.customData, that.customData);
     }
 

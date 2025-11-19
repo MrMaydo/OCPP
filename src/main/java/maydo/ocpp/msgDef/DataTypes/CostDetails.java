@@ -13,27 +13,25 @@ public class CostDetails implements JsonInterface {
     private List<ChargingPeriod> chargingPeriods;
     /**
      * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private TotalCost totalCost;
     /**
      * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private TotalUsage totalUsage;
     /**
      * If set to true, then Charging Station has failed to calculate the cost.
-     * 
      */
     @Optional
     private Boolean failureToCalculate;
     /**
      * Optional human-readable reason text in case of failure to calculate.
-     * 
      */
     @Optional
     private String failureReason;
@@ -50,15 +48,12 @@ public class CostDetails implements JsonInterface {
     }
 
     /**
-     * 
-     * @param failureToCalculate
-     *     If set to true, then Charging Station has failed to calculate the cost.
-     *     
-     *     .
-     * @param failureReason
-     *     Optional human-readable reason text in case of failure to calculate.
-     *     
-     *     .
+     * @param failureToCalculate If set to true, then Charging Station has failed to calculate the cost.
+     *                           <p>
+     *                           .
+     * @param failureReason      Optional human-readable reason text in case of failure to calculate.
+     *                           <p>
+     *                           .
      */
     public CostDetails(List<ChargingPeriod> chargingPeriods, TotalCost totalCost, TotalUsage totalUsage, Boolean failureToCalculate, String failureReason, CustomData customData) {
         super();
@@ -80,7 +75,7 @@ public class CostDetails implements JsonInterface {
 
     /**
      * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     public TotalCost getTotalCost() {
@@ -89,7 +84,7 @@ public class CostDetails implements JsonInterface {
 
     /**
      * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setTotalCost(TotalCost totalCost) {
@@ -98,7 +93,7 @@ public class CostDetails implements JsonInterface {
 
     /**
      * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public TotalUsage getTotalUsage() {
@@ -107,7 +102,7 @@ public class CostDetails implements JsonInterface {
 
     /**
      * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setTotalUsage(TotalUsage totalUsage) {
@@ -116,7 +111,6 @@ public class CostDetails implements JsonInterface {
 
     /**
      * If set to true, then Charging Station has failed to calculate the cost.
-     * 
      */
     public Boolean getFailureToCalculate() {
         return failureToCalculate;
@@ -124,7 +118,6 @@ public class CostDetails implements JsonInterface {
 
     /**
      * If set to true, then Charging Station has failed to calculate the cost.
-     * 
      */
     public void setFailureToCalculate(Boolean failureToCalculate) {
         this.failureToCalculate = failureToCalculate;
@@ -132,7 +125,6 @@ public class CostDetails implements JsonInterface {
 
     /**
      * Optional human-readable reason text in case of failure to calculate.
-     * 
      */
     public String getFailureReason() {
         return failureReason;
@@ -140,7 +132,6 @@ public class CostDetails implements JsonInterface {
 
     /**
      * Optional human-readable reason text in case of failure to calculate.
-     * 
      */
     public void setFailureReason(String failureReason) {
         this.failureReason = failureReason;
@@ -177,7 +168,7 @@ public class CostDetails implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -186,10 +177,10 @@ public class CostDetails implements JsonInterface {
             return false;
         CostDetails that = (CostDetails) obj;
         return Objects.equals(this.failureToCalculate, that.failureToCalculate)
-                && Objects.equals(this.failureReason, that.failureReason) 
-                && Objects.equals(this.totalUsage, that.totalUsage) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.chargingPeriods, that.chargingPeriods) 
+                && Objects.equals(this.failureReason, that.failureReason)
+                && Objects.equals(this.totalUsage, that.totalUsage)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.chargingPeriods, that.chargingPeriods)
                 && Objects.equals(this.totalCost, that.totalCost);
     }
 

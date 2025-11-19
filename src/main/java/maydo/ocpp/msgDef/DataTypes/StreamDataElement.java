@@ -11,13 +11,12 @@ public class StreamDataElement implements JsonInterface {
 
     /**
      * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float t;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -35,10 +34,8 @@ public class StreamDataElement implements JsonInterface {
     }
 
     /**
-     * 
-     * @param t
-     *     Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     *     .
+     * @param t Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
+     *          .
      */
     public StreamDataElement(Float t, String v, CustomData customData) {
         super();
@@ -49,7 +46,7 @@ public class StreamDataElement implements JsonInterface {
 
     /**
      * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * 
+     * <p>
      * (Required)
      */
     public Float getT() {
@@ -58,7 +55,7 @@ public class StreamDataElement implements JsonInterface {
 
     /**
      * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * 
+     * <p>
      * (Required)
      */
     public void setT(Float t) {
@@ -66,7 +63,6 @@ public class StreamDataElement implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public String getV() {
@@ -74,7 +70,6 @@ public class StreamDataElement implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setV(String v) {
@@ -112,7 +107,7 @@ public class StreamDataElement implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -121,7 +116,7 @@ public class StreamDataElement implements JsonInterface {
             return false;
         StreamDataElement that = (StreamDataElement) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.t, that.t) 
+                && Objects.equals(this.t, that.t)
                 && Objects.equals(this.v, that.v);
     }
 

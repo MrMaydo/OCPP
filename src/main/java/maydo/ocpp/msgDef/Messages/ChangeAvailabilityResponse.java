@@ -14,7 +14,7 @@ public class ChangeAvailabilityResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the availability change.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ChangeAvailabilityResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the availability change.
-     * 
+     * <p>
      * (Required)
      */
     public ChangeAvailabilityStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ChangeAvailabilityResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the availability change.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ChangeAvailabilityStatusEnum status) {
@@ -115,7 +115,7 @@ public class ChangeAvailabilityResponse implements JsonInterface {
             return false;
         ChangeAvailabilityResponse that = (ChangeAvailabilityResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -14,7 +14,7 @@ public class GetLogResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,10 +42,8 @@ public class GetLogResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param filename
-     *     This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
-     *     .
+     * @param filename This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
+     *                 .
      */
     public GetLogResponse(LogStatusEnum status, StatusInfo statusInfo, String filename, CustomData customData) {
         super();
@@ -57,7 +55,7 @@ public class GetLogResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
+     * <p>
      * (Required)
      */
     public LogStatusEnum getStatus() {
@@ -66,7 +64,7 @@ public class GetLogResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(LogStatusEnum status) {
@@ -141,8 +139,8 @@ public class GetLogResponse implements JsonInterface {
             return false;
         GetLogResponse that = (GetLogResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.filename, that.filename) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.filename, that.filename)
                 && Objects.equals(this.status, that.status);
     }
 

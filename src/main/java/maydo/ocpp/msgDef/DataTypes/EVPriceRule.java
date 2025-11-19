@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * *(2.1)* An entry in price schedule over time for which EV is willing to discharge.
- * 
- * 
  */
 public class EVPriceRule implements JsonInterface {
 
     /**
      * Cost per kWh.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float energyFee;
     /**
      * The EnergyFee applies between this value and the value of the PowerRangeStart of the subsequent EVPriceRule. If the power is below this value, the EnergyFee of the previous EVPriceRule applies. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,13 +39,10 @@ public class EVPriceRule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param energyFee
-     *     Cost per kWh.
-     *     .
-     * @param powerRangeStart
-     *     The EnergyFee applies between this value and the value of the PowerRangeStart of the subsequent EVPriceRule. If the power is below this value, the EnergyFee of the previous EVPriceRule applies. Negative values are used for discharging.
-     *     .
+     * @param energyFee       Cost per kWh.
+     *                        .
+     * @param powerRangeStart The EnergyFee applies between this value and the value of the PowerRangeStart of the subsequent EVPriceRule. If the power is below this value, the EnergyFee of the previous EVPriceRule applies. Negative values are used for discharging.
+     *                        .
      */
     public EVPriceRule(Float energyFee, Float powerRangeStart, CustomData customData) {
         super();
@@ -58,7 +53,7 @@ public class EVPriceRule implements JsonInterface {
 
     /**
      * Cost per kWh.
-     * 
+     * <p>
      * (Required)
      */
     public Float getEnergyFee() {
@@ -67,7 +62,7 @@ public class EVPriceRule implements JsonInterface {
 
     /**
      * Cost per kWh.
-     * 
+     * <p>
      * (Required)
      */
     public void setEnergyFee(Float energyFee) {
@@ -76,7 +71,7 @@ public class EVPriceRule implements JsonInterface {
 
     /**
      * The EnergyFee applies between this value and the value of the PowerRangeStart of the subsequent EVPriceRule. If the power is below this value, the EnergyFee of the previous EVPriceRule applies. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     public Float getPowerRangeStart() {
@@ -85,7 +80,7 @@ public class EVPriceRule implements JsonInterface {
 
     /**
      * The EnergyFee applies between this value and the value of the PowerRangeStart of the subsequent EVPriceRule. If the power is below this value, the EnergyFee of the previous EVPriceRule applies. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     public void setPowerRangeStart(Float powerRangeStart) {
@@ -123,7 +118,7 @@ public class EVPriceRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +127,7 @@ public class EVPriceRule implements JsonInterface {
             return false;
         EVPriceRule that = (EVPriceRule) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.energyFee, that.energyFee) 
+                && Objects.equals(this.energyFee, that.energyFee)
                 && Objects.equals(this.powerRangeStart, that.powerRangeStart);
     }
 

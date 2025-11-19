@@ -16,7 +16,7 @@ public class GetMonitoringReportRequest implements JsonInterface {
     private List<ComponentVariable> componentVariable;
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +39,10 @@ public class GetMonitoringReportRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param monitoringCriteria
-     *     This field contains criteria for components for which a monitoring report is requested
-     *     .
-     * @param requestId
-     *     The Id of the request.
-     *     .
+     * @param monitoringCriteria This field contains criteria for components for which a monitoring report is requested
+     *                           .
+     * @param requestId          The Id of the request.
+     *                           .
      */
     public GetMonitoringReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<MonitoringCriterionEnum> monitoringCriteria, CustomData customData) {
         super();
@@ -65,7 +62,7 @@ public class GetMonitoringReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -74,7 +71,7 @@ public class GetMonitoringReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -135,8 +132,8 @@ public class GetMonitoringReportRequest implements JsonInterface {
             return false;
         GetMonitoringReportRequest that = (GetMonitoringReportRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.monitoringCriteria, that.monitoringCriteria) 
-                && Objects.equals(this.componentVariable, that.componentVariable) 
+                && Objects.equals(this.monitoringCriteria, that.monitoringCriteria)
+                && Objects.equals(this.componentVariable, that.componentVariable)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

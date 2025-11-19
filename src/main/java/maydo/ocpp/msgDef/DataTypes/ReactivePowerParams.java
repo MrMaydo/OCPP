@@ -10,22 +10,16 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     * 
-     * 
      */
     @Optional
     private Float vRef;
     /**
      * Only for VoltVar: Enable/disable autonomous VRef adjustment
-     * 
-     * 
      */
     @Optional
     private Boolean autonomousVRefEnable;
     /**
      * Only for VoltVar: Adjustment range for VRef time constant
-     * 
-     * 
      */
     @Optional
     private Float autonomousVRefTimeConstant;
@@ -42,22 +36,18 @@ public class ReactivePowerParams implements JsonInterface {
     }
 
     /**
-     * 
-     * @param autonomousVRefEnable
-     *     Only for VoltVar: Enable/disable autonomous VRef adjustment
-     *     
-     *     
-     *     .
-     * @param autonomousVRefTimeConstant
-     *     Only for VoltVar: Adjustment range for VRef time constant
-     *     
-     *     
-     *     .
-     * @param vRef
-     *     Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     *     
-     *     
-     *     .
+     * @param autonomousVRefEnable       Only for VoltVar: Enable/disable autonomous VRef adjustment
+     *                                   <p>
+     *                                   <p>
+     *                                   .
+     * @param autonomousVRefTimeConstant Only for VoltVar: Adjustment range for VRef time constant
+     *                                   <p>
+     *                                   <p>
+     *                                   .
+     * @param vRef                       Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
+     *                                   <p>
+     *                                   <p>
+     *                                   .
      */
     public ReactivePowerParams(Float vRef, Boolean autonomousVRefEnable, Float autonomousVRefTimeConstant, CustomData customData) {
         super();
@@ -69,8 +59,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     * 
-     * 
      */
     public Float getvRef() {
         return vRef;
@@ -78,8 +66,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     * 
-     * 
      */
     public void setvRef(Float vRef) {
         this.vRef = vRef;
@@ -87,8 +73,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar: Enable/disable autonomous VRef adjustment
-     * 
-     * 
      */
     public Boolean getAutonomousVRefEnable() {
         return autonomousVRefEnable;
@@ -96,8 +80,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar: Enable/disable autonomous VRef adjustment
-     * 
-     * 
      */
     public void setAutonomousVRefEnable(Boolean autonomousVRefEnable) {
         this.autonomousVRefEnable = autonomousVRefEnable;
@@ -105,8 +87,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar: Adjustment range for VRef time constant
-     * 
-     * 
      */
     public Float getAutonomousVRefTimeConstant() {
         return autonomousVRefTimeConstant;
@@ -114,8 +94,6 @@ public class ReactivePowerParams implements JsonInterface {
 
     /**
      * Only for VoltVar: Adjustment range for VRef time constant
-     * 
-     * 
      */
     public void setAutonomousVRefTimeConstant(Float autonomousVRefTimeConstant) {
         this.autonomousVRefTimeConstant = autonomousVRefTimeConstant;
@@ -152,7 +130,7 @@ public class ReactivePowerParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -161,8 +139,8 @@ public class ReactivePowerParams implements JsonInterface {
             return false;
         ReactivePowerParams that = (ReactivePowerParams) obj;
         return Objects.equals(this.autonomousVRefEnable, that.autonomousVRefEnable)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.vRef, that.vRef) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.vRef, that.vRef)
                 && Objects.equals(this.autonomousVRefTimeConstant, that.autonomousVRefTimeConstant);
     }
 

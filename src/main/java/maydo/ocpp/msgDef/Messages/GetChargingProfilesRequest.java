@@ -13,7 +13,7 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
      * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -26,8 +26,8 @@ public class GetChargingProfilesRequest implements JsonInterface {
     private Integer evseId;
     /**
      * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -45,14 +45,11 @@ public class GetChargingProfilesRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
-     *     Reported charging profiles SHALL match the criteria in field _chargingProfile_.
-     *     .
-     * @param requestId
-     *     Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     *     .
+     * @param evseId    For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
+     *                  Reported charging profiles SHALL match the criteria in field _chargingProfile_.
+     *                  .
+     * @param requestId Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
+     *                  .
      */
     public GetChargingProfilesRequest(Integer requestId, Integer evseId, ChargingProfileCriterion chargingProfile, CustomData customData) {
         super();
@@ -64,7 +61,7 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
      * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -73,7 +70,7 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
      * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -98,8 +95,8 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
      * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public ChargingProfileCriterion getChargingProfile() {
@@ -108,8 +105,8 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
      * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setChargingProfile(ChargingProfileCriterion chargingProfile) {
@@ -156,8 +153,8 @@ public class GetChargingProfilesRequest implements JsonInterface {
             return false;
         GetChargingProfilesRequest that = (GetChargingProfilesRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.chargingProfile, that.chargingProfile)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

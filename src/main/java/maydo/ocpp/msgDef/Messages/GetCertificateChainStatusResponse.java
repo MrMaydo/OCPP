@@ -13,7 +13,6 @@ import java.util.Objects;
 public class GetCertificateChainStatusResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -37,7 +36,6 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<CertificateStatus> getCertificateStatus() {
@@ -45,7 +43,6 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCertificateStatus(List<CertificateStatus> certificateStatus) {

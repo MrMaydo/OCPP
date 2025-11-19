@@ -13,7 +13,6 @@ public enum ControlModeEnum {
 
     SCHEDULED_CONTROL("ScheduledControl"),
     DYNAMIC_CONTROL("DynamicControl");
-    private final String value;
     private final static Map<String, ControlModeEnum> CONSTANTS = new HashMap<String, ControlModeEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum ControlModeEnum {
         }
     }
 
+    private final String value;
+
     ControlModeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ControlModeEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum ControlModeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

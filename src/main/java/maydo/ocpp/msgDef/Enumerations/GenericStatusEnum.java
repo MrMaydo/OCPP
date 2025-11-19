@@ -11,7 +11,6 @@ public enum GenericStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected");
-    private final String value;
     private final static Map<String, GenericStatusEnum> CONSTANTS = new HashMap<String, GenericStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum GenericStatusEnum {
         }
     }
 
+    private final String value;
+
     GenericStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GenericStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum GenericStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

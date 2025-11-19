@@ -12,14 +12,13 @@ import java.util.Objects;
 public class EVPowerSchedule implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private List<EVPowerScheduleEntry> evPowerScheduleEntries;
     /**
      * The time that defines the starting point for the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -37,10 +36,8 @@ public class EVPowerSchedule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param timeAnchor
-     *     The time that defines the starting point for the EVEnergyOffer.
-     *     .
+     * @param timeAnchor The time that defines the starting point for the EVEnergyOffer.
+     *                   .
      */
     public EVPowerSchedule(List<EVPowerScheduleEntry> evPowerScheduleEntries, Date timeAnchor, CustomData customData) {
         super();
@@ -50,7 +47,6 @@ public class EVPowerSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<EVPowerScheduleEntry> getEvPowerScheduleEntries() {
@@ -58,7 +54,6 @@ public class EVPowerSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEvPowerScheduleEntries(List<EVPowerScheduleEntry> evPowerScheduleEntries) {
@@ -67,7 +62,7 @@ public class EVPowerSchedule implements JsonInterface {
 
     /**
      * The time that defines the starting point for the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimeAnchor() {
@@ -76,7 +71,7 @@ public class EVPowerSchedule implements JsonInterface {
 
     /**
      * The time that defines the starting point for the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeAnchor(Date timeAnchor) {
@@ -114,7 +109,7 @@ public class EVPowerSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -123,7 +118,7 @@ public class EVPowerSchedule implements JsonInterface {
             return false;
         EVPowerSchedule that = (EVPowerSchedule) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evPowerScheduleEntries, that.evPowerScheduleEntries) 
+                && Objects.equals(this.evPowerScheduleEntries, that.evPowerScheduleEntries)
                 && Objects.equals(this.timeAnchor, that.timeAnchor);
     }
 

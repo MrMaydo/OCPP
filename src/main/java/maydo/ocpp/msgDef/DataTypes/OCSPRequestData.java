@@ -12,7 +12,7 @@ public class OCSPRequestData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -22,7 +22,7 @@ public class OCSPRequestData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -31,7 +31,7 @@ public class OCSPRequestData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -40,15 +40,15 @@ public class OCSPRequestData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String serialNumber;
     /**
-     * This contains the responder URL (Case insensitive). 
-     * 
-     * 
+     * This contains the responder URL (Case insensitive).
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -66,27 +66,22 @@ public class OCSPRequestData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param responderURL
-     *     This contains the responder URL (Case insensitive). 
-     *     
-     *     .
-     * @param issuerNameHash
-     *     The hash of the issuer’s distinguished
-     *     name (DN), that must be calculated over the DER
-     *     encoding of the issuer’s name field in the certificate
-     *     being checked.
-     *     .
-     * @param issuerKeyHash
-     *     The hash of the DER encoded public key:
-     *     the value (excluding tag and length) of the subject
-     *     public key field in the issuer’s certificate.
-     *     .
-     * @param serialNumber
-     *     The string representation of the
-     *     hexadecimal value of the serial number without the
-     *     prefix "0x" and without leading zeroes.
-     *     .
+     * @param responderURL   This contains the responder URL (Case insensitive).
+     *                       <p>
+     *                       .
+     * @param issuerNameHash The hash of the issuer’s distinguished
+     *                       name (DN), that must be calculated over the DER
+     *                       encoding of the issuer’s name field in the certificate
+     *                       being checked.
+     *                       .
+     * @param issuerKeyHash  The hash of the DER encoded public key:
+     *                       the value (excluding tag and length) of the subject
+     *                       public key field in the issuer’s certificate.
+     *                       .
+     * @param serialNumber   The string representation of the
+     *                       hexadecimal value of the serial number without the
+     *                       prefix "0x" and without leading zeroes.
+     *                       .
      */
     public OCSPRequestData(HashAlgorithmEnum hashAlgorithm, String issuerNameHash, String issuerKeyHash, String serialNumber, String responderURL, CustomData customData) {
         super();
@@ -100,7 +95,7 @@ public class OCSPRequestData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     public HashAlgorithmEnum getHashAlgorithm() {
@@ -109,7 +104,7 @@ public class OCSPRequestData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     public void setHashAlgorithm(HashAlgorithmEnum hashAlgorithm) {
@@ -121,7 +116,7 @@ public class OCSPRequestData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
+     * <p>
      * (Required)
      */
     public String getIssuerNameHash() {
@@ -133,7 +128,7 @@ public class OCSPRequestData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
+     * <p>
      * (Required)
      */
     public void setIssuerNameHash(String issuerNameHash) {
@@ -144,7 +139,7 @@ public class OCSPRequestData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     public String getIssuerKeyHash() {
@@ -155,7 +150,7 @@ public class OCSPRequestData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     public void setIssuerKeyHash(String issuerKeyHash) {
@@ -166,7 +161,7 @@ public class OCSPRequestData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     public String getSerialNumber() {
@@ -177,7 +172,7 @@ public class OCSPRequestData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     public void setSerialNumber(String serialNumber) {
@@ -185,9 +180,9 @@ public class OCSPRequestData implements JsonInterface {
     }
 
     /**
-     * This contains the responder URL (Case insensitive). 
-     * 
-     * 
+     * This contains the responder URL (Case insensitive).
+     * <p>
+     * <p>
      * (Required)
      */
     public String getResponderURL() {
@@ -195,9 +190,9 @@ public class OCSPRequestData implements JsonInterface {
     }
 
     /**
-     * This contains the responder URL (Case insensitive). 
-     * 
-     * 
+     * This contains the responder URL (Case insensitive).
+     * <p>
+     * <p>
      * (Required)
      */
     public void setResponderURL(String responderURL) {
@@ -235,7 +230,7 @@ public class OCSPRequestData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -244,10 +239,10 @@ public class OCSPRequestData implements JsonInterface {
             return false;
         OCSPRequestData that = (OCSPRequestData) obj;
         return Objects.equals(this.responderURL, that.responderURL)
-                && Objects.equals(this.issuerNameHash, that.issuerNameHash) 
-                && Objects.equals(this.issuerKeyHash, that.issuerKeyHash) 
-                && Objects.equals(this.serialNumber, that.serialNumber) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.issuerNameHash, that.issuerNameHash)
+                && Objects.equals(this.issuerKeyHash, that.issuerKeyHash)
+                && Objects.equals(this.serialNumber, that.serialNumber)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.hashAlgorithm, that.hashAlgorithm);
     }
 

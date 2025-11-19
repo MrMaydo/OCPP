@@ -12,13 +12,11 @@ import java.util.Objects;
 public class AdjustPeriodicEventStreamRequest implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private Integer id;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -43,7 +41,6 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Integer getId() {
@@ -51,7 +48,6 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setId(Integer id) {
@@ -59,7 +55,6 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public PeriodicEventStreamParams getParams() {
@@ -67,7 +62,6 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setParams(PeriodicEventStreamParams params) {
@@ -114,7 +108,7 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
             return false;
         AdjustPeriodicEventStreamRequest that = (AdjustPeriodicEventStreamRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.params, that.params);
     }
 

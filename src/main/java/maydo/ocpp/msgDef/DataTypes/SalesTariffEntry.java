@@ -11,7 +11,6 @@ import java.util.Objects;
 public class SalesTariffEntry implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,10 +35,8 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
     /**
-     * 
-     * @param ePriceLevel
-     *     Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     *     .
+     * @param ePriceLevel Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     *                    .
      */
     public SalesTariffEntry(RelativeTimeInterval relativeTimeInterval, Integer ePriceLevel, List<ConsumptionCost> consumptionCost, CustomData customData) {
         super();
@@ -50,7 +47,6 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public RelativeTimeInterval getRelativeTimeInterval() {
@@ -58,7 +54,6 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
@@ -118,7 +113,7 @@ public class SalesTariffEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -127,8 +122,8 @@ public class SalesTariffEntry implements JsonInterface {
             return false;
         SalesTariffEntry that = (SalesTariffEntry) obj;
         return Objects.equals(this.consumptionCost, that.consumptionCost)
-                && Objects.equals(this.relativeTimeInterval, that.relativeTimeInterval) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.relativeTimeInterval, that.relativeTimeInterval)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.ePriceLevel, that.ePriceLevel);
     }
 

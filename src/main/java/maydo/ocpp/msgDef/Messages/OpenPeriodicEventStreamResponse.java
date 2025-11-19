@@ -14,7 +14,7 @@ public class OpenPeriodicEventStreamResponse implements JsonInterface {
 
     /**
      * Result of request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class OpenPeriodicEventStreamResponse implements JsonInterface {
 
     /**
      * Result of request.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class OpenPeriodicEventStreamResponse implements JsonInterface {
 
     /**
      * Result of request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -115,7 +115,7 @@ public class OpenPeriodicEventStreamResponse implements JsonInterface {
             return false;
         OpenPeriodicEventStreamResponse that = (OpenPeriodicEventStreamResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

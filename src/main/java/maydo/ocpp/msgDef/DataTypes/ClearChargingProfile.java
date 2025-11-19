@@ -11,7 +11,6 @@ public class ClearChargingProfile implements JsonInterface {
 
     /**
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
      */
     @Optional
     private Integer evseId;
@@ -38,14 +37,11 @@ public class ClearChargingProfile implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     *     
-     *     .
-     * @param stackLevel
-     *     Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     *     .
+     * @param evseId     Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
+     *                   <p>
+     *                   .
+     * @param stackLevel Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
+     *                   .
      */
     public ClearChargingProfile(Integer evseId, ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, CustomData customData) {
         super();
@@ -57,7 +53,6 @@ public class ClearChargingProfile implements JsonInterface {
 
     /**
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -65,7 +60,6 @@ public class ClearChargingProfile implements JsonInterface {
 
     /**
      * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -130,7 +124,7 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -139,8 +133,8 @@ public class ClearChargingProfile implements JsonInterface {
             return false;
         ClearChargingProfile that = (ClearChargingProfile) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.stackLevel, that.stackLevel);
     }
 

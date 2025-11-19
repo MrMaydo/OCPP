@@ -14,7 +14,7 @@ public class SetChargingProfileResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class SetChargingProfileResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * 
+     * <p>
      * (Required)
      */
     public ChargingProfileStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class SetChargingProfileResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ChargingProfileStatusEnum status) {
@@ -115,7 +115,7 @@ public class SetChargingProfileResponse implements JsonInterface {
             return false;
         SetChargingProfileResponse that = (SetChargingProfileResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

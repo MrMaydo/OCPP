@@ -19,7 +19,7 @@ public class TransactionEventResponse implements JsonInterface {
     @Optional
     private Float totalCost;
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.  
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.
      */
     @Optional
     private Integer chargingPriority;
@@ -36,7 +36,6 @@ public class TransactionEventResponse implements JsonInterface {
     private TransactionLimit transactionLimit;
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     @Optional
     private MessageContent updatedPersonalMessage;
@@ -55,13 +54,10 @@ public class TransactionEventResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingPriority
-     *     Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.  
-     *     .
-     * @param totalCost
-     *     When _eventType_ of TransactionEventRequest is Updated, then this value contains the running cost. When _eventType_ of TransactionEventRequest is Ended, then this contains the final total cost of this transaction, including taxes, in the currency configured with the Configuration Variable: Currency. Absence of this value does not imply that the transaction was free. To indicate a free transaction, the CSMS SHALL send a value of 0.00.
-     *     .
+     * @param chargingPriority Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.
+     *                         .
+     * @param totalCost        When _eventType_ of TransactionEventRequest is Updated, then this value contains the running cost. When _eventType_ of TransactionEventRequest is Ended, then this contains the final total cost of this transaction, including taxes, in the currency configured with the Configuration Variable: Currency. Absence of this value does not imply that the transaction was free. To indicate a free transaction, the CSMS SHALL send a value of 0.00.
+     *                         .
      */
     public TransactionEventResponse(Float totalCost, Integer chargingPriority, IdTokenInfo idTokenInfo, TransactionLimit transactionLimit, MessageContent updatedPersonalMessage, List<MessageContent> updatedPersonalMessageExtra, CustomData customData) {
         super();
@@ -89,14 +85,14 @@ public class TransactionEventResponse implements JsonInterface {
     }
 
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.  
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.
      */
     public Integer getChargingPriority() {
         return chargingPriority;
     }
 
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.  
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; is temporarily, so it may not be set in the &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt; afterwards. Also the chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; has a higher priority than the one in &lt;&lt;cmn_idtokeninfotype,IdTokenInfoType&gt;&gt;.
      */
     public void setChargingPriority(Integer chargingPriority) {
         this.chargingPriority = chargingPriority;
@@ -134,7 +130,6 @@ public class TransactionEventResponse implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     public MessageContent getUpdatedPersonalMessage() {
         return updatedPersonalMessage;
@@ -142,7 +137,6 @@ public class TransactionEventResponse implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     public void setUpdatedPersonalMessage(MessageContent updatedPersonalMessage) {
         this.updatedPersonalMessage = updatedPersonalMessage;
@@ -196,11 +190,11 @@ public class TransactionEventResponse implements JsonInterface {
             return false;
         TransactionEventResponse that = (TransactionEventResponse) obj;
         return Objects.equals(this.idTokenInfo, that.idTokenInfo)
-                && Objects.equals(this.updatedPersonalMessageExtra, that.updatedPersonalMessageExtra) 
-                && Objects.equals(this.updatedPersonalMessage, that.updatedPersonalMessage) 
-                && Objects.equals(this.chargingPriority, that.chargingPriority) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.transactionLimit, that.transactionLimit) 
+                && Objects.equals(this.updatedPersonalMessageExtra, that.updatedPersonalMessageExtra)
+                && Objects.equals(this.updatedPersonalMessage, that.updatedPersonalMessage)
+                && Objects.equals(this.chargingPriority, that.chargingPriority)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.transactionLimit, that.transactionLimit)
                 && Objects.equals(this.totalCost, that.totalCost);
     }
 

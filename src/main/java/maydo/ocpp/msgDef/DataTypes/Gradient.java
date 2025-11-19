@@ -11,27 +11,27 @@ public class Gradient implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
      * Default ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float gradient;
     /**
      * Soft-start ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -49,22 +49,18 @@ public class Gradient implements JsonInterface {
     }
 
     /**
-     * 
-     * @param softGradient
-     *     Soft-start ramp rate in seconds (0 if not applicable)
-     *     
-     *     
-     *     .
-     * @param gradient
-     *     Default ramp rate in seconds (0 if not applicable)
-     *     
-     *     
-     *     .
-     * @param priority
-     *     Id of setting
-     *     
-     *     
-     *     .
+     * @param softGradient Soft-start ramp rate in seconds (0 if not applicable)
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param gradient     Default ramp rate in seconds (0 if not applicable)
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param priority     Id of setting
+     *                     <p>
+     *                     <p>
+     *                     .
      */
     public Gradient(Integer priority, Float gradient, Float softGradient, CustomData customData) {
         super();
@@ -76,9 +72,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -87,9 +83,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -98,9 +94,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Default ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getGradient() {
@@ -109,9 +105,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Default ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setGradient(Float gradient) {
@@ -120,9 +116,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Soft-start ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getSoftGradient() {
@@ -131,9 +127,9 @@ public class Gradient implements JsonInterface {
 
     /**
      * Soft-start ramp rate in seconds (0 if not applicable)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setSoftGradient(Float softGradient) {
@@ -171,7 +167,7 @@ public class Gradient implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -180,8 +176,8 @@ public class Gradient implements JsonInterface {
             return false;
         Gradient that = (Gradient) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority) 
-                && Objects.equals(this.softGradient, that.softGradient) 
+                && Objects.equals(this.priority, that.priority)
+                && Objects.equals(this.softGradient, that.softGradient)
                 && Objects.equals(this.gradient, that.gradient);
     }
 

@@ -11,7 +11,6 @@ public enum ChargingRateUnitEnum {
 
     W("W"),
     A("A");
-    private final String value;
     private final static Map<String, ChargingRateUnitEnum> CONSTANTS = new HashMap<String, ChargingRateUnitEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum ChargingRateUnitEnum {
         }
     }
 
+    private final String value;
+
     ChargingRateUnitEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChargingRateUnitEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum ChargingRateUnitEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

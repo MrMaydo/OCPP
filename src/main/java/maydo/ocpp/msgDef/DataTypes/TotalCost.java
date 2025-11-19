@@ -12,15 +12,15 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Currency of the costs in ISO 4217 Code.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String currency;
     /**
      * Type of cost: normal or the minimum or maximum cost.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -57,7 +57,7 @@ public class TotalCost implements JsonInterface {
     private Price reservationFixed;
     /**
      * Total cost with and without tax. Contains the total of energy, charging time, idle time, fixed and reservation costs including and/or excluding tax.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -75,11 +75,9 @@ public class TotalCost implements JsonInterface {
     }
 
     /**
-     * 
-     * @param currency
-     *     Currency of the costs in ISO 4217 Code.
-     *     
-     *     .
+     * @param currency Currency of the costs in ISO 4217 Code.
+     *                 <p>
+     *                 .
      */
     public TotalCost(String currency, TariffCostEnum typeOfCost, Price fixed, Price energy, Price chargingTime, Price idleTime, Price reservationTime, Price reservationFixed, TotalPrice total, CustomData customData) {
         super();
@@ -97,8 +95,8 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Currency of the costs in ISO 4217 Code.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getCurrency() {
@@ -107,8 +105,8 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Currency of the costs in ISO 4217 Code.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setCurrency(String currency) {
@@ -117,7 +115,7 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Type of cost: normal or the minimum or maximum cost.
-     * 
+     * <p>
      * (Required)
      */
     public TariffCostEnum getTypeOfCost() {
@@ -126,7 +124,7 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Type of cost: normal or the minimum or maximum cost.
-     * 
+     * <p>
      * (Required)
      */
     public void setTypeOfCost(TariffCostEnum typeOfCost) {
@@ -219,7 +217,7 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Total cost with and without tax. Contains the total of energy, charging time, idle time, fixed and reservation costs including and/or excluding tax.
-     * 
+     * <p>
      * (Required)
      */
     public TotalPrice getTotal() {
@@ -228,7 +226,7 @@ public class TotalCost implements JsonInterface {
 
     /**
      * Total cost with and without tax. Contains the total of energy, charging time, idle time, fixed and reservation costs including and/or excluding tax.
-     * 
+     * <p>
      * (Required)
      */
     public void setTotal(TotalPrice total) {
@@ -266,7 +264,7 @@ public class TotalCost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -275,14 +273,14 @@ public class TotalCost implements JsonInterface {
             return false;
         TotalCost that = (TotalCost) obj;
         return Objects.equals(this.total, that.total)
-                && Objects.equals(this.chargingTime, that.chargingTime) 
-                && Objects.equals(this.reservationTime, that.reservationTime) 
-                && Objects.equals(this.currency, that.currency) 
-                && Objects.equals(this.fixed, that.fixed) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.typeOfCost, that.typeOfCost) 
-                && Objects.equals(this.idleTime, that.idleTime) 
-                && Objects.equals(this.reservationFixed, that.reservationFixed) 
+                && Objects.equals(this.chargingTime, that.chargingTime)
+                && Objects.equals(this.reservationTime, that.reservationTime)
+                && Objects.equals(this.currency, that.currency)
+                && Objects.equals(this.fixed, that.fixed)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.typeOfCost, that.typeOfCost)
+                && Objects.equals(this.idleTime, that.idleTime)
+                && Objects.equals(this.reservationFixed, that.reservationFixed)
                 && Objects.equals(this.energy, that.energy);
     }
 

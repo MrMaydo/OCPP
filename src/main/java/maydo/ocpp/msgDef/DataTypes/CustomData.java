@@ -8,12 +8,10 @@ import java.util.Objects;
 
 /**
  * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
- * 
  */
 public class CustomData implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -31,7 +29,6 @@ public class CustomData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public String getVendorId() {
@@ -39,7 +36,6 @@ public class CustomData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setVendorId(String vendorId) {
@@ -63,7 +59,7 @@ public class CustomData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

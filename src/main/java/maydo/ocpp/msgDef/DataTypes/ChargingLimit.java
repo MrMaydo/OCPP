@@ -11,7 +11,7 @@ public class ChargingLimit implements JsonInterface {
 
     /**
      * Represents the source of the charging limit. Values defined in appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,16 +39,12 @@ public class ChargingLimit implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isLocalGeneration
-     *     *(2.1)* True when the reported limit concerns local generation that is providing extra capacity, instead of a limitation.
-     *     .
-     * @param chargingLimitSource
-     *     Represents the source of the charging limit. Values defined in appendix as ChargingLimitSourceEnumStringType.
-     *     .
-     * @param isGridCritical
-     *     Indicates whether the charging limit is critical for the grid.
-     *     .
+     * @param isLocalGeneration   *(2.1)* True when the reported limit concerns local generation that is providing extra capacity, instead of a limitation.
+     *                            .
+     * @param chargingLimitSource Represents the source of the charging limit. Values defined in appendix as ChargingLimitSourceEnumStringType.
+     *                            .
+     * @param isGridCritical      Indicates whether the charging limit is critical for the grid.
+     *                            .
      */
     public ChargingLimit(String chargingLimitSource, Boolean isLocalGeneration, Boolean isGridCritical, CustomData customData) {
         super();
@@ -60,7 +56,7 @@ public class ChargingLimit implements JsonInterface {
 
     /**
      * Represents the source of the charging limit. Values defined in appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public String getChargingLimitSource() {
@@ -69,7 +65,7 @@ public class ChargingLimit implements JsonInterface {
 
     /**
      * Represents the source of the charging limit. Values defined in appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingLimitSource(String chargingLimitSource) {
@@ -135,7 +131,7 @@ public class ChargingLimit implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -144,8 +140,8 @@ public class ChargingLimit implements JsonInterface {
             return false;
         ChargingLimit that = (ChargingLimit) obj;
         return Objects.equals(this.isLocalGeneration, that.isLocalGeneration)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource)
                 && Objects.equals(this.isGridCritical, that.isGridCritical);
     }
 

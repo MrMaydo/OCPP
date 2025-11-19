@@ -12,12 +12,10 @@ public class OverstayRuleList implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     @Optional
     private RationalNumber overstayPowerThreshold;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -40,10 +38,8 @@ public class OverstayRuleList implements JsonInterface {
     }
 
     /**
-     * 
-     * @param overstayTimeThreshold
-     *     Time till overstay is applied in seconds.
-     *     .
+     * @param overstayTimeThreshold Time till overstay is applied in seconds.
+     *                              .
      */
     public OverstayRuleList(RationalNumber overstayPowerThreshold, List<OverstayRule> overstayRule, Integer overstayTimeThreshold, CustomData customData) {
         super();
@@ -55,7 +51,6 @@ public class OverstayRuleList implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public RationalNumber getOverstayPowerThreshold() {
         return overstayPowerThreshold;
@@ -63,14 +58,12 @@ public class OverstayRuleList implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public void setOverstayPowerThreshold(RationalNumber overstayPowerThreshold) {
         this.overstayPowerThreshold = overstayPowerThreshold;
     }
 
     /**
-     * 
      * (Required)
      */
     public List<OverstayRule> getOverstayRule() {
@@ -78,7 +71,6 @@ public class OverstayRuleList implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setOverstayRule(List<OverstayRule> overstayRule) {
@@ -130,7 +122,7 @@ public class OverstayRuleList implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -139,8 +131,8 @@ public class OverstayRuleList implements JsonInterface {
             return false;
         OverstayRuleList that = (OverstayRuleList) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.overstayTimeThreshold, that.overstayTimeThreshold) 
-                && Objects.equals(this.overstayPowerThreshold, that.overstayPowerThreshold) 
+                && Objects.equals(this.overstayTimeThreshold, that.overstayTimeThreshold)
+                && Objects.equals(this.overstayPowerThreshold, that.overstayPowerThreshold)
                 && Objects.equals(this.overstayRule, that.overstayRule);
     }
 

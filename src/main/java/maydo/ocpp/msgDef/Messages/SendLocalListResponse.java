@@ -14,7 +14,7 @@ public class SendLocalListResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has successfully received and applied the update of the Local Authorization List.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class SendLocalListResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has successfully received and applied the update of the Local Authorization List.
-     * 
+     * <p>
      * (Required)
      */
     public SendLocalListStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class SendLocalListResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has successfully received and applied the update of the Local Authorization List.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(SendLocalListStatusEnum status) {
@@ -115,7 +115,7 @@ public class SendLocalListResponse implements JsonInterface {
             return false;
         SendLocalListResponse that = (SendLocalListResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

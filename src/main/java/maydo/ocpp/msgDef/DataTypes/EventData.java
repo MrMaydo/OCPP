@@ -14,39 +14,38 @@ public class EventData implements JsonInterface {
 
     /**
      * Identifies the event. This field can be referred to as a cause by other events.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer eventId;
     /**
      * Timestamp of the moment the report was generated.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
      * Type of trigger for this event, e.g. exceeding a threshold value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private EventTriggerEnum trigger;
     /**
      * Refers to the Id of an event that is considered to be the cause for this event.
-     * 
      */
     @Optional
     private Integer cause;
     /**
      * Actual value (_attributeType_ Actual) of the variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -62,8 +61,7 @@ public class EventData implements JsonInterface {
     @Optional
     private String techInfo;
     /**
-     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'. 
-     * 
+     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
      */
     @Optional
     private Boolean cleared;
@@ -74,7 +72,7 @@ public class EventData implements JsonInterface {
     private String transactionId;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -86,15 +84,15 @@ public class EventData implements JsonInterface {
     private Integer variableMonitoringId;
     /**
      * Specifies the event notification type of the message.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private EventNotificationEnum eventNotificationType;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -117,43 +115,32 @@ public class EventData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param severity
-     *     *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
-     *     .
-     * @param eventId
-     *     Identifies the event. This field can be referred to as a cause by other events.
-     *     
-     *     .
-     * @param techCode
-     *     Technical (error) code as reported by component.
-     *     .
-     * @param variableMonitoringId
-     *     Identifies the VariableMonitoring which triggered the event.
-     *     .
-     * @param actualValue
-     *     Actual value (_attributeType_ Actual) of the variable.
-     *     
-     *     The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     *     
-     *     .
-     * @param cause
-     *     Refers to the Id of an event that is considered to be the cause for this event.
-     *     
-     *     .
-     * @param techInfo
-     *     Technical detail information as reported by component.
-     *     .
-     * @param cleared
-     *     _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'. 
-     *     
-     *     .
-     * @param transactionId
-     *     If an event notification is linked to a specific transaction, this field can be used to specify its transactionId.
-     *     .
-     * @param timestamp
-     *     Timestamp of the moment the report was generated.
-     *     .
+     * @param severity             *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
+     *                             .
+     * @param eventId              Identifies the event. This field can be referred to as a cause by other events.
+     *                             <p>
+     *                             .
+     * @param techCode             Technical (error) code as reported by component.
+     *                             .
+     * @param variableMonitoringId Identifies the VariableMonitoring which triggered the event.
+     *                             .
+     * @param actualValue          Actual value (_attributeType_ Actual) of the variable.
+     *                             <p>
+     *                             The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     *                             <p>
+     *                             .
+     * @param cause                Refers to the Id of an event that is considered to be the cause for this event.
+     *                             <p>
+     *                             .
+     * @param techInfo             Technical detail information as reported by component.
+     *                             .
+     * @param cleared              _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
+     *                             <p>
+     *                             .
+     * @param transactionId        If an event notification is linked to a specific transaction, this field can be used to specify its transactionId.
+     *                             .
+     * @param timestamp            Timestamp of the moment the report was generated.
+     *                             .
      */
     public EventData(Integer eventId, Date timestamp, EventTriggerEnum trigger, Integer cause, String actualValue, String techCode, String techInfo, Boolean cleared, String transactionId, Component component, Integer variableMonitoringId, EventNotificationEnum eventNotificationType, Variable variable, Integer severity, CustomData customData) {
         super();
@@ -176,8 +163,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Identifies the event. This field can be referred to as a cause by other events.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getEventId() {
@@ -186,8 +173,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Identifies the event. This field can be referred to as a cause by other events.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEventId(Integer eventId) {
@@ -196,7 +183,7 @@ public class EventData implements JsonInterface {
 
     /**
      * Timestamp of the moment the report was generated.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -205,7 +192,7 @@ public class EventData implements JsonInterface {
 
     /**
      * Timestamp of the moment the report was generated.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -214,8 +201,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Type of trigger for this event, e.g. exceeding a threshold value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public EventTriggerEnum getTrigger() {
@@ -224,8 +211,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Type of trigger for this event, e.g. exceeding a threshold value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTrigger(EventTriggerEnum trigger) {
@@ -234,7 +221,6 @@ public class EventData implements JsonInterface {
 
     /**
      * Refers to the Id of an event that is considered to be the cause for this event.
-     * 
      */
     public Integer getCause() {
         return cause;
@@ -242,7 +228,6 @@ public class EventData implements JsonInterface {
 
     /**
      * Refers to the Id of an event that is considered to be the cause for this event.
-     * 
      */
     public void setCause(Integer cause) {
         this.cause = cause;
@@ -250,10 +235,10 @@ public class EventData implements JsonInterface {
 
     /**
      * Actual value (_attributeType_ Actual) of the variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * <p>
+     * <p>
      * (Required)
      */
     public String getActualValue() {
@@ -262,10 +247,10 @@ public class EventData implements JsonInterface {
 
     /**
      * Actual value (_attributeType_ Actual) of the variable.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     * 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     * <p>
+     * <p>
      * (Required)
      */
     public void setActualValue(String actualValue) {
@@ -301,16 +286,14 @@ public class EventData implements JsonInterface {
     }
 
     /**
-     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'. 
-     * 
+     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
      */
     public Boolean getCleared() {
         return cleared;
     }
 
     /**
-     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'. 
-     * 
+     * _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
      */
     public void setCleared(Boolean cleared) {
         this.cleared = cleared;
@@ -332,7 +315,7 @@ public class EventData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -341,7 +324,7 @@ public class EventData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -364,8 +347,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Specifies the event notification type of the message.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public EventNotificationEnum getEventNotificationType() {
@@ -374,8 +357,8 @@ public class EventData implements JsonInterface {
 
     /**
      * Specifies the event notification type of the message.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEventNotificationType(EventNotificationEnum eventNotificationType) {
@@ -384,7 +367,7 @@ public class EventData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -393,7 +376,7 @@ public class EventData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -445,7 +428,7 @@ public class EventData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -454,19 +437,19 @@ public class EventData implements JsonInterface {
             return false;
         EventData that = (EventData) obj;
         return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.eventId, that.eventId) 
-                && Objects.equals(this.techCode, that.techCode) 
-                && Objects.equals(this.actualValue, that.actualValue) 
-                && Objects.equals(this.cause, that.cause) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.trigger, that.trigger) 
-                && Objects.equals(this.techInfo, that.techInfo) 
-                && Objects.equals(this.transactionId, that.transactionId) 
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId) 
-                && Objects.equals(this.variable, that.variable) 
-                && Objects.equals(this.eventNotificationType, that.eventNotificationType) 
-                && Objects.equals(this.cleared, that.cleared) 
+                && Objects.equals(this.eventId, that.eventId)
+                && Objects.equals(this.techCode, that.techCode)
+                && Objects.equals(this.actualValue, that.actualValue)
+                && Objects.equals(this.cause, that.cause)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.trigger, that.trigger)
+                && Objects.equals(this.techInfo, that.techInfo)
+                && Objects.equals(this.transactionId, that.transactionId)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
+                && Objects.equals(this.cleared, that.cleared)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

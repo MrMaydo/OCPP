@@ -13,7 +13,7 @@ public class Tariff implements JsonInterface {
 
     /**
      * Unique id of tariff
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -22,7 +22,7 @@ public class Tariff implements JsonInterface {
     private List<MessageContent> description;
     /**
      * Currency code according to ISO 4217
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +39,11 @@ public class Tariff implements JsonInterface {
     private Date validFrom;
     /**
      * Price elements and tax for time
-     * 
      */
     @Optional
     private TariffTime chargingTime;
     /**
      * Price elements and tax for time
-     * 
      */
     @Optional
     private TariffTime idleTime;
@@ -53,7 +51,6 @@ public class Tariff implements JsonInterface {
     private TariffFixed fixedFee;
     /**
      * Price elements and tax for time
-     * 
      */
     @Optional
     private TariffTime reservationTime;
@@ -82,16 +79,12 @@ public class Tariff implements JsonInterface {
     }
 
     /**
-     * 
-     * @param currency
-     *     Currency code according to ISO 4217
-     *     .
-     * @param tariffId
-     *     Unique id of tariff
-     *     .
-     * @param validFrom
-     *     Time when this tariff becomes active. When absent, it is immediately active.
-     *     .
+     * @param currency  Currency code according to ISO 4217
+     *                  .
+     * @param tariffId  Unique id of tariff
+     *                  .
+     * @param validFrom Time when this tariff becomes active. When absent, it is immediately active.
+     *                  .
      */
     public Tariff(String tariffId, List<MessageContent> description, String currency, TariffEnergy energy, Date validFrom, TariffTime chargingTime, TariffTime idleTime, TariffFixed fixedFee, TariffTime reservationTime, TariffFixed reservationFixed, Price minCost, Price maxCost, CustomData customData) {
         super();
@@ -112,7 +105,7 @@ public class Tariff implements JsonInterface {
 
     /**
      * Unique id of tariff
-     * 
+     * <p>
      * (Required)
      */
     public String getTariffId() {
@@ -121,7 +114,7 @@ public class Tariff implements JsonInterface {
 
     /**
      * Unique id of tariff
-     * 
+     * <p>
      * (Required)
      */
     public void setTariffId(String tariffId) {
@@ -138,7 +131,7 @@ public class Tariff implements JsonInterface {
 
     /**
      * Currency code according to ISO 4217
-     * 
+     * <p>
      * (Required)
      */
     public String getCurrency() {
@@ -147,7 +140,7 @@ public class Tariff implements JsonInterface {
 
     /**
      * Currency code according to ISO 4217
-     * 
+     * <p>
      * (Required)
      */
     public void setCurrency(String currency) {
@@ -184,7 +177,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public TariffTime getChargingTime() {
         return chargingTime;
@@ -192,7 +184,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public void setChargingTime(TariffTime chargingTime) {
         this.chargingTime = chargingTime;
@@ -200,7 +191,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public TariffTime getIdleTime() {
         return idleTime;
@@ -208,7 +198,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public void setIdleTime(TariffTime idleTime) {
         this.idleTime = idleTime;
@@ -224,7 +213,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public TariffTime getReservationTime() {
         return reservationTime;
@@ -232,7 +220,6 @@ public class Tariff implements JsonInterface {
 
     /**
      * Price elements and tax for time
-     * 
      */
     public void setReservationTime(TariffTime reservationTime) {
         this.reservationTime = reservationTime;
@@ -305,7 +292,7 @@ public class Tariff implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -314,17 +301,17 @@ public class Tariff implements JsonInterface {
             return false;
         Tariff that = (Tariff) obj;
         return Objects.equals(this.chargingTime, that.chargingTime)
-                && Objects.equals(this.reservationTime, that.reservationTime) 
-                && Objects.equals(this.description, that.description) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.validFrom, that.validFrom) 
-                && Objects.equals(this.idleTime, that.idleTime) 
-                && Objects.equals(this.reservationFixed, that.reservationFixed) 
-                && Objects.equals(this.maxCost, that.maxCost) 
-                && Objects.equals(this.currency, that.currency) 
-                && Objects.equals(this.tariffId, that.tariffId) 
-                && Objects.equals(this.fixedFee, that.fixedFee) 
-                && Objects.equals(this.minCost, that.minCost) 
+                && Objects.equals(this.reservationTime, that.reservationTime)
+                && Objects.equals(this.description, that.description)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.validFrom, that.validFrom)
+                && Objects.equals(this.idleTime, that.idleTime)
+                && Objects.equals(this.reservationFixed, that.reservationFixed)
+                && Objects.equals(this.maxCost, that.maxCost)
+                && Objects.equals(this.currency, that.currency)
+                && Objects.equals(this.tariffId, that.tariffId)
+                && Objects.equals(this.fixedFee, that.fixedFee)
+                && Objects.equals(this.minCost, that.minCost)
                 && Objects.equals(this.energy, that.energy);
     }
 

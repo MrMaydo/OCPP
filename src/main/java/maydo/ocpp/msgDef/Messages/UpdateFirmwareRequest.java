@@ -24,14 +24,14 @@ public class UpdateFirmwareRequest implements JsonInterface {
     private Integer retryInterval;
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -49,17 +49,13 @@ public class UpdateFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param retries
-     *     This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     *     If the value is 0, it means: no retries.
-     *     .
-     * @param requestId
-     *     The Id of this request
-     *     .
-     * @param retryInterval
-     *     The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     *     .
+     * @param retries       This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
+     *                      If the value is 0, it means: no retries.
+     *                      .
+     * @param requestId     The Id of this request
+     *                      .
+     * @param retryInterval The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
+     *                      .
      */
     public UpdateFirmwareRequest(Integer retries, Integer retryInterval, Integer requestId, Firmware firmware, CustomData customData) {
         super();
@@ -102,7 +98,7 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -111,7 +107,7 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -120,7 +116,7 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Firmware getFirmware() {
@@ -129,7 +125,7 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
      * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setFirmware(Firmware firmware) {
@@ -176,9 +172,9 @@ public class UpdateFirmwareRequest implements JsonInterface {
             return false;
         UpdateFirmwareRequest that = (UpdateFirmwareRequest) obj;
         return Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.retryInterval, that.retryInterval) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.firmware, that.firmware) 
+                && Objects.equals(this.retryInterval, that.retryInterval)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.firmware, that.firmware)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

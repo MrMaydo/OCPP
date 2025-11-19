@@ -18,7 +18,7 @@ public class SetVariableResult implements JsonInterface {
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Result status of setting the variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,14 +30,14 @@ public class SetVariableResult implements JsonInterface {
     private StatusInfo attributeStatusInfo;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -80,7 +80,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * Result status of setting the variable.
-     * 
+     * <p>
      * (Required)
      */
     public SetVariableStatusEnum getAttributeStatus() {
@@ -89,7 +89,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * Result status of setting the variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setAttributeStatus(SetVariableStatusEnum attributeStatus) {
@@ -112,7 +112,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -121,7 +121,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -130,7 +130,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -139,7 +139,7 @@ public class SetVariableResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -177,7 +177,7 @@ public class SetVariableResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -186,10 +186,10 @@ public class SetVariableResult implements JsonInterface {
             return false;
         SetVariableResult that = (SetVariableResult) obj;
         return Objects.equals(this.attributeStatus, that.attributeStatus)
-                && Objects.equals(this.attributeStatusInfo, that.attributeStatusInfo) 
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.attributeType, that.attributeType) 
-                && Objects.equals(this.variable, that.variable) 
+                && Objects.equals(this.attributeStatusInfo, that.attributeStatusInfo)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.attributeType, that.attributeType)
+                && Objects.equals(this.variable, that.variable)
                 && Objects.equals(this.customData, that.customData);
     }
 

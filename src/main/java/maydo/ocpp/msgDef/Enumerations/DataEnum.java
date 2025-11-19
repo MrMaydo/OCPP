@@ -17,7 +17,6 @@ public enum DataEnum {
     OPTION_LIST("OptionList"),
     SEQUENCE_LIST("SequenceList"),
     MEMBER_LIST("MemberList");
-    private final String value;
     private final static Map<String, DataEnum> CONSTANTS = new HashMap<String, DataEnum>();
 
     static {
@@ -26,17 +25,10 @@ public enum DataEnum {
         }
     }
 
+    private final String value;
+
     DataEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DataEnum fromValue(String value) {
@@ -46,6 +38,15 @@ public enum DataEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

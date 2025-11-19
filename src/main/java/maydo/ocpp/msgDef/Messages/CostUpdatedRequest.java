@@ -12,16 +12,16 @@ public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float totalCost;
     /**
      * Transaction Id of the transaction the current cost are asked for.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,15 +39,12 @@ public class CostUpdatedRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param totalCost
-     *     Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     *     
-     *     .
-     * @param transactionId
-     *     Transaction Id of the transaction the current cost are asked for.
-     *     
-     *     .
+     * @param totalCost     Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
+     *                      <p>
+     *                      .
+     * @param transactionId Transaction Id of the transaction the current cost are asked for.
+     *                      <p>
+     *                      .
      */
     public CostUpdatedRequest(Float totalCost, String transactionId, CustomData customData) {
         super();
@@ -58,8 +55,8 @@ public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getTotalCost() {
@@ -68,8 +65,8 @@ public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTotalCost(Float totalCost) {
@@ -78,8 +75,8 @@ public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Transaction Id of the transaction the current cost are asked for.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -88,8 +85,8 @@ public class CostUpdatedRequest implements JsonInterface {
 
     /**
      * Transaction Id of the transaction the current cost are asked for.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -136,7 +133,7 @@ public class CostUpdatedRequest implements JsonInterface {
             return false;
         CostUpdatedRequest that = (CostUpdatedRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.totalCost, that.totalCost) 
+                && Objects.equals(this.totalCost, that.totalCost)
                 && Objects.equals(this.transactionId, that.transactionId);
     }
 

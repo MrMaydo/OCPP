@@ -16,14 +16,14 @@ public class SendLocalListRequest implements JsonInterface {
     private List<AuthorizationData> localAuthorizationList;
     /**
      * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer versionNumber;
     /**
      * This contains the type of update (full or differential) of this request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,10 +41,8 @@ public class SendLocalListRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param versionNumber
-     *     In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     *     .
+     * @param versionNumber In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
+     *                      .
      */
     public SendLocalListRequest(List<AuthorizationData> localAuthorizationList, Integer versionNumber, UpdateEnum updateType, CustomData customData) {
         super();
@@ -64,7 +62,7 @@ public class SendLocalListRequest implements JsonInterface {
 
     /**
      * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getVersionNumber() {
@@ -73,7 +71,7 @@ public class SendLocalListRequest implements JsonInterface {
 
     /**
      * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * 
+     * <p>
      * (Required)
      */
     public void setVersionNumber(Integer versionNumber) {
@@ -82,7 +80,7 @@ public class SendLocalListRequest implements JsonInterface {
 
     /**
      * This contains the type of update (full or differential) of this request.
-     * 
+     * <p>
      * (Required)
      */
     public UpdateEnum getUpdateType() {
@@ -91,7 +89,7 @@ public class SendLocalListRequest implements JsonInterface {
 
     /**
      * This contains the type of update (full or differential) of this request.
-     * 
+     * <p>
      * (Required)
      */
     public void setUpdateType(UpdateEnum updateType) {
@@ -138,8 +136,8 @@ public class SendLocalListRequest implements JsonInterface {
             return false;
         SendLocalListRequest that = (SendLocalListRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.localAuthorizationList, that.localAuthorizationList) 
-                && Objects.equals(this.versionNumber, that.versionNumber) 
+                && Objects.equals(this.localAuthorizationList, that.localAuthorizationList)
+                && Objects.equals(this.versionNumber, that.versionNumber)
                 && Objects.equals(this.updateType, that.updateType);
     }
 

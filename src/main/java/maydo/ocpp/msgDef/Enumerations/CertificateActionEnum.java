@@ -11,7 +11,6 @@ public enum CertificateActionEnum {
 
     INSTALL("Install"),
     UPDATE("Update");
-    private final String value;
     private final static Map<String, CertificateActionEnum> CONSTANTS = new HashMap<String, CertificateActionEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum CertificateActionEnum {
         }
     }
 
+    private final String value;
+
     CertificateActionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CertificateActionEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum CertificateActionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

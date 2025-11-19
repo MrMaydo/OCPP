@@ -14,7 +14,7 @@ public class GetDisplayMessagesResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station has Display Messages that match the request criteria in the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt;
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class GetDisplayMessagesResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station has Display Messages that match the request criteria in the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt;
-     * 
+     * <p>
      * (Required)
      */
     public GetDisplayMessagesStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class GetDisplayMessagesResponse implements JsonInterface {
 
     /**
      * Indicates if the Charging Station has Display Messages that match the request criteria in the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt;
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GetDisplayMessagesStatusEnum status) {
@@ -115,7 +115,7 @@ public class GetDisplayMessagesResponse implements JsonInterface {
             return false;
         GetDisplayMessagesResponse that = (GetDisplayMessagesResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -13,26 +13,23 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * RequestId to be used in ReportDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * True: get a default DER control. False: get a scheduled control.
-     * 
      */
     @Optional
     private Boolean isDefault;
     /**
      * Type of control settings to retrieve. Not used when _controlId_ is provided.
-     * 
      */
     @Optional
     private DERControlEnum controlType;
     /**
      * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     * 
      */
     @Optional
     private String controlId;
@@ -49,18 +46,14 @@ public class GetDERControlRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True: get a default DER control. False: get a scheduled control.
-     *     
-     *     .
-     * @param requestId
-     *     RequestId to be used in ReportDERControlRequest.
-     *     .
-     * @param controlId
-     *     Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     *     
-     *     .
+     * @param isDefault True: get a default DER control. False: get a scheduled control.
+     *                  <p>
+     *                  .
+     * @param requestId RequestId to be used in ReportDERControlRequest.
+     *                  .
+     * @param controlId Id of setting to get. When omitted all settings for _controlType_ are retrieved.
+     *                  <p>
+     *                  .
      */
     public GetDERControlRequest(Integer requestId, Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
         super();
@@ -73,7 +66,7 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * RequestId to be used in ReportDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -82,7 +75,7 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * RequestId to be used in ReportDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -91,7 +84,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * True: get a default DER control. False: get a scheduled control.
-     * 
      */
     public Boolean getIsDefault() {
         return isDefault;
@@ -99,7 +91,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * True: get a default DER control. False: get a scheduled control.
-     * 
      */
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
@@ -107,7 +98,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * Type of control settings to retrieve. Not used when _controlId_ is provided.
-     * 
      */
     public DERControlEnum getControlType() {
         return controlType;
@@ -115,7 +105,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * Type of control settings to retrieve. Not used when _controlId_ is provided.
-     * 
      */
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
@@ -123,7 +112,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     * 
      */
     public String getControlId() {
         return controlId;
@@ -131,7 +119,6 @@ public class GetDERControlRequest implements JsonInterface {
 
     /**
      * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     * 
      */
     public void setControlId(String controlId) {
         this.controlId = controlId;
@@ -177,9 +164,9 @@ public class GetDERControlRequest implements JsonInterface {
             return false;
         GetDERControlRequest that = (GetDERControlRequest) obj;
         return Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.controlId, that.controlId) 
-                && Objects.equals(this.controlType, that.controlType) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.controlId, that.controlId)
+                && Objects.equals(this.controlType, that.controlType)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

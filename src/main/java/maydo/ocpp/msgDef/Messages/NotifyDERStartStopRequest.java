@@ -15,31 +15,30 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     /**
      * Id of the started or stopped DER control.
      * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String controlId;
     /**
      * True if DER control has started. False if it has ended.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean started;
     /**
      * Time of start or end of event.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
      * List of controlIds that are superseded as a result of this control starting.
-     * 
      */
     @Optional
     private List<String> supersededIds;
@@ -56,24 +55,19 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param started
-     *     True if DER control has started. False if it has ended.
-     *     
-     *     .
-     * @param controlId
-     *     Id of the started or stopped DER control.
-     *     Corresponds to the _controlId_ of the SetDERControlRequest.
-     *     
-     *     .
-     * @param supersededIds
-     *     List of controlIds that are superseded as a result of this control starting.
-     *     
-     *     .
-     * @param timestamp
-     *     Time of start or end of event.
-     *     
-     *     .
+     * @param started       True if DER control has started. False if it has ended.
+     *                      <p>
+     *                      .
+     * @param controlId     Id of the started or stopped DER control.
+     *                      Corresponds to the _controlId_ of the SetDERControlRequest.
+     *                      <p>
+     *                      .
+     * @param supersededIds List of controlIds that are superseded as a result of this control starting.
+     *                      <p>
+     *                      .
+     * @param timestamp     Time of start or end of event.
+     *                      <p>
+     *                      .
      */
     public NotifyDERStartStopRequest(String controlId, Boolean started, Date timestamp, List<String> supersededIds, CustomData customData) {
         super();
@@ -87,8 +81,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     /**
      * Id of the started or stopped DER control.
      * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getControlId() {
@@ -98,8 +92,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     /**
      * Id of the started or stopped DER control.
      * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setControlId(String controlId) {
@@ -108,8 +102,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * True if DER control has started. False if it has ended.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getStarted() {
@@ -118,8 +112,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * True if DER control has started. False if it has ended.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStarted(Boolean started) {
@@ -128,8 +122,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * Time of start or end of event.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -138,8 +132,8 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * Time of start or end of event.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -148,7 +142,6 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * List of controlIds that are superseded as a result of this control starting.
-     * 
      */
     public List<String> getSupersededIds() {
         return supersededIds;
@@ -156,7 +149,6 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
      * List of controlIds that are superseded as a result of this control starting.
-     * 
      */
     public void setSupersededIds(List<String> supersededIds) {
         this.supersededIds = supersededIds;
@@ -202,9 +194,9 @@ public class NotifyDERStartStopRequest implements JsonInterface {
             return false;
         NotifyDERStartStopRequest that = (NotifyDERStartStopRequest) obj;
         return Objects.equals(this.started, that.started)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.controlId, that.controlId) 
-                && Objects.equals(this.supersededIds, that.supersededIds) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.controlId, that.controlId)
+                && Objects.equals(this.supersededIds, that.supersededIds)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

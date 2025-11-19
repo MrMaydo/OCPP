@@ -11,7 +11,6 @@ public enum GetCertificateIdUseEnum {
     V2G_CERTIFICATE_CHAIN("V2GCertificateChain"),
     MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate"),
     OEM_ROOT_CERTIFICATE("OEMRootCertificate");
-    private final String value;
     private final static Map<String, GetCertificateIdUseEnum> CONSTANTS = new HashMap<String, GetCertificateIdUseEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum GetCertificateIdUseEnum {
         }
     }
 
+    private final String value;
+
     GetCertificateIdUseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GetCertificateIdUseEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum GetCertificateIdUseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

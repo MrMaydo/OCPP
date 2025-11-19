@@ -12,14 +12,13 @@ import java.util.Objects;
 public class MeterValue implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private List<SampledValue> sampledValue;
     /**
      * Timestamp for measured value(s).
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -37,10 +36,8 @@ public class MeterValue implements JsonInterface {
     }
 
     /**
-     * 
-     * @param timestamp
-     *     Timestamp for measured value(s).
-     *     .
+     * @param timestamp Timestamp for measured value(s).
+     *                  .
      */
     public MeterValue(List<SampledValue> sampledValue, Date timestamp, CustomData customData) {
         super();
@@ -50,7 +47,6 @@ public class MeterValue implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<SampledValue> getSampledValue() {
@@ -58,7 +54,6 @@ public class MeterValue implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setSampledValue(List<SampledValue> sampledValue) {
@@ -67,7 +62,7 @@ public class MeterValue implements JsonInterface {
 
     /**
      * Timestamp for measured value(s).
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -76,7 +71,7 @@ public class MeterValue implements JsonInterface {
 
     /**
      * Timestamp for measured value(s).
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -114,7 +109,7 @@ public class MeterValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -123,7 +118,7 @@ public class MeterValue implements JsonInterface {
             return false;
         MeterValue that = (MeterValue) obj;
         return Objects.equals(this.sampledValue, that.sampledValue)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

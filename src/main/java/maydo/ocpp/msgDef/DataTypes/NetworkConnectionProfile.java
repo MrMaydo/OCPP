@@ -14,7 +14,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Collection of configuration data needed to make a data-connection over a cellular network.
-     * 
+     * <p>
      * NOTE: When asking a GSM modem to dial in, it is possible to specify which mobile operator should be used. This can be done with the mobile country code (MCC) in combination with a mobile network code (MNC). Example: If your preferred network is Vodafone Netherlands, the MCC=204 and the MNC=04 which means the key PreferredNetwork = 20404 Some modems allows to specify a preferred network, which means, if this network is not available, a different network is used. If you specify UseOnlyPreferredNetwork and this network is not available, the modem will not dial in.
      */
     @Optional
@@ -26,14 +26,14 @@ public class NetworkConnectionProfile implements JsonInterface {
     private OCPPVersionEnum ocppVersion;
     /**
      * Applicable Network Interface. Charging Station is allowed to use a different network interface to connect if the given one does not work.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private OCPPInterfaceEnum ocppInterface;
     /**
      * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.x, but is supported by earlier versions of OCPP.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,7 +42,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * Duration in seconds before a message send by the Charging Station via this network connection times-out.
      * The best setting depends on the underlying network and response times of the CSMS.
      * If you are looking for a some guideline: use 30 seconds as a starting point.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -50,14 +50,14 @@ public class NetworkConnectionProfile implements JsonInterface {
     /**
      * URL of the CSMS(s) that this Charging Station communicates with, without the Charging Station identity part. +
      * The SecurityCtrlr.Identity field is appended to _ocppCsmsUrl_ to provide the full websocket URL.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String ocppCsmsUrl;
     /**
      * This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -90,25 +90,19 @@ public class NetworkConnectionProfile implements JsonInterface {
     }
 
     /**
-     * 
-     * @param securityProfile
-     *     This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
-     *     .
-     * @param identity
-     *     *(2.1)* Charging Station identity to be used as the basic authentication username.
-     *     .
-     * @param basicAuthPassword
-     *     *(2.1)* BasicAuthPassword to use for security profile 1 or 2.
-     *     .
-     * @param ocppCsmsUrl
-     *     URL of the CSMS(s) that this Charging Station communicates with, without the Charging Station identity part. +
-     *     The SecurityCtrlr.Identity field is appended to _ocppCsmsUrl_ to provide the full websocket URL.
-     *     .
-     * @param messageTimeout
-     *     Duration in seconds before a message send by the Charging Station via this network connection times-out.
-     *     The best setting depends on the underlying network and response times of the CSMS.
-     *     If you are looking for a some guideline: use 30 seconds as a starting point.
-     *     .
+     * @param securityProfile   This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
+     *                          .
+     * @param identity          *(2.1)* Charging Station identity to be used as the basic authentication username.
+     *                          .
+     * @param basicAuthPassword *(2.1)* BasicAuthPassword to use for security profile 1 or 2.
+     *                          .
+     * @param ocppCsmsUrl       URL of the CSMS(s) that this Charging Station communicates with, without the Charging Station identity part. +
+     *                          The SecurityCtrlr.Identity field is appended to _ocppCsmsUrl_ to provide the full websocket URL.
+     *                          .
+     * @param messageTimeout    Duration in seconds before a message send by the Charging Station via this network connection times-out.
+     *                          The best setting depends on the underlying network and response times of the CSMS.
+     *                          If you are looking for a some guideline: use 30 seconds as a starting point.
+     *                          .
      */
     public NetworkConnectionProfile(APN apn, OCPPVersionEnum ocppVersion, OCPPInterfaceEnum ocppInterface, OCPPTransportEnum ocppTransport, Integer messageTimeout, String ocppCsmsUrl, Integer securityProfile, String identity, String basicAuthPassword, VPN vpn, CustomData customData) {
         super();
@@ -127,7 +121,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Collection of configuration data needed to make a data-connection over a cellular network.
-     * 
+     * <p>
      * NOTE: When asking a GSM modem to dial in, it is possible to specify which mobile operator should be used. This can be done with the mobile country code (MCC) in combination with a mobile network code (MNC). Example: If your preferred network is Vodafone Netherlands, the MCC=204 and the MNC=04 which means the key PreferredNetwork = 20404 Some modems allows to specify a preferred network, which means, if this network is not available, a different network is used. If you specify UseOnlyPreferredNetwork and this network is not available, the modem will not dial in.
      */
     public APN getApn() {
@@ -136,7 +130,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Collection of configuration data needed to make a data-connection over a cellular network.
-     * 
+     * <p>
      * NOTE: When asking a GSM modem to dial in, it is possible to specify which mobile operator should be used. This can be done with the mobile country code (MCC) in combination with a mobile network code (MNC). Example: If your preferred network is Vodafone Netherlands, the MCC=204 and the MNC=04 which means the key PreferredNetwork = 20404 Some modems allows to specify a preferred network, which means, if this network is not available, a different network is used. If you specify UseOnlyPreferredNetwork and this network is not available, the modem will not dial in.
      */
     public void setApn(APN apn) {
@@ -159,7 +153,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Applicable Network Interface. Charging Station is allowed to use a different network interface to connect if the given one does not work.
-     * 
+     * <p>
      * (Required)
      */
     public OCPPInterfaceEnum getOcppInterface() {
@@ -168,7 +162,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Applicable Network Interface. Charging Station is allowed to use a different network interface to connect if the given one does not work.
-     * 
+     * <p>
      * (Required)
      */
     public void setOcppInterface(OCPPInterfaceEnum ocppInterface) {
@@ -177,7 +171,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.x, but is supported by earlier versions of OCPP.
-     * 
+     * <p>
      * (Required)
      */
     public OCPPTransportEnum getOcppTransport() {
@@ -186,7 +180,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.x, but is supported by earlier versions of OCPP.
-     * 
+     * <p>
      * (Required)
      */
     public void setOcppTransport(OCPPTransportEnum ocppTransport) {
@@ -197,7 +191,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * Duration in seconds before a message send by the Charging Station via this network connection times-out.
      * The best setting depends on the underlying network and response times of the CSMS.
      * If you are looking for a some guideline: use 30 seconds as a starting point.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getMessageTimeout() {
@@ -208,7 +202,7 @@ public class NetworkConnectionProfile implements JsonInterface {
      * Duration in seconds before a message send by the Charging Station via this network connection times-out.
      * The best setting depends on the underlying network and response times of the CSMS.
      * If you are looking for a some guideline: use 30 seconds as a starting point.
-     * 
+     * <p>
      * (Required)
      */
     public void setMessageTimeout(Integer messageTimeout) {
@@ -218,7 +212,7 @@ public class NetworkConnectionProfile implements JsonInterface {
     /**
      * URL of the CSMS(s) that this Charging Station communicates with, without the Charging Station identity part. +
      * The SecurityCtrlr.Identity field is appended to _ocppCsmsUrl_ to provide the full websocket URL.
-     * 
+     * <p>
      * (Required)
      */
     public String getOcppCsmsUrl() {
@@ -228,7 +222,7 @@ public class NetworkConnectionProfile implements JsonInterface {
     /**
      * URL of the CSMS(s) that this Charging Station communicates with, without the Charging Station identity part. +
      * The SecurityCtrlr.Identity field is appended to _ocppCsmsUrl_ to provide the full websocket URL.
-     * 
+     * <p>
      * (Required)
      */
     public void setOcppCsmsUrl(String ocppCsmsUrl) {
@@ -237,7 +231,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSecurityProfile() {
@@ -246,7 +240,7 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     /**
      * This field specifies the security profile used when connecting to the CSMS with this NetworkConnectionProfile.
-     * 
+     * <p>
      * (Required)
      */
     public void setSecurityProfile(Integer securityProfile) {
@@ -326,7 +320,7 @@ public class NetworkConnectionProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -335,15 +329,15 @@ public class NetworkConnectionProfile implements JsonInterface {
             return false;
         NetworkConnectionProfile that = (NetworkConnectionProfile) obj;
         return Objects.equals(this.ocppTransport, that.ocppTransport)
-                && Objects.equals(this.securityProfile, that.securityProfile) 
-                && Objects.equals(this.vpn, that.vpn) 
-                && Objects.equals(this.ocppVersion, that.ocppVersion) 
-                && Objects.equals(this.identity, that.identity) 
-                && Objects.equals(this.basicAuthPassword, that.basicAuthPassword) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.ocppCsmsUrl, that.ocppCsmsUrl) 
-                && Objects.equals(this.apn, that.apn) 
-                && Objects.equals(this.ocppInterface, that.ocppInterface) 
+                && Objects.equals(this.securityProfile, that.securityProfile)
+                && Objects.equals(this.vpn, that.vpn)
+                && Objects.equals(this.ocppVersion, that.ocppVersion)
+                && Objects.equals(this.identity, that.identity)
+                && Objects.equals(this.basicAuthPassword, that.basicAuthPassword)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.ocppCsmsUrl, that.ocppCsmsUrl)
+                && Objects.equals(this.apn, that.apn)
+                && Objects.equals(this.ocppInterface, that.ocppInterface)
                 && Objects.equals(this.messageTimeout, that.messageTimeout);
     }
 

@@ -11,7 +11,6 @@ import java.util.Objects;
 public class TariffTime implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -38,7 +37,6 @@ public class TariffTime implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<TariffTimePrice> getPrices() {
@@ -46,7 +44,6 @@ public class TariffTime implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setPrices(List<TariffTimePrice> prices) {
@@ -92,7 +89,7 @@ public class TariffTime implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -101,7 +98,7 @@ public class TariffTime implements JsonInterface {
             return false;
         TariffTime that = (TariffTime) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxRates, that.taxRates) 
+                && Objects.equals(this.taxRates, that.taxRates)
                 && Objects.equals(this.prices, that.prices);
     }
 

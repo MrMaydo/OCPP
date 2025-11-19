@@ -8,9 +8,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.Objects;
 
 /**
- * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge. 
- * 
- * 
+ * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
  */
 public class EVEnergyOffer implements JsonInterface {
 
@@ -21,7 +19,7 @@ public class EVEnergyOffer implements JsonInterface {
     private EVAbsolutePriceSchedule evAbsolutePriceSchedule;
     /**
      * *(2.1)* Schedule of EV energy offer.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -61,7 +59,7 @@ public class EVEnergyOffer implements JsonInterface {
 
     /**
      * *(2.1)* Schedule of EV energy offer.
-     * 
+     * <p>
      * (Required)
      */
     public EVPowerSchedule getEvPowerSchedule() {
@@ -70,7 +68,7 @@ public class EVEnergyOffer implements JsonInterface {
 
     /**
      * *(2.1)* Schedule of EV energy offer.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvPowerSchedule(EVPowerSchedule evPowerSchedule) {
@@ -108,7 +106,7 @@ public class EVEnergyOffer implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -117,7 +115,7 @@ public class EVEnergyOffer implements JsonInterface {
             return false;
         EVEnergyOffer that = (EVEnergyOffer) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evPowerSchedule, that.evPowerSchedule) 
+                && Objects.equals(this.evPowerSchedule, that.evPowerSchedule)
                 && Objects.equals(this.evAbsolutePriceSchedule, that.evAbsolutePriceSchedule);
     }
 

@@ -13,7 +13,6 @@ import java.util.Objects;
 public class NotifyAllowedEnergyTransferResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -43,7 +42,6 @@ public class NotifyAllowedEnergyTransferResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public NotifyAllowedEnergyTransferStatusEnum getStatus() {
@@ -51,7 +49,6 @@ public class NotifyAllowedEnergyTransferResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setStatus(NotifyAllowedEnergyTransferStatusEnum status) {
@@ -112,7 +109,7 @@ public class NotifyAllowedEnergyTransferResponse implements JsonInterface {
             return false;
         NotifyAllowedEnergyTransferResponse that = (NotifyAllowedEnergyTransferResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

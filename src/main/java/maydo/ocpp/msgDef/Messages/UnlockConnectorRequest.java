@@ -12,14 +12,14 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -37,13 +37,10 @@ public class UnlockConnectorRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     *     .
-     * @param connectorId
-     *     This contains the identifier of the connector that needs to be unlocked.
-     *     .
+     * @param evseId      This contains the identifier of the EVSE for which a connector needs to be unlocked.
+     *                    .
+     * @param connectorId This contains the identifier of the connector that needs to be unlocked.
+     *                    .
      */
     public UnlockConnectorRequest(Integer evseId, Integer connectorId, CustomData customData) {
         super();
@@ -54,7 +51,7 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -63,7 +60,7 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -72,7 +69,7 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getConnectorId() {
@@ -81,7 +78,7 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * 
+     * <p>
      * (Required)
      */
     public void setConnectorId(Integer connectorId) {
@@ -128,7 +125,7 @@ public class UnlockConnectorRequest implements JsonInterface {
             return false;
         UnlockConnectorRequest that = (UnlockConnectorRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.connectorId, that.connectorId);
     }
 

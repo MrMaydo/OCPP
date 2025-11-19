@@ -11,7 +11,6 @@ public enum TariffKindEnum {
 
     DEFAULT_TARIFF("DefaultTariff"),
     DRIVER_TARIFF("DriverTariff");
-    private final String value;
     private final static Map<String, TariffKindEnum> CONSTANTS = new HashMap<String, TariffKindEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum TariffKindEnum {
         }
     }
 
+    private final String value;
+
     TariffKindEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TariffKindEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum TariffKindEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

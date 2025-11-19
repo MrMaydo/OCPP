@@ -14,7 +14,7 @@ public class SetNetworkProfileResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class SetNetworkProfileResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     public SetNetworkProfileStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class SetNetworkProfileResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(SetNetworkProfileStatusEnum status) {
@@ -115,7 +115,7 @@ public class SetNetworkProfileResponse implements JsonInterface {
             return false;
         SetNetworkProfileResponse that = (SetNetworkProfileResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

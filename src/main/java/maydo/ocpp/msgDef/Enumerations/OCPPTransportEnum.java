@@ -11,7 +11,6 @@ public enum OCPPTransportEnum {
 
     SOAP("SOAP"),
     JSON("JSON");
-    private final String value;
     private final static Map<String, OCPPTransportEnum> CONSTANTS = new HashMap<String, OCPPTransportEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum OCPPTransportEnum {
         }
     }
 
+    private final String value;
+
     OCPPTransportEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OCPPTransportEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum OCPPTransportEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

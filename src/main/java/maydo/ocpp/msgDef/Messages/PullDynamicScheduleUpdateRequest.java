@@ -12,7 +12,7 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingProfileId
-     *     Id of charging profile to update.
-     *     .
+     * @param chargingProfileId Id of charging profile to update.
+     *                          .
      */
     public PullDynamicScheduleUpdateRequest(Integer chargingProfileId, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getChargingProfileId() {
@@ -52,7 +50,7 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingProfileId(Integer chargingProfileId) {

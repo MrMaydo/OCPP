@@ -12,7 +12,6 @@ public enum BatterySwapEventEnum {
     BATTERY_IN("BatteryIn"),
     BATTERY_OUT("BatteryOut"),
     BATTERY_OUT_TIMEOUT("BatteryOutTimeout");
-    private final String value;
     private final static Map<String, BatterySwapEventEnum> CONSTANTS = new HashMap<String, BatterySwapEventEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum BatterySwapEventEnum {
         }
     }
 
+    private final String value;
+
     BatterySwapEventEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static BatterySwapEventEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum BatterySwapEventEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

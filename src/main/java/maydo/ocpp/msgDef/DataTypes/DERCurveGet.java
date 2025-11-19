@@ -11,39 +11,38 @@ import java.util.Objects;
 public class DERCurveGet implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private DERCurve curve;
     /**
      * Id of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String id;
     /**
      * Type of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private DERControlEnum curveType;
     /**
      * True if this is a default curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean isDefault;
     /**
      * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -61,19 +60,15 @@ public class DERCurveGet implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True if this is a default curve
-     *     
-     *     .
-     * @param isSuperseded
-     *     True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     *     
-     *     .
-     * @param id
-     *     Id of DER curve
-     *     
-     *     .
+     * @param isDefault    True if this is a default curve
+     *                     <p>
+     *                     .
+     * @param isSuperseded True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
+     *                     <p>
+     *                     .
+     * @param id           Id of DER curve
+     *                     <p>
+     *                     .
      */
     public DERCurveGet(DERCurve curve, String id, DERControlEnum curveType, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
         super();
@@ -86,7 +81,6 @@ public class DERCurveGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public DERCurve getCurve() {
@@ -94,7 +88,6 @@ public class DERCurveGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCurve(DERCurve curve) {
@@ -103,8 +96,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * Id of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getId() {
@@ -113,8 +106,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * Id of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setId(String id) {
@@ -123,8 +116,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * Type of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public DERControlEnum getCurveType() {
@@ -133,8 +126,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * Type of DER curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setCurveType(DERControlEnum curveType) {
@@ -143,8 +136,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * True if this is a default curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getIsDefault() {
@@ -153,8 +146,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * True if this is a default curve
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIsDefault(Boolean isDefault) {
@@ -163,8 +156,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getIsSuperseded() {
@@ -173,8 +166,8 @@ public class DERCurveGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIsSuperseded(Boolean isSuperseded) {
@@ -212,7 +205,7 @@ public class DERCurveGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -221,10 +214,10 @@ public class DERCurveGet implements JsonInterface {
             return false;
         DERCurveGet that = (DERCurveGet) obj;
         return Objects.equals(this.curveType, that.curveType)
-                && Objects.equals(this.isDefault, that.isDefault) 
-                && Objects.equals(this.isSuperseded, that.isSuperseded) 
-                && Objects.equals(this.curve, that.curve) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.isDefault, that.isDefault)
+                && Objects.equals(this.isSuperseded, that.isSuperseded)
+                && Objects.equals(this.curve, that.curve)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.id, that.id);
     }
 

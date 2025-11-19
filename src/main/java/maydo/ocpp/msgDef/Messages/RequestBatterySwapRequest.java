@@ -13,15 +13,15 @@ public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private IdToken idToken;
     /**
      * Request id to match with BatterySwapRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,11 +39,9 @@ public class RequestBatterySwapRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     Request id to match with BatterySwapRequest.
-     *     
-     *     .
+     * @param requestId Request id to match with BatterySwapRequest.
+     *                  <p>
+     *                  .
      */
     public RequestBatterySwapRequest(IdToken idToken, Integer requestId, CustomData customData) {
         super();
@@ -54,7 +52,7 @@ public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -63,7 +61,7 @@ public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -72,8 +70,8 @@ public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
      * Request id to match with BatterySwapRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -82,8 +80,8 @@ public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
      * Request id to match with BatterySwapRequest.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -130,7 +128,7 @@ public class RequestBatterySwapRequest implements JsonInterface {
             return false;
         RequestBatterySwapRequest that = (RequestBatterySwapRequest) obj;
         return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

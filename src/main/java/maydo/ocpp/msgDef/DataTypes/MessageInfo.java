@@ -20,14 +20,14 @@ public class MessageInfo implements JsonInterface {
     private Component display;
     /**
      * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer id;
     /**
      * With what priority should this message be shown
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -56,8 +56,8 @@ public class MessageInfo implements JsonInterface {
     private String transactionId;
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -77,21 +77,16 @@ public class MessageInfo implements JsonInterface {
     }
 
     /**
-     * 
-     * @param startDateTime
-     *     From what date-time should this message be shown. If omitted: directly.
-     *     .
-     * @param id
-     *     Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     *     .
-     * @param endDateTime
-     *     Until what date-time should this message be shown, after this date/time this message SHALL be removed.
-     *     .
-     * @param transactionId
-     *     During which transaction shall this message be shown.
-     *     Message SHALL be removed by the Charging Station after transaction has
-     *     ended.
-     *     .
+     * @param startDateTime From what date-time should this message be shown. If omitted: directly.
+     *                      .
+     * @param id            Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
+     *                      .
+     * @param endDateTime   Until what date-time should this message be shown, after this date/time this message SHALL be removed.
+     *                      .
+     * @param transactionId During which transaction shall this message be shown.
+     *                      Message SHALL be removed by the Charging Station after transaction has
+     *                      ended.
+     *                      .
      */
     public MessageInfo(Component display, Integer id, MessagePriorityEnum priority, MessageStateEnum state, Date startDateTime, Date endDateTime, String transactionId, MessageContent message, List<MessageContent> messageExtra, CustomData customData) {
         super();
@@ -123,7 +118,7 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -132,7 +127,7 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * Unique id within an exchange context. It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -141,7 +136,7 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * With what priority should this message be shown
-     * 
+     * <p>
      * (Required)
      */
     public MessagePriorityEnum getPriority() {
@@ -150,7 +145,7 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * With what priority should this message be shown
-     * 
+     * <p>
      * (Required)
      */
     public void setPriority(MessagePriorityEnum priority) {
@@ -219,8 +214,8 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public MessageContent getMessage() {
@@ -229,8 +224,8 @@ public class MessageInfo implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setMessage(MessageContent message) {
@@ -276,7 +271,7 @@ public class MessageInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -285,14 +280,14 @@ public class MessageInfo implements JsonInterface {
             return false;
         MessageInfo that = (MessageInfo) obj;
         return Objects.equals(this.messageExtra, that.messageExtra)
-                && Objects.equals(this.startDateTime, that.startDateTime) 
-                && Objects.equals(this.display, that.display) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.state, that.state) 
-                && Objects.equals(this.priority, that.priority) 
-                && Objects.equals(this.endDateTime, that.endDateTime) 
-                && Objects.equals(this.message, that.message) 
+                && Objects.equals(this.startDateTime, that.startDateTime)
+                && Objects.equals(this.display, that.display)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.state, that.state)
+                && Objects.equals(this.priority, that.priority)
+                && Objects.equals(this.endDateTime, that.endDateTime)
+                && Objects.equals(this.message, that.message)
                 && Objects.equals(this.transactionId, that.transactionId);
     }
 

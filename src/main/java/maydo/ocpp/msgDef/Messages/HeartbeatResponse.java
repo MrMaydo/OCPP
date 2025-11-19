@@ -13,7 +13,7 @@ public class HeartbeatResponse implements JsonInterface {
 
     /**
      * Contains the current time of the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -31,10 +31,8 @@ public class HeartbeatResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param currentTime
-     *     Contains the current time of the CSMS.
-     *     .
+     * @param currentTime Contains the current time of the CSMS.
+     *                    .
      */
     public HeartbeatResponse(Date currentTime, CustomData customData) {
         super();
@@ -44,7 +42,7 @@ public class HeartbeatResponse implements JsonInterface {
 
     /**
      * Contains the current time of the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public Date getCurrentTime() {
@@ -53,7 +51,7 @@ public class HeartbeatResponse implements JsonInterface {
 
     /**
      * Contains the current time of the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public void setCurrentTime(Date currentTime) {

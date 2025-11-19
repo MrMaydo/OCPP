@@ -14,7 +14,7 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,10 +42,8 @@ public class RequestStartTransactionResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param transactionId
-     *     When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
-     *     .
+     * @param transactionId When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
+     *                      .
      */
     public RequestStartTransactionResponse(RequestStartStopStatusEnum status, StatusInfo statusInfo, String transactionId, CustomData customData) {
         super();
@@ -57,7 +55,7 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public RequestStartStopStatusEnum getStatus() {
@@ -66,7 +64,7 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(RequestStartStopStatusEnum status) {
@@ -141,8 +139,8 @@ public class RequestStartTransactionResponse implements JsonInterface {
             return false;
         RequestStartTransactionResponse that = (RequestStartTransactionResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.transactionId, that.transactionId) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.transactionId, that.transactionId)
                 && Objects.equals(this.status, that.status);
     }
 

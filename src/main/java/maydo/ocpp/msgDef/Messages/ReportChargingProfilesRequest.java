@@ -14,20 +14,19 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String chargingLimitSource;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -39,7 +38,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     private Boolean tbc = false;
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -57,19 +56,14 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     *     .
-     * @param tbc
-     *     To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     *     .
-     * @param requestId
-     *     Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     *     .
-     * @param chargingLimitSource
-     *     Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     *     .
+     * @param evseId              The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
+     *                            .
+     * @param tbc                 To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
+     *                            .
+     * @param requestId           Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
+     *                            .
+     * @param chargingLimitSource Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
+     *                            .
      */
     public ReportChargingProfilesRequest(Integer requestId, String chargingLimitSource, List<ChargingProfile> chargingProfile, Boolean tbc, Integer evseId, CustomData customData) {
         super();
@@ -83,7 +77,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -92,7 +86,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -101,7 +95,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public String getChargingLimitSource() {
@@ -110,7 +104,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingLimitSource(String chargingLimitSource) {
@@ -118,7 +112,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<ChargingProfile> getChargingProfile() {
@@ -126,7 +119,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingProfile(List<ChargingProfile> chargingProfile) {
@@ -149,7 +141,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -158,7 +150,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -205,10 +197,10 @@ public class ReportChargingProfilesRequest implements JsonInterface {
             return false;
         ReportChargingProfilesRequest that = (ReportChargingProfilesRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.tbc, that.tbc) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.chargingProfile, that.chargingProfile) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.tbc, that.tbc)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.chargingProfile, that.chargingProfile)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
     }
 

@@ -11,7 +11,6 @@ public enum CertificateStatusSourceEnum {
 
     CRL("CRL"),
     OCSP("OCSP");
-    private final String value;
     private final static Map<String, CertificateStatusSourceEnum> CONSTANTS = new HashMap<String, CertificateStatusSourceEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum CertificateStatusSourceEnum {
         }
     }
 
+    private final String value;
+
     CertificateStatusSourceEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CertificateStatusSourceEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum CertificateStatusSourceEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

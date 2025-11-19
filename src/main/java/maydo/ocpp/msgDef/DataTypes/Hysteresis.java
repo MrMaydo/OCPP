@@ -10,29 +10,21 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     @Optional
     private Float hysteresisHigh;
     /**
      * Low value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     @Optional
     private Float hysteresisLow;
     /**
      * Delay in seconds, once grid parameter within HysteresisLow and HysteresisHigh, for the EV to return to normal operation after a grid event.
-     * 
-     * 
      */
     @Optional
     private Float hysteresisDelay;
     /**
      * Set default rate of change (ramp rate %/s) for the EV to return to normal operation after a grid event
-     * 
-     * 
      */
     @Optional
     private Float hysteresisGradient;
@@ -49,27 +41,22 @@ public class Hysteresis implements JsonInterface {
     }
 
     /**
-     * 
-     * @param hysteresisLow
-     *     Low value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     *     
-     *     
-     *     .
-     * @param hysteresisHigh
-     *     High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     *     
-     *     
-     *     .
-     * @param hysteresisGradient
-     *     Set default rate of change (ramp rate %/s) for the EV to return to normal operation after a grid event
-     *     
-     *     
-     *     .
-     * @param hysteresisDelay
-     *     Delay in seconds, once grid parameter within HysteresisLow and HysteresisHigh, for the EV to return to normal operation after a grid event.
-     *     
-     *     
-     *     .
+     * @param hysteresisLow      Low value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
+     *                           <p>
+     *                           <p>
+     *                           .
+     * @param hysteresisHigh     High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
+     *                           <p>
+     *                           <p>
+     *                           .
+     * @param hysteresisGradient Set default rate of change (ramp rate %/s) for the EV to return to normal operation after a grid event
+     *                           <p>
+     *                           <p>
+     *                           .
+     * @param hysteresisDelay    Delay in seconds, once grid parameter within HysteresisLow and HysteresisHigh, for the EV to return to normal operation after a grid event.
+     *                           <p>
+     *                           <p>
+     *                           .
      */
     public Hysteresis(Float hysteresisHigh, Float hysteresisLow, Float hysteresisDelay, Float hysteresisGradient, CustomData customData) {
         super();
@@ -82,8 +69,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     public Float getHysteresisHigh() {
         return hysteresisHigh;
@@ -91,8 +76,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * High value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     public void setHysteresisHigh(Float hysteresisHigh) {
         this.hysteresisHigh = hysteresisHigh;
@@ -100,8 +83,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Low value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     public Float getHysteresisLow() {
         return hysteresisLow;
@@ -109,8 +90,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Low value for return to normal operation after a grid event, in absolute value. This value adopts the same unit as defined by yUnit
-     * 
-     * 
      */
     public void setHysteresisLow(Float hysteresisLow) {
         this.hysteresisLow = hysteresisLow;
@@ -118,8 +97,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Delay in seconds, once grid parameter within HysteresisLow and HysteresisHigh, for the EV to return to normal operation after a grid event.
-     * 
-     * 
      */
     public Float getHysteresisDelay() {
         return hysteresisDelay;
@@ -127,8 +104,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Delay in seconds, once grid parameter within HysteresisLow and HysteresisHigh, for the EV to return to normal operation after a grid event.
-     * 
-     * 
      */
     public void setHysteresisDelay(Float hysteresisDelay) {
         this.hysteresisDelay = hysteresisDelay;
@@ -136,8 +111,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Set default rate of change (ramp rate %/s) for the EV to return to normal operation after a grid event
-     * 
-     * 
      */
     public Float getHysteresisGradient() {
         return hysteresisGradient;
@@ -145,8 +118,6 @@ public class Hysteresis implements JsonInterface {
 
     /**
      * Set default rate of change (ramp rate %/s) for the EV to return to normal operation after a grid event
-     * 
-     * 
      */
     public void setHysteresisGradient(Float hysteresisGradient) {
         this.hysteresisGradient = hysteresisGradient;
@@ -183,7 +154,7 @@ public class Hysteresis implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -192,9 +163,9 @@ public class Hysteresis implements JsonInterface {
             return false;
         Hysteresis that = (Hysteresis) obj;
         return Objects.equals(this.hysteresisHigh, that.hysteresisHigh)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.hysteresisGradient, that.hysteresisGradient) 
-                && Objects.equals(this.hysteresisDelay, that.hysteresisDelay) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.hysteresisGradient, that.hysteresisGradient)
+                && Objects.equals(this.hysteresisDelay, that.hysteresisDelay)
                 && Objects.equals(this.hysteresisLow, that.hysteresisLow);
     }
 

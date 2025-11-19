@@ -13,7 +13,7 @@ public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
      * Information about a certificate for an OCSP check.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +38,7 @@ public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
      * Information about a certificate for an OCSP check.
-     * 
+     * <p>
      * (Required)
      */
     public OCSPRequestData getOcspRequestData() {
@@ -47,7 +47,7 @@ public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
      * Information about a certificate for an OCSP check.
-     * 
+     * <p>
      * (Required)
      */
     public void setOcspRequestData(OCSPRequestData ocspRequestData) {

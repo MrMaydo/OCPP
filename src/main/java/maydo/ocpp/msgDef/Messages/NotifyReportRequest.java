@@ -15,14 +15,14 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -31,13 +31,12 @@ public class NotifyReportRequest implements JsonInterface {
     private List<ReportData> reportData;
     /**
      * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     * 
      */
     @Optional
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -55,20 +54,15 @@ public class NotifyReportRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tbc
-     *     “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     *     
-     *     .
-     * @param seqNo
-     *     Sequence number of this message. First message starts at 0.
-     *     .
-     * @param requestId
-     *     The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     *     .
-     * @param generatedAt
-     *     Timestamp of the moment this message was generated at the Charging Station.
-     *     .
+     * @param tbc         “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
+     *                    <p>
+     *                    .
+     * @param seqNo       Sequence number of this message. First message starts at 0.
+     *                    .
+     * @param requestId   The id of the GetReportRequest  or GetBaseReportRequest that requested this report
+     *                    .
+     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
+     *                    .
      */
     public NotifyReportRequest(Integer requestId, Date generatedAt, List<ReportData> reportData, Boolean tbc, Integer seqNo, CustomData customData) {
         super();
@@ -82,7 +76,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -91,7 +85,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -100,7 +94,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Date getGeneratedAt() {
@@ -109,7 +103,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setGeneratedAt(Date generatedAt) {
@@ -126,7 +120,6 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     * 
      */
     public Boolean getTbc() {
         return tbc;
@@ -134,7 +127,6 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     * 
      */
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
@@ -142,7 +134,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeqNo() {
@@ -151,7 +143,7 @@ public class NotifyReportRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeqNo(Integer seqNo) {
@@ -198,10 +190,10 @@ public class NotifyReportRequest implements JsonInterface {
             return false;
         NotifyReportRequest that = (NotifyReportRequest) obj;
         return Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.seqNo, that.seqNo) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.generatedAt, that.generatedAt) 
-                && Objects.equals(this.reportData, that.reportData) 
+                && Objects.equals(this.seqNo, that.seqNo)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.generatedAt, that.generatedAt)
+                && Objects.equals(this.reportData, that.reportData)
                 && Objects.equals(this.customData, that.customData);
     }
 

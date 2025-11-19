@@ -14,7 +14,7 @@ public class DataTransferResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the data transfer.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,10 +42,8 @@ public class DataTransferResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param data
-     *     Data without specified length or format, in response to request.
-     *     .
+     * @param data Data without specified length or format, in response to request.
+     *             .
      */
     public DataTransferResponse(DataTransferStatusEnum status, StatusInfo statusInfo, Object data, CustomData customData) {
         super();
@@ -57,7 +55,7 @@ public class DataTransferResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the data transfer.
-     * 
+     * <p>
      * (Required)
      */
     public DataTransferStatusEnum getStatus() {
@@ -66,7 +64,7 @@ public class DataTransferResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the data transfer.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(DataTransferStatusEnum status) {
@@ -141,8 +139,8 @@ public class DataTransferResponse implements JsonInterface {
             return false;
         DataTransferResponse that = (DataTransferResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.data, that.data) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.data, that.data)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -12,36 +12,35 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Slot number where battery is inserted or removed.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
      * Serial number of battery.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String serialNumber;
     /**
      * State of charge
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float soC;
     /**
      * State of health
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float soH;
     /**
      * Production date of battery.
-     * 
      */
     @Optional
     private Date productionDate;
@@ -63,27 +62,20 @@ public class BatteryData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     Slot number where battery is inserted or removed.
-     *     .
-     * @param serialNumber
-     *     Serial number of battery.
-     *     .
-     * @param productionDate
-     *     Production date of battery.
-     *     
-     *     .
-     * @param soC
-     *     State of charge
-     *     .
-     * @param vendorInfo
-     *     Vendor-specific info from battery in undefined format.
-     *     .
-     * @param soH
-     *     State of health
-     *     
-     *     .
+     * @param evseId         Slot number where battery is inserted or removed.
+     *                       .
+     * @param serialNumber   Serial number of battery.
+     *                       .
+     * @param productionDate Production date of battery.
+     *                       <p>
+     *                       .
+     * @param soC            State of charge
+     *                       .
+     * @param vendorInfo     Vendor-specific info from battery in undefined format.
+     *                       .
+     * @param soH            State of health
+     *                       <p>
+     *                       .
      */
     public BatteryData(Integer evseId, String serialNumber, Float soC, Float soH, Date productionDate, String vendorInfo, CustomData customData) {
         super();
@@ -98,7 +90,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Slot number where battery is inserted or removed.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -107,7 +99,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Slot number where battery is inserted or removed.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -116,7 +108,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Serial number of battery.
-     * 
+     * <p>
      * (Required)
      */
     public String getSerialNumber() {
@@ -125,7 +117,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Serial number of battery.
-     * 
+     * <p>
      * (Required)
      */
     public void setSerialNumber(String serialNumber) {
@@ -134,7 +126,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * State of charge
-     * 
+     * <p>
      * (Required)
      */
     public Float getSoC() {
@@ -143,7 +135,7 @@ public class BatteryData implements JsonInterface {
 
     /**
      * State of charge
-     * 
+     * <p>
      * (Required)
      */
     public void setSoC(Float soC) {
@@ -152,8 +144,8 @@ public class BatteryData implements JsonInterface {
 
     /**
      * State of health
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getSoH() {
@@ -162,8 +154,8 @@ public class BatteryData implements JsonInterface {
 
     /**
      * State of health
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setSoH(Float soH) {
@@ -172,7 +164,6 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Production date of battery.
-     * 
      */
     public Date getProductionDate() {
         return productionDate;
@@ -180,7 +171,6 @@ public class BatteryData implements JsonInterface {
 
     /**
      * Production date of battery.
-     * 
      */
     public void setProductionDate(Date productionDate) {
         this.productionDate = productionDate;
@@ -231,7 +221,7 @@ public class BatteryData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

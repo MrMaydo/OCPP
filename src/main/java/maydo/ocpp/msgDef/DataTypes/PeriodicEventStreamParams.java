@@ -31,13 +31,10 @@ public class PeriodicEventStreamParams implements JsonInterface {
     }
 
     /**
-     * 
-     * @param values
-     *     Number of items to be sent together in stream.
-     *     .
-     * @param interval
-     *     Time in seconds after which stream data is sent.
-     *     .
+     * @param values   Number of items to be sent together in stream.
+     *                 .
+     * @param interval Time in seconds after which stream data is sent.
+     *                 .
      */
     public PeriodicEventStreamParams(Integer interval, Integer values, CustomData customData) {
         super();
@@ -105,7 +102,7 @@ public class PeriodicEventStreamParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -114,7 +111,7 @@ public class PeriodicEventStreamParams implements JsonInterface {
             return false;
         PeriodicEventStreamParams that = (PeriodicEventStreamParams) obj;
         return Objects.equals(this.interval, that.interval)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.values, that.values);
     }
 

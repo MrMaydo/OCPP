@@ -13,7 +13,6 @@ public enum LogEnum {
     DIAGNOSTICS_LOG("DiagnosticsLog"),
     SECURITY_LOG("SecurityLog"),
     DATA_COLLECTOR_LOG("DataCollectorLog");
-    private final String value;
     private final static Map<String, LogEnum> CONSTANTS = new HashMap<String, LogEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum LogEnum {
         }
     }
 
+    private final String value;
+
     LogEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static LogEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum LogEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

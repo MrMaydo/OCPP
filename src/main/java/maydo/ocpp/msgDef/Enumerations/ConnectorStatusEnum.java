@@ -14,7 +14,6 @@ public enum ConnectorStatusEnum {
     RESERVED("Reserved"),
     UNAVAILABLE("Unavailable"),
     FAULTED("Faulted");
-    private final String value;
     private final static Map<String, ConnectorStatusEnum> CONSTANTS = new HashMap<String, ConnectorStatusEnum>();
 
     static {
@@ -23,17 +22,10 @@ public enum ConnectorStatusEnum {
         }
     }
 
+    private final String value;
+
     ConnectorStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ConnectorStatusEnum fromValue(String value) {
@@ -43,6 +35,15 @@ public enum ConnectorStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

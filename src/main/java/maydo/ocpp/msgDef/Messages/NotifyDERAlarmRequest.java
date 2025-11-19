@@ -15,35 +15,32 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Name of DER control, e.g. LFMustTrip
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private DERControlEnum controlType;
     /**
      * Type of grid event that caused this
-     * 
      */
     @Optional
     private GridEventFaultEnum gridEventFault;
     /**
      * True when error condition has ended.
      * Absent or false when alarm has started.
-     * 
      */
     @Optional
     private Boolean alarmEnded;
     /**
      * Time of start or end of alarm.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
      * Optional info provided by EV.
-     * 
      */
     @Optional
     private String extraInfo;
@@ -60,20 +57,16 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param alarmEnded
-     *     True when error condition has ended.
-     *     Absent or false when alarm has started.
-     *     
-     *     .
-     * @param timestamp
-     *     Time of start or end of alarm.
-     *     
-     *     .
-     * @param extraInfo
-     *     Optional info provided by EV.
-     *     
-     *     .
+     * @param alarmEnded True when error condition has ended.
+     *                   Absent or false when alarm has started.
+     *                   <p>
+     *                   .
+     * @param timestamp  Time of start or end of alarm.
+     *                   <p>
+     *                   .
+     * @param extraInfo  Optional info provided by EV.
+     *                   <p>
+     *                   .
      */
     public NotifyDERAlarmRequest(DERControlEnum controlType, GridEventFaultEnum gridEventFault, Boolean alarmEnded, Date timestamp, String extraInfo, CustomData customData) {
         super();
@@ -87,7 +80,7 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Name of DER control, e.g. LFMustTrip
-     * 
+     * <p>
      * (Required)
      */
     public DERControlEnum getControlType() {
@@ -96,7 +89,7 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Name of DER control, e.g. LFMustTrip
-     * 
+     * <p>
      * (Required)
      */
     public void setControlType(DERControlEnum controlType) {
@@ -105,7 +98,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Type of grid event that caused this
-     * 
      */
     public GridEventFaultEnum getGridEventFault() {
         return gridEventFault;
@@ -113,7 +105,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Type of grid event that caused this
-     * 
      */
     public void setGridEventFault(GridEventFaultEnum gridEventFault) {
         this.gridEventFault = gridEventFault;
@@ -122,7 +113,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     /**
      * True when error condition has ended.
      * Absent or false when alarm has started.
-     * 
      */
     public Boolean getAlarmEnded() {
         return alarmEnded;
@@ -131,7 +121,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     /**
      * True when error condition has ended.
      * Absent or false when alarm has started.
-     * 
      */
     public void setAlarmEnded(Boolean alarmEnded) {
         this.alarmEnded = alarmEnded;
@@ -139,8 +128,8 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Time of start or end of alarm.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -149,8 +138,8 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Time of start or end of alarm.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -159,7 +148,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Optional info provided by EV.
-     * 
      */
     public String getExtraInfo() {
         return extraInfo;
@@ -167,7 +155,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Optional info provided by EV.
-     * 
      */
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
@@ -213,10 +200,10 @@ public class NotifyDERAlarmRequest implements JsonInterface {
             return false;
         NotifyDERAlarmRequest that = (NotifyDERAlarmRequest) obj;
         return Objects.equals(this.gridEventFault, that.gridEventFault)
-                && Objects.equals(this.alarmEnded, that.alarmEnded) 
-                && Objects.equals(this.controlType, that.controlType) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.timestamp, that.timestamp) 
+                && Objects.equals(this.alarmEnded, that.alarmEnded)
+                && Objects.equals(this.controlType, that.controlType)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.timestamp, that.timestamp)
                 && Objects.equals(this.extraInfo, that.extraInfo);
     }
 

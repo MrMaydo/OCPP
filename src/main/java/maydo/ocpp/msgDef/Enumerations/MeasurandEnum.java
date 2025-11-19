@@ -65,7 +65,6 @@ public enum MeasurandEnum {
     VOLTAGE("Voltage"),
     VOLTAGE_MINIMUM("Voltage.Minimum"),
     VOLTAGE_MAXIMUM("Voltage.Maximum");
-    private final String value;
     private final static Map<String, MeasurandEnum> CONSTANTS = new HashMap<String, MeasurandEnum>();
 
     static {
@@ -74,17 +73,10 @@ public enum MeasurandEnum {
         }
     }
 
+    private final String value;
+
     MeasurandEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MeasurandEnum fromValue(String value) {
@@ -94,6 +86,15 @@ public enum MeasurandEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

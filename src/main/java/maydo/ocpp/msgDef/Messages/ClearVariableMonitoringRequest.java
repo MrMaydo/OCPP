@@ -13,7 +13,7 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
 
     /**
      * List of the monitors to be cleared, identified by there Id.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -31,10 +31,8 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param id
-     *     List of the monitors to be cleared, identified by there Id.
-     *     .
+     * @param id List of the monitors to be cleared, identified by there Id.
+     *           .
      */
     public ClearVariableMonitoringRequest(List<Integer> id, CustomData customData) {
         super();
@@ -44,7 +42,7 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
 
     /**
      * List of the monitors to be cleared, identified by there Id.
-     * 
+     * <p>
      * (Required)
      */
     public List<Integer> getId() {
@@ -53,7 +51,7 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
 
     /**
      * List of the monitors to be cleared, identified by there Id.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(List<Integer> id) {

@@ -12,20 +12,19 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Variable variable;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -52,7 +51,7 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -61,7 +60,7 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -70,7 +69,7 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -79,7 +78,7 @@ public class MonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -87,7 +86,6 @@ public class MonitoringData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<VariableMonitoring> getVariableMonitoring() {
@@ -95,7 +93,6 @@ public class MonitoringData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setVariableMonitoring(List<VariableMonitoring> variableMonitoring) {
@@ -133,7 +130,7 @@ public class MonitoringData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -142,8 +139,8 @@ public class MonitoringData implements JsonInterface {
             return false;
         MonitoringData that = (MonitoringData) obj;
         return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.variableMonitoring, that.variableMonitoring);
     }
 

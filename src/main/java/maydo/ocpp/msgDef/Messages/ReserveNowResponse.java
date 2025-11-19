@@ -14,7 +14,7 @@ public class ReserveNowResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ReserveNowResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     public ReserveNowStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ReserveNowResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ReserveNowStatusEnum status) {
@@ -115,7 +115,7 @@ public class ReserveNowResponse implements JsonInterface {
             return false;
         ReserveNowResponse that = (ReserveNowResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -8,8 +8,6 @@ import java.util.Objects;
 
 /**
  * Total cost with and without tax. Contains the total of energy, charging time, idle time, fixed and reservation costs including and/or excluding tax.
- * 
- * 
  */
 public class TotalPrice implements JsonInterface {
 
@@ -36,13 +34,10 @@ public class TotalPrice implements JsonInterface {
     }
 
     /**
-     * 
-     * @param inclTax
-     *     Price/cost including tax. Can be absent if _exclTax_ is present.
-     *     .
-     * @param exclTax
-     *     Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     *     .
+     * @param inclTax Price/cost including tax. Can be absent if _exclTax_ is present.
+     *                .
+     * @param exclTax Price/cost excluding tax. Can be absent if _inclTax_ is present.
+     *                .
      */
     public TotalPrice(Float exclTax, Float inclTax, CustomData customData) {
         super();
@@ -110,7 +105,7 @@ public class TotalPrice implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -119,7 +114,7 @@ public class TotalPrice implements JsonInterface {
             return false;
         TotalPrice that = (TotalPrice) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.inclTax, that.inclTax) 
+                && Objects.equals(this.inclTax, that.inclTax)
                 && Objects.equals(this.exclTax, that.exclTax);
     }
 

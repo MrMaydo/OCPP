@@ -12,7 +12,7 @@ public class CertificateHashData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -22,8 +22,8 @@ public class CertificateHashData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -32,7 +32,7 @@ public class CertificateHashData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,7 +41,7 @@ public class CertificateHashData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -59,24 +59,20 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param issuerNameHash
-     *     The hash of the issuer’s distinguished
-     *     name (DN), that must be calculated over the DER
-     *     encoding of the issuer’s name field in the certificate
-     *     being checked.
-     *     
-     *     .
-     * @param issuerKeyHash
-     *     The hash of the DER encoded public key:
-     *     the value (excluding tag and length) of the subject
-     *     public key field in the issuer’s certificate.
-     *     .
-     * @param serialNumber
-     *     The string representation of the
-     *     hexadecimal value of the serial number without the
-     *     prefix "0x" and without leading zeroes.
-     *     .
+     * @param issuerNameHash The hash of the issuer’s distinguished
+     *                       name (DN), that must be calculated over the DER
+     *                       encoding of the issuer’s name field in the certificate
+     *                       being checked.
+     *                       <p>
+     *                       .
+     * @param issuerKeyHash  The hash of the DER encoded public key:
+     *                       the value (excluding tag and length) of the subject
+     *                       public key field in the issuer’s certificate.
+     *                       .
+     * @param serialNumber   The string representation of the
+     *                       hexadecimal value of the serial number without the
+     *                       prefix "0x" and without leading zeroes.
+     *                       .
      */
     public CertificateHashData(HashAlgorithmEnum hashAlgorithm, String issuerNameHash, String issuerKeyHash, String serialNumber, CustomData customData) {
         super();
@@ -89,7 +85,7 @@ public class CertificateHashData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     public HashAlgorithmEnum getHashAlgorithm() {
@@ -98,7 +94,7 @@ public class CertificateHashData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * 
+     * <p>
      * (Required)
      */
     public void setHashAlgorithm(HashAlgorithmEnum hashAlgorithm) {
@@ -110,8 +106,8 @@ public class CertificateHashData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getIssuerNameHash() {
@@ -123,8 +119,8 @@ public class CertificateHashData implements JsonInterface {
      * name (DN), that must be calculated over the DER
      * encoding of the issuer’s name field in the certificate
      * being checked.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIssuerNameHash(String issuerNameHash) {
@@ -135,7 +131,7 @@ public class CertificateHashData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     public String getIssuerKeyHash() {
@@ -146,7 +142,7 @@ public class CertificateHashData implements JsonInterface {
      * The hash of the DER encoded public key:
      * the value (excluding tag and length) of the subject
      * public key field in the issuer’s certificate.
-     * 
+     * <p>
      * (Required)
      */
     public void setIssuerKeyHash(String issuerKeyHash) {
@@ -157,7 +153,7 @@ public class CertificateHashData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     public String getSerialNumber() {
@@ -168,7 +164,7 @@ public class CertificateHashData implements JsonInterface {
      * The string representation of the
      * hexadecimal value of the serial number without the
      * prefix "0x" and without leading zeroes.
-     * 
+     * <p>
      * (Required)
      */
     public void setSerialNumber(String serialNumber) {
@@ -206,7 +202,7 @@ public class CertificateHashData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

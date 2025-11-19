@@ -12,16 +12,16 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private ClearMonitoringStatusEnum status;
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -44,11 +44,9 @@ public class ClearMonitoringResult implements JsonInterface {
     }
 
     /**
-     * 
-     * @param id
-     *     Id of the monitor of which a clear was requested.
-     *     
-     *     .
+     * @param id Id of the monitor of which a clear was requested.
+     *           <p>
+     *           .
      */
     public ClearMonitoringResult(ClearMonitoringStatusEnum status, Integer id, StatusInfo statusInfo, CustomData customData) {
         super();
@@ -60,8 +58,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public ClearMonitoringStatusEnum getStatus() {
@@ -70,8 +68,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStatus(ClearMonitoringStatusEnum status) {
@@ -80,8 +78,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -90,8 +88,8 @@ public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Id of the monitor of which a clear was requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -143,7 +141,7 @@ public class ClearMonitoringResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -152,8 +150,8 @@ public class ClearMonitoringResult implements JsonInterface {
             return false;
         ClearMonitoringResult that = (ClearMonitoringResult) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

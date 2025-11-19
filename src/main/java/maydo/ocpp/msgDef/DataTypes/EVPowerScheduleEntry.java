@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * *(2.1)* An entry in schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
- * 
- * 
  */
 public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * The duration of this entry.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
      * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,13 +39,10 @@ public class EVPowerScheduleEntry implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     The duration of this entry.
-     *     .
-     * @param power
-     *     Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     *     .
+     * @param duration The duration of this entry.
+     *                 .
+     * @param power    Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
+     *                 .
      */
     public EVPowerScheduleEntry(Integer duration, Float power, CustomData customData) {
         super();
@@ -58,7 +53,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * The duration of this entry.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getDuration() {
@@ -67,7 +62,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * The duration of this entry.
-     * 
+     * <p>
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -76,7 +71,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     public Float getPower() {
@@ -85,7 +80,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * 
+     * <p>
      * (Required)
      */
     public void setPower(Float power) {
@@ -123,7 +118,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +127,7 @@ public class EVPowerScheduleEntry implements JsonInterface {
             return false;
         EVPowerScheduleEntry that = (EVPowerScheduleEntry) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.power, that.power);
     }
 

@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * Tax percentage
- * 
- * 
  */
 public class TaxRate implements JsonInterface {
 
     /**
      * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String type;
     /**
      * Tax percentage
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -32,7 +30,7 @@ public class TaxRate implements JsonInterface {
      * Stack level for this type of tax. Default value, when absent, is 0. +
      * _stack_ = 0: tax on net price; +
      * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc. 
+     * _stack_ = 2: tax added on top of _stack_ 1, etc.
      */
     @Optional
     private Integer stack;
@@ -49,19 +47,15 @@ public class TaxRate implements JsonInterface {
     }
 
     /**
-     * 
-     * @param stack
-     *     Stack level for this type of tax. Default value, when absent, is 0. +
-     *     _stack_ = 0: tax on net price; +
-     *     _stack_ = 1: tax added on top of _stack_ 0; +
-     *     _stack_ = 2: tax added on top of _stack_ 1, etc. 
-     *     .
-     * @param tax
-     *     Tax percentage
-     *     .
-     * @param type
-     *     Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     *     .
+     * @param stack Stack level for this type of tax. Default value, when absent, is 0. +
+     *              _stack_ = 0: tax on net price; +
+     *              _stack_ = 1: tax added on top of _stack_ 0; +
+     *              _stack_ = 2: tax added on top of _stack_ 1, etc.
+     *              .
+     * @param tax   Tax percentage
+     *              .
+     * @param type  Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
+     *              .
      */
     public TaxRate(String type, Float tax, Integer stack, CustomData customData) {
         super();
@@ -73,7 +67,7 @@ public class TaxRate implements JsonInterface {
 
     /**
      * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * 
+     * <p>
      * (Required)
      */
     public String getType() {
@@ -82,7 +76,7 @@ public class TaxRate implements JsonInterface {
 
     /**
      * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * 
+     * <p>
      * (Required)
      */
     public void setType(String type) {
@@ -91,7 +85,7 @@ public class TaxRate implements JsonInterface {
 
     /**
      * Tax percentage
-     * 
+     * <p>
      * (Required)
      */
     public Float getTax() {
@@ -100,7 +94,7 @@ public class TaxRate implements JsonInterface {
 
     /**
      * Tax percentage
-     * 
+     * <p>
      * (Required)
      */
     public void setTax(Float tax) {
@@ -111,7 +105,7 @@ public class TaxRate implements JsonInterface {
      * Stack level for this type of tax. Default value, when absent, is 0. +
      * _stack_ = 0: tax on net price; +
      * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc. 
+     * _stack_ = 2: tax added on top of _stack_ 1, etc.
      */
     public Integer getStack() {
         return stack;
@@ -121,7 +115,7 @@ public class TaxRate implements JsonInterface {
      * Stack level for this type of tax. Default value, when absent, is 0. +
      * _stack_ = 0: tax on net price; +
      * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc. 
+     * _stack_ = 2: tax added on top of _stack_ 1, etc.
      */
     public void setStack(Integer stack) {
         this.stack = stack;
@@ -158,7 +152,7 @@ public class TaxRate implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -167,8 +161,8 @@ public class TaxRate implements JsonInterface {
             return false;
         TaxRate that = (TaxRate) obj;
         return Objects.equals(this.tax, that.tax)
-                && Objects.equals(this.stack, that.stack) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.stack, that.stack)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.type, that.type);
     }
 

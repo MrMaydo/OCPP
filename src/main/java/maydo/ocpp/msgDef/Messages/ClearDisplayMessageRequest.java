@@ -12,7 +12,7 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class ClearDisplayMessageRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param id
-     *     Id of the message that SHALL be removed from the Charging Station.
-     *     .
+     * @param id Id of the message that SHALL be removed from the Charging Station.
+     *           .
      */
     public ClearDisplayMessageRequest(Integer id, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -52,7 +50,7 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {

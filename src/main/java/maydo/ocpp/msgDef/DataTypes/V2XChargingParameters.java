@@ -9,8 +9,6 @@ import java.util.Objects;
 /**
  * Charging parameters for ISO 15118-20, also supporting V2X charging/discharging.+
  * All values are greater or equal to zero, with the exception of EVMinEnergyRequest, EVMaxEnergyRequest, EVTargetEnergyRequest, EVMinV2XEnergyRequest and EVMaxV2XEnergyRequest.
- * 
- * 
  */
 public class V2XChargingParameters implements JsonInterface {
 
@@ -41,28 +39,23 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * It corresponds to the ChaWMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (ChaVAMax) in IEC 61850. +
-     * 
-     * Relates to: 
+     * <p>
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower
-     * 
      */
     @Optional
     private Float maxChargePower;
     /**
      * Maximum charge power on phase L2 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L2
-     * 
-     * 
      */
     @Optional
     private Float maxChargePowerL2;
     /**
      * Maximum charge power on phase L3 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L3
-     * 
-     * 
      */
     @Optional
     private Float maxChargePowerL3;
@@ -71,10 +64,9 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1. +
      * It corresponds to the WMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (VAMax attribute in the IEC 61850).
-     * 
+     * <p>
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower
-     * 
      */
     @Optional
     private Float minDischargePower;
@@ -82,7 +74,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L2 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L2
-     * 
      */
     @Optional
     private Float minDischargePowerL2;
@@ -90,7 +81,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L3 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L3
-     * 
      */
     @Optional
     private Float minDischargePowerL3;
@@ -99,8 +89,6 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower
-     * 
-     * 
      */
     @Optional
     private Float maxDischargePower;
@@ -108,7 +96,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L2 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePowe_L2
-     * 
      */
     @Optional
     private Float maxDischargePowerL2;
@@ -116,41 +103,34 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L3 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower_L3
-     * 
      */
     @Optional
     private Float maxDischargePowerL3;
     /**
      * Minimum charge current in A, defined by max(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumChargeCurrent
-     * 
      */
     @Optional
     private Float minChargeCurrent;
     /**
      * Maximum charge current in A, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumChargeCurrent
-     * 
-     * 
      */
     @Optional
     private Float maxChargeCurrent;
     /**
      * Minimum discharge current in A, defined by max(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumDischargeCurrent
-     * 
-     * 
      */
     @Optional
     private Float minDischargeCurrent;
     /**
      * Maximum discharge current in A, defined by min(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumDischargeCurrent
-     * 
      */
     @Optional
     private Float maxDischargeCurrent;
@@ -158,7 +138,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum voltage in V, defined by max(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumVoltage
-     * 
      */
     @Optional
     private Float minVoltage;
@@ -166,7 +145,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum voltage in V, defined by min(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumVoltage
-     * 
      */
     @Optional
     private Float maxVoltage;
@@ -174,7 +152,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to requested state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
      */
     @Optional
     private Float evTargetEnergyRequest;
@@ -182,7 +159,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to minimum allowed state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMinimumEnergyRequest
-     * 
      */
     @Optional
     private Float evMinEnergyRequest;
@@ -190,16 +166,14 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to maximum state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMaximumEnergyRequest
-     * 
      */
     @Optional
     private Float evMaxEnergyRequest;
     /**
-     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity. 
+     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity.
      * Positive value means that current state of charge is below V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMinimumV2XEnergyRequest
-     * 
      */
     @Optional
     private Float evMinV2XEnergyRequest;
@@ -208,8 +182,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Negative value indicates that current state of charge is above V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMaximumV2XEnergyRequest
-     * 
-     * 
      */
     @Optional
     private Float evMaxV2XEnergyRequest;
@@ -217,7 +189,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Target state of charge at departure as percentage.
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: TargetSOC
-     * 
      */
     @Optional
     private Integer targetSoC;
@@ -234,166 +205,141 @@ public class V2XChargingParameters implements JsonInterface {
     }
 
     /**
-     * 
-     * @param minDischargePower
-     *     Minimum discharge (injected) power in W, defined by max(EV, EVSE) at unity power factor. Value &gt;= 0. +
-     *     This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1. +
-     *     It corresponds to the WMax attribute in the IEC 61850.
-     *     It is usually equivalent to the rated apparent power of the EV when discharging (VAMax attribute in the IEC 61850).
-     *     
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower
-     *     
-     *     .
-     * @param minChargePower
-     *     Minimum charge power in W, defined by max(EV, EVSE).
-     *     This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower
-     *     .
-     * @param evMinV2XEnergyRequest
-     *     Energy (in Wh) to minimum state of charge for cycling (V2X) activity. 
-     *     Positive value means that current state of charge is below V2X range.
-     *     Relates to:
-     *     *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMinimumV2XEnergyRequest
-     *     
-     *     .
-     * @param maxChargePowerL3
-     *     Maximum charge power on phase L3 in W, defined by min(EV, EVSE)
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L3
-     *     
-     *     
-     *     .
-     * @param maxChargeCurrent
-     *     Maximum charge current in A, defined by min(EV, EVSE)
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumChargeCurrent
-     *     
-     *     
-     *     .
-     * @param maxChargePowerL2
-     *     Maximum charge power on phase L2 in W, defined by min(EV, EVSE)
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L2
-     *     
-     *     
-     *     .
-     * @param minVoltage
-     *     Minimum voltage in V, defined by max(EV, EVSE)
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumVoltage
-     *     
-     *     .
-     * @param minChargeCurrent
-     *     Minimum charge current in A, defined by max(EV, EVSE)
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumChargeCurrent
-     *     
-     *     .
-     * @param maxVoltage
-     *     Maximum voltage in V, defined by min(EV, EVSE)
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumVoltage
-     *     
-     *     .
-     * @param maxDischargePowerL2
-     *     Maximum discharge power on phase L2 in W, defined by min(EV, EVSE).  Value &gt;= 0.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePowe_L2
-     *     
-     *     .
-     * @param minDischargePowerL2
-     *     Minimum discharge power on phase L2 in W, defined by max(EV, EVSE).  Value &gt;= 0.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L2
-     *     
-     *     .
-     * @param maxDischargePowerL3
-     *     Maximum discharge power on phase L3 in W, defined by min(EV, EVSE).  Value &gt;= 0.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower_L3
-     *     
-     *     .
-     * @param evMaxEnergyRequest
-     *     Energy to maximum state of charge in Wh
-     *     Relates to:
-     *     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMaximumEnergyRequest
-     *     
-     *     .
-     * @param minChargePowerL2
-     *     Minimum charge power on phase L2 in W, defined by max(EV, EVSE).
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower_L2
-     *     .
-     * @param minDischargePowerL3
-     *     Minimum discharge power on phase L3 in W, defined by max(EV, EVSE).  Value &gt;= 0.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L3
-     *     
-     *     .
-     * @param targetSoC
-     *     Target state of charge at departure as percentage.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: TargetSOC
-     *     
-     *     .
-     * @param minChargePowerL3
-     *     Minimum charge power on phase L3 in W, defined by max(EV, EVSE).
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower_L3
-     *     .
-     * @param maxChargePower
-     *     Maximum charge (absorbed) power in W, defined by min(EV, EVSE) at unity power factor. +
-     *     This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *     It corresponds to the ChaWMax attribute in the IEC 61850.
-     *     It is usually equivalent to the rated apparent power of the EV when discharging (ChaVAMax) in IEC 61850. +
-     *     
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower
-     *     
-     *     .
-     * @param maxDischargeCurrent
-     *     Maximum discharge current in A, defined by min(EV, EVSE).  Value &gt;= 0.
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumDischargeCurrent
-     *     
-     *     .
-     * @param minDischargeCurrent
-     *     Minimum discharge current in A, defined by max(EV, EVSE).  Value &gt;= 0.
-     *     Relates to: 
-     *     *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumDischargeCurrent
-     *     
-     *     
-     *     .
-     * @param evTargetEnergyRequest
-     *     Energy to requested state of charge in Wh
-     *     Relates to:
-     *     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     *     
-     *     .
-     * @param evMaxV2XEnergyRequest
-     *     Energy (in Wh) to maximum state of charge for cycling (V2X) activity.
-     *     Negative value indicates that current state of charge is above V2X range.
-     *     Relates to:
-     *     *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMaximumV2XEnergyRequest
-     *     
-     *     
-     *     .
-     * @param evMinEnergyRequest
-     *     Energy to minimum allowed state of charge in Wh
-     *     Relates to:
-     *     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMinimumEnergyRequest
-     *     
-     *     .
-     * @param maxDischargePower
-     *     Maximum discharge (injected) power in W, defined by min(EV, EVSE) at unity power factor.  Value &gt;= 0.
-     *     This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *     Relates to:
-     *     *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower
-     *     
-     *     
-     *     .
+     * @param minDischargePower     Minimum discharge (injected) power in W, defined by max(EV, EVSE) at unity power factor. Value &gt;= 0. +
+     *                              This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1. +
+     *                              It corresponds to the WMax attribute in the IEC 61850.
+     *                              It is usually equivalent to the rated apparent power of the EV when discharging (VAMax attribute in the IEC 61850).
+     *                              <p>
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower
+     *                              <p>
+     *                              .
+     * @param minChargePower        Minimum charge power in W, defined by max(EV, EVSE).
+     *                              This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower
+     *                              .
+     * @param evMinV2XEnergyRequest Energy (in Wh) to minimum state of charge for cycling (V2X) activity.
+     *                              Positive value means that current state of charge is below V2X range.
+     *                              Relates to:
+     *                              *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMinimumV2XEnergyRequest
+     *                              <p>
+     *                              .
+     * @param maxChargePowerL3      Maximum charge power on phase L3 in W, defined by min(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L3
+     *                              <p>
+     *                              <p>
+     *                              .
+     * @param maxChargeCurrent      Maximum charge current in A, defined by min(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumChargeCurrent
+     *                              <p>
+     *                              <p>
+     *                              .
+     * @param maxChargePowerL2      Maximum charge power on phase L2 in W, defined by min(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L2
+     *                              <p>
+     *                              <p>
+     *                              .
+     * @param minVoltage            Minimum voltage in V, defined by max(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumVoltage
+     *                              <p>
+     *                              .
+     * @param minChargeCurrent      Minimum charge current in A, defined by max(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumChargeCurrent
+     *                              <p>
+     *                              .
+     * @param maxVoltage            Maximum voltage in V, defined by min(EV, EVSE)
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumVoltage
+     *                              <p>
+     *                              .
+     * @param maxDischargePowerL2   Maximum discharge power on phase L2 in W, defined by min(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePowe_L2
+     *                              <p>
+     *                              .
+     * @param minDischargePowerL2   Minimum discharge power on phase L2 in W, defined by max(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L2
+     *                              <p>
+     *                              .
+     * @param maxDischargePowerL3   Maximum discharge power on phase L3 in W, defined by min(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower_L3
+     *                              <p>
+     *                              .
+     * @param evMaxEnergyRequest    Energy to maximum state of charge in Wh
+     *                              Relates to:
+     *                              *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMaximumEnergyRequest
+     *                              <p>
+     *                              .
+     * @param minChargePowerL2      Minimum charge power on phase L2 in W, defined by max(EV, EVSE).
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower_L2
+     *                              .
+     * @param minDischargePowerL3   Minimum discharge power on phase L3 in W, defined by max(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L3
+     *                              <p>
+     *                              .
+     * @param targetSoC             Target state of charge at departure as percentage.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: TargetSOC
+     *                              <p>
+     *                              .
+     * @param minChargePowerL3      Minimum charge power on phase L3 in W, defined by max(EV, EVSE).
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumChargePower_L3
+     *                              .
+     * @param maxChargePower        Maximum charge (absorbed) power in W, defined by min(EV, EVSE) at unity power factor. +
+     *                              This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     *                              It corresponds to the ChaWMax attribute in the IEC 61850.
+     *                              It is usually equivalent to the rated apparent power of the EV when discharging (ChaVAMax) in IEC 61850. +
+     *                              <p>
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower
+     *                              <p>
+     *                              .
+     * @param maxDischargeCurrent   Maximum discharge current in A, defined by min(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumDischargeCurrent
+     *                              <p>
+     *                              .
+     * @param minDischargeCurrent   Minimum discharge current in A, defined by max(EV, EVSE).  Value &gt;= 0.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumDischargeCurrent
+     *                              <p>
+     *                              <p>
+     *                              .
+     * @param evTargetEnergyRequest Energy to requested state of charge in Wh
+     *                              Relates to:
+     *                              *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     *                              <p>
+     *                              .
+     * @param evMaxV2XEnergyRequest Energy (in Wh) to maximum state of charge for cycling (V2X) activity.
+     *                              Negative value indicates that current state of charge is above V2X range.
+     *                              Relates to:
+     *                              *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMaximumV2XEnergyRequest
+     *                              <p>
+     *                              <p>
+     *                              .
+     * @param evMinEnergyRequest    Energy to minimum allowed state of charge in Wh
+     *                              Relates to:
+     *                              *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMinimumEnergyRequest
+     *                              <p>
+     *                              .
+     * @param maxDischargePower     Maximum discharge (injected) power in W, defined by min(EV, EVSE) at unity power factor.  Value &gt;= 0.
+     *                              This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     *                              Relates to:
+     *                              *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower
+     *                              <p>
+     *                              <p>
+     *                              .
      */
     public V2XChargingParameters(Float minChargePower, Float minChargePowerL2, Float minChargePowerL3, Float maxChargePower, Float maxChargePowerL2, Float maxChargePowerL3, Float minDischargePower, Float minDischargePowerL2, Float minDischargePowerL3, Float maxDischargePower, Float maxDischargePowerL2, Float maxDischargePowerL3, Float minChargeCurrent, Float maxChargeCurrent, Float minDischargeCurrent, Float maxDischargeCurrent, Float minVoltage, Float maxVoltage, Float evTargetEnergyRequest, Float evMinEnergyRequest, Float evMaxEnergyRequest, Float evMinV2XEnergyRequest, Float evMaxV2XEnergyRequest, Integer targetSoC, CustomData customData) {
         super();
@@ -485,10 +431,9 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * It corresponds to the ChaWMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (ChaVAMax) in IEC 61850. +
-     * 
-     * Relates to: 
+     * <p>
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower
-     * 
      */
     public Float getMaxChargePower() {
         return maxChargePower;
@@ -499,10 +444,9 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * It corresponds to the ChaWMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (ChaVAMax) in IEC 61850. +
-     * 
-     * Relates to: 
+     * <p>
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower
-     * 
      */
     public void setMaxChargePower(Float maxChargePower) {
         this.maxChargePower = maxChargePower;
@@ -510,10 +454,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge power on phase L2 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L2
-     * 
-     * 
      */
     public Float getMaxChargePowerL2() {
         return maxChargePowerL2;
@@ -521,10 +463,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge power on phase L2 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L2
-     * 
-     * 
      */
     public void setMaxChargePowerL2(Float maxChargePowerL2) {
         this.maxChargePowerL2 = maxChargePowerL2;
@@ -532,10 +472,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge power on phase L3 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L3
-     * 
-     * 
      */
     public Float getMaxChargePowerL3() {
         return maxChargePowerL3;
@@ -543,10 +481,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge power on phase L3 in W, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumChargePower_L3
-     * 
-     * 
      */
     public void setMaxChargePowerL3(Float maxChargePowerL3) {
         this.maxChargePowerL3 = maxChargePowerL3;
@@ -557,10 +493,9 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1. +
      * It corresponds to the WMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (VAMax attribute in the IEC 61850).
-     * 
+     * <p>
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower
-     * 
      */
     public Float getMinDischargePower() {
         return minDischargePower;
@@ -571,10 +506,9 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1. +
      * It corresponds to the WMax attribute in the IEC 61850.
      * It is usually equivalent to the rated apparent power of the EV when discharging (VAMax attribute in the IEC 61850).
-     * 
+     * <p>
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower
-     * 
      */
     public void setMinDischargePower(Float minDischargePower) {
         this.minDischargePower = minDischargePower;
@@ -584,7 +518,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L2 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L2
-     * 
      */
     public Float getMinDischargePowerL2() {
         return minDischargePowerL2;
@@ -594,7 +527,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L2 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L2
-     * 
      */
     public void setMinDischargePowerL2(Float minDischargePowerL2) {
         this.minDischargePowerL2 = minDischargePowerL2;
@@ -604,7 +536,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L3 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L3
-     * 
      */
     public Float getMinDischargePowerL3() {
         return minDischargePowerL3;
@@ -614,7 +545,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum discharge power on phase L3 in W, defined by max(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMinimumDischargePower_L3
-     * 
      */
     public void setMinDischargePowerL3(Float minDischargePowerL3) {
         this.minDischargePowerL3 = minDischargePowerL3;
@@ -625,8 +555,6 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower
-     * 
-     * 
      */
     public Float getMaxDischargePower() {
         return maxDischargePower;
@@ -637,8 +565,6 @@ public class V2XChargingParameters implements JsonInterface {
      * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower
-     * 
-     * 
      */
     public void setMaxDischargePower(Float maxDischargePower) {
         this.maxDischargePower = maxDischargePower;
@@ -648,7 +574,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L2 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePowe_L2
-     * 
      */
     public Float getMaxDischargePowerL2() {
         return maxDischargePowerL2;
@@ -658,7 +583,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L2 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePowe_L2
-     * 
      */
     public void setMaxDischargePowerL2(Float maxDischargePowerL2) {
         this.maxDischargePowerL2 = maxDischargePowerL2;
@@ -668,7 +592,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L3 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower_L3
-     * 
      */
     public Float getMaxDischargePowerL3() {
         return maxDischargePowerL3;
@@ -678,7 +601,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum discharge power on phase L3 in W, defined by min(EV, EVSE).  Value &gt;= 0.
      * Relates to:
      * *ISO 15118-20*: BPT_AC/DC_CPDReqEnergyTransferModeType: EVMaximumDischargePower_L3
-     * 
      */
     public void setMaxDischargePowerL3(Float maxDischargePowerL3) {
         this.maxDischargePowerL3 = maxDischargePowerL3;
@@ -686,9 +608,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Minimum charge current in A, defined by max(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumChargeCurrent
-     * 
      */
     public Float getMinChargeCurrent() {
         return minChargeCurrent;
@@ -696,9 +617,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Minimum charge current in A, defined by max(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumChargeCurrent
-     * 
      */
     public void setMinChargeCurrent(Float minChargeCurrent) {
         this.minChargeCurrent = minChargeCurrent;
@@ -706,10 +626,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge current in A, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumChargeCurrent
-     * 
-     * 
      */
     public Float getMaxChargeCurrent() {
         return maxChargeCurrent;
@@ -717,10 +635,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum charge current in A, defined by min(EV, EVSE)
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumChargeCurrent
-     * 
-     * 
      */
     public void setMaxChargeCurrent(Float maxChargeCurrent) {
         this.maxChargeCurrent = maxChargeCurrent;
@@ -728,10 +644,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Minimum discharge current in A, defined by max(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumDischargeCurrent
-     * 
-     * 
      */
     public Float getMinDischargeCurrent() {
         return minDischargeCurrent;
@@ -739,10 +653,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Minimum discharge current in A, defined by max(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumDischargeCurrent
-     * 
-     * 
      */
     public void setMinDischargeCurrent(Float minDischargeCurrent) {
         this.minDischargeCurrent = minDischargeCurrent;
@@ -750,9 +662,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum discharge current in A, defined by min(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumDischargeCurrent
-     * 
      */
     public Float getMaxDischargeCurrent() {
         return maxDischargeCurrent;
@@ -760,9 +671,8 @@ public class V2XChargingParameters implements JsonInterface {
 
     /**
      * Maximum discharge current in A, defined by min(EV, EVSE).  Value &gt;= 0.
-     * Relates to: 
+     * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumDischargeCurrent
-     * 
      */
     public void setMaxDischargeCurrent(Float maxDischargeCurrent) {
         this.maxDischargeCurrent = maxDischargeCurrent;
@@ -772,7 +682,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum voltage in V, defined by max(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumVoltage
-     * 
      */
     public Float getMinVoltage() {
         return minVoltage;
@@ -782,7 +691,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Minimum voltage in V, defined by max(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMinimumVoltage
-     * 
      */
     public void setMinVoltage(Float minVoltage) {
         this.minVoltage = minVoltage;
@@ -792,7 +700,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum voltage in V, defined by min(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumVoltage
-     * 
      */
     public Float getMaxVoltage() {
         return maxVoltage;
@@ -802,7 +709,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Maximum voltage in V, defined by min(EV, EVSE)
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: EVMaximumVoltage
-     * 
      */
     public void setMaxVoltage(Float maxVoltage) {
         this.maxVoltage = maxVoltage;
@@ -812,7 +718,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to requested state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
      */
     public Float getEvTargetEnergyRequest() {
         return evTargetEnergyRequest;
@@ -822,7 +727,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to requested state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
      */
     public void setEvTargetEnergyRequest(Float evTargetEnergyRequest) {
         this.evTargetEnergyRequest = evTargetEnergyRequest;
@@ -832,7 +736,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to minimum allowed state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMinimumEnergyRequest
-     * 
      */
     public Float getEvMinEnergyRequest() {
         return evMinEnergyRequest;
@@ -842,7 +745,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to minimum allowed state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMinimumEnergyRequest
-     * 
      */
     public void setEvMinEnergyRequest(Float evMinEnergyRequest) {
         this.evMinEnergyRequest = evMinEnergyRequest;
@@ -852,7 +754,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to maximum state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMaximumEnergyRequest
-     * 
      */
     public Float getEvMaxEnergyRequest() {
         return evMaxEnergyRequest;
@@ -862,29 +763,26 @@ public class V2XChargingParameters implements JsonInterface {
      * Energy to maximum state of charge in Wh
      * Relates to:
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVMaximumEnergyRequest
-     * 
      */
     public void setEvMaxEnergyRequest(Float evMaxEnergyRequest) {
         this.evMaxEnergyRequest = evMaxEnergyRequest;
     }
 
     /**
-     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity. 
+     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity.
      * Positive value means that current state of charge is below V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMinimumV2XEnergyRequest
-     * 
      */
     public Float getEvMinV2XEnergyRequest() {
         return evMinV2XEnergyRequest;
     }
 
     /**
-     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity. 
+     * Energy (in Wh) to minimum state of charge for cycling (V2X) activity.
      * Positive value means that current state of charge is below V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMinimumV2XEnergyRequest
-     * 
      */
     public void setEvMinV2XEnergyRequest(Float evMinV2XEnergyRequest) {
         this.evMinV2XEnergyRequest = evMinV2XEnergyRequest;
@@ -895,8 +793,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Negative value indicates that current state of charge is above V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMaximumV2XEnergyRequest
-     * 
-     * 
      */
     public Float getEvMaxV2XEnergyRequest() {
         return evMaxV2XEnergyRequest;
@@ -907,8 +803,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Negative value indicates that current state of charge is above V2X range.
      * Relates to:
      * *ISO 15118-20*: Dynamic_SEReqControlModeType: EVMaximumV2XEnergyRequest
-     * 
-     * 
      */
     public void setEvMaxV2XEnergyRequest(Float evMaxV2XEnergyRequest) {
         this.evMaxV2XEnergyRequest = evMaxV2XEnergyRequest;
@@ -918,7 +812,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Target state of charge at departure as percentage.
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: TargetSOC
-     * 
      */
     public Integer getTargetSoC() {
         return targetSoC;
@@ -928,7 +821,6 @@ public class V2XChargingParameters implements JsonInterface {
      * Target state of charge at departure as percentage.
      * Relates to:
      * *ISO 15118-20*: BPT_DC_CPDReqEnergyTransferModeType: TargetSOC
-     * 
      */
     public void setTargetSoC(Integer targetSoC) {
         this.targetSoC = targetSoC;
@@ -965,7 +857,7 @@ public class V2XChargingParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -974,29 +866,29 @@ public class V2XChargingParameters implements JsonInterface {
             return false;
         V2XChargingParameters that = (V2XChargingParameters) obj;
         return Objects.equals(this.minChargePower, that.minChargePower)
-                && Objects.equals(this.evMinV2XEnergyRequest, that.evMinV2XEnergyRequest) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.minChargeCurrent, that.minChargeCurrent) 
-                && Objects.equals(this.minDischargePowerL2, that.minDischargePowerL2) 
-                && Objects.equals(this.evMaxEnergyRequest, that.evMaxEnergyRequest) 
-                && Objects.equals(this.minChargePowerL2, that.minChargePowerL2) 
-                && Objects.equals(this.minDischargePowerL3, that.minDischargePowerL3) 
-                && Objects.equals(this.minChargePowerL3, that.minChargePowerL3) 
-                && Objects.equals(this.maxDischargeCurrent, that.maxDischargeCurrent) 
-                && Objects.equals(this.evMinEnergyRequest, that.evMinEnergyRequest) 
-                && Objects.equals(this.maxDischargePower, that.maxDischargePower) 
-                && Objects.equals(this.minDischargePower, that.minDischargePower) 
-                && Objects.equals(this.maxChargePowerL3, that.maxChargePowerL3) 
-                && Objects.equals(this.maxChargeCurrent, that.maxChargeCurrent) 
-                && Objects.equals(this.maxChargePowerL2, that.maxChargePowerL2) 
-                && Objects.equals(this.minVoltage, that.minVoltage) 
-                && Objects.equals(this.maxVoltage, that.maxVoltage) 
-                && Objects.equals(this.maxDischargePowerL2, that.maxDischargePowerL2) 
-                && Objects.equals(this.maxDischargePowerL3, that.maxDischargePowerL3) 
-                && Objects.equals(this.targetSoC, that.targetSoC) 
-                && Objects.equals(this.maxChargePower, that.maxChargePower) 
-                && Objects.equals(this.minDischargeCurrent, that.minDischargeCurrent) 
-                && Objects.equals(this.evTargetEnergyRequest, that.evTargetEnergyRequest) 
+                && Objects.equals(this.evMinV2XEnergyRequest, that.evMinV2XEnergyRequest)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.minChargeCurrent, that.minChargeCurrent)
+                && Objects.equals(this.minDischargePowerL2, that.minDischargePowerL2)
+                && Objects.equals(this.evMaxEnergyRequest, that.evMaxEnergyRequest)
+                && Objects.equals(this.minChargePowerL2, that.minChargePowerL2)
+                && Objects.equals(this.minDischargePowerL3, that.minDischargePowerL3)
+                && Objects.equals(this.minChargePowerL3, that.minChargePowerL3)
+                && Objects.equals(this.maxDischargeCurrent, that.maxDischargeCurrent)
+                && Objects.equals(this.evMinEnergyRequest, that.evMinEnergyRequest)
+                && Objects.equals(this.maxDischargePower, that.maxDischargePower)
+                && Objects.equals(this.minDischargePower, that.minDischargePower)
+                && Objects.equals(this.maxChargePowerL3, that.maxChargePowerL3)
+                && Objects.equals(this.maxChargeCurrent, that.maxChargeCurrent)
+                && Objects.equals(this.maxChargePowerL2, that.maxChargePowerL2)
+                && Objects.equals(this.minVoltage, that.minVoltage)
+                && Objects.equals(this.maxVoltage, that.maxVoltage)
+                && Objects.equals(this.maxDischargePowerL2, that.maxDischargePowerL2)
+                && Objects.equals(this.maxDischargePowerL3, that.maxDischargePowerL3)
+                && Objects.equals(this.targetSoC, that.targetSoC)
+                && Objects.equals(this.maxChargePower, that.maxChargePower)
+                && Objects.equals(this.minDischargeCurrent, that.minDischargeCurrent)
+                && Objects.equals(this.evTargetEnergyRequest, that.evTargetEnergyRequest)
                 && Objects.equals(this.evMaxV2XEnergyRequest, that.evMaxV2XEnergyRequest);
     }
 
@@ -1007,22 +899,22 @@ public class V2XChargingParameters implements JsonInterface {
         result = 31 * result + (this.evMinV2XEnergyRequest != null ? this.evMinV2XEnergyRequest.hashCode() : 0);
         result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         result = 31 * result + (this.minChargeCurrent != null ? this.minChargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.minDischargePowerL2 != null ? this.minDischargePowerL2 .hashCode() : 0);
+        result = 31 * result + (this.minDischargePowerL2 != null ? this.minDischargePowerL2.hashCode() : 0);
         result = 31 * result + (this.evMaxEnergyRequest != null ? this.evMaxEnergyRequest.hashCode() : 0);
-        result = 31 * result + (this.minChargePowerL2 != null ? this.minChargePowerL2 .hashCode() : 0);
-        result = 31 * result + (this.minDischargePowerL3 != null ? this.minDischargePowerL3 .hashCode() : 0);
-        result = 31 * result + (this.minChargePowerL3 != null ? this.minChargePowerL3 .hashCode() : 0);
+        result = 31 * result + (this.minChargePowerL2 != null ? this.minChargePowerL2.hashCode() : 0);
+        result = 31 * result + (this.minDischargePowerL3 != null ? this.minDischargePowerL3.hashCode() : 0);
+        result = 31 * result + (this.minChargePowerL3 != null ? this.minChargePowerL3.hashCode() : 0);
         result = 31 * result + (this.maxDischargeCurrent != null ? this.maxDischargeCurrent.hashCode() : 0);
         result = 31 * result + (this.evMinEnergyRequest != null ? this.evMinEnergyRequest.hashCode() : 0);
         result = 31 * result + (this.maxDischargePower != null ? this.maxDischargePower.hashCode() : 0);
         result = 31 * result + (this.minDischargePower != null ? this.minDischargePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargePowerL3 != null ? this.maxChargePowerL3 .hashCode() : 0);
+        result = 31 * result + (this.maxChargePowerL3 != null ? this.maxChargePowerL3.hashCode() : 0);
         result = 31 * result + (this.maxChargeCurrent != null ? this.maxChargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.maxChargePowerL2 != null ? this.maxChargePowerL2 .hashCode() : 0);
+        result = 31 * result + (this.maxChargePowerL2 != null ? this.maxChargePowerL2.hashCode() : 0);
         result = 31 * result + (this.minVoltage != null ? this.minVoltage.hashCode() : 0);
         result = 31 * result + (this.maxVoltage != null ? this.maxVoltage.hashCode() : 0);
-        result = 31 * result + (this.maxDischargePowerL2 != null ? this.maxDischargePowerL2 .hashCode() : 0);
-        result = 31 * result + (this.maxDischargePowerL3 != null ? this.maxDischargePowerL3 .hashCode() : 0);
+        result = 31 * result + (this.maxDischargePowerL2 != null ? this.maxDischargePowerL2.hashCode() : 0);
+        result = 31 * result + (this.maxDischargePowerL3 != null ? this.maxDischargePowerL3.hashCode() : 0);
         result = 31 * result + (this.targetSoC != null ? this.targetSoC.hashCode() : 0);
         result = 31 * result + (this.maxChargePower != null ? this.maxChargePower.hashCode() : 0);
         result = 31 * result + (this.minDischargeCurrent != null ? this.minDischargeCurrent.hashCode() : 0);

@@ -12,14 +12,13 @@ import java.util.Objects;
 public class CertificateHashDataChain implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private CertificateHashData certificateHashData;
     /**
      * Indicates the type of the requested certificate(s).
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -47,7 +46,6 @@ public class CertificateHashDataChain implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public CertificateHashData getCertificateHashData() {
@@ -55,7 +53,6 @@ public class CertificateHashDataChain implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCertificateHashData(CertificateHashData certificateHashData) {
@@ -64,7 +61,7 @@ public class CertificateHashDataChain implements JsonInterface {
 
     /**
      * Indicates the type of the requested certificate(s).
-     * 
+     * <p>
      * (Required)
      */
     public GetCertificateIdUseEnum getCertificateType() {
@@ -73,7 +70,7 @@ public class CertificateHashDataChain implements JsonInterface {
 
     /**
      * Indicates the type of the requested certificate(s).
-     * 
+     * <p>
      * (Required)
      */
     public void setCertificateType(GetCertificateIdUseEnum certificateType) {
@@ -119,7 +116,7 @@ public class CertificateHashDataChain implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -128,8 +125,8 @@ public class CertificateHashDataChain implements JsonInterface {
             return false;
         CertificateHashDataChain that = (CertificateHashDataChain) obj;
         return Objects.equals(this.childCertificateHashData, that.childCertificateHashData)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.certificateHashData, that.certificateHashData) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.certificateHashData, that.certificateHashData)
                 && Objects.equals(this.certificateType, that.certificateType);
     }
 

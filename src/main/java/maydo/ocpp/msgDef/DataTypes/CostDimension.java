@@ -12,16 +12,16 @@ public class CostDimension implements JsonInterface {
 
     /**
      * Type of cost dimension: energy, power, time, etc.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private CostDimensionEnum type;
     /**
      * Volume of the dimension consumed, measured according to the dimension type.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,11 +39,9 @@ public class CostDimension implements JsonInterface {
     }
 
     /**
-     * 
-     * @param volume
-     *     Volume of the dimension consumed, measured according to the dimension type.
-     *     
-     *     .
+     * @param volume Volume of the dimension consumed, measured according to the dimension type.
+     *               <p>
+     *               .
      */
     public CostDimension(CostDimensionEnum type, Float volume, CustomData customData) {
         super();
@@ -54,8 +52,8 @@ public class CostDimension implements JsonInterface {
 
     /**
      * Type of cost dimension: energy, power, time, etc.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public CostDimensionEnum getType() {
@@ -64,8 +62,8 @@ public class CostDimension implements JsonInterface {
 
     /**
      * Type of cost dimension: energy, power, time, etc.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setType(CostDimensionEnum type) {
@@ -74,8 +72,8 @@ public class CostDimension implements JsonInterface {
 
     /**
      * Volume of the dimension consumed, measured according to the dimension type.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getVolume() {
@@ -84,8 +82,8 @@ public class CostDimension implements JsonInterface {
 
     /**
      * Volume of the dimension consumed, measured according to the dimension type.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setVolume(Float volume) {
@@ -123,7 +121,7 @@ public class CostDimension implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +130,7 @@ public class CostDimension implements JsonInterface {
             return false;
         CostDimension that = (CostDimension) obj;
         return Objects.equals(this.volume, that.volume)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.type, that.type);
     }
 

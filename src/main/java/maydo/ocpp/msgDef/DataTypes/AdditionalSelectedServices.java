@@ -9,23 +9,20 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
- * 
  */
 public class AdditionalSelectedServices implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private RationalNumber serviceFee;
     /**
      * Human readable string to identify this service.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -43,10 +40,8 @@ public class AdditionalSelectedServices implements JsonInterface {
     }
 
     /**
-     * 
-     * @param serviceName
-     *     Human readable string to identify this service.
-     *     .
+     * @param serviceName Human readable string to identify this service.
+     *                    .
      */
     public AdditionalSelectedServices(RationalNumber serviceFee, String serviceName, CustomData customData) {
         super();
@@ -57,8 +52,8 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public RationalNumber getServiceFee() {
@@ -67,8 +62,8 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setServiceFee(RationalNumber serviceFee) {
@@ -77,7 +72,7 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     /**
      * Human readable string to identify this service.
-     * 
+     * <p>
      * (Required)
      */
     public String getServiceName() {
@@ -86,7 +81,7 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     /**
      * Human readable string to identify this service.
-     * 
+     * <p>
      * (Required)
      */
     public void setServiceName(String serviceName) {
@@ -124,7 +119,7 @@ public class AdditionalSelectedServices implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

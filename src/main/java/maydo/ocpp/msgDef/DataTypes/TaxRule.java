@@ -9,15 +9,12 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
- * 
  */
 public class TaxRule implements JsonInterface {
 
     /**
      * Id for the tax rule.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -34,39 +31,39 @@ public class TaxRule implements JsonInterface {
     private Boolean taxIncludedInPrice;
     /**
      * Indicates whether this tax applies to Energy Fees.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Boolean appliesToEnergyFee;
     /**
      * Indicates whether this tax applies to Parking Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean appliesToParkingFee;
     /**
      * Indicates whether this tax applies to Overstay Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean appliesToOverstayFee;
     /**
      * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean appliesToMinimumMaximumCost;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -84,31 +81,23 @@ public class TaxRule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param appliesToEnergyFee
-     *     Indicates whether this tax applies to Energy Fees.
-     *     .
-     * @param taxRuleID
-     *     Id for the tax rule.
-     *     .
-     * @param taxRuleName
-     *     Human readable string to identify the tax rule.
-     *     .
-     * @param appliesToOverstayFee
-     *     Indicates whether this tax applies to Overstay Fees.
-     *     
-     *     .
-     * @param taxIncludedInPrice
-     *     Indicates whether the tax is included in any price or not.
-     *     .
-     * @param appliesToParkingFee
-     *     Indicates whether this tax applies to Parking Fees.
-     *     
-     *     .
-     * @param appliesToMinimumMaximumCost
-     *     Indicates whether this tax applies to Minimum/Maximum Cost.
-     *     
-     *     .
+     * @param appliesToEnergyFee          Indicates whether this tax applies to Energy Fees.
+     *                                    .
+     * @param taxRuleID                   Id for the tax rule.
+     *                                    .
+     * @param taxRuleName                 Human readable string to identify the tax rule.
+     *                                    .
+     * @param appliesToOverstayFee        Indicates whether this tax applies to Overstay Fees.
+     *                                    <p>
+     *                                    .
+     * @param taxIncludedInPrice          Indicates whether the tax is included in any price or not.
+     *                                    .
+     * @param appliesToParkingFee         Indicates whether this tax applies to Parking Fees.
+     *                                    <p>
+     *                                    .
+     * @param appliesToMinimumMaximumCost Indicates whether this tax applies to Minimum/Maximum Cost.
+     *                                    <p>
+     *                                    .
      */
     public TaxRule(Integer taxRuleID, String taxRuleName, Boolean taxIncludedInPrice, Boolean appliesToEnergyFee, Boolean appliesToParkingFee, Boolean appliesToOverstayFee, Boolean appliesToMinimumMaximumCost, RationalNumber taxRate, CustomData customData) {
         super();
@@ -125,7 +114,7 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Id for the tax rule.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getTaxRuleID() {
@@ -134,7 +123,7 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Id for the tax rule.
-     * 
+     * <p>
      * (Required)
      */
     public void setTaxRuleID(Integer taxRuleID) {
@@ -171,7 +160,7 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Energy Fees.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getAppliesToEnergyFee() {
@@ -180,7 +169,7 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Energy Fees.
-     * 
+     * <p>
      * (Required)
      */
     public void setAppliesToEnergyFee(Boolean appliesToEnergyFee) {
@@ -189,8 +178,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Parking Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getAppliesToParkingFee() {
@@ -199,8 +188,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Parking Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setAppliesToParkingFee(Boolean appliesToParkingFee) {
@@ -209,8 +198,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Overstay Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getAppliesToOverstayFee() {
@@ -219,8 +208,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Overstay Fees.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setAppliesToOverstayFee(Boolean appliesToOverstayFee) {
@@ -229,8 +218,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getAppliesToMinimumMaximumCost() {
@@ -239,8 +228,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setAppliesToMinimumMaximumCost(Boolean appliesToMinimumMaximumCost) {
@@ -249,8 +238,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public RationalNumber getTaxRate() {
@@ -259,8 +248,8 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setTaxRate(RationalNumber taxRate) {
@@ -298,7 +287,7 @@ public class TaxRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -307,13 +296,13 @@ public class TaxRule implements JsonInterface {
             return false;
         TaxRule that = (TaxRule) obj;
         return Objects.equals(this.appliesToEnergyFee, that.appliesToEnergyFee)
-                && Objects.equals(this.taxRate, that.taxRate) 
-                && Objects.equals(this.taxRuleID, that.taxRuleID) 
-                && Objects.equals(this.taxRuleName, that.taxRuleName) 
-                && Objects.equals(this.appliesToOverstayFee, that.appliesToOverstayFee) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.taxIncludedInPrice, that.taxIncludedInPrice) 
-                && Objects.equals(this.appliesToParkingFee, that.appliesToParkingFee) 
+                && Objects.equals(this.taxRate, that.taxRate)
+                && Objects.equals(this.taxRuleID, that.taxRuleID)
+                && Objects.equals(this.taxRuleName, that.taxRuleName)
+                && Objects.equals(this.appliesToOverstayFee, that.appliesToOverstayFee)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.taxIncludedInPrice, that.taxIncludedInPrice)
+                && Objects.equals(this.appliesToParkingFee, that.appliesToParkingFee)
                 && Objects.equals(this.appliesToMinimumMaximumCost, that.appliesToMinimumMaximumCost);
     }
 

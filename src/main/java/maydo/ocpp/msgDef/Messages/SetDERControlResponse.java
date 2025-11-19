@@ -15,8 +15,8 @@ public class SetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -44,10 +44,8 @@ public class SetDERControlResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param supersededIds
-     *     List of controlIds that are superseded as a result of setting this control.
-     *     .
+     * @param supersededIds List of controlIds that are superseded as a result of setting this control.
+     *                      .
      */
     public SetDERControlResponse(DERControlStatusEnum status, StatusInfo statusInfo, List<String> supersededIds, CustomData customData) {
         super();
@@ -59,8 +57,8 @@ public class SetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public DERControlStatusEnum getStatus() {
@@ -69,8 +67,8 @@ public class SetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStatus(DERControlStatusEnum status) {
@@ -145,8 +143,8 @@ public class SetDERControlResponse implements JsonInterface {
             return false;
         SetDERControlResponse that = (SetDERControlResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.supersededIds, that.supersededIds) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.supersededIds, that.supersededIds)
                 && Objects.equals(this.status, that.status);
     }
 

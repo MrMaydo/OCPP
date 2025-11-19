@@ -13,14 +13,14 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point of price schedule.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timeAnchor;
     /**
      * Unique ID of price schedule
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -32,39 +32,36 @@ public class AbsolutePriceSchedule implements JsonInterface {
     private String priceScheduleDescription;
     /**
      * Currency according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String currency;
     /**
      * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String language;
     /**
      * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String priceAlgorithm;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     @Optional
     private RationalNumber minimumCost;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     @Optional
     private RationalNumber maximumCost;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -73,7 +70,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
     private List<TaxRule> taxRules;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     @Optional
     private OverstayRuleList overstayRuleList;
@@ -92,25 +88,18 @@ public class AbsolutePriceSchedule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param priceScheduleID
-     *     Unique ID of price schedule
-     *     .
-     * @param timeAnchor
-     *     Starting point of price schedule.
-     *     .
-     * @param priceScheduleDescription
-     *     Description of the price schedule.
-     *     .
-     * @param currency
-     *     Currency according to ISO 4217.
-     *     .
-     * @param language
-     *     String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     *     .
-     * @param priceAlgorithm
-     *     A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     *     .
+     * @param priceScheduleID          Unique ID of price schedule
+     *                                 .
+     * @param timeAnchor               Starting point of price schedule.
+     *                                 .
+     * @param priceScheduleDescription Description of the price schedule.
+     *                                 .
+     * @param currency                 Currency according to ISO 4217.
+     *                                 .
+     * @param language                 String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
+     *                                 .
+     * @param priceAlgorithm           A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
+     *                                 .
      */
     public AbsolutePriceSchedule(Date timeAnchor, Integer priceScheduleID, String priceScheduleDescription, String currency, String language, String priceAlgorithm, RationalNumber minimumCost, RationalNumber maximumCost, List<PriceRuleStack> priceRuleStacks, List<TaxRule> taxRules, OverstayRuleList overstayRuleList, List<AdditionalSelectedServices> additionalSelectedServices, CustomData customData) {
         super();
@@ -131,7 +120,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point of price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimeAnchor() {
@@ -140,7 +129,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point of price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeAnchor(Date timeAnchor) {
@@ -149,7 +138,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Unique ID of price schedule
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPriceScheduleID() {
@@ -158,7 +147,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Unique ID of price schedule
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceScheduleID(Integer priceScheduleID) {
@@ -181,7 +170,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Currency according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     public String getCurrency() {
@@ -190,7 +179,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Currency according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     public void setCurrency(String currency) {
@@ -199,7 +188,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * 
+     * <p>
      * (Required)
      */
     public String getLanguage() {
@@ -208,7 +197,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * 
+     * <p>
      * (Required)
      */
     public void setLanguage(String language) {
@@ -217,7 +206,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * 
+     * <p>
      * (Required)
      */
     public String getPriceAlgorithm() {
@@ -226,7 +215,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceAlgorithm(String priceAlgorithm) {
@@ -235,7 +224,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public RationalNumber getMinimumCost() {
         return minimumCost;
@@ -243,7 +231,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public void setMinimumCost(RationalNumber minimumCost) {
         this.minimumCost = minimumCost;
@@ -251,7 +238,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public RationalNumber getMaximumCost() {
         return maximumCost;
@@ -259,14 +245,12 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public void setMaximumCost(RationalNumber maximumCost) {
         this.maximumCost = maximumCost;
     }
 
     /**
-     * 
      * (Required)
      */
     public List<PriceRuleStack> getPriceRuleStacks() {
@@ -274,7 +258,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setPriceRuleStacks(List<PriceRuleStack> priceRuleStacks) {
@@ -291,7 +274,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public OverstayRuleList getOverstayRuleList() {
         return overstayRuleList;
@@ -299,7 +281,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public void setOverstayRuleList(OverstayRuleList overstayRuleList) {
         this.overstayRuleList = overstayRuleList;
@@ -344,7 +325,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

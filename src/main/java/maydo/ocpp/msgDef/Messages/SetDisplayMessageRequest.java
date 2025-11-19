@@ -13,7 +13,7 @@ public class SetDisplayMessageRequest implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +38,7 @@ public class SetDisplayMessageRequest implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public MessageInfo getMessage() {
@@ -47,7 +47,7 @@ public class SetDisplayMessageRequest implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setMessage(MessageInfo message) {

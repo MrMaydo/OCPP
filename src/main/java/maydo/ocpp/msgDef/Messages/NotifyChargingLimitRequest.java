@@ -20,7 +20,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     @Optional
     private Integer evseId;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -38,10 +37,8 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     *     .
+     * @param evseId The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
+     *               .
      */
     public NotifyChargingLimitRequest(List<ChargingSchedule> chargingSchedule, Integer evseId, ChargingLimit chargingLimit, CustomData customData) {
         super();
@@ -74,7 +71,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public ChargingLimit getChargingLimit() {
@@ -82,7 +78,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingLimit(ChargingLimit chargingLimit) {
@@ -129,8 +124,8 @@ public class NotifyChargingLimitRequest implements JsonInterface {
             return false;
         NotifyChargingLimitRequest that = (NotifyChargingLimitRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
                 && Objects.equals(this.chargingLimit, that.chargingLimit);
     }
 

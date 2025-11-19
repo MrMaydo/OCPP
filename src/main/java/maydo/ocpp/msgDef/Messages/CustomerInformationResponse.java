@@ -14,7 +14,7 @@ public class CustomerInformationResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class CustomerInformationResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     public CustomerInformationStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class CustomerInformationResponse implements JsonInterface {
 
     /**
      * Indicates whether the request was accepted.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(CustomerInformationStatusEnum status) {
@@ -115,7 +115,7 @@ public class CustomerInformationResponse implements JsonInterface {
             return false;
         CustomerInformationResponse that = (CustomerInformationResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -11,7 +11,6 @@ public enum Iso15118EVCertificateStatusEnum {
 
     ACCEPTED("Accepted"),
     FAILED("Failed");
-    private final String value;
     private final static Map<String, Iso15118EVCertificateStatusEnum> CONSTANTS = new HashMap<String, Iso15118EVCertificateStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum Iso15118EVCertificateStatusEnum {
         }
     }
 
+    private final String value;
+
     Iso15118EVCertificateStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static Iso15118EVCertificateStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum Iso15118EVCertificateStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

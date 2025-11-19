@@ -14,28 +14,28 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The time for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
      * This contains the current status of the Connector.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private ConnectorStatusEnum connectorStatus;
     /**
      * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
      * The id of the connector within the EVSE for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -53,16 +53,12 @@ public class StatusNotificationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     The id of the EVSE to which the connector belongs for which the the status is reported.
-     *     .
-     * @param connectorId
-     *     The id of the connector within the EVSE for which the status is reported.
-     *     .
-     * @param timestamp
-     *     The time for which the status is reported.
-     *     .
+     * @param evseId      The id of the EVSE to which the connector belongs for which the the status is reported.
+     *                    .
+     * @param connectorId The id of the connector within the EVSE for which the status is reported.
+     *                    .
+     * @param timestamp   The time for which the status is reported.
+     *                    .
      */
     public StatusNotificationRequest(Date timestamp, ConnectorStatusEnum connectorStatus, Integer evseId, Integer connectorId, CustomData customData) {
         super();
@@ -75,7 +71,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The time for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -84,7 +80,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The time for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -93,7 +89,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the current status of the Connector.
-     * 
+     * <p>
      * (Required)
      */
     public ConnectorStatusEnum getConnectorStatus() {
@@ -102,7 +98,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the current status of the Connector.
-     * 
+     * <p>
      * (Required)
      */
     public void setConnectorStatus(ConnectorStatusEnum connectorStatus) {
@@ -111,7 +107,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -120,7 +116,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -129,7 +125,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The id of the connector within the EVSE for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getConnectorId() {
@@ -138,7 +134,7 @@ public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The id of the connector within the EVSE for which the status is reported.
-     * 
+     * <p>
      * (Required)
      */
     public void setConnectorId(Integer connectorId) {
@@ -185,9 +181,9 @@ public class StatusNotificationRequest implements JsonInterface {
             return false;
         StatusNotificationRequest that = (StatusNotificationRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.connectorStatus, that.connectorStatus) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.connectorId, that.connectorId) 
+                && Objects.equals(this.connectorStatus, that.connectorStatus)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.connectorId, that.connectorId)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

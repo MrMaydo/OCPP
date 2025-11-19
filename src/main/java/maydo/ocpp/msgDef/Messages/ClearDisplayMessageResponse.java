@@ -14,7 +14,7 @@ public class ClearDisplayMessageResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to remove the message.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ClearDisplayMessageResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to remove the message.
-     * 
+     * <p>
      * (Required)
      */
     public ClearMessageStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ClearDisplayMessageResponse implements JsonInterface {
 
     /**
      * Returns whether the Charging Station has been able to remove the message.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ClearMessageStatusEnum status) {
@@ -115,7 +115,7 @@ public class ClearDisplayMessageResponse implements JsonInterface {
             return false;
         ClearDisplayMessageResponse that = (ClearDisplayMessageResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -20,22 +20,22 @@ public class CustomerInformationRequest implements JsonInterface {
     private IdToken idToken;
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Boolean report;
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -59,21 +59,16 @@ public class CustomerInformationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The Id of the request.
-     *     
-     *     .
-     * @param report
-     *     Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     *     .
-     * @param clear
-     *     Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     *     .
-     * @param customerIdentifier
-     *     A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     *     One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     *     .
+     * @param requestId          The Id of the request.
+     *                           <p>
+     *                           .
+     * @param report             Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
+     *                           .
+     * @param clear              Flag indicating whether the Charging Station should clear all information about the customer referred to.
+     *                           .
+     * @param customerIdentifier A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
+     *                           One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
+     *                           .
      */
     public CustomerInformationRequest(CertificateHashData customerCertificate, IdToken idToken, Integer requestId, Boolean report, Boolean clear, String customerIdentifier, CustomData customData) {
         super();
@@ -110,8 +105,8 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -120,8 +115,8 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -130,7 +125,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getReport() {
@@ -139,7 +134,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     public void setReport(Boolean report) {
@@ -148,7 +143,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getClear() {
@@ -157,7 +152,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * 
+     * <p>
      * (Required)
      */
     public void setClear(Boolean clear) {
@@ -220,11 +215,11 @@ public class CustomerInformationRequest implements JsonInterface {
             return false;
         CustomerInformationRequest that = (CustomerInformationRequest) obj;
         return Objects.equals(this.customerCertificate, that.customerCertificate)
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.idToken, that.idToken) 
-                && Objects.equals(this.report, that.report) 
-                && Objects.equals(this.clear, that.clear) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.idToken, that.idToken)
+                && Objects.equals(this.report, that.report)
+                && Objects.equals(this.clear, that.clear)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.customerIdentifier, that.customerIdentifier);
     }
 

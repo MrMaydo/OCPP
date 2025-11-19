@@ -34,13 +34,10 @@ public class Price implements JsonInterface {
     }
 
     /**
-     * 
-     * @param inclTax
-     *     Price/cost including tax. Can be absent if _exclTax_ is present.
-     *     .
-     * @param exclTax
-     *     Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     *     .
+     * @param inclTax Price/cost including tax. Can be absent if _exclTax_ is present.
+     *                .
+     * @param exclTax Price/cost excluding tax. Can be absent if _inclTax_ is present.
+     *                .
      */
     public Price(Float exclTax, Float inclTax, List<TaxRate> taxRates, CustomData customData) {
         super();
@@ -117,7 +114,7 @@ public class Price implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -126,8 +123,8 @@ public class Price implements JsonInterface {
             return false;
         Price that = (Price) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxRates, that.taxRates) 
-                && Objects.equals(this.inclTax, that.inclTax) 
+                && Objects.equals(this.taxRates, that.taxRates)
+                && Objects.equals(this.inclTax, that.inclTax)
                 && Objects.equals(this.exclTax, that.exclTax);
     }
 

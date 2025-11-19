@@ -16,7 +16,7 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -51,7 +51,7 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -61,7 +61,7 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     /**
      * The Charging Station will indicate if it was
      * able to process the request
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -130,8 +130,8 @@ public class GetCompositeScheduleResponse implements JsonInterface {
             return false;
         GetCompositeScheduleResponse that = (GetCompositeScheduleResponse) obj;
         return Objects.equals(this.schedule, that.schedule)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

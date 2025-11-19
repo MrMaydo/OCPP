@@ -8,14 +8,12 @@ import java.util.Objects;
 
 /**
  * Represents a UnitOfMeasure with a multiplier
- * 
- * 
  */
 public class UnitOfMeasure implements JsonInterface {
 
     /**
      * Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
-     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices. 
+     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices.
      * If an applicable unit is available in that list, otherwise a "custom" unit might be used.
      */
     @Optional
@@ -39,16 +37,13 @@ public class UnitOfMeasure implements JsonInterface {
     }
 
     /**
-     * 
-     * @param unit
-     *     Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
-     *     This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices. 
-     *     If an applicable unit is available in that list, otherwise a "custom" unit might be used.
-     *     .
-     * @param multiplier
-     *     Multiplier, this value represents the exponent to base 10. I.e. multiplier 3 means 10 raised to the 3rd power. Default is 0. +
-     *     The _multiplier_ only multiplies the value of the measurand. It does not specify a conversion between units, for example, kW and W.
-     *     .
+     * @param unit       Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
+     *                   This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices.
+     *                   If an applicable unit is available in that list, otherwise a "custom" unit might be used.
+     *                   .
+     * @param multiplier Multiplier, this value represents the exponent to base 10. I.e. multiplier 3 means 10 raised to the 3rd power. Default is 0. +
+     *                   The _multiplier_ only multiplies the value of the measurand. It does not specify a conversion between units, for example, kW and W.
+     *                   .
      */
     public UnitOfMeasure(String unit, Integer multiplier, CustomData customData) {
         super();
@@ -59,7 +54,7 @@ public class UnitOfMeasure implements JsonInterface {
 
     /**
      * Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
-     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices. 
+     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices.
      * If an applicable unit is available in that list, otherwise a "custom" unit might be used.
      */
     public String getUnit() {
@@ -68,7 +63,7 @@ public class UnitOfMeasure implements JsonInterface {
 
     /**
      * Unit of the value. Default = "Wh" if the (default) measurand is an "Energy" type.
-     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices. 
+     * This field SHALL use a value from the list Standardized Units of Measurements in Part 2 Appendices.
      * If an applicable unit is available in that list, otherwise a "custom" unit might be used.
      */
     public void setUnit(String unit) {
@@ -122,7 +117,7 @@ public class UnitOfMeasure implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -131,7 +126,7 @@ public class UnitOfMeasure implements JsonInterface {
             return false;
         UnitOfMeasure that = (UnitOfMeasure) obj;
         return Objects.equals(this.unit, that.unit)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.multiplier, that.multiplier);
     }
 

@@ -14,14 +14,13 @@ public class ChargingPeriod implements JsonInterface {
     private List<CostDimension> dimensions;
     /**
      * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     * 
      */
     @Optional
     private String tariffId;
     /**
      * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -39,15 +38,12 @@ public class ChargingPeriod implements JsonInterface {
     }
 
     /**
-     * 
-     * @param startPeriod
-     *     Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     *     
-     *     .
-     * @param tariffId
-     *     Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     *     
-     *     .
+     * @param startPeriod Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
+     *                    <p>
+     *                    .
+     * @param tariffId    Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
+     *                    <p>
+     *                    .
      */
     public ChargingPeriod(List<CostDimension> dimensions, String tariffId, Date startPeriod, CustomData customData) {
         super();
@@ -67,7 +63,6 @@ public class ChargingPeriod implements JsonInterface {
 
     /**
      * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     * 
      */
     public String getTariffId() {
         return tariffId;
@@ -75,7 +70,6 @@ public class ChargingPeriod implements JsonInterface {
 
     /**
      * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     * 
      */
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
@@ -83,8 +77,8 @@ public class ChargingPeriod implements JsonInterface {
 
     /**
      * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Date getStartPeriod() {
@@ -93,8 +87,8 @@ public class ChargingPeriod implements JsonInterface {
 
     /**
      * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStartPeriod(Date startPeriod) {
@@ -132,7 +126,7 @@ public class ChargingPeriod implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -141,8 +135,8 @@ public class ChargingPeriod implements JsonInterface {
             return false;
         ChargingPeriod that = (ChargingPeriod) obj;
         return Objects.equals(this.startPeriod, that.startPeriod)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.tariffId, that.tariffId) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.tariffId, that.tariffId)
                 && Objects.equals(this.dimensions, that.dimensions);
     }
 

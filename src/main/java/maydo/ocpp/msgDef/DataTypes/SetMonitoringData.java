@@ -12,7 +12,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
      */
     @Optional
     private Integer id;
@@ -20,30 +19,29 @@ public class SetMonitoringData implements JsonInterface {
     private PeriodicEventStreamParams periodicEventStream;
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
      */
     @Optional
     private Boolean transaction = false;
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float value;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -65,22 +63,22 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer severity;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -98,46 +96,41 @@ public class SetMonitoringData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param severity
-     *     The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     *     
-     *     The severity levels have the following meaning: +
-     *     *0-Danger* +
-     *     Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     *     *1-Hardware Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     *     *2-System Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     *     *3-Critical* +
-     *     Indicates a critical error. Action is required. +
-     *     *4-Error* +
-     *     Indicates a non-urgent error. Action is required. +
-     *     *5-Alert* +
-     *     Indicates an alert event. Default severity for any type of monitoring event.  +
-     *     *6-Warning* +
-     *     Indicates a warning event. Action may be required. +
-     *     *7-Notice* +
-     *     Indicates an unusual event. No immediate action is required. +
-     *     *8-Informational* +
-     *     Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     *     *9-Debug* +
-     *     Indicates information useful to developers for debugging, not useful during operations.
-     *     
-     *     .
-     * @param id
-     *     An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     *     
-     *     .
-     * @param value
-     *     Value for threshold or delta monitoring.
-     *     For Periodic or PeriodicClockAligned this is the interval in seconds.
-     *     
-     *     .
-     * @param transaction
-     *     Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     *     
-     *     .
+     * @param severity    The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     *                    <p>
+     *                    The severity levels have the following meaning: +
+     *                    *0-Danger* +
+     *                    Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
+     *                    *1-Hardware Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
+     *                    *2-System Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
+     *                    *3-Critical* +
+     *                    Indicates a critical error. Action is required. +
+     *                    *4-Error* +
+     *                    Indicates a non-urgent error. Action is required. +
+     *                    *5-Alert* +
+     *                    Indicates an alert event. Default severity for any type of monitoring event.  +
+     *                    *6-Warning* +
+     *                    Indicates a warning event. Action may be required. +
+     *                    *7-Notice* +
+     *                    Indicates an unusual event. No immediate action is required. +
+     *                    *8-Informational* +
+     *                    Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
+     *                    *9-Debug* +
+     *                    Indicates information useful to developers for debugging, not useful during operations.
+     *                    <p>
+     *                    .
+     * @param id          An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
+     *                    <p>
+     *                    .
+     * @param value       Value for threshold or delta monitoring.
+     *                    For Periodic or PeriodicClockAligned this is the interval in seconds.
+     *                    <p>
+     *                    .
+     * @param transaction Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
+     *                    <p>
+     *                    .
      */
     public SetMonitoringData(Integer id, PeriodicEventStreamParams periodicEventStream, Boolean transaction, Float value, MonitorEnum type, Integer severity, Component component, Variable variable, CustomData customData) {
         super();
@@ -154,7 +147,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
      */
     public Integer getId() {
         return id;
@@ -162,7 +154,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
-     * 
      */
     public void setId(Integer id) {
         this.id = id;
@@ -178,7 +169,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
      */
     public Boolean getTransaction() {
         return transaction;
@@ -186,7 +176,6 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
-     * 
      */
     public void setTransaction(Boolean transaction) {
         this.transaction = transaction;
@@ -195,8 +184,8 @@ public class SetMonitoringData implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getValue() {
@@ -206,8 +195,8 @@ public class SetMonitoringData implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setValue(Float value) {
@@ -215,9 +204,9 @@ public class SetMonitoringData implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     public MonitorEnum getType() {
@@ -225,9 +214,9 @@ public class SetMonitoringData implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     public void setType(MonitorEnum type) {
@@ -236,7 +225,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -258,8 +247,8 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getSeverity() {
@@ -268,7 +257,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -290,8 +279,8 @@ public class SetMonitoringData implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setSeverity(Integer severity) {
@@ -300,7 +289,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -309,7 +298,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -318,7 +307,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -327,7 +316,7 @@ public class SetMonitoringData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -365,7 +354,7 @@ public class SetMonitoringData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -374,13 +363,13 @@ public class SetMonitoringData implements JsonInterface {
             return false;
         SetMonitoringData that = (SetMonitoringData) obj;
         return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.variable, that.variable) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.periodicEventStream, that.periodicEventStream) 
-                && Objects.equals(this.type, that.type) 
-                && Objects.equals(this.value, that.value) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.periodicEventStream, that.periodicEventStream)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.value, that.value)
                 && Objects.equals(this.transaction, that.transaction);
     }
 

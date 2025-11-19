@@ -9,8 +9,6 @@ import java.util.Objects;
 
 /**
  * The physical system where an Electrical Vehicle (EV) can be charged.
- * 
- * 
  */
 public class ChargingStation implements JsonInterface {
 
@@ -21,7 +19,7 @@ public class ChargingStation implements JsonInterface {
     private String serialNumber;
     /**
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -33,14 +31,13 @@ public class ChargingStation implements JsonInterface {
     private Modem modem;
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String vendorName;
     /**
      * This contains the firmware version of the Charging Station.
-     * 
      */
     @Optional
     private String firmwareVersion;
@@ -57,20 +54,15 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * 
-     * @param serialNumber
-     *     Vendor-specific device identifier.
-     *     .
-     * @param model
-     *     Defines the model of the device.
-     *     .
-     * @param vendorName
-     *     Identifies the vendor (not necessarily in a unique manner).
-     *     .
-     * @param firmwareVersion
-     *     This contains the firmware version of the Charging Station.
-     *     
-     *     .
+     * @param serialNumber    Vendor-specific device identifier.
+     *                        .
+     * @param model           Defines the model of the device.
+     *                        .
+     * @param vendorName      Identifies the vendor (not necessarily in a unique manner).
+     *                        .
+     * @param firmwareVersion This contains the firmware version of the Charging Station.
+     *                        <p>
+     *                        .
      */
     public ChargingStation(String serialNumber, String model, Modem modem, String vendorName, String firmwareVersion, CustomData customData) {
         super();
@@ -98,7 +90,7 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
      */
     public String getModel() {
@@ -107,7 +99,7 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Defines the model of the device.
-     * 
+     * <p>
      * (Required)
      */
     public void setModel(String model) {
@@ -130,7 +122,7 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
      */
     public String getVendorName() {
@@ -139,7 +131,7 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * 
+     * <p>
      * (Required)
      */
     public void setVendorName(String vendorName) {
@@ -148,7 +140,6 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * This contains the firmware version of the Charging Station.
-     * 
      */
     public String getFirmwareVersion() {
         return firmwareVersion;
@@ -156,7 +147,6 @@ public class ChargingStation implements JsonInterface {
 
     /**
      * This contains the firmware version of the Charging Station.
-     * 
      */
     public void setFirmwareVersion(String firmwareVersion) {
         this.firmwareVersion = firmwareVersion;
@@ -193,7 +183,7 @@ public class ChargingStation implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -202,10 +192,10 @@ public class ChargingStation implements JsonInterface {
             return false;
         ChargingStation that = (ChargingStation) obj;
         return Objects.equals(this.serialNumber, that.serialNumber)
-                && Objects.equals(this.modem, that.modem) 
-                && Objects.equals(this.model, that.model) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.vendorName, that.vendorName) 
+                && Objects.equals(this.modem, that.modem)
+                && Objects.equals(this.model, that.model)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.vendorName, that.vendorName)
                 && Objects.equals(this.firmwareVersion, that.firmwareVersion);
     }
 

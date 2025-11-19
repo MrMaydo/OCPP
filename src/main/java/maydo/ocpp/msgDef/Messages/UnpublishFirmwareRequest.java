@@ -11,8 +11,8 @@ import java.util.Objects;
 public class UnpublishFirmwareRequest implements JsonInterface {
 
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class UnpublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param checksum
-     *     The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     *     .
+     * @param checksum The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     *                 .
      */
     public UnpublishFirmwareRequest(String checksum, CustomData customData) {
         super();
@@ -42,8 +40,8 @@ public class UnpublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     public String getChecksum() {
@@ -51,8 +49,8 @@ public class UnpublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     public void setChecksum(String checksum) {

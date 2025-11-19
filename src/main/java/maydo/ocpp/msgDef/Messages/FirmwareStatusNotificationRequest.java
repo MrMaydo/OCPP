@@ -14,7 +14,7 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -44,12 +44,10 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The request id that was provided in the
-     *     UpdateFirmwareRequest that started this firmware update.
-     *     This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     *     .
+     * @param requestId The request id that was provided in the
+     *                  UpdateFirmwareRequest that started this firmware update.
+     *                  This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
+     *                  .
      */
     public FirmwareStatusNotificationRequest(FirmwareStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
         super();
@@ -61,7 +59,7 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
      */
     public FirmwareStatusEnum getStatus() {
@@ -70,7 +68,7 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(FirmwareStatusEnum status) {
@@ -149,8 +147,8 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
             return false;
         FirmwareStatusNotificationRequest that = (FirmwareStatusNotificationRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.requestId, that.requestId)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -16,7 +16,6 @@ public enum CostDimensionEnum {
     MIN_POWER("MinPower"),
     IDLE_T_IME("IdleTIme"),
     CHARGING_TIME("ChargingTime");
-    private final String value;
     private final static Map<String, CostDimensionEnum> CONSTANTS = new HashMap<String, CostDimensionEnum>();
 
     static {
@@ -25,17 +24,10 @@ public enum CostDimensionEnum {
         }
     }
 
+    private final String value;
+
     CostDimensionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CostDimensionEnum fromValue(String value) {
@@ -45,6 +37,15 @@ public enum CostDimensionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

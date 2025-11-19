@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Class to report components, variables and variable attributes and characteristics.
- * 
- * 
  */
 public class ComponentVariable implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -47,7 +45,7 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -56,7 +54,7 @@ public class ComponentVariable implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -108,7 +106,7 @@ public class ComponentVariable implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -117,7 +115,7 @@ public class ComponentVariable implements JsonInterface {
             return false;
         ComponentVariable that = (ComponentVariable) obj;
         return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component) 
+                && Objects.equals(this.component, that.component)
                 && Objects.equals(this.customData, that.customData);
     }
 

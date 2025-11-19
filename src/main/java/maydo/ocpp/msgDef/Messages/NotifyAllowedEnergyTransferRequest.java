@@ -14,14 +14,14 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * The transaction for which the allowed energy transfer is allowed.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String transactionId;
     /**
      * Modes of energy transfer that are accepted by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +39,10 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param allowedEnergyTransfer
-     *     Modes of energy transfer that are accepted by CSMS.
-     *     .
-     * @param transactionId
-     *     The transaction for which the allowed energy transfer is allowed.
-     *     .
+     * @param allowedEnergyTransfer Modes of energy transfer that are accepted by CSMS.
+     *                              .
+     * @param transactionId         The transaction for which the allowed energy transfer is allowed.
+     *                              .
      */
     public NotifyAllowedEnergyTransferRequest(String transactionId, List<EnergyTransferModeEnum> allowedEnergyTransfer, CustomData customData) {
         super();
@@ -56,7 +53,7 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * The transaction for which the allowed energy transfer is allowed.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -65,7 +62,7 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * The transaction for which the allowed energy transfer is allowed.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -74,7 +71,7 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * Modes of energy transfer that are accepted by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public List<EnergyTransferModeEnum> getAllowedEnergyTransfer() {
@@ -83,7 +80,7 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * Modes of energy transfer that are accepted by CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public void setAllowedEnergyTransfer(List<EnergyTransferModeEnum> allowedEnergyTransfer) {
@@ -130,7 +127,7 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
             return false;
         NotifyAllowedEnergyTransferRequest that = (NotifyAllowedEnergyTransferRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer) 
+                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer)
                 && Objects.equals(this.transactionId, that.transactionId);
     }
 

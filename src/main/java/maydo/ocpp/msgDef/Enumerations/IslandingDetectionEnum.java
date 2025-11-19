@@ -21,7 +21,6 @@ public enum IslandingDetectionEnum {
     FREQUENCY_JUMP("FrequencyJump"),
     RCLQ_FACTOR("RCLQFactor"),
     OTHER_ACTIVE("OtherActive");
-    private final String value;
     private final static Map<String, IslandingDetectionEnum> CONSTANTS = new HashMap<String, IslandingDetectionEnum>();
 
     static {
@@ -30,17 +29,10 @@ public enum IslandingDetectionEnum {
         }
     }
 
+    private final String value;
+
     IslandingDetectionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static IslandingDetectionEnum fromValue(String value) {
@@ -50,6 +42,15 @@ public enum IslandingDetectionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

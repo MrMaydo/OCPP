@@ -18,23 +18,23 @@ public class SetVariableData implements JsonInterface {
     /**
      * Value to be assigned to attribute of variable.
      * This value is allowed to be an empty string ("").
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
      */
     @Required
     private String attributeValue;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -52,13 +52,11 @@ public class SetVariableData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param attributeValue
-     *     Value to be assigned to attribute of variable.
-     *     This value is allowed to be an empty string ("").
-     *     
-     *     The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal. 
-     *     .
+     * @param attributeValue Value to be assigned to attribute of variable.
+     *                       This value is allowed to be an empty string ("").
+     *                       <p>
+     *                       The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     *                       .
      */
     public SetVariableData(AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
         super();
@@ -86,9 +84,9 @@ public class SetVariableData implements JsonInterface {
     /**
      * Value to be assigned to attribute of variable.
      * This value is allowed to be an empty string ("").
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
      */
     public String getAttributeValue() {
@@ -98,9 +96,9 @@ public class SetVariableData implements JsonInterface {
     /**
      * Value to be assigned to attribute of variable.
      * This value is allowed to be an empty string ("").
-     * 
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal. 
-     * 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     * <p>
      * (Required)
      */
     public void setAttributeValue(String attributeValue) {
@@ -109,7 +107,7 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -118,7 +116,7 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -127,7 +125,7 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -136,7 +134,7 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -174,7 +172,7 @@ public class SetVariableData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -183,9 +181,9 @@ public class SetVariableData implements JsonInterface {
             return false;
         SetVariableData that = (SetVariableData) obj;
         return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.attributeValue, that.attributeValue) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.attributeValue, that.attributeValue)
                 && Objects.equals(this.attributeType, that.attributeType);
     }
 

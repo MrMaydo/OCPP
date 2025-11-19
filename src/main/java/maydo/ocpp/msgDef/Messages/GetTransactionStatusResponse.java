@@ -17,7 +17,7 @@ public class GetTransactionStatusResponse implements JsonInterface {
     private Boolean ongoingIndicator;
     /**
      * Whether there are still message to be delivered.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -35,13 +35,10 @@ public class GetTransactionStatusResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param ongoingIndicator
-     *     Whether the transaction is still ongoing.
-     *     .
-     * @param messagesInQueue
-     *     Whether there are still message to be delivered.
-     *     .
+     * @param ongoingIndicator Whether the transaction is still ongoing.
+     *                         .
+     * @param messagesInQueue  Whether there are still message to be delivered.
+     *                         .
      */
     public GetTransactionStatusResponse(Boolean ongoingIndicator, Boolean messagesInQueue, CustomData customData) {
         super();
@@ -66,7 +63,7 @@ public class GetTransactionStatusResponse implements JsonInterface {
 
     /**
      * Whether there are still message to be delivered.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getMessagesInQueue() {
@@ -75,7 +72,7 @@ public class GetTransactionStatusResponse implements JsonInterface {
 
     /**
      * Whether there are still message to be delivered.
-     * 
+     * <p>
      * (Required)
      */
     public void setMessagesInQueue(Boolean messagesInQueue) {
@@ -122,7 +119,7 @@ public class GetTransactionStatusResponse implements JsonInterface {
             return false;
         GetTransactionStatusResponse that = (GetTransactionStatusResponse) obj;
         return Objects.equals(this.messagesInQueue, that.messagesInQueue)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.ongoingIndicator, that.ongoingIndicator);
     }
 

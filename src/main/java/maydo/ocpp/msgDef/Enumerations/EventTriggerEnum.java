@@ -12,7 +12,6 @@ public enum EventTriggerEnum {
     ALERTING("Alerting"),
     DELTA("Delta"),
     PERIODIC("Periodic");
-    private final String value;
     private final static Map<String, EventTriggerEnum> CONSTANTS = new HashMap<String, EventTriggerEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum EventTriggerEnum {
         }
     }
 
+    private final String value;
+
     EventTriggerEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static EventTriggerEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum EventTriggerEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

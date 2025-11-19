@@ -9,9 +9,6 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
- * 
  */
 public class PriceRule implements JsonInterface {
 
@@ -33,22 +30,21 @@ public class PriceRule implements JsonInterface {
     private Integer renewableGenerationPercentage;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private RationalNumber energyFee;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     @Optional
     private RationalNumber parkingFee;
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -66,17 +62,13 @@ public class PriceRule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param renewableGenerationPercentage
-     *     Percentage of the power that is created by renewable resources.
-     *     .
-     * @param parkingFeePeriod
-     *     The duration of the parking fee period (in seconds).
-     *     When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
-     *     .
-     * @param carbonDioxideEmission
-     *     Number of grams of CO2 per kWh.
-     *     .
+     * @param renewableGenerationPercentage Percentage of the power that is created by renewable resources.
+     *                                      .
+     * @param parkingFeePeriod              The duration of the parking fee period (in seconds).
+     *                                      When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
+     *                                      .
+     * @param carbonDioxideEmission         Number of grams of CO2 per kWh.
+     *                                      .
      */
     public PriceRule(Integer parkingFeePeriod, Integer carbonDioxideEmission, Integer renewableGenerationPercentage, RationalNumber energyFee, RationalNumber parkingFee, RationalNumber powerRangeStart, CustomData customData) {
         super();
@@ -135,8 +127,8 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public RationalNumber getEnergyFee() {
@@ -145,8 +137,8 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEnergyFee(RationalNumber energyFee) {
@@ -155,7 +147,6 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public RationalNumber getParkingFee() {
         return parkingFee;
@@ -163,7 +154,6 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
      */
     public void setParkingFee(RationalNumber parkingFee) {
         this.parkingFee = parkingFee;
@@ -171,8 +161,8 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public RationalNumber getPowerRangeStart() {
@@ -181,8 +171,8 @@ public class PriceRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPowerRangeStart(RationalNumber powerRangeStart) {
@@ -220,7 +210,7 @@ public class PriceRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -229,11 +219,11 @@ public class PriceRule implements JsonInterface {
             return false;
         PriceRule that = (PriceRule) obj;
         return Objects.equals(this.renewableGenerationPercentage, that.renewableGenerationPercentage)
-                && Objects.equals(this.parkingFee, that.parkingFee) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.parkingFeePeriod, that.parkingFeePeriod) 
-                && Objects.equals(this.energyFee, that.energyFee) 
-                && Objects.equals(this.powerRangeStart, that.powerRangeStart) 
+                && Objects.equals(this.parkingFee, that.parkingFee)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.parkingFeePeriod, that.parkingFeePeriod)
+                && Objects.equals(this.energyFee, that.energyFee)
+                && Objects.equals(this.powerRangeStart, that.powerRangeStart)
                 && Objects.equals(this.carbonDioxideEmission, that.carbonDioxideEmission);
     }
 

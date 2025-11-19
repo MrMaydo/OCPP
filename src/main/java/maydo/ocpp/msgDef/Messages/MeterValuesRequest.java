@@ -14,13 +14,12 @@ public class MeterValuesRequest implements JsonInterface {
 
     /**
      * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -38,10 +37,8 @@ public class MeterValuesRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     *     .
+     * @param evseId This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
+     *               .
      */
     public MeterValuesRequest(Integer evseId, List<MeterValue> meterValue, CustomData customData) {
         super();
@@ -52,7 +49,7 @@ public class MeterValuesRequest implements JsonInterface {
 
     /**
      * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -61,7 +58,7 @@ public class MeterValuesRequest implements JsonInterface {
 
     /**
      * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -69,7 +66,6 @@ public class MeterValuesRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<MeterValue> getMeterValue() {
@@ -77,7 +73,6 @@ public class MeterValuesRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setMeterValue(List<MeterValue> meterValue) {
@@ -124,7 +119,7 @@ public class MeterValuesRequest implements JsonInterface {
             return false;
         MeterValuesRequest that = (MeterValuesRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.meterValue, that.meterValue);
     }
 

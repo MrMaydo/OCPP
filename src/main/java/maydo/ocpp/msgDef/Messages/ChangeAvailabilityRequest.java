@@ -19,8 +19,8 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     private EVSE evse;
     /**
      * This contains the type of availability change that the Charging Station should perform.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -60,8 +60,8 @@ public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
      * This contains the type of availability change that the Charging Station should perform.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public OperationalStatusEnum getOperationalStatus() {
@@ -70,8 +70,8 @@ public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
      * This contains the type of availability change that the Charging Station should perform.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setOperationalStatus(OperationalStatusEnum operationalStatus) {
@@ -118,7 +118,7 @@ public class ChangeAvailabilityRequest implements JsonInterface {
             return false;
         ChangeAvailabilityRequest that = (ChangeAvailabilityRequest) obj;
         return Objects.equals(this.operationalStatus, that.operationalStatus)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.evse, that.evse);
     }
 

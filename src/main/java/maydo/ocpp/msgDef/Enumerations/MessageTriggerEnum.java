@@ -22,7 +22,6 @@ public enum MessageTriggerEnum {
     SIGN_COMBINED_CERTIFICATE("SignCombinedCertificate"),
     PUBLISH_FIRMWARE_STATUS_NOTIFICATION("PublishFirmwareStatusNotification"),
     CUSTOM_TRIGGER("CustomTrigger");
-    private final String value;
     private final static Map<String, MessageTriggerEnum> CONSTANTS = new HashMap<String, MessageTriggerEnum>();
 
     static {
@@ -31,17 +30,10 @@ public enum MessageTriggerEnum {
         }
     }
 
+    private final String value;
+
     MessageTriggerEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MessageTriggerEnum fromValue(String value) {
@@ -51,6 +43,15 @@ public enum MessageTriggerEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

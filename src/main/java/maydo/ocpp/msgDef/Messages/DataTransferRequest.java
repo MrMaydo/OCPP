@@ -22,8 +22,8 @@ public class DataTransferRequest implements JsonInterface {
     private Object data;
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -41,17 +41,13 @@ public class DataTransferRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param data
-     *     Data without specified length or format. This needs to be decided by both parties (Open to implementation).
-     *     .
-     * @param messageId
-     *     May be used to indicate a specific message or implementation.
-     *     .
-     * @param vendorId
-     *     This identifies the Vendor specific implementation
-     *     
-     *     .
+     * @param data      Data without specified length or format. This needs to be decided by both parties (Open to implementation).
+     *                  .
+     * @param messageId May be used to indicate a specific message or implementation.
+     *                  .
+     * @param vendorId  This identifies the Vendor specific implementation
+     *                  <p>
+     *                  .
      */
     public DataTransferRequest(String messageId, Object data, String vendorId, CustomData customData) {
         super();
@@ -91,8 +87,8 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getVendorId() {
@@ -101,8 +97,8 @@ public class DataTransferRequest implements JsonInterface {
 
     /**
      * This identifies the Vendor specific implementation
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setVendorId(String vendorId) {
@@ -149,8 +145,8 @@ public class DataTransferRequest implements JsonInterface {
             return false;
         DataTransferRequest that = (DataTransferRequest) obj;
         return Objects.equals(this.messageId, that.messageId)
-                && Objects.equals(this.vendorId, that.vendorId) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.vendorId, that.vendorId)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.data, that.data);
     }
 

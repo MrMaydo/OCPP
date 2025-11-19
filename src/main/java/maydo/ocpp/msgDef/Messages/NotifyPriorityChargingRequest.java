@@ -12,14 +12,14 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String transactionId;
     /**
      * True if priority charging was activated. False if it has stopped using the priority charging profile.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -37,13 +37,10 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param transactionId
-     *     The transaction for which priority charging is requested.
-     *     .
-     * @param activated
-     *     True if priority charging was activated. False if it has stopped using the priority charging profile.
-     *     .
+     * @param transactionId The transaction for which priority charging is requested.
+     *                      .
+     * @param activated     True if priority charging was activated. False if it has stopped using the priority charging profile.
+     *                      .
      */
     public NotifyPriorityChargingRequest(String transactionId, Boolean activated, CustomData customData) {
         super();
@@ -54,7 +51,7 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -63,7 +60,7 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -72,7 +69,7 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     /**
      * True if priority charging was activated. False if it has stopped using the priority charging profile.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getActivated() {
@@ -81,7 +78,7 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     /**
      * True if priority charging was activated. False if it has stopped using the priority charging profile.
-     * 
+     * <p>
      * (Required)
      */
     public void setActivated(Boolean activated) {
@@ -128,7 +125,7 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
             return false;
         NotifyPriorityChargingRequest that = (NotifyPriorityChargingRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionId, that.transactionId) 
+                && Objects.equals(this.transactionId, that.transactionId)
                 && Objects.equals(this.activated, that.activated);
     }
 

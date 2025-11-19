@@ -11,7 +11,6 @@ public enum EvseKindEnum {
 
     AC("AC"),
     DC("DC");
-    private final String value;
     private final static Map<String, EvseKindEnum> CONSTANTS = new HashMap<String, EvseKindEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum EvseKindEnum {
         }
     }
 
+    private final String value;
+
     EvseKindEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static EvseKindEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum EvseKindEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

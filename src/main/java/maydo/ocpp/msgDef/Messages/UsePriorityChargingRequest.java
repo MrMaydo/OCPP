@@ -12,7 +12,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -20,7 +20,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
     /**
      * True to request priority charging.
      * False to request stopping priority charging.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,14 +38,11 @@ public class UsePriorityChargingRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param activate
-     *     True to request priority charging.
-     *     False to request stopping priority charging.
-     *     .
-     * @param transactionId
-     *     The transaction for which priority charging is requested.
-     *     .
+     * @param activate      True to request priority charging.
+     *                      False to request stopping priority charging.
+     *                      .
+     * @param transactionId The transaction for which priority charging is requested.
+     *                      .
      */
     public UsePriorityChargingRequest(String transactionId, Boolean activate, CustomData customData) {
         super();
@@ -56,7 +53,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -65,7 +62,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -75,7 +72,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
     /**
      * True to request priority charging.
      * False to request stopping priority charging.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getActivate() {
@@ -85,7 +82,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
     /**
      * True to request priority charging.
      * False to request stopping priority charging.
-     * 
+     * <p>
      * (Required)
      */
     public void setActivate(Boolean activate) {
@@ -132,7 +129,7 @@ public class UsePriorityChargingRequest implements JsonInterface {
             return false;
         UsePriorityChargingRequest that = (UsePriorityChargingRequest) obj;
         return Objects.equals(this.activate, that.activate)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.transactionId, that.transactionId);
     }
 

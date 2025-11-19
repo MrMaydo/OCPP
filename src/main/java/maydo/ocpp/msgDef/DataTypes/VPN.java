@@ -12,14 +12,14 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String server;
     /**
      * VPN User
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -31,21 +31,21 @@ public class VPN implements JsonInterface {
     private String group;
     /**
      * *(2.1)* VPN Password.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String password;
     /**
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String key;
     /**
      * Type of VPN
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -63,22 +63,16 @@ public class VPN implements JsonInterface {
     }
 
     /**
-     * 
-     * @param server
-     *     VPN Server Address
-     *     .
-     * @param password
-     *     *(2.1)* VPN Password.
-     *     .
-     * @param user
-     *     VPN User
-     *     .
-     * @param key
-     *     VPN shared secret.
-     *     .
-     * @param group
-     *     VPN group.
-     *     .
+     * @param server   VPN Server Address
+     *                 .
+     * @param password *(2.1)* VPN Password.
+     *                 .
+     * @param user     VPN User
+     *                 .
+     * @param key      VPN shared secret.
+     *                 .
+     * @param group    VPN group.
+     *                 .
      */
     public VPN(String server, String user, String group, String password, String key, VPNEnum type, CustomData customData) {
         super();
@@ -93,7 +87,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
      */
     public String getServer() {
@@ -102,7 +96,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN Server Address
-     * 
+     * <p>
      * (Required)
      */
     public void setServer(String server) {
@@ -111,7 +105,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN User
-     * 
+     * <p>
      * (Required)
      */
     public String getUser() {
@@ -120,7 +114,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN User
-     * 
+     * <p>
      * (Required)
      */
     public void setUser(String user) {
@@ -143,7 +137,7 @@ public class VPN implements JsonInterface {
 
     /**
      * *(2.1)* VPN Password.
-     * 
+     * <p>
      * (Required)
      */
     public String getPassword() {
@@ -152,7 +146,7 @@ public class VPN implements JsonInterface {
 
     /**
      * *(2.1)* VPN Password.
-     * 
+     * <p>
      * (Required)
      */
     public void setPassword(String password) {
@@ -161,7 +155,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
      */
     public String getKey() {
@@ -170,7 +164,7 @@ public class VPN implements JsonInterface {
 
     /**
      * VPN shared secret.
-     * 
+     * <p>
      * (Required)
      */
     public void setKey(String key) {
@@ -179,7 +173,7 @@ public class VPN implements JsonInterface {
 
     /**
      * Type of VPN
-     * 
+     * <p>
      * (Required)
      */
     public VPNEnum getType() {
@@ -188,7 +182,7 @@ public class VPN implements JsonInterface {
 
     /**
      * Type of VPN
-     * 
+     * <p>
      * (Required)
      */
     public void setType(VPNEnum type) {
@@ -226,7 +220,7 @@ public class VPN implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -235,11 +229,11 @@ public class VPN implements JsonInterface {
             return false;
         VPN that = (VPN) obj;
         return Objects.equals(this.server, that.server)
-                && Objects.equals(this.password, that.password) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.type, that.type) 
-                && Objects.equals(this.user, that.user) 
-                && Objects.equals(this.key, that.key) 
+                && Objects.equals(this.password, that.password)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.user, that.user)
+                && Objects.equals(this.key, that.key)
                 && Objects.equals(this.group, that.group);
     }
 

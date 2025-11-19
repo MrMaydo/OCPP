@@ -13,31 +13,26 @@ import java.util.Objects;
 public class CompositeSchedule implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
-     * 
      * (Required)
      */
     @Required
     private Integer duration;
     /**
-     * 
      * (Required)
      */
     @Required
     private Date scheduleStart;
     /**
-     * 
      * (Required)
      */
     @Required
     private ChargingRateUnitEnum chargingRateUnit;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -65,7 +60,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Integer getEvseId() {
@@ -73,7 +67,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -81,7 +74,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Integer getDuration() {
@@ -89,7 +81,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -97,7 +88,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Date getScheduleStart() {
@@ -105,7 +95,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setScheduleStart(Date scheduleStart) {
@@ -113,7 +102,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public ChargingRateUnitEnum getChargingRateUnit() {
@@ -121,7 +109,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
@@ -129,7 +116,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<ChargingSchedulePeriod> getChargingSchedulePeriod() {
@@ -137,7 +123,6 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingSchedulePeriod(List<ChargingSchedulePeriod> chargingSchedulePeriod) {
@@ -175,7 +160,7 @@ public class CompositeSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -184,10 +169,10 @@ public class CompositeSchedule implements JsonInterface {
             return false;
         CompositeSchedule that = (CompositeSchedule) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.duration, that.duration) 
-                && Objects.equals(this.scheduleStart, that.scheduleStart) 
-                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod) 
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit) 
+                && Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.scheduleStart, that.scheduleStart)
+                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod)
+                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit)
                 && Objects.equals(this.customData, that.customData);
     }
 

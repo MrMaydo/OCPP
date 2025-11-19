@@ -16,7 +16,7 @@ public class GetTariffsResponse implements JsonInterface {
 
     /**
      * Status of operation
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -50,7 +50,7 @@ public class GetTariffsResponse implements JsonInterface {
 
     /**
      * Status of operation
-     * 
+     * <p>
      * (Required)
      */
     public TariffGetStatusEnum getStatus() {
@@ -59,7 +59,7 @@ public class GetTariffsResponse implements JsonInterface {
 
     /**
      * Status of operation
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(TariffGetStatusEnum status) {
@@ -128,8 +128,8 @@ public class GetTariffsResponse implements JsonInterface {
             return false;
         GetTariffsResponse that = (GetTariffsResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.tariffAssignments, that.tariffAssignments) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.tariffAssignments, that.tariffAssignments)
                 && Objects.equals(this.status, that.status);
     }
 

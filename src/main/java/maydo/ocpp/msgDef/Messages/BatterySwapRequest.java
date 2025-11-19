@@ -15,30 +15,29 @@ import java.util.Objects;
 public class BatterySwapRequest implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private List<BatteryData> batteryData;
     /**
      * Battery in/out
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private BatterySwapEventEnum eventType;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private IdToken idToken;
     /**
      * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -56,12 +55,10 @@ public class BatterySwapRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     *     
-     *     
-     *     .
+     * @param requestId RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
+     *                  <p>
+     *                  <p>
+     *                  .
      */
     public BatterySwapRequest(List<BatteryData> batteryData, BatterySwapEventEnum eventType, IdToken idToken, Integer requestId, CustomData customData) {
         super();
@@ -73,7 +70,6 @@ public class BatterySwapRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<BatteryData> getBatteryData() {
@@ -81,7 +77,6 @@ public class BatterySwapRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setBatteryData(List<BatteryData> batteryData) {
@@ -90,7 +85,7 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * Battery in/out
-     * 
+     * <p>
      * (Required)
      */
     public BatterySwapEventEnum getEventType() {
@@ -99,7 +94,7 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * Battery in/out
-     * 
+     * <p>
      * (Required)
      */
     public void setEventType(BatterySwapEventEnum eventType) {
@@ -108,7 +103,7 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -117,7 +112,7 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -126,9 +121,9 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -137,9 +132,9 @@ public class BatterySwapRequest implements JsonInterface {
 
     /**
      * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -186,9 +181,9 @@ public class BatterySwapRequest implements JsonInterface {
             return false;
         BatterySwapRequest that = (BatterySwapRequest) obj;
         return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.eventType, that.eventType) 
-                && Objects.equals(this.batteryData, that.batteryData) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.eventType, that.eventType)
+                && Objects.equals(this.batteryData, that.batteryData)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

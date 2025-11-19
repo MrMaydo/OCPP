@@ -10,11 +10,11 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
-public class AdjustPeriodicEventStreamResponse implements JsonInterface  {
+public class AdjustPeriodicEventStreamResponse implements JsonInterface {
 
     /**
      * Status of operation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class AdjustPeriodicEventStreamResponse implements JsonInterface  {
 
     /**
      * Status of operation.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class AdjustPeriodicEventStreamResponse implements JsonInterface  {
 
     /**
      * Status of operation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -115,7 +115,7 @@ public class AdjustPeriodicEventStreamResponse implements JsonInterface  {
             return false;
         AdjustPeriodicEventStreamResponse that = (AdjustPeriodicEventStreamResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -13,7 +13,6 @@ import java.util.Objects;
 public class ClearTariffsResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -37,7 +36,6 @@ public class ClearTariffsResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<ClearTariffsResult> getClearTariffsResult() {
@@ -45,7 +43,6 @@ public class ClearTariffsResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setClearTariffsResult(List<ClearTariffsResult> clearTariffsResult) {

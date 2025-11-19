@@ -12,13 +12,11 @@ public class ClearTariffsRequest implements JsonInterface {
 
     /**
      * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     * 
      */
     @Optional
     private List<String> tariffIds;
     /**
      * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     * 
      */
     @Optional
     private Integer evseId;
@@ -35,15 +33,12 @@ public class ClearTariffsRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tariffIds
-     *     List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     *     
-     *     .
-     * @param evseId
-     *     When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     *     
-     *     .
+     * @param tariffIds List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
+     *                  <p>
+     *                  .
+     * @param evseId    When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
+     *                  <p>
+     *                  .
      */
     public ClearTariffsRequest(List<String> tariffIds, Integer evseId, CustomData customData) {
         super();
@@ -54,7 +49,6 @@ public class ClearTariffsRequest implements JsonInterface {
 
     /**
      * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     * 
      */
     public List<String> getTariffIds() {
         return tariffIds;
@@ -62,7 +56,6 @@ public class ClearTariffsRequest implements JsonInterface {
 
     /**
      * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     * 
      */
     public void setTariffIds(List<String> tariffIds) {
         this.tariffIds = tariffIds;
@@ -70,7 +63,6 @@ public class ClearTariffsRequest implements JsonInterface {
 
     /**
      * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -78,7 +70,6 @@ public class ClearTariffsRequest implements JsonInterface {
 
     /**
      * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -124,7 +115,7 @@ public class ClearTariffsRequest implements JsonInterface {
             return false;
         ClearTariffsRequest that = (ClearTariffsRequest) obj;
         return Objects.equals(this.tariffIds, that.tariffIds)
-                && Objects.equals(this.evseId, that.evseId) 
+                && Objects.equals(this.evseId, that.evseId)
                 && Objects.equals(this.customData, that.customData);
     }
 

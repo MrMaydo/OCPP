@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
  */
 public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
      * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,13 +39,10 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     *     .
-     * @param priceLevel
-     *     Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     *     .
+     * @param duration   The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
+     *                   .
+     * @param priceLevel Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
+     *                   .
      */
     public PriceLevelScheduleEntry(Integer duration, Integer priceLevel, CustomData customData) {
         super();
@@ -58,7 +53,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getDuration() {
@@ -67,7 +62,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -76,7 +71,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPriceLevel() {
@@ -85,7 +80,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceLevel(Integer priceLevel) {
@@ -123,7 +118,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +127,7 @@ public class PriceLevelScheduleEntry implements JsonInterface {
             return false;
         PriceLevelScheduleEntry that = (PriceLevelScheduleEntry) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.priceLevel, that.priceLevel);
     }
 

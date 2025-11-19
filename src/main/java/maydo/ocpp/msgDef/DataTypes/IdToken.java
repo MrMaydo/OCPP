@@ -13,14 +13,14 @@ public class IdToken implements JsonInterface {
     private List<AdditionalInfo> additionalInfo;
     /**
      * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String idToken;
     /**
      * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,13 +38,10 @@ public class IdToken implements JsonInterface {
     }
 
     /**
-     * 
-     * @param idToken
-     *     *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     *     .
-     * @param type
-     *     *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     *     .
+     * @param idToken *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
+     *                .
+     * @param type    *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
+     *                .
      */
     public IdToken(List<AdditionalInfo> additionalInfo, String idToken, String type, CustomData customData) {
         super();
@@ -64,7 +61,7 @@ public class IdToken implements JsonInterface {
 
     /**
      * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * 
+     * <p>
      * (Required)
      */
     public String getIdToken() {
@@ -73,7 +70,7 @@ public class IdToken implements JsonInterface {
 
     /**
      * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(String idToken) {
@@ -82,7 +79,7 @@ public class IdToken implements JsonInterface {
 
     /**
      * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public String getType() {
@@ -91,7 +88,7 @@ public class IdToken implements JsonInterface {
 
     /**
      * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public void setType(String type) {
@@ -129,7 +126,7 @@ public class IdToken implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -138,8 +135,8 @@ public class IdToken implements JsonInterface {
             return false;
         IdToken that = (IdToken) obj;
         return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.idToken, that.idToken) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.idToken, that.idToken)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.type, that.type);
     }
 

@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Electric Vehicle Supply Equipment
- * 
- * 
  */
 public class EVSE implements JsonInterface {
 
     /**
      * EVSE Identifier. This contains a number (&gt; 0) designating an EVSE of the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +37,10 @@ public class EVSE implements JsonInterface {
     }
 
     /**
-     * 
-     * @param connectorId
-     *     An id to designate a specific connector (on an EVSE) by connector index number.
-     *     .
-     * @param id
-     *     EVSE Identifier. This contains a number (&gt; 0) designating an EVSE of the Charging Station.
-     *     .
+     * @param connectorId An id to designate a specific connector (on an EVSE) by connector index number.
+     *                    .
+     * @param id          EVSE Identifier. This contains a number (&gt; 0) designating an EVSE of the Charging Station.
+     *                    .
      */
     public EVSE(Integer id, Integer connectorId, CustomData customData) {
         super();
@@ -56,7 +51,7 @@ public class EVSE implements JsonInterface {
 
     /**
      * EVSE Identifier. This contains a number (&gt; 0) designating an EVSE of the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -65,7 +60,7 @@ public class EVSE implements JsonInterface {
 
     /**
      * EVSE Identifier. This contains a number (&gt; 0) designating an EVSE of the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -117,7 +112,7 @@ public class EVSE implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -126,7 +121,7 @@ public class EVSE implements JsonInterface {
             return false;
         EVSE that = (EVSE) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.connectorId, that.connectorId);
     }
 

@@ -13,7 +13,6 @@ import java.util.Objects;
 public class ClearVariableMonitoringResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -37,7 +36,6 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<ClearMonitoringResult> getClearMonitoringResult() {
@@ -45,7 +43,6 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setClearMonitoringResult(List<ClearMonitoringResult> clearMonitoringResult) {

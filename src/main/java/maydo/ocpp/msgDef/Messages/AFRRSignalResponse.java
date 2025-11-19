@@ -13,7 +13,6 @@ import java.util.Objects;
 public class AFRRSignalResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -43,7 +42,6 @@ public class AFRRSignalResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -51,7 +49,6 @@ public class AFRRSignalResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -112,7 +109,7 @@ public class AFRRSignalResponse implements JsonInterface {
             return false;
         AFRRSignalResponse that = (AFRRSignalResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

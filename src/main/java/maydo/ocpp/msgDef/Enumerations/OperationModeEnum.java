@@ -17,7 +17,6 @@ public enum OperationModeEnum {
     CENTRAL_FREQUENCY("CentralFrequency"),
     LOCAL_FREQUENCY("LocalFrequency"),
     LOCAL_LOAD_BALANCING("LocalLoadBalancing");
-    private final String value;
     private final static Map<String, OperationModeEnum> CONSTANTS = new HashMap<String, OperationModeEnum>();
 
     static {
@@ -26,17 +25,10 @@ public enum OperationModeEnum {
         }
     }
 
+    private final String value;
+
     OperationModeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OperationModeEnum fromValue(String value) {
@@ -46,6 +38,15 @@ public enum OperationModeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

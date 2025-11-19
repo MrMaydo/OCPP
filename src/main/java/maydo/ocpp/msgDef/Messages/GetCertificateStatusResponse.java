@@ -14,7 +14,7 @@ public class GetCertificateStatusResponse implements JsonInterface {
 
     /**
      * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -27,7 +27,6 @@ public class GetCertificateStatusResponse implements JsonInterface {
     /**
      * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
      * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     * 
      */
     @Optional
     private String ocspResult;
@@ -44,12 +43,10 @@ public class GetCertificateStatusResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param ocspResult
-     *     *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
-     *     The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     *     
-     *     .
+     * @param ocspResult *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
+     *                   The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
+     *                   <p>
+     *                   .
      */
     public GetCertificateStatusResponse(GetCertificateStatusEnum status, StatusInfo statusInfo, String ocspResult, CustomData customData) {
         super();
@@ -61,7 +58,7 @@ public class GetCertificateStatusResponse implements JsonInterface {
 
     /**
      * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * 
+     * <p>
      * (Required)
      */
     public GetCertificateStatusEnum getStatus() {
@@ -70,7 +67,7 @@ public class GetCertificateStatusResponse implements JsonInterface {
 
     /**
      * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GetCertificateStatusEnum status) {
@@ -94,7 +91,6 @@ public class GetCertificateStatusResponse implements JsonInterface {
     /**
      * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
      * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     * 
      */
     public String getOcspResult() {
         return ocspResult;
@@ -103,7 +99,6 @@ public class GetCertificateStatusResponse implements JsonInterface {
     /**
      * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
      * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     * 
      */
     public void setOcspResult(String ocspResult) {
         this.ocspResult = ocspResult;
@@ -149,8 +144,8 @@ public class GetCertificateStatusResponse implements JsonInterface {
             return false;
         GetCertificateStatusResponse that = (GetCertificateStatusResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.ocspResult, that.ocspResult) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.ocspResult, that.ocspResult)
                 && Objects.equals(this.status, that.status);
     }
 

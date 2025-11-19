@@ -9,9 +9,6 @@ import java.util.Objects;
 
 /**
  * EV AC charging parameters for ISO 15118-2
- * 
- * 
- * 
  */
 public class ACChargingParameters implements JsonInterface {
 
@@ -20,8 +17,8 @@ public class ACChargingParameters implements JsonInterface {
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -30,8 +27,8 @@ public class ACChargingParameters implements JsonInterface {
      * Minimum current (amps) supported by the electric vehicle (per phase).
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -40,8 +37,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -50,8 +47,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -69,32 +66,27 @@ public class ACChargingParameters implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evMaxCurrent
-     *     Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     *     Relates to: +
-     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     *     
-     *     .
-     * @param evMinCurrent
-     *     Minimum current (amps) supported by the electric vehicle (per phase).
-     *     Relates to: +
-     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     *     
-     *     .
-     * @param evMaxVoltage
-     *     Maximum voltage supported by the electric vehicle.
-     *     Relates to: +
-     *     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     *     
-     *     .
-     * @param energyAmount
-     *     Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     *     Relates to: +
-     *     *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
-     *     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     *     
-     *     .
+     * @param evMaxCurrent Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
+     *                     Relates to: +
+     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
+     *                     <p>
+     *                     .
+     * @param evMinCurrent Minimum current (amps) supported by the electric vehicle (per phase).
+     *                     Relates to: +
+     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
+     *                     <p>
+     *                     .
+     * @param evMaxVoltage Maximum voltage supported by the electric vehicle.
+     *                     Relates to: +
+     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
+     *                     <p>
+     *                     .
+     * @param energyAmount Amount of energy requested (in Wh). This includes energy required for preconditioning.
+     *                     Relates to: +
+     *                     *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
+     *                     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
+     *                     <p>
+     *                     .
      */
     public ACChargingParameters(Float energyAmount, Float evMinCurrent, Float evMaxCurrent, Float evMaxVoltage, CustomData customData) {
         super();
@@ -110,8 +102,8 @@ public class ACChargingParameters implements JsonInterface {
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getEnergyAmount() {
@@ -123,8 +115,8 @@ public class ACChargingParameters implements JsonInterface {
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
      * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEnergyAmount(Float energyAmount) {
@@ -135,8 +127,8 @@ public class ACChargingParameters implements JsonInterface {
      * Minimum current (amps) supported by the electric vehicle (per phase).
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getEvMinCurrent() {
@@ -147,8 +139,8 @@ public class ACChargingParameters implements JsonInterface {
      * Minimum current (amps) supported by the electric vehicle (per phase).
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvMinCurrent(Float evMinCurrent) {
@@ -159,8 +151,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getEvMaxCurrent() {
@@ -171,8 +163,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvMaxCurrent(Float evMaxCurrent) {
@@ -183,8 +175,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getEvMaxVoltage() {
@@ -195,8 +187,8 @@ public class ACChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvMaxVoltage(Float evMaxVoltage) {
@@ -234,7 +226,7 @@ public class ACChargingParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

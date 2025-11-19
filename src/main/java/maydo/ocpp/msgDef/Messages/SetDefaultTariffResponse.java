@@ -13,7 +13,6 @@ import java.util.Objects;
 public class SetDefaultTariffResponse implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -43,7 +42,6 @@ public class SetDefaultTariffResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public TariffSetStatusEnum getStatus() {
@@ -51,7 +49,6 @@ public class SetDefaultTariffResponse implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setStatus(TariffSetStatusEnum status) {
@@ -112,7 +109,7 @@ public class SetDefaultTariffResponse implements JsonInterface {
             return false;
         SetDefaultTariffResponse that = (SetDefaultTariffResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

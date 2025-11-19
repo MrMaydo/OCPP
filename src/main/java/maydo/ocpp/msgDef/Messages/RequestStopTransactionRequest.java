@@ -12,7 +12,7 @@ public class RequestStopTransactionRequest implements JsonInterface {
 
     /**
      * The identifier of the transaction which the Charging Station is requested to stop.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class RequestStopTransactionRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param transactionId
-     *     The identifier of the transaction which the Charging Station is requested to stop.
-     *     .
+     * @param transactionId The identifier of the transaction which the Charging Station is requested to stop.
+     *                      .
      */
     public RequestStopTransactionRequest(String transactionId, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class RequestStopTransactionRequest implements JsonInterface {
 
     /**
      * The identifier of the transaction which the Charging Station is requested to stop.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -52,7 +50,7 @@ public class RequestStopTransactionRequest implements JsonInterface {
 
     /**
      * The identifier of the transaction which the Charging Station is requested to stop.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {

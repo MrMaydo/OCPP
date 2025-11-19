@@ -15,14 +15,13 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
      */
     @Optional
     private ChargingScheduleUpdate scheduleUpdate;
     /**
      * Result of request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -54,7 +53,6 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
      */
     public ChargingScheduleUpdate getScheduleUpdate() {
         return scheduleUpdate;
@@ -62,7 +60,6 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
      * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * 
      */
     public void setScheduleUpdate(ChargingScheduleUpdate scheduleUpdate) {
         this.scheduleUpdate = scheduleUpdate;
@@ -70,8 +67,8 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
      * Result of request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public ChargingProfileStatusEnum getStatus() {
@@ -80,8 +77,8 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
      * Result of request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStatus(ChargingProfileStatusEnum status) {
@@ -142,8 +139,8 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
             return false;
         PullDynamicScheduleUpdateResponse that = (PullDynamicScheduleUpdateResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate)
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

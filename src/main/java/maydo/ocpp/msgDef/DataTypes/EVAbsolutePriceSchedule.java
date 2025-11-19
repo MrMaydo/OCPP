@@ -13,27 +13,26 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point in time of the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timeAnchor;
     /**
      * Currency code according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String currency;
     /**
-     * 
      * (Required)
      */
     @Required
     private List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries;
     /**
      * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -51,16 +50,12 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param timeAnchor
-     *     Starting point in time of the EVEnergyOffer.
-     *     .
-     * @param currency
-     *     Currency code according to ISO 4217.
-     *     .
-     * @param priceAlgorithm
-     *     ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     *     .
+     * @param timeAnchor     Starting point in time of the EVEnergyOffer.
+     *                       .
+     * @param currency       Currency code according to ISO 4217.
+     *                       .
+     * @param priceAlgorithm ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
+     *                       .
      */
     public EVAbsolutePriceSchedule(Date timeAnchor, String currency, List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries, String priceAlgorithm, CustomData customData) {
         super();
@@ -73,7 +68,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point in time of the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimeAnchor() {
@@ -82,7 +77,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point in time of the EVEnergyOffer.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeAnchor(Date timeAnchor) {
@@ -91,7 +86,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Currency code according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     public String getCurrency() {
@@ -100,7 +95,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Currency code according to ISO 4217.
-     * 
+     * <p>
      * (Required)
      */
     public void setCurrency(String currency) {
@@ -108,7 +103,6 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<EVAbsolutePriceScheduleEntry> getEvAbsolutePriceScheduleEntries() {
@@ -116,7 +110,6 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEvAbsolutePriceScheduleEntries(List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries) {
@@ -125,7 +118,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * 
+     * <p>
      * (Required)
      */
     public String getPriceAlgorithm() {
@@ -134,7 +127,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceAlgorithm(String priceAlgorithm) {
@@ -172,7 +165,7 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -181,9 +174,9 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
             return false;
         EVAbsolutePriceSchedule that = (EVAbsolutePriceSchedule) obj;
         return Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.evAbsolutePriceScheduleEntries, that.evAbsolutePriceScheduleEntries) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.priceAlgorithm, that.priceAlgorithm) 
+                && Objects.equals(this.evAbsolutePriceScheduleEntries, that.evAbsolutePriceScheduleEntries)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.priceAlgorithm, that.priceAlgorithm)
                 && Objects.equals(this.timeAnchor, that.timeAnchor);
     }
 

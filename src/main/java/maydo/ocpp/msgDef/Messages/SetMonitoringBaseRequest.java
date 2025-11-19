@@ -13,7 +13,7 @@ public class SetMonitoringBaseRequest implements JsonInterface {
 
     /**
      * Specify which monitoring base will be set
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +38,7 @@ public class SetMonitoringBaseRequest implements JsonInterface {
 
     /**
      * Specify which monitoring base will be set
-     * 
+     * <p>
      * (Required)
      */
     public MonitoringBaseEnum getMonitoringBase() {
@@ -47,7 +47,7 @@ public class SetMonitoringBaseRequest implements JsonInterface {
 
     /**
      * Specify which monitoring base will be set
-     * 
+     * <p>
      * (Required)
      */
     public void setMonitoringBase(MonitoringBaseEnum monitoringBase) {

@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Reference key to a component-variable.
- * 
- * 
  */
 public class Variable implements JsonInterface {
 
     /**
      * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +37,10 @@ public class Variable implements JsonInterface {
     }
 
     /**
-     * 
-     * @param instance
-     *     Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
-     *     .
-     * @param name
-     *     Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     *     .
+     * @param instance Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
+     * @param name     Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
      */
     public Variable(String name, String instance, CustomData customData) {
         super();
@@ -56,7 +51,7 @@ public class Variable implements JsonInterface {
 
     /**
      * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     public String getName() {
@@ -65,7 +60,7 @@ public class Variable implements JsonInterface {
 
     /**
      * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * 
+     * <p>
      * (Required)
      */
     public void setName(String name) {
@@ -117,7 +112,7 @@ public class Variable implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -126,7 +121,7 @@ public class Variable implements JsonInterface {
             return false;
         Variable that = (Variable) obj;
         return Objects.equals(this.name, that.name)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.instance, that.instance);
     }
 

@@ -14,7 +14,7 @@ public class GetChargingProfilesResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to process this request and will send &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; messages.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class GetChargingProfilesResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to process this request and will send &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; messages.
-     * 
+     * <p>
      * (Required)
      */
     public GetChargingProfileStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class GetChargingProfilesResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to process this request and will send &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; messages.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GetChargingProfileStatusEnum status) {
@@ -115,7 +115,7 @@ public class GetChargingProfilesResponse implements JsonInterface {
             return false;
         GetChargingProfilesResponse that = (GetChargingProfilesResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

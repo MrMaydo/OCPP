@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * *(2.1)* A point of a signal-watt curve.
- * 
- * 
  */
 public class V2XSignalWattPoint implements JsonInterface {
 
     /**
      * Signal value from an AFRRSignalRequest.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer signal;
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,13 +39,10 @@ public class V2XSignalWattPoint implements JsonInterface {
     }
 
     /**
-     * 
-     * @param power
-     *     Power in W to charge (positive) or discharge (negative) at specified frequency.
-     *     .
-     * @param signal
-     *     Signal value from an AFRRSignalRequest.
-     *     .
+     * @param power  Power in W to charge (positive) or discharge (negative) at specified frequency.
+     *               .
+     * @param signal Signal value from an AFRRSignalRequest.
+     *               .
      */
     public V2XSignalWattPoint(Integer signal, Float power, CustomData customData) {
         super();
@@ -58,7 +53,7 @@ public class V2XSignalWattPoint implements JsonInterface {
 
     /**
      * Signal value from an AFRRSignalRequest.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSignal() {
@@ -67,7 +62,7 @@ public class V2XSignalWattPoint implements JsonInterface {
 
     /**
      * Signal value from an AFRRSignalRequest.
-     * 
+     * <p>
      * (Required)
      */
     public void setSignal(Integer signal) {
@@ -76,7 +71,7 @@ public class V2XSignalWattPoint implements JsonInterface {
 
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     public Float getPower() {
@@ -85,7 +80,7 @@ public class V2XSignalWattPoint implements JsonInterface {
 
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     public void setPower(Float power) {
@@ -123,7 +118,7 @@ public class V2XSignalWattPoint implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +127,7 @@ public class V2XSignalWattPoint implements JsonInterface {
             return false;
         V2XSignalWattPoint that = (V2XSignalWattPoint) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.power, that.power) 
+                && Objects.equals(this.power, that.power)
                 && Objects.equals(this.signal, that.signal);
     }
 

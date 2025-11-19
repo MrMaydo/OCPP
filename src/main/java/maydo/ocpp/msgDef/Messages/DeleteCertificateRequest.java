@@ -12,7 +12,6 @@ import java.util.Objects;
 public class DeleteCertificateRequest implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,7 +35,6 @@ public class DeleteCertificateRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public CertificateHashData getCertificateHashData() {
@@ -44,7 +42,6 @@ public class DeleteCertificateRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCertificateHashData(CertificateHashData certificateHashData) {

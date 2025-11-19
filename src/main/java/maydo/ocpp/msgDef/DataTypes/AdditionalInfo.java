@@ -9,22 +9,20 @@ import java.util.Objects;
 
 /**
  * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
- * 
- * 
  */
 public class AdditionalInfo implements JsonInterface {
 
     /**
      * *(2.1)* This field specifies the additional IdToken.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String additionalIdToken;
     /**
      * _additionalInfo_ can be used to send extra information to CSMS in addition to the regular authorization with _IdToken_. _AdditionalInfo_ contains one or more custom _types_, which need to be agreed upon by all parties involved. When the _type_ is not supported, the CSMS/Charging Station MAY ignore the _additionalInfo_.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -42,14 +40,11 @@ public class AdditionalInfo implements JsonInterface {
     }
 
     /**
-     * 
-     * @param additionalIdToken
-     *     *(2.1)* This field specifies the additional IdToken.
-     *     .
-     * @param type
-     *     _additionalInfo_ can be used to send extra information to CSMS in addition to the regular authorization with _IdToken_. _AdditionalInfo_ contains one or more custom _types_, which need to be agreed upon by all parties involved. When the _type_ is not supported, the CSMS/Charging Station MAY ignore the _additionalInfo_.
-     *     
-     *     .
+     * @param additionalIdToken *(2.1)* This field specifies the additional IdToken.
+     *                          .
+     * @param type              _additionalInfo_ can be used to send extra information to CSMS in addition to the regular authorization with _IdToken_. _AdditionalInfo_ contains one or more custom _types_, which need to be agreed upon by all parties involved. When the _type_ is not supported, the CSMS/Charging Station MAY ignore the _additionalInfo_.
+     *                          <p>
+     *                          .
      */
     public AdditionalInfo(String additionalIdToken, String type, CustomData customData) {
         super();
@@ -60,7 +55,7 @@ public class AdditionalInfo implements JsonInterface {
 
     /**
      * *(2.1)* This field specifies the additional IdToken.
-     * 
+     * <p>
      * (Required)
      */
     public String getAdditionalIdToken() {
@@ -69,7 +64,7 @@ public class AdditionalInfo implements JsonInterface {
 
     /**
      * *(2.1)* This field specifies the additional IdToken.
-     * 
+     * <p>
      * (Required)
      */
     public void setAdditionalIdToken(String additionalIdToken) {
@@ -78,8 +73,8 @@ public class AdditionalInfo implements JsonInterface {
 
     /**
      * _additionalInfo_ can be used to send extra information to CSMS in addition to the regular authorization with _IdToken_. _AdditionalInfo_ contains one or more custom _types_, which need to be agreed upon by all parties involved. When the _type_ is not supported, the CSMS/Charging Station MAY ignore the _additionalInfo_.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getType() {
@@ -88,8 +83,8 @@ public class AdditionalInfo implements JsonInterface {
 
     /**
      * _additionalInfo_ can be used to send extra information to CSMS in addition to the regular authorization with _IdToken_. _AdditionalInfo_ contains one or more custom _types_, which need to be agreed upon by all parties involved. When the _type_ is not supported, the CSMS/Charging Station MAY ignore the _additionalInfo_.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setType(String type) {
@@ -127,7 +122,7 @@ public class AdditionalInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

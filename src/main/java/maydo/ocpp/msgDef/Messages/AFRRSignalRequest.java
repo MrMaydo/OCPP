@@ -9,18 +9,18 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.Date;
 import java.util.Objects;
 
-public class AFRRSignalRequest implements JsonInterface  {
+public class AFRRSignalRequest implements JsonInterface {
 
     /**
      * Time when signal becomes active.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
-     * Value of signal in _v2xSignalWattCurve_. 
-     * 
+     * Value of signal in _v2xSignalWattCurve_.
+     * <p>
      * (Required)
      */
     @Required
@@ -38,13 +38,10 @@ public class AFRRSignalRequest implements JsonInterface  {
     }
 
     /**
-     * 
-     * @param signal
-     *     Value of signal in _v2xSignalWattCurve_. 
-     *     .
-     * @param timestamp
-     *     Time when signal becomes active.
-     *     .
+     * @param signal    Value of signal in _v2xSignalWattCurve_.
+     *                  .
+     * @param timestamp Time when signal becomes active.
+     *                  .
      */
     public AFRRSignalRequest(Date timestamp, Integer signal, CustomData customData) {
         super();
@@ -55,7 +52,7 @@ public class AFRRSignalRequest implements JsonInterface  {
 
     /**
      * Time when signal becomes active.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -64,7 +61,7 @@ public class AFRRSignalRequest implements JsonInterface  {
 
     /**
      * Time when signal becomes active.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -72,8 +69,8 @@ public class AFRRSignalRequest implements JsonInterface  {
     }
 
     /**
-     * Value of signal in _v2xSignalWattCurve_. 
-     * 
+     * Value of signal in _v2xSignalWattCurve_.
+     * <p>
      * (Required)
      */
     public Integer getSignal() {
@@ -81,8 +78,8 @@ public class AFRRSignalRequest implements JsonInterface  {
     }
 
     /**
-     * Value of signal in _v2xSignalWattCurve_. 
-     * 
+     * Value of signal in _v2xSignalWattCurve_.
+     * <p>
      * (Required)
      */
     public void setSignal(Integer signal) {
@@ -129,7 +126,7 @@ public class AFRRSignalRequest implements JsonInterface  {
             return false;
         AFRRSignalRequest that = (AFRRSignalRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.signal, that.signal) 
+                && Objects.equals(this.signal, that.signal)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

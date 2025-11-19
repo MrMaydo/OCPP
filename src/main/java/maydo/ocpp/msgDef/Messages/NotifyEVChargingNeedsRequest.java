@@ -14,7 +14,7 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -27,7 +27,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     @Optional
     private Integer maxScheduleTuples;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -35,7 +34,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * *(2.1)* Time when EV charging needs were received. +
      * Field can be added when charging station was offline when charging needs were received.
-     * 
      */
     @Optional
     private Date timestamp;
@@ -52,20 +50,16 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     *     .
-     * @param maxScheduleTuples
-     *     Contains the maximum elements the EV supports for: +
-     *     - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     *     - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     *     .
-     * @param timestamp
-     *     *(2.1)* Time when EV charging needs were received. +
-     *     Field can be added when charging station was offline when charging needs were received.
-     *     
-     *     .
+     * @param evseId            Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
+     *                          .
+     * @param maxScheduleTuples Contains the maximum elements the EV supports for: +
+     *                          - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
+     *                          - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
+     *                          .
+     * @param timestamp         *(2.1)* Time when EV charging needs were received. +
+     *                          Field can be added when charging station was offline when charging needs were received.
+     *                          <p>
+     *                          .
      */
     public NotifyEVChargingNeedsRequest(Integer evseId, Integer maxScheduleTuples, ChargingNeeds chargingNeeds, Date timestamp, CustomData customData) {
         super();
@@ -78,7 +72,7 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -87,7 +81,7 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -113,7 +107,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public ChargingNeeds getChargingNeeds() {
@@ -121,7 +114,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setChargingNeeds(ChargingNeeds chargingNeeds) {
@@ -131,7 +123,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * *(2.1)* Time when EV charging needs were received. +
      * Field can be added when charging station was offline when charging needs were received.
-     * 
      */
     public Date getTimestamp() {
         return timestamp;
@@ -140,7 +131,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     /**
      * *(2.1)* Time when EV charging needs were received. +
      * Field can be added when charging station was offline when charging needs were received.
-     * 
      */
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
@@ -186,9 +176,9 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
             return false;
         NotifyEVChargingNeedsRequest that = (NotifyEVChargingNeedsRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.maxScheduleTuples, that.maxScheduleTuples) 
-                && Objects.equals(this.chargingNeeds, that.chargingNeeds) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.maxScheduleTuples, that.maxScheduleTuples)
+                && Objects.equals(this.chargingNeeds, that.chargingNeeds)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

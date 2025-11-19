@@ -14,7 +14,7 @@ public class TriggerMessageResponse implements JsonInterface {
 
     /**
      * Indicates whether the Charging Station will send the requested notification or not.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class TriggerMessageResponse implements JsonInterface {
 
     /**
      * Indicates whether the Charging Station will send the requested notification or not.
-     * 
+     * <p>
      * (Required)
      */
     public TriggerMessageStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class TriggerMessageResponse implements JsonInterface {
 
     /**
      * Indicates whether the Charging Station will send the requested notification or not.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(TriggerMessageStatusEnum status) {
@@ -115,7 +115,7 @@ public class TriggerMessageResponse implements JsonInterface {
             return false;
         TriggerMessageResponse that = (TriggerMessageResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

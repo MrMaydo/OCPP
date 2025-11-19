@@ -15,7 +15,6 @@ public enum ChargingStateEnum {
     SUSPENDED_EV("SuspendedEV"),
     SUSPENDED_EVSE("SuspendedEVSE"),
     IDLE("Idle");
-    private final String value;
     private final static Map<String, ChargingStateEnum> CONSTANTS = new HashMap<String, ChargingStateEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum ChargingStateEnum {
         }
     }
 
+    private final String value;
+
     ChargingStateEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChargingStateEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum ChargingStateEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

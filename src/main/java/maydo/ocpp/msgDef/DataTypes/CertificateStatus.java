@@ -152,7 +152,7 @@ public class CertificateStatus implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -161,9 +161,9 @@ public class CertificateStatus implements JsonInterface {
             return false;
         CertificateStatus that = (CertificateStatus) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData) 
-                && Objects.equals(this.source, that.source) 
-                && Objects.equals(this.status, that.status) 
+                && Objects.equals(this.certificateHashData, that.certificateHashData)
+                && Objects.equals(this.source, that.source)
+                && Objects.equals(this.status, that.status)
                 && Objects.equals(this.nextUpdate, that.nextUpdate);
     }
 

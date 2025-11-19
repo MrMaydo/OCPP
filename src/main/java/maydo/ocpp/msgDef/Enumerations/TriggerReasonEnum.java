@@ -38,7 +38,6 @@ public enum TriggerReasonEnum {
     TRIGGER("Trigger"),
     TX_RESUMED("TxResumed"),
     UNLOCK_COMMAND("UnlockCommand");
-    private final String value;
     private final static Map<String, TriggerReasonEnum> CONSTANTS = new HashMap<String, TriggerReasonEnum>();
 
     static {
@@ -47,17 +46,10 @@ public enum TriggerReasonEnum {
         }
     }
 
+    private final String value;
+
     TriggerReasonEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TriggerReasonEnum fromValue(String value) {
@@ -67,6 +59,15 @@ public enum TriggerReasonEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

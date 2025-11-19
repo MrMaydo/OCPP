@@ -9,16 +9,13 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
- * 
  */
 public class OverstayRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -30,14 +27,14 @@ public class OverstayRule implements JsonInterface {
     private String overstayRuleDescription;
     /**
      * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer startTime;
     /**
      * Time till overstay will be reapplied
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -55,16 +52,12 @@ public class OverstayRule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param overstayFeePeriod
-     *     Time till overstay will be reapplied
-     *     .
-     * @param overstayRuleDescription
-     *     Human readable string to identify the overstay rule.
-     *     .
-     * @param startTime
-     *     Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     *     .
+     * @param overstayFeePeriod       Time till overstay will be reapplied
+     *                                .
+     * @param overstayRuleDescription Human readable string to identify the overstay rule.
+     *                                .
+     * @param startTime               Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
+     *                                .
      */
     public OverstayRule(RationalNumber overstayFee, String overstayRuleDescription, Integer startTime, Integer overstayFeePeriod, CustomData customData) {
         super();
@@ -77,8 +70,8 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public RationalNumber getOverstayFee() {
@@ -87,8 +80,8 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Part of ISO 15118-20 price schedule.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setOverstayFee(RationalNumber overstayFee) {
@@ -111,7 +104,7 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getStartTime() {
@@ -120,7 +113,7 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * 
+     * <p>
      * (Required)
      */
     public void setStartTime(Integer startTime) {
@@ -129,7 +122,7 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Time till overstay will be reapplied
-     * 
+     * <p>
      * (Required)
      */
     public Integer getOverstayFeePeriod() {
@@ -138,7 +131,7 @@ public class OverstayRule implements JsonInterface {
 
     /**
      * Time till overstay will be reapplied
-     * 
+     * <p>
      * (Required)
      */
     public void setOverstayFeePeriod(Integer overstayFeePeriod) {
@@ -176,7 +169,7 @@ public class OverstayRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -185,9 +178,9 @@ public class OverstayRule implements JsonInterface {
             return false;
         OverstayRule that = (OverstayRule) obj;
         return Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.overstayFee, that.overstayFee) 
-                && Objects.equals(this.overstayFeePeriod, that.overstayFeePeriod) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.overstayFee, that.overstayFee)
+                && Objects.equals(this.overstayFeePeriod, that.overstayFeePeriod)
                 && Objects.equals(this.overstayRuleDescription, that.overstayRuleDescription);
     }
 

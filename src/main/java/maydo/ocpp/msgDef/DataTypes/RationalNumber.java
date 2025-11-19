@@ -9,22 +9,19 @@ import java.util.Objects;
 
 /**
  * Part of ISO 15118-20 price schedule.
- * 
- * 
- * 
  */
 public class RationalNumber implements JsonInterface {
 
     /**
      * The exponent to base 10 (dec)
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer exponent;
     /**
      * Value which shall be multiplied.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,13 +39,10 @@ public class RationalNumber implements JsonInterface {
     }
 
     /**
-     * 
-     * @param value
-     *     Value which shall be multiplied.
-     *     .
-     * @param exponent
-     *     The exponent to base 10 (dec)
-     *     .
+     * @param value    Value which shall be multiplied.
+     *                 .
+     * @param exponent The exponent to base 10 (dec)
+     *                 .
      */
     public RationalNumber(Integer exponent, Integer value, CustomData customData) {
         super();
@@ -59,7 +53,7 @@ public class RationalNumber implements JsonInterface {
 
     /**
      * The exponent to base 10 (dec)
-     * 
+     * <p>
      * (Required)
      */
     public Integer getExponent() {
@@ -68,7 +62,7 @@ public class RationalNumber implements JsonInterface {
 
     /**
      * The exponent to base 10 (dec)
-     * 
+     * <p>
      * (Required)
      */
     public void setExponent(Integer exponent) {
@@ -77,7 +71,7 @@ public class RationalNumber implements JsonInterface {
 
     /**
      * Value which shall be multiplied.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getValue() {
@@ -86,7 +80,7 @@ public class RationalNumber implements JsonInterface {
 
     /**
      * Value which shall be multiplied.
-     * 
+     * <p>
      * (Required)
      */
     public void setValue(Integer value) {
@@ -124,7 +118,7 @@ public class RationalNumber implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -133,7 +127,7 @@ public class RationalNumber implements JsonInterface {
             return false;
         RationalNumber that = (RationalNumber) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.value, that.value) 
+                && Objects.equals(this.value, that.value)
                 && Objects.equals(this.exponent, that.exponent);
     }
 

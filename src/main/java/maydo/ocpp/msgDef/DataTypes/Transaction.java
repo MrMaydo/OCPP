@@ -14,7 +14,7 @@ public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -33,8 +33,6 @@ public class Transaction implements JsonInterface {
     /**
      * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
      * MAY only be omitted when _stoppedReason_ is "Local"
-     * 
-     * 
      */
     @Optional
     private ReasonEnum stoppedReason;
@@ -71,19 +69,14 @@ public class Transaction implements JsonInterface {
     }
 
     /**
-     * 
-     * @param remoteStartId
-     *     The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
-     *     .
-     * @param tariffId
-     *     *(2.1)* Id of tariff in use for transaction
-     *     .
-     * @param transactionId
-     *     This contains the Id of the transaction.
-     *     .
-     * @param timeSpentCharging
-     *     Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
-     *     .
+     * @param remoteStartId     The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
+     *                          .
+     * @param tariffId          *(2.1)* Id of tariff in use for transaction
+     *                          .
+     * @param transactionId     This contains the Id of the transaction.
+     *                          .
+     * @param timeSpentCharging Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
+     *                          .
      */
     public Transaction(String transactionId, ChargingStateEnum chargingState, Integer timeSpentCharging, ReasonEnum stoppedReason, Integer remoteStartId, OperationModeEnum operationMode, String tariffId, TransactionLimit transactionLimit, CustomData customData) {
         super();
@@ -100,7 +93,7 @@ public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     public String getTransactionId() {
@@ -109,7 +102,7 @@ public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setTransactionId(String transactionId) {
@@ -149,8 +142,6 @@ public class Transaction implements JsonInterface {
     /**
      * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
      * MAY only be omitted when _stoppedReason_ is "Local"
-     * 
-     * 
      */
     public ReasonEnum getStoppedReason() {
         return stoppedReason;
@@ -159,8 +150,6 @@ public class Transaction implements JsonInterface {
     /**
      * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
      * MAY only be omitted when _stoppedReason_ is "Local"
-     * 
-     * 
      */
     public void setStoppedReason(ReasonEnum stoppedReason) {
         this.stoppedReason = stoppedReason;
@@ -253,7 +242,7 @@ public class Transaction implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -262,13 +251,13 @@ public class Transaction implements JsonInterface {
             return false;
         Transaction that = (Transaction) obj;
         return Objects.equals(this.operationMode, that.operationMode)
-                && Objects.equals(this.remoteStartId, that.remoteStartId) 
-                && Objects.equals(this.stoppedReason, that.stoppedReason) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.tariffId, that.tariffId) 
-                && Objects.equals(this.transactionLimit, that.transactionLimit) 
-                && Objects.equals(this.transactionId, that.transactionId) 
-                && Objects.equals(this.timeSpentCharging, that.timeSpentCharging) 
+                && Objects.equals(this.remoteStartId, that.remoteStartId)
+                && Objects.equals(this.stoppedReason, that.stoppedReason)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.tariffId, that.tariffId)
+                && Objects.equals(this.transactionLimit, that.transactionLimit)
+                && Objects.equals(this.transactionId, that.transactionId)
+                && Objects.equals(this.timeSpentCharging, that.timeSpentCharging)
                 && Objects.equals(this.chargingState, that.chargingState);
     }
 

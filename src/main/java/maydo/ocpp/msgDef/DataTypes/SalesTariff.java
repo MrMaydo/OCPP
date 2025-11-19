@@ -12,7 +12,7 @@ public class SalesTariff implements JsonInterface {
 
     /**
      * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -28,7 +28,6 @@ public class SalesTariff implements JsonInterface {
     @Optional
     private Integer numEPriceLevels;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -46,16 +45,12 @@ public class SalesTariff implements JsonInterface {
     }
 
     /**
-     * 
-     * @param salesTariffDescription
-     *     A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     *     .
-     * @param numEPriceLevels
-     *     Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     *     .
-     * @param id
-     *     SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     *     .
+     * @param salesTariffDescription A human readable title/short description of the sales tariff e.g. for HMI display purposes.
+     *                               .
+     * @param numEPriceLevels        Defines the overall number of distinct price levels used across all provided SalesTariff elements.
+     *                               .
+     * @param id                     SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
+     *                               .
      */
     public SalesTariff(Integer id, String salesTariffDescription, Integer numEPriceLevels, List<SalesTariffEntry> salesTariffEntry, CustomData customData) {
         super();
@@ -68,7 +63,7 @@ public class SalesTariff implements JsonInterface {
 
     /**
      * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -77,7 +72,7 @@ public class SalesTariff implements JsonInterface {
 
     /**
      * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -113,7 +108,6 @@ public class SalesTariff implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<SalesTariffEntry> getSalesTariffEntry() {
@@ -121,7 +115,6 @@ public class SalesTariff implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setSalesTariffEntry(List<SalesTariffEntry> salesTariffEntry) {
@@ -159,7 +152,7 @@ public class SalesTariff implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -168,9 +161,9 @@ public class SalesTariff implements JsonInterface {
             return false;
         SalesTariff that = (SalesTariff) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.salesTariffEntry, that.salesTariffEntry) 
-                && Objects.equals(this.salesTariffDescription, that.salesTariffDescription) 
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.salesTariffEntry, that.salesTariffEntry)
+                && Objects.equals(this.salesTariffDescription, that.salesTariffDescription)
                 && Objects.equals(this.numEPriceLevels, that.numEPriceLevels);
     }
 

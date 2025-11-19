@@ -14,14 +14,14 @@ public class BootNotificationRequest implements JsonInterface {
 
     /**
      * The physical system where an Electrical Vehicle (EV) can be charged.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private ChargingStation chargingStation;
     /**
      * This contains the reason for sending this message to the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -47,7 +47,7 @@ public class BootNotificationRequest implements JsonInterface {
 
     /**
      * The physical system where an Electrical Vehicle (EV) can be charged.
-     * 
+     * <p>
      * (Required)
      */
     public ChargingStation getChargingStation() {
@@ -56,7 +56,7 @@ public class BootNotificationRequest implements JsonInterface {
 
     /**
      * The physical system where an Electrical Vehicle (EV) can be charged.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingStation(ChargingStation chargingStation) {
@@ -65,7 +65,7 @@ public class BootNotificationRequest implements JsonInterface {
 
     /**
      * This contains the reason for sending this message to the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public BootReasonEnum getReason() {
@@ -74,7 +74,7 @@ public class BootNotificationRequest implements JsonInterface {
 
     /**
      * This contains the reason for sending this message to the CSMS.
-     * 
+     * <p>
      * (Required)
      */
     public void setReason(BootReasonEnum reason) {
@@ -121,7 +121,7 @@ public class BootNotificationRequest implements JsonInterface {
             return false;
         BootNotificationRequest that = (BootNotificationRequest) obj;
         return Objects.equals(this.reason, that.reason)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.chargingStation, that.chargingStation);
     }
 

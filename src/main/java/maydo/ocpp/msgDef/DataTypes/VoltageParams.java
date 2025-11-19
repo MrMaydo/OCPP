@@ -11,28 +11,22 @@ public class VoltageParams implements JsonInterface {
 
     /**
      * EN 50549-1 chapter 4.9.3.4
-     *     Voltage threshold for the 10 min time window mean value monitoring.
-     *     The 10 min mean is recalculated up to every 3 s. 
-     *     If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
-     *     This value is mandatory if _hv10MinMeanTripDelay_ is set.
-     * 
-     * 
+     * Voltage threshold for the 10 min time window mean value monitoring.
+     * The 10 min mean is recalculated up to every 3 s.
+     * If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
+     * This value is mandatory if _hv10MinMeanTripDelay_ is set.
      */
     @Optional
     private Float hv10MinMeanValue;
     /**
-     * Time for which the voltage is allowed to stay above the 10 min mean value. 
-     *     After this time, the EV must trip.
-     *     This value is mandatory if OverVoltageMeanValue10min is set.
-     * 
-     * 
+     * Time for which the voltage is allowed to stay above the 10 min mean value.
+     * After this time, the EV must trip.
+     * This value is mandatory if OverVoltageMeanValue10min is set.
      */
     @Optional
     private Float hv10MinMeanTripDelay;
     /**
      * Parameter is only sent, if the EV has to feed-in power or reactive power during fault-ride through (FRT) as defined by HVMomCess curve and LVMomCess curve.
-     * 
-     * 
      */
     @Optional
     private PowerDuringCessationEnum powerDuringCessation;
@@ -49,23 +43,20 @@ public class VoltageParams implements JsonInterface {
     }
 
     /**
-     * 
-     * @param hv10MinMeanTripDelay
-     *     Time for which the voltage is allowed to stay above the 10 min mean value. 
-     *         After this time, the EV must trip.
-     *         This value is mandatory if OverVoltageMeanValue10min is set.
-     *     
-     *     
-     *     .
-     * @param hv10MinMeanValue
-     *     EN 50549-1 chapter 4.9.3.4
-     *         Voltage threshold for the 10 min time window mean value monitoring.
-     *         The 10 min mean is recalculated up to every 3 s. 
-     *         If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
-     *         This value is mandatory if _hv10MinMeanTripDelay_ is set.
-     *     
-     *     
-     *     .
+     * @param hv10MinMeanTripDelay Time for which the voltage is allowed to stay above the 10 min mean value.
+     *                             After this time, the EV must trip.
+     *                             This value is mandatory if OverVoltageMeanValue10min is set.
+     *                             <p>
+     *                             <p>
+     *                             .
+     * @param hv10MinMeanValue     EN 50549-1 chapter 4.9.3.4
+     *                             Voltage threshold for the 10 min time window mean value monitoring.
+     *                             The 10 min mean is recalculated up to every 3 s.
+     *                             If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
+     *                             This value is mandatory if _hv10MinMeanTripDelay_ is set.
+     *                             <p>
+     *                             <p>
+     *                             .
      */
     public VoltageParams(Float hv10MinMeanValue, Float hv10MinMeanTripDelay, PowerDuringCessationEnum powerDuringCessation, CustomData customData) {
         super();
@@ -77,12 +68,10 @@ public class VoltageParams implements JsonInterface {
 
     /**
      * EN 50549-1 chapter 4.9.3.4
-     *     Voltage threshold for the 10 min time window mean value monitoring.
-     *     The 10 min mean is recalculated up to every 3 s. 
-     *     If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
-     *     This value is mandatory if _hv10MinMeanTripDelay_ is set.
-     * 
-     * 
+     * Voltage threshold for the 10 min time window mean value monitoring.
+     * The 10 min mean is recalculated up to every 3 s.
+     * If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
+     * This value is mandatory if _hv10MinMeanTripDelay_ is set.
      */
     public Float getHv10MinMeanValue() {
         return hv10MinMeanValue;
@@ -90,34 +79,28 @@ public class VoltageParams implements JsonInterface {
 
     /**
      * EN 50549-1 chapter 4.9.3.4
-     *     Voltage threshold for the 10 min time window mean value monitoring.
-     *     The 10 min mean is recalculated up to every 3 s. 
-     *     If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
-     *     This value is mandatory if _hv10MinMeanTripDelay_ is set.
-     * 
-     * 
+     * Voltage threshold for the 10 min time window mean value monitoring.
+     * The 10 min mean is recalculated up to every 3 s.
+     * If the present voltage is above this threshold for more than the time defined by _hv10MinMeanValue_, the EV must trip.
+     * This value is mandatory if _hv10MinMeanTripDelay_ is set.
      */
     public void setHv10MinMeanValue(Float hv10MinMeanValue) {
         this.hv10MinMeanValue = hv10MinMeanValue;
     }
 
     /**
-     * Time for which the voltage is allowed to stay above the 10 min mean value. 
-     *     After this time, the EV must trip.
-     *     This value is mandatory if OverVoltageMeanValue10min is set.
-     * 
-     * 
+     * Time for which the voltage is allowed to stay above the 10 min mean value.
+     * After this time, the EV must trip.
+     * This value is mandatory if OverVoltageMeanValue10min is set.
      */
     public Float getHv10MinMeanTripDelay() {
         return hv10MinMeanTripDelay;
     }
 
     /**
-     * Time for which the voltage is allowed to stay above the 10 min mean value. 
-     *     After this time, the EV must trip.
-     *     This value is mandatory if OverVoltageMeanValue10min is set.
-     * 
-     * 
+     * Time for which the voltage is allowed to stay above the 10 min mean value.
+     * After this time, the EV must trip.
+     * This value is mandatory if OverVoltageMeanValue10min is set.
      */
     public void setHv10MinMeanTripDelay(Float hv10MinMeanTripDelay) {
         this.hv10MinMeanTripDelay = hv10MinMeanTripDelay;
@@ -125,8 +108,6 @@ public class VoltageParams implements JsonInterface {
 
     /**
      * Parameter is only sent, if the EV has to feed-in power or reactive power during fault-ride through (FRT) as defined by HVMomCess curve and LVMomCess curve.
-     * 
-     * 
      */
     public PowerDuringCessationEnum getPowerDuringCessation() {
         return powerDuringCessation;
@@ -134,8 +115,6 @@ public class VoltageParams implements JsonInterface {
 
     /**
      * Parameter is only sent, if the EV has to feed-in power or reactive power during fault-ride through (FRT) as defined by HVMomCess curve and LVMomCess curve.
-     * 
-     * 
      */
     public void setPowerDuringCessation(PowerDuringCessationEnum powerDuringCessation) {
         this.powerDuringCessation = powerDuringCessation;
@@ -172,7 +151,7 @@ public class VoltageParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -181,8 +160,8 @@ public class VoltageParams implements JsonInterface {
             return false;
         VoltageParams that = (VoltageParams) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.hv10MinMeanValue, that.hv10MinMeanValue) 
-                && Objects.equals(this.powerDuringCessation, that.powerDuringCessation) 
+                && Objects.equals(this.hv10MinMeanValue, that.hv10MinMeanValue)
+                && Objects.equals(this.powerDuringCessation, that.powerDuringCessation)
                 && Objects.equals(this.hv10MinMeanTripDelay, that.hv10MinMeanTripDelay);
     }
 

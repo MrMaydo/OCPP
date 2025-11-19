@@ -14,7 +14,7 @@ public class RequestBatterySwapResponse implements JsonInterface {
 
     /**
      * Accepted or rejected the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class RequestBatterySwapResponse implements JsonInterface {
 
     /**
      * Accepted or rejected the request.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class RequestBatterySwapResponse implements JsonInterface {
 
     /**
      * Accepted or rejected the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -115,7 +115,7 @@ public class RequestBatterySwapResponse implements JsonInterface {
             return false;
         RequestBatterySwapResponse that = (RequestBatterySwapResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

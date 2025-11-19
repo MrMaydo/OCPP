@@ -18,8 +18,8 @@ public class VariableAttribute implements JsonInterface {
     private AttributeEnum type = AttributeEnum.fromValue("Actual");
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     @Optional
     private String value;
@@ -51,18 +51,14 @@ public class VariableAttribute implements JsonInterface {
     }
 
     /**
-     * 
-     * @param constant
-     *     If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
-     *     .
-     * @param persistent
-     *     If true, value will be persistent across system reboots or power down. Default when omitted is false.
-     *     .
-     * @param value
-     *     Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     *     
-     *     The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
-     *     .
+     * @param constant   If true, value that will never be changed by the Charging Station at runtime. Default when omitted is false.
+     *                   .
+     * @param persistent If true, value will be persistent across system reboots or power down. Default when omitted is false.
+     *                   .
+     * @param value      Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
+     *                   <p>
+     *                   The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     *                   .
      */
     public VariableAttribute(AttributeEnum type, String value, MutabilityEnum mutability, Boolean persistent, Boolean constant, CustomData customData) {
         super();
@@ -92,8 +88,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     public String getValue() {
         return value;
@@ -101,8 +97,8 @@ public class VariableAttribute implements JsonInterface {
 
     /**
      * Value of the attribute. May only be omitted when mutability is set to 'WriteOnly'.
-     * 
-     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal. 
+     * <p>
+     * The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
      */
     public void setValue(String value) {
         this.value = value;
@@ -181,7 +177,7 @@ public class VariableAttribute implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -190,10 +186,10 @@ public class VariableAttribute implements JsonInterface {
             return false;
         VariableAttribute that = (VariableAttribute) obj;
         return Objects.equals(this.constant, that.constant)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.mutability, that.mutability) 
-                && Objects.equals(this.type, that.type) 
-                && Objects.equals(this.persistent, that.persistent) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.mutability, that.mutability)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.persistent, that.persistent)
                 && Objects.equals(this.value, that.value);
     }
 

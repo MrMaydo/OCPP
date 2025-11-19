@@ -23,36 +23,36 @@ public class SetMonitoringResult implements JsonInterface {
     private StatusInfo statusInfo;
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private SetMonitoringStatusEnum status;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private MonitorEnum type;
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Variable variable;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -74,8 +74,8 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -93,36 +93,33 @@ public class SetMonitoringResult implements JsonInterface {
     }
 
     /**
-     * 
-     * @param severity
-     *     The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     *     
-     *     The severity levels have the following meaning: +
-     *     *0-Danger* +
-     *     Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     *     *1-Hardware Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     *     *2-System Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     *     *3-Critical* +
-     *     Indicates a critical error. Action is required. +
-     *     *4-Error* +
-     *     Indicates a non-urgent error. Action is required. +
-     *     *5-Alert* +
-     *     Indicates an alert event. Default severity for any type of monitoring event.  +
-     *     *6-Warning* +
-     *     Indicates a warning event. Action may be required. +
-     *     *7-Notice* +
-     *     Indicates an unusual event. No immediate action is required. +
-     *     *8-Informational* +
-     *     Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     *     *9-Debug* +
-     *     Indicates information useful to developers for debugging, not useful during operations.
-     *     
-     *     .
-     * @param id
-     *     Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
-     *     .
+     * @param severity The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     *                 <p>
+     *                 The severity levels have the following meaning: +
+     *                 *0-Danger* +
+     *                 Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
+     *                 *1-Hardware Failure* +
+     *                 Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
+     *                 *2-System Failure* +
+     *                 Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
+     *                 *3-Critical* +
+     *                 Indicates a critical error. Action is required. +
+     *                 *4-Error* +
+     *                 Indicates a non-urgent error. Action is required. +
+     *                 *5-Alert* +
+     *                 Indicates an alert event. Default severity for any type of monitoring event.  +
+     *                 *6-Warning* +
+     *                 Indicates a warning event. Action may be required. +
+     *                 *7-Notice* +
+     *                 Indicates an unusual event. No immediate action is required. +
+     *                 *8-Informational* +
+     *                 Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
+     *                 *9-Debug* +
+     *                 Indicates information useful to developers for debugging, not useful during operations.
+     *                 <p>
+     *                 .
+     * @param id       Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
+     *                 .
      */
     public SetMonitoringResult(Integer id, StatusInfo statusInfo, SetMonitoringStatusEnum status, MonitorEnum type, Component component, Variable variable, Integer severity, CustomData customData) {
         super();
@@ -166,7 +163,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
      */
     public SetMonitoringStatusEnum getStatus() {
@@ -175,7 +172,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(SetMonitoringStatusEnum status) {
@@ -183,9 +180,9 @@ public class SetMonitoringResult implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     public MonitorEnum getType() {
@@ -193,9 +190,9 @@ public class SetMonitoringResult implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
+     * <p>
      * (Required)
      */
     public void setType(MonitorEnum type) {
@@ -204,7 +201,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -213,7 +210,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -222,7 +219,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -231,7 +228,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -240,7 +237,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -262,8 +259,8 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getSeverity() {
@@ -272,7 +269,7 @@ public class SetMonitoringResult implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -294,8 +291,8 @@ public class SetMonitoringResult implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setSeverity(Integer severity) {
@@ -333,7 +330,7 @@ public class SetMonitoringResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -342,12 +339,12 @@ public class SetMonitoringResult implements JsonInterface {
             return false;
         SetMonitoringResult that = (SetMonitoringResult) obj;
         return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.variable, that.variable) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.type, that.type) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.type, that.type)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -13,7 +13,7 @@ public class PublishFirmwareRequest implements JsonInterface {
     /**
      * This contains a string containing a URI pointing to a
      * location from which to retrieve the firmware.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -27,15 +27,15 @@ public class PublishFirmwareRequest implements JsonInterface {
     @Optional
     private Integer retries;
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     @Required
     private String checksum;
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -63,31 +63,25 @@ public class PublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param retries
-     *     This specifies how many times Charging Station must retry
-     *     to download the firmware before giving up. If this field is not
-     *     present, it is left to Charging Station to decide how many times it wants to retry.
-     *     If the value is 0, it means: no retries.
-     *     .
-     * @param requestId
-     *     The Id of the request.
-     *     .
-     * @param checksum
-     *     The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     *     .
-     * @param location
-     *     This contains a string containing a URI pointing to a
-     *     location from which to retrieve the firmware.
-     *     .
-     * @param retryInterval
-     *     The interval in seconds
-     *     after which a retry may be
-     *     attempted. If this field is not
-     *     present, it is left to Charging
-     *     Station to decide how long to wait
-     *     between attempts.
-     *     .
+     * @param retries       This specifies how many times Charging Station must retry
+     *                      to download the firmware before giving up. If this field is not
+     *                      present, it is left to Charging Station to decide how many times it wants to retry.
+     *                      If the value is 0, it means: no retries.
+     *                      .
+     * @param requestId     The Id of the request.
+     *                      .
+     * @param checksum      The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     *                      .
+     * @param location      This contains a string containing a URI pointing to a
+     *                      location from which to retrieve the firmware.
+     *                      .
+     * @param retryInterval The interval in seconds
+     *                      after which a retry may be
+     *                      attempted. If this field is not
+     *                      present, it is left to Charging
+     *                      Station to decide how long to wait
+     *                      between attempts.
+     *                      .
      */
     public PublishFirmwareRequest(String location, Integer retries, String checksum, Integer requestId, Integer retryInterval, CustomData customData) {
         super();
@@ -102,7 +96,7 @@ public class PublishFirmwareRequest implements JsonInterface {
     /**
      * This contains a string containing a URI pointing to a
      * location from which to retrieve the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public String getLocation() {
@@ -112,7 +106,7 @@ public class PublishFirmwareRequest implements JsonInterface {
     /**
      * This contains a string containing a URI pointing to a
      * location from which to retrieve the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public void setLocation(String location) {
@@ -140,8 +134,8 @@ public class PublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     public String getChecksum() {
@@ -149,8 +143,8 @@ public class PublishFirmwareRequest implements JsonInterface {
     }
 
     /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32. 
-     * 
+     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     * <p>
      * (Required)
      */
     public void setChecksum(String checksum) {
@@ -159,7 +153,7 @@ public class PublishFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -168,7 +162,7 @@ public class PublishFirmwareRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -239,10 +233,10 @@ public class PublishFirmwareRequest implements JsonInterface {
             return false;
         PublishFirmwareRequest that = (PublishFirmwareRequest) obj;
         return Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.checksum, that.checksum) 
-                && Objects.equals(this.location, that.location) 
-                && Objects.equals(this.retryInterval, that.retryInterval) 
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.checksum, that.checksum)
+                && Objects.equals(this.location, that.location)
+                && Objects.equals(this.retryInterval, that.retryInterval)
                 && Objects.equals(this.customData, that.customData);
     }
 

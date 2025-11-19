@@ -12,7 +12,6 @@ import java.util.Objects;
 public class OpenPeriodicEventStreamRequest implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,7 +35,6 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public ConstantStreamData getConstantStreamData() {
@@ -44,7 +42,6 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setConstantStreamData(ConstantStreamData constantStreamData) {

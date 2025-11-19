@@ -12,7 +12,6 @@ public enum PriorityChargingStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     NO_PROFILE("NoProfile");
-    private final String value;
     private final static Map<String, PriorityChargingStatusEnum> CONSTANTS = new HashMap<String, PriorityChargingStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum PriorityChargingStatusEnum {
         }
     }
 
+    private final String value;
+
     PriorityChargingStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static PriorityChargingStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum PriorityChargingStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

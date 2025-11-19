@@ -13,7 +13,6 @@ public enum DataTransferStatusEnum {
     REJECTED("Rejected"),
     UNKNOWN_MESSAGE_ID("UnknownMessageId"),
     UNKNOWN_VENDOR_ID("UnknownVendorId");
-    private final String value;
     private final static Map<String, DataTransferStatusEnum> CONSTANTS = new HashMap<String, DataTransferStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum DataTransferStatusEnum {
         }
     }
 
+    private final String value;
+
     DataTransferStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DataTransferStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum DataTransferStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

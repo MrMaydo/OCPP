@@ -14,7 +14,7 @@ public class ChangeTransactionTariffResponse implements JsonInterface {
 
     /**
      * Status of the operation
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ChangeTransactionTariffResponse implements JsonInterface {
 
     /**
      * Status of the operation
-     * 
+     * <p>
      * (Required)
      */
     public TariffChangeStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ChangeTransactionTariffResponse implements JsonInterface {
 
     /**
      * Status of the operation
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(TariffChangeStatusEnum status) {
@@ -115,7 +115,7 @@ public class ChangeTransactionTariffResponse implements JsonInterface {
             return false;
         ChangeTransactionTariffResponse that = (ChangeTransactionTariffResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -16,7 +16,7 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -50,7 +50,7 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     public GetInstalledCertificateStatusEnum getStatus() {
@@ -59,7 +59,7 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GetInstalledCertificateStatusEnum status) {
@@ -128,8 +128,8 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
             return false;
         GetInstalledCertificateIdsResponse that = (GetInstalledCertificateIdsResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.certificateHashDataChain, that.certificateHashDataChain) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.certificateHashDataChain, that.certificateHashDataChain)
                 && Objects.equals(this.status, that.status);
     }
 

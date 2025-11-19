@@ -10,30 +10,29 @@ import java.util.Objects;
 public class FixedVarGet implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private FixedVar fixedVar;
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String id;
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Boolean isDefault;
     /**
      * True if this setting is superseded by a lower priority setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -51,18 +50,14 @@ public class FixedVarGet implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True if setting is a default control.
-     *     .
-     * @param isSuperseded
-     *     True if this setting is superseded by a lower priority setting
-     *     
-     *     .
-     * @param id
-     *     Id of setting
-     *     
-     *     .
+     * @param isDefault    True if setting is a default control.
+     *                     .
+     * @param isSuperseded True if this setting is superseded by a lower priority setting
+     *                     <p>
+     *                     .
+     * @param id           Id of setting
+     *                     <p>
+     *                     .
      */
     public FixedVarGet(FixedVar fixedVar, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
         super();
@@ -74,7 +69,6 @@ public class FixedVarGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public FixedVar getFixedVar() {
@@ -82,7 +76,6 @@ public class FixedVarGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setFixedVar(FixedVar fixedVar) {
@@ -91,8 +84,8 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getId() {
@@ -101,8 +94,8 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setId(String id) {
@@ -111,7 +104,7 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     public Boolean getIsDefault() {
@@ -120,7 +113,7 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * True if setting is a default control.
-     * 
+     * <p>
      * (Required)
      */
     public void setIsDefault(Boolean isDefault) {
@@ -129,8 +122,8 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a lower priority setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getIsSuperseded() {
@@ -139,8 +132,8 @@ public class FixedVarGet implements JsonInterface {
 
     /**
      * True if this setting is superseded by a lower priority setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIsSuperseded(Boolean isSuperseded) {
@@ -178,7 +171,7 @@ public class FixedVarGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -187,9 +180,9 @@ public class FixedVarGet implements JsonInterface {
             return false;
         FixedVarGet that = (FixedVarGet) obj;
         return Objects.equals(this.fixedVar, that.fixedVar)
-                && Objects.equals(this.isDefault, that.isDefault) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.isDefault, that.isDefault)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
                 && Objects.equals(this.isSuperseded, that.isSuperseded);
     }
 

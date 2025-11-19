@@ -20,7 +20,6 @@ public enum GridEventFaultEnum {
     UNDER_FREQUENCY("UnderFrequency"),
     UNDER_VOLTAGE("UnderVoltage"),
     VOLTAGE_IMBALANCE("VoltageImbalance");
-    private final String value;
     private final static Map<String, GridEventFaultEnum> CONSTANTS = new HashMap<String, GridEventFaultEnum>();
 
     static {
@@ -29,17 +28,10 @@ public enum GridEventFaultEnum {
         }
     }
 
+    private final String value;
+
     GridEventFaultEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GridEventFaultEnum fromValue(String value) {
@@ -49,6 +41,15 @@ public enum GridEventFaultEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

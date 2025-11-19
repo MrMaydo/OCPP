@@ -12,14 +12,14 @@ public class Firmware implements JsonInterface {
 
     /**
      * URI defining the origin of the firmware.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String location;
     /**
      * Date and time at which the firmware shall be retrieved.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -53,23 +53,17 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * 
-     * @param signingCertificate
-     *     Certificate with which the firmware was signed.
-     *     PEM encoded X.509 certificate.
-     *     .
-     * @param retrieveDateTime
-     *     Date and time at which the firmware shall be retrieved.
-     *     .
-     * @param signature
-     *     Base64 encoded firmware signature.
-     *     .
-     * @param location
-     *     URI defining the origin of the firmware.
-     *     .
-     * @param installDateTime
-     *     Date and time at which the firmware shall be installed.
-     *     .
+     * @param signingCertificate Certificate with which the firmware was signed.
+     *                           PEM encoded X.509 certificate.
+     *                           .
+     * @param retrieveDateTime   Date and time at which the firmware shall be retrieved.
+     *                           .
+     * @param signature          Base64 encoded firmware signature.
+     *                           .
+     * @param location           URI defining the origin of the firmware.
+     *                           .
+     * @param installDateTime    Date and time at which the firmware shall be installed.
+     *                           .
      */
     public Firmware(String location, Date retrieveDateTime, Date installDateTime, String signingCertificate, String signature, CustomData customData) {
         super();
@@ -83,7 +77,7 @@ public class Firmware implements JsonInterface {
 
     /**
      * URI defining the origin of the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public String getLocation() {
@@ -92,7 +86,7 @@ public class Firmware implements JsonInterface {
 
     /**
      * URI defining the origin of the firmware.
-     * 
+     * <p>
      * (Required)
      */
     public void setLocation(String location) {
@@ -101,7 +95,7 @@ public class Firmware implements JsonInterface {
 
     /**
      * Date and time at which the firmware shall be retrieved.
-     * 
+     * <p>
      * (Required)
      */
     public Date getRetrieveDateTime() {
@@ -110,7 +104,7 @@ public class Firmware implements JsonInterface {
 
     /**
      * Date and time at which the firmware shall be retrieved.
-     * 
+     * <p>
      * (Required)
      */
     public void setRetrieveDateTime(Date retrieveDateTime) {
@@ -192,7 +186,7 @@ public class Firmware implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -201,10 +195,10 @@ public class Firmware implements JsonInterface {
             return false;
         Firmware that = (Firmware) obj;
         return Objects.equals(this.signingCertificate, that.signingCertificate)
-                && Objects.equals(this.retrieveDateTime, that.retrieveDateTime) 
-                && Objects.equals(this.signature, that.signature) 
-                && Objects.equals(this.location, that.location) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.retrieveDateTime, that.retrieveDateTime)
+                && Objects.equals(this.signature, that.signature)
+                && Objects.equals(this.location, that.location)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.installDateTime, that.installDateTime);
     }
 

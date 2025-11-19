@@ -16,7 +16,7 @@ public class GetReportRequest implements JsonInterface {
     private List<ComponentVariable> componentVariable;
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +39,10 @@ public class GetReportRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param componentCriteria
-     *     This field contains criteria for components for which a report is requested
-     *     .
-     * @param requestId
-     *     The Id of the request.
-     *     .
+     * @param componentCriteria This field contains criteria for components for which a report is requested
+     *                          .
+     * @param requestId         The Id of the request.
+     *                          .
      */
     public GetReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<ComponentCriterionEnum> componentCriteria, CustomData customData) {
         super();
@@ -65,7 +62,7 @@ public class GetReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -74,7 +71,7 @@ public class GetReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -135,8 +132,8 @@ public class GetReportRequest implements JsonInterface {
             return false;
         GetReportRequest that = (GetReportRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.componentVariable, that.componentVariable) 
-                && Objects.equals(this.componentCriteria, that.componentCriteria) 
+                && Objects.equals(this.componentVariable, that.componentVariable)
+                && Objects.equals(this.componentCriteria, that.componentCriteria)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

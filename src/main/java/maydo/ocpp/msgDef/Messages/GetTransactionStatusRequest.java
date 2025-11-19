@@ -27,10 +27,8 @@ public class GetTransactionStatusRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param transactionId
-     *     The Id of the transaction for which the status is requested.
-     *     .
+     * @param transactionId The Id of the transaction for which the status is requested.
+     *                      .
      */
     public GetTransactionStatusRequest(String transactionId, CustomData customData) {
         super();

@@ -8,7 +8,6 @@ public enum TariffClearStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     NO_TARIFF("NoTariff");
-    private final String value;
     private final static Map<String, TariffClearStatusEnum> CONSTANTS = new HashMap<String, TariffClearStatusEnum>();
 
     static {
@@ -17,17 +16,10 @@ public enum TariffClearStatusEnum {
         }
     }
 
+    private final String value;
+
     TariffClearStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TariffClearStatusEnum fromValue(String value) {
@@ -37,6 +29,15 @@ public enum TariffClearStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

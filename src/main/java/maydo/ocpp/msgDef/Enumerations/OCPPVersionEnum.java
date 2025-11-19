@@ -15,7 +15,6 @@ public enum OCPPVersionEnum {
     OCPP_20("OCPP20"),
     OCPP_201("OCPP201"),
     OCPP_21("OCPP21");
-    private final String value;
     private final static Map<String, OCPPVersionEnum> CONSTANTS = new HashMap<String, OCPPVersionEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum OCPPVersionEnum {
         }
     }
 
+    private final String value;
+
     OCPPVersionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OCPPVersionEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum OCPPVersionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

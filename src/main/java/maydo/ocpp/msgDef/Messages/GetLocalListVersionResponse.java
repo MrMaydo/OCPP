@@ -12,7 +12,7 @@ public class GetLocalListVersionResponse implements JsonInterface {
 
     /**
      * This contains the current version number of the local authorization list in the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class GetLocalListVersionResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param versionNumber
-     *     This contains the current version number of the local authorization list in the Charging Station.
-     *     .
+     * @param versionNumber This contains the current version number of the local authorization list in the Charging Station.
+     *                      .
      */
     public GetLocalListVersionResponse(Integer versionNumber, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class GetLocalListVersionResponse implements JsonInterface {
 
     /**
      * This contains the current version number of the local authorization list in the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getVersionNumber() {
@@ -52,7 +50,7 @@ public class GetLocalListVersionResponse implements JsonInterface {
 
     /**
      * This contains the current version number of the local authorization list in the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setVersionNumber(Integer versionNumber) {

@@ -13,14 +13,14 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String type;
     /**
      * Date and time at which the event occurred.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -43,16 +43,12 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param type
-     *     Type of the security event. This value should be taken from the Security events list.
-     *     .
-     * @param techInfo
-     *     Additional information about the occurred security event.
-     *     .
-     * @param timestamp
-     *     Date and time at which the event occurred.
-     *     .
+     * @param type      Type of the security event. This value should be taken from the Security events list.
+     *                  .
+     * @param techInfo  Additional information about the occurred security event.
+     *                  .
+     * @param timestamp Date and time at which the event occurred.
+     *                  .
      */
     public SecurityEventNotificationRequest(String type, Date timestamp, String techInfo, CustomData customData) {
         super();
@@ -64,7 +60,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * 
+     * <p>
      * (Required)
      */
     public String getType() {
@@ -73,7 +69,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * 
+     * <p>
      * (Required)
      */
     public void setType(String type) {
@@ -82,7 +78,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Date and time at which the event occurred.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -91,7 +87,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Date and time at which the event occurred.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -152,8 +148,8 @@ public class SecurityEventNotificationRequest implements JsonInterface {
             return false;
         SecurityEventNotificationRequest that = (SecurityEventNotificationRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type) 
-                && Objects.equals(this.techInfo, that.techInfo) 
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.techInfo, that.techInfo)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

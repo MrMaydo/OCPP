@@ -19,14 +19,13 @@ public class TriggerMessageRequest implements JsonInterface {
     private EVSE evse;
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private MessageTriggerEnum requestedMessage;
     /**
      * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     * 
      */
     @Optional
     private String customTrigger;
@@ -43,11 +42,9 @@ public class TriggerMessageRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param customTrigger
-     *     *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     *     
-     *     .
+     * @param customTrigger *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
+     *                      <p>
+     *                      .
      */
     public TriggerMessageRequest(EVSE evse, MessageTriggerEnum requestedMessage, String customTrigger, CustomData customData) {
         super();
@@ -73,7 +70,7 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
      */
     public MessageTriggerEnum getRequestedMessage() {
@@ -82,7 +79,7 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * Type of message to be triggered.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestedMessage(MessageTriggerEnum requestedMessage) {
@@ -91,7 +88,6 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     * 
      */
     public String getCustomTrigger() {
         return customTrigger;
@@ -99,7 +95,6 @@ public class TriggerMessageRequest implements JsonInterface {
 
     /**
      * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     * 
      */
     public void setCustomTrigger(String customTrigger) {
         this.customTrigger = customTrigger;
@@ -145,8 +140,8 @@ public class TriggerMessageRequest implements JsonInterface {
             return false;
         TriggerMessageRequest that = (TriggerMessageRequest) obj;
         return Objects.equals(this.customTrigger, that.customTrigger)
-                && Objects.equals(this.requestedMessage, that.requestedMessage) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.requestedMessage, that.requestedMessage)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.evse, that.evse);
     }
 

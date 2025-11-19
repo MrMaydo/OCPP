@@ -12,15 +12,14 @@ public class VatNumberValidationRequest implements JsonInterface {
 
     /**
      * VAT number to check.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String vatNumber;
     /**
      * EVSE id for which check is done
-     * 
      */
     @Optional
     private Integer evseId;
@@ -37,15 +36,12 @@ public class VatNumberValidationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE id for which check is done
-     *     
-     *     .
-     * @param vatNumber
-     *     VAT number to check.
-     *     
-     *     .
+     * @param evseId    EVSE id for which check is done
+     *                  <p>
+     *                  .
+     * @param vatNumber VAT number to check.
+     *                  <p>
+     *                  .
      */
     public VatNumberValidationRequest(String vatNumber, Integer evseId, CustomData customData) {
         super();
@@ -56,8 +52,8 @@ public class VatNumberValidationRequest implements JsonInterface {
 
     /**
      * VAT number to check.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getVatNumber() {
@@ -66,8 +62,8 @@ public class VatNumberValidationRequest implements JsonInterface {
 
     /**
      * VAT number to check.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setVatNumber(String vatNumber) {
@@ -76,7 +72,6 @@ public class VatNumberValidationRequest implements JsonInterface {
 
     /**
      * EVSE id for which check is done
-     * 
      */
     public Integer getEvseId() {
         return evseId;
@@ -84,7 +79,6 @@ public class VatNumberValidationRequest implements JsonInterface {
 
     /**
      * EVSE id for which check is done
-     * 
      */
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
@@ -130,7 +124,7 @@ public class VatNumberValidationRequest implements JsonInterface {
             return false;
         VatNumberValidationRequest that = (VatNumberValidationRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.vatNumber, that.vatNumber);
     }
 

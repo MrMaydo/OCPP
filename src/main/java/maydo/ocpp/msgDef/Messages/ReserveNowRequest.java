@@ -14,14 +14,14 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Id of reservation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer id;
     /**
      * Date and time at which the reservation expires.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -33,7 +33,7 @@ public class ReserveNowRequest implements JsonInterface {
     private String connectorType;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -61,19 +61,14 @@ public class ReserveNowRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     This contains ID of the evse to be reserved.
-     *     .
-     * @param connectorType
-     *     This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
-     *     .
-     * @param id
-     *     Id of reservation.
-     *     .
-     * @param expiryDateTime
-     *     Date and time at which the reservation expires.
-     *     .
+     * @param evseId         This contains ID of the evse to be reserved.
+     *                       .
+     * @param connectorType  This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
+     *                       .
+     * @param id             Id of reservation.
+     *                       .
+     * @param expiryDateTime Date and time at which the reservation expires.
+     *                       .
      */
     public ReserveNowRequest(Integer id, Date expiryDateTime, String connectorType, IdToken idToken, Integer evseId, IdToken groupIdToken, CustomData customData) {
         super();
@@ -88,7 +83,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Id of reservation.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -97,7 +92,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Id of reservation.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -106,7 +101,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Date and time at which the reservation expires.
-     * 
+     * <p>
      * (Required)
      */
     public Date getExpiryDateTime() {
@@ -115,7 +110,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Date and time at which the reservation expires.
-     * 
+     * <p>
      * (Required)
      */
     public void setExpiryDateTime(Date expiryDateTime) {
@@ -138,7 +133,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -147,7 +142,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -222,11 +217,11 @@ public class ReserveNowRequest implements JsonInterface {
             return false;
         ReserveNowRequest that = (ReserveNowRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.connectorType, that.connectorType) 
-                && Objects.equals(this.idToken, that.idToken) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.expiryDateTime, that.expiryDateTime) 
+                && Objects.equals(this.connectorType, that.connectorType)
+                && Objects.equals(this.idToken, that.idToken)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.expiryDateTime, that.expiryDateTime)
                 && Objects.equals(this.groupIdToken, that.groupIdToken);
     }
 

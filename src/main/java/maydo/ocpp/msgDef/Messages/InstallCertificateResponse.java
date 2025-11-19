@@ -14,7 +14,7 @@ public class InstallCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if installation was successful.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class InstallCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if installation was successful.
-     * 
+     * <p>
      * (Required)
      */
     public InstallCertificateStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class InstallCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if installation was successful.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(InstallCertificateStatusEnum status) {
@@ -115,7 +115,7 @@ public class InstallCertificateResponse implements JsonInterface {
             return false;
         InstallCertificateResponse that = (InstallCertificateResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

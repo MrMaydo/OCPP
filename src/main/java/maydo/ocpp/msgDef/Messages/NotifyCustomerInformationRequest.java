@@ -13,7 +13,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -25,22 +25,22 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer seqNo;
     /**
-     *  Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * Timestamp of the moment this message was generated at the Charging Station.
+     * <p>
      * (Required)
      */
     @Required
     private Date generatedAt;
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -58,23 +58,17 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param data
-     *     (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
-     *     .
-     * @param tbc
-     *     “to be continued” indicator. Indicates whether another part of the monitoringData follows in an upcoming notifyMonitoringReportRequest message. Default value when omitted is false.
-     *     .
-     * @param seqNo
-     *     Sequence number of this message. First message starts at 0.
-     *     .
-     * @param requestId
-     *     The Id of the request.
-     *     
-     *     .
-     * @param generatedAt
-     *      Timestamp of the moment this message was generated at the Charging Station.
-     *     .
+     * @param data        (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
+     *                    .
+     * @param tbc         “to be continued” indicator. Indicates whether another part of the monitoringData follows in an upcoming notifyMonitoringReportRequest message. Default value when omitted is false.
+     *                    .
+     * @param seqNo       Sequence number of this message. First message starts at 0.
+     *                    .
+     * @param requestId   The Id of the request.
+     *                    <p>
+     *                    .
+     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
+     *                    .
      */
     public NotifyCustomerInformationRequest(String data, Boolean tbc, Integer seqNo, Date generatedAt, Integer requestId, CustomData customData) {
         super();
@@ -88,7 +82,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
-     * 
+     * <p>
      * (Required)
      */
     public String getData() {
@@ -97,7 +91,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * (Part of) the requested data. No format specified in which the data is returned. Should be human readable.
-     * 
+     * <p>
      * (Required)
      */
     public void setData(String data) {
@@ -120,7 +114,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeqNo() {
@@ -129,7 +123,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeqNo(Integer seqNo) {
@@ -137,8 +131,8 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     }
 
     /**
-     *  Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * Timestamp of the moment this message was generated at the Charging Station.
+     * <p>
      * (Required)
      */
     public Date getGeneratedAt() {
@@ -146,8 +140,8 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     }
 
     /**
-     *  Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * Timestamp of the moment this message was generated at the Charging Station.
+     * <p>
      * (Required)
      */
     public void setGeneratedAt(Date generatedAt) {
@@ -156,8 +150,8 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -166,8 +160,8 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -214,10 +208,10 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
             return false;
         NotifyCustomerInformationRequest that = (NotifyCustomerInformationRequest) obj;
         return Objects.equals(this.data, that.data)
-                && Objects.equals(this.tbc, that.tbc) 
-                && Objects.equals(this.seqNo, that.seqNo) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.generatedAt, that.generatedAt) 
+                && Objects.equals(this.tbc, that.tbc)
+                && Objects.equals(this.seqNo, that.seqNo)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.generatedAt, that.generatedAt)
                 && Objects.equals(this.customData, that.customData);
     }
 

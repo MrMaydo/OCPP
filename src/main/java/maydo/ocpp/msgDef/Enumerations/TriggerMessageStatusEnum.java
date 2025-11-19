@@ -12,7 +12,6 @@ public enum TriggerMessageStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     NOT_IMPLEMENTED("NotImplemented");
-    private final String value;
     private final static Map<String, TriggerMessageStatusEnum> CONSTANTS = new HashMap<String, TriggerMessageStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum TriggerMessageStatusEnum {
         }
     }
 
+    private final String value;
+
     TriggerMessageStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TriggerMessageStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum TriggerMessageStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

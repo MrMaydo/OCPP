@@ -14,7 +14,7 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -22,14 +22,14 @@ public class GetLogRequest implements JsonInterface {
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private LogEnum logType;
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -57,16 +57,12 @@ public class GetLogRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param retries
-     *     This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
-     *     .
-     * @param requestId
-     *     The Id of this request
-     *     .
-     * @param retryInterval
-     *     The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     *     .
+     * @param retries       This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
+     *                      .
+     * @param requestId     The Id of this request
+     *                      .
+     * @param retryInterval The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
+     *                      .
      */
     public GetLogRequest(LogParameters log, LogEnum logType, Integer requestId, Integer retries, Integer retryInterval, CustomData customData) {
         super();
@@ -80,7 +76,7 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
      */
     public LogParameters getLog() {
@@ -89,7 +85,7 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * Generic class for the configuration of logging entries.
-     * 
+     * <p>
      * (Required)
      */
     public void setLog(LogParameters log) {
@@ -99,7 +95,7 @@ public class GetLogRequest implements JsonInterface {
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
      */
     public LogEnum getLogType() {
@@ -109,7 +105,7 @@ public class GetLogRequest implements JsonInterface {
     /**
      * This contains the type of log file that the Charging Station
      * should send.
-     * 
+     * <p>
      * (Required)
      */
     public void setLogType(LogEnum logType) {
@@ -118,7 +114,7 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -127,7 +123,7 @@ public class GetLogRequest implements JsonInterface {
 
     /**
      * The Id of this request
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -202,10 +198,10 @@ public class GetLogRequest implements JsonInterface {
             return false;
         GetLogRequest that = (GetLogRequest) obj;
         return Objects.equals(this.logType, that.logType)
-                && Objects.equals(this.retries, that.retries) 
-                && Objects.equals(this.log, that.log) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.retryInterval, that.retryInterval) 
+                && Objects.equals(this.retries, that.retries)
+                && Objects.equals(this.log, that.log)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.retryInterval, that.retryInterval)
                 && Objects.equals(this.customData, that.customData);
     }
 

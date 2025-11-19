@@ -13,7 +13,6 @@ public enum CertificateStatusEnum {
     REVOKED("Revoked"),
     UNKNOWN("Unknown"),
     FAILED("Failed");
-    private final String value;
     private final static Map<String, CertificateStatusEnum> CONSTANTS = new HashMap<String, CertificateStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum CertificateStatusEnum {
         }
     }
 
+    private final String value;
+
     CertificateStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CertificateStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum CertificateStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

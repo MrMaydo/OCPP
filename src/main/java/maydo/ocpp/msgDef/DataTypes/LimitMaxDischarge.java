@@ -12,19 +12,17 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
      * Only for PowerMonitoring. +
-     *     The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV. 
-     *     The PowerMonitoring curve becomes active when power exceeds this percentage.
-     * 
-     * 
+     * The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV.
+     * The PowerMonitoring curve becomes active when power exceeds this percentage.
      */
     @Optional
     private Float pctMaxDischargePower;
@@ -32,15 +30,11 @@ public class LimitMaxDischarge implements JsonInterface {
     private DERCurve powerMonitoringMustTrip;
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     @Optional
     private Date startTime;
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     @Optional
     private Float duration;
@@ -57,29 +51,24 @@ public class LimitMaxDischarge implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration in seconds that this setting is active
-     *     
-     *     
-     *     .
-     * @param startTime
-     *     Time when this setting becomes active
-     *     
-     *     
-     *     .
-     * @param priority
-     *     Priority of setting (0=highest)
-     *     
-     *     
-     *     .
-     * @param pctMaxDischargePower
-     *     Only for PowerMonitoring. +
-     *         The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV. 
-     *         The PowerMonitoring curve becomes active when power exceeds this percentage.
-     *     
-     *     
-     *     .
+     * @param duration             Duration in seconds that this setting is active
+     *                             <p>
+     *                             <p>
+     *                             .
+     * @param startTime            Time when this setting becomes active
+     *                             <p>
+     *                             <p>
+     *                             .
+     * @param priority             Priority of setting (0=highest)
+     *                             <p>
+     *                             <p>
+     *                             .
+     * @param pctMaxDischargePower Only for PowerMonitoring. +
+     *                             The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV.
+     *                             The PowerMonitoring curve becomes active when power exceeds this percentage.
+     *                             <p>
+     *                             <p>
+     *                             .
      */
     public LimitMaxDischarge(Integer priority, Float pctMaxDischargePower, DERCurve powerMonitoringMustTrip, Date startTime, Float duration, CustomData customData) {
         super();
@@ -93,9 +82,9 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -104,9 +93,9 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -115,10 +104,8 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Only for PowerMonitoring. +
-     *     The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV. 
-     *     The PowerMonitoring curve becomes active when power exceeds this percentage.
-     * 
-     * 
+     * The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV.
+     * The PowerMonitoring curve becomes active when power exceeds this percentage.
      */
     public Float getPctMaxDischargePower() {
         return pctMaxDischargePower;
@@ -126,10 +113,8 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Only for PowerMonitoring. +
-     *     The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV. 
-     *     The PowerMonitoring curve becomes active when power exceeds this percentage.
-     * 
-     * 
+     * The value specifies a percentage (0 to 100) of the rated maximum discharge power of EV.
+     * The PowerMonitoring curve becomes active when power exceeds this percentage.
      */
     public void setPctMaxDischargePower(Float pctMaxDischargePower) {
         this.pctMaxDischargePower = pctMaxDischargePower;
@@ -145,8 +130,6 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     public Date getStartTime() {
         return startTime;
@@ -154,8 +137,6 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
@@ -163,8 +144,6 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     public Float getDuration() {
         return duration;
@@ -172,8 +151,6 @@ public class LimitMaxDischarge implements JsonInterface {
 
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     public void setDuration(Float duration) {
         this.duration = duration;
@@ -210,7 +187,7 @@ public class LimitMaxDischarge implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -219,10 +196,10 @@ public class LimitMaxDischarge implements JsonInterface {
             return false;
         LimitMaxDischarge that = (LimitMaxDischarge) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.powerMonitoringMustTrip, that.powerMonitoringMustTrip) 
-                && Objects.equals(this.startTime, that.startTime) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.priority, that.priority) 
+                && Objects.equals(this.powerMonitoringMustTrip, that.powerMonitoringMustTrip)
+                && Objects.equals(this.startTime, that.startTime)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.priority, that.priority)
                 && Objects.equals(this.pctMaxDischargePower, that.pctMaxDischargePower);
     }
 

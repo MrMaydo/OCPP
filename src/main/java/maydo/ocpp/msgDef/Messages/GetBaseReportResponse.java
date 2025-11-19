@@ -14,7 +14,7 @@ public class GetBaseReportResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to accept this request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class GetBaseReportResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to accept this request.
-     * 
+     * <p>
      * (Required)
      */
     public GenericDeviceModelStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class GetBaseReportResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to accept this request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericDeviceModelStatusEnum status) {
@@ -115,7 +115,7 @@ public class GetBaseReportResponse implements JsonInterface {
             return false;
         GetBaseReportResponse that = (GetBaseReportResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

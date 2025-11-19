@@ -12,7 +12,7 @@ public class APN implements JsonInterface {
 
     /**
      * The Access Point Name as an URL.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class APN implements JsonInterface {
     private Boolean useOnlyPreferredNetwork = false;
     /**
      * Authentication method.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -63,26 +63,19 @@ public class APN implements JsonInterface {
     }
 
     /**
-     * 
-     * @param preferredNetwork
-     *     Preferred network, written as MCC and MNC concatenated. See note.
-     *     .
-     * @param apnUserName
-     *     APN username.
-     *     .
-     * @param useOnlyPreferredNetwork
-     *     Default: false. Use only the preferred Network, do
-     *     not dial in when not available. See Note.
-     *     .
-     * @param simPin
-     *     SIM card pin code.
-     *     .
-     * @param apn
-     *     The Access Point Name as an URL.
-     *     .
-     * @param apnPassword
-     *     *(2.1)* APN Password.
-     *     .
+     * @param preferredNetwork        Preferred network, written as MCC and MNC concatenated. See note.
+     *                                .
+     * @param apnUserName             APN username.
+     *                                .
+     * @param useOnlyPreferredNetwork Default: false. Use only the preferred Network, do
+     *                                not dial in when not available. See Note.
+     *                                .
+     * @param simPin                  SIM card pin code.
+     *                                .
+     * @param apn                     The Access Point Name as an URL.
+     *                                .
+     * @param apnPassword             *(2.1)* APN Password.
+     *                                .
      */
     public APN(String apn, String apnUserName, String apnPassword, Integer simPin, String preferredNetwork, Boolean useOnlyPreferredNetwork, APNAuthenticationEnum apnAuthentication, CustomData customData) {
         super();
@@ -98,7 +91,7 @@ public class APN implements JsonInterface {
 
     /**
      * The Access Point Name as an URL.
-     * 
+     * <p>
      * (Required)
      */
     public String getApn() {
@@ -107,7 +100,7 @@ public class APN implements JsonInterface {
 
     /**
      * The Access Point Name as an URL.
-     * 
+     * <p>
      * (Required)
      */
     public void setApn(String apn) {
@@ -188,7 +181,7 @@ public class APN implements JsonInterface {
 
     /**
      * Authentication method.
-     * 
+     * <p>
      * (Required)
      */
     public APNAuthenticationEnum getApnAuthentication() {
@@ -197,7 +190,7 @@ public class APN implements JsonInterface {
 
     /**
      * Authentication method.
-     * 
+     * <p>
      * (Required)
      */
     public void setApnAuthentication(APNAuthenticationEnum apnAuthentication) {
@@ -235,7 +228,7 @@ public class APN implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

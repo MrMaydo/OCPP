@@ -18,13 +18,13 @@ public class AuthorizeResponse implements JsonInterface {
     /**
      * Contains status information about an identifier.
      * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private IdTokenInfo idTokenInfo;
     /**
-     * Certificate status information. 
+     * Certificate status information.
      * - if all certificates are valid: return 'Accepted'.
      * - if one of the certificates was revoked, return 'CertificateRevoked'.
      */
@@ -32,8 +32,6 @@ public class AuthorizeResponse implements JsonInterface {
     private AuthorizeCertificateStatusEnum certificateStatus;
     /**
      * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     * 
-     * 
      */
     @Optional
     private List<EnergyTransferModeEnum> allowedEnergyTransfer;
@@ -64,12 +62,10 @@ public class AuthorizeResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param allowedEnergyTransfer
-     *     *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     *     
-     *     
-     *     .
+     * @param allowedEnergyTransfer *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
+     *                              <p>
+     *                              <p>
+     *                              .
      */
     public AuthorizeResponse(IdTokenInfo idTokenInfo, AuthorizeCertificateStatusEnum certificateStatus, List<EnergyTransferModeEnum> allowedEnergyTransfer, Tariff tariff, CustomData customData) {
         super();
@@ -83,7 +79,7 @@ public class AuthorizeResponse implements JsonInterface {
     /**
      * Contains status information about an identifier.
      * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * 
+     * <p>
      * (Required)
      */
     public IdTokenInfo getIdTokenInfo() {
@@ -93,7 +89,7 @@ public class AuthorizeResponse implements JsonInterface {
     /**
      * Contains status information about an identifier.
      * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdTokenInfo(IdTokenInfo idTokenInfo) {
@@ -101,7 +97,7 @@ public class AuthorizeResponse implements JsonInterface {
     }
 
     /**
-     * Certificate status information. 
+     * Certificate status information.
      * - if all certificates are valid: return 'Accepted'.
      * - if one of the certificates was revoked, return 'CertificateRevoked'.
      */
@@ -110,7 +106,7 @@ public class AuthorizeResponse implements JsonInterface {
     }
 
     /**
-     * Certificate status information. 
+     * Certificate status information.
      * - if all certificates are valid: return 'Accepted'.
      * - if one of the certificates was revoked, return 'CertificateRevoked'.
      */
@@ -120,8 +116,6 @@ public class AuthorizeResponse implements JsonInterface {
 
     /**
      * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     * 
-     * 
      */
     public List<EnergyTransferModeEnum> getAllowedEnergyTransfer() {
         return allowedEnergyTransfer;
@@ -129,8 +123,6 @@ public class AuthorizeResponse implements JsonInterface {
 
     /**
      * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     * 
-     * 
      */
     public void setAllowedEnergyTransfer(List<EnergyTransferModeEnum> allowedEnergyTransfer) {
         this.allowedEnergyTransfer = allowedEnergyTransfer;
@@ -208,9 +200,9 @@ public class AuthorizeResponse implements JsonInterface {
             return false;
         AuthorizeResponse that = (AuthorizeResponse) obj;
         return Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.certificateStatus, that.certificateStatus) 
-                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.certificateStatus, that.certificateStatus)
+                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer)
                 && Objects.equals(this.idTokenInfo, that.idTokenInfo);
     }
 

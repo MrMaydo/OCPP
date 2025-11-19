@@ -14,14 +14,13 @@ public class SignCertificateRequest implements JsonInterface {
 
     /**
      * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String csr;
     /**
      * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     * 
      */
     @Optional
     private CertificateSigningUseEnum certificateType;
@@ -45,13 +44,10 @@ public class SignCertificateRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param csr
-     *     The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     *     .
-     * @param requestId
-     *     *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     *     .
+     * @param csr       The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
+     *                  .
+     * @param requestId *(2.1)* RequestId to match this message with the CertificateSignedRequest.
+     *                  .
      */
     public SignCertificateRequest(String csr, CertificateSigningUseEnum certificateType, CertificateHashData hashRootCertificate, Integer requestId, CustomData customData) {
         super();
@@ -64,7 +60,7 @@ public class SignCertificateRequest implements JsonInterface {
 
     /**
      * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * 
+     * <p>
      * (Required)
      */
     public String getCsr() {
@@ -73,7 +69,7 @@ public class SignCertificateRequest implements JsonInterface {
 
     /**
      * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * 
+     * <p>
      * (Required)
      */
     public void setCsr(String csr) {
@@ -82,7 +78,6 @@ public class SignCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     * 
      */
     public CertificateSigningUseEnum getCertificateType() {
         return certificateType;
@@ -90,7 +85,6 @@ public class SignCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     * 
      */
     public void setCertificateType(CertificateSigningUseEnum certificateType) {
         this.certificateType = certificateType;
@@ -158,9 +152,9 @@ public class SignCertificateRequest implements JsonInterface {
             return false;
         SignCertificateRequest that = (SignCertificateRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.csr, that.csr) 
-                && Objects.equals(this.hashRootCertificate, that.hashRootCertificate) 
-                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.csr, that.csr)
+                && Objects.equals(this.hashRootCertificate, that.hashRootCertificate)
+                && Objects.equals(this.requestId, that.requestId)
                 && Objects.equals(this.certificateType, that.certificateType);
     }
 

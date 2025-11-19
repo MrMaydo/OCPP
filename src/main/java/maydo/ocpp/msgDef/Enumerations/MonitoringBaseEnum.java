@@ -12,7 +12,6 @@ public enum MonitoringBaseEnum {
     ALL("All"),
     FACTORY_DEFAULT("FactoryDefault"),
     HARD_WIRED_ONLY("HardWiredOnly");
-    private final String value;
     private final static Map<String, MonitoringBaseEnum> CONSTANTS = new HashMap<String, MonitoringBaseEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum MonitoringBaseEnum {
         }
     }
 
+    private final String value;
+
     MonitoringBaseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MonitoringBaseEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum MonitoringBaseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

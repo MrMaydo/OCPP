@@ -10,7 +10,6 @@ public enum TariffSetStatusEnum {
     TOO_MANY_ELEMENTS("TooManyElements"),
     CONDITION_NOT_SUPPORTED("ConditionNotSupported"),
     DUPLICATE_TARIFF_ID("DuplicateTariffId");
-    private final String value;
     private final static Map<String, TariffSetStatusEnum> CONSTANTS = new HashMap<String, TariffSetStatusEnum>();
 
     static {
@@ -19,17 +18,10 @@ public enum TariffSetStatusEnum {
         }
     }
 
+    private final String value;
+
     TariffSetStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TariffSetStatusEnum fromValue(String value) {
@@ -39,6 +31,15 @@ public enum TariffSetStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

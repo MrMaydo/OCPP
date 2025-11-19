@@ -9,7 +9,6 @@ public enum ComponentCriterionEnum {
     AVAILABLE("Available"),
     ENABLED("Enabled"),
     PROBLEM("Problem");
-    private final String value;
     private final static Map<String, ComponentCriterionEnum> CONSTANTS = new HashMap<String, ComponentCriterionEnum>();
 
     static {
@@ -18,17 +17,10 @@ public enum ComponentCriterionEnum {
         }
     }
 
+    private final String value;
+
     ComponentCriterionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ComponentCriterionEnum fromValue(String value) {
@@ -38,6 +30,15 @@ public enum ComponentCriterionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

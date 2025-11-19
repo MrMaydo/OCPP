@@ -13,14 +13,14 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,10 +38,8 @@ public class GetBaseReportRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The Id of the request.
-     *     .
+     * @param requestId The Id of the request.
+     *                  .
      */
     public GetBaseReportRequest(Integer requestId, ReportBaseEnum reportBase, CustomData customData) {
         super();
@@ -52,7 +50,7 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -61,7 +59,7 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -70,7 +68,7 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
      */
     public ReportBaseEnum getReportBase() {
@@ -79,7 +77,7 @@ public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * This field specifies the report base.
-     * 
+     * <p>
      * (Required)
      */
     public void setReportBase(ReportBaseEnum reportBase) {
@@ -126,7 +124,7 @@ public class GetBaseReportRequest implements JsonInterface {
             return false;
         GetBaseReportRequest that = (GetBaseReportRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reportBase, that.reportBase) 
+                && Objects.equals(this.reportBase, that.reportBase)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

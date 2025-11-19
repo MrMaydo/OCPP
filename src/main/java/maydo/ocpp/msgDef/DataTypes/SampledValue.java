@@ -15,8 +15,8 @@ public class SampledValue implements JsonInterface {
 
     /**
      * Indicates the measured value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +38,6 @@ public class SampledValue implements JsonInterface {
     private PhaseEnum phase;
     /**
      * Indicates where the measured value has been sampled. Default =  "Outlet"
-     * 
      */
     @Optional
     private LocationEnum location = LocationEnum.fromValue("Outlet");
@@ -65,11 +64,9 @@ public class SampledValue implements JsonInterface {
     }
 
     /**
-     * 
-     * @param value
-     *     Indicates the measured value.
-     *     
-     *     .
+     * @param value Indicates the measured value.
+     *              <p>
+     *              .
      */
     public SampledValue(Float value, MeasurandEnum measurand, ReadingContextEnum context, PhaseEnum phase, LocationEnum location, SignedMeterValue signedMeterValue, UnitOfMeasure unitOfMeasure, CustomData customData) {
         super();
@@ -85,8 +82,8 @@ public class SampledValue implements JsonInterface {
 
     /**
      * Indicates the measured value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getValue() {
@@ -95,8 +92,8 @@ public class SampledValue implements JsonInterface {
 
     /**
      * Indicates the measured value.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setValue(Float value) {
@@ -147,7 +144,6 @@ public class SampledValue implements JsonInterface {
 
     /**
      * Indicates where the measured value has been sampled. Default =  "Outlet"
-     * 
      */
     public LocationEnum getLocation() {
         return location;
@@ -155,7 +151,6 @@ public class SampledValue implements JsonInterface {
 
     /**
      * Indicates where the measured value has been sampled. Default =  "Outlet"
-     * 
      */
     public void setLocation(LocationEnum location) {
         this.location = location;
@@ -220,7 +215,7 @@ public class SampledValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -229,12 +224,12 @@ public class SampledValue implements JsonInterface {
             return false;
         SampledValue that = (SampledValue) obj;
         return Objects.equals(this.phase, that.phase)
-                && Objects.equals(this.signedMeterValue, that.signedMeterValue) 
-                && Objects.equals(this.unitOfMeasure, that.unitOfMeasure) 
-                && Objects.equals(this.context, that.context) 
-                && Objects.equals(this.measurand, that.measurand) 
-                && Objects.equals(this.location, that.location) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.signedMeterValue, that.signedMeterValue)
+                && Objects.equals(this.unitOfMeasure, that.unitOfMeasure)
+                && Objects.equals(this.context, that.context)
+                && Objects.equals(this.measurand, that.measurand)
+                && Objects.equals(this.location, that.location)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.value, that.value);
     }
 

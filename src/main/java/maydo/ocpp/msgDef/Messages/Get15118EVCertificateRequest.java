@@ -14,15 +14,15 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
      * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private String iso15118SchemaVersion;
     /**
      * Defines whether certificate needs to be installed or updated.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,7 +30,7 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     /**
      * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -59,22 +59,17 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param iso15118SchemaVersion
-     *     Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     *     
-     *     .
-     * @param prioritizedEMAIDs
-     *     *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     *     .
-     * @param exiRequest
-     *     *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     *     Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     *     .
-     * @param maximumContractCertificateChains
-     *     *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     *     Maximum number of contracts that EV wants to install.
-     *     .
+     * @param iso15118SchemaVersion            Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
+     *                                         <p>
+     *                                         .
+     * @param prioritizedEMAIDs                *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
+     *                                         .
+     * @param exiRequest                       *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
+     *                                         Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
+     *                                         .
+     * @param maximumContractCertificateChains *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
+     *                                         Maximum number of contracts that EV wants to install.
+     *                                         .
      */
     public Get15118EVCertificateRequest(String iso15118SchemaVersion, CertificateActionEnum action, String exiRequest, Integer maximumContractCertificateChains, List<String> prioritizedEMAIDs, CustomData customData) {
         super();
@@ -88,8 +83,8 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
      * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getIso15118SchemaVersion() {
@@ -98,8 +93,8 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
      * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIso15118SchemaVersion(String iso15118SchemaVersion) {
@@ -108,7 +103,7 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
      * Defines whether certificate needs to be installed or updated.
-     * 
+     * <p>
      * (Required)
      */
     public CertificateActionEnum getAction() {
@@ -117,7 +112,7 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
      * Defines whether certificate needs to be installed or updated.
-     * 
+     * <p>
      * (Required)
      */
     public void setAction(CertificateActionEnum action) {
@@ -127,7 +122,7 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     /**
      * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * 
+     * <p>
      * (Required)
      */
     public String getExiRequest() {
@@ -137,7 +132,7 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     /**
      * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * 
+     * <p>
      * (Required)
      */
     public void setExiRequest(String exiRequest) {
@@ -214,10 +209,10 @@ public class Get15118EVCertificateRequest implements JsonInterface {
             return false;
         Get15118EVCertificateRequest that = (Get15118EVCertificateRequest) obj;
         return Objects.equals(this.iso15118SchemaVersion, that.iso15118SchemaVersion)
-                && Objects.equals(this.prioritizedEMAIDs, that.prioritizedEMAIDs) 
-                && Objects.equals(this.action, that.action) 
-                && Objects.equals(this.exiRequest, that.exiRequest) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.prioritizedEMAIDs, that.prioritizedEMAIDs)
+                && Objects.equals(this.action, that.action)
+                && Objects.equals(this.exiRequest, that.exiRequest)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.maximumContractCertificateChains, that.maximumContractCertificateChains);
     }
 

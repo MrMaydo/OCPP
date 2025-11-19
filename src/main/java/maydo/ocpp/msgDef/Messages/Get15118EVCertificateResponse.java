@@ -14,7 +14,7 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
      * Indicates whether the message was processed properly.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -27,8 +27,8 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     /**
      * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -51,15 +51,12 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     }
 
     /**
-     * 
-     * @param remainingContracts
-     *     *(2.1)* Number of contracts that can be retrieved with additional requests.
-     *     .
-     * @param exiResponse
-     *     *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
-     *     Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     *     
-     *     .
+     * @param remainingContracts *(2.1)* Number of contracts that can be retrieved with additional requests.
+     *                           .
+     * @param exiResponse        *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
+     *                           Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
+     *                           <p>
+     *                           .
      */
     public Get15118EVCertificateResponse(Iso15118EVCertificateStatusEnum status, StatusInfo statusInfo, String exiResponse, Integer remainingContracts, CustomData customData) {
         super();
@@ -72,7 +69,7 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
      * Indicates whether the message was processed properly.
-     * 
+     * <p>
      * (Required)
      */
     public Iso15118EVCertificateStatusEnum getStatus() {
@@ -81,7 +78,7 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
      * Indicates whether the message was processed properly.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(Iso15118EVCertificateStatusEnum status) {
@@ -105,8 +102,8 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     /**
      * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getExiResponse() {
@@ -116,8 +113,8 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     /**
      * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
      * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setExiResponse(String exiResponse) {
@@ -178,9 +175,9 @@ public class Get15118EVCertificateResponse implements JsonInterface {
             return false;
         Get15118EVCertificateResponse that = (Get15118EVCertificateResponse) obj;
         return Objects.equals(this.remainingContracts, that.remainingContracts)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.exiResponse, that.exiResponse) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.exiResponse, that.exiResponse)
                 && Objects.equals(this.status, that.status);
     }
 

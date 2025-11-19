@@ -21,7 +21,6 @@ public class ClearTariffsResult implements JsonInterface {
     @Optional
     private String tariffId;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -39,10 +38,8 @@ public class ClearTariffsResult implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tariffId
-     *     Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     *     .
+     * @param tariffId Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
+     *                 .
      */
     public ClearTariffsResult(StatusInfo statusInfo, String tariffId, TariffClearStatusEnum status, CustomData customData) {
         super();
@@ -81,7 +78,6 @@ public class ClearTariffsResult implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public TariffClearStatusEnum getStatus() {
@@ -89,7 +85,6 @@ public class ClearTariffsResult implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setStatus(TariffClearStatusEnum status) {
@@ -127,7 +122,7 @@ public class ClearTariffsResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -136,8 +131,8 @@ public class ClearTariffsResult implements JsonInterface {
             return false;
         ClearTariffsResult that = (ClearTariffsResult) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.tariffId, that.tariffId) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.tariffId, that.tariffId)
                 && Objects.equals(this.status, that.status);
     }
 

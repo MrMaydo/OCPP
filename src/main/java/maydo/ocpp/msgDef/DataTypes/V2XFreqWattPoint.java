@@ -9,21 +9,19 @@ import java.util.Objects;
 
 /**
  * *(2.1)* A point of a frequency-watt curve.
- * 
- * 
  */
 public class V2XFreqWattPoint implements JsonInterface {
 
     /**
      * Net frequency in Hz.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float frequency;
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -41,13 +39,10 @@ public class V2XFreqWattPoint implements JsonInterface {
     }
 
     /**
-     * 
-     * @param power
-     *     Power in W to charge (positive) or discharge (negative) at specified frequency.
-     *     .
-     * @param frequency
-     *     Net frequency in Hz.
-     *     .
+     * @param power     Power in W to charge (positive) or discharge (negative) at specified frequency.
+     *                  .
+     * @param frequency Net frequency in Hz.
+     *                  .
      */
     public V2XFreqWattPoint(Float frequency, Float power, CustomData customData) {
         super();
@@ -58,7 +53,7 @@ public class V2XFreqWattPoint implements JsonInterface {
 
     /**
      * Net frequency in Hz.
-     * 
+     * <p>
      * (Required)
      */
     public Float getFrequency() {
@@ -67,7 +62,7 @@ public class V2XFreqWattPoint implements JsonInterface {
 
     /**
      * Net frequency in Hz.
-     * 
+     * <p>
      * (Required)
      */
     public void setFrequency(Float frequency) {
@@ -76,7 +71,7 @@ public class V2XFreqWattPoint implements JsonInterface {
 
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     public Float getPower() {
@@ -85,7 +80,7 @@ public class V2XFreqWattPoint implements JsonInterface {
 
     /**
      * Power in W to charge (positive) or discharge (negative) at specified frequency.
-     * 
+     * <p>
      * (Required)
      */
     public void setPower(Float power) {
@@ -123,7 +118,7 @@ public class V2XFreqWattPoint implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -132,7 +127,7 @@ public class V2XFreqWattPoint implements JsonInterface {
             return false;
         V2XFreqWattPoint that = (V2XFreqWattPoint) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.power, that.power) 
+                && Objects.equals(this.power, that.power)
                 && Objects.equals(this.frequency, that.frequency);
     }
 

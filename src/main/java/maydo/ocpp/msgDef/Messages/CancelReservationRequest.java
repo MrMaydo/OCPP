@@ -12,7 +12,7 @@ public class CancelReservationRequest implements JsonInterface {
 
     /**
      * Id of the reservation to cancel.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class CancelReservationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param reservationId
-     *     Id of the reservation to cancel.
-     *     .
+     * @param reservationId Id of the reservation to cancel.
+     *                      .
      */
     public CancelReservationRequest(Integer reservationId, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class CancelReservationRequest implements JsonInterface {
 
     /**
      * Id of the reservation to cancel.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getReservationId() {
@@ -52,7 +50,7 @@ public class CancelReservationRequest implements JsonInterface {
 
     /**
      * Id of the reservation to cancel.
-     * 
+     * <p>
      * (Required)
      */
     public void setReservationId(Integer reservationId) {

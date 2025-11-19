@@ -7,7 +7,6 @@ import java.util.Map;
 /**
  * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
  * MAY only be omitted when _stoppedReason_ is "Local"
- * 
  */
 public enum ReasonEnum {
 
@@ -31,7 +30,6 @@ public enum ReasonEnum {
     TIME_LIMIT_REACHED("TimeLimitReached"),
     TIMEOUT("Timeout"),
     REQ_ENERGY_TRANSFER_REJECTED("ReqEnergyTransferRejected");
-    private final String value;
     private final static Map<String, ReasonEnum> CONSTANTS = new HashMap<String, ReasonEnum>();
 
     static {
@@ -40,17 +38,10 @@ public enum ReasonEnum {
         }
     }
 
+    private final String value;
+
     ReasonEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ReasonEnum fromValue(String value) {
@@ -60,6 +51,15 @@ public enum ReasonEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

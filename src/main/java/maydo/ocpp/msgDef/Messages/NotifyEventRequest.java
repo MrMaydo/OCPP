@@ -15,25 +15,24 @@ public class NotifyEventRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date generatedAt;
     /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false. 
+     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
      */
     @Optional
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer seqNo;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -51,16 +50,12 @@ public class NotifyEventRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tbc
-     *     “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false. 
-     *     .
-     * @param seqNo
-     *     Sequence number of this message. First message starts at 0.
-     *     .
-     * @param generatedAt
-     *     Timestamp of the moment this message was generated at the Charging Station.
-     *     .
+     * @param tbc         “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
+     *                    .
+     * @param seqNo       Sequence number of this message. First message starts at 0.
+     *                    .
+     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
+     *                    .
      */
     public NotifyEventRequest(Date generatedAt, Boolean tbc, Integer seqNo, List<EventData> eventData, CustomData customData) {
         super();
@@ -73,7 +68,7 @@ public class NotifyEventRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Date getGeneratedAt() {
@@ -82,7 +77,7 @@ public class NotifyEventRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setGeneratedAt(Date generatedAt) {
@@ -90,14 +85,14 @@ public class NotifyEventRequest implements JsonInterface {
     }
 
     /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false. 
+     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
      */
     public Boolean getTbc() {
         return tbc;
     }
 
     /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false. 
+     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
      */
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
@@ -105,7 +100,7 @@ public class NotifyEventRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeqNo() {
@@ -114,7 +109,7 @@ public class NotifyEventRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeqNo(Integer seqNo) {
@@ -122,7 +117,6 @@ public class NotifyEventRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<EventData> getEventData() {
@@ -130,7 +124,6 @@ public class NotifyEventRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEventData(List<EventData> eventData) {
@@ -177,9 +170,9 @@ public class NotifyEventRequest implements JsonInterface {
             return false;
         NotifyEventRequest that = (NotifyEventRequest) obj;
         return Objects.equals(this.generatedAt, that.generatedAt)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.eventData, that.eventData) 
-                && Objects.equals(this.tbc, that.tbc) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.eventData, that.eventData)
+                && Objects.equals(this.tbc, that.tbc)
                 && Objects.equals(this.seqNo, that.seqNo);
     }
 

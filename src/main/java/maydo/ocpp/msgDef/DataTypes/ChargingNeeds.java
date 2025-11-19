@@ -16,31 +16,29 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * EV AC charging parameters for ISO 15118-2
-     * 
      */
     @Optional
     private ACChargingParameters acChargingParameters;
     /**
      * *(2.1)* DERChargingParametersType is used in ChargingNeedsType during an ISO 15118-20 session for AC_BPT_DER to report the inverter settings related to DER control that were agreed between EVSE and EV.
-     * 
+     * <p>
      * Fields starting with "ev" contain values from the EV.
      * Other fields contain a value that is supported by both EV and EVSE.
-     * 
+     * <p>
      * DERChargingParametersType type is only relevant in case of an ISO 15118-20 AC_BPT_DER/AC_DER charging session.
-     * 
+     * <p>
      * NOTE: All these fields have values greater or equal to zero (i.e. are non-negative)
-     * 
      */
     @Optional
     private DERChargingParameters derChargingParameters;
     /**
-     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge. 
+     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
      */
     @Optional
     private EVEnergyOffer evEnergyOffer;
     /**
      * Mode of energy transfer requested by the EV.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -96,15 +94,12 @@ public class ChargingNeeds implements JsonInterface {
     }
 
     /**
-     * 
-     * @param departureTime
-     *     Estimated departure time of the EV. +
-     *     *ISO 15118-2:* AC/DC_EVChargeParameterType: DepartureTime +
-     *     *ISO 15118-20:* Dynamic/Scheduled_SEReqControlModeType: DepartureTIme
-     *     .
-     * @param availableEnergyTransfer
-     *     *(2.1)* Modes of energy transfer that are marked as available by EV.
-     *     .
+     * @param departureTime           Estimated departure time of the EV. +
+     *                                *ISO 15118-2:* AC/DC_EVChargeParameterType: DepartureTime +
+     *                                *ISO 15118-20:* Dynamic/Scheduled_SEReqControlModeType: DepartureTIme
+     *                                .
+     * @param availableEnergyTransfer *(2.1)* Modes of energy transfer that are marked as available by EV.
+     *                                .
      */
     public ChargingNeeds(ACChargingParameters acChargingParameters, DERChargingParameters derChargingParameters, EVEnergyOffer evEnergyOffer, EnergyTransferModeEnum requestedEnergyTransfer, DCChargingParameters dcChargingParameters, V2XChargingParameters v2xChargingParameters, List<EnergyTransferModeEnum> availableEnergyTransfer, ControlModeEnum controlMode, MobilityNeedsModeEnum mobilityNeedsMode, Date departureTime, CustomData customData) {
         super();
@@ -123,7 +118,6 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * EV AC charging parameters for ISO 15118-2
-     * 
      */
     public ACChargingParameters getAcChargingParameters() {
         return acChargingParameters;
@@ -131,7 +125,6 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * EV AC charging parameters for ISO 15118-2
-     * 
      */
     public void setAcChargingParameters(ACChargingParameters acChargingParameters) {
         this.acChargingParameters = acChargingParameters;
@@ -139,14 +132,13 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * *(2.1)* DERChargingParametersType is used in ChargingNeedsType during an ISO 15118-20 session for AC_BPT_DER to report the inverter settings related to DER control that were agreed between EVSE and EV.
-     * 
+     * <p>
      * Fields starting with "ev" contain values from the EV.
      * Other fields contain a value that is supported by both EV and EVSE.
-     * 
+     * <p>
      * DERChargingParametersType type is only relevant in case of an ISO 15118-20 AC_BPT_DER/AC_DER charging session.
-     * 
+     * <p>
      * NOTE: All these fields have values greater or equal to zero (i.e. are non-negative)
-     * 
      */
     public DERChargingParameters getDerChargingParameters() {
         return derChargingParameters;
@@ -154,28 +146,27 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * *(2.1)* DERChargingParametersType is used in ChargingNeedsType during an ISO 15118-20 session for AC_BPT_DER to report the inverter settings related to DER control that were agreed between EVSE and EV.
-     * 
+     * <p>
      * Fields starting with "ev" contain values from the EV.
      * Other fields contain a value that is supported by both EV and EVSE.
-     * 
+     * <p>
      * DERChargingParametersType type is only relevant in case of an ISO 15118-20 AC_BPT_DER/AC_DER charging session.
-     * 
+     * <p>
      * NOTE: All these fields have values greater or equal to zero (i.e. are non-negative)
-     * 
      */
     public void setDerChargingParameters(DERChargingParameters derChargingParameters) {
         this.derChargingParameters = derChargingParameters;
     }
 
     /**
-     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge. 
+     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
      */
     public EVEnergyOffer getEvEnergyOffer() {
         return evEnergyOffer;
     }
 
     /**
-     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge. 
+     * *(2.1)* A schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
      */
     public void setEvEnergyOffer(EVEnergyOffer evEnergyOffer) {
         this.evEnergyOffer = evEnergyOffer;
@@ -183,7 +174,7 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * Mode of energy transfer requested by the EV.
-     * 
+     * <p>
      * (Required)
      */
     public EnergyTransferModeEnum getRequestedEnergyTransfer() {
@@ -192,7 +183,7 @@ public class ChargingNeeds implements JsonInterface {
 
     /**
      * Mode of energy transfer requested by the EV.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestedEnergyTransfer(EnergyTransferModeEnum requestedEnergyTransfer) {
@@ -330,7 +321,7 @@ public class ChargingNeeds implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -339,15 +330,15 @@ public class ChargingNeeds implements JsonInterface {
             return false;
         ChargingNeeds that = (ChargingNeeds) obj;
         return Objects.equals(this.acChargingParameters, that.acChargingParameters)
-                && Objects.equals(this.controlMode, that.controlMode) 
-                && Objects.equals(this.departureTime, that.departureTime) 
-                && Objects.equals(this.evEnergyOffer, that.evEnergyOffer) 
-                && Objects.equals(this.mobilityNeedsMode, that.mobilityNeedsMode) 
-                && Objects.equals(this.availableEnergyTransfer, that.availableEnergyTransfer) 
-                && Objects.equals(this.v2xChargingParameters, that.v2xChargingParameters) 
-                && Objects.equals(this.dcChargingParameters, that.dcChargingParameters) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.requestedEnergyTransfer, that.requestedEnergyTransfer) 
+                && Objects.equals(this.controlMode, that.controlMode)
+                && Objects.equals(this.departureTime, that.departureTime)
+                && Objects.equals(this.evEnergyOffer, that.evEnergyOffer)
+                && Objects.equals(this.mobilityNeedsMode, that.mobilityNeedsMode)
+                && Objects.equals(this.availableEnergyTransfer, that.availableEnergyTransfer)
+                && Objects.equals(this.v2xChargingParameters, that.v2xChargingParameters)
+                && Objects.equals(this.dcChargingParameters, that.dcChargingParameters)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.requestedEnergyTransfer, that.requestedEnergyTransfer)
                 && Objects.equals(this.derChargingParameters, that.derChargingParameters);
     }
 

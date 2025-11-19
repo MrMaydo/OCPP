@@ -15,13 +15,12 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     * 
      */
     @Optional
     private List<Integer> id;
     /**
      * The Id of this request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -32,7 +31,7 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     @Optional
     private MessagePriorityEnum priority;
     /**
-     * If provided the Charging Station shall return Display Messages with the given state only. 
+     * If provided the Charging Station shall return Display Messages with the given state only.
      */
     @Optional
     private MessageStateEnum state;
@@ -49,14 +48,11 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The Id of this request.
-     *     .
-     * @param id
-     *     If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     *     
-     *     .
+     * @param requestId The Id of this request.
+     *                  .
+     * @param id        If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
+     *                  <p>
+     *                  .
      */
     public GetDisplayMessagesRequest(List<Integer> id, Integer requestId, MessagePriorityEnum priority, MessageStateEnum state, CustomData customData) {
         super();
@@ -69,7 +65,6 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     * 
      */
     public List<Integer> getId() {
         return id;
@@ -77,7 +72,6 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     * 
      */
     public void setId(List<Integer> id) {
         this.id = id;
@@ -85,7 +79,7 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The Id of this request.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -94,7 +88,7 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The Id of this request.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -116,14 +110,14 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     }
 
     /**
-     * If provided the Charging Station shall return Display Messages with the given state only. 
+     * If provided the Charging Station shall return Display Messages with the given state only.
      */
     public MessageStateEnum getState() {
         return state;
     }
 
     /**
-     * If provided the Charging Station shall return Display Messages with the given state only. 
+     * If provided the Charging Station shall return Display Messages with the given state only.
      */
     public void setState(MessageStateEnum state) {
         this.state = state;
@@ -169,9 +163,9 @@ public class GetDisplayMessagesRequest implements JsonInterface {
             return false;
         GetDisplayMessagesRequest that = (GetDisplayMessagesRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.state, that.state) 
-                && Objects.equals(this.priority, that.priority) 
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.state, that.state)
+                && Objects.equals(this.priority, that.priority)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

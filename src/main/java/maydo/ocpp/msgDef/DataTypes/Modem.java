@@ -8,8 +8,6 @@ import java.util.Objects;
 
 /**
  * Defines parameters required for initiating and maintaining wireless communication with other devices.
- * 
- * 
  */
 public class Modem implements JsonInterface {
 
@@ -36,13 +34,10 @@ public class Modem implements JsonInterface {
     }
 
     /**
-     * 
-     * @param iccid
-     *     This contains the ICCID of the modem’s SIM card.
-     *     .
-     * @param imsi
-     *     This contains the IMSI of the modem’s SIM card.
-     *     .
+     * @param iccid This contains the ICCID of the modem’s SIM card.
+     *              .
+     * @param imsi  This contains the IMSI of the modem’s SIM card.
+     *              .
      */
     public Modem(String iccid, String imsi, CustomData customData) {
         super();
@@ -110,7 +105,7 @@ public class Modem implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -119,7 +114,7 @@ public class Modem implements JsonInterface {
             return false;
         Modem that = (Modem) obj;
         return Objects.equals(this.iccid, that.iccid)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.imsi, that.imsi);
     }
 

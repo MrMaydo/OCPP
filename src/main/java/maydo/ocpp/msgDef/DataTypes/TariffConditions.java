@@ -21,8 +21,8 @@ public class TariffConditions implements JsonInterface {
     private String startTimeOfDay;
     /**
      * End time of day in local time. Same syntax as _startTimeOfDay_. +
-     *     If end time &lt; start time then the period wraps around to the next day. +
-     *     To stop at end of the day use: 00:00.
+     * If end time &lt; start time then the period wraps around to the next day. +
+     * To stop at end of the day use: 00:00.
      */
     @Optional
     private String endTimeOfDay;
@@ -34,15 +34,15 @@ public class TariffConditions implements JsonInterface {
     /**
      * Start date in local time, for example: 2015-12-24.
      * Valid from this day (inclusive). +
-     * Format as per RFC 3339: full-date  + 
-     * 
+     * Format as per RFC 3339: full-date  +
+     * <p>
      * Regex: ([12][0-9]{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[12][0-9]\|3[01])
      */
     @Optional
     private String validFromDate;
     /**
      * End date in local time, for example: 2015-12-27.
-     *     Valid until this day (exclusive). Same syntax as _validFromDate_.
+     * Valid until this day (exclusive). Same syntax as _validFromDate_.
      */
     @Optional
     private String validToDate;
@@ -53,85 +53,85 @@ public class TariffConditions implements JsonInterface {
     private EvseKindEnum evseKind;
     /**
      * Minimum consumed energy in Wh, for example 20000 Wh.
-     *     Valid from this amount of energy (inclusive) being used.
+     * Valid from this amount of energy (inclusive) being used.
      */
     @Optional
     private Float minEnergy;
     /**
      * Maximum consumed energy in Wh, for example 50000 Wh.
-     *     Valid until this amount of energy (exclusive) being used.
+     * Valid until this amount of energy (exclusive) being used.
      */
     @Optional
     private Float maxEnergy;
     /**
      * Sum of the minimum current (in Amperes) over all phases, for example 5 A.
-     *     When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
-     *     This is NOT about the minimum current over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
+     * This is NOT about the minimum current over the entire transaction.
      */
     @Optional
     private Float minCurrent;
     /**
      * Sum of the maximum current (in Amperes) over all phases, for example 20 A.
-     *       When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum current over the entire transaction.
+     * When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum current over the entire transaction.
      */
     @Optional
     private Float maxCurrent;
     /**
      * Minimum power in W, for example 5000 W.
-     *       When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
-     *       If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the minimum power over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
+     * If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the minimum power over the entire transaction.
      */
     @Optional
     private Float minPower;
     /**
      * Maximum power in W, for example 20000 W.
-     *       When the EV is charging with less than the defined amount of power, this price becomes/is active.
-     *       If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum power over the entire transaction.
+     * When the EV is charging with less than the defined amount of power, this price becomes/is active.
+     * If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum power over the entire transaction.
      */
     @Optional
     private Float maxPower;
     /**
      * Minimum duration in seconds the transaction (charging &amp; idle) MUST last (inclusive).
-     *       When the duration of a transaction is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a transaction is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     @Optional
     private Integer minTime;
     /**
      * Maximum duration in seconds the transaction (charging &amp; idle) MUST last (exclusive).
-     *       When the duration of a transaction is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a transaction is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     @Optional
     private Integer maxTime;
     /**
      * Minimum duration in seconds the charging MUST last (inclusive).
-     *       When the duration of a charging is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a charging is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     @Optional
     private Integer minChargingTime;
     /**
      * Maximum duration in seconds the charging MUST last (exclusive).
-     *       When the duration of a charging is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a charging is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     @Optional
     private Integer maxChargingTime;
     /**
      * Minimum duration in seconds the idle period (i.e. not charging) MUST last (inclusive).
-     *       When the duration of the idle time is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of the idle time is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     @Optional
     private Integer minIdleTime;
     /**
      * Maximum duration in seconds the idle period (i.e. not charging) MUST last (exclusive).
-     *       When the duration of idle time is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of idle time is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     @Optional
     private Integer maxIdleTime;
@@ -148,92 +148,74 @@ public class TariffConditions implements JsonInterface {
     }
 
     /**
-     * 
-     * @param maxTime
-     *     Maximum duration in seconds the transaction (charging &amp; idle) MUST last (exclusive).
-     *           When the duration of a transaction is shorter than the defined value, this price is or becomes active.
-     *           After that moment, this price is no longer active.
-     *     .
-     * @param minChargingTime
-     *     Minimum duration in seconds the charging MUST last (inclusive).
-     *           When the duration of a charging is longer than the defined value, this price is or becomes active.
-     *           Before that moment, this price is not yet active.
-     *     .
-     * @param maxChargingTime
-     *     Maximum duration in seconds the charging MUST last (exclusive).
-     *           When the duration of a charging is shorter than the defined value, this price is or becomes active.
-     *           After that moment, this price is no longer active.
-     *     .
-     * @param maxIdleTime
-     *     Maximum duration in seconds the idle period (i.e. not charging) MUST last (exclusive).
-     *           When the duration of idle time is shorter than the defined value, this price is or becomes active.
-     *           After that moment, this price is no longer active.
-     *     .
-     * @param minPower
-     *     Minimum power in W, for example 5000 W.
-     *           When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
-     *           If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
-     *           This is NOT about the minimum power over the entire transaction.
-     *     .
-     * @param maxEnergy
-     *     Maximum consumed energy in Wh, for example 50000 Wh.
-     *         Valid until this amount of energy (exclusive) being used.
-     *     .
-     * @param maxCurrent
-     *     Sum of the maximum current (in Amperes) over all phases, for example 20 A.
-     *           When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *           This is NOT about the maximum current over the entire transaction.
-     *     .
-     * @param minEnergy
-     *     Minimum consumed energy in Wh, for example 20000 Wh.
-     *         Valid from this amount of energy (inclusive) being used.
-     *     .
-     * @param dayOfWeek
-     *     Day(s) of the week this is tariff applies.
-     *     .
-     * @param minTime
-     *     Minimum duration in seconds the transaction (charging &amp; idle) MUST last (inclusive).
-     *           When the duration of a transaction is longer than the defined value, this price is or becomes active.
-     *           Before that moment, this price is not yet active.
-     *     .
-     * @param endTimeOfDay
-     *     End time of day in local time. Same syntax as _startTimeOfDay_. +
-     *         If end time &lt; start time then the period wraps around to the next day. +
-     *         To stop at end of the day use: 00:00.
-     *     .
-     * @param validFromDate
-     *     Start date in local time, for example: 2015-12-24.
-     *     Valid from this day (inclusive). +
-     *     Format as per RFC 3339: full-date  + 
-     *     
-     *     Regex: ([12][0-9]{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[12][0-9]\|3[01])
-     *     .
-     * @param minCurrent
-     *     Sum of the minimum current (in Amperes) over all phases, for example 5 A.
-     *         When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
-     *         This is NOT about the minimum current over the entire transaction.
-     *     .
-     * @param maxPower
-     *     Maximum power in W, for example 20000 W.
-     *           When the EV is charging with less than the defined amount of power, this price becomes/is active.
-     *           If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *           This is NOT about the maximum power over the entire transaction.
-     *     .
-     * @param minIdleTime
-     *     Minimum duration in seconds the idle period (i.e. not charging) MUST last (inclusive).
-     *           When the duration of the idle time is longer than the defined value, this price is or becomes active.
-     *           Before that moment, this price is not yet active.
-     *     .
-     * @param startTimeOfDay
-     *     Start time of day in local time. +
-     *     Format as per RFC 3339: time-hour ":" time-minute  +
-     *     Must be in 24h format with leading zeros. Hour/Minute separator: ":"
-     *     Regex: ([0-1][0-9]\|2[0-3]):[0-5][0-9]
-     *     .
-     * @param validToDate
-     *     End date in local time, for example: 2015-12-27.
-     *         Valid until this day (exclusive). Same syntax as _validFromDate_.
-     *     .
+     * @param maxTime         Maximum duration in seconds the transaction (charging &amp; idle) MUST last (exclusive).
+     *                        When the duration of a transaction is shorter than the defined value, this price is or becomes active.
+     *                        After that moment, this price is no longer active.
+     *                        .
+     * @param minChargingTime Minimum duration in seconds the charging MUST last (inclusive).
+     *                        When the duration of a charging is longer than the defined value, this price is or becomes active.
+     *                        Before that moment, this price is not yet active.
+     *                        .
+     * @param maxChargingTime Maximum duration in seconds the charging MUST last (exclusive).
+     *                        When the duration of a charging is shorter than the defined value, this price is or becomes active.
+     *                        After that moment, this price is no longer active.
+     *                        .
+     * @param maxIdleTime     Maximum duration in seconds the idle period (i.e. not charging) MUST last (exclusive).
+     *                        When the duration of idle time is shorter than the defined value, this price is or becomes active.
+     *                        After that moment, this price is no longer active.
+     *                        .
+     * @param minPower        Minimum power in W, for example 5000 W.
+     *                        When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
+     *                        If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
+     *                        This is NOT about the minimum power over the entire transaction.
+     *                        .
+     * @param maxEnergy       Maximum consumed energy in Wh, for example 50000 Wh.
+     *                        Valid until this amount of energy (exclusive) being used.
+     *                        .
+     * @param maxCurrent      Sum of the maximum current (in Amperes) over all phases, for example 20 A.
+     *                        When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
+     *                        This is NOT about the maximum current over the entire transaction.
+     *                        .
+     * @param minEnergy       Minimum consumed energy in Wh, for example 20000 Wh.
+     *                        Valid from this amount of energy (inclusive) being used.
+     *                        .
+     * @param dayOfWeek       Day(s) of the week this is tariff applies.
+     *                        .
+     * @param minTime         Minimum duration in seconds the transaction (charging &amp; idle) MUST last (inclusive).
+     *                        When the duration of a transaction is longer than the defined value, this price is or becomes active.
+     *                        Before that moment, this price is not yet active.
+     *                        .
+     * @param endTimeOfDay    End time of day in local time. Same syntax as _startTimeOfDay_. +
+     *                        If end time &lt; start time then the period wraps around to the next day. +
+     *                        To stop at end of the day use: 00:00.
+     *                        .
+     * @param validFromDate   Start date in local time, for example: 2015-12-24.
+     *                        Valid from this day (inclusive). +
+     *                        Format as per RFC 3339: full-date  +
+     *                        <p>
+     *                        Regex: ([12][0-9]{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[12][0-9]\|3[01])
+     *                        .
+     * @param minCurrent      Sum of the minimum current (in Amperes) over all phases, for example 5 A.
+     *                        When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
+     *                        This is NOT about the minimum current over the entire transaction.
+     *                        .
+     * @param maxPower        Maximum power in W, for example 20000 W.
+     *                        When the EV is charging with less than the defined amount of power, this price becomes/is active.
+     *                        If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
+     *                        This is NOT about the maximum power over the entire transaction.
+     *                        .
+     * @param minIdleTime     Minimum duration in seconds the idle period (i.e. not charging) MUST last (inclusive).
+     *                        When the duration of the idle time is longer than the defined value, this price is or becomes active.
+     *                        Before that moment, this price is not yet active.
+     *                        .
+     * @param startTimeOfDay  Start time of day in local time. +
+     *                        Format as per RFC 3339: time-hour ":" time-minute  +
+     *                        Must be in 24h format with leading zeros. Hour/Minute separator: ":"
+     *                        Regex: ([0-1][0-9]\|2[0-3]):[0-5][0-9]
+     *                        .
+     * @param validToDate     End date in local time, for example: 2015-12-27.
+     *                        Valid until this day (exclusive). Same syntax as _validFromDate_.
+     *                        .
      */
     public TariffConditions(String startTimeOfDay, String endTimeOfDay, List<DayOfWeekEnum> dayOfWeek, String validFromDate, String validToDate, EvseKindEnum evseKind, Float minEnergy, Float maxEnergy, Float minCurrent, Float maxCurrent, Float minPower, Float maxPower, Integer minTime, Integer maxTime, Integer minChargingTime, Integer maxChargingTime, Integer minIdleTime, Integer maxIdleTime, CustomData customData) {
         super();
@@ -280,8 +262,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * End time of day in local time. Same syntax as _startTimeOfDay_. +
-     *     If end time &lt; start time then the period wraps around to the next day. +
-     *     To stop at end of the day use: 00:00.
+     * If end time &lt; start time then the period wraps around to the next day. +
+     * To stop at end of the day use: 00:00.
      */
     public String getEndTimeOfDay() {
         return endTimeOfDay;
@@ -289,8 +271,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * End time of day in local time. Same syntax as _startTimeOfDay_. +
-     *     If end time &lt; start time then the period wraps around to the next day. +
-     *     To stop at end of the day use: 00:00.
+     * If end time &lt; start time then the period wraps around to the next day. +
+     * To stop at end of the day use: 00:00.
      */
     public void setEndTimeOfDay(String endTimeOfDay) {
         this.endTimeOfDay = endTimeOfDay;
@@ -313,8 +295,8 @@ public class TariffConditions implements JsonInterface {
     /**
      * Start date in local time, for example: 2015-12-24.
      * Valid from this day (inclusive). +
-     * Format as per RFC 3339: full-date  + 
-     * 
+     * Format as per RFC 3339: full-date  +
+     * <p>
      * Regex: ([12][0-9]{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[12][0-9]\|3[01])
      */
     public String getValidFromDate() {
@@ -324,8 +306,8 @@ public class TariffConditions implements JsonInterface {
     /**
      * Start date in local time, for example: 2015-12-24.
      * Valid from this day (inclusive). +
-     * Format as per RFC 3339: full-date  + 
-     * 
+     * Format as per RFC 3339: full-date  +
+     * <p>
      * Regex: ([12][0-9]{3})-(0[1-9]\|1[0-2])-(0[1-9]\|[12][0-9]\|3[01])
      */
     public void setValidFromDate(String validFromDate) {
@@ -334,7 +316,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * End date in local time, for example: 2015-12-27.
-     *     Valid until this day (exclusive). Same syntax as _validFromDate_.
+     * Valid until this day (exclusive). Same syntax as _validFromDate_.
      */
     public String getValidToDate() {
         return validToDate;
@@ -342,7 +324,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * End date in local time, for example: 2015-12-27.
-     *     Valid until this day (exclusive). Same syntax as _validFromDate_.
+     * Valid until this day (exclusive). Same syntax as _validFromDate_.
      */
     public void setValidToDate(String validToDate) {
         this.validToDate = validToDate;
@@ -364,7 +346,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum consumed energy in Wh, for example 20000 Wh.
-     *     Valid from this amount of energy (inclusive) being used.
+     * Valid from this amount of energy (inclusive) being used.
      */
     public Float getMinEnergy() {
         return minEnergy;
@@ -372,7 +354,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum consumed energy in Wh, for example 20000 Wh.
-     *     Valid from this amount of energy (inclusive) being used.
+     * Valid from this amount of energy (inclusive) being used.
      */
     public void setMinEnergy(Float minEnergy) {
         this.minEnergy = minEnergy;
@@ -380,7 +362,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum consumed energy in Wh, for example 50000 Wh.
-     *     Valid until this amount of energy (exclusive) being used.
+     * Valid until this amount of energy (exclusive) being used.
      */
     public Float getMaxEnergy() {
         return maxEnergy;
@@ -388,7 +370,7 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum consumed energy in Wh, for example 50000 Wh.
-     *     Valid until this amount of energy (exclusive) being used.
+     * Valid until this amount of energy (exclusive) being used.
      */
     public void setMaxEnergy(Float maxEnergy) {
         this.maxEnergy = maxEnergy;
@@ -396,8 +378,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Sum of the minimum current (in Amperes) over all phases, for example 5 A.
-     *     When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
-     *     This is NOT about the minimum current over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
+     * This is NOT about the minimum current over the entire transaction.
      */
     public Float getMinCurrent() {
         return minCurrent;
@@ -405,8 +387,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Sum of the minimum current (in Amperes) over all phases, for example 5 A.
-     *     When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
-     *     This is NOT about the minimum current over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of current, this price is/becomes active. If the charging current is or becomes lower, this price is not or no longer valid and becomes inactive. +
+     * This is NOT about the minimum current over the entire transaction.
      */
     public void setMinCurrent(Float minCurrent) {
         this.minCurrent = minCurrent;
@@ -414,8 +396,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Sum of the maximum current (in Amperes) over all phases, for example 20 A.
-     *       When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum current over the entire transaction.
+     * When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum current over the entire transaction.
      */
     public Float getMaxCurrent() {
         return maxCurrent;
@@ -423,8 +405,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Sum of the maximum current (in Amperes) over all phases, for example 20 A.
-     *       When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum current over the entire transaction.
+     * When the EV is charging with less than the defined amount of current, this price becomes/is active. If the charging current is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum current over the entire transaction.
      */
     public void setMaxCurrent(Float maxCurrent) {
         this.maxCurrent = maxCurrent;
@@ -432,9 +414,9 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum power in W, for example 5000 W.
-     *       When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
-     *       If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the minimum power over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
+     * If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the minimum power over the entire transaction.
      */
     public Float getMinPower() {
         return minPower;
@@ -442,9 +424,9 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum power in W, for example 5000 W.
-     *       When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
-     *       If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the minimum power over the entire transaction.
+     * When the EV is charging with more than, or equal to, the defined amount of power, this price is/becomes active.
+     * If the charging power is or becomes lower, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the minimum power over the entire transaction.
      */
     public void setMinPower(Float minPower) {
         this.minPower = minPower;
@@ -452,9 +434,9 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum power in W, for example 20000 W.
-     *       When the EV is charging with less than the defined amount of power, this price becomes/is active.
-     *       If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum power over the entire transaction.
+     * When the EV is charging with less than the defined amount of power, this price becomes/is active.
+     * If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum power over the entire transaction.
      */
     public Float getMaxPower() {
         return maxPower;
@@ -462,9 +444,9 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum power in W, for example 20000 W.
-     *       When the EV is charging with less than the defined amount of power, this price becomes/is active.
-     *       If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
-     *       This is NOT about the maximum power over the entire transaction.
+     * When the EV is charging with less than the defined amount of power, this price becomes/is active.
+     * If the charging power is or becomes higher, this price is not or no longer valid and becomes inactive.
+     * This is NOT about the maximum power over the entire transaction.
      */
     public void setMaxPower(Float maxPower) {
         this.maxPower = maxPower;
@@ -472,8 +454,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the transaction (charging &amp; idle) MUST last (inclusive).
-     *       When the duration of a transaction is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a transaction is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public Integer getMinTime() {
         return minTime;
@@ -481,8 +463,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the transaction (charging &amp; idle) MUST last (inclusive).
-     *       When the duration of a transaction is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a transaction is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public void setMinTime(Integer minTime) {
         this.minTime = minTime;
@@ -490,8 +472,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the transaction (charging &amp; idle) MUST last (exclusive).
-     *       When the duration of a transaction is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a transaction is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public Integer getMaxTime() {
         return maxTime;
@@ -499,8 +481,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the transaction (charging &amp; idle) MUST last (exclusive).
-     *       When the duration of a transaction is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a transaction is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public void setMaxTime(Integer maxTime) {
         this.maxTime = maxTime;
@@ -508,8 +490,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the charging MUST last (inclusive).
-     *       When the duration of a charging is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a charging is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public Integer getMinChargingTime() {
         return minChargingTime;
@@ -517,8 +499,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the charging MUST last (inclusive).
-     *       When the duration of a charging is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of a charging is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public void setMinChargingTime(Integer minChargingTime) {
         this.minChargingTime = minChargingTime;
@@ -526,8 +508,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the charging MUST last (exclusive).
-     *       When the duration of a charging is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a charging is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public Integer getMaxChargingTime() {
         return maxChargingTime;
@@ -535,8 +517,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the charging MUST last (exclusive).
-     *       When the duration of a charging is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of a charging is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public void setMaxChargingTime(Integer maxChargingTime) {
         this.maxChargingTime = maxChargingTime;
@@ -544,8 +526,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the idle period (i.e. not charging) MUST last (inclusive).
-     *       When the duration of the idle time is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of the idle time is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public Integer getMinIdleTime() {
         return minIdleTime;
@@ -553,8 +535,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Minimum duration in seconds the idle period (i.e. not charging) MUST last (inclusive).
-     *       When the duration of the idle time is longer than the defined value, this price is or becomes active.
-     *       Before that moment, this price is not yet active.
+     * When the duration of the idle time is longer than the defined value, this price is or becomes active.
+     * Before that moment, this price is not yet active.
      */
     public void setMinIdleTime(Integer minIdleTime) {
         this.minIdleTime = minIdleTime;
@@ -562,8 +544,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the idle period (i.e. not charging) MUST last (exclusive).
-     *       When the duration of idle time is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of idle time is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public Integer getMaxIdleTime() {
         return maxIdleTime;
@@ -571,8 +553,8 @@ public class TariffConditions implements JsonInterface {
 
     /**
      * Maximum duration in seconds the idle period (i.e. not charging) MUST last (exclusive).
-     *       When the duration of idle time is shorter than the defined value, this price is or becomes active.
-     *       After that moment, this price is no longer active.
+     * When the duration of idle time is shorter than the defined value, this price is or becomes active.
+     * After that moment, this price is no longer active.
      */
     public void setMaxIdleTime(Integer maxIdleTime) {
         this.maxIdleTime = maxIdleTime;
@@ -609,7 +591,7 @@ public class TariffConditions implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -618,23 +600,23 @@ public class TariffConditions implements JsonInterface {
             return false;
         TariffConditions that = (TariffConditions) obj;
         return Objects.equals(this.maxTime, that.maxTime)
-                && Objects.equals(this.minChargingTime, that.minChargingTime) 
-                && Objects.equals(this.maxChargingTime, that.maxChargingTime) 
-                && Objects.equals(this.maxIdleTime, that.maxIdleTime) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.minPower, that.minPower) 
-                && Objects.equals(this.evseKind, that.evseKind) 
-                && Objects.equals(this.maxEnergy, that.maxEnergy) 
-                && Objects.equals(this.maxCurrent, that.maxCurrent) 
-                && Objects.equals(this.minEnergy, that.minEnergy) 
-                && Objects.equals(this.dayOfWeek, that.dayOfWeek) 
-                && Objects.equals(this.minTime, that.minTime) 
-                && Objects.equals(this.endTimeOfDay, that.endTimeOfDay) 
-                && Objects.equals(this.validFromDate, that.validFromDate) 
-                && Objects.equals(this.minCurrent, that.minCurrent) 
-                && Objects.equals(this.maxPower, that.maxPower) 
-                && Objects.equals(this.minIdleTime, that.minIdleTime) 
-                && Objects.equals(this.startTimeOfDay, that.startTimeOfDay) 
+                && Objects.equals(this.minChargingTime, that.minChargingTime)
+                && Objects.equals(this.maxChargingTime, that.maxChargingTime)
+                && Objects.equals(this.maxIdleTime, that.maxIdleTime)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.minPower, that.minPower)
+                && Objects.equals(this.evseKind, that.evseKind)
+                && Objects.equals(this.maxEnergy, that.maxEnergy)
+                && Objects.equals(this.maxCurrent, that.maxCurrent)
+                && Objects.equals(this.minEnergy, that.minEnergy)
+                && Objects.equals(this.dayOfWeek, that.dayOfWeek)
+                && Objects.equals(this.minTime, that.minTime)
+                && Objects.equals(this.endTimeOfDay, that.endTimeOfDay)
+                && Objects.equals(this.validFromDate, that.validFromDate)
+                && Objects.equals(this.minCurrent, that.minCurrent)
+                && Objects.equals(this.maxPower, that.maxPower)
+                && Objects.equals(this.minIdleTime, that.minIdleTime)
+                && Objects.equals(this.startTimeOfDay, that.startTimeOfDay)
                 && Objects.equals(this.validToDate, that.validToDate);
     }
 

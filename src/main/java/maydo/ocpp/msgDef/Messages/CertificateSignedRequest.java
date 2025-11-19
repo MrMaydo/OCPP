@@ -13,16 +13,15 @@ public class CertificateSignedRequest implements JsonInterface {
 
     /**
      * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
-     * 
+     * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String certificateChain;
     /**
      * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
-     * 
      */
     @Optional
     private CertificateSigningUseEnum certificateType;
@@ -44,15 +43,12 @@ public class CertificateSignedRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param certificateChain
-     *     The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
-     *     
-     *     The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
-     *     .
-     * @param requestId
-     *     *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
-     *     .
+     * @param certificateChain The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
+     *                         <p>
+     *                         The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
+     *                         .
+     * @param requestId        *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
+     *                         .
      */
     public CertificateSignedRequest(String certificateChain, CertificateSigningUseEnum certificateType, Integer requestId, CustomData customData) {
         super();
@@ -64,9 +60,9 @@ public class CertificateSignedRequest implements JsonInterface {
 
     /**
      * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
-     * 
+     * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
-     * 
+     * <p>
      * (Required)
      */
     public String getCertificateChain() {
@@ -75,9 +71,9 @@ public class CertificateSignedRequest implements JsonInterface {
 
     /**
      * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
-     * 
+     * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
-     * 
+     * <p>
      * (Required)
      */
     public void setCertificateChain(String certificateChain) {
@@ -86,7 +82,6 @@ public class CertificateSignedRequest implements JsonInterface {
 
     /**
      * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
-     * 
      */
     public CertificateSigningUseEnum getCertificateType() {
         return certificateType;
@@ -94,7 +89,6 @@ public class CertificateSignedRequest implements JsonInterface {
 
     /**
      * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
-     * 
      */
     public void setCertificateType(CertificateSigningUseEnum certificateType) {
         this.certificateType = certificateType;
@@ -154,8 +148,8 @@ public class CertificateSignedRequest implements JsonInterface {
             return false;
         CertificateSignedRequest that = (CertificateSignedRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateChain, that.certificateChain) 
-                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.certificateChain, that.certificateChain)
+                && Objects.equals(this.requestId, that.requestId)
                 && Objects.equals(this.certificateType, that.certificateType);
     }
 

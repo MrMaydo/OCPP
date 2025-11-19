@@ -14,14 +14,14 @@ public class TariffAssignment implements JsonInterface {
 
     /**
      * Tariff id.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private String tariffId;
     /**
      * Kind of tariff (driver/default)
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -51,16 +51,12 @@ public class TariffAssignment implements JsonInterface {
     }
 
     /**
-     * 
-     * @param idTokens
-     *     IdTokens related to tariff
-     *     .
-     * @param tariffId
-     *     Tariff id.
-     *     .
-     * @param validFrom
-     *     Date/time when this tariff become active.
-     *     .
+     * @param idTokens  IdTokens related to tariff
+     *                  .
+     * @param tariffId  Tariff id.
+     *                  .
+     * @param validFrom Date/time when this tariff become active.
+     *                  .
      */
     public TariffAssignment(String tariffId, TariffKindEnum tariffKind, Date validFrom, List<Integer> evseIds, List<String> idTokens, CustomData customData) {
         super();
@@ -74,7 +70,7 @@ public class TariffAssignment implements JsonInterface {
 
     /**
      * Tariff id.
-     * 
+     * <p>
      * (Required)
      */
     public String getTariffId() {
@@ -83,7 +79,7 @@ public class TariffAssignment implements JsonInterface {
 
     /**
      * Tariff id.
-     * 
+     * <p>
      * (Required)
      */
     public void setTariffId(String tariffId) {
@@ -92,7 +88,7 @@ public class TariffAssignment implements JsonInterface {
 
     /**
      * Kind of tariff (driver/default)
-     * 
+     * <p>
      * (Required)
      */
     public TariffKindEnum getTariffKind() {
@@ -101,7 +97,7 @@ public class TariffAssignment implements JsonInterface {
 
     /**
      * Kind of tariff (driver/default)
-     * 
+     * <p>
      * (Required)
      */
     public void setTariffKind(TariffKindEnum tariffKind) {
@@ -175,7 +171,7 @@ public class TariffAssignment implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -184,10 +180,10 @@ public class TariffAssignment implements JsonInterface {
             return false;
         TariffAssignment that = (TariffAssignment) obj;
         return Objects.equals(this.tariffKind, that.tariffKind)
-                && Objects.equals(this.evseIds, that.evseIds) 
-                && Objects.equals(this.idTokens, that.idTokens) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.tariffId, that.tariffId) 
+                && Objects.equals(this.evseIds, that.evseIds)
+                && Objects.equals(this.idTokens, that.idTokens)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.tariffId, that.tariffId)
                 && Objects.equals(this.validFrom, that.validFrom);
     }
 

@@ -13,14 +13,14 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The ID of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer reservationId;
     /**
      * The updated reservation status.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,10 +38,8 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param reservationId
-     *     The ID of the reservation.
-     *     .
+     * @param reservationId The ID of the reservation.
+     *                      .
      */
     public ReservationStatusUpdateRequest(Integer reservationId, ReservationUpdateStatusEnum reservationUpdateStatus, CustomData customData) {
         super();
@@ -52,7 +50,7 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The ID of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getReservationId() {
@@ -61,7 +59,7 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The ID of the reservation.
-     * 
+     * <p>
      * (Required)
      */
     public void setReservationId(Integer reservationId) {
@@ -70,7 +68,7 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The updated reservation status.
-     * 
+     * <p>
      * (Required)
      */
     public ReservationUpdateStatusEnum getReservationUpdateStatus() {
@@ -79,7 +77,7 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The updated reservation status.
-     * 
+     * <p>
      * (Required)
      */
     public void setReservationUpdateStatus(ReservationUpdateStatusEnum reservationUpdateStatus) {
@@ -126,7 +124,7 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
             return false;
         ReservationStatusUpdateRequest that = (ReservationStatusUpdateRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reservationId, that.reservationId) 
+                && Objects.equals(this.reservationId, that.reservationId)
                 && Objects.equals(this.reservationUpdateStatus, that.reservationUpdateStatus);
     }
 

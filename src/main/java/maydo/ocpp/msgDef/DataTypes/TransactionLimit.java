@@ -8,8 +8,6 @@ import java.util.Objects;
 
 /**
  * Cost, energy, time or SoC limit for a transaction.
- * 
- * 
  */
 public class TransactionLimit implements JsonInterface {
 
@@ -46,19 +44,14 @@ public class TransactionLimit implements JsonInterface {
     }
 
     /**
-     * 
-     * @param maxEnergy
-     *     Maximum allowed energy in Wh to charge in transaction.
-     *     .
-     * @param maxTime
-     *     Maximum duration of transaction in seconds from start to end.
-     *     .
-     * @param maxCost
-     *     Maximum allowed cost of transaction in currency of tariff.
-     *     .
-     * @param maxSoC
-     *     Maximum State of Charge of EV in percentage.
-     *     .
+     * @param maxEnergy Maximum allowed energy in Wh to charge in transaction.
+     *                  .
+     * @param maxTime   Maximum duration of transaction in seconds from start to end.
+     *                  .
+     * @param maxCost   Maximum allowed cost of transaction in currency of tariff.
+     *                  .
+     * @param maxSoC    Maximum State of Charge of EV in percentage.
+     *                  .
      */
     public TransactionLimit(Float maxCost, Float maxEnergy, Integer maxTime, Integer maxSoC, CustomData customData) {
         super();
@@ -156,7 +149,7 @@ public class TransactionLimit implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -165,9 +158,9 @@ public class TransactionLimit implements JsonInterface {
             return false;
         TransactionLimit that = (TransactionLimit) obj;
         return Objects.equals(this.maxCost, that.maxCost)
-                && Objects.equals(this.maxEnergy, that.maxEnergy) 
-                && Objects.equals(this.maxTime, that.maxTime) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.maxEnergy, that.maxEnergy)
+                && Objects.equals(this.maxTime, that.maxTime)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.maxSoC, that.maxSoC);
     }
 

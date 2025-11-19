@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Contains the identifier to use for authorization.
- * 
- * 
  */
 public class AuthorizationData implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -48,7 +46,7 @@ public class AuthorizationData implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -57,7 +55,7 @@ public class AuthorizationData implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -111,7 +109,7 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

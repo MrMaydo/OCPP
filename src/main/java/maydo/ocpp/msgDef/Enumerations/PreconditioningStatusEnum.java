@@ -13,7 +13,6 @@ public enum PreconditioningStatusEnum {
     READY("Ready"),
     NOT_READY("NotReady"),
     PRECONDITIONING("Preconditioning");
-    private final String value;
     private final static Map<String, PreconditioningStatusEnum> CONSTANTS = new HashMap<String, PreconditioningStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum PreconditioningStatusEnum {
         }
     }
 
+    private final String value;
+
     PreconditioningStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static PreconditioningStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum PreconditioningStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

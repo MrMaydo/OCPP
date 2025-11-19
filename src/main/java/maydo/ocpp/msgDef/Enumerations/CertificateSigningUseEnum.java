@@ -12,7 +12,6 @@ public enum CertificateSigningUseEnum {
     CHARGING_STATION_CERTIFICATE("ChargingStationCertificate"),
     V2G_CERTIFICATE("V2GCertificate"),
     V2G_20_CERTIFICATE("V2G20Certificate");
-    private final String value;
     private final static Map<String, CertificateSigningUseEnum> CONSTANTS = new HashMap<String, CertificateSigningUseEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum CertificateSigningUseEnum {
         }
     }
 
+    private final String value;
+
     CertificateSigningUseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CertificateSigningUseEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum CertificateSigningUseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

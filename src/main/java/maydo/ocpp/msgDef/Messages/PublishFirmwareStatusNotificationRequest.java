@@ -16,7 +16,7 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     /**
      * This contains the progress status of the publishfirmware
      * installation.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -52,16 +52,13 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The request id that was
-     *     provided in the
-     *     PublishFirmwareRequest which
-     *     triggered this action.
-     *     .
-     * @param location
-     *     Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
-     *     .
+     * @param requestId The request id that was
+     *                  provided in the
+     *                  PublishFirmwareRequest which
+     *                  triggered this action.
+     *                  .
+     * @param location  Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
+     *                  .
      */
     public PublishFirmwareStatusNotificationRequest(PublishFirmwareStatusEnum status, List<String> location, Integer requestId, StatusInfo statusInfo, CustomData customData) {
         super();
@@ -75,7 +72,7 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     /**
      * This contains the progress status of the publishfirmware
      * installation.
-     * 
+     * <p>
      * (Required)
      */
     public PublishFirmwareStatusEnum getStatus() {
@@ -85,7 +82,7 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     /**
      * This contains the progress status of the publishfirmware
      * installation.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(PublishFirmwareStatusEnum status) {
@@ -180,9 +177,9 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
             return false;
         PublishFirmwareStatusNotificationRequest that = (PublishFirmwareStatusNotificationRequest) obj;
         return Objects.equals(this.location, that.location)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.requestId, that.requestId)
                 && Objects.equals(this.status, that.status);
     }
 

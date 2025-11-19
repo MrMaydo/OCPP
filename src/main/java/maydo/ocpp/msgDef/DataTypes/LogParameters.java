@@ -12,7 +12,7 @@ public class LogParameters implements JsonInterface {
 
     /**
      * The URL of the location at the remote system where the log should be stored.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -40,16 +40,12 @@ public class LogParameters implements JsonInterface {
     }
 
     /**
-     * 
-     * @param oldestTimestamp
-     *     This contains the date and time of the oldest logging information to include in the diagnostics.
-     *     .
-     * @param latestTimestamp
-     *     This contains the date and time of the latest logging information to include in the diagnostics.
-     *     .
-     * @param remoteLocation
-     *     The URL of the location at the remote system where the log should be stored.
-     *     .
+     * @param oldestTimestamp This contains the date and time of the oldest logging information to include in the diagnostics.
+     *                        .
+     * @param latestTimestamp This contains the date and time of the latest logging information to include in the diagnostics.
+     *                        .
+     * @param remoteLocation  The URL of the location at the remote system where the log should be stored.
+     *                        .
      */
     public LogParameters(String remoteLocation, Date oldestTimestamp, Date latestTimestamp, CustomData customData) {
         super();
@@ -61,7 +57,7 @@ public class LogParameters implements JsonInterface {
 
     /**
      * The URL of the location at the remote system where the log should be stored.
-     * 
+     * <p>
      * (Required)
      */
     public String getRemoteLocation() {
@@ -70,7 +66,7 @@ public class LogParameters implements JsonInterface {
 
     /**
      * The URL of the location at the remote system where the log should be stored.
-     * 
+     * <p>
      * (Required)
      */
     public void setRemoteLocation(String remoteLocation) {
@@ -136,7 +132,7 @@ public class LogParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -145,8 +141,8 @@ public class LogParameters implements JsonInterface {
             return false;
         LogParameters that = (LogParameters) obj;
         return Objects.equals(this.remoteLocation, that.remoteLocation)
-                && Objects.equals(this.oldestTimestamp, that.oldestTimestamp) 
-                && Objects.equals(this.latestTimestamp, that.latestTimestamp) 
+                && Objects.equals(this.oldestTimestamp, that.oldestTimestamp)
+                && Objects.equals(this.latestTimestamp, that.latestTimestamp)
                 && Objects.equals(this.customData, that.customData);
     }
 

@@ -12,15 +12,15 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * EVSE id for which transaction is requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
      * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,14 +38,11 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE id for which transaction is requested.
-     *     
-     *     .
-     * @param timeout
-     *     Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     *     .
+     * @param evseId  EVSE id for which transaction is requested.
+     *                <p>
+     *                .
+     * @param timeout Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
+     *                .
      */
     public NotifyWebPaymentStartedRequest(Integer evseId, Integer timeout, CustomData customData) {
         super();
@@ -56,8 +53,8 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * EVSE id for which transaction is requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -66,8 +63,8 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * EVSE id for which transaction is requested.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -76,7 +73,7 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getTimeout() {
@@ -85,7 +82,7 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeout(Integer timeout) {
@@ -132,7 +129,7 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
             return false;
         NotifyWebPaymentStartedRequest that = (NotifyWebPaymentStartedRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.timeout, that.timeout);
     }
 

@@ -17,7 +17,6 @@ public class ClearChargingProfileRequest implements JsonInterface {
     private Integer chargingProfileId;
     /**
      * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     * 
      */
     @Optional
     private ClearChargingProfile chargingProfileCriteria;
@@ -34,10 +33,8 @@ public class ClearChargingProfileRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingProfileId
-     *     The Id of the charging profile to clear.
-     *     .
+     * @param chargingProfileId The Id of the charging profile to clear.
+     *                          .
      */
     public ClearChargingProfileRequest(Integer chargingProfileId, ClearChargingProfile chargingProfileCriteria, CustomData customData) {
         super();
@@ -62,7 +59,6 @@ public class ClearChargingProfileRequest implements JsonInterface {
 
     /**
      * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     * 
      */
     public ClearChargingProfile getChargingProfileCriteria() {
         return chargingProfileCriteria;
@@ -70,7 +66,6 @@ public class ClearChargingProfileRequest implements JsonInterface {
 
     /**
      * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     * 
      */
     public void setChargingProfileCriteria(ClearChargingProfile chargingProfileCriteria) {
         this.chargingProfileCriteria = chargingProfileCriteria;
@@ -116,7 +111,7 @@ public class ClearChargingProfileRequest implements JsonInterface {
             return false;
         ClearChargingProfileRequest that = (ClearChargingProfileRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingProfileCriteria, that.chargingProfileCriteria) 
+                && Objects.equals(this.chargingProfileCriteria, that.chargingProfileCriteria)
                 && Objects.equals(this.chargingProfileId, that.chargingProfileId);
     }
 

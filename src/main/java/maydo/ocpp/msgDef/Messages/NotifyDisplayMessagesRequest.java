@@ -15,7 +15,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     private List<MessageInfo> messageInfo;
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,13 +38,10 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tbc
-     *     "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
-     *     .
-     * @param requestId
-     *     The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     *     .
+     * @param tbc       "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
+     *                  .
+     * @param requestId The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
+     *                  .
      */
     public NotifyDisplayMessagesRequest(List<MessageInfo> messageInfo, Integer requestId, Boolean tbc, CustomData customData) {
         super();
@@ -64,7 +61,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -73,7 +70,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -134,8 +131,8 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
             return false;
         NotifyDisplayMessagesRequest that = (NotifyDisplayMessagesRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tbc, that.tbc) 
-                && Objects.equals(this.messageInfo, that.messageInfo) 
+                && Objects.equals(this.tbc, that.tbc)
+                && Objects.equals(this.messageInfo, that.messageInfo)
                 && Objects.equals(this.requestId, that.requestId);
     }
 

@@ -9,8 +9,6 @@ import java.util.Objects;
 
 /**
  * EV DC charging parameters for ISO 15118-2
- * 
- * 
  */
 public class DCChargingParameters implements JsonInterface {
 
@@ -18,7 +16,7 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum current (in A) supported by the electric vehicle. Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType:EVMaximumCurrentLimit
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -27,8 +25,8 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumVoltageLimit
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -37,7 +35,6 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum power (in W) supported by the electric vehicle. Required for DC charging.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumPowerLimit
-     * 
      */
     @Optional
     private Float evMaxPower;
@@ -45,7 +42,6 @@ public class DCChargingParameters implements JsonInterface {
      * Capacity of the electric vehicle battery (in Wh).
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyCapacity
-     * 
      */
     @Optional
     private Float evEnergyCapacity;
@@ -53,8 +49,6 @@ public class DCChargingParameters implements JsonInterface {
      * Amount of energy requested (in Wh). This inludes energy required for preconditioning.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyRequest
-     * 
-     * 
      */
     @Optional
     private Float energyAmount;
@@ -62,7 +56,6 @@ public class DCChargingParameters implements JsonInterface {
      * Energy available in the battery (in percent of the battery capacity)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: DC_EVStatus: EVRESSSOC
-     * 
      */
     @Optional
     private Integer stateOfCharge;
@@ -70,7 +63,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers the battery fully charged. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: FullSOC
-     * 
      */
     @Optional
     private Integer fullSoC;
@@ -78,7 +70,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers a fast charging process to end. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: BulkSOC
-     * 
      */
     @Optional
     private Integer bulkSoC;
@@ -95,55 +86,46 @@ public class DCChargingParameters implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evMaxCurrent
-     *     Maximum current (in A) supported by the electric vehicle. Includes cable capacity.
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType:EVMaximumCurrentLimit
-     *     .
-     * @param stateOfCharge
-     *     Energy available in the battery (in percent of the battery capacity)
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: DC_EVStatus: EVRESSSOC
-     *     
-     *     .
-     * @param evEnergyCapacity
-     *     Capacity of the electric vehicle battery (in Wh).
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyCapacity
-     *     
-     *     .
-     * @param evMaxVoltage
-     *     Maximum voltage supported by the electric vehicle.
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumVoltageLimit
-     *     
-     *     .
-     * @param energyAmount
-     *     Amount of energy requested (in Wh). This inludes energy required for preconditioning.
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyRequest
-     *     
-     *     
-     *     .
-     * @param bulkSoC
-     *     Percentage of SoC at which the EV considers a fast charging process to end. (possible values: 0 - 100)
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: BulkSOC
-     *     
-     *     .
-     * @param evMaxPower
-     *     Maximum power (in W) supported by the electric vehicle. Required for DC charging.
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumPowerLimit
-     *     
-     *     .
-     * @param fullSoC
-     *     Percentage of SoC at which the EV considers the battery fully charged. (possible values: 0 - 100)
-     *     Relates to: +
-     *     *ISO 15118-2*: DC_EVChargeParameterType: FullSOC
-     *     
-     *     .
+     * @param evMaxCurrent     Maximum current (in A) supported by the electric vehicle. Includes cable capacity.
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType:EVMaximumCurrentLimit
+     *                         .
+     * @param stateOfCharge    Energy available in the battery (in percent of the battery capacity)
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: DC_EVStatus: EVRESSSOC
+     *                         <p>
+     *                         .
+     * @param evEnergyCapacity Capacity of the electric vehicle battery (in Wh).
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyCapacity
+     *                         <p>
+     *                         .
+     * @param evMaxVoltage     Maximum voltage supported by the electric vehicle.
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumVoltageLimit
+     *                         <p>
+     *                         .
+     * @param energyAmount     Amount of energy requested (in Wh). This inludes energy required for preconditioning.
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyRequest
+     *                         <p>
+     *                         <p>
+     *                         .
+     * @param bulkSoC          Percentage of SoC at which the EV considers a fast charging process to end. (possible values: 0 - 100)
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: BulkSOC
+     *                         <p>
+     *                         .
+     * @param evMaxPower       Maximum power (in W) supported by the electric vehicle. Required for DC charging.
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumPowerLimit
+     *                         <p>
+     *                         .
+     * @param fullSoC          Percentage of SoC at which the EV considers the battery fully charged. (possible values: 0 - 100)
+     *                         Relates to: +
+     *                         *ISO 15118-2*: DC_EVChargeParameterType: FullSOC
+     *                         <p>
+     *                         .
      */
     public DCChargingParameters(Float evMaxCurrent, Float evMaxVoltage, Float evMaxPower, Float evEnergyCapacity, Float energyAmount, Integer stateOfCharge, Integer fullSoC, Integer bulkSoC, CustomData customData) {
         super();
@@ -162,7 +144,7 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum current (in A) supported by the electric vehicle. Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType:EVMaximumCurrentLimit
-     * 
+     * <p>
      * (Required)
      */
     public Float getEvMaxCurrent() {
@@ -173,7 +155,7 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum current (in A) supported by the electric vehicle. Includes cable capacity.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType:EVMaximumCurrentLimit
-     * 
+     * <p>
      * (Required)
      */
     public void setEvMaxCurrent(Float evMaxCurrent) {
@@ -184,8 +166,8 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumVoltageLimit
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getEvMaxVoltage() {
@@ -196,8 +178,8 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum voltage supported by the electric vehicle.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumVoltageLimit
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvMaxVoltage(Float evMaxVoltage) {
@@ -208,7 +190,6 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum power (in W) supported by the electric vehicle. Required for DC charging.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumPowerLimit
-     * 
      */
     public Float getEvMaxPower() {
         return evMaxPower;
@@ -218,7 +199,6 @@ public class DCChargingParameters implements JsonInterface {
      * Maximum power (in W) supported by the electric vehicle. Required for DC charging.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVMaximumPowerLimit
-     * 
      */
     public void setEvMaxPower(Float evMaxPower) {
         this.evMaxPower = evMaxPower;
@@ -228,7 +208,6 @@ public class DCChargingParameters implements JsonInterface {
      * Capacity of the electric vehicle battery (in Wh).
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyCapacity
-     * 
      */
     public Float getEvEnergyCapacity() {
         return evEnergyCapacity;
@@ -238,7 +217,6 @@ public class DCChargingParameters implements JsonInterface {
      * Capacity of the electric vehicle battery (in Wh).
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyCapacity
-     * 
      */
     public void setEvEnergyCapacity(Float evEnergyCapacity) {
         this.evEnergyCapacity = evEnergyCapacity;
@@ -248,8 +226,6 @@ public class DCChargingParameters implements JsonInterface {
      * Amount of energy requested (in Wh). This inludes energy required for preconditioning.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyRequest
-     * 
-     * 
      */
     public Float getEnergyAmount() {
         return energyAmount;
@@ -259,8 +235,6 @@ public class DCChargingParameters implements JsonInterface {
      * Amount of energy requested (in Wh). This inludes energy required for preconditioning.
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: EVEnergyRequest
-     * 
-     * 
      */
     public void setEnergyAmount(Float energyAmount) {
         this.energyAmount = energyAmount;
@@ -270,7 +244,6 @@ public class DCChargingParameters implements JsonInterface {
      * Energy available in the battery (in percent of the battery capacity)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: DC_EVStatus: EVRESSSOC
-     * 
      */
     public Integer getStateOfCharge() {
         return stateOfCharge;
@@ -280,7 +253,6 @@ public class DCChargingParameters implements JsonInterface {
      * Energy available in the battery (in percent of the battery capacity)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: DC_EVStatus: EVRESSSOC
-     * 
      */
     public void setStateOfCharge(Integer stateOfCharge) {
         this.stateOfCharge = stateOfCharge;
@@ -290,7 +262,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers the battery fully charged. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: FullSOC
-     * 
      */
     public Integer getFullSoC() {
         return fullSoC;
@@ -300,7 +271,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers the battery fully charged. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: FullSOC
-     * 
      */
     public void setFullSoC(Integer fullSoC) {
         this.fullSoC = fullSoC;
@@ -310,7 +280,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers a fast charging process to end. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: BulkSOC
-     * 
      */
     public Integer getBulkSoC() {
         return bulkSoC;
@@ -320,7 +289,6 @@ public class DCChargingParameters implements JsonInterface {
      * Percentage of SoC at which the EV considers a fast charging process to end. (possible values: 0 - 100)
      * Relates to: +
      * *ISO 15118-2*: DC_EVChargeParameterType: BulkSOC
-     * 
      */
     public void setBulkSoC(Integer bulkSoC) {
         this.bulkSoC = bulkSoC;
@@ -357,7 +325,7 @@ public class DCChargingParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -366,13 +334,13 @@ public class DCChargingParameters implements JsonInterface {
             return false;
         DCChargingParameters that = (DCChargingParameters) obj;
         return Objects.equals(this.evMaxCurrent, that.evMaxCurrent)
-                && Objects.equals(this.stateOfCharge, that.stateOfCharge) 
-                && Objects.equals(this.evEnergyCapacity, that.evEnergyCapacity) 
-                && Objects.equals(this.evMaxVoltage, that.evMaxVoltage) 
-                && Objects.equals(this.energyAmount, that.energyAmount) 
-                && Objects.equals(this.bulkSoC, that.bulkSoC) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.evMaxPower, that.evMaxPower) 
+                && Objects.equals(this.stateOfCharge, that.stateOfCharge)
+                && Objects.equals(this.evEnergyCapacity, that.evEnergyCapacity)
+                && Objects.equals(this.evMaxVoltage, that.evMaxVoltage)
+                && Objects.equals(this.energyAmount, that.energyAmount)
+                && Objects.equals(this.bulkSoC, that.bulkSoC)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.evMaxPower, that.evMaxPower)
                 && Objects.equals(this.fullSoC, that.fullSoC);
     }
 

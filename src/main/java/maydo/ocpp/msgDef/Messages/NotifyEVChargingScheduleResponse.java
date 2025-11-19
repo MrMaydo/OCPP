@@ -14,7 +14,7 @@ public class NotifyEVChargingScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply any approval of the charging schedule.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class NotifyEVChargingScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply any approval of the charging schedule.
-     * 
+     * <p>
      * (Required)
      */
     public GenericStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class NotifyEVChargingScheduleResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply any approval of the charging schedule.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(GenericStatusEnum status) {
@@ -115,7 +115,7 @@ public class NotifyEVChargingScheduleResponse implements JsonInterface {
             return false;
         NotifyEVChargingScheduleResponse that = (NotifyEVChargingScheduleResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

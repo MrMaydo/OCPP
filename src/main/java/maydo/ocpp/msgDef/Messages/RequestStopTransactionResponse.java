@@ -14,7 +14,7 @@ public class RequestStopTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether Charging Station accepts the request to stop a transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class RequestStopTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether Charging Station accepts the request to stop a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public RequestStartStopStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class RequestStopTransactionResponse implements JsonInterface {
 
     /**
      * Status indicating whether Charging Station accepts the request to stop a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(RequestStartStopStatusEnum status) {
@@ -115,7 +115,7 @@ public class RequestStopTransactionResponse implements JsonInterface {
             return false;
         RequestStopTransactionResponse that = (RequestStopTransactionResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

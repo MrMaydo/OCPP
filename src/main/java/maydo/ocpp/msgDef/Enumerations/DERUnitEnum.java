@@ -15,7 +15,6 @@ public enum DERUnitEnum {
     PCT_W_AVAIL("PctWAvail"),
     PCT_VAR_AVAIL("PctVarAvail"),
     PCT_EFFECTIVE_V("PctEffectiveV");
-    private final String value;
     private final static Map<String, DERUnitEnum> CONSTANTS = new HashMap<String, DERUnitEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum DERUnitEnum {
         }
     }
 
+    private final String value;
+
     DERUnitEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DERUnitEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum DERUnitEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -14,7 +14,6 @@ public enum ReserveNowStatusEnum {
     OCCUPIED("Occupied"),
     REJECTED("Rejected"),
     UNAVAILABLE("Unavailable");
-    private final String value;
     private final static Map<String, ReserveNowStatusEnum> CONSTANTS = new HashMap<String, ReserveNowStatusEnum>();
 
     static {
@@ -23,17 +22,10 @@ public enum ReserveNowStatusEnum {
         }
     }
 
+    private final String value;
+
     ReserveNowStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ReserveNowStatusEnum fromValue(String value) {
@@ -43,6 +35,15 @@ public enum ReserveNowStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

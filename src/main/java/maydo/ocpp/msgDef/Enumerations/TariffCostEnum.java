@@ -12,7 +12,6 @@ public enum TariffCostEnum {
     NORMAL_COST("NormalCost"),
     MIN_COST("MinCost"),
     MAX_COST("MaxCost");
-    private final String value;
     private final static Map<String, TariffCostEnum> CONSTANTS = new HashMap<String, TariffCostEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum TariffCostEnum {
         }
     }
 
+    private final String value;
+
     TariffCostEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TariffCostEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum TariffCostEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -12,67 +12,63 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
      * Over-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float overFreq;
     /**
      * Under-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float underFreq;
     /**
      * Over-frequency droop per unit, oFDroop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float overDroop;
     /**
      * Under-frequency droop per unit, uFDroop
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float underDroop;
     /**
      * Open loop response time in seconds
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float responseTime;
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     @Optional
     private Date startTime;
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     @Optional
     private Float duration;
@@ -89,45 +85,36 @@ public class FreqDroop implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration in seconds that this setting is active
-     *     
-     *     
-     *     .
-     * @param underDroop
-     *     Under-frequency droop per unit, uFDroop
-     *     
-     *     .
-     * @param overDroop
-     *     Over-frequency droop per unit, oFDroop
-     *     
-     *     
-     *     .
-     * @param responseTime
-     *     Open loop response time in seconds
-     *     
-     *     .
-     * @param underFreq
-     *     Under-frequency start of droop
-     *     
-     *     
-     *     .
-     * @param startTime
-     *     Time when this setting becomes active
-     *     
-     *     
-     *     .
-     * @param priority
-     *     Priority of setting (0=highest)
-     *     
-     *     
-     *     .
-     * @param overFreq
-     *     Over-frequency start of droop
-     *     
-     *     
-     *     .
+     * @param duration     Duration in seconds that this setting is active
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param underDroop   Under-frequency droop per unit, uFDroop
+     *                     <p>
+     *                     .
+     * @param overDroop    Over-frequency droop per unit, oFDroop
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param responseTime Open loop response time in seconds
+     *                     <p>
+     *                     .
+     * @param underFreq    Under-frequency start of droop
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param startTime    Time when this setting becomes active
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param priority     Priority of setting (0=highest)
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param overFreq     Over-frequency start of droop
+     *                     <p>
+     *                     <p>
+     *                     .
      */
     public FreqDroop(Integer priority, Float overFreq, Float underFreq, Float overDroop, Float underDroop, Float responseTime, Date startTime, Float duration, CustomData customData) {
         super();
@@ -144,9 +131,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -155,9 +142,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -166,9 +153,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Over-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getOverFreq() {
@@ -177,9 +164,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Over-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setOverFreq(Float overFreq) {
@@ -188,9 +175,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Under-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getUnderFreq() {
@@ -199,9 +186,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Under-frequency start of droop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setUnderFreq(Float underFreq) {
@@ -210,9 +197,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Over-frequency droop per unit, oFDroop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getOverDroop() {
@@ -221,9 +208,9 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Over-frequency droop per unit, oFDroop
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setOverDroop(Float overDroop) {
@@ -232,8 +219,8 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Under-frequency droop per unit, uFDroop
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getUnderDroop() {
@@ -242,8 +229,8 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Under-frequency droop per unit, uFDroop
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setUnderDroop(Float underDroop) {
@@ -252,8 +239,8 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Open loop response time in seconds
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getResponseTime() {
@@ -262,8 +249,8 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Open loop response time in seconds
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setResponseTime(Float responseTime) {
@@ -272,8 +259,6 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     public Date getStartTime() {
         return startTime;
@@ -281,8 +266,6 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Time when this setting becomes active
-     * 
-     * 
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
@@ -290,8 +273,6 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     public Float getDuration() {
         return duration;
@@ -299,8 +280,6 @@ public class FreqDroop implements JsonInterface {
 
     /**
      * Duration in seconds that this setting is active
-     * 
-     * 
      */
     public void setDuration(Float duration) {
         this.duration = duration;
@@ -337,7 +316,7 @@ public class FreqDroop implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -346,13 +325,13 @@ public class FreqDroop implements JsonInterface {
             return false;
         FreqDroop that = (FreqDroop) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.underDroop, that.underDroop) 
-                && Objects.equals(this.overDroop, that.overDroop) 
-                && Objects.equals(this.responseTime, that.responseTime) 
-                && Objects.equals(this.underFreq, that.underFreq) 
-                && Objects.equals(this.startTime, that.startTime) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.priority, that.priority) 
+                && Objects.equals(this.underDroop, that.underDroop)
+                && Objects.equals(this.overDroop, that.overDroop)
+                && Objects.equals(this.responseTime, that.responseTime)
+                && Objects.equals(this.underFreq, that.underFreq)
+                && Objects.equals(this.startTime, that.startTime)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.priority, that.priority)
                 && Objects.equals(this.overFreq, that.overFreq);
     }
 

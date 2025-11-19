@@ -13,7 +13,6 @@ public enum NotifyEVChargingNeedsStatusEnum {
     REJECTED("Rejected"),
     PROCESSING("Processing"),
     NO_CHARGING_PROFILE("NoChargingProfile");
-    private final String value;
     private final static Map<String, NotifyEVChargingNeedsStatusEnum> CONSTANTS = new HashMap<String, NotifyEVChargingNeedsStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum NotifyEVChargingNeedsStatusEnum {
         }
     }
 
+    private final String value;
+
     NotifyEVChargingNeedsStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static NotifyEVChargingNeedsStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum NotifyEVChargingNeedsStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

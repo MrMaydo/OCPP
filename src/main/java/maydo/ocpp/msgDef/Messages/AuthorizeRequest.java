@@ -15,7 +15,7 @@ public class AuthorizeRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -23,7 +23,6 @@ public class AuthorizeRequest implements JsonInterface {
     /**
      * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
      * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     * 
      */
     @Optional
     private String certificate;
@@ -42,12 +41,10 @@ public class AuthorizeRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param certificate
-     *     *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
-     *     Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     *     
-     *     .
+     * @param certificate *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
+     *                    Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
+     *                    <p>
+     *                    .
      */
     public AuthorizeRequest(IdToken idToken, String certificate, List<OCSPRequestData> iso15118CertificateHashData, CustomData customData) {
         super();
@@ -59,7 +56,7 @@ public class AuthorizeRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -68,7 +65,7 @@ public class AuthorizeRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -78,7 +75,6 @@ public class AuthorizeRequest implements JsonInterface {
     /**
      * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
      * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     * 
      */
     public String getCertificate() {
         return certificate;
@@ -87,7 +83,6 @@ public class AuthorizeRequest implements JsonInterface {
     /**
      * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
      * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     * 
      */
     public void setCertificate(String certificate) {
         this.certificate = certificate;
@@ -141,8 +136,8 @@ public class AuthorizeRequest implements JsonInterface {
             return false;
         AuthorizeRequest that = (AuthorizeRequest) obj;
         return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.certificate, that.certificate) 
-                && Objects.equals(this.iso15118CertificateHashData, that.iso15118CertificateHashData) 
+                && Objects.equals(this.certificate, that.certificate)
+                && Objects.equals(this.iso15118CertificateHashData, that.iso15118CertificateHashData)
                 && Objects.equals(this.customData, that.customData);
     }
 

@@ -19,7 +19,6 @@ public enum PhaseEnum {
     L1_L2("L1-L2"),
     L2_L3("L2-L3"),
     L3_L1("L3-L1");
-    private final String value;
     private final static Map<String, PhaseEnum> CONSTANTS = new HashMap<String, PhaseEnum>();
 
     static {
@@ -28,17 +27,10 @@ public enum PhaseEnum {
         }
     }
 
+    private final String value;
+
     PhaseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static PhaseEnum fromValue(String value) {
@@ -48,6 +40,15 @@ public enum PhaseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

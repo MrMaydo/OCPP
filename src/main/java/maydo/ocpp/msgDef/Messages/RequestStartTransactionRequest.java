@@ -24,23 +24,22 @@ public class RequestStartTransactionRequest implements JsonInterface {
     private IdToken groupIdToken;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private IdToken idToken;
     /**
      * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer remoteStartId;
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
      */
     @Optional
     private ChargingProfile chargingProfile;
@@ -57,13 +56,10 @@ public class RequestStartTransactionRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
-     *     .
-     * @param remoteStartId
-     *     Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     *     .
+     * @param evseId        Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
+     *                      .
+     * @param remoteStartId Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
+     *                      .
      */
     public RequestStartTransactionRequest(Integer evseId, IdToken groupIdToken, IdToken idToken, Integer remoteStartId, ChargingProfile chargingProfile, CustomData customData) {
         super();
@@ -105,7 +101,7 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public IdToken getIdToken() {
@@ -114,7 +110,7 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * 
+     * <p>
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -123,7 +119,7 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRemoteStartId() {
@@ -132,7 +128,7 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * 
+     * <p>
      * (Required)
      */
     public void setRemoteStartId(Integer remoteStartId) {
@@ -141,9 +137,8 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
      */
     public ChargingProfile getChargingProfile() {
         return chargingProfile;
@@ -151,9 +146,8 @@ public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
      */
     public void setChargingProfile(ChargingProfile chargingProfile) {
         this.chargingProfile = chargingProfile;
@@ -199,10 +193,10 @@ public class RequestStartTransactionRequest implements JsonInterface {
             return false;
         RequestStartTransactionRequest that = (RequestStartTransactionRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.remoteStartId, that.remoteStartId) 
-                && Objects.equals(this.idToken, that.idToken) 
-                && Objects.equals(this.chargingProfile, that.chargingProfile) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.remoteStartId, that.remoteStartId)
+                && Objects.equals(this.idToken, that.idToken)
+                && Objects.equals(this.chargingProfile, that.chargingProfile)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.groupIdToken, that.groupIdToken);
     }
 

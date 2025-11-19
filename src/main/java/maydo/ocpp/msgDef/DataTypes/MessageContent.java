@@ -12,7 +12,7 @@ public class MessageContent implements JsonInterface {
 
     /**
      * Format of the message.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -25,9 +25,9 @@ public class MessageContent implements JsonInterface {
     /**
      * *(2.1)* Required. Message contents. +
      * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     *     Maximum length defaults to 1024.
-     * 
-     * 
+     * Maximum length defaults to 1024.
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -45,16 +45,13 @@ public class MessageContent implements JsonInterface {
     }
 
     /**
-     * 
-     * @param language
-     *     Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *     .
-     * @param content
-     *     *(2.1)* Required. Message contents. +
-     *     Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     *         Maximum length defaults to 1024.
-     *     
-     *     .
+     * @param language Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     *                 .
+     * @param content  *(2.1)* Required. Message contents. +
+     *                 Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     *                 Maximum length defaults to 1024.
+     *                 <p>
+     *                 .
      */
     public MessageContent(MessageFormatEnum format, String language, String content, CustomData customData) {
         super();
@@ -66,7 +63,7 @@ public class MessageContent implements JsonInterface {
 
     /**
      * Format of the message.
-     * 
+     * <p>
      * (Required)
      */
     public MessageFormatEnum getFormat() {
@@ -75,7 +72,7 @@ public class MessageContent implements JsonInterface {
 
     /**
      * Format of the message.
-     * 
+     * <p>
      * (Required)
      */
     public void setFormat(MessageFormatEnum format) {
@@ -99,9 +96,9 @@ public class MessageContent implements JsonInterface {
     /**
      * *(2.1)* Required. Message contents. +
      * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     *     Maximum length defaults to 1024.
-     * 
-     * 
+     * Maximum length defaults to 1024.
+     * <p>
+     * <p>
      * (Required)
      */
     public String getContent() {
@@ -111,9 +108,9 @@ public class MessageContent implements JsonInterface {
     /**
      * *(2.1)* Required. Message contents. +
      * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     *     Maximum length defaults to 1024.
-     * 
-     * 
+     * Maximum length defaults to 1024.
+     * <p>
+     * <p>
      * (Required)
      */
     public void setContent(String content) {
@@ -151,7 +148,7 @@ public class MessageContent implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -160,8 +157,8 @@ public class MessageContent implements JsonInterface {
             return false;
         MessageContent that = (MessageContent) obj;
         return Objects.equals(this.format, that.format)
-                && Objects.equals(this.language, that.language) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.language, that.language)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.content, that.content);
     }
 

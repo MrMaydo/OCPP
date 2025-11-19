@@ -14,7 +14,7 @@ public class LogStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the status of the log upload.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -43,11 +43,9 @@ public class LogStatusNotificationRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param requestId
-     *     The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
-     *     unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
-     *     .
+     * @param requestId The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
+     *                  unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
+     *                  .
      */
     public LogStatusNotificationRequest(UploadLogStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
         super();
@@ -59,7 +57,7 @@ public class LogStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the status of the log upload.
-     * 
+     * <p>
      * (Required)
      */
     public UploadLogStatusEnum getStatus() {
@@ -68,7 +66,7 @@ public class LogStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the status of the log upload.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(UploadLogStatusEnum status) {
@@ -145,8 +143,8 @@ public class LogStatusNotificationRequest implements JsonInterface {
             return false;
         LogStatusNotificationRequest that = (LogStatusNotificationRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
-                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.requestId, that.requestId)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -17,16 +17,15 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * 
+     * <p>
      * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
-     * 
      */
     @Optional
     private CostDetails costDetails;
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -35,21 +34,21 @@ public class TransactionEventRequest implements JsonInterface {
     private List<MeterValue> meterValue;
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timestamp;
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private TriggerReasonEnum triggerReason;
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -62,8 +61,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
      * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     *  1: The numberPhases in the currently used ChargingSchedule. +
-     *  2: The number of phases provided via device management.
+     * 1: The numberPhases in the currently used ChargingSchedule. +
+     * 2: The number of phases provided via device management.
      */
     @Optional
     private Integer numberOfPhasesUsed;
@@ -84,12 +83,10 @@ public class TransactionEventRequest implements JsonInterface {
     private PreconditioningStatusEnum preconditioningStatus;
     /**
      * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     * 
      */
     @Optional
     private Boolean evseSleep;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -117,32 +114,24 @@ public class TransactionEventRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseSleep
-     *     *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     *     
-     *     .
-     * @param offline
-     *     Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     *     .
-     * @param seqNo
-     *     Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     *     .
-     * @param reservationId
-     *     This contains the Id of the reservation that terminates as a result of this transaction.
-     *     .
-     * @param cableMaxCurrent
-     *     The maximum current of the connected cable in Ampere (A).
-     *     .
-     * @param numberOfPhasesUsed
-     *     If the Charging Station is able to report the number of phases used, then it SHALL provide it.
-     *     When omitted the CSMS may be able to determine the number of phases used as follows: +
-     *      1: The numberPhases in the currently used ChargingSchedule. +
-     *      2: The number of phases provided via device management.
-     *     .
-     * @param timestamp
-     *     The date and time at which this transaction event occurred.
-     *     .
+     * @param evseSleep          *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
+     *                           <p>
+     *                           .
+     * @param offline            Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
+     *                           .
+     * @param seqNo              Incremental sequence number, helps with determining if all messages of a transaction have been received.
+     *                           .
+     * @param reservationId      This contains the Id of the reservation that terminates as a result of this transaction.
+     *                           .
+     * @param cableMaxCurrent    The maximum current of the connected cable in Ampere (A).
+     *                           .
+     * @param numberOfPhasesUsed If the Charging Station is able to report the number of phases used, then it SHALL provide it.
+     *                           When omitted the CSMS may be able to determine the number of phases used as follows: +
+     *                           1: The numberPhases in the currently used ChargingSchedule. +
+     *                           2: The number of phases provided via device management.
+     *                           .
+     * @param timestamp          The date and time at which this transaction event occurred.
+     *                           .
      */
     public TransactionEventRequest(CostDetails costDetails, TransactionEventEnum eventType, List<MeterValue> meterValue, Date timestamp, TriggerReasonEnum triggerReason, Integer seqNo, Boolean offline, Integer numberOfPhasesUsed, Integer cableMaxCurrent, Integer reservationId, PreconditioningStatusEnum preconditioningStatus, Boolean evseSleep, Transaction transactionInfo, EVSE evse, IdToken idToken, CustomData customData) {
         super();
@@ -166,9 +155,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * 
+     * <p>
      * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
-     * 
      */
     public CostDetails getCostDetails() {
         return costDetails;
@@ -176,9 +164,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * 
+     * <p>
      * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
-     * 
      */
     public void setCostDetails(CostDetails costDetails) {
         this.costDetails = costDetails;
@@ -187,7 +174,7 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
      */
     public TransactionEventEnum getEventType() {
@@ -197,7 +184,7 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * This contains the type of this event.
      * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * 
+     * <p>
      * (Required)
      */
     public void setEventType(TransactionEventEnum eventType) {
@@ -214,7 +201,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimestamp() {
@@ -223,7 +210,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * The date and time at which this transaction event occurred.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -232,7 +219,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
      */
     public TriggerReasonEnum getTriggerReason() {
@@ -241,7 +228,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * 
+     * <p>
      * (Required)
      */
     public void setTriggerReason(TriggerReasonEnum triggerReason) {
@@ -250,7 +237,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeqNo() {
@@ -259,7 +246,7 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeqNo(Integer seqNo) {
@@ -283,8 +270,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
      * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     *  1: The numberPhases in the currently used ChargingSchedule. +
-     *  2: The number of phases provided via device management.
+     * 1: The numberPhases in the currently used ChargingSchedule. +
+     * 2: The number of phases provided via device management.
      */
     public Integer getNumberOfPhasesUsed() {
         return numberOfPhasesUsed;
@@ -293,8 +280,8 @@ public class TransactionEventRequest implements JsonInterface {
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
      * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     *  1: The numberPhases in the currently used ChargingSchedule. +
-     *  2: The number of phases provided via device management.
+     * 1: The numberPhases in the currently used ChargingSchedule. +
+     * 2: The number of phases provided via device management.
      */
     public void setNumberOfPhasesUsed(Integer numberOfPhasesUsed) {
         this.numberOfPhasesUsed = numberOfPhasesUsed;
@@ -344,7 +331,6 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     * 
      */
     public Boolean getEvseSleep() {
         return evseSleep;
@@ -352,14 +338,12 @@ public class TransactionEventRequest implements JsonInterface {
 
     /**
      * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     * 
      */
     public void setEvseSleep(Boolean evseSleep) {
         this.evseSleep = evseSleep;
     }
 
     /**
-     * 
      * (Required)
      */
     public Transaction getTransactionInfo() {
@@ -367,7 +351,6 @@ public class TransactionEventRequest implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setTransactionInfo(Transaction transactionInfo) {
@@ -442,20 +425,20 @@ public class TransactionEventRequest implements JsonInterface {
             return false;
         TransactionEventRequest that = (TransactionEventRequest) obj;
         return Objects.equals(this.preconditioningStatus, that.preconditioningStatus)
-                && Objects.equals(this.evseSleep, that.evseSleep) 
-                && Objects.equals(this.seqNo, that.seqNo) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.eventType, that.eventType) 
-                && Objects.equals(this.evse, that.evse) 
-                && Objects.equals(this.transactionInfo, that.transactionInfo) 
-                && Objects.equals(this.offline, that.offline) 
-                && Objects.equals(this.reservationId, that.reservationId) 
-                && Objects.equals(this.costDetails, that.costDetails) 
-                && Objects.equals(this.triggerReason, that.triggerReason) 
-                && Objects.equals(this.idToken, that.idToken) 
-                && Objects.equals(this.meterValue, that.meterValue) 
-                && Objects.equals(this.cableMaxCurrent, that.cableMaxCurrent) 
-                && Objects.equals(this.numberOfPhasesUsed, that.numberOfPhasesUsed) 
+                && Objects.equals(this.evseSleep, that.evseSleep)
+                && Objects.equals(this.seqNo, that.seqNo)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.eventType, that.eventType)
+                && Objects.equals(this.evse, that.evse)
+                && Objects.equals(this.transactionInfo, that.transactionInfo)
+                && Objects.equals(this.offline, that.offline)
+                && Objects.equals(this.reservationId, that.reservationId)
+                && Objects.equals(this.costDetails, that.costDetails)
+                && Objects.equals(this.triggerReason, that.triggerReason)
+                && Objects.equals(this.idToken, that.idToken)
+                && Objects.equals(this.meterValue, that.meterValue)
+                && Objects.equals(this.cableMaxCurrent, that.cableMaxCurrent)
+                && Objects.equals(this.numberOfPhasesUsed, that.numberOfPhasesUsed)
                 && Objects.equals(this.timestamp, that.timestamp);
     }
 

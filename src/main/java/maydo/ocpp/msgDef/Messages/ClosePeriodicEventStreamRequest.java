@@ -12,7 +12,7 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     /**
      * Id of stream to close.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -30,10 +30,8 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param id
-     *     Id of stream to close.
-     *     .
+     * @param id Id of stream to close.
+     *           .
      */
     public ClosePeriodicEventStreamRequest(Integer id, CustomData customData) {
         super();
@@ -43,7 +41,7 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     /**
      * Id of stream to close.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -52,7 +50,7 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     /**
      * Id of stream to close.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {

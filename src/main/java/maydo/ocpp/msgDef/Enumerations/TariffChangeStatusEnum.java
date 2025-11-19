@@ -15,7 +15,6 @@ public enum TariffChangeStatusEnum {
     CONDITION_NOT_SUPPORTED("ConditionNotSupported"),
     TX_NOT_FOUND("TxNotFound"),
     NO_CURRENCY_CHANGE("NoCurrencyChange");
-    private final String value;
     private final static Map<String, TariffChangeStatusEnum> CONSTANTS = new HashMap<String, TariffChangeStatusEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum TariffChangeStatusEnum {
         }
     }
 
+    private final String value;
+
     TariffChangeStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TariffChangeStatusEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum TariffChangeStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -9,14 +9,12 @@ import java.util.Objects;
 
 /**
  * Element providing more information about the status.
- * 
- * 
  */
 public class StatusInfo implements JsonInterface {
 
     /**
      * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -39,13 +37,10 @@ public class StatusInfo implements JsonInterface {
     }
 
     /**
-     * 
-     * @param additionalInfo
-     *     Additional text to provide detailed information.
-     *     .
-     * @param reasonCode
-     *     A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     *     .
+     * @param additionalInfo Additional text to provide detailed information.
+     *                       .
+     * @param reasonCode     A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
+     *                       .
      */
     public StatusInfo(String reasonCode, String additionalInfo, CustomData customData) {
         super();
@@ -56,7 +51,7 @@ public class StatusInfo implements JsonInterface {
 
     /**
      * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * 
+     * <p>
      * (Required)
      */
     public String getReasonCode() {
@@ -65,7 +60,7 @@ public class StatusInfo implements JsonInterface {
 
     /**
      * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * 
+     * <p>
      * (Required)
      */
     public void setReasonCode(String reasonCode) {
@@ -117,7 +112,7 @@ public class StatusInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -126,7 +121,7 @@ public class StatusInfo implements JsonInterface {
             return false;
         StatusInfo that = (StatusInfo) obj;
         return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.reasonCode, that.reasonCode);
     }
 

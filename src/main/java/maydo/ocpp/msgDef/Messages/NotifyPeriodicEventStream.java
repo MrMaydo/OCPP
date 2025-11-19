@@ -14,28 +14,27 @@ import java.util.Objects;
 public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private List<StreamDataElement> data;
     /**
      * Id of stream.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer id;
     /**
      * Number of data elements still pending to be sent.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer pending;
     /**
      * Base timestamp to add to time offset of values.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -53,16 +52,12 @@ public class NotifyPeriodicEventStream implements JsonInterface {
     }
 
     /**
-     * 
-     * @param pending
-     *     Number of data elements still pending to be sent.
-     *     .
-     * @param id
-     *     Id of stream.
-     *     .
-     * @param basetime
-     *     Base timestamp to add to time offset of values.
-     *     .
+     * @param pending  Number of data elements still pending to be sent.
+     *                 .
+     * @param id       Id of stream.
+     *                 .
+     * @param basetime Base timestamp to add to time offset of values.
+     *                 .
      */
     public NotifyPeriodicEventStream(List<StreamDataElement> data, Integer id, Integer pending, Date basetime, CustomData customData) {
         super();
@@ -74,7 +69,6 @@ public class NotifyPeriodicEventStream implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<StreamDataElement> getData() {
@@ -82,7 +76,6 @@ public class NotifyPeriodicEventStream implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setData(List<StreamDataElement> data) {
@@ -91,7 +84,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Id of stream.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -100,7 +93,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Id of stream.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -109,7 +102,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Number of data elements still pending to be sent.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPending() {
@@ -118,7 +111,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Number of data elements still pending to be sent.
-     * 
+     * <p>
      * (Required)
      */
     public void setPending(Integer pending) {
@@ -127,7 +120,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Base timestamp to add to time offset of values.
-     * 
+     * <p>
      * (Required)
      */
     public Date getBasetime() {
@@ -136,7 +129,7 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
      * Base timestamp to add to time offset of values.
-     * 
+     * <p>
      * (Required)
      */
     public void setBasetime(Date basetime) {
@@ -183,9 +176,9 @@ public class NotifyPeriodicEventStream implements JsonInterface {
             return false;
         NotifyPeriodicEventStream that = (NotifyPeriodicEventStream) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.data, that.data) 
-                && Objects.equals(this.basetime, that.basetime) 
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.data, that.data)
+                && Objects.equals(this.basetime, that.basetime)
                 && Objects.equals(this.pending, that.pending);
     }
 

@@ -13,21 +13,19 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * True: clearing default DER controls. False: clearing scheduled controls.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Boolean isDefault;
     /**
      * Name of control settings to clear. Not used when _controlId_ is provided.
-     * 
      */
     @Optional
     private DERControlEnum controlType;
     /**
      * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     * 
      */
     @Optional
     private String controlId;
@@ -44,15 +42,12 @@ public class ClearDERControlRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param isDefault
-     *     True: clearing default DER controls. False: clearing scheduled controls.
-     *     
-     *     .
-     * @param controlId
-     *     Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     *     
-     *     .
+     * @param isDefault True: clearing default DER controls. False: clearing scheduled controls.
+     *                  <p>
+     *                  .
+     * @param controlId Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
+     *                  <p>
+     *                  .
      */
     public ClearDERControlRequest(Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
         super();
@@ -64,8 +59,8 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * True: clearing default DER controls. False: clearing scheduled controls.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Boolean getIsDefault() {
@@ -74,8 +69,8 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * True: clearing default DER controls. False: clearing scheduled controls.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIsDefault(Boolean isDefault) {
@@ -84,7 +79,6 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * Name of control settings to clear. Not used when _controlId_ is provided.
-     * 
      */
     public DERControlEnum getControlType() {
         return controlType;
@@ -92,7 +86,6 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * Name of control settings to clear. Not used when _controlId_ is provided.
-     * 
      */
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
@@ -100,7 +93,6 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     * 
      */
     public String getControlId() {
         return controlId;
@@ -108,7 +100,6 @@ public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     * 
      */
     public void setControlId(String controlId) {
         this.controlId = controlId;
@@ -154,8 +145,8 @@ public class ClearDERControlRequest implements JsonInterface {
             return false;
         ClearDERControlRequest that = (ClearDERControlRequest) obj;
         return Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.controlId, that.controlId) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.controlId, that.controlId)
                 && Objects.equals(this.controlType, that.controlType);
     }
 

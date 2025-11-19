@@ -12,13 +12,12 @@ public class PriceRuleStack implements JsonInterface {
 
     /**
      * Duration of the stack of price rules.  he amount of seconds that define the duration of the given PriceRule(s).
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,10 +35,8 @@ public class PriceRuleStack implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration of the stack of price rules.  he amount of seconds that define the duration of the given PriceRule(s).
-     *     .
+     * @param duration Duration of the stack of price rules.  he amount of seconds that define the duration of the given PriceRule(s).
+     *                 .
      */
     public PriceRuleStack(Integer duration, List<PriceRule> priceRule, CustomData customData) {
         super();
@@ -50,7 +47,7 @@ public class PriceRuleStack implements JsonInterface {
 
     /**
      * Duration of the stack of price rules.  he amount of seconds that define the duration of the given PriceRule(s).
-     * 
+     * <p>
      * (Required)
      */
     public Integer getDuration() {
@@ -59,7 +56,7 @@ public class PriceRuleStack implements JsonInterface {
 
     /**
      * Duration of the stack of price rules.  he amount of seconds that define the duration of the given PriceRule(s).
-     * 
+     * <p>
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -67,7 +64,6 @@ public class PriceRuleStack implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<PriceRule> getPriceRule() {
@@ -75,7 +71,6 @@ public class PriceRuleStack implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setPriceRule(List<PriceRule> priceRule) {
@@ -113,7 +108,7 @@ public class PriceRuleStack implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -122,7 +117,7 @@ public class PriceRuleStack implements JsonInterface {
             return false;
         PriceRuleStack that = (PriceRuleStack) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.priceRule, that.priceRule);
     }
 

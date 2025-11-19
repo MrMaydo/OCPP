@@ -16,7 +16,6 @@ public enum DisplayMessageStatusEnum {
     NOT_SUPPORTED_STATE("NotSupportedState"),
     UNKNOWN_TRANSACTION("UnknownTransaction"),
     LANGUAGE_NOT_SUPPORTED("LanguageNotSupported");
-    private final String value;
     private final static Map<String, DisplayMessageStatusEnum> CONSTANTS = new HashMap<String, DisplayMessageStatusEnum>();
 
     static {
@@ -25,17 +24,10 @@ public enum DisplayMessageStatusEnum {
         }
     }
 
+    private final String value;
+
     DisplayMessageStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DisplayMessageStatusEnum fromValue(String value) {
@@ -45,6 +37,15 @@ public enum DisplayMessageStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

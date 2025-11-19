@@ -12,7 +12,6 @@ public enum SendLocalListStatusEnum {
     ACCEPTED("Accepted"),
     FAILED("Failed"),
     VERSION_MISMATCH("VersionMismatch");
-    private final String value;
     private final static Map<String, SendLocalListStatusEnum> CONSTANTS = new HashMap<String, SendLocalListStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum SendLocalListStatusEnum {
         }
     }
 
+    private final String value;
+
     SendLocalListStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static SendLocalListStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum SendLocalListStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

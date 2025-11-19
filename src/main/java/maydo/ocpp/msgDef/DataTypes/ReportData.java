@@ -12,20 +12,19 @@ public class ReportData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Variable variable;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -58,7 +57,7 @@ public class ReportData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -67,7 +66,7 @@ public class ReportData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -76,7 +75,7 @@ public class ReportData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -85,7 +84,7 @@ public class ReportData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -93,7 +92,6 @@ public class ReportData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<VariableAttribute> getVariableAttribute() {
@@ -101,7 +99,6 @@ public class ReportData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setVariableAttribute(List<VariableAttribute> variableAttribute) {
@@ -153,7 +150,7 @@ public class ReportData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -162,9 +159,9 @@ public class ReportData implements JsonInterface {
             return false;
         ReportData that = (ReportData) obj;
         return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.variableAttribute, that.variableAttribute) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.variableAttribute, that.variableAttribute)
                 && Objects.equals(this.variableCharacteristics, that.variableCharacteristics);
     }
 

@@ -15,7 +15,6 @@ public enum SetMonitoringStatusEnum {
     UNSUPPORTED_MONITOR_TYPE("UnsupportedMonitorType"),
     REJECTED("Rejected"),
     DUPLICATE("Duplicate");
-    private final String value;
     private final static Map<String, SetMonitoringStatusEnum> CONSTANTS = new HashMap<String, SetMonitoringStatusEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum SetMonitoringStatusEnum {
         }
     }
 
+    private final String value;
+
     SetMonitoringStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static SetMonitoringStatusEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum SetMonitoringStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

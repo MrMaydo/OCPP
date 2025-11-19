@@ -11,63 +11,57 @@ public class EnterService implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer priority;
     /**
      * Enter service voltage high
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float highVoltage;
     /**
      * Enter service voltage low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float lowVoltage;
     /**
      * Enter service frequency high
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float highFreq;
     /**
      * Enter service frequency low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Float lowFreq;
     /**
      * Enter service delay
-     * 
-     * 
      */
     @Optional
     private Float delay;
     /**
      * Enter service randomized delay
-     * 
-     * 
      */
     @Optional
     private Float randomDelay;
     /**
      * Enter service ramp rate in seconds
-     * 
-     * 
      */
     @Optional
     private Float rampRate;
@@ -84,43 +78,34 @@ public class EnterService implements JsonInterface {
     }
 
     /**
-     * 
-     * @param rampRate
-     *     Enter service ramp rate in seconds
-     *     
-     *     
-     *     .
-     * @param delay
-     *     Enter service delay
-     *     
-     *     
-     *     .
-     * @param lowFreq
-     *     Enter service frequency low
-     *     
-     *     
-     *     .
-     * @param lowVoltage
-     *     Enter service voltage low
-     *     
-     *     
-     *     .
-     * @param highVoltage
-     *     Enter service voltage high
-     *     .
-     * @param randomDelay
-     *     Enter service randomized delay
-     *     
-     *     
-     *     .
-     * @param priority
-     *     Priority of setting (0=highest)
-     *     
-     *     .
-     * @param highFreq
-     *     Enter service frequency high
-     *     
-     *     .
+     * @param rampRate    Enter service ramp rate in seconds
+     *                    <p>
+     *                    <p>
+     *                    .
+     * @param delay       Enter service delay
+     *                    <p>
+     *                    <p>
+     *                    .
+     * @param lowFreq     Enter service frequency low
+     *                    <p>
+     *                    <p>
+     *                    .
+     * @param lowVoltage  Enter service voltage low
+     *                    <p>
+     *                    <p>
+     *                    .
+     * @param highVoltage Enter service voltage high
+     *                    .
+     * @param randomDelay Enter service randomized delay
+     *                    <p>
+     *                    <p>
+     *                    .
+     * @param priority    Priority of setting (0=highest)
+     *                    <p>
+     *                    .
+     * @param highFreq    Enter service frequency high
+     *                    <p>
+     *                    .
      */
     public EnterService(Integer priority, Float highVoltage, Float lowVoltage, Float highFreq, Float lowFreq, Float delay, Float randomDelay, Float rampRate, CustomData customData) {
         super();
@@ -137,8 +122,8 @@ public class EnterService implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -147,8 +132,8 @@ public class EnterService implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -157,7 +142,7 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service voltage high
-     * 
+     * <p>
      * (Required)
      */
     public Float getHighVoltage() {
@@ -166,7 +151,7 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service voltage high
-     * 
+     * <p>
      * (Required)
      */
     public void setHighVoltage(Float highVoltage) {
@@ -175,9 +160,9 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service voltage low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getLowVoltage() {
@@ -186,9 +171,9 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service voltage low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setLowVoltage(Float lowVoltage) {
@@ -197,8 +182,8 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service frequency high
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getHighFreq() {
@@ -207,8 +192,8 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service frequency high
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setHighFreq(Float highFreq) {
@@ -217,9 +202,9 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service frequency low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Float getLowFreq() {
@@ -228,9 +213,9 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service frequency low
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setLowFreq(Float lowFreq) {
@@ -239,8 +224,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service delay
-     * 
-     * 
      */
     public Float getDelay() {
         return delay;
@@ -248,8 +231,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service delay
-     * 
-     * 
      */
     public void setDelay(Float delay) {
         this.delay = delay;
@@ -257,8 +238,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service randomized delay
-     * 
-     * 
      */
     public Float getRandomDelay() {
         return randomDelay;
@@ -266,8 +245,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service randomized delay
-     * 
-     * 
      */
     public void setRandomDelay(Float randomDelay) {
         this.randomDelay = randomDelay;
@@ -275,8 +252,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service ramp rate in seconds
-     * 
-     * 
      */
     public Float getRampRate() {
         return rampRate;
@@ -284,8 +259,6 @@ public class EnterService implements JsonInterface {
 
     /**
      * Enter service ramp rate in seconds
-     * 
-     * 
      */
     public void setRampRate(Float rampRate) {
         this.rampRate = rampRate;
@@ -322,7 +295,7 @@ public class EnterService implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -331,13 +304,13 @@ public class EnterService implements JsonInterface {
             return false;
         EnterService that = (EnterService) obj;
         return Objects.equals(this.rampRate, that.rampRate)
-                && Objects.equals(this.delay, that.delay) 
-                && Objects.equals(this.lowFreq, that.lowFreq) 
-                && Objects.equals(this.lowVoltage, that.lowVoltage) 
-                && Objects.equals(this.highVoltage, that.highVoltage) 
-                && Objects.equals(this.randomDelay, that.randomDelay) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.priority, that.priority) 
+                && Objects.equals(this.delay, that.delay)
+                && Objects.equals(this.lowFreq, that.lowFreq)
+                && Objects.equals(this.lowVoltage, that.lowVoltage)
+                && Objects.equals(this.highVoltage, that.highVoltage)
+                && Objects.equals(this.randomDelay, that.randomDelay)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.priority, that.priority)
                 && Objects.equals(this.highFreq, that.highFreq);
     }
 

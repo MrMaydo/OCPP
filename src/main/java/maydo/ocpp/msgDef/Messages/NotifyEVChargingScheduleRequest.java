@@ -14,7 +14,7 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     /**
      * Periods contained in the charging profile are relative to this point in time.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -22,18 +22,18 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     /**
      * Charging schedule structure defines a list of charging periods, as used in: NotifyEVChargingScheduleRequest and ChargingProfileType. When used in a NotifyEVChargingScheduleRequest only _duration_ and _chargingSchedulePeriod_ are relevant and _chargingRateUnit_ must be 'W'. +
      * An ISO 15118-20 session may provide either an _absolutePriceSchedule_ or a _priceLevelSchedule_. An ISO 15118-2 session can only provide a_salesTariff_ element. The field _digestValue_ is used when price schedule or sales tariff are signed.
-     * 
+     * <p>
      * image::images/ChargingSchedule-Simple.png[]
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private ChargingSchedule chargingSchedule;
     /**
      * The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -62,20 +62,15 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
-     *     .
-     * @param timeBase
-     *     Periods contained in the charging profile are relative to this point in time.
-     *     .
-     * @param selectedChargingScheduleId
-     *     *(2.1)* Id  of the _chargingSchedule_ that EV selected from the provided ChargingProfile.
-     *     .
-     * @param powerToleranceAcceptance
-     *     *(2.1)* True when power tolerance is accepted by EV.
-     *     This value is taken from EVPowerProfile.PowerToleranceAcceptance in the ISO 15118-20 PowerDeliverReq message..
-     *     .
+     * @param evseId                     The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
+     *                                   .
+     * @param timeBase                   Periods contained in the charging profile are relative to this point in time.
+     *                                   .
+     * @param selectedChargingScheduleId *(2.1)* Id  of the _chargingSchedule_ that EV selected from the provided ChargingProfile.
+     *                                   .
+     * @param powerToleranceAcceptance   *(2.1)* True when power tolerance is accepted by EV.
+     *                                   This value is taken from EVPowerProfile.PowerToleranceAcceptance in the ISO 15118-20 PowerDeliverReq message..
+     *                                   .
      */
     public NotifyEVChargingScheduleRequest(Date timeBase, ChargingSchedule chargingSchedule, Integer evseId, Integer selectedChargingScheduleId, Boolean powerToleranceAcceptance, CustomData customData) {
         super();
@@ -89,7 +84,7 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     /**
      * Periods contained in the charging profile are relative to this point in time.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimeBase() {
@@ -98,7 +93,7 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     /**
      * Periods contained in the charging profile are relative to this point in time.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeBase(Date timeBase) {
@@ -108,11 +103,11 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     /**
      * Charging schedule structure defines a list of charging periods, as used in: NotifyEVChargingScheduleRequest and ChargingProfileType. When used in a NotifyEVChargingScheduleRequest only _duration_ and _chargingSchedulePeriod_ are relevant and _chargingRateUnit_ must be 'W'. +
      * An ISO 15118-20 session may provide either an _absolutePriceSchedule_ or a _priceLevelSchedule_. An ISO 15118-2 session can only provide a_salesTariff_ element. The field _digestValue_ is used when price schedule or sales tariff are signed.
-     * 
+     * <p>
      * image::images/ChargingSchedule-Simple.png[]
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public ChargingSchedule getChargingSchedule() {
@@ -122,11 +117,11 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     /**
      * Charging schedule structure defines a list of charging periods, as used in: NotifyEVChargingScheduleRequest and ChargingProfileType. When used in a NotifyEVChargingScheduleRequest only _duration_ and _chargingSchedulePeriod_ are relevant and _chargingRateUnit_ must be 'W'. +
      * An ISO 15118-20 session may provide either an _absolutePriceSchedule_ or a _priceLevelSchedule_. An ISO 15118-2 session can only provide a_salesTariff_ element. The field _digestValue_ is used when price schedule or sales tariff are signed.
-     * 
+     * <p>
      * image::images/ChargingSchedule-Simple.png[]
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setChargingSchedule(ChargingSchedule chargingSchedule) {
@@ -135,7 +130,7 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     /**
      * The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -144,7 +139,7 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     /**
      * The charging schedule contained in this notification applies to an EVSE. EvseId must be &gt; 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -221,10 +216,10 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
             return false;
         NotifyEVChargingScheduleRequest that = (NotifyEVChargingScheduleRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.timeBase, that.timeBase) 
-                && Objects.equals(this.selectedChargingScheduleId, that.selectedChargingScheduleId) 
+                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.timeBase, that.timeBase)
+                && Objects.equals(this.selectedChargingScheduleId, that.selectedChargingScheduleId)
                 && Objects.equals(this.powerToleranceAcceptance, that.powerToleranceAcceptance);
     }
 

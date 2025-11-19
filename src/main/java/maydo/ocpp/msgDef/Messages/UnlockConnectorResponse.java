@@ -14,7 +14,7 @@ public class UnlockConnectorResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has unlocked the connector.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class UnlockConnectorResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has unlocked the connector.
-     * 
+     * <p>
      * (Required)
      */
     public UnlockStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class UnlockConnectorResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station has unlocked the connector.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(UnlockStatusEnum status) {
@@ -115,7 +115,7 @@ public class UnlockConnectorResponse implements JsonInterface {
             return false;
         UnlockConnectorResponse that = (UnlockConnectorResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

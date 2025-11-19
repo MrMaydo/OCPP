@@ -14,7 +14,7 @@ public class ClearCacheResponse implements JsonInterface {
 
     /**
      * Accepted if the Charging Station has executed the request, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class ClearCacheResponse implements JsonInterface {
 
     /**
      * Accepted if the Charging Station has executed the request, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     public ClearCacheStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class ClearCacheResponse implements JsonInterface {
 
     /**
      * Accepted if the Charging Station has executed the request, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(ClearCacheStatusEnum status) {
@@ -115,7 +115,7 @@ public class ClearCacheResponse implements JsonInterface {
             return false;
         ClearCacheResponse that = (ClearCacheResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

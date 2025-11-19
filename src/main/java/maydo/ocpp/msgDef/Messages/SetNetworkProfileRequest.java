@@ -13,14 +13,14 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * Slot in which the configuration should be stored.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer configurationSlot;
     /**
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,10 +38,8 @@ public class SetNetworkProfileRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param configurationSlot
-     *     Slot in which the configuration should be stored.
-     *     .
+     * @param configurationSlot Slot in which the configuration should be stored.
+     *                          .
      */
     public SetNetworkProfileRequest(Integer configurationSlot, NetworkConnectionProfile connectionData, CustomData customData) {
         super();
@@ -52,7 +50,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * Slot in which the configuration should be stored.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getConfigurationSlot() {
@@ -61,7 +59,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * Slot in which the configuration should be stored.
-     * 
+     * <p>
      * (Required)
      */
     public void setConfigurationSlot(Integer configurationSlot) {
@@ -70,7 +68,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * 
+     * <p>
      * (Required)
      */
     public NetworkConnectionProfile getConnectionData() {
@@ -79,7 +77,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * 
+     * <p>
      * (Required)
      */
     public void setConnectionData(NetworkConnectionProfile connectionData) {
@@ -126,7 +124,7 @@ public class SetNetworkProfileRequest implements JsonInterface {
             return false;
         SetNetworkProfileRequest that = (SetNetworkProfileRequest) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.connectionData, that.connectionData) 
+                && Objects.equals(this.connectionData, that.connectionData)
                 && Objects.equals(this.configurationSlot, that.configurationSlot);
     }
 

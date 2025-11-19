@@ -17,14 +17,14 @@ public class GetVariableData implements JsonInterface {
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Component component;
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -65,7 +65,7 @@ public class GetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public Component getComponent() {
@@ -74,7 +74,7 @@ public class GetVariableData implements JsonInterface {
 
     /**
      * A physical or logical component
-     * 
+     * <p>
      * (Required)
      */
     public void setComponent(Component component) {
@@ -83,7 +83,7 @@ public class GetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public Variable getVariable() {
@@ -92,7 +92,7 @@ public class GetVariableData implements JsonInterface {
 
     /**
      * Reference key to a component-variable.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariable(Variable variable) {
@@ -130,7 +130,7 @@ public class GetVariableData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -139,8 +139,8 @@ public class GetVariableData implements JsonInterface {
             return false;
         GetVariableData that = (GetVariableData) obj;
         return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.attributeType, that.attributeType);
     }
 

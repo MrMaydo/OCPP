@@ -14,7 +14,6 @@ public enum MobilityNeedsModeEnum {
 
     EVCC("EVCC"),
     EVCC_SECC("EVCC_SECC");
-    private final String value;
     private final static Map<String, MobilityNeedsModeEnum> CONSTANTS = new HashMap<String, MobilityNeedsModeEnum>();
 
     static {
@@ -23,17 +22,10 @@ public enum MobilityNeedsModeEnum {
         }
     }
 
+    private final String value;
+
     MobilityNeedsModeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MobilityNeedsModeEnum fromValue(String value) {
@@ -43,6 +35,15 @@ public enum MobilityNeedsModeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

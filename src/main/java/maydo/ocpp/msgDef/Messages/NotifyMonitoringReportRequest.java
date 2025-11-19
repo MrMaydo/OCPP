@@ -16,8 +16,8 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     private List<MonitoringData> monitor;
     /**
      * The id of the GetMonitoringRequest that requested this report.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -29,14 +29,14 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     private Boolean tbc = false;
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer seqNo;
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -54,20 +54,15 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tbc
-     *     “to be continued” indicator. Indicates whether another part of the monitoringData follows in an upcoming notifyMonitoringReportRequest message. Default value when omitted is false.
-     *     .
-     * @param seqNo
-     *     Sequence number of this message. First message starts at 0.
-     *     .
-     * @param requestId
-     *     The id of the GetMonitoringRequest that requested this report.
-     *     
-     *     .
-     * @param generatedAt
-     *     Timestamp of the moment this message was generated at the Charging Station.
-     *     .
+     * @param tbc         “to be continued” indicator. Indicates whether another part of the monitoringData follows in an upcoming notifyMonitoringReportRequest message. Default value when omitted is false.
+     *                    .
+     * @param seqNo       Sequence number of this message. First message starts at 0.
+     *                    .
+     * @param requestId   The id of the GetMonitoringRequest that requested this report.
+     *                    <p>
+     *                    .
+     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
+     *                    .
      */
     public NotifyMonitoringReportRequest(List<MonitoringData> monitor, Integer requestId, Boolean tbc, Integer seqNo, Date generatedAt, CustomData customData) {
         super();
@@ -89,8 +84,8 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * The id of the GetMonitoringRequest that requested this report.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -99,8 +94,8 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * The id of the GetMonitoringRequest that requested this report.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -123,7 +118,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeqNo() {
@@ -132,7 +127,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * Sequence number of this message. First message starts at 0.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeqNo(Integer seqNo) {
@@ -141,7 +136,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Date getGeneratedAt() {
@@ -150,7 +145,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setGeneratedAt(Date generatedAt) {
@@ -197,10 +192,10 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
             return false;
         NotifyMonitoringReportRequest that = (NotifyMonitoringReportRequest) obj;
         return Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.seqNo, that.seqNo) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.generatedAt, that.generatedAt) 
-                && Objects.equals(this.monitor, that.monitor) 
+                && Objects.equals(this.seqNo, that.seqNo)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.generatedAt, that.generatedAt)
+                && Objects.equals(this.monitor, that.monitor)
                 && Objects.equals(this.customData, that.customData);
     }
 

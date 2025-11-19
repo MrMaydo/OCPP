@@ -12,7 +12,7 @@ public class ClearedChargingLimitRequest implements JsonInterface {
 
     /**
      * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -35,13 +35,10 @@ public class ClearedChargingLimitRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE Identifier.
-     *     .
-     * @param chargingLimitSource
-     *     Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     *     .
+     * @param evseId              EVSE Identifier.
+     *                            .
+     * @param chargingLimitSource Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
+     *                            .
      */
     public ClearedChargingLimitRequest(String chargingLimitSource, Integer evseId, CustomData customData) {
         super();
@@ -52,7 +49,7 @@ public class ClearedChargingLimitRequest implements JsonInterface {
 
     /**
      * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public String getChargingLimitSource() {
@@ -61,7 +58,7 @@ public class ClearedChargingLimitRequest implements JsonInterface {
 
     /**
      * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * 
+     * <p>
      * (Required)
      */
     public void setChargingLimitSource(String chargingLimitSource) {
@@ -122,7 +119,7 @@ public class ClearedChargingLimitRequest implements JsonInterface {
             return false;
         ClearedChargingLimitRequest that = (ClearedChargingLimitRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
     }
 

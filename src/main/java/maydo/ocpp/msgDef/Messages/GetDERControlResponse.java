@@ -14,8 +14,8 @@ public class GetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -46,8 +46,8 @@ public class GetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public DERControlStatusEnum getStatus() {
@@ -56,8 +56,8 @@ public class GetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setStatus(DERControlStatusEnum status) {
@@ -118,7 +118,7 @@ public class GetDERControlResponse implements JsonInterface {
             return false;
         GetDERControlResponse that = (GetDERControlResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -28,7 +28,7 @@ public class ReportDERControlRequest implements JsonInterface {
     private List<LimitMaxDischargeGet> limitMaxDischarge;
     /**
      * RequestId from GetDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -52,14 +52,11 @@ public class ReportDERControlRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param tbc
-     *     To Be Continued. Default value when omitted: false. +
-     *     False indicates that there are no further messages as part of this report.
-     *     .
-     * @param requestId
-     *     RequestId from GetDERControlRequest.
-     *     .
+     * @param tbc       To Be Continued. Default value when omitted: false. +
+     *                  False indicates that there are no further messages as part of this report.
+     *                  .
+     * @param requestId RequestId from GetDERControlRequest.
+     *                  .
      */
     public ReportDERControlRequest(List<DERCurveGet> curve, List<EnterServiceGet> enterService, List<FixedPFGet> fixedPFAbsorb, List<FixedPFGet> fixedPFInject, List<FixedVarGet> fixedVar, List<FreqDroopGet> freqDroop, List<GradientGet> gradient, List<LimitMaxDischargeGet> limitMaxDischarge, Integer requestId, Boolean tbc, CustomData customData) {
         super();
@@ -142,7 +139,7 @@ public class ReportDERControlRequest implements JsonInterface {
 
     /**
      * RequestId from GetDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getRequestId() {
@@ -151,7 +148,7 @@ public class ReportDERControlRequest implements JsonInterface {
 
     /**
      * RequestId from GetDERControlRequest.
-     * 
+     * <p>
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -214,15 +211,15 @@ public class ReportDERControlRequest implements JsonInterface {
             return false;
         ReportDERControlRequest that = (ReportDERControlRequest) obj;
         return Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.curve, that.curve) 
-                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb) 
-                && Objects.equals(this.fixedPFInject, that.fixedPFInject) 
-                && Objects.equals(this.requestId, that.requestId) 
-                && Objects.equals(this.gradient, that.gradient) 
-                && Objects.equals(this.enterService, that.enterService) 
-                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge) 
-                && Objects.equals(this.fixedVar, that.fixedVar) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.curve, that.curve)
+                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb)
+                && Objects.equals(this.fixedPFInject, that.fixedPFInject)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.gradient, that.gradient)
+                && Objects.equals(this.enterService, that.enterService)
+                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
+                && Objects.equals(this.fixedVar, that.fixedVar)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.freqDroop, that.freqDroop);
     }
 

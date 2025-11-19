@@ -31,7 +31,6 @@ public enum DERControlEnum {
     VOLT_WATT("VoltWatt"),
     WATT_PF("WattPF"),
     WATT_VAR("WattVar");
-    private final String value;
     private final static Map<String, DERControlEnum> CONSTANTS = new HashMap<String, DERControlEnum>();
 
     static {
@@ -40,17 +39,10 @@ public enum DERControlEnum {
         }
     }
 
+    private final String value;
+
     DERControlEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DERControlEnum fromValue(String value) {
@@ -60,6 +52,15 @@ public enum DERControlEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

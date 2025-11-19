@@ -15,7 +15,6 @@ public enum ChargingProfilePurposeEnum {
     TX_PROFILE("TxProfile"),
     PRIORITY_CHARGING("PriorityCharging"),
     LOCAL_GENERATION("LocalGeneration");
-    private final String value;
     private final static Map<String, ChargingProfilePurposeEnum> CONSTANTS = new HashMap<String, ChargingProfilePurposeEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum ChargingProfilePurposeEnum {
         }
     }
 
+    private final String value;
+
     ChargingProfilePurposeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChargingProfilePurposeEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum ChargingProfilePurposeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

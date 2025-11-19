@@ -12,13 +12,12 @@ public class ConsumptionCost implements JsonInterface {
 
     /**
      * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float startValue;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,10 +35,8 @@ public class ConsumptionCost implements JsonInterface {
     }
 
     /**
-     * 
-     * @param startValue
-     *     The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     *     .
+     * @param startValue The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
+     *                   .
      */
     public ConsumptionCost(Float startValue, List<Cost> cost, CustomData customData) {
         super();
@@ -50,7 +47,7 @@ public class ConsumptionCost implements JsonInterface {
 
     /**
      * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * 
+     * <p>
      * (Required)
      */
     public Float getStartValue() {
@@ -59,7 +56,7 @@ public class ConsumptionCost implements JsonInterface {
 
     /**
      * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * 
+     * <p>
      * (Required)
      */
     public void setStartValue(Float startValue) {
@@ -67,7 +64,6 @@ public class ConsumptionCost implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<Cost> getCost() {
@@ -75,7 +71,6 @@ public class ConsumptionCost implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCost(List<Cost> cost) {
@@ -113,7 +108,7 @@ public class ConsumptionCost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -122,7 +117,7 @@ public class ConsumptionCost implements JsonInterface {
             return false;
         ConsumptionCost that = (ConsumptionCost) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.startValue, that.startValue) 
+                && Objects.equals(this.startValue, that.startValue)
                 && Objects.equals(this.cost, that.cost);
     }
 

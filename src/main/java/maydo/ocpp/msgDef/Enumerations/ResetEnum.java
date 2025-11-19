@@ -12,7 +12,6 @@ public enum ResetEnum {
     IMMEDIATE("Immediate"),
     ON_IDLE("OnIdle"),
     IMMEDIATE_AND_RESUME("ImmediateAndResume");
-    private final String value;
     private final static Map<String, ResetEnum> CONSTANTS = new HashMap<String, ResetEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum ResetEnum {
         }
     }
 
+    private final String value;
+
     ResetEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ResetEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum ResetEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

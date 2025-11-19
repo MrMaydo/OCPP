@@ -14,7 +14,7 @@ public class DeleteCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class DeleteCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     public DeleteCertificateStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class DeleteCertificateResponse implements JsonInterface {
 
     /**
      * Charging Station indicates if it can process the request.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(DeleteCertificateStatusEnum status) {
@@ -115,7 +115,7 @@ public class DeleteCertificateResponse implements JsonInterface {
             return false;
         DeleteCertificateResponse that = (DeleteCertificateResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

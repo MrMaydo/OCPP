@@ -9,31 +9,28 @@ import java.util.Objects;
 
 /**
  * This contains the calculated usage of energy, charging time and idle time during a transaction.
- * 
- * 
  */
 public class TotalUsage implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private Float energy;
     /**
      * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer chargingTime;
     /**
      * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -56,20 +53,16 @@ public class TotalUsage implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingTime
-     *     Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     *     
-     *     
-     *     .
-     * @param reservationTime
-     *     Total time of reservation in seconds.
-     *     .
-     * @param idleTime
-     *     Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     *     
-     *     
-     *     .
+     * @param chargingTime    Total duration of the charging session (including the duration of charging and not charging), in seconds.
+     *                        <p>
+     *                        <p>
+     *                        .
+     * @param reservationTime Total time of reservation in seconds.
+     *                        .
+     * @param idleTime        Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
+     *                        <p>
+     *                        <p>
+     *                        .
      */
     public TotalUsage(Float energy, Integer chargingTime, Integer idleTime, Integer reservationTime, CustomData customData) {
         super();
@@ -81,7 +74,6 @@ public class TotalUsage implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public Float getEnergy() {
@@ -89,7 +81,6 @@ public class TotalUsage implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEnergy(Float energy) {
@@ -98,9 +89,9 @@ public class TotalUsage implements JsonInterface {
 
     /**
      * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getChargingTime() {
@@ -109,9 +100,9 @@ public class TotalUsage implements JsonInterface {
 
     /**
      * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setChargingTime(Integer chargingTime) {
@@ -120,9 +111,9 @@ public class TotalUsage implements JsonInterface {
 
     /**
      * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getIdleTime() {
@@ -131,9 +122,9 @@ public class TotalUsage implements JsonInterface {
 
     /**
      * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setIdleTime(Integer idleTime) {
@@ -185,7 +176,7 @@ public class TotalUsage implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -194,9 +185,9 @@ public class TotalUsage implements JsonInterface {
             return false;
         TotalUsage that = (TotalUsage) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.idleTime, that.idleTime) 
-                && Objects.equals(this.chargingTime, that.chargingTime) 
-                && Objects.equals(this.energy, that.energy) 
+                && Objects.equals(this.idleTime, that.idleTime)
+                && Objects.equals(this.chargingTime, that.chargingTime)
+                && Objects.equals(this.energy, that.energy)
                 && Objects.equals(this.reservationTime, that.reservationTime);
     }
 

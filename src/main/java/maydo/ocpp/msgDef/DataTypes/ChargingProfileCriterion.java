@@ -22,7 +22,6 @@ public class ChargingProfileCriterion implements JsonInterface {
     private Integer stackLevel;
     /**
      * List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
-     * 
      */
     @Optional
     private List<Integer> chargingProfileId;
@@ -44,17 +43,13 @@ public class ChargingProfileCriterion implements JsonInterface {
     }
 
     /**
-     * 
-     * @param chargingProfileId
-     *     List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
-     *     
-     *     .
-     * @param stackLevel
-     *     Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
-     *     .
-     * @param chargingLimitSource
-     *     For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     *     .
+     * @param chargingProfileId   List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
+     *                            <p>
+     *                            .
+     * @param stackLevel          Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
+     *                            .
+     * @param chargingLimitSource For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
+     *                            .
      */
     public ChargingProfileCriterion(ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, List<Integer> chargingProfileId, List<String> chargingLimitSource, CustomData customData) {
         super();
@@ -95,7 +90,6 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     /**
      * List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
-     * 
      */
     public List<Integer> getChargingProfileId() {
         return chargingProfileId;
@@ -103,7 +97,6 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     /**
      * List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
-     * 
      */
     public void setChargingProfileId(List<Integer> chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
@@ -154,7 +147,7 @@ public class ChargingProfileCriterion implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -163,9 +156,9 @@ public class ChargingProfileCriterion implements JsonInterface {
             return false;
         ChargingProfileCriterion that = (ChargingProfileCriterion) obj;
         return Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.stackLevel, that.stackLevel) 
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.stackLevel, that.stackLevel)
+                && Objects.equals(this.chargingProfileId, that.chargingProfileId)
                 && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
     }
 

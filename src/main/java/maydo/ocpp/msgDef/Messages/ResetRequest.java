@@ -13,7 +13,7 @@ public class ResetRequest implements JsonInterface {
 
     /**
      * This contains the type of reset that the Charging Station or EVSE should perform.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -36,10 +36,8 @@ public class ResetRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
-     *     .
+     * @param evseId This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
+     *               .
      */
     public ResetRequest(ResetEnum type, Integer evseId, CustomData customData) {
         super();
@@ -50,7 +48,7 @@ public class ResetRequest implements JsonInterface {
 
     /**
      * This contains the type of reset that the Charging Station or EVSE should perform.
-     * 
+     * <p>
      * (Required)
      */
     public ResetEnum getType() {
@@ -59,7 +57,7 @@ public class ResetRequest implements JsonInterface {
 
     /**
      * This contains the type of reset that the Charging Station or EVSE should perform.
-     * 
+     * <p>
      * (Required)
      */
     public void setType(ResetEnum type) {
@@ -120,7 +118,7 @@ public class ResetRequest implements JsonInterface {
             return false;
         ResetRequest that = (ResetRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.type, that.type);
     }
 

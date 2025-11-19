@@ -14,7 +14,7 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
-     * 
+     * <p>
      * (Required)
      */
     public NotifyEVChargingNeedsStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
 
     /**
      * Returns whether the CSMS has been able to process the message successfully. It does not imply that the evChargingNeeds can be met with the current charging profile.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(NotifyEVChargingNeedsStatusEnum status) {
@@ -115,7 +115,7 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
             return false;
         NotifyEVChargingNeedsResponse that = (NotifyEVChargingNeedsResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

@@ -12,21 +12,20 @@ import java.util.Objects;
 public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private CertificateHashData certificateHashData;
     /**
      * Source of status: OCSP, CRL
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private CertificateStatusSourceEnum source;
     /**
      * URL(s) of _source_.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -44,10 +43,8 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     }
 
     /**
-     * 
-     * @param urls
-     *     URL(s) of _source_.
-     *     .
+     * @param urls URL(s) of _source_.
+     *             .
      */
     public CertificateStatusRequestInfo(CertificateHashData certificateHashData, CertificateStatusSourceEnum source, List<String> urls, CustomData customData) {
         super();
@@ -58,7 +55,6 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public CertificateHashData getCertificateHashData() {
@@ -66,7 +62,6 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCertificateHashData(CertificateHashData certificateHashData) {
@@ -75,7 +70,7 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
      * Source of status: OCSP, CRL
-     * 
+     * <p>
      * (Required)
      */
     public CertificateStatusSourceEnum getSource() {
@@ -84,7 +79,7 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
      * Source of status: OCSP, CRL
-     * 
+     * <p>
      * (Required)
      */
     public void setSource(CertificateStatusSourceEnum source) {
@@ -93,7 +88,7 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
      * URL(s) of _source_.
-     * 
+     * <p>
      * (Required)
      */
     public List<String> getUrls() {
@@ -102,7 +97,7 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
      * URL(s) of _source_.
-     * 
+     * <p>
      * (Required)
      */
     public void setUrls(List<String> urls) {
@@ -140,7 +135,7 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

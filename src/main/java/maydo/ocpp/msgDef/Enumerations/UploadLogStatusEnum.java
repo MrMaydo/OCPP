@@ -17,7 +17,6 @@ public enum UploadLogStatusEnum {
     UPLOAD_FAILURE("UploadFailure"),
     UPLOADING("Uploading"),
     ACCEPTED_CANCELED("AcceptedCanceled");
-    private final String value;
     private final static Map<String, UploadLogStatusEnum> CONSTANTS = new HashMap<String, UploadLogStatusEnum>();
 
     static {
@@ -26,17 +25,10 @@ public enum UploadLogStatusEnum {
         }
     }
 
+    private final String value;
+
     UploadLogStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static UploadLogStatusEnum fromValue(String value) {
@@ -46,6 +38,15 @@ public enum UploadLogStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

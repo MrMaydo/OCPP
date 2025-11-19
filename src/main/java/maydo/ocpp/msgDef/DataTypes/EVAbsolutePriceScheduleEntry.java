@@ -12,13 +12,12 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
-     * 
      * (Required)
      */
     @Required
@@ -36,10 +35,8 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     The amount of seconds of this entry.
-     *     .
+     * @param duration The amount of seconds of this entry.
+     *                 .
      */
     public EVAbsolutePriceScheduleEntry(Integer duration, List<EVPriceRule> evPriceRule, CustomData customData) {
         super();
@@ -50,7 +47,7 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getDuration() {
@@ -59,7 +56,7 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.
-     * 
+     * <p>
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -67,7 +64,6 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<EVPriceRule> getEvPriceRule() {
@@ -75,7 +71,6 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEvPriceRule(List<EVPriceRule> evPriceRule) {
@@ -123,7 +118,7 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
         EVAbsolutePriceScheduleEntry that = (EVAbsolutePriceScheduleEntry) obj;
         return Objects.equals(this.duration, that.duration)
                 && Objects.equals(this.evPriceRule, that.evPriceRule)
-                && Objects.equals(this.customData, that.customData) ;
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override

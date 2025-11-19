@@ -13,21 +13,20 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
      * Can be used to force a power or current profile.
-     * 
      */
     @Optional
     private ChargingRateUnitEnum chargingRateUnit;
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,14 +44,11 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Length of the requested schedule in seconds.
-     *     
-     *     .
-     * @param evseId
-     *     The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     *     .
+     * @param duration Length of the requested schedule in seconds.
+     *                 <p>
+     *                 .
+     * @param evseId   The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
+     *                 .
      */
     public GetCompositeScheduleRequest(Integer duration, ChargingRateUnitEnum chargingRateUnit, Integer evseId, CustomData customData) {
         super();
@@ -64,8 +60,8 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getDuration() {
@@ -74,8 +70,8 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setDuration(Integer duration) {
@@ -84,7 +80,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Can be used to force a power or current profile.
-     * 
      */
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
@@ -92,7 +87,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Can be used to force a power or current profile.
-     * 
      */
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
@@ -100,7 +94,7 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -109,7 +103,7 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -156,8 +150,8 @@ public class GetCompositeScheduleRequest implements JsonInterface {
             return false;
         GetCompositeScheduleRequest that = (GetCompositeScheduleRequest) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.evseId, that.evseId) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.evseId, that.evseId)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.chargingRateUnit, that.chargingRateUnit);
     }
 

@@ -13,7 +13,6 @@ import java.util.Objects;
 public class DERCurve implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
@@ -22,9 +21,9 @@ public class DERCurve implements JsonInterface {
     private Hysteresis hysteresis;
     /**
      * Priority of curve (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -35,28 +34,23 @@ public class DERCurve implements JsonInterface {
     private VoltageParams voltageParams;
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private DERUnitEnum yUnit;
     /**
      * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     * 
-     * 
      */
     @Optional
     private Float responseTime;
     /**
      * Point in time when this curve will become activated. Only absent when _default_ is true.
-     * 
      */
     @Optional
     private Date startTime;
     /**
      * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     * 
-     * 
      */
     @Optional
     private Float duration;
@@ -73,26 +67,21 @@ public class DERCurve implements JsonInterface {
     }
 
     /**
-     * 
-     * @param duration
-     *     Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     *     
-     *     
-     *     .
-     * @param responseTime
-     *     Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     *     
-     *     
-     *     .
-     * @param startTime
-     *     Point in time when this curve will become activated. Only absent when _default_ is true.
-     *     
-     *     .
-     * @param priority
-     *     Priority of curve (0=highest)
-     *     
-     *     
-     *     .
+     * @param duration     Duration in seconds that this curve will be active. Only absent when _default_ is true.
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param responseTime Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
+     *                     <p>
+     *                     <p>
+     *                     .
+     * @param startTime    Point in time when this curve will become activated. Only absent when _default_ is true.
+     *                     <p>
+     *                     .
+     * @param priority     Priority of curve (0=highest)
+     *                     <p>
+     *                     <p>
+     *                     .
      */
     public DERCurve(List<DERCurvePoints> curveData, Hysteresis hysteresis, Integer priority, ReactivePowerParams reactivePowerParams, VoltageParams voltageParams, DERUnitEnum yUnit, Float responseTime, Date startTime, Float duration, CustomData customData) {
         super();
@@ -109,7 +98,6 @@ public class DERCurve implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<DERCurvePoints> getCurveData() {
@@ -117,7 +105,6 @@ public class DERCurve implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setCurveData(List<DERCurvePoints> curveData) {
@@ -134,9 +121,9 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Priority of curve (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getPriority() {
@@ -145,9 +132,9 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Priority of curve (0=highest)
-     * 
-     * 
-     * 
+     * <p>
+     * <p>
+     * <p>
      * (Required)
      */
     public void setPriority(Integer priority) {
@@ -172,7 +159,7 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     public DERUnitEnum getyUnit() {
@@ -181,7 +168,7 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Unit of the Y-axis of DER curve
-     * 
+     * <p>
      * (Required)
      */
     public void setyUnit(DERUnitEnum yUnit) {
@@ -190,8 +177,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     * 
-     * 
      */
     public Float getResponseTime() {
         return responseTime;
@@ -199,8 +184,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     * 
-     * 
      */
     public void setResponseTime(Float responseTime) {
         this.responseTime = responseTime;
@@ -208,7 +191,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Point in time when this curve will become activated. Only absent when _default_ is true.
-     * 
      */
     public Date getStartTime() {
         return startTime;
@@ -216,7 +198,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Point in time when this curve will become activated. Only absent when _default_ is true.
-     * 
      */
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
@@ -224,8 +205,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     * 
-     * 
      */
     public Float getDuration() {
         return duration;
@@ -233,8 +212,6 @@ public class DERCurve implements JsonInterface {
 
     /**
      * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     * 
-     * 
      */
     public void setDuration(Float duration) {
         this.duration = duration;
@@ -271,7 +248,7 @@ public class DERCurve implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -280,14 +257,14 @@ public class DERCurve implements JsonInterface {
             return false;
         DERCurve that = (DERCurve) obj;
         return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.responseTime, that.responseTime) 
-                && Objects.equals(this.startTime, that.startTime) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.curveData, that.curveData) 
-                && Objects.equals(this.priority, that.priority) 
-                && Objects.equals(this.yUnit, that.yUnit) 
-                && Objects.equals(this.reactivePowerParams, that.reactivePowerParams) 
-                && Objects.equals(this.voltageParams, that.voltageParams) 
+                && Objects.equals(this.responseTime, that.responseTime)
+                && Objects.equals(this.startTime, that.startTime)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.curveData, that.curveData)
+                && Objects.equals(this.priority, that.priority)
+                && Objects.equals(this.yUnit, that.yUnit)
+                && Objects.equals(this.reactivePowerParams, that.reactivePowerParams)
+                && Objects.equals(this.voltageParams, that.voltageParams)
                 && Objects.equals(this.hysteresis, that.hysteresis);
     }
 

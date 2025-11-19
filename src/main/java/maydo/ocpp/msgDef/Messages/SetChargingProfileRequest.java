@@ -13,17 +13,17 @@ public class SetChargingProfileRequest implements JsonInterface {
 
     /**
      * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -41,10 +41,8 @@ public class SetChargingProfileRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     *     .
+     * @param evseId For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
+     *               .
      */
     public SetChargingProfileRequest(Integer evseId, ChargingProfile chargingProfile, CustomData customData) {
         super();
@@ -55,7 +53,7 @@ public class SetChargingProfileRequest implements JsonInterface {
 
     /**
      * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -64,7 +62,7 @@ public class SetChargingProfileRequest implements JsonInterface {
 
     /**
      * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * 
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -73,10 +71,10 @@ public class SetChargingProfileRequest implements JsonInterface {
 
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public ChargingProfile getChargingProfile() {
@@ -85,10 +83,10 @@ public class SetChargingProfileRequest implements JsonInterface {
 
     /**
      * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * 
+     * <p>
      * image::images/ChargingProfile-Simple.png[]
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setChargingProfile(ChargingProfile chargingProfile) {
@@ -135,7 +133,7 @@ public class SetChargingProfileRequest implements JsonInterface {
             return false;
         SetChargingProfileRequest that = (SetChargingProfileRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile) 
+                && Objects.equals(this.chargingProfile, that.chargingProfile)
                 && Objects.equals(this.customData, that.customData);
     }
 

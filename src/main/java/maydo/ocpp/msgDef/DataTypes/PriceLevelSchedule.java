@@ -12,21 +12,20 @@ import java.util.Objects;
 public class PriceLevelSchedule implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private List<PriceLevelScheduleEntry> priceLevelScheduleEntries;
     /**
      * Starting point of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Date timeAnchor;
     /**
      * Unique ID of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -38,7 +37,7 @@ public class PriceLevelSchedule implements JsonInterface {
     private String priceScheduleDescription;
     /**
      * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -56,19 +55,14 @@ public class PriceLevelSchedule implements JsonInterface {
     }
 
     /**
-     * 
-     * @param priceScheduleId
-     *     Unique ID of this price schedule.
-     *     .
-     * @param timeAnchor
-     *     Starting point of this price schedule.
-     *     .
-     * @param priceScheduleDescription
-     *     Description of the price schedule.
-     *     .
-     * @param numberOfPriceLevels
-     *     Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     *     .
+     * @param priceScheduleId          Unique ID of this price schedule.
+     *                                 .
+     * @param timeAnchor               Starting point of this price schedule.
+     *                                 .
+     * @param priceScheduleDescription Description of the price schedule.
+     *                                 .
+     * @param numberOfPriceLevels      Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
+     *                                 .
      */
     public PriceLevelSchedule(List<PriceLevelScheduleEntry> priceLevelScheduleEntries, Date timeAnchor, Integer priceScheduleId, String priceScheduleDescription, Integer numberOfPriceLevels, CustomData customData) {
         super();
@@ -81,7 +75,6 @@ public class PriceLevelSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public List<PriceLevelScheduleEntry> getPriceLevelScheduleEntries() {
@@ -89,7 +82,6 @@ public class PriceLevelSchedule implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setPriceLevelScheduleEntries(List<PriceLevelScheduleEntry> priceLevelScheduleEntries) {
@@ -98,7 +90,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Starting point of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public Date getTimeAnchor() {
@@ -107,7 +99,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Starting point of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public void setTimeAnchor(Date timeAnchor) {
@@ -116,7 +108,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Unique ID of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getPriceScheduleId() {
@@ -125,7 +117,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Unique ID of this price schedule.
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceScheduleId(Integer priceScheduleId) {
@@ -148,7 +140,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getNumberOfPriceLevels() {
@@ -157,7 +149,7 @@ public class PriceLevelSchedule implements JsonInterface {
 
     /**
      * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * 
+     * <p>
      * (Required)
      */
     public void setNumberOfPriceLevels(Integer numberOfPriceLevels) {
@@ -195,7 +187,7 @@ public class PriceLevelSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -204,10 +196,10 @@ public class PriceLevelSchedule implements JsonInterface {
             return false;
         PriceLevelSchedule that = (PriceLevelSchedule) obj;
         return Objects.equals(this.priceScheduleId, that.priceScheduleId)
-                && Objects.equals(this.priceLevelScheduleEntries, that.priceLevelScheduleEntries) 
-                && Objects.equals(this.timeAnchor, that.timeAnchor) 
-                && Objects.equals(this.priceScheduleDescription, that.priceScheduleDescription) 
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.priceLevelScheduleEntries, that.priceLevelScheduleEntries)
+                && Objects.equals(this.timeAnchor, that.timeAnchor)
+                && Objects.equals(this.priceScheduleDescription, that.priceScheduleDescription)
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.numberOfPriceLevels, that.numberOfPriceLevels);
     }
 

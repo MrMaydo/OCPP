@@ -14,7 +14,7 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Current status of the ID Token.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -25,7 +25,7 @@ public class IdTokenInfo implements JsonInterface {
     @Optional
     private Date cacheExpiryDateTime;
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one. 
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
      */
     @Optional
     private Integer chargingPriority;
@@ -36,7 +36,6 @@ public class IdTokenInfo implements JsonInterface {
     private IdToken groupIdToken;
     /**
      * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     * 
      */
     @Optional
     private String language1;
@@ -47,13 +46,11 @@ public class IdTokenInfo implements JsonInterface {
     private String language2;
     /**
      * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     * 
      */
     @Optional
     private List<Integer> evseId;
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     @Optional
     private MessageContent personalMessage;
@@ -70,24 +67,18 @@ public class IdTokenInfo implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     *     
-     *     .
-     * @param language2
-     *     Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *     .
-     * @param language1
-     *     Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *     
-     *     .
-     * @param cacheExpiryDateTime
-     *     Date and Time after which the token must be considered invalid.
-     *     .
-     * @param chargingPriority
-     *     Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one. 
-     *     .
+     * @param evseId              Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
+     *                            <p>
+     *                            .
+     * @param language2           Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     *                            .
+     * @param language1           Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     *                            <p>
+     *                            .
+     * @param cacheExpiryDateTime Date and Time after which the token must be considered invalid.
+     *                            .
+     * @param chargingPriority    Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
+     *                            .
      */
     public IdTokenInfo(AuthorizationStatusEnum status, Date cacheExpiryDateTime, Integer chargingPriority, IdToken groupIdToken, String language1, String language2, List<Integer> evseId, MessageContent personalMessage, CustomData customData) {
         super();
@@ -104,7 +95,7 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Current status of the ID Token.
-     * 
+     * <p>
      * (Required)
      */
     public AuthorizationStatusEnum getStatus() {
@@ -113,7 +104,7 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Current status of the ID Token.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(AuthorizationStatusEnum status) {
@@ -135,14 +126,14 @@ public class IdTokenInfo implements JsonInterface {
     }
 
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one. 
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
      */
     public Integer getChargingPriority() {
         return chargingPriority;
     }
 
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one. 
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
      */
     public void setChargingPriority(Integer chargingPriority) {
         this.chargingPriority = chargingPriority;
@@ -164,7 +155,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     * 
      */
     public String getLanguage1() {
         return language1;
@@ -172,7 +162,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     * 
      */
     public void setLanguage1(String language1) {
         this.language1 = language1;
@@ -194,7 +183,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     * 
      */
     public List<Integer> getEvseId() {
         return evseId;
@@ -202,7 +190,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     * 
      */
     public void setEvseId(List<Integer> evseId) {
         this.evseId = evseId;
@@ -210,7 +197,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     public MessageContent getPersonalMessage() {
         return personalMessage;
@@ -218,7 +204,6 @@ public class IdTokenInfo implements JsonInterface {
 
     /**
      * Contains message details, for a message to be displayed on a Charging Station.
-     * 
      */
     public void setPersonalMessage(MessageContent personalMessage) {
         this.personalMessage = personalMessage;
@@ -255,7 +240,7 @@ public class IdTokenInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -264,13 +249,13 @@ public class IdTokenInfo implements JsonInterface {
             return false;
         IdTokenInfo that = (IdTokenInfo) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.language2, that.language2) 
-                && Objects.equals(this.language1, that.language1) 
-                && Objects.equals(this.cacheExpiryDateTime, that.cacheExpiryDateTime) 
-                && Objects.equals(this.chargingPriority, that.chargingPriority) 
-                && Objects.equals(this.personalMessage, that.personalMessage) 
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.groupIdToken, that.groupIdToken) 
+                && Objects.equals(this.language2, that.language2)
+                && Objects.equals(this.language1, that.language1)
+                && Objects.equals(this.cacheExpiryDateTime, that.cacheExpiryDateTime)
+                && Objects.equals(this.chargingPriority, that.chargingPriority)
+                && Objects.equals(this.personalMessage, that.personalMessage)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.groupIdToken, that.groupIdToken)
                 && Objects.equals(this.status, that.status);
     }
 
@@ -278,8 +263,8 @@ public class IdTokenInfo implements JsonInterface {
     public int hashCode() {
         int result = 1;
         result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.language2 != null ? this.language2 .hashCode() : 0);
-        result = 31 * result + (this.language1 != null ? this.language1 .hashCode() : 0);
+        result = 31 * result + (this.language2 != null ? this.language2.hashCode() : 0);
+        result = 31 * result + (this.language1 != null ? this.language1.hashCode() : 0);
         result = 31 * result + (this.cacheExpiryDateTime != null ? this.cacheExpiryDateTime.hashCode() : 0);
         result = 31 * result + (this.chargingPriority != null ? this.chargingPriority.hashCode() : 0);
         result = 31 * result + (this.personalMessage != null ? this.personalMessage.hashCode() : 0);

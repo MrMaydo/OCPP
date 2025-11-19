@@ -11,20 +11,19 @@ public class ConstantStreamData implements JsonInterface {
 
     /**
      * Uniquely identifies the stream
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer id;
     /**
-     * 
      * (Required)
      */
     @Required
     private PeriodicEventStreamParams params;
     /**
      * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -42,13 +41,10 @@ public class ConstantStreamData implements JsonInterface {
     }
 
     /**
-     * 
-     * @param variableMonitoringId
-     *     Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     *     .
-     * @param id
-     *     Uniquely identifies the stream
-     *     .
+     * @param variableMonitoringId Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
+     *                             .
+     * @param id                   Uniquely identifies the stream
+     *                             .
      */
     public ConstantStreamData(Integer id, PeriodicEventStreamParams params, Integer variableMonitoringId, CustomData customData) {
         super();
@@ -60,7 +56,7 @@ public class ConstantStreamData implements JsonInterface {
 
     /**
      * Uniquely identifies the stream
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -69,7 +65,7 @@ public class ConstantStreamData implements JsonInterface {
 
     /**
      * Uniquely identifies the stream
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -77,7 +73,6 @@ public class ConstantStreamData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public PeriodicEventStreamParams getParams() {
@@ -85,7 +80,6 @@ public class ConstantStreamData implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setParams(PeriodicEventStreamParams params) {
@@ -94,7 +88,7 @@ public class ConstantStreamData implements JsonInterface {
 
     /**
      * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getVariableMonitoringId() {
@@ -103,7 +97,7 @@ public class ConstantStreamData implements JsonInterface {
 
     /**
      * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * 
+     * <p>
      * (Required)
      */
     public void setVariableMonitoringId(Integer variableMonitoringId) {
@@ -141,7 +135,7 @@ public class ConstantStreamData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -150,8 +144,8 @@ public class ConstantStreamData implements JsonInterface {
             return false;
         ConstantStreamData that = (ConstantStreamData) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.params, that.params) 
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.params, that.params)
                 && Objects.equals(this.variableMonitoringId, that.variableMonitoringId);
     }
 

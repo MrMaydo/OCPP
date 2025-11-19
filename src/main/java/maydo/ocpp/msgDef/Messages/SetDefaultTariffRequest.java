@@ -13,8 +13,8 @@ public class SetDefaultTariffRequest implements JsonInterface {
 
     /**
      * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -30,7 +30,7 @@ public class SetDefaultTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -48,11 +48,9 @@ public class SetDefaultTariffRequest implements JsonInterface {
     }
 
     /**
-     * 
-     * @param evseId
-     *     EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     *     
-     *     .
+     * @param evseId EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
+     *               <p>
+     *               .
      */
     public SetDefaultTariffRequest(Integer evseId, Tariff tariff, CustomData customData) {
         super();
@@ -63,8 +61,8 @@ public class SetDefaultTariffRequest implements JsonInterface {
 
     /**
      * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public Integer getEvseId() {
@@ -73,8 +71,8 @@ public class SetDefaultTariffRequest implements JsonInterface {
 
     /**
      * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setEvseId(Integer evseId) {
@@ -92,7 +90,7 @@ public class SetDefaultTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     public Tariff getTariff() {
@@ -110,7 +108,7 @@ public class SetDefaultTariffRequest implements JsonInterface {
      * Each of these fields may have (optional) conditions that specify when a price is applicable. +
      * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
      * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * 
+     * <p>
      * (Required)
      */
     public void setTariff(Tariff tariff) {
@@ -157,7 +155,7 @@ public class SetDefaultTariffRequest implements JsonInterface {
             return false;
         SetDefaultTariffRequest that = (SetDefaultTariffRequest) obj;
         return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.tariff, that.tariff) 
+                && Objects.equals(this.tariff, that.tariff)
                 && Objects.equals(this.customData, that.customData);
     }
 

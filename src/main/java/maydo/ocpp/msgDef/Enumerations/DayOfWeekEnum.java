@@ -12,7 +12,6 @@ public enum DayOfWeekEnum {
     FRIDAY("Friday"),
     SATURDAY("Saturday"),
     SUNDAY("Sunday");
-    private final String value;
     private final static Map<String, DayOfWeekEnum> CONSTANTS = new HashMap<String, DayOfWeekEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum DayOfWeekEnum {
         }
     }
 
+    private final String value;
+
     DayOfWeekEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static DayOfWeekEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum DayOfWeekEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

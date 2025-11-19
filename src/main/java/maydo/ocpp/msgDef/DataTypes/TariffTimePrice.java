@@ -9,30 +9,27 @@ import java.util.Objects;
 
 /**
  * Tariff with optional conditions for a time duration price.
- * 
- * 
  */
 public class TariffTimePrice implements JsonInterface {
 
     /**
      * Price per minute (excl. tax) for this element.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float priceMinute;
     /**
      * These conditions describe if and when a TariffEnergyType or TariffTimeType applies during a transaction.
-     * 
+     * <p>
      * When more than one restriction is set, they are to be treated as a logical AND. All need to be valid before this price is active.
-     * 
+     * <p>
      * For reverse energy flow (discharging) negative values of energy, power and current are used.
-     * 
+     * <p>
      * NOTE: _minXXX_ (where XXX = Kwh/A/Kw) must be read as "closest to zero", and _maxXXX_ as "furthest from zero". For example, a *charging* power range from 10 kW to 50 kWh is given by _minPower_ = 10000 and _maxPower_ = 50000, and a *discharging* power range from -10 kW to -50 kW is given by _minPower_ = -10 and _maxPower_ = -50.
-     * 
+     * <p>
      * NOTE: _startTimeOfDay_ and _endTimeOfDay_ are in local time, because it is the time in the tariff as it is shown to the EV driver at the Charging Station.
      * A Charging Station will convert this to the internal time zone that it uses (which is recommended to be UTC, see section Generic chapter 3.1) when performing cost calculation.
-     * 
      */
     @Optional
     private TariffConditions conditions;
@@ -49,10 +46,8 @@ public class TariffTimePrice implements JsonInterface {
     }
 
     /**
-     * 
-     * @param priceMinute
-     *     Price per minute (excl. tax) for this element.
-     *     .
+     * @param priceMinute Price per minute (excl. tax) for this element.
+     *                    .
      */
     public TariffTimePrice(Float priceMinute, TariffConditions conditions, CustomData customData) {
         super();
@@ -63,7 +58,7 @@ public class TariffTimePrice implements JsonInterface {
 
     /**
      * Price per minute (excl. tax) for this element.
-     * 
+     * <p>
      * (Required)
      */
     public Float getPriceMinute() {
@@ -72,7 +67,7 @@ public class TariffTimePrice implements JsonInterface {
 
     /**
      * Price per minute (excl. tax) for this element.
-     * 
+     * <p>
      * (Required)
      */
     public void setPriceMinute(Float priceMinute) {
@@ -81,16 +76,15 @@ public class TariffTimePrice implements JsonInterface {
 
     /**
      * These conditions describe if and when a TariffEnergyType or TariffTimeType applies during a transaction.
-     * 
+     * <p>
      * When more than one restriction is set, they are to be treated as a logical AND. All need to be valid before this price is active.
-     * 
+     * <p>
      * For reverse energy flow (discharging) negative values of energy, power and current are used.
-     * 
+     * <p>
      * NOTE: _minXXX_ (where XXX = Kwh/A/Kw) must be read as "closest to zero", and _maxXXX_ as "furthest from zero". For example, a *charging* power range from 10 kW to 50 kWh is given by _minPower_ = 10000 and _maxPower_ = 50000, and a *discharging* power range from -10 kW to -50 kW is given by _minPower_ = -10 and _maxPower_ = -50.
-     * 
+     * <p>
      * NOTE: _startTimeOfDay_ and _endTimeOfDay_ are in local time, because it is the time in the tariff as it is shown to the EV driver at the Charging Station.
      * A Charging Station will convert this to the internal time zone that it uses (which is recommended to be UTC, see section Generic chapter 3.1) when performing cost calculation.
-     * 
      */
     public TariffConditions getConditions() {
         return conditions;
@@ -98,16 +92,15 @@ public class TariffTimePrice implements JsonInterface {
 
     /**
      * These conditions describe if and when a TariffEnergyType or TariffTimeType applies during a transaction.
-     * 
+     * <p>
      * When more than one restriction is set, they are to be treated as a logical AND. All need to be valid before this price is active.
-     * 
+     * <p>
      * For reverse energy flow (discharging) negative values of energy, power and current are used.
-     * 
+     * <p>
      * NOTE: _minXXX_ (where XXX = Kwh/A/Kw) must be read as "closest to zero", and _maxXXX_ as "furthest from zero". For example, a *charging* power range from 10 kW to 50 kWh is given by _minPower_ = 10000 and _maxPower_ = 50000, and a *discharging* power range from -10 kW to -50 kW is given by _minPower_ = -10 and _maxPower_ = -50.
-     * 
+     * <p>
      * NOTE: _startTimeOfDay_ and _endTimeOfDay_ are in local time, because it is the time in the tariff as it is shown to the EV driver at the Charging Station.
      * A Charging Station will convert this to the internal time zone that it uses (which is recommended to be UTC, see section Generic chapter 3.1) when performing cost calculation.
-     * 
      */
     public void setConditions(TariffConditions conditions) {
         this.conditions = conditions;
@@ -144,7 +137,7 @@ public class TariffTimePrice implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -153,7 +146,7 @@ public class TariffTimePrice implements JsonInterface {
             return false;
         TariffTimePrice that = (TariffTimePrice) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceMinute, that.priceMinute) 
+                && Objects.equals(this.priceMinute, that.priceMinute)
                 && Objects.equals(this.conditions, that.conditions);
     }
 

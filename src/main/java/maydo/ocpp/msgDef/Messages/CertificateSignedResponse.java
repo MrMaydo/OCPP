@@ -14,7 +14,7 @@ public class CertificateSignedResponse implements JsonInterface {
 
     /**
      * Returns whether certificate signing has been accepted, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -45,7 +45,7 @@ public class CertificateSignedResponse implements JsonInterface {
 
     /**
      * Returns whether certificate signing has been accepted, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     public CertificateSignedStatusEnum getStatus() {
@@ -54,7 +54,7 @@ public class CertificateSignedResponse implements JsonInterface {
 
     /**
      * Returns whether certificate signing has been accepted, otherwise rejected.
-     * 
+     * <p>
      * (Required)
      */
     public void setStatus(CertificateSignedStatusEnum status) {
@@ -115,7 +115,7 @@ public class CertificateSignedResponse implements JsonInterface {
             return false;
         CertificateSignedResponse that = (CertificateSignedResponse) obj;
         return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.statusInfo, that.statusInfo)
                 && Objects.equals(this.status, that.status);
     }
 

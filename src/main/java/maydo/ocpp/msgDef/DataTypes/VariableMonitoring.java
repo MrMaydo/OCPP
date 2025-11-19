@@ -13,14 +13,14 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer id;
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
      */
     @Required
@@ -28,21 +28,21 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Float value;
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
      */
     @Required
     private MonitorEnum type;
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -64,14 +64,14 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
      */
     @Required
     private Integer severity;
     /**
      * *(2.1)* Type of monitor.
-     * 
+     * <p>
      * (Required)
      */
     @Required
@@ -89,42 +89,37 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     /**
-     * 
-     * @param severity
-     *     The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     *     
-     *     The severity levels have the following meaning: +
-     *     *0-Danger* +
-     *     Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     *     *1-Hardware Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     *     *2-System Failure* +
-     *     Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     *     *3-Critical* +
-     *     Indicates a critical error. Action is required. +
-     *     *4-Error* +
-     *     Indicates a non-urgent error. Action is required. +
-     *     *5-Alert* +
-     *     Indicates an alert event. Default severity for any type of monitoring event.  +
-     *     *6-Warning* +
-     *     Indicates a warning event. Action may be required. +
-     *     *7-Notice* +
-     *     Indicates an unusual event. No immediate action is required. +
-     *     *8-Informational* +
-     *     Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     *     *9-Debug* +
-     *     Indicates information useful to developers for debugging, not useful during operations.
-     *     .
-     * @param id
-     *     Identifies the monitor.
-     *     .
-     * @param value
-     *     Value for threshold or delta monitoring.
-     *     For Periodic or PeriodicClockAligned this is the interval in seconds.
-     *     .
-     * @param transaction
-     *     Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     *     .
+     * @param severity    The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     *                    <p>
+     *                    The severity levels have the following meaning: +
+     *                    *0-Danger* +
+     *                    Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
+     *                    *1-Hardware Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
+     *                    *2-System Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
+     *                    *3-Critical* +
+     *                    Indicates a critical error. Action is required. +
+     *                    *4-Error* +
+     *                    Indicates a non-urgent error. Action is required. +
+     *                    *5-Alert* +
+     *                    Indicates an alert event. Default severity for any type of monitoring event.  +
+     *                    *6-Warning* +
+     *                    Indicates a warning event. Action may be required. +
+     *                    *7-Notice* +
+     *                    Indicates an unusual event. No immediate action is required. +
+     *                    *8-Informational* +
+     *                    Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
+     *                    *9-Debug* +
+     *                    Indicates information useful to developers for debugging, not useful during operations.
+     *                    .
+     * @param id          Identifies the monitor.
+     *                    .
+     * @param value       Value for threshold or delta monitoring.
+     *                    For Periodic or PeriodicClockAligned this is the interval in seconds.
+     *                    .
+     * @param transaction Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     *                    .
      */
     public VariableMonitoring(Integer id, Boolean transaction, Float value, MonitorEnum type, Integer severity, EventNotificationEnum eventNotificationType, CustomData customData) {
         super();
@@ -139,7 +134,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getId() {
@@ -148,7 +143,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * 
+     * <p>
      * (Required)
      */
     public void setId(Integer id) {
@@ -156,8 +151,8 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
      */
     public Boolean getTransaction() {
@@ -165,8 +160,8 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction. 
-     * 
+     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
+     * <p>
      * (Required)
      */
     public void setTransaction(Boolean transaction) {
@@ -176,7 +171,7 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
      */
     public Float getValue() {
@@ -186,7 +181,7 @@ public class VariableMonitoring implements JsonInterface {
     /**
      * Value for threshold or delta monitoring.
      * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * 
+     * <p>
      * (Required)
      */
     public void setValue(Float value) {
@@ -194,8 +189,8 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
      */
     public MonitorEnum getType() {
@@ -203,8 +198,8 @@ public class VariableMonitoring implements JsonInterface {
     }
 
     /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor. 
-     * 
+     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
+     * <p>
      * (Required)
      */
     public void setType(MonitorEnum type) {
@@ -213,7 +208,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -235,7 +230,7 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
      */
     public Integer getSeverity() {
@@ -244,7 +239,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * 
+     * <p>
      * The severity levels have the following meaning: +
      * *0-Danger* +
      * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
@@ -266,7 +261,7 @@ public class VariableMonitoring implements JsonInterface {
      * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
      * *9-Debug* +
      * Indicates information useful to developers for debugging, not useful during operations.
-     * 
+     * <p>
      * (Required)
      */
     public void setSeverity(Integer severity) {
@@ -275,7 +270,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * *(2.1)* Type of monitor.
-     * 
+     * <p>
      * (Required)
      */
     public EventNotificationEnum getEventNotificationType() {
@@ -284,7 +279,7 @@ public class VariableMonitoring implements JsonInterface {
 
     /**
      * *(2.1)* Type of monitor.
-     * 
+     * <p>
      * (Required)
      */
     public void setEventNotificationType(EventNotificationEnum eventNotificationType) {
@@ -322,7 +317,7 @@ public class VariableMonitoring implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -331,11 +326,11 @@ public class VariableMonitoring implements JsonInterface {
             return false;
         VariableMonitoring that = (VariableMonitoring) obj;
         return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.customData, that.customData) 
-                && Objects.equals(this.id, that.id) 
-                && Objects.equals(this.eventNotificationType, that.eventNotificationType) 
-                && Objects.equals(this.type, that.type) 
-                && Objects.equals(this.value, that.value) 
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.value, that.value)
                 && Objects.equals(this.transaction, that.transaction);
     }
 

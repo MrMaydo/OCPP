@@ -12,7 +12,6 @@ public enum CostKindEnum {
     CARBON_DIOXIDE_EMISSION("CarbonDioxideEmission"),
     RELATIVE_PRICE_PERCENTAGE("RelativePricePercentage"),
     RENEWABLE_GENERATION_PERCENTAGE("RenewableGenerationPercentage");
-    private final String value;
     private final static Map<String, CostKindEnum> CONSTANTS = new HashMap<String, CostKindEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum CostKindEnum {
         }
     }
 
+    private final String value;
+
     CostKindEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CostKindEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum CostKindEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

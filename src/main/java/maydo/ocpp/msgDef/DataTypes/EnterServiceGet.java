@@ -10,15 +10,14 @@ import java.util.Objects;
 public class EnterServiceGet implements JsonInterface {
 
     /**
-     * 
      * (Required)
      */
     @Required
     private EnterService enterService;
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     @Required
@@ -36,11 +35,9 @@ public class EnterServiceGet implements JsonInterface {
     }
 
     /**
-     * 
-     * @param id
-     *     Id of setting
-     *     
-     *     .
+     * @param id Id of setting
+     *           <p>
+     *           .
      */
     public EnterServiceGet(EnterService enterService, String id, CustomData customData) {
         super();
@@ -50,7 +47,6 @@ public class EnterServiceGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public EnterService getEnterService() {
@@ -58,7 +54,6 @@ public class EnterServiceGet implements JsonInterface {
     }
 
     /**
-     * 
      * (Required)
      */
     public void setEnterService(EnterService enterService) {
@@ -67,8 +62,8 @@ public class EnterServiceGet implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public String getId() {
@@ -77,8 +72,8 @@ public class EnterServiceGet implements JsonInterface {
 
     /**
      * Id of setting
-     * 
-     * 
+     * <p>
+     * <p>
      * (Required)
      */
     public void setId(String id) {
@@ -116,7 +111,7 @@ public class EnterServiceGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -125,7 +120,7 @@ public class EnterServiceGet implements JsonInterface {
             return false;
         EnterServiceGet that = (EnterServiceGet) obj;
         return Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customData, that.customData)
                 && Objects.equals(this.id, that.id);
     }
 
