@@ -1,35 +1,26 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.RegistrationStatusEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class BootNotificationResponse implements JsonInterface {
+public class BootNotificationResponse {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * This contains the CSMS’s current time.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Date currentTime;
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -37,7 +28,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -47,24 +38,39 @@ public class BootNotificationResponse implements JsonInterface {
      */
     @Optional
     private StatusInfo statusInfo;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public BootNotificationResponse() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param currentTime
+     *     This contains the CSMS’s current time.
+     *     .
+     * @param interval
+     *     When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public BootNotificationResponse(Date currentTime, Integer interval, RegistrationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
+        super();
+        this.currentTime = currentTime;
+        this.interval = interval;
+        this.status = status;
+        this.statusInfo = statusInfo;
         this.customData = customData;
     }
 
     /**
      * This contains the CSMS’s current time.
-     * <p>
+     * 
      * (Required)
      */
     public Date getCurrentTime() {
@@ -73,7 +79,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * <p>
+     * 
      * (Required)
      */
     public void setCurrentTime(Date currentTime) {
@@ -82,7 +88,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
+     * 
      * (Required)
      */
     public Integer getInterval() {
@@ -91,7 +97,7 @@ public class BootNotificationResponse implements JsonInterface {
 
     /**
      * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
+     * 
      * (Required)
      */
     public void setInterval(Integer interval) {
@@ -101,7 +107,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * <p>
+     * 
      * (Required)
      */
     public RegistrationStatusEnum getStatus() {
@@ -111,7 +117,7 @@ public class BootNotificationResponse implements JsonInterface {
     /**
      * This contains whether the Charging Station has been registered
      * within the CSMS.
-     * <p>
+     * 
      * (Required)
      */
     public void setStatus(RegistrationStatusEnum status) {
@@ -132,25 +138,18 @@ public class BootNotificationResponse implements JsonInterface {
         this.statusInfo = statusInfo;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -160,19 +159,21 @@ public class BootNotificationResponse implements JsonInterface {
         if (!(obj instanceof BootNotificationResponse))
             return false;
         BootNotificationResponse that = (BootNotificationResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(currentTime, that.currentTime)
-                && Objects.equals(interval, that.interval)
-                && status == that.status && Objects.equals(statusInfo, that.statusInfo);
+        return Objects.equals(this.currentTime, that.currentTime)
+                && Objects.equals(this.interval, that.interval) 
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (currentTime != null ? currentTime.hashCode() : 0);
-        result = 31 * result + (interval != null ? interval.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.currentTime != null ? this.currentTime.hashCode() : 0);
+        result = 31 * result + (this.interval != null ? this.interval.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

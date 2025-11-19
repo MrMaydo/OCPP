@@ -1,30 +1,54 @@
 package maydo.ocpp.msgDef.Messages;
 
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.SetMonitoringResult;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-public class SetVariableMonitoringResponse implements JsonInterface {
+public class SetVariableMonitoringResponse {
 
+    /**
+     * 
+     * (Required)
+     */
+    @Required
+    private List<SetMonitoringResult> setMonitoringResult;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
+
     /**
+     * No args constructor for use in serialization
+     */
+    public SetVariableMonitoringResponse() {
+    }
+
+    public SetVariableMonitoringResponse(List<SetMonitoringResult> setMonitoringResult, CustomData customData) {
+        super();
+        this.setMonitoringResult = setMonitoringResult;
+        this.customData = customData;
+    }
+
+    /**
+     * 
      * (Required)
      */
-    @Required
-    private List<SetMonitoringResult> setMonitoringResult = null;
+    public List<SetMonitoringResult> getSetMonitoringResult() {
+        return setMonitoringResult;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public void setSetMonitoringResult(List<SetMonitoringResult> setMonitoringResult) {
+        this.setMonitoringResult = setMonitoringResult;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -40,41 +64,6 @@ public class SetVariableMonitoringResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
-    public List<SetMonitoringResult> getSetMonitoringResult() {
-        return setMonitoringResult;
-    }
-
-    /**
-     * (Required)
-     */
-    public void setSetMonitoringResult(List<SetMonitoringResult> setMonitoringResult) {
-        this.setMonitoringResult = setMonitoringResult;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -82,14 +71,15 @@ public class SetVariableMonitoringResponse implements JsonInterface {
         if (!(obj instanceof SetVariableMonitoringResponse))
             return false;
         SetVariableMonitoringResponse that = (SetVariableMonitoringResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(setMonitoringResult, that.setMonitoringResult);
+        return Objects.equals(this.setMonitoringResult, that.setMonitoringResult)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (setMonitoringResult != null ? setMonitoringResult.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.setMonitoringResult != null ? this.setMonitoringResult.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

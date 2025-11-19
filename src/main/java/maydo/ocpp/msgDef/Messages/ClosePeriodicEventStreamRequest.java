@@ -1,0 +1,92 @@
+package maydo.ocpp.msgDef.Messages;
+
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
+
+import java.util.Objects;
+
+public class ClosePeriodicEventStreamRequest {
+
+    /**
+     * Id of stream to close.
+     * 
+     * (Required)
+     */
+    @Required
+    private Integer id;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ClosePeriodicEventStreamRequest() {
+    }
+
+    /**
+     * 
+     * @param id
+     *     Id of stream to close.
+     *     .
+     */
+    public ClosePeriodicEventStreamRequest(Integer id, CustomData customData) {
+        super();
+        this.id = id;
+        this.customData = customData;
+    }
+
+    /**
+     * Id of stream to close.
+     * 
+     * (Required)
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Id of stream to close.
+     * 
+     * (Required)
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof ClosePeriodicEventStreamRequest))
+            return false;
+        ClosePeriodicEventStreamRequest that = (ClosePeriodicEventStreamRequest) obj;
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        return result;
+    }
+}

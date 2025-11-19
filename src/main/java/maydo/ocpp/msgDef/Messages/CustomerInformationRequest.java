@@ -1,26 +1,15 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CertificateHashData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdToken;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-public class CustomerInformationRequest implements JsonInterface {
+public class CustomerInformationRequest {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-
-    @Optional
     private CertificateHashData customerCertificate;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
@@ -29,22 +18,22 @@ public class CustomerInformationRequest implements JsonInterface {
     private IdToken idToken;
     /**
      * The Id of the request.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     @Required
     private Integer requestId;
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Boolean report;
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -55,18 +44,43 @@ public class CustomerInformationRequest implements JsonInterface {
      */
     @Optional
     private String customerIdentifier;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CustomerInformationRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param requestId
+     *     The Id of the request.
+     *     
+     *     .
+     * @param report
+     *     Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
+     *     .
+     * @param clear
+     *     Flag indicating whether the Charging Station should clear all information about the customer referred to.
+     *     .
+     * @param customerIdentifier
+     *     A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
+     *     One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public CustomerInformationRequest(CertificateHashData customerCertificate, IdToken idToken, Integer requestId, Boolean report, Boolean clear, String customerIdentifier, CustomData customData) {
+        super();
+        this.customerCertificate = customerCertificate;
+        this.idToken = idToken;
+        this.requestId = requestId;
+        this.report = report;
+        this.clear = clear;
+        this.customerIdentifier = customerIdentifier;
         this.customData = customData;
     }
 
@@ -94,8 +108,8 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public Integer getRequestId() {
@@ -104,8 +118,8 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
-     * <p>
+     * 
+     * 
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -114,7 +128,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     public Boolean getReport() {
@@ -123,7 +137,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     public void setReport(Boolean report) {
@@ -132,7 +146,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     public Boolean getClear() {
@@ -141,7 +155,7 @@ public class CustomerInformationRequest implements JsonInterface {
 
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
+     * 
      * (Required)
      */
     public void setClear(Boolean clear) {
@@ -164,25 +178,18 @@ public class CustomerInformationRequest implements JsonInterface {
         this.customerIdentifier = customerIdentifier;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -192,24 +199,25 @@ public class CustomerInformationRequest implements JsonInterface {
         if (!(obj instanceof CustomerInformationRequest))
             return false;
         CustomerInformationRequest that = (CustomerInformationRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(customerCertificate, that.customerCertificate)
-                && Objects.equals(idToken, that.idToken)
-                && Objects.equals(requestId, that.requestId)
-                && Objects.equals(report, that.report)
-                && Objects.equals(clear, that.clear)
-                && Objects.equals(customerIdentifier, that.customerIdentifier);
+        return Objects.equals(this.customerCertificate, that.customerCertificate)
+                && Objects.equals(this.requestId, that.requestId) 
+                && Objects.equals(this.idToken, that.idToken) 
+                && Objects.equals(this.report, that.report) 
+                && Objects.equals(this.clear, that.clear) 
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.customerIdentifier, that.customerIdentifier);
     }
 
     @Override
     public int hashCode() {
-        int result = (customerCertificate != null ? customerCertificate.hashCode() : 0);
-        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (report != null ? report.hashCode() : 0);
-        result = 31 * result + (clear != null ? clear.hashCode() : 0);
-        result = 31 * result + (customerIdentifier != null ? customerIdentifier.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customerCertificate != null ? this.customerCertificate.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
+        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
+        result = 31 * result + (this.report != null ? this.report.hashCode() : 0);
+        result = 31 * result + (this.clear != null ? this.clear.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.customerIdentifier != null ? this.customerIdentifier.hashCode() : 0);
         return result;
     }
 }

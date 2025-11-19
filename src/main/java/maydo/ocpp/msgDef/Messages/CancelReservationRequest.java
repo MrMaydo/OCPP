@@ -1,29 +1,61 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-public class CancelReservationRequest implements JsonInterface {
+public class CancelReservationRequest {
 
+    /**
+     * Id of the reservation to cancel.
+     * 
+     * (Required)
+     */
+    @Required
+    private Integer reservationId;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CancelReservationRequest() {
+    }
+
+    /**
+     * 
+     * @param reservationId
+     *     Id of the reservation to cancel.
+     *     .
+     */
+    public CancelReservationRequest(Integer reservationId, CustomData customData) {
+        super();
+        this.reservationId = reservationId;
+        this.customData = customData;
+    }
+
     /**
      * Id of the reservation to cancel.
-     * <p>
+     * 
      * (Required)
      */
-    @Required
-    private Integer reservationId;
+    public Integer getReservationId() {
+        return reservationId;
+    }
+
+    /**
+     * Id of the reservation to cancel.
+     * 
+     * (Required)
+     */
+    public void setReservationId(Integer reservationId) {
+        this.reservationId = reservationId;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -39,45 +71,6 @@ public class CancelReservationRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id of the reservation to cancel.
-     * <p>
-     * (Required)
-     */
-    public Integer getReservationId() {
-        return reservationId;
-    }
-
-    /**
-     * Id of the reservation to cancel.
-     * <p>
-     * (Required)
-     */
-    public void setReservationId(Integer reservationId) {
-        this.reservationId = reservationId;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -85,14 +78,15 @@ public class CancelReservationRequest implements JsonInterface {
         if (!(obj instanceof CancelReservationRequest))
             return false;
         CancelReservationRequest that = (CancelReservationRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(reservationId, that.reservationId);
+        return Objects.equals(this.reservationId, that.reservationId)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (reservationId != null ? reservationId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

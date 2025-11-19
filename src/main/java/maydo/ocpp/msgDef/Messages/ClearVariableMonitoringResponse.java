@@ -1,29 +1,54 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ClearMonitoringResult;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-public class ClearVariableMonitoringResponse implements JsonInterface {
+public class ClearVariableMonitoringResponse {
 
+    /**
+     * 
+     * (Required)
+     */
+    @Required
+    private List<ClearMonitoringResult> clearMonitoringResult;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
+
     /**
+     * No args constructor for use in serialization
+     */
+    public ClearVariableMonitoringResponse() {
+    }
+
+    public ClearVariableMonitoringResponse(List<ClearMonitoringResult> clearMonitoringResult, CustomData customData) {
+        super();
+        this.clearMonitoringResult = clearMonitoringResult;
+        this.customData = customData;
+    }
+
+    /**
+     * 
      * (Required)
      */
-    @Required
-    private List<ClearMonitoringResult> clearMonitoringResult = null;
+    public List<ClearMonitoringResult> getClearMonitoringResult() {
+        return clearMonitoringResult;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public void setClearMonitoringResult(List<ClearMonitoringResult> clearMonitoringResult) {
+        this.clearMonitoringResult = clearMonitoringResult;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -39,41 +64,6 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
-    public List<ClearMonitoringResult> getClearMonitoringResult() {
-        return clearMonitoringResult;
-    }
-
-    /**
-     * (Required)
-     */
-    public void setClearMonitoringResult(List<ClearMonitoringResult> clearMonitoringResult) {
-        this.clearMonitoringResult = clearMonitoringResult;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -81,14 +71,15 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
         if (!(obj instanceof ClearVariableMonitoringResponse))
             return false;
         ClearVariableMonitoringResponse that = (ClearVariableMonitoringResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(clearMonitoringResult, that.clearMonitoringResult);
+        return Objects.equals(this.clearMonitoringResult, that.clearMonitoringResult)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (clearMonitoringResult != null ? clearMonitoringResult.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.clearMonitoringResult != null ? this.clearMonitoringResult.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

@@ -1,33 +1,24 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class SecurityEventNotificationRequest implements JsonInterface {
+public class SecurityEventNotificationRequest {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * Type of the security event. This value should be taken from the Security events list.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private String type;
     /**
      * Date and time at which the event occurred.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -37,24 +28,41 @@ public class SecurityEventNotificationRequest implements JsonInterface {
      */
     @Optional
     private String techInfo;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SecurityEventNotificationRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param type
+     *     Type of the security event. This value should be taken from the Security events list.
+     *     .
+     * @param techInfo
+     *     Additional information about the occurred security event.
+     *     .
+     * @param timestamp
+     *     Date and time at which the event occurred.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public SecurityEventNotificationRequest(String type, Date timestamp, String techInfo, CustomData customData) {
+        super();
+        this.type = type;
+        this.timestamp = timestamp;
+        this.techInfo = techInfo;
         this.customData = customData;
     }
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * <p>
+     * 
      * (Required)
      */
     public String getType() {
@@ -63,7 +71,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * <p>
+     * 
      * (Required)
      */
     public void setType(String type) {
@@ -72,7 +80,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Date and time at which the event occurred.
-     * <p>
+     * 
      * (Required)
      */
     public Date getTimestamp() {
@@ -81,7 +89,7 @@ public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Date and time at which the event occurred.
-     * <p>
+     * 
      * (Required)
      */
     public void setTimestamp(Date timestamp) {
@@ -102,25 +110,18 @@ public class SecurityEventNotificationRequest implements JsonInterface {
         this.techInfo = techInfo;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -130,18 +131,19 @@ public class SecurityEventNotificationRequest implements JsonInterface {
         if (!(obj instanceof SecurityEventNotificationRequest))
             return false;
         SecurityEventNotificationRequest that = (SecurityEventNotificationRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(type, that.type)
-                && Objects.equals(timestamp, that.timestamp)
-                && Objects.equals(techInfo, that.techInfo);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.type, that.type) 
+                && Objects.equals(this.techInfo, that.techInfo) 
+                && Objects.equals(this.timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        int result = (type != null ? type.hashCode() : 0);
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
-        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
+        result = 31 * result + (this.techInfo != null ? this.techInfo.hashCode() : 0);
+        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
         return result;
     }
 }

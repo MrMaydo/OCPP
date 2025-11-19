@@ -1,31 +1,20 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ComponentVariable;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.ComponentCriterionEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-public class GetReportRequest implements JsonInterface {
+public class GetReportRequest {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-
-    @Optional
-    private List<ComponentVariable> componentVariable = null;
+    private List<ComponentVariable> componentVariable;
     /**
      * The Id of the request.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -34,19 +23,33 @@ public class GetReportRequest implements JsonInterface {
      * This field contains criteria for components for which a report is requested
      */
     @Optional
-    private List<ComponentCriterionEnum> componentCriteria = null;
-
+    private List<ComponentCriterionEnum> componentCriteria;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetReportRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param componentCriteria
+     *     This field contains criteria for components for which a report is requested
+     *     .
+     * @param requestId
+     *     The Id of the request.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public GetReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<ComponentCriterionEnum> componentCriteria, CustomData customData) {
+        super();
+        this.componentVariable = componentVariable;
+        this.requestId = requestId;
+        this.componentCriteria = componentCriteria;
         this.customData = customData;
     }
 
@@ -60,7 +63,7 @@ public class GetReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
+     * 
      * (Required)
      */
     public Integer getRequestId() {
@@ -69,7 +72,7 @@ public class GetReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
+     * 
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -90,25 +93,18 @@ public class GetReportRequest implements JsonInterface {
         this.componentCriteria = componentCriteria;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -118,18 +114,19 @@ public class GetReportRequest implements JsonInterface {
         if (!(obj instanceof GetReportRequest))
             return false;
         GetReportRequest that = (GetReportRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(componentVariable, that.componentVariable)
-                && Objects.equals(requestId, that.requestId)
-                && Objects.equals(componentCriteria, that.componentCriteria);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.componentVariable, that.componentVariable) 
+                && Objects.equals(this.componentCriteria, that.componentCriteria) 
+                && Objects.equals(this.requestId, that.requestId);
     }
 
     @Override
     public int hashCode() {
-        int result = (componentVariable != null ? componentVariable.hashCode() : 0);
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (componentCriteria != null ? componentCriteria.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.componentVariable != null ? this.componentVariable.hashCode() : 0);
+        result = 31 * result + (this.componentCriteria != null ? this.componentCriteria.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
         return result;
     }
 }

@@ -1,22 +1,13 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-public class GetTransactionStatusResponse implements JsonInterface {
+public class GetTransactionStatusResponse {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Whether the transaction is still ongoing.
      */
@@ -24,23 +15,36 @@ public class GetTransactionStatusResponse implements JsonInterface {
     private Boolean ongoingIndicator;
     /**
      * Whether there are still message to be delivered.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Boolean messagesInQueue;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetTransactionStatusResponse() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param ongoingIndicator
+     *     Whether the transaction is still ongoing.
+     *     .
+     * @param messagesInQueue
+     *     Whether there are still message to be delivered.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public GetTransactionStatusResponse(Boolean ongoingIndicator, Boolean messagesInQueue, CustomData customData) {
+        super();
+        this.ongoingIndicator = ongoingIndicator;
+        this.messagesInQueue = messagesInQueue;
         this.customData = customData;
     }
 
@@ -60,7 +64,7 @@ public class GetTransactionStatusResponse implements JsonInterface {
 
     /**
      * Whether there are still message to be delivered.
-     * <p>
+     * 
      * (Required)
      */
     public Boolean getMessagesInQueue() {
@@ -69,32 +73,25 @@ public class GetTransactionStatusResponse implements JsonInterface {
 
     /**
      * Whether there are still message to be delivered.
-     * <p>
+     * 
      * (Required)
      */
     public void setMessagesInQueue(Boolean messagesInQueue) {
         this.messagesInQueue = messagesInQueue;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -104,16 +101,17 @@ public class GetTransactionStatusResponse implements JsonInterface {
         if (!(obj instanceof GetTransactionStatusResponse))
             return false;
         GetTransactionStatusResponse that = (GetTransactionStatusResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(ongoingIndicator, that.ongoingIndicator)
-                && Objects.equals(messagesInQueue, that.messagesInQueue);
+        return Objects.equals(this.messagesInQueue, that.messagesInQueue)
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.ongoingIndicator, that.ongoingIndicator);
     }
 
     @Override
     public int hashCode() {
-        int result = (ongoingIndicator != null ? ongoingIndicator.hashCode() : 0);
-        result = 31 * result + (messagesInQueue != null ? messagesInQueue.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.messagesInQueue != null ? this.messagesInQueue.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.ongoingIndicator != null ? this.ongoingIndicator.hashCode() : 0);
         return result;
     }
 }

@@ -1,47 +1,37 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdToken;
-import maydo.ocpp.msgDef.Enumerations.ConnectorEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Date;
 import java.util.Objects;
 
-public class ReserveNowRequest implements JsonInterface {
+public class ReserveNowRequest {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * Id of reservation.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Integer id;
     /**
      * Date and time at which the reservation expires.
-     * <p>
+     * 
      * (Required)
      */
     @Required
     private Date expiryDateTime;
     /**
-     * This field specifies the connector type.
+     * This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
      */
     @Optional
-    private ConnectorEnum connectorType;
+    private String connectorType;
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -56,24 +46,47 @@ public class ReserveNowRequest implements JsonInterface {
      */
     @Optional
     private IdToken groupIdToken;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ReserveNowRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param evseId
+     *     This contains ID of the evse to be reserved.
+     *     .
+     * @param connectorType
+     *     This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
+     *     .
+     * @param id
+     *     Id of reservation.
+     *     .
+     * @param expiryDateTime
+     *     Date and time at which the reservation expires.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public ReserveNowRequest(Integer id, Date expiryDateTime, String connectorType, IdToken idToken, Integer evseId, IdToken groupIdToken, CustomData customData) {
+        super();
+        this.id = id;
+        this.expiryDateTime = expiryDateTime;
+        this.connectorType = connectorType;
+        this.idToken = idToken;
+        this.evseId = evseId;
+        this.groupIdToken = groupIdToken;
         this.customData = customData;
     }
 
     /**
      * Id of reservation.
-     * <p>
+     * 
      * (Required)
      */
     public Integer getId() {
@@ -82,7 +95,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Id of reservation.
-     * <p>
+     * 
      * (Required)
      */
     public void setId(Integer id) {
@@ -91,7 +104,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Date and time at which the reservation expires.
-     * <p>
+     * 
      * (Required)
      */
     public Date getExpiryDateTime() {
@@ -100,7 +113,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Date and time at which the reservation expires.
-     * <p>
+     * 
      * (Required)
      */
     public void setExpiryDateTime(Date expiryDateTime) {
@@ -108,22 +121,22 @@ public class ReserveNowRequest implements JsonInterface {
     }
 
     /**
-     * This field specifies the connector type.
+     * This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
      */
-    public ConnectorEnum getConnectorType() {
+    public String getConnectorType() {
         return connectorType;
     }
 
     /**
-     * This field specifies the connector type.
+     * This field specifies the connector type. Values defined in Appendix as ConnectorEnumStringType.
      */
-    public void setConnectorType(ConnectorEnum connectorType) {
+    public void setConnectorType(String connectorType) {
         this.connectorType = connectorType;
     }
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
+     * 
      * (Required)
      */
     public IdToken getIdToken() {
@@ -132,7 +145,7 @@ public class ReserveNowRequest implements JsonInterface {
 
     /**
      * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
+     * 
      * (Required)
      */
     public void setIdToken(IdToken idToken) {
@@ -167,25 +180,18 @@ public class ReserveNowRequest implements JsonInterface {
         this.groupIdToken = groupIdToken;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -195,24 +201,25 @@ public class ReserveNowRequest implements JsonInterface {
         if (!(obj instanceof ReserveNowRequest))
             return false;
         ReserveNowRequest that = (ReserveNowRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id)
-                && Objects.equals(expiryDateTime, that.expiryDateTime)
-                && connectorType == that.connectorType
-                && Objects.equals(idToken, that.idToken)
-                && Objects.equals(evseId, that.evseId)
-                && Objects.equals(groupIdToken, that.groupIdToken);
+        return Objects.equals(this.evseId, that.evseId)
+                && Objects.equals(this.connectorType, that.connectorType) 
+                && Objects.equals(this.idToken, that.idToken) 
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.id, that.id) 
+                && Objects.equals(this.expiryDateTime, that.expiryDateTime) 
+                && Objects.equals(this.groupIdToken, that.groupIdToken);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (expiryDateTime != null ? expiryDateTime.hashCode() : 0);
-        result = 31 * result + (connectorType != null ? connectorType.hashCode() : 0);
-        result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
-        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
-        result = 31 * result + (groupIdToken != null ? groupIdToken.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
+        result = 31 * result + (this.connectorType != null ? this.connectorType.hashCode() : 0);
+        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.expiryDateTime != null ? this.expiryDateTime.hashCode() : 0);
+        result = 31 * result + (this.groupIdToken != null ? this.groupIdToken.hashCode() : 0);
         return result;
     }
 }

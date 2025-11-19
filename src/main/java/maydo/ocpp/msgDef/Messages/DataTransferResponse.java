@@ -1,27 +1,18 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.DataTransferStatusEnum;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-public class DataTransferResponse implements JsonInterface {
+public class DataTransferResponse {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * This indicates the success or failure of the data transfer.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -36,24 +27,35 @@ public class DataTransferResponse implements JsonInterface {
      */
     @Optional
     private Object data;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public DataTransferResponse() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param data
+     *     Data without specified length or format, in response to request.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public DataTransferResponse(DataTransferStatusEnum status, StatusInfo statusInfo, Object data, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
+        this.data = data;
         this.customData = customData;
     }
 
     /**
      * This indicates the success or failure of the data transfer.
-     * <p>
+     * 
      * (Required)
      */
     public DataTransferStatusEnum getStatus() {
@@ -62,7 +64,7 @@ public class DataTransferResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the data transfer.
-     * <p>
+     * 
      * (Required)
      */
     public void setStatus(DataTransferStatusEnum status) {
@@ -97,25 +99,18 @@ public class DataTransferResponse implements JsonInterface {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -125,18 +120,19 @@ public class DataTransferResponse implements JsonInterface {
         if (!(obj instanceof DataTransferResponse))
             return false;
         DataTransferResponse that = (DataTransferResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(statusInfo, that.statusInfo)
-                && Objects.equals(data, that.data);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.data, that.data) 
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.data != null ? this.data.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

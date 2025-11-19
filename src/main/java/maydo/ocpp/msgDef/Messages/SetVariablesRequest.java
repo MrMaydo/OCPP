@@ -1,30 +1,54 @@
 package maydo.ocpp.msgDef.Messages;
 
-
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.SetVariableData;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-public class SetVariablesRequest implements JsonInterface {
+public class SetVariablesRequest {
 
+    /**
+     * 
+     * (Required)
+     */
+    @Required
+    private List<SetVariableData> setVariableData;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
+
     /**
+     * No args constructor for use in serialization
+     */
+    public SetVariablesRequest() {
+    }
+
+    public SetVariablesRequest(List<SetVariableData> setVariableData, CustomData customData) {
+        super();
+        this.setVariableData = setVariableData;
+        this.customData = customData;
+    }
+
+    /**
+     * 
      * (Required)
      */
-    @Required
-    private List<SetVariableData> setVariableData = null;
+    public List<SetVariableData> getSetVariableData() {
+        return setVariableData;
+    }
+
+    /**
+     * 
+     * (Required)
+     */
+    public void setSetVariableData(List<SetVariableData> setVariableData) {
+        this.setVariableData = setVariableData;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -40,41 +64,6 @@ public class SetVariablesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
-    public List<SetVariableData> getSetVariableData() {
-        return setVariableData;
-    }
-
-    /**
-     * (Required)
-     */
-    public void setSetVariableData(List<SetVariableData> setVariableData) {
-        this.setVariableData = setVariableData;
-    }
-
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
-    }
-
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -82,14 +71,15 @@ public class SetVariablesRequest implements JsonInterface {
         if (!(obj instanceof SetVariablesRequest))
             return false;
         SetVariablesRequest that = (SetVariablesRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(setVariableData, that.setVariableData);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.setVariableData, that.setVariableData);
     }
 
     @Override
     public int hashCode() {
-        int result = (setVariableData != null ? setVariableData.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.setVariableData != null ? this.setVariableData.hashCode() : 0);
         return result;
     }
 }

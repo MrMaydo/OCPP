@@ -1,30 +1,19 @@
 package maydo.ocpp.msgDef.Messages;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.MessageInfo;
-import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-public class NotifyDisplayMessagesRequest implements JsonInterface {
+public class NotifyDisplayMessagesRequest {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-
-    @Optional
-    private List<MessageInfo> messageInfo = null;
+    private List<MessageInfo> messageInfo;
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
+     * 
      * (Required)
      */
     @Required
@@ -34,18 +23,32 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
      */
     @Optional
     private Boolean tbc = false;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public NotifyDisplayMessagesRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * 
+     * @param tbc
+     *     "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
+     *     .
+     * @param requestId
+     *     The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
+     *     .
      */
-    public void setCustomData(CustomData customData) {
+    public NotifyDisplayMessagesRequest(List<MessageInfo> messageInfo, Integer requestId, Boolean tbc, CustomData customData) {
+        super();
+        this.messageInfo = messageInfo;
+        this.requestId = requestId;
+        this.tbc = tbc;
         this.customData = customData;
     }
 
@@ -59,7 +62,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
+     * 
      * (Required)
      */
     public Integer getRequestId() {
@@ -68,7 +71,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     /**
      * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
+     * 
      * (Required)
      */
     public void setRequestId(Integer requestId) {
@@ -89,25 +92,18 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         this.tbc = tbc;
     }
 
-    @Override
-    public String toString() {
-        return toJsonObject().toString();
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
     }
 
-    @Override
-    public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
-    }
-
-    @Override
-    public void fromString(String jsonString) {
-        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
-        fromJsonObject(jsonObject);
-    }
-
-    @Override
-    public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -117,18 +113,19 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         if (!(obj instanceof NotifyDisplayMessagesRequest))
             return false;
         NotifyDisplayMessagesRequest that = (NotifyDisplayMessagesRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(messageInfo, that.messageInfo)
-                && Objects.equals(requestId, that.requestId)
-                && Objects.equals(tbc, that.tbc);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.tbc, that.tbc) 
+                && Objects.equals(this.messageInfo, that.messageInfo) 
+                && Objects.equals(this.requestId, that.requestId);
     }
 
     @Override
     public int hashCode() {
-        int result = (messageInfo != null ? messageInfo.hashCode() : 0);
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
+        result = 31 * result + (this.messageInfo != null ? this.messageInfo.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
         return result;
     }
 }

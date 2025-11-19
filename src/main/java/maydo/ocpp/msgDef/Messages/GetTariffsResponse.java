@@ -1,0 +1,125 @@
+package maydo.ocpp.msgDef.Messages;
+
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.DataTypes.StatusInfo;
+import maydo.ocpp.msgDef.DataTypes.TariffAssignment;
+import maydo.ocpp.msgDef.Enumerations.TariffGetStatusEnum;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
+
+import java.util.List;
+import java.util.Objects;
+
+public class GetTariffsResponse {
+
+    /**
+     * Status of operation
+     * 
+     * (Required)
+     */
+    @Required
+    private TariffGetStatusEnum status;
+    /**
+     * Element providing more information about the status.
+     */
+    @Optional
+    private StatusInfo statusInfo;
+    @Optional
+    private List<TariffAssignment> tariffAssignments;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetTariffsResponse() {
+    }
+
+    public GetTariffsResponse(TariffGetStatusEnum status, StatusInfo statusInfo, List<TariffAssignment> tariffAssignments, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
+        this.tariffAssignments = tariffAssignments;
+        this.customData = customData;
+    }
+
+    /**
+     * Status of operation
+     * 
+     * (Required)
+     */
+    public TariffGetStatusEnum getStatus() {
+        return status;
+    }
+
+    /**
+     * Status of operation
+     * 
+     * (Required)
+     */
+    public void setStatus(TariffGetStatusEnum status) {
+        this.status = status;
+    }
+
+    /**
+     * Element providing more information about the status.
+     */
+    public StatusInfo getStatusInfo() {
+        return statusInfo;
+    }
+
+    /**
+     * Element providing more information about the status.
+     */
+    public void setStatusInfo(StatusInfo statusInfo) {
+        this.statusInfo = statusInfo;
+    }
+
+    public List<TariffAssignment> getTariffAssignments() {
+        return tariffAssignments;
+    }
+
+    public void setTariffAssignments(List<TariffAssignment> tariffAssignments) {
+        this.tariffAssignments = tariffAssignments;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof GetTariffsResponse))
+            return false;
+        GetTariffsResponse that = (GetTariffsResponse) obj;
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo) 
+                && Objects.equals(this.tariffAssignments, that.tariffAssignments) 
+                && Objects.equals(this.status, that.status);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.tariffAssignments != null ? this.tariffAssignments.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
+        return result;
+    }
+}

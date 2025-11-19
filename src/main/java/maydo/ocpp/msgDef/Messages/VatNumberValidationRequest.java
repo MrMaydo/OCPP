@@ -1,0 +1,125 @@
+package maydo.ocpp.msgDef.Messages;
+
+import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.annotations.Optional;
+import maydo.ocpp.msgDef.annotations.Required;
+
+import java.util.Objects;
+
+public class VatNumberValidationRequest {
+
+    /**
+     * VAT number to check.
+     * 
+     * 
+     * (Required)
+     */
+    @Required
+    private String vatNumber;
+    /**
+     * EVSE id for which check is done
+     * 
+     */
+    @Optional
+    private Integer evseId;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public VatNumberValidationRequest() {
+    }
+
+    /**
+     * 
+     * @param evseId
+     *     EVSE id for which check is done
+     *     
+     *     .
+     * @param vatNumber
+     *     VAT number to check.
+     *     
+     *     .
+     */
+    public VatNumberValidationRequest(String vatNumber, Integer evseId, CustomData customData) {
+        super();
+        this.vatNumber = vatNumber;
+        this.evseId = evseId;
+        this.customData = customData;
+    }
+
+    /**
+     * VAT number to check.
+     * 
+     * 
+     * (Required)
+     */
+    public String getVatNumber() {
+        return vatNumber;
+    }
+
+    /**
+     * VAT number to check.
+     * 
+     * 
+     * (Required)
+     */
+    public void setVatNumber(String vatNumber) {
+        this.vatNumber = vatNumber;
+    }
+
+    /**
+     * EVSE id for which check is done
+     * 
+     */
+    public Integer getEvseId() {
+        return evseId;
+    }
+
+    /**
+     * EVSE id for which check is done
+     * 
+     */
+    public void setEvseId(Integer evseId) {
+        this.evseId = evseId;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!(obj instanceof VatNumberValidationRequest))
+            return false;
+        VatNumberValidationRequest that = (VatNumberValidationRequest) obj;
+        return Objects.equals(this.evseId, that.evseId)
+                && Objects.equals(this.customData, that.customData) 
+                && Objects.equals(this.vatNumber, that.vatNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.vatNumber != null ? this.vatNumber.hashCode() : 0);
+        return result;
+    }
+}
