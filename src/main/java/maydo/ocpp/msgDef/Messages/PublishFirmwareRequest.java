@@ -214,7 +214,14 @@ public class PublishFirmwareRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("location", location);
+        json.addProperty("retries", retries);
+        json.addProperty("checksum", checksum);
+        json.addProperty("requestId", requestId);
+        json.addProperty("retryInterval", retryInterval);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

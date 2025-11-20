@@ -129,7 +129,12 @@ public class CertificateSignedRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("certificateChain", certificateChain);
+        json.addProperty("certificateType", certificateType.toString());
+        json.addProperty("requestId", requestId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

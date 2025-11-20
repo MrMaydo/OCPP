@@ -7,8 +7,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class ReserveNowRequest implements JsonInterface {
 
@@ -198,7 +201,15 @@ public class ReserveNowRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("expiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(expiryDateTime));
+        json.addProperty("connectorType", connectorType);
+        json.add("idToken", idToken.toJsonObject());
+        json.addProperty("evseId", evseId);
+        json.add("groupIdToken", groupIdToken.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

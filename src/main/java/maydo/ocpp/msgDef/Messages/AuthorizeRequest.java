@@ -117,7 +117,11 @@ public class AuthorizeRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("idToken", idToken.toJsonObject());
+        json.addProperty("certificate", certificate);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

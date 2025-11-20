@@ -8,8 +8,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class NotifyDERAlarmRequest implements JsonInterface {
 
@@ -181,7 +184,14 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("controlType", controlType.toString());
+        json.addProperty("gridEventFault", gridEventFault.toString());
+        json.addProperty("alarmEnded", alarmEnded);
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
+        json.addProperty("extraInfo", extraInfo);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

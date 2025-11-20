@@ -179,7 +179,14 @@ public class GetLogRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("log", log.toJsonObject());
+        json.addProperty("logType", logType.toString());
+        json.addProperty("requestId", requestId);
+        json.addProperty("retries", retries);
+        json.addProperty("retryInterval", retryInterval);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

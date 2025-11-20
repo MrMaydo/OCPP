@@ -8,8 +8,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class NotifySettlementRequest implements JsonInterface {
 
@@ -301,7 +304,19 @@ public class NotifySettlementRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("transactionId", transactionId);
+        json.addProperty("pspRef", pspRef);
+        json.addProperty("status", status.toString());
+        json.addProperty("statusInfo", statusInfo);
+        json.addProperty("settlementAmount", settlementAmount);
+        json.addProperty("settlementTime", new SimpleDateFormat(DATE_FORMAT).format(settlementTime));
+        json.addProperty("receiptId", receiptId);
+        json.addProperty("receiptUrl", receiptUrl);
+        json.add("vatCompany", vatCompany.toJsonObject());
+        json.addProperty("vatNumber", vatNumber);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

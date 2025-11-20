@@ -112,7 +112,10 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("requestId", requestId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

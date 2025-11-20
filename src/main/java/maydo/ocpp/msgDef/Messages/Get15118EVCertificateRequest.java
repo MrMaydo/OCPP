@@ -190,7 +190,13 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("iso15118SchemaVersion", iso15118SchemaVersion);
+        json.addProperty("action", action.toString());
+        json.addProperty("exiRequest", exiRequest);
+        json.addProperty("maximumContractCertificateChains", maximumContractCertificateChains);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

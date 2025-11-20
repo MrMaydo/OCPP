@@ -134,7 +134,12 @@ public class GetChargingProfilesRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("requestId", requestId);
+        json.addProperty("evseId", evseId);
+        json.add("chargingProfile", chargingProfile.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -100,7 +100,11 @@ public class ClearedChargingLimitRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("chargingLimitSource", chargingLimitSource);
+        json.addProperty("evseId", evseId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

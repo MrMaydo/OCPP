@@ -126,7 +126,12 @@ public class ClearDERControlRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("isDefault", isDefault);
+        json.addProperty("controlType", controlType.toString());
+        json.addProperty("controlId", controlId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

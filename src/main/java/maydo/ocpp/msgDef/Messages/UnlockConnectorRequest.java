@@ -106,7 +106,11 @@ public class UnlockConnectorRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("evseId", evseId);
+        json.addProperty("connectorId", connectorId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

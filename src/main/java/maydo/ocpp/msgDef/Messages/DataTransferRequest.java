@@ -126,7 +126,12 @@ public class DataTransferRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("messageId", messageId);
+        json.addProperty("data", data.toString());
+        json.addProperty("vendorId", vendorId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

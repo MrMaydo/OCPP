@@ -78,7 +78,10 @@ public class UnpublishFirmwareRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("checksum", checksum);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -6,8 +6,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class HeartbeatResponse implements JsonInterface {
 
@@ -79,7 +82,10 @@ public class HeartbeatResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(currentTime));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

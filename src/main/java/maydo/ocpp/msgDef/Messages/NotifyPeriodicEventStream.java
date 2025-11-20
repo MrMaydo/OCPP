@@ -7,9 +7,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class NotifyPeriodicEventStream implements JsonInterface {
 
@@ -157,7 +160,12 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("pending", pending);
+        json.addProperty("basetime", new SimpleDateFormat(DATE_FORMAT).format(basetime));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

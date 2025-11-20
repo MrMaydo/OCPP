@@ -162,7 +162,12 @@ public class BatterySwapRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("eventType", eventType.toString());
+        json.add("idToken", idToken.toJsonObject());
+        json.addProperty("requestId", requestId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

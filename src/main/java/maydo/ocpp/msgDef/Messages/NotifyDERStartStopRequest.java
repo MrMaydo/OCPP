@@ -6,9 +6,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class NotifyDERStartStopRequest implements JsonInterface {
 
@@ -175,7 +178,12 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("controlId", controlId);
+        json.addProperty("started", started);
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

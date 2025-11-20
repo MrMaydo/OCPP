@@ -120,7 +120,12 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("scheduleUpdate", scheduleUpdate.toJsonObject());
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

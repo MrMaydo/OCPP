@@ -78,7 +78,10 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

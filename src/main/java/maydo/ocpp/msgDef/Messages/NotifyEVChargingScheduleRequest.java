@@ -7,8 +7,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
@@ -197,7 +200,14 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("timeBase", new SimpleDateFormat(DATE_FORMAT).format(timeBase));
+        json.add("chargingSchedule", chargingSchedule.toJsonObject());
+        json.addProperty("evseId", evseId);
+        json.addProperty("selectedChargingScheduleId", selectedChargingScheduleId);
+        json.addProperty("powerToleranceAcceptance", powerToleranceAcceptance);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

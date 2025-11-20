@@ -156,7 +156,13 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.addProperty("exiResponse", exiResponse);
+        json.addProperty("remainingContracts", remainingContracts);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

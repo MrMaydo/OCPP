@@ -7,8 +7,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class StatusNotificationRequest implements JsonInterface {
 
@@ -162,7 +165,13 @@ public class StatusNotificationRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
+        json.addProperty("connectorStatus", connectorStatus.toString());
+        json.addProperty("evseId", evseId);
+        json.addProperty("connectorId", connectorId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

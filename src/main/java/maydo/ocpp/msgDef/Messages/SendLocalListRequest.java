@@ -117,7 +117,11 @@ public class SendLocalListRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("versionNumber", versionNumber);
+        json.addProperty("updateType", updateType.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

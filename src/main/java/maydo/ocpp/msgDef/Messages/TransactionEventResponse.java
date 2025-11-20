@@ -171,7 +171,14 @@ public class TransactionEventResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("totalCost", totalCost);
+        json.addProperty("chargingPriority", chargingPriority);
+        json.add("idTokenInfo", idTokenInfo.toJsonObject());
+        json.add("transactionLimit", transactionLimit.toJsonObject());
+        json.add("updatedPersonalMessage", updatedPersonalMessage.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

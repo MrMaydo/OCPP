@@ -106,7 +106,11 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("transactionId", transactionId);
+        json.addProperty("activated", activated);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

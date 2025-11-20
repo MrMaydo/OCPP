@@ -108,7 +108,10 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("transactionId", transactionId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

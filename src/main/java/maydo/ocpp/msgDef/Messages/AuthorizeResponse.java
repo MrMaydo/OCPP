@@ -181,7 +181,12 @@ public class AuthorizeResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("idTokenInfo", idTokenInfo.toJsonObject());
+        json.addProperty("certificateStatus", certificateStatus.toString());
+        json.add("tariff", tariff.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

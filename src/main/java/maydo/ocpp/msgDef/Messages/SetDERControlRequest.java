@@ -232,7 +232,20 @@ public class SetDERControlRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("isDefault", isDefault);
+        json.addProperty("controlId", controlId);
+        json.addProperty("controlType", controlType.toString());
+        json.add("curve", curve.toJsonObject());
+        json.add("enterService", enterService.toJsonObject());
+        json.add("fixedPFAbsorb", fixedPFAbsorb.toJsonObject());
+        json.add("fixedPFInject", fixedPFInject.toJsonObject());
+        json.add("fixedVar", fixedVar.toJsonObject());
+        json.add("freqDroop", freqDroop.toJsonObject());
+        json.add("gradient", gradient.toJsonObject());
+        json.add("limitMaxDischarge", limitMaxDischarge.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

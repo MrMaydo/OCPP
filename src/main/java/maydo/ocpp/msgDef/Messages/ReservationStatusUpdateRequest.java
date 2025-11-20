@@ -105,7 +105,11 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("reservationId", reservationId);
+        json.addProperty("reservationUpdateStatus", reservationUpdateStatus.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
