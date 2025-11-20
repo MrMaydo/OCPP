@@ -5,8 +5,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class LogParameters implements JsonInterface {
 
@@ -122,7 +125,12 @@ public class LogParameters implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("remoteLocation", remoteLocation);
+        json.addProperty("oldestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(oldestTimestamp));
+        json.addProperty("latestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(latestTimestamp));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

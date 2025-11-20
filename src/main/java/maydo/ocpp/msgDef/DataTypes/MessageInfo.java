@@ -7,9 +7,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class MessageInfo implements JsonInterface {
 
@@ -261,7 +264,17 @@ public class MessageInfo implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("display", display.toJsonObject());
+        json.addProperty("id", id);
+        json.addProperty("priority", priority.toString());
+        json.addProperty("state", state.toString());
+        json.addProperty("startDateTime", new SimpleDateFormat(DATE_FORMAT).format(startDateTime));
+        json.addProperty("endDateTime", new SimpleDateFormat(DATE_FORMAT).format(endDateTime));
+        json.addProperty("transactionId", transactionId);
+        json.add("message", message.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

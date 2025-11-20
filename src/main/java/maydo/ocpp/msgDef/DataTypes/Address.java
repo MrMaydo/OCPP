@@ -208,7 +208,15 @@ public class Address implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("name", name);
+        json.addProperty("address1", address1);
+        json.addProperty("address2", address2);
+        json.addProperty("city", city);
+        json.addProperty("postalCode", postalCode);
+        json.addProperty("country", country);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

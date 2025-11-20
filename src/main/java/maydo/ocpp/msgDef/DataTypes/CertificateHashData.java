@@ -192,7 +192,13 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("hashAlgorithm", hashAlgorithm.toString());
+        json.addProperty("issuerNameHash", issuerNameHash);
+        json.addProperty("issuerKeyHash", issuerKeyHash);
+        json.addProperty("serialNumber", serialNumber);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

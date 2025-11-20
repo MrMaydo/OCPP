@@ -112,7 +112,11 @@ public class OverstayRuleList implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("overstayPowerThreshold", overstayPowerThreshold.toJsonObject());
+        json.addProperty("overstayTimeThreshold", overstayTimeThreshold);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

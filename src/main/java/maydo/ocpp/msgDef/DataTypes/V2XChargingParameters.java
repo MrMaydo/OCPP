@@ -847,7 +847,33 @@ public class V2XChargingParameters implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("minChargePower", minChargePower);
+        json.addProperty("minChargePowerL2", minChargePowerL2);
+        json.addProperty("minChargePowerL3", minChargePowerL3);
+        json.addProperty("maxChargePower", maxChargePower);
+        json.addProperty("maxChargePowerL2", maxChargePowerL2);
+        json.addProperty("maxChargePowerL3", maxChargePowerL3);
+        json.addProperty("minDischargePower", minDischargePower);
+        json.addProperty("minDischargePowerL2", minDischargePowerL2);
+        json.addProperty("minDischargePowerL3", minDischargePowerL3);
+        json.addProperty("maxDischargePower", maxDischargePower);
+        json.addProperty("maxDischargePowerL2", maxDischargePowerL2);
+        json.addProperty("maxDischargePowerL3", maxDischargePowerL3);
+        json.addProperty("minChargeCurrent", minChargeCurrent);
+        json.addProperty("maxChargeCurrent", maxChargeCurrent);
+        json.addProperty("minDischargeCurrent", minDischargeCurrent);
+        json.addProperty("maxDischargeCurrent", maxDischargeCurrent);
+        json.addProperty("minVoltage", minVoltage);
+        json.addProperty("maxVoltage", maxVoltage);
+        json.addProperty("evTargetEnergyRequest", evTargetEnergyRequest);
+        json.addProperty("evMinEnergyRequest", evMinEnergyRequest);
+        json.addProperty("evMaxEnergyRequest", evMaxEnergyRequest);
+        json.addProperty("evMinV2XEnergyRequest", evMinV2XEnergyRequest);
+        json.addProperty("evMaxV2XEnergyRequest", evMaxV2XEnergyRequest);
+        json.addProperty("targetSoC", targetSoC);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -343,7 +343,21 @@ public class ChargingScheduleUpdate implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("limit", limit);
+        json.addProperty("limitL2", limitL2);
+        json.addProperty("limitL3", limitL3);
+        json.addProperty("dischargeLimit", dischargeLimit);
+        json.addProperty("dischargeLimitL2", dischargeLimitL2);
+        json.addProperty("dischargeLimitL3", dischargeLimitL3);
+        json.addProperty("setpoint", setpoint);
+        json.addProperty("setpointL2", setpointL2);
+        json.addProperty("setpointL3", setpointL3);
+        json.addProperty("setpointReactive", setpointReactive);
+        json.addProperty("setpointReactiveL2", setpointReactiveL2);
+        json.addProperty("setpointReactiveL3", setpointReactiveL3);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -161,7 +161,13 @@ public class FreqDroopGet implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("freqDroop", freqDroop.toJsonObject());
+        json.addProperty("id", id);
+        json.addProperty("isDefault", isDefault);
+        json.addProperty("isSuperseded", isSuperseded);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

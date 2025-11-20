@@ -320,7 +320,16 @@ public class SetMonitoringResult implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.addProperty("status", status.toString());
+        json.addProperty("type", type.toString());
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.addProperty("severity", severity);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

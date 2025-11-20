@@ -125,7 +125,11 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("certificateHashData", certificateHashData.toJsonObject());
+        json.addProperty("source", source.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

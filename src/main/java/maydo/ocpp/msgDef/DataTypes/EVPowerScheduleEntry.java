@@ -108,7 +108,11 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("duration", duration);
+        json.addProperty("power", power);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

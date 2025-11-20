@@ -6,9 +6,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class TariffAssignment implements JsonInterface {
 
@@ -161,7 +164,12 @@ public class TariffAssignment implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("tariffId", tariffId);
+        json.addProperty("tariffKind", tariffKind.toString());
+        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

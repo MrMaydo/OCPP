@@ -99,7 +99,11 @@ public class RelativeTimeInterval implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("start", start);
+        json.addProperty("duration", duration);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

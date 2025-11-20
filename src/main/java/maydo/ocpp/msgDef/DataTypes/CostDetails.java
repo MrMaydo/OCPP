@@ -158,7 +158,13 @@ public class CostDetails implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("totalCost", totalCost.toJsonObject());
+        json.add("totalUsage", totalUsage.toJsonObject());
+        json.addProperty("failureToCalculate", failureToCalculate);
+        json.addProperty("failureReason", failureReason);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

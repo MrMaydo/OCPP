@@ -117,7 +117,11 @@ public class DERCurvePoints implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("x", x);
+        json.addProperty("y", y);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

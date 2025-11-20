@@ -5,8 +5,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class FixedPF implements JsonInterface {
 
@@ -178,7 +181,14 @@ public class FixedPF implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("priority", priority);
+        json.addProperty("displacement", displacement);
+        json.addProperty("excitation", excitation);
+        json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(startTime));
+        json.addProperty("duration", duration);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

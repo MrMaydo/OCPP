@@ -205,7 +205,13 @@ public class SampledValue implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("value", value);
+        json.addProperty("phase", phase.toString());
+        json.add("signedMeterValue", signedMeterValue.toJsonObject());
+        json.add("unitOfMeasure", unitOfMeasure.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

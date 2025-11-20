@@ -92,7 +92,11 @@ public class PeriodicEventStreamParams implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("interval", interval);
+        json.addProperty("values", values);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

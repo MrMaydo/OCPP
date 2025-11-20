@@ -5,8 +5,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class Firmware implements JsonInterface {
 
@@ -176,7 +179,14 @@ public class Firmware implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("location", location);
+        json.addProperty("retrieveDateTime", new SimpleDateFormat(DATE_FORMAT).format(retrieveDateTime));
+        json.addProperty("installDateTime", new SimpleDateFormat(DATE_FORMAT).format(installDateTime));
+        json.addProperty("signingCertificate", signingCertificate);
+        json.addProperty("signature", signature);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

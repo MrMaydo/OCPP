@@ -111,7 +111,11 @@ public class CostDimension implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("type", type.toString());
+        json.addProperty("volume", volume);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -102,7 +102,11 @@ public class EVSE implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("connectorId", connectorId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

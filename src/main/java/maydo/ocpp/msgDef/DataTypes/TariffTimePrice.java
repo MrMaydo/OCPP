@@ -127,7 +127,11 @@ public class TariffTimePrice implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("priceMinute", priceMinute);
+        json.add("conditions", conditions.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

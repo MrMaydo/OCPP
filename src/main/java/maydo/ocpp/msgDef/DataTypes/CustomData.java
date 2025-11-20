@@ -49,7 +49,9 @@ public class CustomData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("vendorId", vendorId);
+        return json;
     }
 
     @Override

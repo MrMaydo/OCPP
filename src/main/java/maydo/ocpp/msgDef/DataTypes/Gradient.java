@@ -157,7 +157,12 @@ public class Gradient implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("priority", priority);
+        json.addProperty("gradient", gradient);
+        json.addProperty("softGradient", softGradient);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -6,9 +6,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class IdTokenInfo implements JsonInterface {
 
@@ -230,7 +233,16 @@ public class IdTokenInfo implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.addProperty("cacheExpiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(cacheExpiryDateTime));
+        json.addProperty("chargingPriority", chargingPriority);
+        json.add("groupIdToken", groupIdToken.toJsonObject());
+        json.addProperty("language1", language1);
+        json.addProperty("language2", language2);
+        json.add("personalMessage", personalMessage.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

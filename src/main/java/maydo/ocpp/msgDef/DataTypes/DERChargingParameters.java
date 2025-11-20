@@ -1249,7 +1249,48 @@ public class DERChargingParameters implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("evOverExcitedMaxDischargePower", evOverExcitedMaxDischargePower);
+        json.addProperty("evOverExcitedPowerFactor", evOverExcitedPowerFactor);
+        json.addProperty("evUnderExcitedMaxDischargePower", evUnderExcitedMaxDischargePower);
+        json.addProperty("evUnderExcitedPowerFactor", evUnderExcitedPowerFactor);
+        json.addProperty("maxApparentPower", maxApparentPower);
+        json.addProperty("maxChargeApparentPower", maxChargeApparentPower);
+        json.addProperty("maxChargeApparentPowerL2", maxChargeApparentPowerL2);
+        json.addProperty("maxChargeApparentPowerL3", maxChargeApparentPowerL3);
+        json.addProperty("maxDischargeApparentPower", maxDischargeApparentPower);
+        json.addProperty("maxDischargeApparentPowerL2", maxDischargeApparentPowerL2);
+        json.addProperty("maxDischargeApparentPowerL3", maxDischargeApparentPowerL3);
+        json.addProperty("maxChargeReactivePower", maxChargeReactivePower);
+        json.addProperty("maxChargeReactivePowerL2", maxChargeReactivePowerL2);
+        json.addProperty("maxChargeReactivePowerL3", maxChargeReactivePowerL3);
+        json.addProperty("minChargeReactivePower", minChargeReactivePower);
+        json.addProperty("minChargeReactivePowerL2", minChargeReactivePowerL2);
+        json.addProperty("minChargeReactivePowerL3", minChargeReactivePowerL3);
+        json.addProperty("maxDischargeReactivePower", maxDischargeReactivePower);
+        json.addProperty("maxDischargeReactivePowerL2", maxDischargeReactivePowerL2);
+        json.addProperty("maxDischargeReactivePowerL3", maxDischargeReactivePowerL3);
+        json.addProperty("minDischargeReactivePower", minDischargeReactivePower);
+        json.addProperty("minDischargeReactivePowerL2", minDischargeReactivePowerL2);
+        json.addProperty("minDischargeReactivePowerL3", minDischargeReactivePowerL3);
+        json.addProperty("nominalVoltage", nominalVoltage);
+        json.addProperty("nominalVoltageOffset", nominalVoltageOffset);
+        json.addProperty("maxNominalVoltage", maxNominalVoltage);
+        json.addProperty("minNominalVoltage", minNominalVoltage);
+        json.addProperty("evInverterManufacturer", evInverterManufacturer);
+        json.addProperty("evInverterModel", evInverterModel);
+        json.addProperty("evInverterSerialNumber", evInverterSerialNumber);
+        json.addProperty("evInverterSwVersion", evInverterSwVersion);
+        json.addProperty("evInverterHwVersion", evInverterHwVersion);
+        json.addProperty("evIslandingTripTime", evIslandingTripTime);
+        json.addProperty("evMaximumLevel1DCInjection", evMaximumLevel1DCInjection);
+        json.addProperty("evDurationLevel1DCInjection", evDurationLevel1DCInjection);
+        json.addProperty("evMaximumLevel2DCInjection", evMaximumLevel2DCInjection);
+        json.addProperty("evDurationLevel2DCInjection", evDurationLevel2DCInjection);
+        json.addProperty("evReactiveSusceptance", evReactiveSusceptance);
+        json.addProperty("evSessionTotalDischargeEnergyAvailable", evSessionTotalDischargeEnergyAvailable);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

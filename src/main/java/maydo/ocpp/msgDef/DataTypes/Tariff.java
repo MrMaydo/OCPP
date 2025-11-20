@@ -5,9 +5,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class Tariff implements JsonInterface {
 
@@ -282,7 +285,20 @@ public class Tariff implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("tariffId", tariffId);
+        json.addProperty("currency", currency);
+        json.add("energy", energy.toJsonObject());
+        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
+        json.add("chargingTime", chargingTime.toJsonObject());
+        json.add("idleTime", idleTime.toJsonObject());
+        json.add("fixedFee", fixedFee.toJsonObject());
+        json.add("reservationTime", reservationTime.toJsonObject());
+        json.add("reservationFixed", reservationFixed.toJsonObject());
+        json.add("minCost", minCost.toJsonObject());
+        json.add("maxCost", maxCost.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -142,7 +142,12 @@ public class SalesTariff implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("salesTariffDescription", salesTariffDescription);
+        json.addProperty("numEPriceLevels", numEPriceLevels);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

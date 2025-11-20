@@ -122,7 +122,12 @@ public class Component implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("evse", evse.toJsonObject());
+        json.addProperty("name", name);
+        json.addProperty("instance", instance);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -264,7 +264,16 @@ public class VariableCharacteristics implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("unit", unit);
+        json.addProperty("dataType", dataType.toString());
+        json.addProperty("minLimit", minLimit);
+        json.addProperty("maxLimit", maxLimit);
+        json.addProperty("maxElements", maxElements);
+        json.addProperty("valuesList", valuesList);
+        json.addProperty("supportsMonitoring", supportsMonitoring);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -533,7 +533,28 @@ public class ChargingSchedulePeriod implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("startPeriod", startPeriod);
+        json.addProperty("limit", limit);
+        json.addProperty("limitL2", limitL2);
+        json.addProperty("limitL3", limitL3);
+        json.addProperty("numberPhases", numberPhases);
+        json.addProperty("phaseToUse", phaseToUse);
+        json.addProperty("dischargeLimit", dischargeLimit);
+        json.addProperty("dischargeLimitL2", dischargeLimitL2);
+        json.addProperty("dischargeLimitL3", dischargeLimitL3);
+        json.addProperty("setpoint", setpoint);
+        json.addProperty("setpointL2", setpointL2);
+        json.addProperty("setpointL3", setpointL3);
+        json.addProperty("setpointReactive", setpointReactive);
+        json.addProperty("setpointReactiveL2", setpointReactiveL2);
+        json.addProperty("setpointReactiveL3", setpointReactiveL3);
+        json.addProperty("preconditioningRequest", preconditioningRequest);
+        json.addProperty("evseSleep", evseSleep);
+        json.addProperty("v2xBaseline", v2xBaseline);
+        json.addProperty("operationMode", operationMode.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

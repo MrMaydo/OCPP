@@ -97,7 +97,11 @@ public class StreamDataElement implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("t", t);
+        json.addProperty("v", v);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

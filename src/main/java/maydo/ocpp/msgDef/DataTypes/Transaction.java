@@ -232,7 +232,17 @@ public class Transaction implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("transactionId", transactionId);
+        json.addProperty("chargingState", chargingState.toString());
+        json.addProperty("timeSpentCharging", timeSpentCharging);
+        json.addProperty("stoppedReason", stoppedReason.toString());
+        json.addProperty("remoteStartId", remoteStartId);
+        json.addProperty("operationMode", operationMode.toString());
+        json.addProperty("tariffId", tariffId);
+        json.add("transactionLimit", transactionLimit.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

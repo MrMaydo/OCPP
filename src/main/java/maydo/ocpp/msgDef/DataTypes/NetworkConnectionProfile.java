@@ -310,7 +310,19 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("apn", apn.toJsonObject());
+        json.addProperty("ocppVersion", ocppVersion.toString());
+        json.addProperty("ocppInterface", ocppInterface.toString());
+        json.addProperty("ocppTransport", ocppTransport.toString());
+        json.addProperty("messageTimeout", messageTimeout);
+        json.addProperty("ocppCsmsUrl", ocppCsmsUrl);
+        json.addProperty("securityProfile", securityProfile);
+        json.addProperty("identity", identity);
+        json.addProperty("basicAuthPassword", basicAuthPassword);
+        json.add("vpn", vpn.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

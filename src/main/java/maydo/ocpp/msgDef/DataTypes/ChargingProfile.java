@@ -8,9 +8,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class ChargingProfile implements JsonInterface {
 
@@ -408,7 +411,22 @@ public class ChargingProfile implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("stackLevel", stackLevel);
+        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
+        json.addProperty("chargingProfileKind", chargingProfileKind.toString());
+        json.addProperty("recurrencyKind", recurrencyKind.toString());
+        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
+        json.addProperty("validTo", new SimpleDateFormat(DATE_FORMAT).format(validTo));
+        json.addProperty("transactionId", transactionId);
+        json.addProperty("maxOfflineDuration", maxOfflineDuration);
+        json.addProperty("invalidAfterOfflineDuration", invalidAfterOfflineDuration);
+        json.addProperty("dynUpdateInterval", dynUpdateInterval);
+        json.addProperty("dynUpdateTime", new SimpleDateFormat(DATE_FORMAT).format(dynUpdateTime));
+        json.addProperty("priceScheduleSignature", priceScheduleSignature);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

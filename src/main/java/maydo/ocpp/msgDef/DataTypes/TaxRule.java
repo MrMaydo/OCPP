@@ -277,7 +277,17 @@ public class TaxRule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("taxRuleID", taxRuleID);
+        json.addProperty("taxRuleName", taxRuleName);
+        json.addProperty("taxIncludedInPrice", taxIncludedInPrice);
+        json.addProperty("appliesToEnergyFee", appliesToEnergyFee);
+        json.addProperty("appliesToParkingFee", appliesToParkingFee);
+        json.addProperty("appliesToOverstayFee", appliesToOverstayFee);
+        json.addProperty("appliesToMinimumMaximumCost", appliesToMinimumMaximumCost);
+        json.add("taxRate", taxRate.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

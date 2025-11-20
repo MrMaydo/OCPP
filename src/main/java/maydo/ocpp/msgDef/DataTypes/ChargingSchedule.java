@@ -6,9 +6,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class ChargingSchedule implements JsonInterface {
 
@@ -381,7 +384,23 @@ public class ChargingSchedule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("limitAtSoC", limitAtSoC.toJsonObject());
+        json.addProperty("startSchedule", new SimpleDateFormat(DATE_FORMAT).format(startSchedule));
+        json.addProperty("duration", duration);
+        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
+        json.addProperty("minChargingRate", minChargingRate);
+        json.addProperty("powerTolerance", powerTolerance);
+        json.addProperty("signatureId", signatureId);
+        json.addProperty("digestValue", digestValue);
+        json.addProperty("useLocalTime", useLocalTime);
+        json.addProperty("randomizedDelay", randomizedDelay);
+        json.add("salesTariff", salesTariff.toJsonObject());
+        json.add("absolutePriceSchedule", absolutePriceSchedule.toJsonObject());
+        json.add("priceLevelSchedule", priceLevelSchedule.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

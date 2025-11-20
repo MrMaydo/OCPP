@@ -315,7 +315,17 @@ public class DCChargingParameters implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("evMaxCurrent", evMaxCurrent);
+        json.addProperty("evMaxVoltage", evMaxVoltage);
+        json.addProperty("evMaxPower", evMaxPower);
+        json.addProperty("evEnergyCapacity", evEnergyCapacity);
+        json.addProperty("energyAmount", energyAmount);
+        json.addProperty("stateOfCharge", stateOfCharge);
+        json.addProperty("fullSoC", fullSoC);
+        json.addProperty("bulkSoC", bulkSoC);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

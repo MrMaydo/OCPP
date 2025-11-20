@@ -79,7 +79,9 @@ public class TariffEnergy implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

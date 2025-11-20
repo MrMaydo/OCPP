@@ -112,7 +112,11 @@ public class AdditionalInfo implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("additionalIdToken", additionalIdToken);
+        json.addProperty("type", type);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

@@ -161,7 +161,13 @@ public class LimitMaxDischargeGet implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("isDefault", isDefault);
+        json.addProperty("isSuperseded", isSuperseded);
+        json.add("limitMaxDischarge", limitMaxDischarge.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

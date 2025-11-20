@@ -121,7 +121,12 @@ public class ChargingLimit implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("chargingLimitSource", chargingLimitSource);
+        json.addProperty("isLocalGeneration", isLocalGeneration);
+        json.addProperty("isGridCritical", isGridCritical);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

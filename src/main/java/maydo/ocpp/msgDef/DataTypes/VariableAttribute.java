@@ -167,7 +167,10 @@ public class VariableAttribute implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("value", value);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

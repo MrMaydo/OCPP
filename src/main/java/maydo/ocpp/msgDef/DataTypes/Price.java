@@ -104,7 +104,11 @@ public class Price implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("exclTax", exclTax);
+        json.addProperty("inclTax", inclTax);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

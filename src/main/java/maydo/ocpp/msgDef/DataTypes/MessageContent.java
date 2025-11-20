@@ -138,7 +138,12 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("format", format.toString());
+        json.addProperty("language", language);
+        json.addProperty("content", content);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

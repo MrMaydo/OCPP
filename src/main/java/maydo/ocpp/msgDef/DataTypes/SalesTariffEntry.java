@@ -103,7 +103,11 @@ public class SalesTariffEntry implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.add("relativeTimeInterval", relativeTimeInterval.toJsonObject());
+        json.addProperty("ePriceLevel", ePriceLevel);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

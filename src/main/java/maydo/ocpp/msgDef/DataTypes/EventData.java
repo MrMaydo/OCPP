@@ -7,8 +7,11 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class EventData implements JsonInterface {
 
@@ -418,7 +421,23 @@ public class EventData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("eventId", eventId);
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
+        json.addProperty("trigger", trigger.toString());
+        json.addProperty("cause", cause);
+        json.addProperty("actualValue", actualValue);
+        json.addProperty("techCode", techCode);
+        json.addProperty("techInfo", techInfo);
+        json.addProperty("cleared", cleared);
+        json.addProperty("transactionId", transactionId);
+        json.add("component", component.toJsonObject());
+        json.addProperty("variableMonitoringId", variableMonitoringId);
+        json.addProperty("eventNotificationType", eventNotificationType.toString());
+        json.add("variable", variable.toJsonObject());
+        json.addProperty("severity", severity);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

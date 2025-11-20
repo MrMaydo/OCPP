@@ -166,7 +166,13 @@ public class TotalUsage implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("energy", energy);
+        json.addProperty("chargingTime", chargingTime);
+        json.addProperty("idleTime", idleTime);
+        json.addProperty("reservationTime", reservationTime);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

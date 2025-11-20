@@ -254,7 +254,18 @@ public class TotalCost implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("currency", currency);
+        json.addProperty("typeOfCost", typeOfCost.toString());
+        json.add("fixed", fixed.toJsonObject());
+        json.add("energy", energy.toJsonObject());
+        json.add("chargingTime", chargingTime.toJsonObject());
+        json.add("idleTime", idleTime.toJsonObject());
+        json.add("reservationTime", reservationTime.toJsonObject());
+        json.add("reservationFixed", reservationFixed.toJsonObject());
+        json.add("total", total.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

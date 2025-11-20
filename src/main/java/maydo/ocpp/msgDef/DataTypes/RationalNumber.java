@@ -108,7 +108,11 @@ public class RationalNumber implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("exponent", exponent);
+        json.addProperty("value", value);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

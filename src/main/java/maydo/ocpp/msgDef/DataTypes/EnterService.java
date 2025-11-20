@@ -285,7 +285,17 @@ public class EnterService implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("priority", priority);
+        json.addProperty("highVoltage", highVoltage);
+        json.addProperty("lowVoltage", lowVoltage);
+        json.addProperty("highFreq", highFreq);
+        json.addProperty("lowFreq", lowFreq);
+        json.addProperty("delay", delay);
+        json.addProperty("randomDelay", randomDelay);
+        json.addProperty("rampRate", rampRate);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

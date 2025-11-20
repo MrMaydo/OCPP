@@ -273,7 +273,16 @@ public class TariffConditionsFixed implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("startTimeOfDay", startTimeOfDay);
+        json.addProperty("endTimeOfDay", endTimeOfDay);
+        json.addProperty("validFromDate", validFromDate);
+        json.addProperty("validToDate", validToDate);
+        json.addProperty("evseKind", evseKind.toString());
+        json.addProperty("paymentBrand", paymentBrand);
+        json.addProperty("paymentRecognition", paymentRecognition);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

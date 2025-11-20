@@ -307,7 +307,15 @@ public class VariableMonitoring implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.addProperty("transaction", transaction);
+        json.addProperty("value", value);
+        json.addProperty("type", type.toString());
+        json.addProperty("severity", severity);
+        json.addProperty("eventNotificationType", eventNotificationType.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

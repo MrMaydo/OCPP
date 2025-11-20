@@ -102,7 +102,11 @@ public class StatusInfo implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("reasonCode", reasonCode);
+        json.addProperty("additionalInfo", additionalInfo);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

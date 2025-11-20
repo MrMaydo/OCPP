@@ -581,7 +581,26 @@ public class TariffConditions implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("startTimeOfDay", startTimeOfDay);
+        json.addProperty("endTimeOfDay", endTimeOfDay);
+        json.addProperty("validFromDate", validFromDate);
+        json.addProperty("validToDate", validToDate);
+        json.addProperty("evseKind", evseKind.toString());
+        json.addProperty("minEnergy", minEnergy);
+        json.addProperty("maxEnergy", maxEnergy);
+        json.addProperty("minCurrent", minCurrent);
+        json.addProperty("maxCurrent", maxCurrent);
+        json.addProperty("minPower", minPower);
+        json.addProperty("maxPower", maxPower);
+        json.addProperty("minTime", minTime);
+        json.addProperty("maxTime", maxTime);
+        json.addProperty("minChargingTime", minChargingTime);
+        json.addProperty("maxChargingTime", maxChargingTime);
+        json.addProperty("minIdleTime", minIdleTime);
+        json.addProperty("maxIdleTime", maxIdleTime);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

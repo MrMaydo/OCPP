@@ -137,7 +137,11 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
+        json.addProperty("stackLevel", stackLevel);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

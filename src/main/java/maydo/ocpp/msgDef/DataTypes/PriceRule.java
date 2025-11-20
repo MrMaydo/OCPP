@@ -200,7 +200,15 @@ public class PriceRule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("parkingFeePeriod", parkingFeePeriod);
+        json.addProperty("carbonDioxideEmission", carbonDioxideEmission);
+        json.addProperty("renewableGenerationPercentage", renewableGenerationPercentage);
+        json.add("energyFee", energyFee.toJsonObject());
+        json.add("parkingFee", parkingFee.toJsonObject());
+        json.add("powerRangeStart", powerRangeStart.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

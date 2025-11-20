@@ -5,9 +5,12 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 public class EVAbsolutePriceSchedule implements JsonInterface {
 
@@ -155,7 +158,12 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
+        json.addProperty("currency", currency);
+        json.addProperty("priceAlgorithm", priceAlgorithm);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override

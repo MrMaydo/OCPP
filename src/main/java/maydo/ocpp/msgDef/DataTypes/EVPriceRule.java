@@ -108,7 +108,11 @@ public class EVPriceRule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return null;
+        JsonObject json = new JsonObject();
+        json.addProperty("energyFee", energyFee);
+        json.addProperty("powerRangeStart", powerRangeStart);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
