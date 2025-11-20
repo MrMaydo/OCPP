@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ControlModeEnum;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
 import maydo.ocpp.msgDef.Enumerations.MobilityNeedsModeEnum;
@@ -332,6 +333,8 @@ public class ChargingNeeds implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override

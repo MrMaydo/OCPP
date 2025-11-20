@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
 import maydo.ocpp.msgDef.Enumerations.IslandingDetectionEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -1296,6 +1297,8 @@ public class DERChargingParameters implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override

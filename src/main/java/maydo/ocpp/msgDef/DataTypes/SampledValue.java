@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.LocationEnum;
 import maydo.ocpp.msgDef.Enumerations.MeasurandEnum;
 import maydo.ocpp.msgDef.Enumerations.PhaseEnum;
@@ -217,6 +218,8 @@ public class SampledValue implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override

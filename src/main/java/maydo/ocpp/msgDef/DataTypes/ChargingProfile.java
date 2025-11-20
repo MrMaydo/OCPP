@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.Enumerations.RecurrencyKindEnum;
@@ -433,6 +434,8 @@ public class ChargingProfile implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override

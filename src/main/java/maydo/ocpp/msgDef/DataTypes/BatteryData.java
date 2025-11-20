@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.DataTypes;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
@@ -229,6 +230,8 @@ public class BatteryData implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override
