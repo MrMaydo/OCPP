@@ -1,10 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -338,6 +340,55 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("timeAnchor")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for timeAnchor" + e);
+            }
+        }
+
+        if (jsonObject.has("priceScheduleID")) {
+            this.priceScheduleID = jsonObject.get("priceScheduleID").getAsInt();
+        }
+
+        if (jsonObject.has("priceScheduleDescription")) {
+            this.priceScheduleDescription = jsonObject.get("priceScheduleDescription").getAsString();
+        }
+
+        if (jsonObject.has("currency")) {
+            this.currency = jsonObject.get("currency").getAsString();
+        }
+
+        if (jsonObject.has("language")) {
+            this.language = jsonObject.get("language").getAsString();
+        }
+
+        if (jsonObject.has("priceAlgorithm")) {
+            this.priceAlgorithm = jsonObject.get("priceAlgorithm").getAsString();
+        }
+
+        if (jsonObject.has("minimumCost")) {
+            this.minimumCost = new RationalNumber();
+            this.minimumCost.fromJsonObject(jsonObject.getAsJsonObject("minimumCost"));
+        }
+
+        if (jsonObject.has("maximumCost")) {
+            this.maximumCost = new RationalNumber();
+            this.maximumCost.fromJsonObject(jsonObject.getAsJsonObject("maximumCost"));
+        }
+
+        if (jsonObject.has("overstayRuleList")) {
+            this.overstayRuleList = new OverstayRuleList();
+            this.overstayRuleList.fromJsonObject(jsonObject.getAsJsonObject("overstayRuleList"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

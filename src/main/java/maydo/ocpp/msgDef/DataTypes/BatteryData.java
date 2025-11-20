@@ -1,10 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -231,6 +233,40 @@ public class BatteryData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("serialNumber")) {
+            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+        }
+
+        if (jsonObject.has("soC")) {
+            this.soC = jsonObject.get("soC").getAsFloat();
+        }
+
+        if (jsonObject.has("soH")) {
+            this.soH = jsonObject.get("soH").getAsFloat();
+        }
+
+        if (jsonObject.has("productionDate")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.productionDate = dateFormat.parse(jsonObject.get("productionDate").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for productionDate" + e);
+            }
+        }
+
+        if (jsonObject.has("vendorInfo")) {
+            this.vendorInfo = jsonObject.get("vendorInfo").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

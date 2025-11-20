@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -150,6 +151,19 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("chargingProfilePurpose")) {
+            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+        }
+
+        if (jsonObject.has("stackLevel")) {
+            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

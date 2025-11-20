@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.TariffCostEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -274,6 +275,54 @@ public class TotalCost implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("currency")) {
+            this.currency = jsonObject.get("currency").getAsString();
+        }
+
+        if (jsonObject.has("typeOfCost")) {
+            this.typeOfCost = TariffCostEnum.valueOf(jsonObject.get("typeOfCost").getAsString());
+        }
+
+        if (jsonObject.has("fixed")) {
+            this.fixed = new Price();
+            this.fixed.fromJsonObject(jsonObject.getAsJsonObject("fixed"));
+        }
+
+        if (jsonObject.has("energy")) {
+            this.energy = new Price();
+            this.energy.fromJsonObject(jsonObject.getAsJsonObject("energy"));
+        }
+
+        if (jsonObject.has("chargingTime")) {
+            this.chargingTime = new Price();
+            this.chargingTime.fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
+        }
+
+        if (jsonObject.has("idleTime")) {
+            this.idleTime = new Price();
+            this.idleTime.fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
+        }
+
+        if (jsonObject.has("reservationTime")) {
+            this.reservationTime = new Price();
+            this.reservationTime.fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
+        }
+
+        if (jsonObject.has("reservationFixed")) {
+            this.reservationFixed = new Price();
+            this.reservationFixed.fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
+        }
+
+        if (jsonObject.has("total")) {
+            this.total = new TotalPrice();
+            this.total.fromJsonObject(jsonObject.getAsJsonObject("total"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

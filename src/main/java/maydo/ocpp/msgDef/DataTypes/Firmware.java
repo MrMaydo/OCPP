@@ -1,10 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -195,6 +197,41 @@ public class Firmware implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("location")) {
+            this.location = jsonObject.get("location").getAsString();
+        }
+
+        if (jsonObject.has("retrieveDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.retrieveDateTime = dateFormat.parse(jsonObject.get("retrieveDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for retrieveDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("installDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.installDateTime = dateFormat.parse(jsonObject.get("installDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for installDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("signingCertificate")) {
+            this.signingCertificate = jsonObject.get("signingCertificate").getAsString();
+        }
+
+        if (jsonObject.has("signature")) {
+            this.signature = jsonObject.get("signature").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Required;
@@ -60,6 +61,10 @@ public class CustomData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("vendorId")) {
+            this.vendorId = jsonObject.get("vendorId").getAsString();
+        }
+
     }
 
     @Override

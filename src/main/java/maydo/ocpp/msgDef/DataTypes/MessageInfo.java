@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
 import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
@@ -7,6 +8,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -283,6 +285,55 @@ public class MessageInfo implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("display")) {
+            this.display = new Component();
+            this.display.fromJsonObject(jsonObject.getAsJsonObject("display"));
+        }
+
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("priority")) {
+            this.priority = MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString());
+        }
+
+        if (jsonObject.has("state")) {
+            this.state = MessageStateEnum.valueOf(jsonObject.get("state").getAsString());
+        }
+
+        if (jsonObject.has("startDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.startDateTime = dateFormat.parse(jsonObject.get("startDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for startDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("endDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.endDateTime = dateFormat.parse(jsonObject.get("endDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for endDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("message")) {
+            this.message = new MessageContent();
+            this.message.fromJsonObject(jsonObject.getAsJsonObject("message"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

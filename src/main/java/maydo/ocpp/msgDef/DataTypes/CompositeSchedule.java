@@ -1,11 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -168,6 +170,32 @@ public class CompositeSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsInt();
+        }
+
+        if (jsonObject.has("scheduleStart")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.scheduleStart = dateFormat.parse(jsonObject.get("scheduleStart").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for scheduleStart" + e);
+            }
+        }
+
+        if (jsonObject.has("chargingRateUnit")) {
+            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

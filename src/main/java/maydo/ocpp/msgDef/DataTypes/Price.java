@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -117,6 +118,19 @@ public class Price implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("exclTax")) {
+            this.exclTax = jsonObject.get("exclTax").getAsFloat();
+        }
+
+        if (jsonObject.has("inclTax")) {
+            this.inclTax = jsonObject.get("inclTax").getAsFloat();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

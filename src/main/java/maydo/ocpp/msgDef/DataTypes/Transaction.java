@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingStateEnum;
 import maydo.ocpp.msgDef.Enumerations.OperationModeEnum;
@@ -251,6 +252,44 @@ public class Transaction implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("chargingState")) {
+            this.chargingState = ChargingStateEnum.valueOf(jsonObject.get("chargingState").getAsString());
+        }
+
+        if (jsonObject.has("timeSpentCharging")) {
+            this.timeSpentCharging = jsonObject.get("timeSpentCharging").getAsInt();
+        }
+
+        if (jsonObject.has("stoppedReason")) {
+            this.stoppedReason = ReasonEnum.valueOf(jsonObject.get("stoppedReason").getAsString());
+        }
+
+        if (jsonObject.has("remoteStartId")) {
+            this.remoteStartId = jsonObject.get("remoteStartId").getAsInt();
+        }
+
+        if (jsonObject.has("operationMode")) {
+            this.operationMode = OperationModeEnum.valueOf(jsonObject.get("operationMode").getAsString());
+        }
+
+        if (jsonObject.has("tariffId")) {
+            this.tariffId = jsonObject.get("tariffId").getAsString();
+        }
+
+        if (jsonObject.has("transactionLimit")) {
+            this.transactionLimit = new TransactionLimit();
+            this.transactionLimit.fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

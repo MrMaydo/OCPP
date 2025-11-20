@@ -1,10 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -307,6 +309,68 @@ public class Tariff implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("tariffId")) {
+            this.tariffId = jsonObject.get("tariffId").getAsString();
+        }
+
+        if (jsonObject.has("currency")) {
+            this.currency = jsonObject.get("currency").getAsString();
+        }
+
+        if (jsonObject.has("energy")) {
+            this.energy = new TariffEnergy();
+            this.energy.fromJsonObject(jsonObject.getAsJsonObject("energy"));
+        }
+
+        if (jsonObject.has("validFrom")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for validFrom" + e);
+            }
+        }
+
+        if (jsonObject.has("chargingTime")) {
+            this.chargingTime = new TariffTime();
+            this.chargingTime.fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
+        }
+
+        if (jsonObject.has("idleTime")) {
+            this.idleTime = new TariffTime();
+            this.idleTime.fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
+        }
+
+        if (jsonObject.has("fixedFee")) {
+            this.fixedFee = new TariffFixed();
+            this.fixedFee.fromJsonObject(jsonObject.getAsJsonObject("fixedFee"));
+        }
+
+        if (jsonObject.has("reservationTime")) {
+            this.reservationTime = new TariffTime();
+            this.reservationTime.fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
+        }
+
+        if (jsonObject.has("reservationFixed")) {
+            this.reservationFixed = new TariffFixed();
+            this.reservationFixed.fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
+        }
+
+        if (jsonObject.has("minCost")) {
+            this.minCost = new Price();
+            this.minCost.fromJsonObject(jsonObject.getAsJsonObject("minCost"));
+        }
+
+        if (jsonObject.has("maxCost")) {
+            this.maxCost = new Price();
+            this.maxCost.fromJsonObject(jsonObject.getAsJsonObject("maxCost"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

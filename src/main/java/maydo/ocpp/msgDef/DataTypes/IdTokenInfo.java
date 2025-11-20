@@ -1,11 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.AuthorizationStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -251,6 +253,46 @@ public class IdTokenInfo implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("status")) {
+            this.status = AuthorizationStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("cacheExpiryDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.cacheExpiryDateTime = dateFormat.parse(jsonObject.get("cacheExpiryDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for cacheExpiryDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("chargingPriority")) {
+            this.chargingPriority = jsonObject.get("chargingPriority").getAsInt();
+        }
+
+        if (jsonObject.has("groupIdToken")) {
+            this.groupIdToken = new IdToken();
+            this.groupIdToken.fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
+        }
+
+        if (jsonObject.has("language1")) {
+            this.language1 = jsonObject.get("language1").getAsString();
+        }
+
+        if (jsonObject.has("language2")) {
+            this.language2 = jsonObject.get("language2").getAsString();
+        }
+
+        if (jsonObject.has("personalMessage")) {
+            this.personalMessage = new MessageContent();
+            this.personalMessage.fromJsonObject(jsonObject.getAsJsonObject("personalMessage"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

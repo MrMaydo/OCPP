@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -882,6 +883,107 @@ public class V2XChargingParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("minChargePower")) {
+            this.minChargePower = jsonObject.get("minChargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargePowerL2")) {
+            this.minChargePowerL2 = jsonObject.get("minChargePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargePowerL3")) {
+            this.minChargePowerL3 = jsonObject.get("minChargePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargePower")) {
+            this.maxChargePower = jsonObject.get("maxChargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargePowerL2")) {
+            this.maxChargePowerL2 = jsonObject.get("maxChargePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargePowerL3")) {
+            this.maxChargePowerL3 = jsonObject.get("maxChargePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargePower")) {
+            this.minDischargePower = jsonObject.get("minDischargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargePowerL2")) {
+            this.minDischargePowerL2 = jsonObject.get("minDischargePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargePowerL3")) {
+            this.minDischargePowerL3 = jsonObject.get("minDischargePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargePower")) {
+            this.maxDischargePower = jsonObject.get("maxDischargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargePowerL2")) {
+            this.maxDischargePowerL2 = jsonObject.get("maxDischargePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargePowerL3")) {
+            this.maxDischargePowerL3 = jsonObject.get("maxDischargePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargeCurrent")) {
+            this.minChargeCurrent = jsonObject.get("minChargeCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeCurrent")) {
+            this.maxChargeCurrent = jsonObject.get("maxChargeCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargeCurrent")) {
+            this.minDischargeCurrent = jsonObject.get("minDischargeCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeCurrent")) {
+            this.maxDischargeCurrent = jsonObject.get("maxDischargeCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("minVoltage")) {
+            this.minVoltage = jsonObject.get("minVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("maxVoltage")) {
+            this.maxVoltage = jsonObject.get("maxVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("evTargetEnergyRequest")) {
+            this.evTargetEnergyRequest = jsonObject.get("evTargetEnergyRequest").getAsFloat();
+        }
+
+        if (jsonObject.has("evMinEnergyRequest")) {
+            this.evMinEnergyRequest = jsonObject.get("evMinEnergyRequest").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxEnergyRequest")) {
+            this.evMaxEnergyRequest = jsonObject.get("evMaxEnergyRequest").getAsFloat();
+        }
+
+        if (jsonObject.has("evMinV2XEnergyRequest")) {
+            this.evMinV2XEnergyRequest = jsonObject.get("evMinV2XEnergyRequest").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxV2XEnergyRequest")) {
+            this.evMaxV2XEnergyRequest = jsonObject.get("evMaxV2XEnergyRequest").getAsFloat();
+        }
+
+        if (jsonObject.has("targetSoC")) {
+            this.targetSoC = jsonObject.get("targetSoC").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

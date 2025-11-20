@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ControlModeEnum;
 import maydo.ocpp.msgDef.Enumerations.EnergyTransferModeEnum;
@@ -8,6 +9,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -334,6 +336,57 @@ public class ChargingNeeds implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("acChargingParameters")) {
+            this.acChargingParameters = new ACChargingParameters();
+            this.acChargingParameters.fromJsonObject(jsonObject.getAsJsonObject("acChargingParameters"));
+        }
+
+        if (jsonObject.has("derChargingParameters")) {
+            this.derChargingParameters = new DERChargingParameters();
+            this.derChargingParameters.fromJsonObject(jsonObject.getAsJsonObject("derChargingParameters"));
+        }
+
+        if (jsonObject.has("evEnergyOffer")) {
+            this.evEnergyOffer = new EVEnergyOffer();
+            this.evEnergyOffer.fromJsonObject(jsonObject.getAsJsonObject("evEnergyOffer"));
+        }
+
+        if (jsonObject.has("requestedEnergyTransfer")) {
+            this.requestedEnergyTransfer = EnergyTransferModeEnum.valueOf(jsonObject.get("requestedEnergyTransfer").getAsString());
+        }
+
+        if (jsonObject.has("dcChargingParameters")) {
+            this.dcChargingParameters = new DCChargingParameters();
+            this.dcChargingParameters.fromJsonObject(jsonObject.getAsJsonObject("dcChargingParameters"));
+        }
+
+        if (jsonObject.has("v2xChargingParameters")) {
+            this.v2xChargingParameters = new V2XChargingParameters();
+            this.v2xChargingParameters.fromJsonObject(jsonObject.getAsJsonObject("v2xChargingParameters"));
+        }
+
+        if (jsonObject.has("controlMode")) {
+            this.controlMode = ControlModeEnum.valueOf(jsonObject.get("controlMode").getAsString());
+        }
+
+        if (jsonObject.has("mobilityNeedsMode")) {
+            this.mobilityNeedsMode = MobilityNeedsModeEnum.valueOf(jsonObject.get("mobilityNeedsMode").getAsString());
+        }
+
+        if (jsonObject.has("departureTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.departureTime = dateFormat.parse(jsonObject.get("departureTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for departureTime" + e);
+            }
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

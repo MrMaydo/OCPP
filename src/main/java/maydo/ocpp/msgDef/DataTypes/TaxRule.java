@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -296,6 +297,44 @@ public class TaxRule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("taxRuleID")) {
+            this.taxRuleID = jsonObject.get("taxRuleID").getAsInt();
+        }
+
+        if (jsonObject.has("taxRuleName")) {
+            this.taxRuleName = jsonObject.get("taxRuleName").getAsString();
+        }
+
+        if (jsonObject.has("taxIncludedInPrice")) {
+            this.taxIncludedInPrice = jsonObject.get("taxIncludedInPrice").getAsBoolean();
+        }
+
+        if (jsonObject.has("appliesToEnergyFee")) {
+            this.appliesToEnergyFee = jsonObject.get("appliesToEnergyFee").getAsBoolean();
+        }
+
+        if (jsonObject.has("appliesToParkingFee")) {
+            this.appliesToParkingFee = jsonObject.get("appliesToParkingFee").getAsBoolean();
+        }
+
+        if (jsonObject.has("appliesToOverstayFee")) {
+            this.appliesToOverstayFee = jsonObject.get("appliesToOverstayFee").getAsBoolean();
+        }
+
+        if (jsonObject.has("appliesToMinimumMaximumCost")) {
+            this.appliesToMinimumMaximumCost = jsonObject.get("appliesToMinimumMaximumCost").getAsBoolean();
+        }
+
+        if (jsonObject.has("taxRate")) {
+            this.taxRate = new RationalNumber();
+            this.taxRate.fromJsonObject(jsonObject.getAsJsonObject("taxRate"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

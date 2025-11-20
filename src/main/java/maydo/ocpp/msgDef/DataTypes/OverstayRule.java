@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -174,6 +175,28 @@ public class OverstayRule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("overstayFee")) {
+            this.overstayFee = new RationalNumber();
+            this.overstayFee.fromJsonObject(jsonObject.getAsJsonObject("overstayFee"));
+        }
+
+        if (jsonObject.has("overstayRuleDescription")) {
+            this.overstayRuleDescription = jsonObject.get("overstayRuleDescription").getAsString();
+        }
+
+        if (jsonObject.has("startTime")) {
+            this.startTime = jsonObject.get("startTime").getAsInt();
+        }
+
+        if (jsonObject.has("overstayFeePeriod")) {
+            this.overstayFeePeriod = jsonObject.get("overstayFeePeriod").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

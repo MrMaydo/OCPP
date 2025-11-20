@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.CertificateStatusSourceEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -138,6 +139,20 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("certificateHashData")) {
+            this.certificateHashData = new CertificateHashData();
+            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+        }
+
+        if (jsonObject.has("source")) {
+            this.source = CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

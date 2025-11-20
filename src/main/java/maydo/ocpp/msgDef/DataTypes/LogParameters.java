@@ -1,10 +1,12 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -139,6 +141,33 @@ public class LogParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("remoteLocation")) {
+            this.remoteLocation = jsonObject.get("remoteLocation").getAsString();
+        }
+
+        if (jsonObject.has("oldestTimestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.oldestTimestamp = dateFormat.parse(jsonObject.get("oldestTimestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for oldestTimestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("latestTimestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.latestTimestamp = dateFormat.parse(jsonObject.get("latestTimestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for latestTimestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

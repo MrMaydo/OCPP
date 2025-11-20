@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.OCPPInterfaceEnum;
 import maydo.ocpp.msgDef.Enumerations.OCPPTransportEnum;
@@ -331,6 +332,53 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("apn")) {
+            this.apn = new APN();
+            this.apn.fromJsonObject(jsonObject.getAsJsonObject("apn"));
+        }
+
+        if (jsonObject.has("ocppVersion")) {
+            this.ocppVersion = OCPPVersionEnum.valueOf(jsonObject.get("ocppVersion").getAsString());
+        }
+
+        if (jsonObject.has("ocppInterface")) {
+            this.ocppInterface = OCPPInterfaceEnum.valueOf(jsonObject.get("ocppInterface").getAsString());
+        }
+
+        if (jsonObject.has("ocppTransport")) {
+            this.ocppTransport = OCPPTransportEnum.valueOf(jsonObject.get("ocppTransport").getAsString());
+        }
+
+        if (jsonObject.has("messageTimeout")) {
+            this.messageTimeout = jsonObject.get("messageTimeout").getAsInt();
+        }
+
+        if (jsonObject.has("ocppCsmsUrl")) {
+            this.ocppCsmsUrl = jsonObject.get("ocppCsmsUrl").getAsString();
+        }
+
+        if (jsonObject.has("securityProfile")) {
+            this.securityProfile = jsonObject.get("securityProfile").getAsInt();
+        }
+
+        if (jsonObject.has("identity")) {
+            this.identity = jsonObject.get("identity").getAsString();
+        }
+
+        if (jsonObject.has("basicAuthPassword")) {
+            this.basicAuthPassword = jsonObject.get("basicAuthPassword").getAsString();
+        }
+
+        if (jsonObject.has("vpn")) {
+            this.vpn = new VPN();
+            this.vpn.fromJsonObject(jsonObject.getAsJsonObject("vpn"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

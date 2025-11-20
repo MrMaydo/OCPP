@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -176,6 +177,28 @@ public class FreqDroopGet implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("freqDroop")) {
+            this.freqDroop = new FreqDroop();
+            this.freqDroop.fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
+        }
+
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsString();
+        }
+
+        if (jsonObject.has("isDefault")) {
+            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+        }
+
+        if (jsonObject.has("isSuperseded")) {
+            this.isSuperseded = jsonObject.get("isSuperseded").getAsBoolean();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

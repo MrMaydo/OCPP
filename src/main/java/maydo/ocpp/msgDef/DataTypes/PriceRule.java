@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -217,6 +218,38 @@ public class PriceRule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("parkingFeePeriod")) {
+            this.parkingFeePeriod = jsonObject.get("parkingFeePeriod").getAsInt();
+        }
+
+        if (jsonObject.has("carbonDioxideEmission")) {
+            this.carbonDioxideEmission = jsonObject.get("carbonDioxideEmission").getAsInt();
+        }
+
+        if (jsonObject.has("renewableGenerationPercentage")) {
+            this.renewableGenerationPercentage = jsonObject.get("renewableGenerationPercentage").getAsInt();
+        }
+
+        if (jsonObject.has("energyFee")) {
+            this.energyFee = new RationalNumber();
+            this.energyFee.fromJsonObject(jsonObject.getAsJsonObject("energyFee"));
+        }
+
+        if (jsonObject.has("parkingFee")) {
+            this.parkingFee = new RationalNumber();
+            this.parkingFee.fromJsonObject(jsonObject.getAsJsonObject("parkingFee"));
+        }
+
+        if (jsonObject.has("powerRangeStart")) {
+            this.powerRangeStart = new RationalNumber();
+            this.powerRangeStart.fromJsonObject(jsonObject.getAsJsonObject("powerRangeStart"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

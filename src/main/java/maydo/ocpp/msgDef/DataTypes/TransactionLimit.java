@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -154,6 +155,27 @@ public class TransactionLimit implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("maxCost")) {
+            this.maxCost = jsonObject.get("maxCost").getAsFloat();
+        }
+
+        if (jsonObject.has("maxEnergy")) {
+            this.maxEnergy = jsonObject.get("maxEnergy").getAsFloat();
+        }
+
+        if (jsonObject.has("maxTime")) {
+            this.maxTime = jsonObject.get("maxTime").getAsInt();
+        }
+
+        if (jsonObject.has("maxSoC")) {
+            this.maxSoC = jsonObject.get("maxSoC").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

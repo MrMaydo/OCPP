@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -231,6 +232,27 @@ public class ACChargingParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("energyAmount")) {
+            this.energyAmount = jsonObject.get("energyAmount").getAsFloat();
+        }
+
+        if (jsonObject.has("evMinCurrent")) {
+            this.evMinCurrent = jsonObject.get("evMinCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxCurrent")) {
+            this.evMaxCurrent = jsonObject.get("evMaxCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxVoltage")) {
+            this.evMaxVoltage = jsonObject.get("evMaxVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.EventNotificationEnum;
 import maydo.ocpp.msgDef.Enumerations.EventTriggerEnum;
@@ -7,6 +8,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -446,6 +448,74 @@ public class EventData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("eventId")) {
+            this.eventId = jsonObject.get("eventId").getAsInt();
+        }
+
+        if (jsonObject.has("timestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for timestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("trigger")) {
+            this.trigger = EventTriggerEnum.valueOf(jsonObject.get("trigger").getAsString());
+        }
+
+        if (jsonObject.has("cause")) {
+            this.cause = jsonObject.get("cause").getAsInt();
+        }
+
+        if (jsonObject.has("actualValue")) {
+            this.actualValue = jsonObject.get("actualValue").getAsString();
+        }
+
+        if (jsonObject.has("techCode")) {
+            this.techCode = jsonObject.get("techCode").getAsString();
+        }
+
+        if (jsonObject.has("techInfo")) {
+            this.techInfo = jsonObject.get("techInfo").getAsString();
+        }
+
+        if (jsonObject.has("cleared")) {
+            this.cleared = jsonObject.get("cleared").getAsBoolean();
+        }
+
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variableMonitoringId")) {
+            this.variableMonitoringId = jsonObject.get("variableMonitoringId").getAsInt();
+        }
+
+        if (jsonObject.has("eventNotificationType")) {
+            this.eventNotificationType = EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString());
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("severity")) {
+            this.severity = jsonObject.get("severity").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

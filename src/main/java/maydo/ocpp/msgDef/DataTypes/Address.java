@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -225,6 +226,35 @@ public class Address implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("name")) {
+            this.name = jsonObject.get("name").getAsString();
+        }
+
+        if (jsonObject.has("address1")) {
+            this.address1 = jsonObject.get("address1").getAsString();
+        }
+
+        if (jsonObject.has("address2")) {
+            this.address2 = jsonObject.get("address2").getAsString();
+        }
+
+        if (jsonObject.has("city")) {
+            this.city = jsonObject.get("city").getAsString();
+        }
+
+        if (jsonObject.has("postalCode")) {
+            this.postalCode = jsonObject.get("postalCode").getAsString();
+        }
+
+        if (jsonObject.has("country")) {
+            this.country = jsonObject.get("country").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

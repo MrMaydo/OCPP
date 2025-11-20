@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
 import maydo.ocpp.msgDef.Enumerations.IslandingDetectionEnum;
@@ -1299,6 +1300,167 @@ public class DERChargingParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evOverExcitedMaxDischargePower")) {
+            this.evOverExcitedMaxDischargePower = jsonObject.get("evOverExcitedMaxDischargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("evOverExcitedPowerFactor")) {
+            this.evOverExcitedPowerFactor = jsonObject.get("evOverExcitedPowerFactor").getAsFloat();
+        }
+
+        if (jsonObject.has("evUnderExcitedMaxDischargePower")) {
+            this.evUnderExcitedMaxDischargePower = jsonObject.get("evUnderExcitedMaxDischargePower").getAsFloat();
+        }
+
+        if (jsonObject.has("evUnderExcitedPowerFactor")) {
+            this.evUnderExcitedPowerFactor = jsonObject.get("evUnderExcitedPowerFactor").getAsFloat();
+        }
+
+        if (jsonObject.has("maxApparentPower")) {
+            this.maxApparentPower = jsonObject.get("maxApparentPower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeApparentPower")) {
+            this.maxChargeApparentPower = jsonObject.get("maxChargeApparentPower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeApparentPowerL2")) {
+            this.maxChargeApparentPowerL2 = jsonObject.get("maxChargeApparentPowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeApparentPowerL3")) {
+            this.maxChargeApparentPowerL3 = jsonObject.get("maxChargeApparentPowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeApparentPower")) {
+            this.maxDischargeApparentPower = jsonObject.get("maxDischargeApparentPower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeApparentPowerL2")) {
+            this.maxDischargeApparentPowerL2 = jsonObject.get("maxDischargeApparentPowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeApparentPowerL3")) {
+            this.maxDischargeApparentPowerL3 = jsonObject.get("maxDischargeApparentPowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeReactivePower")) {
+            this.maxChargeReactivePower = jsonObject.get("maxChargeReactivePower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeReactivePowerL2")) {
+            this.maxChargeReactivePowerL2 = jsonObject.get("maxChargeReactivePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxChargeReactivePowerL3")) {
+            this.maxChargeReactivePowerL3 = jsonObject.get("maxChargeReactivePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargeReactivePower")) {
+            this.minChargeReactivePower = jsonObject.get("minChargeReactivePower").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargeReactivePowerL2")) {
+            this.minChargeReactivePowerL2 = jsonObject.get("minChargeReactivePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("minChargeReactivePowerL3")) {
+            this.minChargeReactivePowerL3 = jsonObject.get("minChargeReactivePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeReactivePower")) {
+            this.maxDischargeReactivePower = jsonObject.get("maxDischargeReactivePower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeReactivePowerL2")) {
+            this.maxDischargeReactivePowerL2 = jsonObject.get("maxDischargeReactivePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("maxDischargeReactivePowerL3")) {
+            this.maxDischargeReactivePowerL3 = jsonObject.get("maxDischargeReactivePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargeReactivePower")) {
+            this.minDischargeReactivePower = jsonObject.get("minDischargeReactivePower").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargeReactivePowerL2")) {
+            this.minDischargeReactivePowerL2 = jsonObject.get("minDischargeReactivePowerL2").getAsFloat();
+        }
+
+        if (jsonObject.has("minDischargeReactivePowerL3")) {
+            this.minDischargeReactivePowerL3 = jsonObject.get("minDischargeReactivePowerL3").getAsFloat();
+        }
+
+        if (jsonObject.has("nominalVoltage")) {
+            this.nominalVoltage = jsonObject.get("nominalVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("nominalVoltageOffset")) {
+            this.nominalVoltageOffset = jsonObject.get("nominalVoltageOffset").getAsFloat();
+        }
+
+        if (jsonObject.has("maxNominalVoltage")) {
+            this.maxNominalVoltage = jsonObject.get("maxNominalVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("minNominalVoltage")) {
+            this.minNominalVoltage = jsonObject.get("minNominalVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("evInverterManufacturer")) {
+            this.evInverterManufacturer = jsonObject.get("evInverterManufacturer").getAsString();
+        }
+
+        if (jsonObject.has("evInverterModel")) {
+            this.evInverterModel = jsonObject.get("evInverterModel").getAsString();
+        }
+
+        if (jsonObject.has("evInverterSerialNumber")) {
+            this.evInverterSerialNumber = jsonObject.get("evInverterSerialNumber").getAsString();
+        }
+
+        if (jsonObject.has("evInverterSwVersion")) {
+            this.evInverterSwVersion = jsonObject.get("evInverterSwVersion").getAsString();
+        }
+
+        if (jsonObject.has("evInverterHwVersion")) {
+            this.evInverterHwVersion = jsonObject.get("evInverterHwVersion").getAsString();
+        }
+
+        if (jsonObject.has("evIslandingTripTime")) {
+            this.evIslandingTripTime = jsonObject.get("evIslandingTripTime").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaximumLevel1DCInjection")) {
+            this.evMaximumLevel1DCInjection = jsonObject.get("evMaximumLevel1DCInjection").getAsFloat();
+        }
+
+        if (jsonObject.has("evDurationLevel1DCInjection")) {
+            this.evDurationLevel1DCInjection = jsonObject.get("evDurationLevel1DCInjection").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaximumLevel2DCInjection")) {
+            this.evMaximumLevel2DCInjection = jsonObject.get("evMaximumLevel2DCInjection").getAsFloat();
+        }
+
+        if (jsonObject.has("evDurationLevel2DCInjection")) {
+            this.evDurationLevel2DCInjection = jsonObject.get("evDurationLevel2DCInjection").getAsFloat();
+        }
+
+        if (jsonObject.has("evReactiveSusceptance")) {
+            this.evReactiveSusceptance = jsonObject.get("evReactiveSusceptance").getAsFloat();
+        }
+
+        if (jsonObject.has("evSessionTotalDischargeEnergyAvailable")) {
+            this.evSessionTotalDischargeEnergyAvailable = jsonObject.get("evSessionTotalDischargeEnergyAvailable").getAsFloat();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

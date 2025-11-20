@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -211,6 +212,32 @@ public class DERCurveGet implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("curve")) {
+            this.curve = new DERCurve();
+            this.curve.fromJsonObject(jsonObject.getAsJsonObject("curve"));
+        }
+
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsString();
+        }
+
+        if (jsonObject.has("curveType")) {
+            this.curveType = DERControlEnum.valueOf(jsonObject.get("curveType").getAsString());
+        }
+
+        if (jsonObject.has("isDefault")) {
+            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+        }
+
+        if (jsonObject.has("isSuperseded")) {
+            this.isSuperseded = jsonObject.get("isSuperseded").getAsBoolean();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

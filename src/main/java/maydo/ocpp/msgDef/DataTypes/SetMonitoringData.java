@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -362,6 +363,42 @@ public class SetMonitoringData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("periodicEventStream")) {
+            this.periodicEventStream = new PeriodicEventStreamParams();
+            this.periodicEventStream.fromJsonObject(jsonObject.getAsJsonObject("periodicEventStream"));
+        }
+
+        if (jsonObject.has("value")) {
+            this.value = jsonObject.get("value").getAsFloat();
+        }
+
+        if (jsonObject.has("type")) {
+            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+        }
+
+        if (jsonObject.has("severity")) {
+            this.severity = jsonObject.get("severity").getAsInt();
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

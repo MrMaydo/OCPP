@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -159,6 +160,27 @@ public class Hysteresis implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("hysteresisHigh")) {
+            this.hysteresisHigh = jsonObject.get("hysteresisHigh").getAsFloat();
+        }
+
+        if (jsonObject.has("hysteresisLow")) {
+            this.hysteresisLow = jsonObject.get("hysteresisLow").getAsFloat();
+        }
+
+        if (jsonObject.has("hysteresisDelay")) {
+            this.hysteresisDelay = jsonObject.get("hysteresisDelay").getAsFloat();
+        }
+
+        if (jsonObject.has("hysteresisGradient")) {
+            this.hysteresisGradient = jsonObject.get("hysteresisGradient").getAsFloat();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

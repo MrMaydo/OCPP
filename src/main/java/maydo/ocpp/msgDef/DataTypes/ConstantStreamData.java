@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -139,6 +140,24 @@ public class ConstantStreamData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("params")) {
+            this.params = new PeriodicEventStreamParams();
+            this.params.fromJsonObject(jsonObject.getAsJsonObject("params"));
+        }
+
+        if (jsonObject.has("variableMonitoringId")) {
+            this.variableMonitoringId = jsonObject.get("variableMonitoringId").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

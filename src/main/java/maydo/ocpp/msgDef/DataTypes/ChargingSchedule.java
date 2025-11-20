@@ -1,11 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -409,6 +411,76 @@ public class ChargingSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("limitAtSoC")) {
+            this.limitAtSoC = new LimitAtSoC();
+            this.limitAtSoC.fromJsonObject(jsonObject.getAsJsonObject("limitAtSoC"));
+        }
+
+        if (jsonObject.has("startSchedule")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.startSchedule = dateFormat.parse(jsonObject.get("startSchedule").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for startSchedule" + e);
+            }
+        }
+
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsInt();
+        }
+
+        if (jsonObject.has("chargingRateUnit")) {
+            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
+        }
+
+        if (jsonObject.has("minChargingRate")) {
+            this.minChargingRate = jsonObject.get("minChargingRate").getAsFloat();
+        }
+
+        if (jsonObject.has("powerTolerance")) {
+            this.powerTolerance = jsonObject.get("powerTolerance").getAsFloat();
+        }
+
+        if (jsonObject.has("signatureId")) {
+            this.signatureId = jsonObject.get("signatureId").getAsInt();
+        }
+
+        if (jsonObject.has("digestValue")) {
+            this.digestValue = jsonObject.get("digestValue").getAsString();
+        }
+
+        if (jsonObject.has("useLocalTime")) {
+            this.useLocalTime = jsonObject.get("useLocalTime").getAsBoolean();
+        }
+
+        if (jsonObject.has("randomizedDelay")) {
+            this.randomizedDelay = jsonObject.get("randomizedDelay").getAsInt();
+        }
+
+        if (jsonObject.has("salesTariff")) {
+            this.salesTariff = new SalesTariff();
+            this.salesTariff.fromJsonObject(jsonObject.getAsJsonObject("salesTariff"));
+        }
+
+        if (jsonObject.has("absolutePriceSchedule")) {
+            this.absolutePriceSchedule = new AbsolutePriceSchedule();
+            this.absolutePriceSchedule.fromJsonObject(jsonObject.getAsJsonObject("absolutePriceSchedule"));
+        }
+
+        if (jsonObject.has("priceLevelSchedule")) {
+            this.priceLevelSchedule = new PriceLevelSchedule();
+            this.priceLevelSchedule.fromJsonObject(jsonObject.getAsJsonObject("priceLevelSchedule"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

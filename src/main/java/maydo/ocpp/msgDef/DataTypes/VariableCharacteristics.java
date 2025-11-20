@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DataEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -282,6 +283,39 @@ public class VariableCharacteristics implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("unit")) {
+            this.unit = jsonObject.get("unit").getAsString();
+        }
+
+        if (jsonObject.has("dataType")) {
+            this.dataType = DataEnum.valueOf(jsonObject.get("dataType").getAsString());
+        }
+
+        if (jsonObject.has("minLimit")) {
+            this.minLimit = jsonObject.get("minLimit").getAsFloat();
+        }
+
+        if (jsonObject.has("maxLimit")) {
+            this.maxLimit = jsonObject.get("maxLimit").getAsFloat();
+        }
+
+        if (jsonObject.has("maxElements")) {
+            this.maxElements = jsonObject.get("maxElements").getAsInt();
+        }
+
+        if (jsonObject.has("valuesList")) {
+            this.valuesList = jsonObject.get("valuesList").getAsString();
+        }
+
+        if (jsonObject.has("supportsMonitoring")) {
+            this.supportsMonitoring = jsonObject.get("supportsMonitoring").getAsBoolean();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

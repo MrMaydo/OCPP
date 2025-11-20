@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DayOfWeekEnum;
 import maydo.ocpp.msgDef.Enumerations.EvseKindEnum;
@@ -609,6 +610,79 @@ public class TariffConditions implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("startTimeOfDay")) {
+            this.startTimeOfDay = jsonObject.get("startTimeOfDay").getAsString();
+        }
+
+        if (jsonObject.has("endTimeOfDay")) {
+            this.endTimeOfDay = jsonObject.get("endTimeOfDay").getAsString();
+        }
+
+        if (jsonObject.has("validFromDate")) {
+            this.validFromDate = jsonObject.get("validFromDate").getAsString();
+        }
+
+        if (jsonObject.has("validToDate")) {
+            this.validToDate = jsonObject.get("validToDate").getAsString();
+        }
+
+        if (jsonObject.has("evseKind")) {
+            this.evseKind = EvseKindEnum.valueOf(jsonObject.get("evseKind").getAsString());
+        }
+
+        if (jsonObject.has("minEnergy")) {
+            this.minEnergy = jsonObject.get("minEnergy").getAsFloat();
+        }
+
+        if (jsonObject.has("maxEnergy")) {
+            this.maxEnergy = jsonObject.get("maxEnergy").getAsFloat();
+        }
+
+        if (jsonObject.has("minCurrent")) {
+            this.minCurrent = jsonObject.get("minCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("maxCurrent")) {
+            this.maxCurrent = jsonObject.get("maxCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("minPower")) {
+            this.minPower = jsonObject.get("minPower").getAsFloat();
+        }
+
+        if (jsonObject.has("maxPower")) {
+            this.maxPower = jsonObject.get("maxPower").getAsFloat();
+        }
+
+        if (jsonObject.has("minTime")) {
+            this.minTime = jsonObject.get("minTime").getAsInt();
+        }
+
+        if (jsonObject.has("maxTime")) {
+            this.maxTime = jsonObject.get("maxTime").getAsInt();
+        }
+
+        if (jsonObject.has("minChargingTime")) {
+            this.minChargingTime = jsonObject.get("minChargingTime").getAsInt();
+        }
+
+        if (jsonObject.has("maxChargingTime")) {
+            this.maxChargingTime = jsonObject.get("maxChargingTime").getAsInt();
+        }
+
+        if (jsonObject.has("minIdleTime")) {
+            this.minIdleTime = jsonObject.get("minIdleTime").getAsInt();
+        }
+
+        if (jsonObject.has("maxIdleTime")) {
+            this.maxIdleTime = jsonObject.get("maxIdleTime").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

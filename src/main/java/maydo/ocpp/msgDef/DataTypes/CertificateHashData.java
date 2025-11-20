@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.HashAlgorithmEnum;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -207,6 +208,27 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("hashAlgorithm")) {
+            this.hashAlgorithm = HashAlgorithmEnum.valueOf(jsonObject.get("hashAlgorithm").getAsString());
+        }
+
+        if (jsonObject.has("issuerNameHash")) {
+            this.issuerNameHash = jsonObject.get("issuerNameHash").getAsString();
+        }
+
+        if (jsonObject.has("issuerKeyHash")) {
+            this.issuerKeyHash = jsonObject.get("issuerKeyHash").getAsString();
+        }
+
+        if (jsonObject.has("serialNumber")) {
+            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -114,6 +115,20 @@ public class GradientGet implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("gradient")) {
+            this.gradient = new Gradient();
+            this.gradient.fromJsonObject(jsonObject.getAsJsonObject("gradient"));
+        }
+
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

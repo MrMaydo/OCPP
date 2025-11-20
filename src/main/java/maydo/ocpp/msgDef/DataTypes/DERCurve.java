@@ -1,11 +1,13 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.Enumerations.DERUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -260,6 +262,51 @@ public class DERCurve implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("hysteresis")) {
+            this.hysteresis = new Hysteresis();
+            this.hysteresis.fromJsonObject(jsonObject.getAsJsonObject("hysteresis"));
+        }
+
+        if (jsonObject.has("priority")) {
+            this.priority = jsonObject.get("priority").getAsInt();
+        }
+
+        if (jsonObject.has("reactivePowerParams")) {
+            this.reactivePowerParams = new ReactivePowerParams();
+            this.reactivePowerParams.fromJsonObject(jsonObject.getAsJsonObject("reactivePowerParams"));
+        }
+
+        if (jsonObject.has("voltageParams")) {
+            this.voltageParams = new VoltageParams();
+            this.voltageParams.fromJsonObject(jsonObject.getAsJsonObject("voltageParams"));
+        }
+
+        if (jsonObject.has("yUnit")) {
+            this.yUnit = DERUnitEnum.valueOf(jsonObject.get("yUnit").getAsString());
+        }
+
+        if (jsonObject.has("responseTime")) {
+            this.responseTime = jsonObject.get("responseTime").getAsFloat();
+        }
+
+        if (jsonObject.has("startTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.startTime = dateFormat.parse(jsonObject.get("startTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for startTime" + e);
+            }
+        }
+
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsFloat();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

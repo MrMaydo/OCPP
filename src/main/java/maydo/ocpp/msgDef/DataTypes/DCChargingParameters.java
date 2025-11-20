@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
@@ -334,6 +335,43 @@ public class DCChargingParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evMaxCurrent")) {
+            this.evMaxCurrent = jsonObject.get("evMaxCurrent").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxVoltage")) {
+            this.evMaxVoltage = jsonObject.get("evMaxVoltage").getAsFloat();
+        }
+
+        if (jsonObject.has("evMaxPower")) {
+            this.evMaxPower = jsonObject.get("evMaxPower").getAsFloat();
+        }
+
+        if (jsonObject.has("evEnergyCapacity")) {
+            this.evEnergyCapacity = jsonObject.get("evEnergyCapacity").getAsFloat();
+        }
+
+        if (jsonObject.has("energyAmount")) {
+            this.energyAmount = jsonObject.get("energyAmount").getAsFloat();
+        }
+
+        if (jsonObject.has("stateOfCharge")) {
+            this.stateOfCharge = jsonObject.get("stateOfCharge").getAsInt();
+        }
+
+        if (jsonObject.has("fullSoC")) {
+            this.fullSoC = jsonObject.get("fullSoC").getAsInt();
+        }
+
+        if (jsonObject.has("bulkSoC")) {
+            this.bulkSoC = jsonObject.get("bulkSoC").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
