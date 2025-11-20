@@ -12,7 +12,6 @@ public enum SetNetworkProfileStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     FAILED("Failed");
-    private final String value;
     private final static Map<String, SetNetworkProfileStatusEnum> CONSTANTS = new HashMap<String, SetNetworkProfileStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum SetNetworkProfileStatusEnum {
         }
     }
 
+    private final String value;
+
     SetNetworkProfileStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static SetNetworkProfileStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum SetNetworkProfileStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

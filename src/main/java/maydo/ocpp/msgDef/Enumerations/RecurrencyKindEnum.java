@@ -5,15 +5,12 @@ import java.util.Map;
 
 
 /**
- * Charging_ Profile. Recurrency_ Kind. Recurrency_ Kind_ Code
- * urn:x-oca:ocpp:uid:1:569233
  * Indicates the start point of a recurrence.
  */
 public enum RecurrencyKindEnum {
 
     DAILY("Daily"),
     WEEKLY("Weekly");
-    private final String value;
     private final static Map<String, RecurrencyKindEnum> CONSTANTS = new HashMap<String, RecurrencyKindEnum>();
 
     static {
@@ -22,17 +19,10 @@ public enum RecurrencyKindEnum {
         }
     }
 
+    private final String value;
+
     RecurrencyKindEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static RecurrencyKindEnum fromValue(String value) {
@@ -42,6 +32,15 @@ public enum RecurrencyKindEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

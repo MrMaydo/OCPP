@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CompositeSchedule;
@@ -9,17 +10,11 @@ import maydo.ocpp.msgDef.Enumerations.GenericStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class GetCompositeScheduleResponse implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * The Charging Station will indicate if it was
      * able to process the request
@@ -33,24 +28,25 @@ public class GetCompositeScheduleResponse implements JsonInterface {
      */
     @Optional
     private StatusInfo statusInfo;
-    /**
-     * Composite_ Schedule
-     * urn:x-oca:ocpp:uid:2:233362
-     */
     @Optional
     private CompositeSchedule schedule;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetCompositeScheduleResponse() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public GetCompositeScheduleResponse(GenericStatusEnum status, StatusInfo statusInfo, CompositeSchedule schedule, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
+        this.schedule = schedule;
         this.customData = customData;
     }
 
@@ -88,20 +84,26 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * Composite_ Schedule
-     * urn:x-oca:ocpp:uid:2:233362
-     */
     public CompositeSchedule getSchedule() {
         return schedule;
     }
 
-    /**
-     * Composite_ Schedule
-     * urn:x-oca:ocpp:uid:2:233362
-     */
     public void setSchedule(CompositeSchedule schedule) {
         this.schedule = schedule;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -111,7 +113,12 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.add("schedule", schedule.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -122,7 +129,25 @@ public class GetCompositeScheduleResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("status")) {
+            this.status = GenericStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("schedule")) {
+            this.schedule = new CompositeSchedule();
+            this.schedule.fromJsonObject(jsonObject.getAsJsonObject("schedule"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -132,18 +157,19 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleResponse))
             return false;
         GetCompositeScheduleResponse that = (GetCompositeScheduleResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(statusInfo, that.statusInfo)
-                && Objects.equals(schedule, that.schedule);
+        return Objects.equals(this.schedule, that.schedule)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (schedule != null ? schedule.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.schedule != null ? this.schedule.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

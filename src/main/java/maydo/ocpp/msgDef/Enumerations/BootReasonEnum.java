@@ -18,7 +18,6 @@ public enum BootReasonEnum {
     TRIGGERED("Triggered"),
     UNKNOWN("Unknown"),
     WATCHDOG("Watchdog");
-    private final String value;
     private final static Map<String, BootReasonEnum> CONSTANTS = new HashMap<String, BootReasonEnum>();
 
     static {
@@ -27,17 +26,10 @@ public enum BootReasonEnum {
         }
     }
 
+    private final String value;
+
     BootReasonEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static BootReasonEnum fromValue(String value) {
@@ -47,6 +39,15 @@ public enum BootReasonEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

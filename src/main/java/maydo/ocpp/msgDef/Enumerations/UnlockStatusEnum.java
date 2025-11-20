@@ -13,7 +13,6 @@ public enum UnlockStatusEnum {
     UNLOCK_FAILED("UnlockFailed"),
     ONGOING_AUTHORIZED_TRANSACTION("OngoingAuthorizedTransaction"),
     UNKNOWN_CONNECTOR("UnknownConnector");
-    private final String value;
     private final static Map<String, UnlockStatusEnum> CONSTANTS = new HashMap<String, UnlockStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum UnlockStatusEnum {
         }
     }
 
+    private final String value;
+
     UnlockStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static UnlockStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum UnlockStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

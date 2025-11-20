@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
- * urn:x-oca:ocpp:uid:1:569231
  * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
  */
 public enum ChargingProfilePurposeEnum {
@@ -14,8 +12,9 @@ public enum ChargingProfilePurposeEnum {
     CHARGING_STATION_EXTERNAL_CONSTRAINTS("ChargingStationExternalConstraints"),
     CHARGING_STATION_MAX_PROFILE("ChargingStationMaxProfile"),
     TX_DEFAULT_PROFILE("TxDefaultProfile"),
-    TX_PROFILE("TxProfile");
-    private final String value;
+    TX_PROFILE("TxProfile"),
+    PRIORITY_CHARGING("PriorityCharging"),
+    LOCAL_GENERATION("LocalGeneration");
     private final static Map<String, ChargingProfilePurposeEnum> CONSTANTS = new HashMap<String, ChargingProfilePurposeEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum ChargingProfilePurposeEnum {
         }
     }
 
+    private final String value;
+
     ChargingProfilePurposeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChargingProfilePurposeEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum ChargingProfilePurposeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

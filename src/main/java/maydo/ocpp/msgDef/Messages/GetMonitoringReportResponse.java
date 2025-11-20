@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,17 +9,11 @@ import maydo.ocpp.msgDef.Enumerations.GenericDeviceModelStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class GetMonitoringReportResponse implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * This field indicates whether the Charging Station was able to accept the request.
      * <p>
@@ -31,18 +26,22 @@ public class GetMonitoringReportResponse implements JsonInterface {
      */
     @Optional
     private StatusInfo statusInfo;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetMonitoringReportResponse() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public GetMonitoringReportResponse(GenericDeviceModelStatusEnum status, StatusInfo statusInfo, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
         this.customData = customData;
     }
 
@@ -78,6 +77,20 @@ public class GetMonitoringReportResponse implements JsonInterface {
         this.statusInfo = statusInfo;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -85,7 +98,11 @@ public class GetMonitoringReportResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -96,7 +113,20 @@ public class GetMonitoringReportResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("status")) {
+            this.status = GenericDeviceModelStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -106,16 +136,17 @@ public class GetMonitoringReportResponse implements JsonInterface {
         if (!(obj instanceof GetMonitoringReportResponse))
             return false;
         GetMonitoringReportResponse that = (GetMonitoringReportResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(statusInfo, that.statusInfo);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

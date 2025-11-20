@@ -13,7 +13,6 @@ public enum TransactionEventEnum {
     ENDED("Ended"),
     STARTED("Started"),
     UPDATED("Updated");
-    private final String value;
     private final static Map<String, TransactionEventEnum> CONSTANTS = new HashMap<String, TransactionEventEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum TransactionEventEnum {
         }
     }
 
+    private final String value;
+
     TransactionEventEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TransactionEventEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum TransactionEventEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

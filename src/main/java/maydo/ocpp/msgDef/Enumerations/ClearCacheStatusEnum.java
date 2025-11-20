@@ -11,7 +11,6 @@ public enum ClearCacheStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected");
-    private final String value;
     private final static Map<String, ClearCacheStatusEnum> CONSTANTS = new HashMap<String, ClearCacheStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum ClearCacheStatusEnum {
         }
     }
 
+    private final String value;
+
     ClearCacheStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ClearCacheStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum ClearCacheStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -12,7 +12,6 @@ public enum ChangeAvailabilityStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     SCHEDULED("Scheduled");
-    private final String value;
     private final static Map<String, ChangeAvailabilityStatusEnum> CONSTANTS = new HashMap<String, ChangeAvailabilityStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum ChangeAvailabilityStatusEnum {
         }
     }
 
+    private final String value;
+
     ChangeAvailabilityStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChangeAvailabilityStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum ChangeAvailabilityStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -8,7 +8,6 @@ public enum MonitoringCriterionEnum {
     THRESHOLD_MONITORING("ThresholdMonitoring"),
     DELTA_MONITORING("DeltaMonitoring"),
     PERIODIC_MONITORING("PeriodicMonitoring");
-    private final String value;
     private final static Map<String, MonitoringCriterionEnum> CONSTANTS = new HashMap<String, MonitoringCriterionEnum>();
 
     static {
@@ -17,17 +16,10 @@ public enum MonitoringCriterionEnum {
         }
     }
 
+    private final String value;
+
     MonitoringCriterionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MonitoringCriterionEnum fromValue(String value) {
@@ -37,6 +29,15 @@ public enum MonitoringCriterionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -12,7 +12,6 @@ public enum ReportBaseEnum {
     CONFIGURATION_INVENTORY("ConfigurationInventory"),
     FULL_INVENTORY("FullInventory"),
     SUMMARY_INVENTORY("SummaryInventory");
-    private final String value;
     private final static Map<String, ReportBaseEnum> CONSTANTS = new HashMap<String, ReportBaseEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum ReportBaseEnum {
         }
     }
 
+    private final String value;
+
     ReportBaseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ReportBaseEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum ReportBaseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

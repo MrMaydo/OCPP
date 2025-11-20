@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,17 +8,11 @@ import maydo.ocpp.msgDef.DataTypes.NetworkConnectionProfile;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class SetNetworkProfileRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Slot in which the configuration should be stored.
      * <p>
@@ -26,26 +21,32 @@ public class SetNetworkProfileRequest implements JsonInterface {
     @Required
     private Integer configurationSlot;
     /**
-     * Communication_ Function
-     * urn:x-oca:ocpp:uid:2:233304
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
      * <p>
      * (Required)
      */
     @Required
     private NetworkConnectionProfile connectionData;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SetNetworkProfileRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param configurationSlot Slot in which the configuration should be stored.
+     *                          .
      */
-    public void setCustomData(CustomData customData) {
+    public SetNetworkProfileRequest(Integer configurationSlot, NetworkConnectionProfile connectionData, CustomData customData) {
+        super();
+        this.configurationSlot = configurationSlot;
+        this.connectionData = connectionData;
         this.customData = customData;
     }
 
@@ -68,8 +69,6 @@ public class SetNetworkProfileRequest implements JsonInterface {
     }
 
     /**
-     * Communication_ Function
-     * urn:x-oca:ocpp:uid:2:233304
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
      * <p>
      * (Required)
@@ -79,14 +78,26 @@ public class SetNetworkProfileRequest implements JsonInterface {
     }
 
     /**
-     * Communication_ Function
-     * urn:x-oca:ocpp:uid:2:233304
      * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
      * <p>
      * (Required)
      */
     public void setConnectionData(NetworkConnectionProfile connectionData) {
         this.connectionData = connectionData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -96,7 +107,11 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("configurationSlot", configurationSlot);
+        json.add("connectionData", connectionData.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -107,7 +122,20 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("configurationSlot")) {
+            this.configurationSlot = jsonObject.get("configurationSlot").getAsInt();
+        }
+
+        if (jsonObject.has("connectionData")) {
+            this.connectionData = new NetworkConnectionProfile();
+            this.connectionData.fromJsonObject(jsonObject.getAsJsonObject("connectionData"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -117,16 +145,17 @@ public class SetNetworkProfileRequest implements JsonInterface {
         if (!(obj instanceof SetNetworkProfileRequest))
             return false;
         SetNetworkProfileRequest that = (SetNetworkProfileRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(configurationSlot, that.configurationSlot)
-                && Objects.equals(connectionData, that.connectionData);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.connectionData, that.connectionData)
+                && Objects.equals(this.configurationSlot, that.configurationSlot);
     }
 
     @Override
     public int hashCode() {
-        int result = (configurationSlot != null ? configurationSlot.hashCode() : 0);
-        result = 31 * result + (connectionData != null ? connectionData.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.connectionData != null ? this.connectionData.hashCode() : 0);
+        result = 31 * result + (this.configurationSlot != null ? this.configurationSlot.hashCode() : 0);
         return result;
     }
 }

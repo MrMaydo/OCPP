@@ -1,44 +1,88 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-
-/**
- * Sales_ Tariff_ Entry
- * urn:x-oca:ocpp:uid:2:233271
- */
 public class SalesTariffEntry implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Relative_ Timer_ Interval
-     * urn:x-oca:ocpp:uid:2:233270
-     * <p>
      * (Required)
      */
     @Required
     private RelativeTimeInterval relativeTimeInterval;
     /**
-     * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
-     * urn:x-oca:ocpp:uid:1:569281
      * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
      */
     @Optional
     private Integer ePriceLevel;
     @Optional
-    private List<ConsumptionCost> consumptionCost = null;
+    private List<ConsumptionCost> consumptionCost;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SalesTariffEntry() {
+    }
+
+    /**
+     * @param ePriceLevel Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     *                    .
+     */
+    public SalesTariffEntry(RelativeTimeInterval relativeTimeInterval, Integer ePriceLevel, List<ConsumptionCost> consumptionCost, CustomData customData) {
+        super();
+        this.relativeTimeInterval = relativeTimeInterval;
+        this.ePriceLevel = ePriceLevel;
+        this.consumptionCost = consumptionCost;
+        this.customData = customData;
+    }
+
+    /**
+     * (Required)
+     */
+    public RelativeTimeInterval getRelativeTimeInterval() {
+        return relativeTimeInterval;
+    }
+
+    /**
+     * (Required)
+     */
+    public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
+        this.relativeTimeInterval = relativeTimeInterval;
+    }
+
+    /**
+     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     */
+    public Integer getePriceLevel() {
+        return ePriceLevel;
+    }
+
+    /**
+     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     */
+    public void setePriceLevel(Integer ePriceLevel) {
+        this.ePriceLevel = ePriceLevel;
+    }
+
+    public List<ConsumptionCost> getConsumptionCost() {
+        return consumptionCost;
+    }
+
+    public void setConsumptionCost(List<ConsumptionCost> consumptionCost) {
+        this.consumptionCost = consumptionCost;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -54,52 +98,6 @@ public class SalesTariffEntry implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Relative_ Timer_ Interval
-     * urn:x-oca:ocpp:uid:2:233270
-     * <p>
-     * (Required)
-     */
-    public RelativeTimeInterval getRelativeTimeInterval() {
-        return relativeTimeInterval;
-    }
-
-    /**
-     * Relative_ Timer_ Interval
-     * urn:x-oca:ocpp:uid:2:233270
-     * <p>
-     * (Required)
-     */
-    public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
-        this.relativeTimeInterval = relativeTimeInterval;
-    }
-
-    /**
-     * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
-     * urn:x-oca:ocpp:uid:1:569281
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
-    public Integer getePriceLevel() {
-        return ePriceLevel;
-    }
-
-    /**
-     * Sales_ Tariff_ Entry. E_ Price_ Level. Unsigned_ Integer
-     * urn:x-oca:ocpp:uid:1:569281
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
-    public void setePriceLevel(Integer ePriceLevel) {
-        this.ePriceLevel = ePriceLevel;
-    }
-
-    public List<ConsumptionCost> getConsumptionCost() {
-        return consumptionCost;
-    }
-
-    public void setConsumptionCost(List<ConsumptionCost> consumptionCost) {
-        this.consumptionCost = consumptionCost;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -107,7 +105,11 @@ public class SalesTariffEntry implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("relativeTimeInterval", relativeTimeInterval.toJsonObject());
+        json.addProperty("ePriceLevel", ePriceLevel);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -118,7 +120,20 @@ public class SalesTariffEntry implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("relativeTimeInterval")) {
+            this.relativeTimeInterval = new RelativeTimeInterval();
+            this.relativeTimeInterval.fromJsonObject(jsonObject.getAsJsonObject("relativeTimeInterval"));
+        }
+
+        if (jsonObject.has("ePriceLevel")) {
+            this.ePriceLevel = jsonObject.get("ePriceLevel").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -128,18 +143,19 @@ public class SalesTariffEntry implements JsonInterface {
         if (!(obj instanceof SalesTariffEntry))
             return false;
         SalesTariffEntry that = (SalesTariffEntry) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(relativeTimeInterval, that.relativeTimeInterval)
-                && Objects.equals(ePriceLevel, that.ePriceLevel)
-                && Objects.equals(consumptionCost, that.consumptionCost);
+        return Objects.equals(this.consumptionCost, that.consumptionCost)
+                && Objects.equals(this.relativeTimeInterval, that.relativeTimeInterval)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.ePriceLevel, that.ePriceLevel);
     }
 
     @Override
     public int hashCode() {
-        int result = (relativeTimeInterval != null ? relativeTimeInterval.hashCode() : 0);
-        result = 31 * result + (ePriceLevel != null ? ePriceLevel.hashCode() : 0);
-        result = 31 * result + (consumptionCost != null ? consumptionCost.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.consumptionCost != null ? this.consumptionCost.hashCode() : 0);
+        result = 31 * result + (this.relativeTimeInterval != null ? this.relativeTimeInterval.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.ePriceLevel != null ? this.ePriceLevel.hashCode() : 0);
         return result;
     }
 }

@@ -1,81 +1,124 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
-/**
- * Composite_ Schedule
- * urn:x-oca:ocpp:uid:2:233362
- */
 public class CompositeSchedule implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * (Required)
-     */
-    @Required
-    private List<ChargingSchedulePeriod> chargingSchedulePeriod = null;
-    /**
-     * The ID of the EVSE for which the
-     * schedule is requested. When evseid=0, the
-     * Charging Station calculated the expected
-     * consumption for the grid connection.
-     * <p>
      * (Required)
      */
     @Required
     private Integer evseId;
     /**
-     * Duration of the schedule in seconds.
-     * <p>
      * (Required)
      */
     @Required
     private Integer duration;
     /**
-     * Composite_ Schedule. Start. Date_ Time
-     * urn:x-oca:ocpp:uid:1:569456
-     * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * <p>
      * (Required)
      */
     @Required
     private Date scheduleStart;
     /**
-     * The unit of measure Limit is
-     * expressed in.
-     * <p>
      * (Required)
      */
     @Required
     private ChargingRateUnitEnum chargingRateUnit;
-
+    /**
+     * (Required)
+     */
+    @Required
+    private List<ChargingSchedulePeriod> chargingSchedulePeriod;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CompositeSchedule() {
+    }
+
+    public CompositeSchedule(Integer evseId, Integer duration, Date scheduleStart, ChargingRateUnitEnum chargingRateUnit, List<ChargingSchedulePeriod> chargingSchedulePeriod, CustomData customData) {
+        super();
+        this.evseId = evseId;
+        this.duration = duration;
+        this.scheduleStart = scheduleStart;
+        this.chargingRateUnit = chargingRateUnit;
+        this.chargingSchedulePeriod = chargingSchedulePeriod;
+        this.customData = customData;
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * (Required)
      */
-    public void setCustomData(CustomData customData) {
-        this.customData = customData;
+    public Integer getEvseId() {
+        return evseId;
+    }
+
+    /**
+     * (Required)
+     */
+    public void setEvseId(Integer evseId) {
+        this.evseId = evseId;
+    }
+
+    /**
+     * (Required)
+     */
+    public Integer getDuration() {
+        return duration;
+    }
+
+    /**
+     * (Required)
+     */
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    /**
+     * (Required)
+     */
+    public Date getScheduleStart() {
+        return scheduleStart;
+    }
+
+    /**
+     * (Required)
+     */
+    public void setScheduleStart(Date scheduleStart) {
+        this.scheduleStart = scheduleStart;
+    }
+
+    /**
+     * (Required)
+     */
+    public ChargingRateUnitEnum getChargingRateUnit() {
+        return chargingRateUnit;
+    }
+
+    /**
+     * (Required)
+     */
+    public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
+        this.chargingRateUnit = chargingRateUnit;
     }
 
     /**
@@ -93,87 +136,17 @@ public class CompositeSchedule implements JsonInterface {
     }
 
     /**
-     * The ID of the EVSE for which the
-     * schedule is requested. When evseid=0, the
-     * Charging Station calculated the expected
-     * consumption for the grid connection.
-     * <p>
-     * (Required)
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public Integer getEvseId() {
-        return evseId;
+    public CustomData getCustomData() {
+        return customData;
     }
 
     /**
-     * The ID of the EVSE for which the
-     * schedule is requested. When evseid=0, the
-     * Charging Station calculated the expected
-     * consumption for the grid connection.
-     * <p>
-     * (Required)
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public void setEvseId(Integer evseId) {
-        this.evseId = evseId;
-    }
-
-    /**
-     * Duration of the schedule in seconds.
-     * <p>
-     * (Required)
-     */
-    public Integer getDuration() {
-        return duration;
-    }
-
-    /**
-     * Duration of the schedule in seconds.
-     * <p>
-     * (Required)
-     */
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * Composite_ Schedule. Start. Date_ Time
-     * urn:x-oca:ocpp:uid:1:569456
-     * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * <p>
-     * (Required)
-     */
-    public Date getScheduleStart() {
-        return scheduleStart;
-    }
-
-    /**
-     * Composite_ Schedule. Start. Date_ Time
-     * urn:x-oca:ocpp:uid:1:569456
-     * Date and time at which the schedule becomes active. All time measurements within the schedule are relative to this timestamp.
-     * <p>
-     * (Required)
-     */
-    public void setScheduleStart(Date scheduleStart) {
-        this.scheduleStart = scheduleStart;
-    }
-
-    /**
-     * The unit of measure Limit is
-     * expressed in.
-     * <p>
-     * (Required)
-     */
-    public ChargingRateUnitEnum getChargingRateUnit() {
-        return chargingRateUnit;
-    }
-
-    /**
-     * The unit of measure Limit is
-     * expressed in.
-     * <p>
-     * (Required)
-     */
-    public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
-        this.chargingRateUnit = chargingRateUnit;
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -183,7 +156,13 @@ public class CompositeSchedule implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("evseId", evseId);
+        json.addProperty("duration", duration);
+        json.addProperty("scheduleStart", new SimpleDateFormat(DATE_FORMAT).format(scheduleStart));
+        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -194,7 +173,32 @@ public class CompositeSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsInt();
+        }
+
+        if (jsonObject.has("scheduleStart")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.scheduleStart = dateFormat.parse(jsonObject.get("scheduleStart").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for scheduleStart" + e);
+            }
+        }
+
+        if (jsonObject.has("chargingRateUnit")) {
+            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -204,22 +208,23 @@ public class CompositeSchedule implements JsonInterface {
         if (!(obj instanceof CompositeSchedule))
             return false;
         CompositeSchedule that = (CompositeSchedule) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(chargingSchedulePeriod, that.chargingSchedulePeriod)
-                && Objects.equals(evseId, that.evseId)
-                && Objects.equals(duration, that.duration)
-                && Objects.equals(scheduleStart, that.scheduleStart)
-                && chargingRateUnit == that.chargingRateUnit;
+        return Objects.equals(this.evseId, that.evseId)
+                && Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.scheduleStart, that.scheduleStart)
+                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod)
+                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (chargingSchedulePeriod != null ? chargingSchedulePeriod.hashCode() : 0);
-        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
-        result = 31 * result + (duration != null ? duration.hashCode() : 0);
-        result = 31 * result + (scheduleStart != null ? scheduleStart.hashCode() : 0);
-        result = 31 * result + (chargingRateUnit != null ? chargingRateUnit.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
+        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
+        result = 31 * result + (this.scheduleStart != null ? this.scheduleStart.hashCode() : 0);
+        result = 31 * result + (this.chargingSchedulePeriod != null ? this.chargingSchedulePeriod.hashCode() : 0);
+        result = 31 * result + (this.chargingRateUnit != null ? this.chargingRateUnit.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

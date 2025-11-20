@@ -15,7 +15,6 @@ public enum SetVariableStatusEnum {
     UNKNOWN_VARIABLE("UnknownVariable"),
     NOT_SUPPORTED_ATTRIBUTE_TYPE("NotSupportedAttributeType"),
     REBOOT_REQUIRED("RebootRequired");
-    private final String value;
     private final static Map<String, SetVariableStatusEnum> CONSTANTS = new HashMap<String, SetVariableStatusEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum SetVariableStatusEnum {
         }
     }
 
+    private final String value;
+
     SetVariableStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static SetVariableStatusEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum SetVariableStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

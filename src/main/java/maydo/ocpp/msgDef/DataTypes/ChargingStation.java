@@ -1,37 +1,25 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
 /**
- * Charge_ Point
- * urn:x-oca:ocpp:uid:2:233122
  * The physical system where an Electrical Vehicle (EV) can be charged.
  */
 public class ChargingStation implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Device. Serial_ Number. Serial_ Number
-     * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
      */
     @Optional
     private String serialNumber;
     /**
-     * Device. Model. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
      * <p>
      * (Required)
@@ -39,8 +27,6 @@ public class ChargingStation implements JsonInterface {
     @Required
     private String model;
     /**
-     * Wireless_ Communication_ Module
-     * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
      */
     @Optional
@@ -57,24 +43,40 @@ public class ChargingStation implements JsonInterface {
      */
     @Optional
     private String firmwareVersion;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ChargingStation() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param serialNumber    Vendor-specific device identifier.
+     *                        .
+     * @param model           Defines the model of the device.
+     *                        .
+     * @param vendorName      Identifies the vendor (not necessarily in a unique manner).
+     *                        .
+     * @param firmwareVersion This contains the firmware version of the Charging Station.
+     *                        <p>
+     *                        .
      */
-    public void setCustomData(CustomData customData) {
+    public ChargingStation(String serialNumber, String model, Modem modem, String vendorName, String firmwareVersion, CustomData customData) {
+        super();
+        this.serialNumber = serialNumber;
+        this.model = model;
+        this.modem = modem;
+        this.vendorName = vendorName;
+        this.firmwareVersion = firmwareVersion;
         this.customData = customData;
     }
 
     /**
-     * Device. Serial_ Number. Serial_ Number
-     * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
      */
     public String getSerialNumber() {
@@ -82,8 +84,6 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * Device. Serial_ Number. Serial_ Number
-     * urn:x-oca:ocpp:uid:1:569324
      * Vendor-specific device identifier.
      */
     public void setSerialNumber(String serialNumber) {
@@ -91,8 +91,6 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * Device. Model. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
      * <p>
      * (Required)
@@ -102,8 +100,6 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * Device. Model. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569325
      * Defines the model of the device.
      * <p>
      * (Required)
@@ -113,8 +109,6 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * Wireless_ Communication_ Module
-     * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
      */
     public Modem getModem() {
@@ -122,8 +116,6 @@ public class ChargingStation implements JsonInterface {
     }
 
     /**
-     * Wireless_ Communication_ Module
-     * urn:x-oca:ocpp:uid:2:233306
      * Defines parameters required for initiating and maintaining wireless communication with other devices.
      */
     public void setModem(Modem modem) {
@@ -162,6 +154,20 @@ public class ChargingStation implements JsonInterface {
         this.firmwareVersion = firmwareVersion;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -169,7 +175,14 @@ public class ChargingStation implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("serialNumber", serialNumber);
+        json.addProperty("model", model);
+        json.add("modem", modem.toJsonObject());
+        json.addProperty("vendorName", vendorName);
+        json.addProperty("firmwareVersion", firmwareVersion);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -180,7 +193,32 @@ public class ChargingStation implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("serialNumber")) {
+            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+        }
+
+        if (jsonObject.has("model")) {
+            this.model = jsonObject.get("model").getAsString();
+        }
+
+        if (jsonObject.has("modem")) {
+            this.modem = new Modem();
+            this.modem.fromJsonObject(jsonObject.getAsJsonObject("modem"));
+        }
+
+        if (jsonObject.has("vendorName")) {
+            this.vendorName = jsonObject.get("vendorName").getAsString();
+        }
+
+        if (jsonObject.has("firmwareVersion")) {
+            this.firmwareVersion = jsonObject.get("firmwareVersion").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -190,22 +228,23 @@ public class ChargingStation implements JsonInterface {
         if (!(obj instanceof ChargingStation))
             return false;
         ChargingStation that = (ChargingStation) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(serialNumber, that.serialNumber)
-                && Objects.equals(model, that.model)
-                && Objects.equals(modem, that.modem)
-                && Objects.equals(vendorName, that.vendorName)
-                && Objects.equals(firmwareVersion, that.firmwareVersion);
+        return Objects.equals(this.serialNumber, that.serialNumber)
+                && Objects.equals(this.modem, that.modem)
+                && Objects.equals(this.model, that.model)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.vendorName, that.vendorName)
+                && Objects.equals(this.firmwareVersion, that.firmwareVersion);
     }
 
     @Override
     public int hashCode() {
-        int result = (serialNumber != null ? serialNumber.hashCode() : 0);
-        result = 31 * result + (model != null ? model.hashCode() : 0);
-        result = 31 * result + (modem != null ? modem.hashCode() : 0);
-        result = 31 * result + (vendorName != null ? vendorName.hashCode() : 0);
-        result = 31 * result + (firmwareVersion != null ? firmwareVersion.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.serialNumber != null ? this.serialNumber.hashCode() : 0);
+        result = 31 * result + (this.modem != null ? this.modem.hashCode() : 0);
+        result = 31 * result + (this.model != null ? this.model.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.vendorName != null ? this.vendorName.hashCode() : 0);
+        result = 31 * result + (this.firmwareVersion != null ? this.firmwareVersion.hashCode() : 0);
         return result;
     }
 }

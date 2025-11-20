@@ -11,7 +11,6 @@ public enum ClearChargingProfileStatusEnum {
 
     ACCEPTED("Accepted"),
     UNKNOWN("Unknown");
-    private final String value;
     private final static Map<String, ClearChargingProfileStatusEnum> CONSTANTS = new HashMap<String, ClearChargingProfileStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum ClearChargingProfileStatusEnum {
         }
     }
 
+    private final String value;
+
     ClearChargingProfileStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ClearChargingProfileStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum ClearChargingProfileStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

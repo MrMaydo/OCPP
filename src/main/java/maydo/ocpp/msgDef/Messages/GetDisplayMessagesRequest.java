@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,7 +9,6 @@ import maydo.ocpp.msgDef.Enumerations.MessageStateEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,15 +16,10 @@ import java.util.Objects;
 public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
      * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
      */
     @Optional
-    private List<Integer> id = null;
+    private List<Integer> id;
     /**
      * The Id of this request.
      * <p>
@@ -42,18 +37,31 @@ public class GetDisplayMessagesRequest implements JsonInterface {
      */
     @Optional
     private MessageStateEnum state;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetDisplayMessagesRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param requestId The Id of this request.
+     *                  .
+     * @param id        If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
+     *                  <p>
+     *                  .
      */
-    public void setCustomData(CustomData customData) {
+    public GetDisplayMessagesRequest(List<Integer> id, Integer requestId, MessagePriorityEnum priority, MessageStateEnum state, CustomData customData) {
+        super();
+        this.id = id;
+        this.requestId = requestId;
+        this.priority = priority;
+        this.state = state;
         this.customData = customData;
     }
 
@@ -117,6 +125,20 @@ public class GetDisplayMessagesRequest implements JsonInterface {
         this.state = state;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -124,7 +146,12 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("requestId", requestId);
+        json.addProperty("priority", priority.toString());
+        json.addProperty("state", state.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -135,7 +162,23 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("requestId")) {
+            this.requestId = jsonObject.get("requestId").getAsInt();
+        }
+
+        if (jsonObject.has("priority")) {
+            this.priority = MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString());
+        }
+
+        if (jsonObject.has("state")) {
+            this.state = MessageStateEnum.valueOf(jsonObject.get("state").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -145,20 +188,21 @@ public class GetDisplayMessagesRequest implements JsonInterface {
         if (!(obj instanceof GetDisplayMessagesRequest))
             return false;
         GetDisplayMessagesRequest that = (GetDisplayMessagesRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id)
-                && Objects.equals(requestId, that.requestId)
-                && priority == that.priority
-                && state == that.state;
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.state, that.state)
+                && Objects.equals(this.priority, that.priority)
+                && Objects.equals(this.requestId, that.requestId);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (priority != null ? priority.hashCode() : 0);
-        result = 31 * result + (state != null ? state.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.state != null ? this.state.hashCode() : 0);
+        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
         return result;
     }
 }

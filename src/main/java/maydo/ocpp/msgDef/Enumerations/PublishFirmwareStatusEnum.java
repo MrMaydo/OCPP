@@ -20,7 +20,6 @@ public enum PublishFirmwareStatusEnum {
     INVALID_CHECKSUM("InvalidChecksum"),
     CHECKSUM_VERIFIED("ChecksumVerified"),
     PUBLISH_FAILED("PublishFailed");
-    private final String value;
     private final static Map<String, PublishFirmwareStatusEnum> CONSTANTS = new HashMap<String, PublishFirmwareStatusEnum>();
 
     static {
@@ -29,17 +28,10 @@ public enum PublishFirmwareStatusEnum {
         }
     }
 
+    private final String value;
+
     PublishFirmwareStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static PublishFirmwareStatusEnum fromValue(String value) {
@@ -49,6 +41,15 @@ public enum PublishFirmwareStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

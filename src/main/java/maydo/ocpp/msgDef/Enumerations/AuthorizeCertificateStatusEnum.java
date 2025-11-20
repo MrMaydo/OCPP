@@ -18,7 +18,6 @@ public enum AuthorizeCertificateStatusEnum {
     NO_CERTIFICATE_AVAILABLE("NoCertificateAvailable"),
     CERT_CHAIN_ERROR("CertChainError"),
     CONTRACT_CANCELLED("ContractCancelled");
-    private final String value;
     private final static Map<String, AuthorizeCertificateStatusEnum> CONSTANTS = new HashMap<String, AuthorizeCertificateStatusEnum>();
 
     static {
@@ -27,17 +26,10 @@ public enum AuthorizeCertificateStatusEnum {
         }
     }
 
+    private final String value;
+
     AuthorizeCertificateStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static AuthorizeCertificateStatusEnum fromValue(String value) {
@@ -47,6 +39,15 @@ public enum AuthorizeCertificateStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

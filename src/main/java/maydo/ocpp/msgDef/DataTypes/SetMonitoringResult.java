@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
@@ -7,21 +8,11 @@ import maydo.ocpp.msgDef.Enumerations.SetMonitoringStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Class to hold result of SetVariableMonitoring request.
- */
 public class SetMonitoringResult implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
      */
@@ -91,18 +82,56 @@ public class SetMonitoringResult implements JsonInterface {
      */
     @Required
     private Integer severity;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SetMonitoringResult() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param severity The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     *                 <p>
+     *                 The severity levels have the following meaning: +
+     *                 *0-Danger* +
+     *                 Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
+     *                 *1-Hardware Failure* +
+     *                 Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
+     *                 *2-System Failure* +
+     *                 Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
+     *                 *3-Critical* +
+     *                 Indicates a critical error. Action is required. +
+     *                 *4-Error* +
+     *                 Indicates a non-urgent error. Action is required. +
+     *                 *5-Alert* +
+     *                 Indicates an alert event. Default severity for any type of monitoring event.  +
+     *                 *6-Warning* +
+     *                 Indicates a warning event. Action may be required. +
+     *                 *7-Notice* +
+     *                 Indicates an unusual event. No immediate action is required. +
+     *                 *8-Informational* +
+     *                 Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
+     *                 *9-Debug* +
+     *                 Indicates information useful to developers for debugging, not useful during operations.
+     *                 <p>
+     *                 .
+     * @param id       Id given to the VariableMonitor by the Charging Station. The Id is only returned when status is accepted. Installed VariableMonitors should have unique id's but the id's of removed Installed monitors should have unique id's but the id's of removed monitors MAY be reused.
+     *                 .
      */
-    public void setCustomData(CustomData customData) {
+    public SetMonitoringResult(Integer id, StatusInfo statusInfo, SetMonitoringStatusEnum status, MonitorEnum type, Component component, Variable variable, Integer severity, CustomData customData) {
+        super();
+        this.id = id;
+        this.statusInfo = statusInfo;
+        this.status = status;
+        this.type = type;
+        this.component = component;
+        this.variable = variable;
+        this.severity = severity;
         this.customData = customData;
     }
 
@@ -272,6 +301,20 @@ public class SetMonitoringResult implements JsonInterface {
         this.severity = severity;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -279,7 +322,16 @@ public class SetMonitoringResult implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.addProperty("status", status.toString());
+        json.addProperty("type", type.toString());
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.addProperty("severity", severity);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -290,7 +342,42 @@ public class SetMonitoringResult implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("status")) {
+            this.status = SetMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("type")) {
+            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("severity")) {
+            this.severity = jsonObject.get("severity").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -300,25 +387,27 @@ public class SetMonitoringResult implements JsonInterface {
         if (!(obj instanceof SetMonitoringResult))
             return false;
         SetMonitoringResult that = (SetMonitoringResult) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id)
-                && Objects.equals(statusInfo, that.statusInfo)
-                && status == that.status && type == that.type
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable)
-                && Objects.equals(severity, that.severity);
+        return Objects.equals(this.severity, that.severity)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (severity != null ? severity.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

@@ -13,7 +13,6 @@ public enum EventNotificationEnum {
     HARD_WIRED_MONITOR("HardWiredMonitor"),
     PRECONFIGURED_MONITOR("PreconfiguredMonitor"),
     CUSTOM_MONITOR("CustomMonitor");
-    private final String value;
     private final static Map<String, EventNotificationEnum> CONSTANTS = new HashMap<String, EventNotificationEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum EventNotificationEnum {
         }
     }
 
+    private final String value;
+
     EventNotificationEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static EventNotificationEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum EventNotificationEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

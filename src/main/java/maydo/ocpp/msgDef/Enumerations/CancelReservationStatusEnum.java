@@ -11,7 +11,6 @@ public enum CancelReservationStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected");
-    private final String value;
     private final static Map<String, CancelReservationStatusEnum> CONSTANTS = new HashMap<String, CancelReservationStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum CancelReservationStatusEnum {
         }
     }
 
+    private final String value;
+
     CancelReservationStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CancelReservationStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum CancelReservationStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

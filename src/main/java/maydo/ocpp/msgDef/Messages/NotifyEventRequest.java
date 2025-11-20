@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,19 +8,17 @@ import maydo.ocpp.msgDef.DataTypes.EventData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
+
 public class NotifyEventRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
      * <p>
@@ -43,19 +42,33 @@ public class NotifyEventRequest implements JsonInterface {
      * (Required)
      */
     @Required
-    private List<EventData> eventData = null;
-
+    private List<EventData> eventData;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public NotifyEventRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param tbc         “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
+     *                    .
+     * @param seqNo       Sequence number of this message. First message starts at 0.
+     *                    .
+     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
+     *                    .
      */
-    public void setCustomData(CustomData customData) {
+    public NotifyEventRequest(Date generatedAt, Boolean tbc, Integer seqNo, List<EventData> eventData, CustomData customData) {
+        super();
+        this.generatedAt = generatedAt;
+        this.tbc = tbc;
+        this.seqNo = seqNo;
+        this.eventData = eventData;
         this.customData = customData;
     }
 
@@ -123,6 +136,20 @@ public class NotifyEventRequest implements JsonInterface {
         this.eventData = eventData;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -130,7 +157,11 @@ public class NotifyEventRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(generatedAt));
+        json.addProperty("seqNo", seqNo);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -141,7 +172,24 @@ public class NotifyEventRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("generatedAt")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.generatedAt = dateFormat.parse(jsonObject.get("generatedAt").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for generatedAt" + e);
+            }
+        }
+
+        if (jsonObject.has("seqNo")) {
+            this.seqNo = jsonObject.get("seqNo").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -151,20 +199,21 @@ public class NotifyEventRequest implements JsonInterface {
         if (!(obj instanceof NotifyEventRequest))
             return false;
         NotifyEventRequest that = (NotifyEventRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(generatedAt, that.generatedAt)
-                && Objects.equals(tbc, that.tbc)
-                && Objects.equals(seqNo, that.seqNo)
-                && Objects.equals(eventData, that.eventData);
+        return Objects.equals(this.generatedAt, that.generatedAt)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.eventData, that.eventData)
+                && Objects.equals(this.tbc, that.tbc)
+                && Objects.equals(this.seqNo, that.seqNo);
     }
 
     @Override
     public int hashCode() {
-        int result = (generatedAt != null ? generatedAt.hashCode() : 0);
-        result = 31 * result + (tbc != null ? tbc.hashCode() : 0);
-        result = 31 * result + (seqNo != null ? seqNo.hashCode() : 0);
-        result = 31 * result + (eventData != null ? eventData.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.generatedAt != null ? this.generatedAt.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.eventData != null ? this.eventData.hashCode() : 0);
+        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
+        result = 31 * result + (this.seqNo != null ? this.seqNo.hashCode() : 0);
         return result;
     }
 }

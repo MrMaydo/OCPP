@@ -10,8 +10,8 @@ import java.util.Map;
 public enum ClearMessageStatusEnum {
 
     ACCEPTED("Accepted"),
-    UNKNOWN("Unknown");
-    private final String value;
+    UNKNOWN("Unknown"),
+    REJECTED("Rejected");
     private final static Map<String, ClearMessageStatusEnum> CONSTANTS = new HashMap<String, ClearMessageStatusEnum>();
 
     static {
@@ -20,17 +20,10 @@ public enum ClearMessageStatusEnum {
         }
     }
 
+    private final String value;
+
     ClearMessageStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ClearMessageStatusEnum fromValue(String value) {
@@ -40,6 +33,15 @@ public enum ClearMessageStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

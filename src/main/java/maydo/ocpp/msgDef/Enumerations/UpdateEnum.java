@@ -11,7 +11,6 @@ public enum UpdateEnum {
 
     DIFFERENTIAL("Differential"),
     FULL("Full");
-    private final String value;
     private final static Map<String, UpdateEnum> CONSTANTS = new HashMap<String, UpdateEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum UpdateEnum {
         }
     }
 
+    private final String value;
+
     UpdateEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static UpdateEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum UpdateEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

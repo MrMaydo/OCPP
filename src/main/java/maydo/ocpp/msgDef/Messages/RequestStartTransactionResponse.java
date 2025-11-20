@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,17 +9,11 @@ import maydo.ocpp.msgDef.Enumerations.RequestStartStopStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class RequestStartTransactionResponse implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Status indicating whether the Charging Station accepts the request to start a transaction.
      * <p>
@@ -36,18 +31,27 @@ public class RequestStartTransactionResponse implements JsonInterface {
      */
     @Optional
     private String transactionId;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public RequestStartTransactionResponse() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param transactionId When the transaction was already started by the Charging Station before the RequestStartTransactionRequest was received, for example: cable plugged in first. This contains the transactionId of the already started transaction.
+     *                      .
      */
-    public void setCustomData(CustomData customData) {
+    public RequestStartTransactionResponse(RequestStartStopStatusEnum status, StatusInfo statusInfo, String transactionId, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
+        this.transactionId = transactionId;
         this.customData = customData;
     }
 
@@ -97,6 +101,20 @@ public class RequestStartTransactionResponse implements JsonInterface {
         this.transactionId = transactionId;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -104,7 +122,12 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.addProperty("transactionId", transactionId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -115,7 +138,24 @@ public class RequestStartTransactionResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("status")) {
+            this.status = RequestStartStopStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -125,18 +165,19 @@ public class RequestStartTransactionResponse implements JsonInterface {
         if (!(obj instanceof RequestStartTransactionResponse))
             return false;
         RequestStartTransactionResponse that = (RequestStartTransactionResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(statusInfo, that.statusInfo)
-                && Objects.equals(transactionId, that.transactionId);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.transactionId, that.transactionId)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

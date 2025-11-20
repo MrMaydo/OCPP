@@ -1,25 +1,19 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
-
 
 /**
  * Class to report components, variables and variable attributes and characteristics.
  */
 public class ComponentVariable implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * A physical or logical component
      * <p>
@@ -32,18 +26,22 @@ public class ComponentVariable implements JsonInterface {
      */
     @Optional
     private Variable variable;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ComponentVariable() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public ComponentVariable(Component component, Variable variable, CustomData customData) {
+        super();
+        this.component = component;
+        this.variable = variable;
         this.customData = customData;
     }
 
@@ -79,6 +77,20 @@ public class ComponentVariable implements JsonInterface {
         this.variable = variable;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -86,7 +98,11 @@ public class ComponentVariable implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -97,7 +113,21 @@ public class ComponentVariable implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -107,16 +137,17 @@ public class ComponentVariable implements JsonInterface {
         if (!(obj instanceof ComponentVariable))
             return false;
         ComponentVariable that = (ComponentVariable) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable);
+        return Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

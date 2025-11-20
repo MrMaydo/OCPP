@@ -1,29 +1,17 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Relative_ Timer_ Interval
- * urn:x-oca:ocpp:uid:2:233270
- */
 public class RelativeTimeInterval implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Relative_ Timer_ Interval. Start. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569279
      * Start of the interval, in seconds from NOW.
      * <p>
      * (Required)
@@ -31,12 +19,66 @@ public class RelativeTimeInterval implements JsonInterface {
     @Required
     private Integer start;
     /**
-     * Relative_ Timer_ Interval. Duration. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569280
      * Duration of the interval, in seconds.
      */
     @Optional
     private Integer duration;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public RelativeTimeInterval() {
+    }
+
+    /**
+     * @param duration Duration of the interval, in seconds.
+     *                 .
+     * @param start    Start of the interval, in seconds from NOW.
+     *                 .
+     */
+    public RelativeTimeInterval(Integer start, Integer duration, CustomData customData) {
+        super();
+        this.start = start;
+        this.duration = duration;
+        this.customData = customData;
+    }
+
+    /**
+     * Start of the interval, in seconds from NOW.
+     * <p>
+     * (Required)
+     */
+    public Integer getStart() {
+        return start;
+    }
+
+    /**
+     * Start of the interval, in seconds from NOW.
+     * <p>
+     * (Required)
+     */
+    public void setStart(Integer start) {
+        this.start = start;
+    }
+
+    /**
+     * Duration of the interval, in seconds.
+     */
+    public Integer getDuration() {
+        return duration;
+    }
+
+    /**
+     * Duration of the interval, in seconds.
+     */
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -52,46 +94,6 @@ public class RelativeTimeInterval implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Relative_ Timer_ Interval. Start. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569279
-     * Start of the interval, in seconds from NOW.
-     * <p>
-     * (Required)
-     */
-    public Integer getStart() {
-        return start;
-    }
-
-    /**
-     * Relative_ Timer_ Interval. Start. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569279
-     * Start of the interval, in seconds from NOW.
-     * <p>
-     * (Required)
-     */
-    public void setStart(Integer start) {
-        this.start = start;
-    }
-
-    /**
-     * Relative_ Timer_ Interval. Duration. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569280
-     * Duration of the interval, in seconds.
-     */
-    public Integer getDuration() {
-        return duration;
-    }
-
-    /**
-     * Relative_ Timer_ Interval. Duration. Elapsed_ Time
-     * urn:x-oca:ocpp:uid:1:569280
-     * Duration of the interval, in seconds.
-     */
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -99,7 +101,11 @@ public class RelativeTimeInterval implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("start", start);
+        json.addProperty("duration", duration);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -110,7 +116,19 @@ public class RelativeTimeInterval implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("start")) {
+            this.start = jsonObject.get("start").getAsInt();
+        }
+
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -120,16 +138,17 @@ public class RelativeTimeInterval implements JsonInterface {
         if (!(obj instanceof RelativeTimeInterval))
             return false;
         RelativeTimeInterval that = (RelativeTimeInterval) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(start, that.start)
-                && Objects.equals(duration, that.duration);
+        return Objects.equals(this.start, that.start)
+                && Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (start != null ? start.hashCode() : 0);
-        result = 31 * result + (duration != null ? duration.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.start != null ? this.start.hashCode() : 0);
+        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

@@ -1,24 +1,20 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
+import maydo.ocpp.msgDef.DataTypes.StatusInfo;
 import maydo.ocpp.msgDef.Enumerations.PublishFirmwareStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
 public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * This contains the progress status of the publishfirmware
      * installation.
@@ -31,26 +27,47 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
      * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
      */
     @Optional
-    private List<String> location = null;
+    private List<String> location;
     /**
      * The request id that was
      * provided in the
      * PublishFirmwareRequest which
      * triggered this action.
      */
+    @Optional
     private Integer requestId;
-
+    /**
+     * Element providing more information about the status.
+     */
+    @Optional
+    private StatusInfo statusInfo;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public PublishFirmwareStatusNotificationRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param requestId The request id that was
+     *                  provided in the
+     *                  PublishFirmwareRequest which
+     *                  triggered this action.
+     *                  .
+     * @param location  Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
+     *                  .
      */
-    public void setCustomData(CustomData customData) {
+    public PublishFirmwareStatusNotificationRequest(PublishFirmwareStatusEnum status, List<String> location, Integer requestId, StatusInfo statusInfo, CustomData customData) {
+        super();
+        this.status = status;
+        this.location = location;
+        this.requestId = requestId;
+        this.statusInfo = statusInfo;
         this.customData = customData;
     }
 
@@ -108,6 +125,34 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
         this.requestId = requestId;
     }
 
+    /**
+     * Element providing more information about the status.
+     */
+    public StatusInfo getStatusInfo() {
+        return statusInfo;
+    }
+
+    /**
+     * Element providing more information about the status.
+     */
+    public void setStatusInfo(StatusInfo statusInfo) {
+        this.statusInfo = statusInfo;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -115,7 +160,12 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.addProperty("requestId", requestId);
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -126,7 +176,24 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("status")) {
+            this.status = PublishFirmwareStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("requestId")) {
+            this.requestId = jsonObject.get("requestId").getAsInt();
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -136,18 +203,21 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
         if (!(obj instanceof PublishFirmwareStatusNotificationRequest))
             return false;
         PublishFirmwareStatusNotificationRequest that = (PublishFirmwareStatusNotificationRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(location, that.location)
-                && Objects.equals(requestId, that.requestId);
+        return Objects.equals(this.location, that.location)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

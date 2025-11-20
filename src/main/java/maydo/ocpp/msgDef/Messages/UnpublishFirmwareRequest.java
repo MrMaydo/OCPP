@@ -7,17 +7,11 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class UnpublishFirmwareRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
      * <p>
@@ -25,18 +19,25 @@ public class UnpublishFirmwareRequest implements JsonInterface {
      */
     @Required
     private String checksum;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public UnpublishFirmwareRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param checksum The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
+     *                 .
      */
-    public void setCustomData(CustomData customData) {
+    public UnpublishFirmwareRequest(String checksum, CustomData customData) {
+        super();
+        this.checksum = checksum;
         this.customData = customData;
     }
 
@@ -58,6 +59,20 @@ public class UnpublishFirmwareRequest implements JsonInterface {
         this.checksum = checksum;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -65,7 +80,10 @@ public class UnpublishFirmwareRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("checksum", checksum);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -76,7 +94,15 @@ public class UnpublishFirmwareRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("checksum")) {
+            this.checksum = jsonObject.get("checksum").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -86,14 +112,15 @@ public class UnpublishFirmwareRequest implements JsonInterface {
         if (!(obj instanceof UnpublishFirmwareRequest))
             return false;
         UnpublishFirmwareRequest that = (UnpublishFirmwareRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(checksum, that.checksum);
+        return Objects.equals(this.checksum, that.checksum)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (checksum != null ? checksum.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.checksum != null ? this.checksum.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

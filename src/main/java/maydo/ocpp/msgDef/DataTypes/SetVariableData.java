@@ -1,22 +1,17 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.AttributeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class SetVariableData implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
      */
@@ -24,8 +19,9 @@ public class SetVariableData implements JsonInterface {
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
     /**
      * Value to be assigned to attribute of variable.
+     * This value is allowed to be an empty string ("").
      * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
      * <p>
      * (Required)
      */
@@ -45,18 +41,31 @@ public class SetVariableData implements JsonInterface {
      */
     @Required
     private Variable variable;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SetVariableData() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param attributeValue Value to be assigned to attribute of variable.
+     *                       This value is allowed to be an empty string ("").
+     *                       <p>
+     *                       The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     *                       .
      */
-    public void setCustomData(CustomData customData) {
+    public SetVariableData(AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
+        super();
+        this.attributeType = attributeType;
+        this.attributeValue = attributeValue;
+        this.component = component;
+        this.variable = variable;
         this.customData = customData;
     }
 
@@ -76,8 +85,9 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Value to be assigned to attribute of variable.
+     * This value is allowed to be an empty string ("").
      * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
      * <p>
      * (Required)
      */
@@ -87,8 +97,9 @@ public class SetVariableData implements JsonInterface {
 
     /**
      * Value to be assigned to attribute of variable.
+     * This value is allowed to be an empty string ("").
      * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valueList. The max size of these values will always remain equal.
+     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
      * <p>
      * (Required)
      */
@@ -132,6 +143,20 @@ public class SetVariableData implements JsonInterface {
         this.variable = variable;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -139,7 +164,12 @@ public class SetVariableData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("attributeValue", attributeValue);
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -150,7 +180,25 @@ public class SetVariableData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("attributeValue")) {
+            this.attributeValue = jsonObject.get("attributeValue").getAsString();
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -160,20 +208,21 @@ public class SetVariableData implements JsonInterface {
         if (!(obj instanceof SetVariableData))
             return false;
         SetVariableData that = (SetVariableData) obj;
-        return Objects.equals(customData, that.customData)
-                && attributeType == that.attributeType
-                && Objects.equals(attributeValue, that.attributeValue)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable);
+        return Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.attributeValue, that.attributeValue)
+                && Objects.equals(this.attributeType, that.attributeType);
     }
 
     @Override
     public int hashCode() {
-        int result = (attributeType != null ? attributeType.hashCode() : 0);
-        result = 31 * result + (attributeValue != null ? attributeValue.hashCode() : 0);
-        result = 31 * result + (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.attributeValue != null ? this.attributeValue.hashCode() : 0);
+        result = 31 * result + (this.attributeType != null ? this.attributeType.hashCode() : 0);
         return result;
     }
 }

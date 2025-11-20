@@ -8,7 +8,6 @@ import maydo.ocpp.msgDef.DataTypes.SetVariableData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,27 +15,25 @@ import java.util.Objects;
 public class SetVariablesRequest implements JsonInterface {
 
     /**
+     * (Required)
+     */
+    @Required
+    private List<SetVariableData> setVariableData;
+    /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
     @Optional
     private CustomData customData;
-    /**
-     * (Required)
-     */
-    @Required
-    private List<SetVariableData> setVariableData = null;
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * No args constructor for use in serialization
      */
-    public CustomData getCustomData() {
-        return customData;
+    public SetVariablesRequest() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public SetVariablesRequest(List<SetVariableData> setVariableData, CustomData customData) {
+        super();
+        this.setVariableData = setVariableData;
         this.customData = customData;
     }
 
@@ -54,6 +51,20 @@ public class SetVariablesRequest implements JsonInterface {
         this.setVariableData = setVariableData;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -61,7 +72,9 @@ public class SetVariablesRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -72,7 +85,11 @@ public class SetVariablesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -82,14 +99,15 @@ public class SetVariablesRequest implements JsonInterface {
         if (!(obj instanceof SetVariablesRequest))
             return false;
         SetVariablesRequest that = (SetVariablesRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(setVariableData, that.setVariableData);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.setVariableData, that.setVariableData);
     }
 
     @Override
     public int hashCode() {
-        int result = (setVariableData != null ? setVariableData.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.setVariableData != null ? this.setVariableData.hashCode() : 0);
         return result;
     }
 }

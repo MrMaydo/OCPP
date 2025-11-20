@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ChargingStation;
@@ -8,20 +9,12 @@ import maydo.ocpp.msgDef.Enumerations.BootReasonEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class BootNotificationRequest implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Charge_ Point
-     * urn:x-oca:ocpp:uid:2:233122
      * The physical system where an Electrical Vehicle (EV) can be charged.
      * <p>
      * (Required)
@@ -35,24 +28,26 @@ public class BootNotificationRequest implements JsonInterface {
      */
     @Required
     private BootReasonEnum reason;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public BootNotificationRequest() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public BootNotificationRequest(ChargingStation chargingStation, BootReasonEnum reason, CustomData customData) {
+        super();
+        this.chargingStation = chargingStation;
+        this.reason = reason;
         this.customData = customData;
     }
 
     /**
-     * Charge_ Point
-     * urn:x-oca:ocpp:uid:2:233122
      * The physical system where an Electrical Vehicle (EV) can be charged.
      * <p>
      * (Required)
@@ -62,8 +57,6 @@ public class BootNotificationRequest implements JsonInterface {
     }
 
     /**
-     * Charge_ Point
-     * urn:x-oca:ocpp:uid:2:233122
      * The physical system where an Electrical Vehicle (EV) can be charged.
      * <p>
      * (Required)
@@ -90,6 +83,20 @@ public class BootNotificationRequest implements JsonInterface {
         this.reason = reason;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -97,7 +104,11 @@ public class BootNotificationRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("chargingStation", chargingStation.toJsonObject());
+        json.addProperty("reason", reason.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -108,7 +119,20 @@ public class BootNotificationRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("chargingStation")) {
+            this.chargingStation = new ChargingStation();
+            this.chargingStation.fromJsonObject(jsonObject.getAsJsonObject("chargingStation"));
+        }
+
+        if (jsonObject.has("reason")) {
+            this.reason = BootReasonEnum.valueOf(jsonObject.get("reason").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -118,16 +142,17 @@ public class BootNotificationRequest implements JsonInterface {
         if (!(obj instanceof BootNotificationRequest))
             return false;
         BootNotificationRequest that = (BootNotificationRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(chargingStation, that.chargingStation)
-                && reason == that.reason;
+        return Objects.equals(this.reason, that.reason)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.chargingStation, that.chargingStation);
     }
 
     @Override
     public int hashCode() {
-        int result = (chargingStation != null ? chargingStation.hashCode() : 0);
-        result = 31 * result + (reason != null ? reason.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.reason != null ? this.reason.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.chargingStation != null ? this.chargingStation.hashCode() : 0);
         return result;
     }
 }

@@ -5,15 +5,12 @@ import java.util.Map;
 
 
 /**
- * Communication_ Function. OCPP_ Transport. OCPP_ Transport_ Code
- * urn:x-oca:ocpp:uid:1:569356
- * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.0, but is supported by other versions of OCPP.
+ * Defines the transport protocol (e.g. SOAP or JSON). Note: SOAP is not supported in OCPP 2.x, but is supported by earlier versions of OCPP.
  */
 public enum OCPPTransportEnum {
 
-    JSON("JSON"),
-    SOAP("SOAP");
-    private final String value;
+    SOAP("SOAP"),
+    JSON("JSON");
     private final static Map<String, OCPPTransportEnum> CONSTANTS = new HashMap<String, OCPPTransportEnum>();
 
     static {
@@ -22,17 +19,10 @@ public enum OCPPTransportEnum {
         }
     }
 
+    private final String value;
+
     OCPPTransportEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OCPPTransportEnum fromValue(String value) {
@@ -42,6 +32,15 @@ public enum OCPPTransportEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

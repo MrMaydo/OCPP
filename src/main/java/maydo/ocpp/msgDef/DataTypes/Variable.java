@@ -1,25 +1,19 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
-
 
 /**
  * Reference key to a component-variable.
  */
 public class Variable implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
      * <p>
@@ -32,18 +26,28 @@ public class Variable implements JsonInterface {
      */
     @Optional
     private String instance;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Variable() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param instance Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
+     * @param name     Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
+     *                 .
      */
-    public void setCustomData(CustomData customData) {
+    public Variable(String name, String instance, CustomData customData) {
+        super();
+        this.name = name;
+        this.instance = instance;
         this.customData = customData;
     }
 
@@ -79,6 +83,20 @@ public class Variable implements JsonInterface {
         this.instance = instance;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -86,7 +104,11 @@ public class Variable implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("name", name);
+        json.addProperty("instance", instance);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -97,7 +119,19 @@ public class Variable implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("name")) {
+            this.name = jsonObject.get("name").getAsString();
+        }
+
+        if (jsonObject.has("instance")) {
+            this.instance = jsonObject.get("instance").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -107,16 +141,17 @@ public class Variable implements JsonInterface {
         if (!(obj instanceof Variable))
             return false;
         Variable that = (Variable) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(name, that.name)
-                && Objects.equals(instance, that.instance);
+        return Objects.equals(this.name, that.name)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.instance, that.instance);
     }
 
     @Override
     public int hashCode() {
-        int result = (name != null ? name.hashCode() : 0);
-        result = 31 * result + (instance != null ? instance.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.instance != null ? this.instance.hashCode() : 0);
         return result;
     }
 }

@@ -10,8 +10,8 @@ import java.util.Map;
 public enum ReservationUpdateStatusEnum {
 
     EXPIRED("Expired"),
-    REMOVED("Removed");
-    private final String value;
+    REMOVED("Removed"),
+    NO_TRANSACTION("NoTransaction");
     private final static Map<String, ReservationUpdateStatusEnum> CONSTANTS = new HashMap<String, ReservationUpdateStatusEnum>();
 
     static {
@@ -20,17 +20,10 @@ public enum ReservationUpdateStatusEnum {
         }
     }
 
+    private final String value;
+
     ReservationUpdateStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ReservationUpdateStatusEnum fromValue(String value) {
@@ -40,6 +33,15 @@ public enum ReservationUpdateStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

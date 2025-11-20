@@ -12,8 +12,9 @@ public enum MessageStateEnum {
     CHARGING("Charging"),
     FAULTED("Faulted"),
     IDLE("Idle"),
-    UNAVAILABLE("Unavailable");
-    private final String value;
+    UNAVAILABLE("Unavailable"),
+    SUSPENDED("Suspended"),
+    DISCHARGING("Discharging");
     private final static Map<String, MessageStateEnum> CONSTANTS = new HashMap<String, MessageStateEnum>();
 
     static {
@@ -22,17 +23,10 @@ public enum MessageStateEnum {
         }
     }
 
+    private final String value;
+
     MessageStateEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MessageStateEnum fromValue(String value) {
@@ -42,6 +36,15 @@ public enum MessageStateEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * Sampled_ Value. Context. Reading_ Context_ Code
- * urn:x-oca:ocpp:uid:1:569261
  * Type of detail value: start, end or sample. Default = "Sample.Periodic"
  */
 public enum ReadingContextEnum {
@@ -19,7 +17,6 @@ public enum ReadingContextEnum {
     TRANSACTION_BEGIN("Transaction.Begin"),
     TRANSACTION_END("Transaction.End"),
     TRIGGER("Trigger");
-    private final String value;
     private final static Map<String, ReadingContextEnum> CONSTANTS = new HashMap<String, ReadingContextEnum>();
 
     static {
@@ -28,17 +25,10 @@ public enum ReadingContextEnum {
         }
     }
 
+    private final String value;
+
     ReadingContextEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ReadingContextEnum fromValue(String value) {
@@ -48,6 +38,15 @@ public enum ReadingContextEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -1,22 +1,17 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class DataTransferRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * May be used to indicate a specific message or implementation.
      */
@@ -35,18 +30,32 @@ public class DataTransferRequest implements JsonInterface {
      */
     @Required
     private String vendorId;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public DataTransferRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param data      Data without specified length or format. This needs to be decided by both parties (Open to implementation).
+     *                  .
+     * @param messageId May be used to indicate a specific message or implementation.
+     *                  .
+     * @param vendorId  This identifies the Vendor specific implementation
+     *                  <p>
+     *                  .
      */
-    public void setCustomData(CustomData customData) {
+    public DataTransferRequest(String messageId, Object data, String vendorId, CustomData customData) {
+        super();
+        this.messageId = messageId;
+        this.data = data;
+        this.vendorId = vendorId;
         this.customData = customData;
     }
 
@@ -98,6 +107,20 @@ public class DataTransferRequest implements JsonInterface {
         this.vendorId = vendorId;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -105,7 +128,12 @@ public class DataTransferRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("messageId", messageId);
+        json.addProperty("data", data.toString());
+        json.addProperty("vendorId", vendorId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -116,7 +144,22 @@ public class DataTransferRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("messageId")) {
+            this.messageId = jsonObject.get("messageId").getAsString();
+        }
+
+        if (jsonObject.has("data")) {
+            this.data = jsonObject.getAsJsonObject("data").getAsString();
+        }
+
+        if (jsonObject.has("vendorId")) {
+            this.vendorId = jsonObject.get("vendorId").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -126,18 +169,19 @@ public class DataTransferRequest implements JsonInterface {
         if (!(obj instanceof DataTransferRequest))
             return false;
         DataTransferRequest that = (DataTransferRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(messageId, that.messageId)
-                && Objects.equals(data, that.data)
-                && Objects.equals(vendorId, that.vendorId);
+        return Objects.equals(this.messageId, that.messageId)
+                && Objects.equals(this.vendorId, that.vendorId)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.data, that.data);
     }
 
     @Override
     public int hashCode() {
-        int result = (messageId != null ? messageId.hashCode() : 0);
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (vendorId != null ? vendorId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.messageId != null ? this.messageId.hashCode() : 0);
+        result = 31 * result + (this.vendorId != null ? this.vendorId.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.data != null ? this.data.hashCode() : 0);
         return result;
     }
 }

@@ -12,7 +12,6 @@ public enum UnpublishFirmwareStatusEnum {
     DOWNLOAD_ONGOING("DownloadOngoing"),
     NO_FIRMWARE("NoFirmware"),
     UNPUBLISHED("Unpublished");
-    private final String value;
     private final static Map<String, UnpublishFirmwareStatusEnum> CONSTANTS = new HashMap<String, UnpublishFirmwareStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum UnpublishFirmwareStatusEnum {
         }
     }
 
+    private final String value;
+
     UnpublishFirmwareStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static UnpublishFirmwareStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum UnpublishFirmwareStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

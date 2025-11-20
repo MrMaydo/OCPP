@@ -23,7 +23,6 @@ public enum FirmwareStatusEnum {
     INSTALL_VERIFICATION_FAILED("InstallVerificationFailed"),
     INVALID_SIGNATURE("InvalidSignature"),
     SIGNATURE_VERIFIED("SignatureVerified");
-    private final String value;
     private final static Map<String, FirmwareStatusEnum> CONSTANTS = new HashMap<String, FirmwareStatusEnum>();
 
     static {
@@ -32,17 +31,10 @@ public enum FirmwareStatusEnum {
         }
     }
 
+    private final String value;
+
     FirmwareStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static FirmwareStatusEnum fromValue(String value) {
@@ -52,6 +44,15 @@ public enum FirmwareStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

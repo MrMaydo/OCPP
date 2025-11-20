@@ -12,7 +12,6 @@ public enum HashAlgorithmEnum {
     SHA_256("SHA256"),
     SHA_384("SHA384"),
     SHA_512("SHA512");
-    private final String value;
     private final static Map<String, HashAlgorithmEnum> CONSTANTS = new HashMap<String, HashAlgorithmEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum HashAlgorithmEnum {
         }
     }
 
+    private final String value;
+
     HashAlgorithmEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static HashAlgorithmEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum HashAlgorithmEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

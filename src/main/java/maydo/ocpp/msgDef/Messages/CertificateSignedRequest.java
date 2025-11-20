@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,19 +8,13 @@ import maydo.ocpp.msgDef.Enumerations.CertificateSigningUseEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class CertificateSignedRequest implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * The signed PEM encoded X.509 certificate. This can also contain the necessary sub CA certificates. In that case, the order of the bundle should follow the certificate chain, starting from the leaf certificate.
+     * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
      * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
      * <p>
@@ -32,23 +27,41 @@ public class CertificateSignedRequest implements JsonInterface {
      */
     @Optional
     private CertificateSigningUseEnum certificateType;
-
+    /**
+     * *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
+     */
+    @Optional
+    private Integer requestId;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CertificateSignedRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param certificateChain The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
+     *                         <p>
+     *                         The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
+     *                         .
+     * @param requestId        *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
+     *                         .
      */
-    public void setCustomData(CustomData customData) {
+    public CertificateSignedRequest(String certificateChain, CertificateSigningUseEnum certificateType, Integer requestId, CustomData customData) {
+        super();
+        this.certificateChain = certificateChain;
+        this.certificateType = certificateType;
+        this.requestId = requestId;
         this.customData = customData;
     }
 
     /**
-     * The signed PEM encoded X.509 certificate. This can also contain the necessary sub CA certificates. In that case, the order of the bundle should follow the certificate chain, starting from the leaf certificate.
+     * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
      * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
      * <p>
@@ -59,7 +72,7 @@ public class CertificateSignedRequest implements JsonInterface {
     }
 
     /**
-     * The signed PEM encoded X.509 certificate. This can also contain the necessary sub CA certificates. In that case, the order of the bundle should follow the certificate chain, starting from the leaf certificate.
+     * The signed PEM encoded X.509 certificate. This SHALL also contain the necessary sub CA certificates, when applicable. The order of the bundle follows the certificate chain, starting from the leaf certificate.
      * <p>
      * The Configuration Variable &lt;&lt;configkey-max-certificate-chain-size,MaxCertificateChainSize&gt;&gt; can be used to limit the maximum size of this field.
      * <p>
@@ -83,6 +96,34 @@ public class CertificateSignedRequest implements JsonInterface {
         this.certificateType = certificateType;
     }
 
+    /**
+     * *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
+     */
+    public Integer getRequestId() {
+        return requestId;
+    }
+
+    /**
+     * *(2.1)* RequestId to correlate this message with the SignCertificateRequest.
+     */
+    public void setRequestId(Integer requestId) {
+        this.requestId = requestId;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -90,7 +131,12 @@ public class CertificateSignedRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("certificateChain", certificateChain);
+        json.addProperty("certificateType", certificateType.toString());
+        json.addProperty("requestId", requestId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -101,7 +147,23 @@ public class CertificateSignedRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("certificateChain")) {
+            this.certificateChain = jsonObject.get("certificateChain").getAsString();
+        }
+
+        if (jsonObject.has("certificateType")) {
+            this.certificateType = CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+        }
+
+        if (jsonObject.has("requestId")) {
+            this.requestId = jsonObject.get("requestId").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -111,16 +173,19 @@ public class CertificateSignedRequest implements JsonInterface {
         if (!(obj instanceof CertificateSignedRequest))
             return false;
         CertificateSignedRequest that = (CertificateSignedRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(certificateChain, that.certificateChain)
-                && certificateType == that.certificateType;
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.certificateChain, that.certificateChain)
+                && Objects.equals(this.requestId, that.requestId)
+                && Objects.equals(this.certificateType, that.certificateType);
     }
 
     @Override
     public int hashCode() {
-        int result = (certificateChain != null ? certificateChain.hashCode() : 0);
-        result = 31 * result + (certificateType != null ? certificateType.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.certificateChain != null ? this.certificateChain.hashCode() : 0);
+        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
+        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
         return result;
     }
 }

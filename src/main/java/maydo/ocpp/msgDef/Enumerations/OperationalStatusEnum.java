@@ -11,7 +11,6 @@ public enum OperationalStatusEnum {
 
     INOPERATIVE("Inoperative"),
     OPERATIVE("Operative");
-    private final String value;
     private final static Map<String, OperationalStatusEnum> CONSTANTS = new HashMap<String, OperationalStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum OperationalStatusEnum {
         }
     }
 
+    private final String value;
+
     OperationalStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OperationalStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum OperationalStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

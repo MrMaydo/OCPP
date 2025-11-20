@@ -1,40 +1,80 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
 /**
- * Wireless_ Communication_ Module
- * urn:x-oca:ocpp:uid:2:233306
  * Defines parameters required for initiating and maintaining wireless communication with other devices.
  */
 public class Modem implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Wireless_ Communication_ Module. ICCID. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569327
      * This contains the ICCID of the modem’s SIM card.
      */
     @Optional
     private String iccid;
     /**
-     * Wireless_ Communication_ Module. IMSI. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569328
      * This contains the IMSI of the modem’s SIM card.
      */
     @Optional
     private String imsi;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Modem() {
+    }
+
+    /**
+     * @param iccid This contains the ICCID of the modem’s SIM card.
+     *              .
+     * @param imsi  This contains the IMSI of the modem’s SIM card.
+     *              .
+     */
+    public Modem(String iccid, String imsi, CustomData customData) {
+        super();
+        this.iccid = iccid;
+        this.imsi = imsi;
+        this.customData = customData;
+    }
+
+    /**
+     * This contains the ICCID of the modem’s SIM card.
+     */
+    public String getIccid() {
+        return iccid;
+    }
+
+    /**
+     * This contains the ICCID of the modem’s SIM card.
+     */
+    public void setIccid(String iccid) {
+        this.iccid = iccid;
+    }
+
+    /**
+     * This contains the IMSI of the modem’s SIM card.
+     */
+    public String getImsi() {
+        return imsi;
+    }
+
+    /**
+     * This contains the IMSI of the modem’s SIM card.
+     */
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -50,42 +90,6 @@ public class Modem implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Wireless_ Communication_ Module. ICCID. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569327
-     * This contains the ICCID of the modem’s SIM card.
-     */
-    public String getIccid() {
-        return iccid;
-    }
-
-    /**
-     * Wireless_ Communication_ Module. ICCID. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569327
-     * This contains the ICCID of the modem’s SIM card.
-     */
-    public void setIccid(String iccid) {
-        this.iccid = iccid;
-    }
-
-    /**
-     * Wireless_ Communication_ Module. IMSI. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569328
-     * This contains the IMSI of the modem’s SIM card.
-     */
-    public String getImsi() {
-        return imsi;
-    }
-
-    /**
-     * Wireless_ Communication_ Module. IMSI. CI20_ Text
-     * urn:x-oca:ocpp:uid:1:569328
-     * This contains the IMSI of the modem’s SIM card.
-     */
-    public void setImsi(String imsi) {
-        this.imsi = imsi;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -93,7 +97,11 @@ public class Modem implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("iccid", iccid);
+        json.addProperty("imsi", imsi);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -104,7 +112,19 @@ public class Modem implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("iccid")) {
+            this.iccid = jsonObject.get("iccid").getAsString();
+        }
+
+        if (jsonObject.has("imsi")) {
+            this.imsi = jsonObject.get("imsi").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -114,16 +134,17 @@ public class Modem implements JsonInterface {
         if (!(obj instanceof Modem))
             return false;
         Modem that = (Modem) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(iccid, that.iccid)
-                && Objects.equals(imsi, that.imsi);
+        return Objects.equals(this.iccid, that.iccid)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.imsi, that.imsi);
     }
 
     @Override
     public int hashCode() {
-        int result = (iccid != null ? iccid.hashCode() : 0);
-        result = 31 * result + (imsi != null ? imsi.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.iccid != null ? this.iccid.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.imsi != null ? this.imsi.hashCode() : 0);
         return result;
     }
 }

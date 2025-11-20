@@ -1,30 +1,18 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.CostKindEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Cost
- * urn:x-oca:ocpp:uid:2:233258
- */
 public class Cost implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Cost. Cost_ Kind. Cost_ Kind_ Code
-     * urn:x-oca:ocpp:uid:1:569243
      * The kind of cost referred to in the message element amount
      * <p>
      * (Required)
@@ -32,8 +20,6 @@ public class Cost implements JsonInterface {
     @Required
     private CostKindEnum costKind;
     /**
-     * Cost. Amount. Amount
-     * urn:x-oca:ocpp:uid:1:569244
      * The estimated or actual cost per kWh
      * <p>
      * (Required)
@@ -41,12 +27,85 @@ public class Cost implements JsonInterface {
     @Required
     private Integer amount;
     /**
-     * Cost. Amount_ Multiplier. Integer
-     * urn:x-oca:ocpp:uid:1:569245
      * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
      */
     @Optional
     private Integer amountMultiplier;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Cost() {
+    }
+
+    /**
+     * @param amount           The estimated or actual cost per kWh
+     *                         .
+     * @param amountMultiplier Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
+     *                         .
+     */
+    public Cost(CostKindEnum costKind, Integer amount, Integer amountMultiplier, CustomData customData) {
+        super();
+        this.costKind = costKind;
+        this.amount = amount;
+        this.amountMultiplier = amountMultiplier;
+        this.customData = customData;
+    }
+
+    /**
+     * The kind of cost referred to in the message element amount
+     * <p>
+     * (Required)
+     */
+    public CostKindEnum getCostKind() {
+        return costKind;
+    }
+
+    /**
+     * The kind of cost referred to in the message element amount
+     * <p>
+     * (Required)
+     */
+    public void setCostKind(CostKindEnum costKind) {
+        this.costKind = costKind;
+    }
+
+    /**
+     * The estimated or actual cost per kWh
+     * <p>
+     * (Required)
+     */
+    public Integer getAmount() {
+        return amount;
+    }
+
+    /**
+     * The estimated or actual cost per kWh
+     * <p>
+     * (Required)
+     */
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
+     */
+    public Integer getAmountMultiplier() {
+        return amountMultiplier;
+    }
+
+    /**
+     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
+     */
+    public void setAmountMultiplier(Integer amountMultiplier) {
+        this.amountMultiplier = amountMultiplier;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -62,68 +121,6 @@ public class Cost implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Cost. Cost_ Kind. Cost_ Kind_ Code
-     * urn:x-oca:ocpp:uid:1:569243
-     * The kind of cost referred to in the message element amount
-     * <p>
-     * (Required)
-     */
-    public CostKindEnum getCostKind() {
-        return costKind;
-    }
-
-    /**
-     * Cost. Cost_ Kind. Cost_ Kind_ Code
-     * urn:x-oca:ocpp:uid:1:569243
-     * The kind of cost referred to in the message element amount
-     * <p>
-     * (Required)
-     */
-    public void setCostKind(CostKindEnum costKind) {
-        this.costKind = costKind;
-    }
-
-    /**
-     * Cost. Amount. Amount
-     * urn:x-oca:ocpp:uid:1:569244
-     * The estimated or actual cost per kWh
-     * <p>
-     * (Required)
-     */
-    public Integer getAmount() {
-        return amount;
-    }
-
-    /**
-     * Cost. Amount. Amount
-     * urn:x-oca:ocpp:uid:1:569244
-     * The estimated or actual cost per kWh
-     * <p>
-     * (Required)
-     */
-    public void setAmount(Integer amount) {
-        this.amount = amount;
-    }
-
-    /**
-     * Cost. Amount_ Multiplier. Integer
-     * urn:x-oca:ocpp:uid:1:569245
-     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     */
-    public Integer getAmountMultiplier() {
-        return amountMultiplier;
-    }
-
-    /**
-     * Cost. Amount_ Multiplier. Integer
-     * urn:x-oca:ocpp:uid:1:569245
-     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     */
-    public void setAmountMultiplier(Integer amountMultiplier) {
-        this.amountMultiplier = amountMultiplier;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -131,7 +128,12 @@ public class Cost implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("costKind", costKind.toString());
+        json.addProperty("amount", amount);
+        json.addProperty("amountMultiplier", amountMultiplier);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -142,7 +144,23 @@ public class Cost implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("costKind")) {
+            this.costKind = CostKindEnum.valueOf(jsonObject.get("costKind").getAsString());
+        }
+
+        if (jsonObject.has("amount")) {
+            this.amount = jsonObject.get("amount").getAsInt();
+        }
+
+        if (jsonObject.has("amountMultiplier")) {
+            this.amountMultiplier = jsonObject.get("amountMultiplier").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -152,18 +170,19 @@ public class Cost implements JsonInterface {
         if (!(obj instanceof Cost))
             return false;
         Cost that = (Cost) obj;
-        return Objects.equals(customData, that.customData)
-                && costKind == that.costKind
-                && Objects.equals(amount, that.amount)
-                && Objects.equals(amountMultiplier, that.amountMultiplier);
+        return Objects.equals(this.costKind, that.costKind)
+                && Objects.equals(this.amount, that.amount)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.amountMultiplier, that.amountMultiplier);
     }
 
     @Override
     public int hashCode() {
-        int result = (costKind != null ? costKind.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
-        result = 31 * result + (amountMultiplier != null ? amountMultiplier.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.costKind != null ? this.costKind.hashCode() : 0);
+        result = 31 * result + (this.amount != null ? this.amount.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.amountMultiplier != null ? this.amountMultiplier.hashCode() : 0);
         return result;
     }
 }

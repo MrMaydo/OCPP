@@ -11,7 +11,6 @@ public enum GetCertificateStatusEnum {
 
     ACCEPTED("Accepted"),
     FAILED("Failed");
-    private final String value;
     private final static Map<String, GetCertificateStatusEnum> CONSTANTS = new HashMap<String, GetCertificateStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum GetCertificateStatusEnum {
         }
     }
 
+    private final String value;
+
     GetCertificateStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GetCertificateStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum GetCertificateStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

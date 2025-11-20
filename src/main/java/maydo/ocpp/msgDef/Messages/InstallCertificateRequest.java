@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,17 +8,11 @@ import maydo.ocpp.msgDef.Enumerations.InstallCertificateUseEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class InstallCertificateRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Indicates the certificate type that is sent.
      * <p>
@@ -32,18 +27,26 @@ public class InstallCertificateRequest implements JsonInterface {
      */
     @Required
     private String certificate;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public InstallCertificateRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param certificate A PEM encoded X.509 certificate.
+     *                    .
      */
-    public void setCustomData(CustomData customData) {
+    public InstallCertificateRequest(InstallCertificateUseEnum certificateType, String certificate, CustomData customData) {
+        super();
+        this.certificateType = certificateType;
+        this.certificate = certificate;
         this.customData = customData;
     }
 
@@ -83,6 +86,20 @@ public class InstallCertificateRequest implements JsonInterface {
         this.certificate = certificate;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -90,7 +107,11 @@ public class InstallCertificateRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("certificateType", certificateType.toString());
+        json.addProperty("certificate", certificate);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -101,7 +122,19 @@ public class InstallCertificateRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("certificateType")) {
+            this.certificateType = InstallCertificateUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+        }
+
+        if (jsonObject.has("certificate")) {
+            this.certificate = jsonObject.get("certificate").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -111,16 +144,17 @@ public class InstallCertificateRequest implements JsonInterface {
         if (!(obj instanceof InstallCertificateRequest))
             return false;
         InstallCertificateRequest that = (InstallCertificateRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && certificateType == that.certificateType
-                && Objects.equals(certificate, that.certificate);
+        return Objects.equals(this.certificate, that.certificate)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.certificateType, that.certificateType);
     }
 
     @Override
     public int hashCode() {
-        int result = (certificateType != null ? certificateType.hashCode() : 0);
-        result = 31 * result + (certificate != null ? certificate.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.certificate != null ? this.certificate.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
         return result;
     }
 }

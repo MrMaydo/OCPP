@@ -1,39 +1,23 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import maydo.ocpp.msgDef.Enumerations.ChargingLimitSourceEnum;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-
-/**
- * Charging_ Profile
- * urn:x-oca:ocpp:uid:2:233255
- * A ChargingProfile consists of ChargingSchedule, describing the amount of power or current that can be delivered per time interval.
- */
 public class ChargingProfileCriterion implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
-     * urn:x-oca:ocpp:uid:1:569231
      * Defines the purpose of the schedule transferred by this profile
      */
     @Optional
     private ChargingProfilePurposeEnum chargingProfilePurpose;
     /**
-     * Charging_ Profile. Stack_ Level. Counter
-     * urn:x-oca:ocpp:uid:1:569230
      * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
      */
     @Optional
@@ -42,30 +26,43 @@ public class ChargingProfileCriterion implements JsonInterface {
      * List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
      */
     @Optional
-    private List<Integer> chargingProfileId = null;
+    private List<Integer> chargingProfileId;
     /**
-     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource.
+     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
      */
     @Optional
-    private List<ChargingLimitSourceEnum> chargingLimitSource = null;
-
+    private List<String> chargingLimitSource;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ChargingProfileCriterion() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param chargingProfileId   List of all the chargingProfileIds requested. Any ChargingProfile that matches one of these profiles will be reported. If omitted, the Charging Station SHALL not filter on chargingProfileId. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-charging-profile-entries,ChargingProfileEntries.maxLimit&gt;&gt;
+     *                            <p>
+     *                            .
+     * @param stackLevel          Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
+     *                            .
+     * @param chargingLimitSource For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
+     *                            .
      */
-    public void setCustomData(CustomData customData) {
+    public ChargingProfileCriterion(ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, List<Integer> chargingProfileId, List<String> chargingLimitSource, CustomData customData) {
+        super();
+        this.chargingProfilePurpose = chargingProfilePurpose;
+        this.stackLevel = stackLevel;
+        this.chargingProfileId = chargingProfileId;
+        this.chargingLimitSource = chargingLimitSource;
         this.customData = customData;
     }
 
     /**
-     * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
-     * urn:x-oca:ocpp:uid:1:569231
      * Defines the purpose of the schedule transferred by this profile
      */
     public ChargingProfilePurposeEnum getChargingProfilePurpose() {
@@ -73,8 +70,6 @@ public class ChargingProfileCriterion implements JsonInterface {
     }
 
     /**
-     * Charging_ Profile. Charging_ Profile_ Purpose. Charging_ Profile_ Purpose_ Code
-     * urn:x-oca:ocpp:uid:1:569231
      * Defines the purpose of the schedule transferred by this profile
      */
     public void setChargingProfilePurpose(ChargingProfilePurposeEnum chargingProfilePurpose) {
@@ -82,8 +77,6 @@ public class ChargingProfileCriterion implements JsonInterface {
     }
 
     /**
-     * Charging_ Profile. Stack_ Level. Counter
-     * urn:x-oca:ocpp:uid:1:569230
      * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
      */
     public Integer getStackLevel() {
@@ -91,8 +84,6 @@ public class ChargingProfileCriterion implements JsonInterface {
     }
 
     /**
-     * Charging_ Profile. Stack_ Level. Counter
-     * urn:x-oca:ocpp:uid:1:569230
      * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
      */
     public void setStackLevel(Integer stackLevel) {
@@ -114,17 +105,31 @@ public class ChargingProfileCriterion implements JsonInterface {
     }
 
     /**
-     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource.
+     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
      */
-    public List<ChargingLimitSourceEnum> getChargingLimitSource() {
+    public List<String> getChargingLimitSource() {
         return chargingLimitSource;
     }
 
     /**
-     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource.
+     * For which charging limit sources, charging profiles SHALL be reported. If omitted, the Charging Station SHALL not filter on chargingLimitSource. Values defined in Appendix as ChargingLimitSourceEnumStringType.
      */
-    public void setChargingLimitSource(List<ChargingLimitSourceEnum> chargingLimitSource) {
+    public void setChargingLimitSource(List<String> chargingLimitSource) {
         this.chargingLimitSource = chargingLimitSource;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -134,7 +139,11 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
+        json.addProperty("stackLevel", stackLevel);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -145,7 +154,19 @@ public class ChargingProfileCriterion implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("chargingProfilePurpose")) {
+            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+        }
+
+        if (jsonObject.has("stackLevel")) {
+            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -155,20 +176,21 @@ public class ChargingProfileCriterion implements JsonInterface {
         if (!(obj instanceof ChargingProfileCriterion))
             return false;
         ChargingProfileCriterion that = (ChargingProfileCriterion) obj;
-        return Objects.equals(customData, that.customData)
-                && chargingProfilePurpose == that.chargingProfilePurpose
-                && Objects.equals(stackLevel, that.stackLevel)
-                && Objects.equals(chargingProfileId, that.chargingProfileId)
-                && Objects.equals(chargingLimitSource, that.chargingLimitSource);
+        return Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.stackLevel, that.stackLevel)
+                && Objects.equals(this.chargingProfileId, that.chargingProfileId)
+                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
     }
 
     @Override
     public int hashCode() {
-        int result = (chargingProfilePurpose != null ? chargingProfilePurpose.hashCode() : 0);
-        result = 31 * result + (stackLevel != null ? stackLevel.hashCode() : 0);
-        result = 31 * result + (chargingProfileId != null ? chargingProfileId.hashCode() : 0);
-        result = 31 * result + (chargingLimitSource != null ? chargingLimitSource.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.chargingProfilePurpose != null ? this.chargingProfilePurpose.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.stackLevel != null ? this.stackLevel.hashCode() : 0);
+        result = 31 * result + (this.chargingProfileId != null ? this.chargingProfileId.hashCode() : 0);
+        result = 31 * result + (this.chargingLimitSource != null ? this.chargingLimitSource.hashCode() : 0);
         return result;
     }
 }

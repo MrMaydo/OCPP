@@ -11,7 +11,6 @@ public enum RequestStartStopStatusEnum {
 
     ACCEPTED("Accepted"),
     REJECTED("Rejected");
-    private final String value;
     private final static Map<String, RequestStartStopStatusEnum> CONSTANTS = new HashMap<String, RequestStartStopStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum RequestStartStopStatusEnum {
         }
     }
 
+    private final String value;
+
     RequestStartStopStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static RequestStartStopStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum RequestStartStopStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

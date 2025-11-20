@@ -12,7 +12,6 @@ public enum CustomerInformationStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     INVALID("Invalid");
-    private final String value;
     private final static Map<String, CustomerInformationStatusEnum> CONSTANTS = new HashMap<String, CustomerInformationStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum CustomerInformationStatusEnum {
         }
     }
 
+    private final String value;
+
     CustomerInformationStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CustomerInformationStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum CustomerInformationStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

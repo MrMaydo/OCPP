@@ -1,23 +1,18 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.GetCertificateIdUseEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
 public class CertificateHashDataChain implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * (Required)
      */
@@ -30,21 +25,25 @@ public class CertificateHashDataChain implements JsonInterface {
      */
     @Required
     private GetCertificateIdUseEnum certificateType;
-
     @Optional
-    private List<CertificateHashData> childCertificateHashData = null;
-
+    private List<CertificateHashData> childCertificateHashData;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CertificateHashDataChain() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public CertificateHashDataChain(CertificateHashData certificateHashData, GetCertificateIdUseEnum certificateType, List<CertificateHashData> childCertificateHashData, CustomData customData) {
+        super();
+        this.certificateHashData = certificateHashData;
+        this.certificateType = certificateType;
+        this.childCertificateHashData = childCertificateHashData;
         this.customData = customData;
     }
 
@@ -88,6 +87,20 @@ public class CertificateHashDataChain implements JsonInterface {
         this.childCertificateHashData = childCertificateHashData;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -95,7 +108,11 @@ public class CertificateHashDataChain implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("certificateHashData", certificateHashData.toJsonObject());
+        json.addProperty("certificateType", certificateType.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -106,7 +123,20 @@ public class CertificateHashDataChain implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("certificateHashData")) {
+            this.certificateHashData = new CertificateHashData();
+            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+        }
+
+        if (jsonObject.has("certificateType")) {
+            this.certificateType = GetCertificateIdUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -116,18 +146,19 @@ public class CertificateHashDataChain implements JsonInterface {
         if (!(obj instanceof CertificateHashDataChain))
             return false;
         CertificateHashDataChain that = (CertificateHashDataChain) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(certificateHashData, that.certificateHashData)
-                && certificateType == that.certificateType
-                && Objects.equals(childCertificateHashData, that.childCertificateHashData);
+        return Objects.equals(this.childCertificateHashData, that.childCertificateHashData)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.certificateHashData, that.certificateHashData)
+                && Objects.equals(this.certificateType, that.certificateType);
     }
 
     @Override
     public int hashCode() {
-        int result = (certificateHashData != null ? certificateHashData.hashCode() : 0);
-        result = 31 * result + (certificateType != null ? certificateType.hashCode() : 0);
-        result = 31 * result + (childCertificateHashData != null ? childCertificateHashData.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.childCertificateHashData != null ? this.childCertificateHashData.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
+        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
         return result;
     }
 }

@@ -3,19 +3,19 @@ package maydo.ocpp.msgDef.Enumerations;
 import java.util.HashMap;
 import java.util.Map;
 
-
-/**
- * Charging_ Needs. Requested. Energy_ Transfer_ Mode_ Code
- * urn:x-oca:ocpp:uid:1:569209
- * Mode of energy transfer requested by the EV.
- */
 public enum EnergyTransferModeEnum {
 
-    DC("DC"),
     AC_SINGLE_PHASE("AC_single_phase"),
     AC_TWO_PHASE("AC_two_phase"),
-    AC_THREE_PHASE("AC_three_phase");
-    private final String value;
+    AC_THREE_PHASE("AC_three_phase"),
+    DC("DC"),
+    AC_BPT("AC_BPT"),
+    AC_BPT_DER("AC_BPT_DER"),
+    AC_DER("AC_DER"),
+    DC_BPT("DC_BPT"),
+    DC_ACDP("DC_ACDP"),
+    DC_ACDP_BPT("DC_ACDP_BPT"),
+    WPT("WPT");
     private final static Map<String, EnergyTransferModeEnum> CONSTANTS = new HashMap<String, EnergyTransferModeEnum>();
 
     static {
@@ -24,17 +24,10 @@ public enum EnergyTransferModeEnum {
         }
     }
 
+    private final String value;
+
     EnergyTransferModeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static EnergyTransferModeEnum fromValue(String value) {
@@ -44,6 +37,15 @@ public enum EnergyTransferModeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

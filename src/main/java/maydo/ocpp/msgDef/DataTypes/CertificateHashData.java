@@ -1,22 +1,17 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.HashAlgorithmEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class CertificateHashData implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Used algorithms for the hashes provided.
      * <p>
@@ -25,7 +20,10 @@ public class CertificateHashData implements JsonInterface {
     @Required
     private HashAlgorithmEnum hashAlgorithm;
     /**
-     * Hashed value of the Issuer DN (Distinguished Name).
+     * The hash of the issuer’s distinguished
+     * name (DN), that must be calculated over the DER
+     * encoding of the issuer’s name field in the certificate
+     * being checked.
      * <p>
      * <p>
      * (Required)
@@ -33,31 +31,57 @@ public class CertificateHashData implements JsonInterface {
     @Required
     private String issuerNameHash;
     /**
-     * Hashed value of the issuers public key
+     * The hash of the DER encoded public key:
+     * the value (excluding tag and length) of the subject
+     * public key field in the issuer’s certificate.
      * <p>
      * (Required)
      */
     @Required
     private String issuerKeyHash;
     /**
-     * The serial number of the certificate.
+     * The string representation of the
+     * hexadecimal value of the serial number without the
+     * prefix "0x" and without leading zeroes.
      * <p>
      * (Required)
      */
     @Required
     private String serialNumber;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CertificateHashData() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param issuerNameHash The hash of the issuer’s distinguished
+     *                       name (DN), that must be calculated over the DER
+     *                       encoding of the issuer’s name field in the certificate
+     *                       being checked.
+     *                       <p>
+     *                       .
+     * @param issuerKeyHash  The hash of the DER encoded public key:
+     *                       the value (excluding tag and length) of the subject
+     *                       public key field in the issuer’s certificate.
+     *                       .
+     * @param serialNumber   The string representation of the
+     *                       hexadecimal value of the serial number without the
+     *                       prefix "0x" and without leading zeroes.
+     *                       .
      */
-    public void setCustomData(CustomData customData) {
+    public CertificateHashData(HashAlgorithmEnum hashAlgorithm, String issuerNameHash, String issuerKeyHash, String serialNumber, CustomData customData) {
+        super();
+        this.hashAlgorithm = hashAlgorithm;
+        this.issuerNameHash = issuerNameHash;
+        this.issuerKeyHash = issuerKeyHash;
+        this.serialNumber = serialNumber;
         this.customData = customData;
     }
 
@@ -80,7 +104,10 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * Hashed value of the Issuer DN (Distinguished Name).
+     * The hash of the issuer’s distinguished
+     * name (DN), that must be calculated over the DER
+     * encoding of the issuer’s name field in the certificate
+     * being checked.
      * <p>
      * <p>
      * (Required)
@@ -90,7 +117,10 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * Hashed value of the Issuer DN (Distinguished Name).
+     * The hash of the issuer’s distinguished
+     * name (DN), that must be calculated over the DER
+     * encoding of the issuer’s name field in the certificate
+     * being checked.
      * <p>
      * <p>
      * (Required)
@@ -100,7 +130,9 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * Hashed value of the issuers public key
+     * The hash of the DER encoded public key:
+     * the value (excluding tag and length) of the subject
+     * public key field in the issuer’s certificate.
      * <p>
      * (Required)
      */
@@ -109,7 +141,9 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * Hashed value of the issuers public key
+     * The hash of the DER encoded public key:
+     * the value (excluding tag and length) of the subject
+     * public key field in the issuer’s certificate.
      * <p>
      * (Required)
      */
@@ -118,7 +152,9 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * The serial number of the certificate.
+     * The string representation of the
+     * hexadecimal value of the serial number without the
+     * prefix "0x" and without leading zeroes.
      * <p>
      * (Required)
      */
@@ -127,12 +163,28 @@ public class CertificateHashData implements JsonInterface {
     }
 
     /**
-     * The serial number of the certificate.
+     * The string representation of the
+     * hexadecimal value of the serial number without the
+     * prefix "0x" and without leading zeroes.
      * <p>
      * (Required)
      */
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -142,7 +194,13 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("hashAlgorithm", hashAlgorithm.toString());
+        json.addProperty("issuerNameHash", issuerNameHash);
+        json.addProperty("issuerKeyHash", issuerKeyHash);
+        json.addProperty("serialNumber", serialNumber);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -153,7 +211,27 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("hashAlgorithm")) {
+            this.hashAlgorithm = HashAlgorithmEnum.valueOf(jsonObject.get("hashAlgorithm").getAsString());
+        }
+
+        if (jsonObject.has("issuerNameHash")) {
+            this.issuerNameHash = jsonObject.get("issuerNameHash").getAsString();
+        }
+
+        if (jsonObject.has("issuerKeyHash")) {
+            this.issuerKeyHash = jsonObject.get("issuerKeyHash").getAsString();
+        }
+
+        if (jsonObject.has("serialNumber")) {
+            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -163,20 +241,21 @@ public class CertificateHashData implements JsonInterface {
         if (!(obj instanceof CertificateHashData))
             return false;
         CertificateHashData that = (CertificateHashData) obj;
-        return Objects.equals(customData, that.customData)
-                && hashAlgorithm == that.hashAlgorithm
-                && Objects.equals(issuerNameHash, that.issuerNameHash)
-                && Objects.equals(issuerKeyHash, that.issuerKeyHash)
-                && Objects.equals(serialNumber, that.serialNumber);
+        return Objects.equals(this.issuerNameHash, that.issuerNameHash)
+                && Objects.equals(this.issuerKeyHash, that.issuerKeyHash)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.serialNumber, that.serialNumber)
+                && Objects.equals(this.hashAlgorithm, that.hashAlgorithm);
     }
 
     @Override
     public int hashCode() {
-        int result = (hashAlgorithm != null ? hashAlgorithm.hashCode() : 0);
-        result = 31 * result + (issuerNameHash != null ? issuerNameHash.hashCode() : 0);
-        result = 31 * result + (issuerKeyHash != null ? issuerKeyHash.hashCode() : 0);
-        result = 31 * result + (serialNumber != null ? serialNumber.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.issuerNameHash != null ? this.issuerNameHash.hashCode() : 0);
+        result = 31 * result + (this.issuerKeyHash != null ? this.issuerKeyHash.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.serialNumber != null ? this.serialNumber.hashCode() : 0);
+        result = 31 * result + (this.hashAlgorithm != null ? this.hashAlgorithm.hashCode() : 0);
         return result;
     }
 }

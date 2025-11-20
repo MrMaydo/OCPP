@@ -1,26 +1,17 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.List;
 import java.util.Objects;
 
-
-/**
- * Class to hold parameters of SetVariableMonitoring request.
- */
 public class MonitoringData implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * A physical or logical component
      * <p>
@@ -39,19 +30,24 @@ public class MonitoringData implements JsonInterface {
      * (Required)
      */
     @Required
-    private List<VariableMonitoring> variableMonitoring = null;
-
+    private List<VariableMonitoring> variableMonitoring;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public MonitoringData() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public MonitoringData(Component component, Variable variable, List<VariableMonitoring> variableMonitoring, CustomData customData) {
+        super();
+        this.component = component;
+        this.variable = variable;
+        this.variableMonitoring = variableMonitoring;
         this.customData = customData;
     }
 
@@ -105,6 +101,20 @@ public class MonitoringData implements JsonInterface {
         this.variableMonitoring = variableMonitoring;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -112,7 +122,11 @@ public class MonitoringData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -123,7 +137,21 @@ public class MonitoringData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -133,18 +161,19 @@ public class MonitoringData implements JsonInterface {
         if (!(obj instanceof MonitoringData))
             return false;
         MonitoringData that = (MonitoringData) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable)
-                && Objects.equals(variableMonitoring, that.variableMonitoring);
+        return Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.variableMonitoring, that.variableMonitoring);
     }
 
     @Override
     public int hashCode() {
-        int result = (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (variableMonitoring != null ? variableMonitoring.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.variableMonitoring != null ? this.variableMonitoring.hashCode() : 0);
         return result;
     }
 }

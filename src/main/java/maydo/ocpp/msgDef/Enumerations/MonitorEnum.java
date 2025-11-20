@@ -13,8 +13,9 @@ public enum MonitorEnum {
     LOWER_THRESHOLD("LowerThreshold"),
     DELTA("Delta"),
     PERIODIC("Periodic"),
-    PERIODIC_CLOCK_ALIGNED("PeriodicClockAligned");
-    private final String value;
+    PERIODIC_CLOCK_ALIGNED("PeriodicClockAligned"),
+    TARGET_DELTA("TargetDelta"),
+    TARGET_DELTA_RELATIVE("TargetDeltaRelative");
     private final static Map<String, MonitorEnum> CONSTANTS = new HashMap<String, MonitorEnum>();
 
     static {
@@ -23,17 +24,10 @@ public enum MonitorEnum {
         }
     }
 
+    private final String value;
+
     MonitorEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MonitorEnum fromValue(String value) {
@@ -43,6 +37,15 @@ public enum MonitorEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -9,11 +9,11 @@ import java.util.Map;
  */
 public enum InstallCertificateUseEnum {
 
-    V_2_G_ROOT_CERTIFICATE("V2GRootCertificate"),
+    V2G_ROOT_CERTIFICATE("V2GRootCertificate"),
     MO_ROOT_CERTIFICATE("MORootCertificate"),
+    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate"),
     CSMS_ROOT_CERTIFICATE("CSMSRootCertificate"),
-    MANUFACTURER_ROOT_CERTIFICATE("ManufacturerRootCertificate");
-    private final String value;
+    OEM_ROOT_CERTIFICATE("OEMRootCertificate");
     private final static Map<String, InstallCertificateUseEnum> CONSTANTS = new HashMap<String, InstallCertificateUseEnum>();
 
     static {
@@ -22,17 +22,10 @@ public enum InstallCertificateUseEnum {
         }
     }
 
+    private final String value;
+
     InstallCertificateUseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static InstallCertificateUseEnum fromValue(String value) {
@@ -42,6 +35,15 @@ public enum InstallCertificateUseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,17 +8,11 @@ import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class GetCompositeScheduleRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Length of the requested schedule in seconds.
      * <p>
@@ -38,18 +33,30 @@ public class GetCompositeScheduleRequest implements JsonInterface {
      */
     @Required
     private Integer evseId;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public GetCompositeScheduleRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param duration Length of the requested schedule in seconds.
+     *                 <p>
+     *                 .
+     * @param evseId   The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
+     *                 .
      */
-    public void setCustomData(CustomData customData) {
+    public GetCompositeScheduleRequest(Integer duration, ChargingRateUnitEnum chargingRateUnit, Integer evseId, CustomData customData) {
+        super();
+        this.duration = duration;
+        this.chargingRateUnit = chargingRateUnit;
+        this.evseId = evseId;
         this.customData = customData;
     }
 
@@ -105,6 +112,20 @@ public class GetCompositeScheduleRequest implements JsonInterface {
         this.evseId = evseId;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -112,7 +133,12 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("duration", duration);
+        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
+        json.addProperty("evseId", evseId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -123,7 +149,23 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("duration")) {
+            this.duration = jsonObject.get("duration").getAsInt();
+        }
+
+        if (jsonObject.has("chargingRateUnit")) {
+            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
+        }
+
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -133,18 +175,19 @@ public class GetCompositeScheduleRequest implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleRequest))
             return false;
         GetCompositeScheduleRequest that = (GetCompositeScheduleRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(duration, that.duration)
-                && chargingRateUnit == that.chargingRateUnit
-                && Objects.equals(evseId, that.evseId);
+        return Objects.equals(this.duration, that.duration)
+                && Objects.equals(this.evseId, that.evseId)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit);
     }
 
     @Override
     public int hashCode() {
-        int result = (duration != null ? duration.hashCode() : 0);
-        result = 31 * result + (chargingRateUnit != null ? chargingRateUnit.hashCode() : 0);
-        result = 31 * result + (evseId != null ? evseId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
+        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.chargingRateUnit != null ? this.chargingRateUnit.hashCode() : 0);
         return result;
     }
 }

@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * Cost. Cost_ Kind. Cost_ Kind_ Code
- * urn:x-oca:ocpp:uid:1:569243
  * The kind of cost referred to in the message element amount
  */
 public enum CostKindEnum {
@@ -14,7 +12,6 @@ public enum CostKindEnum {
     CARBON_DIOXIDE_EMISSION("CarbonDioxideEmission"),
     RELATIVE_PRICE_PERCENTAGE("RelativePricePercentage"),
     RENEWABLE_GENERATION_PERCENTAGE("RenewableGenerationPercentage");
-    private final String value;
     private final static Map<String, CostKindEnum> CONSTANTS = new HashMap<String, CostKindEnum>();
 
     static {
@@ -23,17 +20,10 @@ public enum CostKindEnum {
         }
     }
 
+    private final String value;
+
     CostKindEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CostKindEnum fromValue(String value) {
@@ -43,6 +33,15 @@ public enum CostKindEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

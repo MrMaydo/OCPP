@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * This indicates whether the Charging Station is able to accept this request.
+ * Indicates whether the Charging Station was able to accept the request.
  */
 public enum GenericDeviceModelStatusEnum {
 
@@ -13,7 +13,6 @@ public enum GenericDeviceModelStatusEnum {
     REJECTED("Rejected"),
     NOT_SUPPORTED("NotSupported"),
     EMPTY_RESULT_SET("EmptyResultSet");
-    private final String value;
     private final static Map<String, GenericDeviceModelStatusEnum> CONSTANTS = new HashMap<String, GenericDeviceModelStatusEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum GenericDeviceModelStatusEnum {
         }
     }
 
+    private final String value;
+
     GenericDeviceModelStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GenericDeviceModelStatusEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum GenericDeviceModelStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

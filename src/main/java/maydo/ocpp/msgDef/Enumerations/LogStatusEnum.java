@@ -12,7 +12,6 @@ public enum LogStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     ACCEPTED_CANCELED("AcceptedCanceled");
-    private final String value;
     private final static Map<String, LogStatusEnum> CONSTANTS = new HashMap<String, LogStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum LogStatusEnum {
         }
     }
 
+    private final String value;
+
     LogStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static LogStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum LogStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

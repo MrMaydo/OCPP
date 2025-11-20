@@ -15,12 +15,13 @@ public enum MessageTriggerEnum {
     HEARTBEAT("Heartbeat"),
     METER_VALUES("MeterValues"),
     SIGN_CHARGING_STATION_CERTIFICATE("SignChargingStationCertificate"),
-    SIGN_V_2_G_CERTIFICATE("SignV2GCertificate"),
+    SIGN_V2G_CERTIFICATE("SignV2GCertificate"),
+    SIGN_V2G_20_CERTIFICATE("SignV2G20Certificate"),
     STATUS_NOTIFICATION("StatusNotification"),
     TRANSACTION_EVENT("TransactionEvent"),
     SIGN_COMBINED_CERTIFICATE("SignCombinedCertificate"),
-    PUBLISH_FIRMWARE_STATUS_NOTIFICATION("PublishFirmwareStatusNotification");
-    private final String value;
+    PUBLISH_FIRMWARE_STATUS_NOTIFICATION("PublishFirmwareStatusNotification"),
+    CUSTOM_TRIGGER("CustomTrigger");
     private final static Map<String, MessageTriggerEnum> CONSTANTS = new HashMap<String, MessageTriggerEnum>();
 
     static {
@@ -29,17 +30,10 @@ public enum MessageTriggerEnum {
         }
     }
 
+    private final String value;
+
     MessageTriggerEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static MessageTriggerEnum fromValue(String value) {
@@ -49,6 +43,15 @@ public enum MessageTriggerEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

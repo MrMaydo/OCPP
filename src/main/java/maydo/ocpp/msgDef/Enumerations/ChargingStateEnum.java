@@ -5,19 +5,16 @@ import java.util.Map;
 
 
 /**
- * Transaction. State. Transaction_ State_ Code
- * urn:x-oca:ocpp:uid:1:569419
  * Current charging state, is required when state
- * has changed.
+ * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
  */
 public enum ChargingStateEnum {
 
-    CHARGING("Charging"),
     EV_CONNECTED("EVConnected"),
+    CHARGING("Charging"),
     SUSPENDED_EV("SuspendedEV"),
     SUSPENDED_EVSE("SuspendedEVSE"),
     IDLE("Idle");
-    private final String value;
     private final static Map<String, ChargingStateEnum> CONSTANTS = new HashMap<String, ChargingStateEnum>();
 
     static {
@@ -26,17 +23,10 @@ public enum ChargingStateEnum {
         }
     }
 
+    private final String value;
+
     ChargingStateEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ChargingStateEnum fromValue(String value) {
@@ -46,6 +36,15 @@ public enum ChargingStateEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

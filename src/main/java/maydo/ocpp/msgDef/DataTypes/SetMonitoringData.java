@@ -1,31 +1,24 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.MonitorEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Class to hold parameters of SetVariableMonitoring request.
- */
 public class SetMonitoringData implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
      */
     @Optional
     private Integer id;
+    @Optional
+    private PeriodicEventStreamParams periodicEventStream;
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
      */
@@ -92,18 +85,65 @@ public class SetMonitoringData implements JsonInterface {
      */
     @Required
     private Variable variable;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public SetMonitoringData() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param severity    The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     *                    <p>
+     *                    The severity levels have the following meaning: +
+     *                    *0-Danger* +
+     *                    Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
+     *                    *1-Hardware Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
+     *                    *2-System Failure* +
+     *                    Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
+     *                    *3-Critical* +
+     *                    Indicates a critical error. Action is required. +
+     *                    *4-Error* +
+     *                    Indicates a non-urgent error. Action is required. +
+     *                    *5-Alert* +
+     *                    Indicates an alert event. Default severity for any type of monitoring event.  +
+     *                    *6-Warning* +
+     *                    Indicates a warning event. Action may be required. +
+     *                    *7-Notice* +
+     *                    Indicates an unusual event. No immediate action is required. +
+     *                    *8-Informational* +
+     *                    Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
+     *                    *9-Debug* +
+     *                    Indicates information useful to developers for debugging, not useful during operations.
+     *                    <p>
+     *                    .
+     * @param id          An id SHALL only be given to replace an existing monitor. The Charging Station handles the generation of id's for new monitors.
+     *                    <p>
+     *                    .
+     * @param value       Value for threshold or delta monitoring.
+     *                    For Periodic or PeriodicClockAligned this is the interval in seconds.
+     *                    <p>
+     *                    .
+     * @param transaction Monitor only active when a transaction is ongoing on a component relevant to this transaction. Default = false.
+     *                    <p>
+     *                    .
      */
-    public void setCustomData(CustomData customData) {
+    public SetMonitoringData(Integer id, PeriodicEventStreamParams periodicEventStream, Boolean transaction, Float value, MonitorEnum type, Integer severity, Component component, Variable variable, CustomData customData) {
+        super();
+        this.id = id;
+        this.periodicEventStream = periodicEventStream;
+        this.transaction = transaction;
+        this.value = value;
+        this.type = type;
+        this.severity = severity;
+        this.component = component;
+        this.variable = variable;
         this.customData = customData;
     }
 
@@ -119,6 +159,14 @@ public class SetMonitoringData implements JsonInterface {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public PeriodicEventStreamParams getPeriodicEventStream() {
+        return periodicEventStream;
+    }
+
+    public void setPeriodicEventStream(PeriodicEventStreamParams periodicEventStream) {
+        this.periodicEventStream = periodicEventStream;
     }
 
     /**
@@ -277,6 +325,20 @@ public class SetMonitoringData implements JsonInterface {
         this.variable = variable;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -284,7 +346,16 @@ public class SetMonitoringData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("periodicEventStream", periodicEventStream.toJsonObject());
+        json.addProperty("value", value);
+        json.addProperty("type", type.toString());
+        json.addProperty("severity", severity);
+        json.add("component", component.toJsonObject());
+        json.add("variable", variable.toJsonObject());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -295,7 +366,42 @@ public class SetMonitoringData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("periodicEventStream")) {
+            this.periodicEventStream = new PeriodicEventStreamParams();
+            this.periodicEventStream.fromJsonObject(jsonObject.getAsJsonObject("periodicEventStream"));
+        }
+
+        if (jsonObject.has("value")) {
+            this.value = jsonObject.get("value").getAsFloat();
+        }
+
+        if (jsonObject.has("type")) {
+            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+        }
+
+        if (jsonObject.has("severity")) {
+            this.severity = jsonObject.get("severity").getAsInt();
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -305,26 +411,29 @@ public class SetMonitoringData implements JsonInterface {
         if (!(obj instanceof SetMonitoringData))
             return false;
         SetMonitoringData that = (SetMonitoringData) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id)
-                && Objects.equals(transaction, that.transaction)
-                && Objects.equals(value, that.value)
-                && type == that.type
-                && Objects.equals(severity, that.severity)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variable, that.variable);
+        return Objects.equals(this.severity, that.severity)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id)
+                && Objects.equals(this.periodicEventStream, that.periodicEventStream)
+                && Objects.equals(this.type, that.type)
+                && Objects.equals(this.value, that.value)
+                && Objects.equals(this.transaction, that.transaction);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (transaction != null ? transaction.hashCode() : 0);
-        result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (severity != null ? severity.hashCode() : 0);
-        result = 31 * result + (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
+        result = 31 * result + (this.periodicEventStream != null ? this.periodicEventStream.hashCode() : 0);
+        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
+        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
+        result = 31 * result + (this.transaction != null ? this.transaction.hashCode() : 0);
         return result;
     }
 }

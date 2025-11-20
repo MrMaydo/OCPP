@@ -5,7 +5,7 @@ import java.util.Map;
 
 
 /**
- * Attribute type for which value is requested. When absent, default Actual is assumed.
+ * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
  */
 public enum AttributeEnum {
 
@@ -13,7 +13,6 @@ public enum AttributeEnum {
     TARGET("Target"),
     MIN_SET("MinSet"),
     MAX_SET("MaxSet");
-    private final String value;
     private final static Map<String, AttributeEnum> CONSTANTS = new HashMap<String, AttributeEnum>();
 
     static {
@@ -22,17 +21,10 @@ public enum AttributeEnum {
         }
     }
 
+    private final String value;
+
     AttributeEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static AttributeEnum fromValue(String value) {
@@ -42,6 +34,15 @@ public enum AttributeEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

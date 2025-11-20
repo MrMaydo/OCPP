@@ -5,17 +5,15 @@ import java.util.Map;
 
 
 /**
- * APN. APN_ Authentication. APN_ Authentication_ Code
- * urn:x-oca:ocpp:uid:1:568828
  * Authentication method.
  */
+
 public enum APNAuthenticationEnum {
 
+    PAP("PAP"),
     CHAP("CHAP"),
     NONE("NONE"),
-    PAP("PAP"),
     AUTO("AUTO");
-    private final String value;
     private final static Map<String, APNAuthenticationEnum> CONSTANTS = new HashMap<String, APNAuthenticationEnum>();
 
     static {
@@ -24,17 +22,10 @@ public enum APNAuthenticationEnum {
         }
     }
 
+    private final String value;
+
     APNAuthenticationEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static APNAuthenticationEnum fromValue(String value) {
@@ -44,6 +35,15 @@ public enum APNAuthenticationEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

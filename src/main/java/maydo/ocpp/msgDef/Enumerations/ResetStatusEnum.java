@@ -12,7 +12,6 @@ public enum ResetStatusEnum {
     ACCEPTED("Accepted"),
     REJECTED("Rejected"),
     SCHEDULED("Scheduled");
-    private final String value;
     private final static Map<String, ResetStatusEnum> CONSTANTS = new HashMap<String, ResetStatusEnum>();
 
     static {
@@ -21,17 +20,10 @@ public enum ResetStatusEnum {
         }
     }
 
+    private final String value;
+
     ResetStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static ResetStatusEnum fromValue(String value) {
@@ -41,6 +33,15 @@ public enum ResetStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

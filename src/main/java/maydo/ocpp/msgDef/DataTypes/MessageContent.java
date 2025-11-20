@@ -1,31 +1,18 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.MessageFormatEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
-
-/**
- * Message_ Content
- * urn:x-enexis:ecdm:uid:2:234490
- * Contains message details, for a message to be displayed on a Charging Station.
- */
 public class MessageContent implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Message_ Content. Format. Message_ Format_ Code
-     * urn:x-enexis:ecdm:uid:1:570848
      * Format of the message.
      * <p>
      * (Required)
@@ -33,22 +20,104 @@ public class MessageContent implements JsonInterface {
     @Required
     private MessageFormatEnum format;
     /**
-     * Message_ Content. Language. Language_ Code
-     * urn:x-enexis:ecdm:uid:1:570849
      * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
      */
     @Optional
     private String language;
     /**
-     * Message_ Content. Content. Message
-     * urn:x-enexis:ecdm:uid:1:570852
-     * Message contents.
+     * *(2.1)* Required. Message contents. +
+     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     * Maximum length defaults to 1024.
      * <p>
      * <p>
      * (Required)
      */
     @Required
     private String content;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public MessageContent() {
+    }
+
+    /**
+     * @param language Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     *                 .
+     * @param content  *(2.1)* Required. Message contents. +
+     *                 Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     *                 Maximum length defaults to 1024.
+     *                 <p>
+     *                 .
+     */
+    public MessageContent(MessageFormatEnum format, String language, String content, CustomData customData) {
+        super();
+        this.format = format;
+        this.language = language;
+        this.content = content;
+        this.customData = customData;
+    }
+
+    /**
+     * Format of the message.
+     * <p>
+     * (Required)
+     */
+    public MessageFormatEnum getFormat() {
+        return format;
+    }
+
+    /**
+     * Format of the message.
+     * <p>
+     * (Required)
+     */
+    public void setFormat(MessageFormatEnum format) {
+        this.format = format;
+    }
+
+    /**
+     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     */
+    public String getLanguage() {
+        return language;
+    }
+
+    /**
+     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     */
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    /**
+     * *(2.1)* Required. Message contents. +
+     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     * Maximum length defaults to 1024.
+     * <p>
+     * <p>
+     * (Required)
+     */
+    public String getContent() {
+        return content;
+    }
+
+    /**
+     * *(2.1)* Required. Message contents. +
+     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     * Maximum length defaults to 1024.
+     * <p>
+     * <p>
+     * (Required)
+     */
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -64,70 +133,6 @@ public class MessageContent implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Message_ Content. Format. Message_ Format_ Code
-     * urn:x-enexis:ecdm:uid:1:570848
-     * Format of the message.
-     * <p>
-     * (Required)
-     */
-    public MessageFormatEnum getFormat() {
-        return format;
-    }
-
-    /**
-     * Message_ Content. Format. Message_ Format_ Code
-     * urn:x-enexis:ecdm:uid:1:570848
-     * Format of the message.
-     * <p>
-     * (Required)
-     */
-    public void setFormat(MessageFormatEnum format) {
-        this.format = format;
-    }
-
-    /**
-     * Message_ Content. Language. Language_ Code
-     * urn:x-enexis:ecdm:uid:1:570849
-     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
-    public String getLanguage() {
-        return language;
-    }
-
-    /**
-     * Message_ Content. Language. Language_ Code
-     * urn:x-enexis:ecdm:uid:1:570849
-     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    /**
-     * Message_ Content. Content. Message
-     * urn:x-enexis:ecdm:uid:1:570852
-     * Message contents.
-     * <p>
-     * <p>
-     * (Required)
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * Message_ Content. Content. Message
-     * urn:x-enexis:ecdm:uid:1:570852
-     * Message contents.
-     * <p>
-     * <p>
-     * (Required)
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -135,7 +140,12 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("format", format.toString());
+        json.addProperty("language", language);
+        json.addProperty("content", content);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -146,7 +156,23 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("format")) {
+            this.format = MessageFormatEnum.valueOf(jsonObject.get("format").getAsString());
+        }
+
+        if (jsonObject.has("language")) {
+            this.language = jsonObject.get("language").getAsString();
+        }
+
+        if (jsonObject.has("content")) {
+            this.content = jsonObject.get("content").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -156,18 +182,19 @@ public class MessageContent implements JsonInterface {
         if (!(obj instanceof MessageContent))
             return false;
         MessageContent that = (MessageContent) obj;
-        return Objects.equals(customData, that.customData)
-                && format == that.format
-                && Objects.equals(language, that.language)
-                && Objects.equals(content, that.content);
+        return Objects.equals(this.format, that.format)
+                && Objects.equals(this.language, that.language)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.content, that.content);
     }
 
     @Override
     public int hashCode() {
-        int result = (format != null ? format.hashCode() : 0);
-        result = 31 * result + (language != null ? language.hashCode() : 0);
-        result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.format != null ? this.format.hashCode() : 0);
+        result = 31 * result + (this.language != null ? this.language.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.content != null ? this.content.hashCode() : 0);
         return result;
     }
 }

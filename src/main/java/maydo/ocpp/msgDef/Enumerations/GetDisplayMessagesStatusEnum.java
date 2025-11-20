@@ -11,7 +11,6 @@ public enum GetDisplayMessagesStatusEnum {
 
     ACCEPTED("Accepted"),
     UNKNOWN("Unknown");
-    private final String value;
     private final static Map<String, GetDisplayMessagesStatusEnum> CONSTANTS = new HashMap<String, GetDisplayMessagesStatusEnum>();
 
     static {
@@ -20,17 +19,10 @@ public enum GetDisplayMessagesStatusEnum {
         }
     }
 
+    private final String value;
+
     GetDisplayMessagesStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static GetDisplayMessagesStatusEnum fromValue(String value) {
@@ -40,6 +32,15 @@ public enum GetDisplayMessagesStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

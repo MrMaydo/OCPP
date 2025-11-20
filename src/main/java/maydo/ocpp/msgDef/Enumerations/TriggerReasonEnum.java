@@ -9,28 +9,35 @@ import java.util.Map;
  */
 public enum TriggerReasonEnum {
 
+    ABNORMAL_CONDITION("AbnormalCondition"),
     AUTHORIZED("Authorized"),
     CABLE_PLUGGED_IN("CablePluggedIn"),
     CHARGING_RATE_CHANGED("ChargingRateChanged"),
     CHARGING_STATE_CHANGED("ChargingStateChanged"),
+    COST_LIMIT_REACHED("CostLimitReached"),
     DEAUTHORIZED("Deauthorized"),
     ENERGY_LIMIT_REACHED("EnergyLimitReached"),
     EV_COMMUNICATION_LOST("EVCommunicationLost"),
     EV_CONNECT_TIMEOUT("EVConnectTimeout"),
-    METER_VALUE_CLOCK("MeterValueClock"),
-    METER_VALUE_PERIODIC("MeterValuePeriodic"),
-    TIME_LIMIT_REACHED("TimeLimitReached"),
-    TRIGGER("Trigger"),
-    UNLOCK_COMMAND("UnlockCommand"),
-    STOP_AUTHORIZED("StopAuthorized"),
     EV_DEPARTED("EVDeparted"),
     EV_DETECTED("EVDetected"),
-    REMOTE_STOP("RemoteStop"),
+    LIMIT_SET("LimitSet"),
+    METER_VALUE_CLOCK("MeterValueClock"),
+    METER_VALUE_PERIODIC("MeterValuePeriodic"),
+    OPERATION_MODE_CHANGED("OperationModeChanged"),
     REMOTE_START("RemoteStart"),
-    ABNORMAL_CONDITION("AbnormalCondition"),
+    REMOTE_STOP("RemoteStop"),
+    RESET_COMMAND("ResetCommand"),
+    RUNNING_COST("RunningCost"),
     SIGNED_DATA_RECEIVED("SignedDataReceived"),
-    RESET_COMMAND("ResetCommand");
-    private final String value;
+    SOC_LIMIT_REACHED("SoCLimitReached"),
+    STOP_AUTHORIZED("StopAuthorized"),
+    TARIFF_CHANGED("TariffChanged"),
+    TARIFF_NOT_ACCEPTED("TariffNotAccepted"),
+    TIME_LIMIT_REACHED("TimeLimitReached"),
+    TRIGGER("Trigger"),
+    TX_RESUMED("TxResumed"),
+    UNLOCK_COMMAND("UnlockCommand");
     private final static Map<String, TriggerReasonEnum> CONSTANTS = new HashMap<String, TriggerReasonEnum>();
 
     static {
@@ -39,17 +46,10 @@ public enum TriggerReasonEnum {
         }
     }
 
+    private final String value;
+
     TriggerReasonEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static TriggerReasonEnum fromValue(String value) {
@@ -59,6 +59,15 @@ public enum TriggerReasonEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

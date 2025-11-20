@@ -5,17 +5,16 @@ import java.util.Map;
 
 
 /**
- * Communication_ Function. OCPP_ Version. OCPP_ Version_ Code
- * urn:x-oca:ocpp:uid:1:569355
- * Defines the OCPP version used for this communication function.
+ * *(2.1)* This field is ignored, since the OCPP version to use is determined during the websocket handshake. The field is only kept for backwards compatibility with the OCPP 2.0.1 JSON schema.
  */
 public enum OCPPVersionEnum {
 
     OCPP_12("OCPP12"),
     OCPP_15("OCPP15"),
     OCPP_16("OCPP16"),
-    OCPP_20("OCPP20");
-    private final String value;
+    OCPP_20("OCPP20"),
+    OCPP_201("OCPP201"),
+    OCPP_21("OCPP21");
     private final static Map<String, OCPPVersionEnum> CONSTANTS = new HashMap<String, OCPPVersionEnum>();
 
     static {
@@ -24,17 +23,10 @@ public enum OCPPVersionEnum {
         }
     }
 
+    private final String value;
+
     OCPPVersionEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static OCPPVersionEnum fromValue(String value) {
@@ -44,6 +36,15 @@ public enum OCPPVersionEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

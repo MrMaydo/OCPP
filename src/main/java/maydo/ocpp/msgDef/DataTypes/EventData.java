@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.EventNotificationEnum;
@@ -7,22 +8,16 @@ import maydo.ocpp.msgDef.Enumerations.EventTriggerEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
-/**
- * Class to report an event notification for a component-variable.
- */
 public class EventData implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Identifies the event. This field can be referred to as a cause by other events.
      * <p>
@@ -39,7 +34,7 @@ public class EventData implements JsonInterface {
     @Required
     private Date timestamp;
     /**
-     * Type of monitor that triggered this event, e.g. exceeding a threshold value.
+     * Type of trigger for this event, e.g. exceeding a threshold value.
      * <p>
      * <p>
      * (Required)
@@ -108,18 +103,67 @@ public class EventData implements JsonInterface {
      */
     @Required
     private Variable variable;
-
+    /**
+     * *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
+     */
+    @Optional
+    private Integer severity;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public EventData() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param severity             *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
+     *                             .
+     * @param eventId              Identifies the event. This field can be referred to as a cause by other events.
+     *                             <p>
+     *                             .
+     * @param techCode             Technical (error) code as reported by component.
+     *                             .
+     * @param variableMonitoringId Identifies the VariableMonitoring which triggered the event.
+     *                             .
+     * @param actualValue          Actual value (_attributeType_ Actual) of the variable.
+     *                             <p>
+     *                             The Configuration Variable &lt;&lt;configkey-reporting-value-size,ReportingValueSize&gt;&gt; can be used to limit GetVariableResult.attributeValue, VariableAttribute.value and EventData.actualValue. The max size of these values will always remain equal.
+     *                             <p>
+     *                             .
+     * @param cause                Refers to the Id of an event that is considered to be the cause for this event.
+     *                             <p>
+     *                             .
+     * @param techInfo             Technical detail information as reported by component.
+     *                             .
+     * @param cleared              _Cleared_ is set to true to report the clearing of a monitored situation, i.e. a 'return to normal'.
+     *                             <p>
+     *                             .
+     * @param transactionId        If an event notification is linked to a specific transaction, this field can be used to specify its transactionId.
+     *                             .
+     * @param timestamp            Timestamp of the moment the report was generated.
+     *                             .
      */
-    public void setCustomData(CustomData customData) {
+    public EventData(Integer eventId, Date timestamp, EventTriggerEnum trigger, Integer cause, String actualValue, String techCode, String techInfo, Boolean cleared, String transactionId, Component component, Integer variableMonitoringId, EventNotificationEnum eventNotificationType, Variable variable, Integer severity, CustomData customData) {
+        super();
+        this.eventId = eventId;
+        this.timestamp = timestamp;
+        this.trigger = trigger;
+        this.cause = cause;
+        this.actualValue = actualValue;
+        this.techCode = techCode;
+        this.techInfo = techInfo;
+        this.cleared = cleared;
+        this.transactionId = transactionId;
+        this.component = component;
+        this.variableMonitoringId = variableMonitoringId;
+        this.eventNotificationType = eventNotificationType;
+        this.variable = variable;
+        this.severity = severity;
         this.customData = customData;
     }
 
@@ -162,7 +206,7 @@ public class EventData implements JsonInterface {
     }
 
     /**
-     * Type of monitor that triggered this event, e.g. exceeding a threshold value.
+     * Type of trigger for this event, e.g. exceeding a threshold value.
      * <p>
      * <p>
      * (Required)
@@ -172,7 +216,7 @@ public class EventData implements JsonInterface {
     }
 
     /**
-     * Type of monitor that triggered this event, e.g. exceeding a threshold value.
+     * Type of trigger for this event, e.g. exceeding a threshold value.
      * <p>
      * <p>
      * (Required)
@@ -345,6 +389,34 @@ public class EventData implements JsonInterface {
         this.variable = variable;
     }
 
+    /**
+     * *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
+     */
+    public Integer getSeverity() {
+        return severity;
+    }
+
+    /**
+     * *(2.1)* Severity associated with the monitor in _variableMonitoringId_ or with the hardwired notification.
+     */
+    public void setSeverity(Integer severity) {
+        this.severity = severity;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -352,7 +424,23 @@ public class EventData implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("eventId", eventId);
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
+        json.addProperty("trigger", trigger.toString());
+        json.addProperty("cause", cause);
+        json.addProperty("actualValue", actualValue);
+        json.addProperty("techCode", techCode);
+        json.addProperty("techInfo", techInfo);
+        json.addProperty("cleared", cleared);
+        json.addProperty("transactionId", transactionId);
+        json.add("component", component.toJsonObject());
+        json.addProperty("variableMonitoringId", variableMonitoringId);
+        json.addProperty("eventNotificationType", eventNotificationType.toString());
+        json.add("variable", variable.toJsonObject());
+        json.addProperty("severity", severity);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -363,7 +451,74 @@ public class EventData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("eventId")) {
+            this.eventId = jsonObject.get("eventId").getAsInt();
+        }
+
+        if (jsonObject.has("timestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for timestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("trigger")) {
+            this.trigger = EventTriggerEnum.valueOf(jsonObject.get("trigger").getAsString());
+        }
+
+        if (jsonObject.has("cause")) {
+            this.cause = jsonObject.get("cause").getAsInt();
+        }
+
+        if (jsonObject.has("actualValue")) {
+            this.actualValue = jsonObject.get("actualValue").getAsString();
+        }
+
+        if (jsonObject.has("techCode")) {
+            this.techCode = jsonObject.get("techCode").getAsString();
+        }
+
+        if (jsonObject.has("techInfo")) {
+            this.techInfo = jsonObject.get("techInfo").getAsString();
+        }
+
+        if (jsonObject.has("cleared")) {
+            this.cleared = jsonObject.get("cleared").getAsBoolean();
+        }
+
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("component")) {
+            this.component = new Component();
+            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+        }
+
+        if (jsonObject.has("variableMonitoringId")) {
+            this.variableMonitoringId = jsonObject.get("variableMonitoringId").getAsInt();
+        }
+
+        if (jsonObject.has("eventNotificationType")) {
+            this.eventNotificationType = EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString());
+        }
+
+        if (jsonObject.has("variable")) {
+            this.variable = new Variable();
+            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("severity")) {
+            this.severity = jsonObject.get("severity").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -373,38 +528,41 @@ public class EventData implements JsonInterface {
         if (!(obj instanceof EventData))
             return false;
         EventData that = (EventData) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(eventId, that.eventId)
-                && Objects.equals(timestamp, that.timestamp)
-                && trigger == that.trigger
-                && Objects.equals(cause, that.cause)
-                && Objects.equals(actualValue, that.actualValue)
-                && Objects.equals(techCode, that.techCode)
-                && Objects.equals(techInfo, that.techInfo)
-                && Objects.equals(cleared, that.cleared)
-                && Objects.equals(transactionId, that.transactionId)
-                && Objects.equals(component, that.component)
-                && Objects.equals(variableMonitoringId, that.variableMonitoringId)
-                && eventNotificationType == that.eventNotificationType
-                && Objects.equals(variable, that.variable);
+        return Objects.equals(this.severity, that.severity)
+                && Objects.equals(this.eventId, that.eventId)
+                && Objects.equals(this.techCode, that.techCode)
+                && Objects.equals(this.actualValue, that.actualValue)
+                && Objects.equals(this.cause, that.cause)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.trigger, that.trigger)
+                && Objects.equals(this.techInfo, that.techInfo)
+                && Objects.equals(this.transactionId, that.transactionId)
+                && Objects.equals(this.component, that.component)
+                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId)
+                && Objects.equals(this.variable, that.variable)
+                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
+                && Objects.equals(this.cleared, that.cleared)
+                && Objects.equals(this.timestamp, that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        int result = (eventId != null ? eventId.hashCode() : 0);
-        result = 31 * result + (timestamp != null ? timestamp.hashCode() : 0);
-        result = 31 * result + (trigger != null ? trigger.hashCode() : 0);
-        result = 31 * result + (cause != null ? cause.hashCode() : 0);
-        result = 31 * result + (actualValue != null ? actualValue.hashCode() : 0);
-        result = 31 * result + (techCode != null ? techCode.hashCode() : 0);
-        result = 31 * result + (techInfo != null ? techInfo.hashCode() : 0);
-        result = 31 * result + (cleared != null ? cleared.hashCode() : 0);
-        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
-        result = 31 * result + (component != null ? component.hashCode() : 0);
-        result = 31 * result + (variableMonitoringId != null ? variableMonitoringId.hashCode() : 0);
-        result = 31 * result + (eventNotificationType != null ? eventNotificationType.hashCode() : 0);
-        result = 31 * result + (variable != null ? variable.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
+        result = 31 * result + (this.eventId != null ? this.eventId.hashCode() : 0);
+        result = 31 * result + (this.techCode != null ? this.techCode.hashCode() : 0);
+        result = 31 * result + (this.actualValue != null ? this.actualValue.hashCode() : 0);
+        result = 31 * result + (this.cause != null ? this.cause.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.trigger != null ? this.trigger.hashCode() : 0);
+        result = 31 * result + (this.techInfo != null ? this.techInfo.hashCode() : 0);
+        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
+        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
+        result = 31 * result + (this.variableMonitoringId != null ? this.variableMonitoringId.hashCode() : 0);
+        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
+        result = 31 * result + (this.eventNotificationType != null ? this.eventNotificationType.hashCode() : 0);
+        result = 31 * result + (this.cleared != null ? this.cleared.hashCode() : 0);
+        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
         return result;
     }
 }

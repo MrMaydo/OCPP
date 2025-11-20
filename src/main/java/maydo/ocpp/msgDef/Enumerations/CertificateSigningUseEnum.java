@@ -5,13 +5,13 @@ import java.util.Map;
 
 
 /**
- * Indicates the type of the signed certificate that is returned. When omitted the certificate is used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection. This field is required when a typeOfCertificate was included in the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; that requested this certificate to be signed AND both the 15118 connection and the Charging Station connection are implemented.
+ * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
  */
 public enum CertificateSigningUseEnum {
 
     CHARGING_STATION_CERTIFICATE("ChargingStationCertificate"),
-    V_2_G_CERTIFICATE("V2GCertificate");
-    private final String value;
+    V2G_CERTIFICATE("V2GCertificate"),
+    V2G_20_CERTIFICATE("V2G20Certificate");
     private final static Map<String, CertificateSigningUseEnum> CONSTANTS = new HashMap<String, CertificateSigningUseEnum>();
 
     static {
@@ -20,17 +20,10 @@ public enum CertificateSigningUseEnum {
         }
     }
 
+    private final String value;
+
     CertificateSigningUseEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static CertificateSigningUseEnum fromValue(String value) {
@@ -40,6 +33,15 @@ public enum CertificateSigningUseEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

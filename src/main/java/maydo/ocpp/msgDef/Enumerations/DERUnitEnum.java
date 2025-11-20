@@ -1,0 +1,50 @@
+package maydo.ocpp.msgDef.Enumerations;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+/**
+ * Unit of the Y-axis of DER curve
+ */
+public enum DERUnitEnum {
+
+    NOT_APPLICABLE("Not_Applicable"),
+    PCT_MAX_W("PctMaxW"),
+    PCT_MAX_VAR("PctMaxVar"),
+    PCT_W_AVAIL("PctWAvail"),
+    PCT_VAR_AVAIL("PctVarAvail"),
+    PCT_EFFECTIVE_V("PctEffectiveV");
+    private final static Map<String, DERUnitEnum> CONSTANTS = new HashMap<String, DERUnitEnum>();
+
+    static {
+        for (DERUnitEnum c : values()) {
+            CONSTANTS.put(c.value, c);
+        }
+    }
+
+    private final String value;
+
+    DERUnitEnum(String value) {
+        this.value = value;
+    }
+
+    public static DERUnitEnum fromValue(String value) {
+        DERUnitEnum constant = CONSTANTS.get(value);
+        if (constant == null) {
+            throw new IllegalArgumentException(value);
+        } else {
+            return constant;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
+    }
+
+}

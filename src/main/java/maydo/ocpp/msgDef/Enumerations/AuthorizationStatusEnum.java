@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * ID_ Token. Status. Authorization_ Status
- * urn:x-oca:ocpp:uid:1:569372
  * Current status of the ID Token.
  */
 public enum AuthorizationStatusEnum {
@@ -21,7 +19,6 @@ public enum AuthorizationStatusEnum {
     NOT_AT_THIS_LOCATION("NotAtThisLocation"),
     NOT_AT_THIS_TIME("NotAtThisTime"),
     UNKNOWN("Unknown");
-    private final String value;
     private final static Map<String, AuthorizationStatusEnum> CONSTANTS = new HashMap<String, AuthorizationStatusEnum>();
 
     static {
@@ -30,17 +27,10 @@ public enum AuthorizationStatusEnum {
         }
     }
 
+    private final String value;
+
     AuthorizationStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static AuthorizationStatusEnum fromValue(String value) {
@@ -50,6 +40,15 @@ public enum AuthorizationStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

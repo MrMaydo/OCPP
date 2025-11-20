@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,20 +9,12 @@ import maydo.ocpp.msgDef.Enumerations.OperationalStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     @Optional
@@ -34,24 +27,26 @@ public class ChangeAvailabilityRequest implements JsonInterface {
      */
     @Required
     private OperationalStatusEnum operationalStatus;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ChangeAvailabilityRequest() {
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    public void setCustomData(CustomData customData) {
+    public ChangeAvailabilityRequest(EVSE evse, OperationalStatusEnum operationalStatus, CustomData customData) {
+        super();
+        this.evse = evse;
+        this.operationalStatus = operationalStatus;
         this.customData = customData;
     }
 
     /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     public EVSE getEvse() {
@@ -59,8 +54,6 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     }
 
     /**
-     * EVSE
-     * urn:x-oca:ocpp:uid:2:233123
      * Electric Vehicle Supply Equipment
      */
     public void setEvse(EVSE evse) {
@@ -87,6 +80,20 @@ public class ChangeAvailabilityRequest implements JsonInterface {
         this.operationalStatus = operationalStatus;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -94,7 +101,11 @@ public class ChangeAvailabilityRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("evse", evse.toJsonObject());
+        json.addProperty("operationalStatus", operationalStatus.toString());
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -105,7 +116,20 @@ public class ChangeAvailabilityRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("evse")) {
+            this.evse = new EVSE();
+            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+        }
+
+        if (jsonObject.has("operationalStatus")) {
+            this.operationalStatus = OperationalStatusEnum.valueOf(jsonObject.get("operationalStatus").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -115,16 +139,17 @@ public class ChangeAvailabilityRequest implements JsonInterface {
         if (!(obj instanceof ChangeAvailabilityRequest))
             return false;
         ChangeAvailabilityRequest that = (ChangeAvailabilityRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(evse, that.evse)
-                && operationalStatus == that.operationalStatus;
+        return Objects.equals(this.operationalStatus, that.operationalStatus)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.evse, that.evse);
     }
 
     @Override
     public int hashCode() {
-        int result = (evse != null ? evse.hashCode() : 0);
-        result = 31 * result + (operationalStatus != null ? operationalStatus.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.operationalStatus != null ? this.operationalStatus.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
         return result;
     }
 }

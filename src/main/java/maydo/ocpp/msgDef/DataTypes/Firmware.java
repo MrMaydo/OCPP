@@ -1,31 +1,22 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
-/**
- * Firmware
- * urn:x-enexis:ecdm:uid:2:233291
- * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
- */
 public class Firmware implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Firmware. Location. URI
-     * urn:x-enexis:ecdm:uid:1:569460
      * URI defining the origin of the firmware.
      * <p>
      * (Required)
@@ -33,8 +24,6 @@ public class Firmware implements JsonInterface {
     @Required
     private String location;
     /**
-     * Firmware. Retrieve. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569461
      * Date and time at which the firmware shall be retrieved.
      * <p>
      * (Required)
@@ -42,8 +31,6 @@ public class Firmware implements JsonInterface {
     @Required
     private Date retrieveDateTime;
     /**
-     * Firmware. Install. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569462
      * Date and time at which the firmware shall be installed.
      */
     @Optional
@@ -55,30 +42,46 @@ public class Firmware implements JsonInterface {
     @Optional
     private String signingCertificate;
     /**
-     * Firmware. Signature. Signature
-     * urn:x-enexis:ecdm:uid:1:569464
      * Base64 encoded firmware signature.
      */
     @Optional
     private String signature;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Firmware() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param signingCertificate Certificate with which the firmware was signed.
+     *                           PEM encoded X.509 certificate.
+     *                           .
+     * @param retrieveDateTime   Date and time at which the firmware shall be retrieved.
+     *                           .
+     * @param signature          Base64 encoded firmware signature.
+     *                           .
+     * @param location           URI defining the origin of the firmware.
+     *                           .
+     * @param installDateTime    Date and time at which the firmware shall be installed.
+     *                           .
      */
-    public void setCustomData(CustomData customData) {
+    public Firmware(String location, Date retrieveDateTime, Date installDateTime, String signingCertificate, String signature, CustomData customData) {
+        super();
+        this.location = location;
+        this.retrieveDateTime = retrieveDateTime;
+        this.installDateTime = installDateTime;
+        this.signingCertificate = signingCertificate;
+        this.signature = signature;
         this.customData = customData;
     }
 
     /**
-     * Firmware. Location. URI
-     * urn:x-enexis:ecdm:uid:1:569460
      * URI defining the origin of the firmware.
      * <p>
      * (Required)
@@ -88,8 +91,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Location. URI
-     * urn:x-enexis:ecdm:uid:1:569460
      * URI defining the origin of the firmware.
      * <p>
      * (Required)
@@ -99,8 +100,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Retrieve. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569461
      * Date and time at which the firmware shall be retrieved.
      * <p>
      * (Required)
@@ -110,8 +109,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Retrieve. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569461
      * Date and time at which the firmware shall be retrieved.
      * <p>
      * (Required)
@@ -121,8 +118,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Install. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569462
      * Date and time at which the firmware shall be installed.
      */
     public Date getInstallDateTime() {
@@ -130,8 +125,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Install. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569462
      * Date and time at which the firmware shall be installed.
      */
     public void setInstallDateTime(Date installDateTime) {
@@ -155,8 +148,6 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Signature. Signature
-     * urn:x-enexis:ecdm:uid:1:569464
      * Base64 encoded firmware signature.
      */
     public String getSignature() {
@@ -164,12 +155,24 @@ public class Firmware implements JsonInterface {
     }
 
     /**
-     * Firmware. Signature. Signature
-     * urn:x-enexis:ecdm:uid:1:569464
      * Base64 encoded firmware signature.
      */
     public void setSignature(String signature) {
         this.signature = signature;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -179,7 +182,14 @@ public class Firmware implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("location", location);
+        json.addProperty("retrieveDateTime", new SimpleDateFormat(DATE_FORMAT).format(retrieveDateTime));
+        json.addProperty("installDateTime", new SimpleDateFormat(DATE_FORMAT).format(installDateTime));
+        json.addProperty("signingCertificate", signingCertificate);
+        json.addProperty("signature", signature);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -190,7 +200,41 @@ public class Firmware implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("location")) {
+            this.location = jsonObject.get("location").getAsString();
+        }
+
+        if (jsonObject.has("retrieveDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.retrieveDateTime = dateFormat.parse(jsonObject.get("retrieveDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for retrieveDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("installDateTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.installDateTime = dateFormat.parse(jsonObject.get("installDateTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for installDateTime" + e);
+            }
+        }
+
+        if (jsonObject.has("signingCertificate")) {
+            this.signingCertificate = jsonObject.get("signingCertificate").getAsString();
+        }
+
+        if (jsonObject.has("signature")) {
+            this.signature = jsonObject.get("signature").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -200,22 +244,23 @@ public class Firmware implements JsonInterface {
         if (!(obj instanceof Firmware))
             return false;
         Firmware that = (Firmware) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(location, that.location)
-                && Objects.equals(retrieveDateTime, that.retrieveDateTime)
-                && Objects.equals(installDateTime, that.installDateTime)
-                && Objects.equals(signingCertificate, that.signingCertificate)
-                && Objects.equals(signature, that.signature);
+        return Objects.equals(this.signingCertificate, that.signingCertificate)
+                && Objects.equals(this.retrieveDateTime, that.retrieveDateTime)
+                && Objects.equals(this.signature, that.signature)
+                && Objects.equals(this.location, that.location)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.installDateTime, that.installDateTime);
     }
 
     @Override
     public int hashCode() {
-        int result = (location != null ? location.hashCode() : 0);
-        result = 31 * result + (retrieveDateTime != null ? retrieveDateTime.hashCode() : 0);
-        result = 31 * result + (installDateTime != null ? installDateTime.hashCode() : 0);
-        result = 31 * result + (signingCertificate != null ? signingCertificate.hashCode() : 0);
-        result = 31 * result + (signature != null ? signature.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.signingCertificate != null ? this.signingCertificate.hashCode() : 0);
+        result = 31 * result + (this.retrieveDateTime != null ? this.retrieveDateTime.hashCode() : 0);
+        result = 31 * result + (this.signature != null ? this.signature.hashCode() : 0);
+        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.installDateTime != null ? this.installDateTime.hashCode() : 0);
         return result;
     }
 }

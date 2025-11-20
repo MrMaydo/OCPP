@@ -5,17 +5,14 @@ import java.util.Map;
 
 
 /**
- * VPN. Type. VPN_ Code
- * urn:x-oca:ocpp:uid:1:569277
  * Type of VPN
  */
 public enum VPNEnum {
 
-    IK_EV_2("IKEv2"),
-    IP_SEC("IPSec"),
-    L_2_TP("L2TP"),
+    IKEV2("IKEv2"),
+    IPSEC("IPSec"),
+    L2TP("L2TP"),
     PPTP("PPTP");
-    private final String value;
     private final static Map<String, VPNEnum> CONSTANTS = new HashMap<String, VPNEnum>();
 
     static {
@@ -24,17 +21,10 @@ public enum VPNEnum {
         }
     }
 
+    private final String value;
+
     VPNEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static VPNEnum fromValue(String value) {
@@ -44,6 +34,15 @@ public enum VPNEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

@@ -1,31 +1,22 @@
 package maydo.ocpp.msgDef.DataTypes;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
-/**
- * Log
- * urn:x-enexis:ecdm:uid:2:233373
- * Generic class for the configuration of logging entries.
- */
 public class LogParameters implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
-    /**
-     * Log. Remote_ Location. URI
-     * urn:x-enexis:ecdm:uid:1:569484
      * The URL of the location at the remote system where the log should be stored.
      * <p>
      * (Required)
@@ -33,19 +24,88 @@ public class LogParameters implements JsonInterface {
     @Required
     private String remoteLocation;
     /**
-     * Log. Oldest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569477
      * This contains the date and time of the oldest logging information to include in the diagnostics.
      */
     @Optional
     private Date oldestTimestamp;
     /**
-     * Log. Latest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569482
      * This contains the date and time of the latest logging information to include in the diagnostics.
      */
     @Optional
     private Date latestTimestamp;
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public LogParameters() {
+    }
+
+    /**
+     * @param oldestTimestamp This contains the date and time of the oldest logging information to include in the diagnostics.
+     *                        .
+     * @param latestTimestamp This contains the date and time of the latest logging information to include in the diagnostics.
+     *                        .
+     * @param remoteLocation  The URL of the location at the remote system where the log should be stored.
+     *                        .
+     */
+    public LogParameters(String remoteLocation, Date oldestTimestamp, Date latestTimestamp, CustomData customData) {
+        super();
+        this.remoteLocation = remoteLocation;
+        this.oldestTimestamp = oldestTimestamp;
+        this.latestTimestamp = latestTimestamp;
+        this.customData = customData;
+    }
+
+    /**
+     * The URL of the location at the remote system where the log should be stored.
+     * <p>
+     * (Required)
+     */
+    public String getRemoteLocation() {
+        return remoteLocation;
+    }
+
+    /**
+     * The URL of the location at the remote system where the log should be stored.
+     * <p>
+     * (Required)
+     */
+    public void setRemoteLocation(String remoteLocation) {
+        this.remoteLocation = remoteLocation;
+    }
+
+    /**
+     * This contains the date and time of the oldest logging information to include in the diagnostics.
+     */
+    public Date getOldestTimestamp() {
+        return oldestTimestamp;
+    }
+
+    /**
+     * This contains the date and time of the oldest logging information to include in the diagnostics.
+     */
+    public void setOldestTimestamp(Date oldestTimestamp) {
+        this.oldestTimestamp = oldestTimestamp;
+    }
+
+    /**
+     * This contains the date and time of the latest logging information to include in the diagnostics.
+     */
+    public Date getLatestTimestamp() {
+        return latestTimestamp;
+    }
+
+    /**
+     * This contains the date and time of the latest logging information to include in the diagnostics.
+     */
+    public void setLatestTimestamp(Date latestTimestamp) {
+        this.latestTimestamp = latestTimestamp;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -61,64 +121,6 @@ public class LogParameters implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Log. Remote_ Location. URI
-     * urn:x-enexis:ecdm:uid:1:569484
-     * The URL of the location at the remote system where the log should be stored.
-     * <p>
-     * (Required)
-     */
-    public String getRemoteLocation() {
-        return remoteLocation;
-    }
-
-    /**
-     * Log. Remote_ Location. URI
-     * urn:x-enexis:ecdm:uid:1:569484
-     * The URL of the location at the remote system where the log should be stored.
-     * <p>
-     * (Required)
-     */
-    public void setRemoteLocation(String remoteLocation) {
-        this.remoteLocation = remoteLocation;
-    }
-
-    /**
-     * Log. Oldest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569477
-     * This contains the date and time of the oldest logging information to include in the diagnostics.
-     */
-    public Date getOldestTimestamp() {
-        return oldestTimestamp;
-    }
-
-    /**
-     * Log. Oldest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569477
-     * This contains the date and time of the oldest logging information to include in the diagnostics.
-     */
-    public void setOldestTimestamp(Date oldestTimestamp) {
-        this.oldestTimestamp = oldestTimestamp;
-    }
-
-    /**
-     * Log. Latest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569482
-     * This contains the date and time of the latest logging information to include in the diagnostics.
-     */
-    public Date getLatestTimestamp() {
-        return latestTimestamp;
-    }
-
-    /**
-     * Log. Latest_ Timestamp. Date_ Time
-     * urn:x-enexis:ecdm:uid:1:569482
-     * This contains the date and time of the latest logging information to include in the diagnostics.
-     */
-    public void setLatestTimestamp(Date latestTimestamp) {
-        this.latestTimestamp = latestTimestamp;
-    }
-
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -126,7 +128,12 @@ public class LogParameters implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("remoteLocation", remoteLocation);
+        json.addProperty("oldestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(oldestTimestamp));
+        json.addProperty("latestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(latestTimestamp));
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -137,7 +144,33 @@ public class LogParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("remoteLocation")) {
+            this.remoteLocation = jsonObject.get("remoteLocation").getAsString();
+        }
+
+        if (jsonObject.has("oldestTimestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.oldestTimestamp = dateFormat.parse(jsonObject.get("oldestTimestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for oldestTimestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("latestTimestamp")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.latestTimestamp = dateFormat.parse(jsonObject.get("latestTimestamp").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for latestTimestamp" + e);
+            }
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -147,18 +180,19 @@ public class LogParameters implements JsonInterface {
         if (!(obj instanceof LogParameters))
             return false;
         LogParameters that = (LogParameters) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(remoteLocation, that.remoteLocation)
-                && Objects.equals(oldestTimestamp, that.oldestTimestamp)
-                && Objects.equals(latestTimestamp, that.latestTimestamp);
+        return Objects.equals(this.remoteLocation, that.remoteLocation)
+                && Objects.equals(this.oldestTimestamp, that.oldestTimestamp)
+                && Objects.equals(this.latestTimestamp, that.latestTimestamp)
+                && Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        int result = (remoteLocation != null ? remoteLocation.hashCode() : 0);
-        result = 31 * result + (oldestTimestamp != null ? oldestTimestamp.hashCode() : 0);
-        result = 31 * result + (latestTimestamp != null ? latestTimestamp.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.remoteLocation != null ? this.remoteLocation.hashCode() : 0);
+        result = 31 * result + (this.oldestTimestamp != null ? this.oldestTimestamp.hashCode() : 0);
+        result = 31 * result + (this.latestTimestamp != null ? this.latestTimestamp.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
         return result;
     }
 }

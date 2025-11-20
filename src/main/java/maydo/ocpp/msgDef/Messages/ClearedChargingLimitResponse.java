@@ -1,11 +1,11 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
@@ -16,6 +16,17 @@ public class ClearedChargingLimitResponse implements JsonInterface {
      */
     @Optional
     private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ClearedChargingLimitResponse() {
+    }
+
+    public ClearedChargingLimitResponse(CustomData customData) {
+        super();
+        this.customData = customData;
+    }
 
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
@@ -38,7 +49,9 @@ public class ClearedChargingLimitResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -49,7 +62,11 @@ public class ClearedChargingLimitResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -59,11 +76,13 @@ public class ClearedChargingLimitResponse implements JsonInterface {
         if (!(obj instanceof ClearedChargingLimitResponse))
             return false;
         ClearedChargingLimitResponse that = (ClearedChargingLimitResponse) obj;
-        return Objects.equals(customData, that.customData);
+        return Objects.equals(this.customData, that.customData);
     }
 
     @Override
     public int hashCode() {
-        return customData != null ? customData.hashCode() : 0;
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        return result;
     }
 }

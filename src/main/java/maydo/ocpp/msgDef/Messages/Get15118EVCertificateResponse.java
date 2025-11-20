@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,17 +9,11 @@ import maydo.ocpp.msgDef.Enumerations.Iso15118EVCertificateStatusEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class Get15118EVCertificateResponse implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Indicates whether the message was processed properly.
      * <p>
@@ -32,24 +27,45 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     @Optional
     private StatusInfo statusInfo;
     /**
-     * Raw CertificateInstallationRes response for the EV, Base64 encoded.
+     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
+     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
+     * <p>
      * <p>
      * (Required)
      */
     @Required
     private String exiResponse;
-
+    /**
+     * *(2.1)* Number of contracts that can be retrieved with additional requests.
+     */
+    @Optional
+    private Integer remainingContracts;
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public Get15118EVCertificateResponse() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param remainingContracts *(2.1)* Number of contracts that can be retrieved with additional requests.
+     *                           .
+     * @param exiResponse        *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
+     *                           Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
+     *                           <p>
+     *                           .
      */
-    public void setCustomData(CustomData customData) {
+    public Get15118EVCertificateResponse(Iso15118EVCertificateStatusEnum status, StatusInfo statusInfo, String exiResponse, Integer remainingContracts, CustomData customData) {
+        super();
+        this.status = status;
+        this.statusInfo = statusInfo;
+        this.exiResponse = exiResponse;
+        this.remainingContracts = remainingContracts;
         this.customData = customData;
     }
 
@@ -86,7 +102,9 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     }
 
     /**
-     * Raw CertificateInstallationRes response for the EV, Base64 encoded.
+     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
+     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
+     * <p>
      * <p>
      * (Required)
      */
@@ -95,12 +113,42 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     }
 
     /**
-     * Raw CertificateInstallationRes response for the EV, Base64 encoded.
+     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
+     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
+     * <p>
      * <p>
      * (Required)
      */
     public void setExiResponse(String exiResponse) {
         this.exiResponse = exiResponse;
+    }
+
+    /**
+     * *(2.1)* Number of contracts that can be retrieved with additional requests.
+     */
+    public Integer getRemainingContracts() {
+        return remainingContracts;
+    }
+
+    /**
+     * *(2.1)* Number of contracts that can be retrieved with additional requests.
+     */
+    public void setRemainingContracts(Integer remainingContracts) {
+        this.remainingContracts = remainingContracts;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
     }
 
     @Override
@@ -110,7 +158,13 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("status", status.toString());
+        json.add("statusInfo", statusInfo.toJsonObject());
+        json.addProperty("exiResponse", exiResponse);
+        json.addProperty("remainingContracts", remainingContracts);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -121,7 +175,28 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("status")) {
+            this.status = Iso15118EVCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("exiResponse")) {
+            this.exiResponse = jsonObject.get("exiResponse").getAsString();
+        }
+
+        if (jsonObject.has("remainingContracts")) {
+            this.remainingContracts = jsonObject.get("remainingContracts").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -131,18 +206,21 @@ public class Get15118EVCertificateResponse implements JsonInterface {
         if (!(obj instanceof Get15118EVCertificateResponse))
             return false;
         Get15118EVCertificateResponse that = (Get15118EVCertificateResponse) obj;
-        return Objects.equals(customData, that.customData)
-                && status == that.status
-                && Objects.equals(statusInfo, that.statusInfo)
-                && Objects.equals(exiResponse, that.exiResponse);
+        return Objects.equals(this.remainingContracts, that.remainingContracts)
+                && Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.statusInfo, that.statusInfo)
+                && Objects.equals(this.exiResponse, that.exiResponse)
+                && Objects.equals(this.status, that.status);
     }
 
     @Override
     public int hashCode() {
-        int result = (status != null ? status.hashCode() : 0);
-        result = 31 * result + (statusInfo != null ? statusInfo.hashCode() : 0);
-        result = 31 * result + (exiResponse != null ? exiResponse.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.remainingContracts != null ? this.remainingContracts.hashCode() : 0);
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
+        result = 31 * result + (this.exiResponse != null ? this.exiResponse.hashCode() : 0);
+        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
         return result;
     }
 }

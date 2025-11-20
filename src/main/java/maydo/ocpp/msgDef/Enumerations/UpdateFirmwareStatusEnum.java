@@ -14,7 +14,6 @@ public enum UpdateFirmwareStatusEnum {
     ACCEPTED_CANCELED("AcceptedCanceled"),
     INVALID_CERTIFICATE("InvalidCertificate"),
     REVOKED_CERTIFICATE("RevokedCertificate");
-    private final String value;
     private final static Map<String, UpdateFirmwareStatusEnum> CONSTANTS = new HashMap<String, UpdateFirmwareStatusEnum>();
 
     static {
@@ -23,17 +22,10 @@ public enum UpdateFirmwareStatusEnum {
         }
     }
 
+    private final String value;
+
     UpdateFirmwareStatusEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static UpdateFirmwareStatusEnum fromValue(String value) {
@@ -43,6 +35,15 @@ public enum UpdateFirmwareStatusEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

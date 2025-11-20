@@ -1,22 +1,17 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class CostUpdatedRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
      * <p>
@@ -33,18 +28,30 @@ public class CostUpdatedRequest implements JsonInterface {
      */
     @Required
     private String transactionId;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public CostUpdatedRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param totalCost     Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
+     *                      <p>
+     *                      .
+     * @param transactionId Transaction Id of the transaction the current cost are asked for.
+     *                      <p>
+     *                      .
      */
-    public void setCustomData(CustomData customData) {
+    public CostUpdatedRequest(Float totalCost, String transactionId, CustomData customData) {
+        super();
+        this.totalCost = totalCost;
+        this.transactionId = transactionId;
         this.customData = customData;
     }
 
@@ -88,6 +95,20 @@ public class CostUpdatedRequest implements JsonInterface {
         this.transactionId = transactionId;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -95,7 +116,11 @@ public class CostUpdatedRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("totalCost", totalCost);
+        json.addProperty("transactionId", transactionId);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -106,7 +131,19 @@ public class CostUpdatedRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("totalCost")) {
+            this.totalCost = jsonObject.get("totalCost").getAsFloat();
+        }
+
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -116,16 +153,17 @@ public class CostUpdatedRequest implements JsonInterface {
         if (!(obj instanceof CostUpdatedRequest))
             return false;
         CostUpdatedRequest that = (CostUpdatedRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(totalCost, that.totalCost)
-                && Objects.equals(transactionId, that.transactionId);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.totalCost, that.totalCost)
+                && Objects.equals(this.transactionId, that.transactionId);
     }
 
     @Override
     public int hashCode() {
-        int result = (totalCost != null ? totalCost.hashCode() : 0);
-        result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.totalCost != null ? this.totalCost.hashCode() : 0);
+        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
         return result;
     }
 }

@@ -5,8 +5,6 @@ import java.util.Map;
 
 
 /**
- * Sampled_ Value. Location. Location_ Code
- * urn:x-oca:ocpp:uid:1:569265
  * Indicates where the measured value has been sampled. Default =  "Outlet"
  */
 public enum LocationEnum {
@@ -15,8 +13,8 @@ public enum LocationEnum {
     CABLE("Cable"),
     EV("EV"),
     INLET("Inlet"),
-    OUTLET("Outlet");
-    private final String value;
+    OUTLET("Outlet"),
+    UPSTREAM("Upstream");
     private final static Map<String, LocationEnum> CONSTANTS = new HashMap<String, LocationEnum>();
 
     static {
@@ -25,17 +23,10 @@ public enum LocationEnum {
         }
     }
 
+    private final String value;
+
     LocationEnum(String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return this.value;
-    }
-
-    public String value() {
-        return this.value;
     }
 
     public static LocationEnum fromValue(String value) {
@@ -45,6 +36,15 @@ public enum LocationEnum {
         } else {
             return constant;
         }
+    }
+
+    @Override
+    public String toString() {
+        return this.value;
+    }
+
+    public String value() {
+        return this.value;
     }
 
 }

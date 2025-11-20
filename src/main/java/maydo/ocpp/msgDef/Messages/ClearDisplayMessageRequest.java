@@ -1,22 +1,17 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
-import maydo.ocpp.utils.JsonTools;
 
 import java.util.Objects;
 
 public class ClearDisplayMessageRequest implements JsonInterface {
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
-    @Optional
-    private CustomData customData;
     /**
      * Id of the message that SHALL be removed from the Charging Station.
      * <p>
@@ -24,18 +19,25 @@ public class ClearDisplayMessageRequest implements JsonInterface {
      */
     @Required
     private Integer id;
-
     /**
      * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
      */
-    public CustomData getCustomData() {
-        return customData;
+    @Optional
+    private CustomData customData;
+
+    /**
+     * No args constructor for use in serialization
+     */
+    public ClearDisplayMessageRequest() {
     }
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * @param id Id of the message that SHALL be removed from the Charging Station.
+     *           .
      */
-    public void setCustomData(CustomData customData) {
+    public ClearDisplayMessageRequest(Integer id, CustomData customData) {
+        super();
+        this.id = id;
         this.customData = customData;
     }
 
@@ -57,6 +59,20 @@ public class ClearDisplayMessageRequest implements JsonInterface {
         this.id = id;
     }
 
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public CustomData getCustomData() {
+        return customData;
+    }
+
+    /**
+     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     */
+    public void setCustomData(CustomData customData) {
+        this.customData = customData;
+    }
+
     @Override
     public String toString() {
         return toJsonObject().toString();
@@ -64,7 +80,10 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     @Override
     public JsonObject toJsonObject() {
-        return JsonTools.toJsonObject(this);
+        JsonObject json = new JsonObject();
+        json.addProperty("id", id);
+        json.add("customData", customData.toJsonObject());
+        return json;
     }
 
     @Override
@@ -75,7 +94,15 @@ public class ClearDisplayMessageRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        JsonTools.fromJsonObject(this, jsonObject);
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
@@ -85,14 +112,15 @@ public class ClearDisplayMessageRequest implements JsonInterface {
         if (!(obj instanceof ClearDisplayMessageRequest))
             return false;
         ClearDisplayMessageRequest that = (ClearDisplayMessageRequest) obj;
-        return Objects.equals(customData, that.customData)
-                && Objects.equals(id, that.id);
+        return Objects.equals(this.customData, that.customData)
+                && Objects.equals(this.id, that.id);
     }
 
     @Override
     public int hashCode() {
-        int result = (id != null ? id.hashCode() : 0);
-        result = 31 * result + (customData != null ? customData.hashCode() : 0);
+        int result = 1;
+        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
+        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
         return result;
     }
 }
