@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.Address;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -8,6 +9,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -325,6 +327,57 @@ public class NotifySettlementRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("transactionId")) {
+            this.transactionId = jsonObject.get("transactionId").getAsString();
+        }
+
+        if (jsonObject.has("pspRef")) {
+            this.pspRef = jsonObject.get("pspRef").getAsString();
+        }
+
+        if (jsonObject.has("status")) {
+            this.status = PaymentStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = jsonObject.get("statusInfo").getAsString();
+        }
+
+        if (jsonObject.has("settlementAmount")) {
+            this.settlementAmount = jsonObject.get("settlementAmount").getAsFloat();
+        }
+
+        if (jsonObject.has("settlementTime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.settlementTime = dateFormat.parse(jsonObject.get("settlementTime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for settlementTime" + e);
+            }
+        }
+
+        if (jsonObject.has("receiptId")) {
+            this.receiptId = jsonObject.get("receiptId").getAsString();
+        }
+
+        if (jsonObject.has("receiptUrl")) {
+            this.receiptUrl = jsonObject.get("receiptUrl").getAsString();
+        }
+
+        if (jsonObject.has("vatCompany")) {
+            this.vatCompany = new Address();
+            this.vatCompany.fromJsonObject(jsonObject.getAsJsonObject("vatCompany"));
+        }
+
+        if (jsonObject.has("vatNumber")) {
+            this.vatNumber = jsonObject.get("vatNumber").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

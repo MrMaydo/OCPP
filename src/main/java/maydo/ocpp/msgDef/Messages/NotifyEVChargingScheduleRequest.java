@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingSchedule;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -7,6 +8,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -216,6 +218,37 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("timeBase")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.timeBase = dateFormat.parse(jsonObject.get("timeBase").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for timeBase" + e);
+            }
+        }
+
+        if (jsonObject.has("chargingSchedule")) {
+            this.chargingSchedule = new ChargingSchedule();
+            this.chargingSchedule.fromJsonObject(jsonObject.getAsJsonObject("chargingSchedule"));
+        }
+
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("selectedChargingScheduleId")) {
+            this.selectedChargingScheduleId = jsonObject.get("selectedChargingScheduleId").getAsInt();
+        }
+
+        if (jsonObject.has("powerToleranceAcceptance")) {
+            this.powerToleranceAcceptance = jsonObject.get("powerToleranceAcceptance").getAsBoolean();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

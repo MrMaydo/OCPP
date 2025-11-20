@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.Address;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -190,6 +191,33 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("company")) {
+            this.company = new Address();
+            this.company.fromJsonObject(jsonObject.getAsJsonObject("company"));
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("vatNumber")) {
+            this.vatNumber = jsonObject.get("vatNumber").getAsString();
+        }
+
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("status")) {
+            this.status = GenericStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

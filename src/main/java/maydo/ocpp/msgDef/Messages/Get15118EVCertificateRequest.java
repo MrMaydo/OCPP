@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.CertificateActionEnum;
@@ -205,6 +206,27 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("iso15118SchemaVersion")) {
+            this.iso15118SchemaVersion = jsonObject.get("iso15118SchemaVersion").getAsString();
+        }
+
+        if (jsonObject.has("action")) {
+            this.action = CertificateActionEnum.valueOf(jsonObject.get("action").getAsString());
+        }
+
+        if (jsonObject.has("exiRequest")) {
+            this.exiRequest = jsonObject.get("exiRequest").getAsString();
+        }
+
+        if (jsonObject.has("maximumContractCertificateChains")) {
+            this.maximumContractCertificateChains = jsonObject.get("maximumContractCertificateChains").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

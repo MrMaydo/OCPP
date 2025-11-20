@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Authentication method.
- *
  */
 
 public enum APNAuthenticationEnum {

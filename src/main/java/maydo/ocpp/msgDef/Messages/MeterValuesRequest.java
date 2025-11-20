@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.MeterValue;
@@ -112,6 +113,15 @@ public class MeterValuesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evseId")) {
+            this.evseId = jsonObject.get("evseId").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

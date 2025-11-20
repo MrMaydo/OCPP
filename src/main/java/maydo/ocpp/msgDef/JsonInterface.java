@@ -4,9 +4,9 @@ import com.google.gson.JsonObject;
 
 public interface JsonInterface {
 
-    public JsonObject toJsonObject();
+    JsonObject toJsonObject();
 
-    public void fromString(String jsonString);
+    void fromString(String jsonString);
 
-    public void fromJsonObject(JsonObject jsonObject);
+    void fromJsonObject(JsonObject jsonObject);
 }

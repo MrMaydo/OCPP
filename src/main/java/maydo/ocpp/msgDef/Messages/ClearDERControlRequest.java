@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
@@ -140,6 +141,23 @@ public class ClearDERControlRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("isDefault")) {
+            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+        }
+
+        if (jsonObject.has("controlType")) {
+            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+        }
+
+        if (jsonObject.has("controlId")) {
+            this.controlId = jsonObject.get("controlId").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

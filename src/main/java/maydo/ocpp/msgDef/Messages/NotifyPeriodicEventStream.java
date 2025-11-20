@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.StreamDataElement;
@@ -7,6 +8,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -174,6 +176,28 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("id")) {
+            this.id = jsonObject.get("id").getAsInt();
+        }
+
+        if (jsonObject.has("pending")) {
+            this.pending = jsonObject.get("pending").getAsInt();
+        }
+
+        if (jsonObject.has("basetime")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                this.basetime = dateFormat.parse(jsonObject.get("basetime").getAsString());
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for basetime" + e);
+            }
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

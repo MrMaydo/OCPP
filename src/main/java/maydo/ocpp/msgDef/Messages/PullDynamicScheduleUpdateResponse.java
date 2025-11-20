@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingScheduleUpdate;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -134,6 +135,25 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("scheduleUpdate")) {
+            this.scheduleUpdate = new ChargingScheduleUpdate();
+            this.scheduleUpdate.fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
+        }
+
+        if (jsonObject.has("status")) {
+            this.status = ChargingProfileStatusEnum.valueOf(jsonObject.get("status").getAsString());
+        }
+
+        if (jsonObject.has("statusInfo")) {
+            this.statusInfo = new StatusInfo();
+            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

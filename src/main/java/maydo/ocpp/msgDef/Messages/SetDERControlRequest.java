@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
@@ -254,6 +255,63 @@ public class SetDERControlRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("isDefault")) {
+            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+        }
+
+        if (jsonObject.has("controlId")) {
+            this.controlId = jsonObject.get("controlId").getAsString();
+        }
+
+        if (jsonObject.has("controlType")) {
+            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+        }
+
+        if (jsonObject.has("curve")) {
+            this.curve = new DERCurve();
+            this.curve.fromJsonObject(jsonObject.getAsJsonObject("curve"));
+        }
+
+        if (jsonObject.has("enterService")) {
+            this.enterService = new EnterService();
+            this.enterService.fromJsonObject(jsonObject.getAsJsonObject("enterService"));
+        }
+
+        if (jsonObject.has("fixedPFAbsorb")) {
+            this.fixedPFAbsorb = new FixedPF();
+            this.fixedPFAbsorb.fromJsonObject(jsonObject.getAsJsonObject("fixedPFAbsorb"));
+        }
+
+        if (jsonObject.has("fixedPFInject")) {
+            this.fixedPFInject = new FixedPF();
+            this.fixedPFInject.fromJsonObject(jsonObject.getAsJsonObject("fixedPFInject"));
+        }
+
+        if (jsonObject.has("fixedVar")) {
+            this.fixedVar = new FixedVar();
+            this.fixedVar.fromJsonObject(jsonObject.getAsJsonObject("fixedVar"));
+        }
+
+        if (jsonObject.has("freqDroop")) {
+            this.freqDroop = new FreqDroop();
+            this.freqDroop.fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
+        }
+
+        if (jsonObject.has("gradient")) {
+            this.gradient = new Gradient();
+            this.gradient.fromJsonObject(jsonObject.getAsJsonObject("gradient"));
+        }
+
+        if (jsonObject.has("limitMaxDischarge")) {
+            this.limitMaxDischarge = new LimitMaxDischarge();
+            this.limitMaxDischarge.fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

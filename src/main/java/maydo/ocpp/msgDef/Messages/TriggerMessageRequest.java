@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.EVSE;
@@ -135,6 +136,24 @@ public class TriggerMessageRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evse")) {
+            this.evse = new EVSE();
+            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+        }
+
+        if (jsonObject.has("requestedMessage")) {
+            this.requestedMessage = MessageTriggerEnum.valueOf(jsonObject.get("requestedMessage").getAsString());
+        }
+
+        if (jsonObject.has("customTrigger")) {
+            this.customTrigger = jsonObject.get("customTrigger").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

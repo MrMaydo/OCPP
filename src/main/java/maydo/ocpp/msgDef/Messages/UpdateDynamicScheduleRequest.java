@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ChargingScheduleUpdate;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -121,6 +122,20 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("chargingProfileId")) {
+            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+        }
+
+        if (jsonObject.has("scheduleUpdate")) {
+            this.scheduleUpdate = new ChargingScheduleUpdate();
+            this.scheduleUpdate.fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

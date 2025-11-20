@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CertificateHashData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -213,6 +214,37 @@ public class CustomerInformationRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("customerCertificate")) {
+            this.customerCertificate = new CertificateHashData();
+            this.customerCertificate.fromJsonObject(jsonObject.getAsJsonObject("customerCertificate"));
+        }
+
+        if (jsonObject.has("idToken")) {
+            this.idToken = new IdToken();
+            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+        }
+
+        if (jsonObject.has("requestId")) {
+            this.requestId = jsonObject.get("requestId").getAsInt();
+        }
+
+        if (jsonObject.has("report")) {
+            this.report = jsonObject.get("report").getAsBoolean();
+        }
+
+        if (jsonObject.has("clear")) {
+            this.clear = jsonObject.get("clear").getAsBoolean();
+        }
+
+        if (jsonObject.has("customerIdentifier")) {
+            this.customerIdentifier = jsonObject.get("customerIdentifier").getAsString();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CertificateHashData;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -148,6 +149,28 @@ public class SignCertificateRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("csr")) {
+            this.csr = jsonObject.get("csr").getAsString();
+        }
+
+        if (jsonObject.has("certificateType")) {
+            this.certificateType = CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+        }
+
+        if (jsonObject.has("hashRootCertificate")) {
+            this.hashRootCertificate = new CertificateHashData();
+            this.hashRootCertificate.fromJsonObject(jsonObject.getAsJsonObject("hashRootCertificate"));
+        }
+
+        if (jsonObject.has("requestId")) {
+            this.requestId = jsonObject.get("requestId").getAsInt();
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

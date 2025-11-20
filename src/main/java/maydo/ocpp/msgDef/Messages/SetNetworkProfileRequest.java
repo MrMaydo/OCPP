@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.NetworkConnectionProfile;
@@ -118,6 +119,20 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("configurationSlot")) {
+            this.configurationSlot = jsonObject.get("configurationSlot").getAsInt();
+        }
+
+        if (jsonObject.has("connectionData")) {
+            this.connectionData = new NetworkConnectionProfile();
+            this.connectionData.fromJsonObject(jsonObject.getAsJsonObject("connectionData"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

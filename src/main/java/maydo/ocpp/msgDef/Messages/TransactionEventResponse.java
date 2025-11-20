@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdTokenInfo;
@@ -187,6 +188,34 @@ public class TransactionEventResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("totalCost")) {
+            this.totalCost = jsonObject.get("totalCost").getAsFloat();
+        }
+
+        if (jsonObject.has("chargingPriority")) {
+            this.chargingPriority = jsonObject.get("chargingPriority").getAsInt();
+        }
+
+        if (jsonObject.has("idTokenInfo")) {
+            this.idTokenInfo = new IdTokenInfo();
+            this.idTokenInfo.fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
+        }
+
+        if (jsonObject.has("transactionLimit")) {
+            this.transactionLimit = new TransactionLimit();
+            this.transactionLimit.fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
+        }
+
+        if (jsonObject.has("updatedPersonalMessage")) {
+            this.updatedPersonalMessage = new MessageContent();
+            this.updatedPersonalMessage.fromJsonObject(jsonObject.getAsJsonObject("updatedPersonalMessage"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.IdTokenInfo;
@@ -195,6 +196,25 @@ public class AuthorizeResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("idTokenInfo")) {
+            this.idTokenInfo = new IdTokenInfo();
+            this.idTokenInfo.fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
+        }
+
+        if (jsonObject.has("certificateStatus")) {
+            this.certificateStatus = AuthorizeCertificateStatusEnum.valueOf(jsonObject.get("certificateStatus").getAsString());
+        }
+
+        if (jsonObject.has("tariff")) {
+            this.tariff = new Tariff();
+            this.tariff.fromJsonObject(jsonObject.getAsJsonObject("tariff"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package maydo.ocpp.msgDef.Messages;
 
+
 import com.google.gson.JsonObject;
 import maydo.ocpp.msgDef.DataTypes.ClearChargingProfile;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -105,6 +106,20 @@ public class ClearChargingProfileRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("chargingProfileId")) {
+            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+        }
+
+        if (jsonObject.has("chargingProfileCriteria")) {
+            this.chargingProfileCriteria = new ClearChargingProfile();
+            this.chargingProfileCriteria.fromJsonObject(jsonObject.getAsJsonObject("chargingProfileCriteria"));
+        }
+
+        if (jsonObject.has("customData")) {
+            this.customData = new CustomData();
+            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
+
     }
 
     @Override
