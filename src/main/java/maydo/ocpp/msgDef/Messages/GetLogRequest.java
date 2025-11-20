@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.Messages;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.DataTypes.LogParameters;
 import maydo.ocpp.msgDef.Enumerations.LogEnum;
@@ -192,6 +193,8 @@ public class GetLogRequest implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override

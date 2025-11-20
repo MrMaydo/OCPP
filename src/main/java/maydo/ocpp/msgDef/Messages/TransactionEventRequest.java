@@ -2,6 +2,7 @@ package maydo.ocpp.msgDef.Messages;
 
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.*;
 import maydo.ocpp.msgDef.Enumerations.PreconditioningStatusEnum;
 import maydo.ocpp.msgDef.Enumerations.TransactionEventEnum;
@@ -431,6 +432,8 @@ public class TransactionEventRequest implements JsonInterface {
 
     @Override
     public void fromString(String jsonString) {
+        JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+        fromJsonObject(jsonObject);
     }
 
     @Override
