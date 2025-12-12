@@ -12,22 +12,25 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetVariablesResponse PDU sent by
+ * the CSMS to the Charging Station in response to GetVariablesRequest.
+ */
 public class GetVariablesResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * List of requested variables and their values.
      */
     @Required
     private List<GetVariableResult> getVariableResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetVariablesResponse() {
     }
 
@@ -37,30 +40,22 @@ public class GetVariablesResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<GetVariableResult> getGetVariableResult() {
         return getVariableResult;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setGetVariableResult(List<GetVariableResult> getVariableResult) {
         this.getVariableResult = getVariableResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

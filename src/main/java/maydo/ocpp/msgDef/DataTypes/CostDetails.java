@@ -10,53 +10,54 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
+ */
 public class CostDetails implements JsonInterface {
 
-    private List<ChargingPeriod> chargingPeriods;
     /**
-     * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * <p>
-     * (Required)
+     * List of Charging Periods that make up this charging session.
+     * A finished session has of 1 or more periods, where each period has a different list of dimensions that determined the price.
+     * When sent as a running cost update during a transaction chargingPeriods are omitted.
+     */
+    @Optional
+    private List<ChargingPeriod> chargingPeriods;
+
+    /**
+     * Total sum of all the costs of this transaction in the specified currency.
      */
     @Required
     private TotalCost totalCost;
+
     /**
-     * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * <p>
-     * (Required)
+     * Total usage of energy and time
      */
     @Required
     private TotalUsage totalUsage;
+
     /**
      * If set to true, then Charging Station has failed to calculate the cost.
      */
     @Optional
     private Boolean failureToCalculate;
+
     /**
      * Optional human-readable reason text in case of failure to calculate.
      */
     @Optional
     private String failureReason;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CostDetails() {
     }
 
-    /**
-     * @param failureToCalculate If set to true, then Charging Station has failed to calculate the cost.
-     *                           <p>
-     *                           .
-     * @param failureReason      Optional human-readable reason text in case of failure to calculate.
-     *                           <p>
-     *                           .
-     */
+
     public CostDetails(List<ChargingPeriod> chargingPeriods, TotalCost totalCost, TotalUsage totalUsage, Boolean failureToCalculate, String failureReason, CustomData customData) {
         super();
         this.chargingPeriods = chargingPeriods;
@@ -75,80 +76,52 @@ public class CostDetails implements JsonInterface {
         this.chargingPeriods = chargingPeriods;
     }
 
-    /**
-     * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * <p>
-     * (Required)
-     */
+
     public TotalCost getTotalCost() {
         return totalCost;
     }
 
-    /**
-     * This contains the cost calculated during a transaction. It is used both for running cost and final cost of the transaction.
-     * <p>
-     * (Required)
-     */
+
     public void setTotalCost(TotalCost totalCost) {
         this.totalCost = totalCost;
     }
 
-    /**
-     * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * <p>
-     * (Required)
-     */
+
     public TotalUsage getTotalUsage() {
         return totalUsage;
     }
 
-    /**
-     * This contains the calculated usage of energy, charging time and idle time during a transaction.
-     * <p>
-     * (Required)
-     */
+
     public void setTotalUsage(TotalUsage totalUsage) {
         this.totalUsage = totalUsage;
     }
 
-    /**
-     * If set to true, then Charging Station has failed to calculate the cost.
-     */
+
     public Boolean getFailureToCalculate() {
         return failureToCalculate;
     }
 
-    /**
-     * If set to true, then Charging Station has failed to calculate the cost.
-     */
+
     public void setFailureToCalculate(Boolean failureToCalculate) {
         this.failureToCalculate = failureToCalculate;
     }
 
-    /**
-     * Optional human-readable reason text in case of failure to calculate.
-     */
+
     public String getFailureReason() {
         return failureReason;
     }
 
-    /**
-     * Optional human-readable reason text in case of failure to calculate.
-     */
+
     public void setFailureReason(String failureReason) {
         this.failureReason = failureReason;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

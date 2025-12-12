@@ -13,35 +13,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The message NotifyChargingLimitRequest can be used to communicate a charging limit, set by an external system on the Charging
+ * Station (Not installed by the CSO via SetChargingProfileRequest), to the CSMS.
+ */
 public class NotifyChargingLimitRequest implements JsonInterface {
 
+    /**
+     * Contains limits for the available power or current over time, as set by the external source.
+     */
+    @Optional
     private List<ChargingSchedule> chargingSchedule;
+
     /**
      * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * (Required)
+     * This contains the source of the charging limit and whether it is grid critical.
      */
     @Required
     private ChargingLimit chargingLimit;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyChargingLimitRequest() {
     }
 
-    /**
-     * @param evseId The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     *               .
-     */
+
     public NotifyChargingLimitRequest(List<ChargingSchedule> chargingSchedule, Integer evseId, ChargingLimit chargingLimit, CustomData customData) {
         super();
         this.chargingSchedule = chargingSchedule;
@@ -58,44 +64,32 @@ public class NotifyChargingLimitRequest implements JsonInterface {
         this.chargingSchedule = chargingSchedule;
     }
 
-    /**
-     * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public ChargingLimit getChargingLimit() {
         return chargingLimit;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingLimit(ChargingLimit chargingLimit) {
         this.chargingLimit = chargingLimit;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

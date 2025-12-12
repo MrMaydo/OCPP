@@ -15,198 +15,95 @@ import java.util.Objects;
 public class ACChargingParameters implements JsonInterface {
 
     /**
-     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
-     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * <p>
-     * <p>
-     * (Required)
+     * Amount of energy requested (in Wh).
+     * This includes energy required for preconditioning.
+     * <p> Relates to: </p>
+     * <p> ISO 15118-2: AC_EVChargeParameterType: EAmount </p>
+     * <p> ISO 15118-20: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest </p>
      */
     @Required
     private Float energyAmount;
+
     /**
      * Minimum current (amps) supported by the electric vehicle (per phase).
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * <p>
-     * <p>
-     * (Required)
+     * <p> Relates to: </p>
+     * <p> ISO 15118-2: AC_EVChargeParameterType: EVMinCurrent </p>
      */
     @Required
     private Float evMinCurrent;
+
     /**
      * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * <p>
-     * <p>
-     * (Required)
+     * <p> Relates to: </p>
+     * <p> ISO 15118-2: AC_EVChargeParameterType:  EVMaxCurrent </p>
      */
     @Required
     private Float evMaxCurrent;
+
     /**
      * Maximum voltage supported by the electric vehicle.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * <p>
-     * <p>
-     * (Required)
+     * <p> Relates to: </p>
+     * <p> ISO 15118-2: AC_EVChargeParameterType: EVMaxVoltage </p>
      */
     @Required
     private Float evMaxVoltage;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ACChargingParameters() {
     }
 
-    /**
-     * @param evMaxCurrent Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     *                     Relates to: +
-     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     *                     <p>
-     *                     .
-     * @param evMinCurrent Minimum current (amps) supported by the electric vehicle (per phase).
-     *                     Relates to: +
-     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     *                     <p>
-     *                     .
-     * @param evMaxVoltage Maximum voltage supported by the electric vehicle.
-     *                     Relates to: +
-     *                     *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     *                     <p>
-     *                     .
-     * @param energyAmount Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     *                     Relates to: +
-     *                     *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
-     *                     *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     *                     <p>
-     *                     .
-     */
-    public ACChargingParameters(Float energyAmount, Float evMinCurrent, Float evMaxCurrent, Float evMaxVoltage, CustomData customData) {
-        super();
-        this.energyAmount = energyAmount;
-        this.evMinCurrent = evMinCurrent;
-        this.evMaxCurrent = evMaxCurrent;
-        this.evMaxVoltage = evMaxVoltage;
-        this.customData = customData;
-    }
 
-    /**
-     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
-     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Float getEnergyAmount() {
         return energyAmount;
     }
 
-    /**
-     * Amount of energy requested (in Wh). This includes energy required for preconditioning.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EAmount +
-     * *ISO 15118-20*: Dynamic/Scheduled_SEReqControlModeType: EVTargetEnergyRequest
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEnergyAmount(Float energyAmount) {
         this.energyAmount = energyAmount;
     }
 
-    /**
-     * Minimum current (amps) supported by the electric vehicle (per phase).
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getEvMinCurrent() {
         return evMinCurrent;
     }
 
-    /**
-     * Minimum current (amps) supported by the electric vehicle (per phase).
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMinCurrent
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvMinCurrent(Float evMinCurrent) {
         this.evMinCurrent = evMinCurrent;
     }
 
-    /**
-     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getEvMaxCurrent() {
         return evMaxCurrent;
     }
 
-    /**
-     * Maximum current (amps) supported by the electric vehicle (per phase). Includes cable capacity.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxCurrent
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvMaxCurrent(Float evMaxCurrent) {
         this.evMaxCurrent = evMaxCurrent;
     }
 
-    /**
-     * Maximum voltage supported by the electric vehicle.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getEvMaxVoltage() {
         return evMaxVoltage;
     }
 
-    /**
-     * Maximum voltage supported by the electric vehicle.
-     * Relates to: +
-     * *ISO 15118-2*: AC_EVChargeParameterType: EVMaxVoltage
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvMaxVoltage(Float evMaxVoltage) {
         this.evMaxVoltage = evMaxVoltage;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,61 +9,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Gradient implements JsonInterface {
 
     /**
      * Id of setting
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priority;
+
     /**
      * Default ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float gradient;
+
     /**
      * Soft-start ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float softGradient;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Gradient() {
     }
 
-    /**
-     * @param softGradient Soft-start ramp rate in seconds (0 if not applicable)
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param gradient     Default ramp rate in seconds (0 if not applicable)
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param priority     Id of setting
-     *                     <p>
-     *                     <p>
-     *                     .
-     */
+
     public Gradient(Integer priority, Float gradient, Float softGradient, CustomData customData) {
         super();
         this.priority = priority;
@@ -72,82 +51,42 @@ public class Gradient implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriority() {
         return priority;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
-    /**
-     * Default ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getGradient() {
         return gradient;
     }
 
-    /**
-     * Default ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setGradient(Float gradient) {
         this.gradient = gradient;
     }
 
-    /**
-     * Soft-start ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getSoftGradient() {
         return softGradient;
     }
 
-    /**
-     * Soft-start ramp rate in seconds (0 if not applicable)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setSoftGradient(Float softGradient) {
         this.softGradient = softGradient;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

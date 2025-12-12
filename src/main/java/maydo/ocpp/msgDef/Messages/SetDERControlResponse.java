@@ -13,42 +13,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private DERControlStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Additional details on status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
      * List of controlIds that are superseded as a result of setting this control.
      */
     @Optional
     private List<String> supersededIds;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDERControlResponse() {
     }
 
-    /**
-     * @param supersededIds List of controlIds that are superseded as a result of setting this control.
-     *                      .
-     */
+
     public SetDERControlResponse(DERControlStatusEnum status, StatusInfo statusInfo, List<String> supersededIds, CustomData customData) {
         super();
         this.status = status;
@@ -57,64 +55,42 @@ public class SetDERControlResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public DERControlStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(DERControlStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of setting this control.
-     */
+
     public List<String> getSupersededIds() {
         return supersededIds;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of setting this control.
-     */
+
     public void setSupersededIds(List<String> supersededIds) {
         this.supersededIds = supersededIds;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

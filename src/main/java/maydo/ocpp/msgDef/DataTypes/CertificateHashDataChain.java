@@ -11,70 +11,55 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class CertificateHashDataChain implements JsonInterface {
 
     /**
-     * (Required)
+     * Information to identify a certificate.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
-     * Indicates the type of the requested certificate(s).
-     * <p>
-     * (Required)
+     * Indicates the type of the requested certificate(s)
      */
     @Required
     private GetCertificateIdUseEnum certificateType;
+
+    /**
+     * Information to identify the child certificate(s).
+     */
     @Optional
     private List<CertificateHashData> childCertificateHashData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateHashDataChain() {
     }
 
-    public CertificateHashDataChain(CertificateHashData certificateHashData, GetCertificateIdUseEnum certificateType, List<CertificateHashData> childCertificateHashData, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.certificateType = certificateType;
-        this.childCertificateHashData = childCertificateHashData;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * Indicates the type of the requested certificate(s).
-     * <p>
-     * (Required)
-     */
+
     public GetCertificateIdUseEnum getCertificateType() {
         return certificateType;
     }
 
-    /**
-     * Indicates the type of the requested certificate(s).
-     * <p>
-     * (Required)
-     */
+
     public void setCertificateType(GetCertificateIdUseEnum certificateType) {
         this.certificateType = certificateType;
     }
@@ -87,16 +72,12 @@ public class CertificateHashDataChain implements JsonInterface {
         this.childCertificateHashData = childCertificateHashData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

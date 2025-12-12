@@ -10,36 +10,42 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SalesTariffEntry implements JsonInterface {
 
     /**
-     * (Required)
+     * Defines the time interval the SalesTariffEntry is valid for, based upon relative times.
      */
     @Required
     private RelativeTimeInterval relativeTimeInterval;
+
     /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels).
+     * Small values for the EPriceLevel represent a cheaper TariffEntry.
+     * Large values for the EPriceLevel represent a more expensive TariffEntry.
      */
     @Optional
     private Integer ePriceLevel;
+
+    /**
+     * Defines additional means for further relative price information and/or alternative costs.
+     */
     @Optional
     private List<ConsumptionCost> consumptionCost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SalesTariffEntry() {
     }
 
-    /**
-     * @param ePriceLevel Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     *                    .
-     */
+
     public SalesTariffEntry(RelativeTimeInterval relativeTimeInterval, Integer ePriceLevel, List<ConsumptionCost> consumptionCost, CustomData customData) {
         super();
         this.relativeTimeInterval = relativeTimeInterval;
@@ -48,30 +54,22 @@ public class SalesTariffEntry implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public RelativeTimeInterval getRelativeTimeInterval() {
         return relativeTimeInterval;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
         this.relativeTimeInterval = relativeTimeInterval;
     }
 
-    /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
+
     public Integer getePriceLevel() {
         return ePriceLevel;
     }
 
-    /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
+
     public void setePriceLevel(Integer ePriceLevel) {
         this.ePriceLevel = ePriceLevel;
     }
@@ -84,16 +82,12 @@ public class SalesTariffEntry implements JsonInterface {
         this.consumptionCost = consumptionCost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

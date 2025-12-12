@@ -17,59 +17,54 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the NotifyReportRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class NotifyReportRequest implements JsonInterface {
 
     /**
-     * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * <p>
-     * (Required)
+     * The id of the GetReportRequest or GetBaseReportRequest that requested this report
      */
     @Required
     private Integer requestId;
+
     /**
      * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Date generatedAt;
+
+    /**
+     * List of ReportData.
+     */
     @Optional
     private List<ReportData> reportData;
+
     /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
+     * “to be continued” indicator.
+     * Indicates whether another part of the report follows in an upcoming notifyReportRequest message.
+     * Default value when omitted is false.
      */
     @Optional
     private Boolean tbc = false;
+
     /**
      * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer seqNo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyReportRequest() {
     }
 
-    /**
-     * @param tbc         “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     *                    <p>
-     *                    .
-     * @param seqNo       Sequence number of this message. First message starts at 0.
-     *                    .
-     * @param requestId   The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     *                    .
-     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
-     *                    .
-     */
+
     public NotifyReportRequest(Integer requestId, Date generatedAt, List<ReportData> reportData, Boolean tbc, Integer seqNo, CustomData customData) {
         super();
         this.requestId = requestId;
@@ -80,38 +75,22 @@ public class NotifyReportRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The id of the GetReportRequest  or GetBaseReportRequest that requested this report
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Date getGeneratedAt() {
         return generatedAt;
     }
 
-    /**
-     * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setGeneratedAt(Date generatedAt) {
         this.generatedAt = generatedAt;
     }
@@ -124,48 +103,32 @@ public class NotifyReportRequest implements JsonInterface {
         this.reportData = reportData;
     }
 
-    /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyReportRequest message. Default value when omitted is false.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSeqNo() {
         return seqNo;
     }
 
-    /**
-     * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
-     */
+
     public void setSeqNo(Integer seqNo) {
         this.seqNo = seqNo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

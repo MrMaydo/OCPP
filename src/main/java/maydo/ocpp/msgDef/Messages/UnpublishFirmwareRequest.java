@@ -10,65 +10,50 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the UnpublishFirmwareRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class UnpublishFirmwareRequest implements JsonInterface {
 
     /**
      * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
      */
     @Required
     private String checksum;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UnpublishFirmwareRequest() {
     }
 
-    /**
-     * @param checksum The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     *                 .
-     */
+
     public UnpublishFirmwareRequest(String checksum, CustomData customData) {
         super();
         this.checksum = checksum;
         this.customData = customData;
     }
 
-    /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
-     */
+
     public String getChecksum() {
         return checksum;
     }
 
-    /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
-     */
+
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

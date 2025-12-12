@@ -10,65 +10,51 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) This message is sent by a Charging Station to request an update of setpoints
+ * and/or limits of the charging profile with given chargingProfileId.
+ */
 public class PullDynamicScheduleUpdateRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer chargingProfileId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PullDynamicScheduleUpdateRequest() {
     }
 
-    /**
-     * @param chargingProfileId Id of charging profile to update.
-     *                          .
-     */
+
     public PullDynamicScheduleUpdateRequest(Integer chargingProfileId, CustomData customData) {
         super();
         this.chargingProfileId = chargingProfileId;
         this.customData = customData;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

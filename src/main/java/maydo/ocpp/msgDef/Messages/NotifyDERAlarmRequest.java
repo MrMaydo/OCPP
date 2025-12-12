@@ -17,63 +17,52 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class NotifyDERAlarmRequest implements JsonInterface {
 
     /**
      * Name of DER control, e.g. LFMustTrip
-     * <p>
-     * (Required)
      */
     @Required
     private DERControlEnum controlType;
+
     /**
      * Type of grid event that caused this
      */
     @Optional
     private GridEventFaultEnum gridEventFault;
+
     /**
-     * True when error condition has ended.
-     * Absent or false when alarm has started.
+     * True when error condition has ended. Absent or false when alarm has started.
      */
     @Optional
     private Boolean alarmEnded;
+
     /**
      * Time of start or end of alarm.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
      * Optional info provided by EV.
      */
     @Optional
     private String extraInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyDERAlarmRequest() {
     }
 
-    /**
-     * @param alarmEnded True when error condition has ended.
-     *                   Absent or false when alarm has started.
-     *                   <p>
-     *                   .
-     * @param timestamp  Time of start or end of alarm.
-     *                   <p>
-     *                   .
-     * @param extraInfo  Optional info provided by EV.
-     *                   <p>
-     *                   .
-     */
+
     public NotifyDERAlarmRequest(DERControlEnum controlType, GridEventFaultEnum gridEventFault, Boolean alarmEnded, Date timestamp, String extraInfo, CustomData customData) {
         super();
         this.controlType = controlType;
@@ -84,98 +73,62 @@ public class NotifyDERAlarmRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Name of DER control, e.g. LFMustTrip
-     * <p>
-     * (Required)
-     */
+
     public DERControlEnum getControlType() {
         return controlType;
     }
 
-    /**
-     * Name of DER control, e.g. LFMustTrip
-     * <p>
-     * (Required)
-     */
+
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
     }
 
-    /**
-     * Type of grid event that caused this
-     */
+
     public GridEventFaultEnum getGridEventFault() {
         return gridEventFault;
     }
 
-    /**
-     * Type of grid event that caused this
-     */
+
     public void setGridEventFault(GridEventFaultEnum gridEventFault) {
         this.gridEventFault = gridEventFault;
     }
 
-    /**
-     * True when error condition has ended.
-     * Absent or false when alarm has started.
-     */
+
     public Boolean getAlarmEnded() {
         return alarmEnded;
     }
 
-    /**
-     * True when error condition has ended.
-     * Absent or false when alarm has started.
-     */
+
     public void setAlarmEnded(Boolean alarmEnded) {
         this.alarmEnded = alarmEnded;
     }
 
-    /**
-     * Time of start or end of alarm.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Time of start or end of alarm.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Optional info provided by EV.
-     */
+
     public String getExtraInfo() {
         return extraInfo;
     }
 
-    /**
-     * Optional info provided by EV.
-     */
+
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

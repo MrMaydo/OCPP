@@ -10,41 +10,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Volume consumed of cost dimension.
+ */
 public class CostDimension implements JsonInterface {
 
     /**
      * Type of cost dimension: energy, power, time, etc.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private CostDimensionEnum type;
+
     /**
      * Volume of the dimension consumed, measured according to the dimension type.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float volume;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CostDimension() {
     }
 
-    /**
-     * @param volume Volume of the dimension consumed, measured according to the dimension type.
-     *               <p>
-     *               .
-     */
+
     public CostDimension(CostDimensionEnum type, Float volume, CustomData customData) {
         super();
         this.type = type;
@@ -52,56 +45,32 @@ public class CostDimension implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Type of cost dimension: energy, power, time, etc.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public CostDimensionEnum getType() {
         return type;
     }
 
-    /**
-     * Type of cost dimension: energy, power, time, etc.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setType(CostDimensionEnum type) {
         this.type = type;
     }
 
-    /**
-     * Volume of the dimension consumed, measured according to the dimension type.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getVolume() {
         return volume;
     }
 
-    /**
-     * Volume of the dimension consumed, measured according to the dimension type.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setVolume(Float volume) {
         this.volume = volume;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

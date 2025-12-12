@@ -9,56 +9,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Tax percentage
  */
 public class TaxRate implements JsonInterface {
 
     /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
+     * Type of this tax, e.g. "Federal ", "State", for information on receipt.
      */
     @Required
     private String type;
+
     /**
      * Tax percentage
-     * <p>
-     * (Required)
      */
     @Required
     private Float tax;
+
     /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
+     * Stack level for this type of tax. Default value, when absent, is 0.
+     * <p> stack = 0: tax on net price; </p>
+     * <p> stack = 1: tax added on top of stack 0; </p>
+     * <p> stack = 2: tax added on top of stack 1, etc. </p>
      */
     @Optional
     private Integer stack;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TaxRate() {
     }
 
-    /**
-     * @param stack Stack level for this type of tax. Default value, when absent, is 0. +
-     *              _stack_ = 0: tax on net price; +
-     *              _stack_ = 1: tax added on top of _stack_ 0; +
-     *              _stack_ = 2: tax added on top of _stack_ 1, etc.
-     *              .
-     * @param tax   Tax percentage
-     *              .
-     * @param type  Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     *              .
-     */
+
     public TaxRate(String type, Float tax, Integer stack, CustomData customData) {
         super();
         this.type = type;
@@ -67,72 +55,42 @@ public class TaxRate implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
-     */
+
     public String getType() {
         return type;
     }
 
-    /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
-     */
+
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * Tax percentage
-     * <p>
-     * (Required)
-     */
+
     public Float getTax() {
         return tax;
     }
 
-    /**
-     * Tax percentage
-     * <p>
-     * (Required)
-     */
+
     public void setTax(Float tax) {
         this.tax = tax;
     }
 
-    /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
-     */
+
     public Integer getStack() {
         return stack;
     }
 
-    /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
-     */
+
     public void setStack(Integer stack) {
         this.stack = stack;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

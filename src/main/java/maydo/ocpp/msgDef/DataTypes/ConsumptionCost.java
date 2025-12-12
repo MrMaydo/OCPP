@@ -10,36 +10,35 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ConsumptionCost implements JsonInterface {
 
     /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
+     * The lowest level of consumption that defines the starting point of this consumption block.
+     * The block interval extends to the start of the next interval.
      */
     @Required
     private Float startValue;
+
     /**
-     * (Required)
+     * This field contains the cost details.
      */
     @Required
     private List<Cost> cost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ConsumptionCost() {
     }
 
-    /**
-     * @param startValue The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     *                   .
-     */
+
     public ConsumptionCost(Float startValue, List<Cost> cost, CustomData customData) {
         super();
         this.startValue = startValue;
@@ -47,48 +46,32 @@ public class ConsumptionCost implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
-     */
+
     public Float getStartValue() {
         return startValue;
     }
 
-    /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
-     */
+
     public void setStartValue(Float startValue) {
         this.startValue = startValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<Cost> getCost() {
         return cost;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCost(List<Cost> cost) {
         this.cost = cost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

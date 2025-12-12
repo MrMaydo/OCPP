@@ -13,55 +13,46 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the PublishFirmwareStatusNotificationRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
-     * This contains the progress status of the publishfirmware
-     * installation.
-     * <p>
-     * (Required)
+     * This contains the progress status of the publishfirmware installation.
      */
     @Required
     private PublishFirmwareStatusEnum status;
+
     /**
      * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
      */
     @Optional
     private List<String> location;
+
     /**
-     * The request id that was
-     * provided in the
-     * PublishFirmwareRequest which
-     * triggered this action.
+     * The request id that was provided in the PublishFirmwareRequest which triggered this action.
      */
     @Optional
     private Integer requestId;
+
     /**
-     * Element providing more information about the status.
+     * (2.1) Detailed status info
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PublishFirmwareStatusNotificationRequest() {
     }
 
-    /**
-     * @param requestId The request id that was
-     *                  provided in the
-     *                  PublishFirmwareRequest which
-     *                  triggered this action.
-     *                  .
-     * @param location  Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
-     *                  .
-     */
+
     public PublishFirmwareStatusNotificationRequest(PublishFirmwareStatusEnum status, List<String> location, Integer requestId, StatusInfo statusInfo, CustomData customData) {
         super();
         this.status = status;
@@ -71,84 +62,52 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains the progress status of the publishfirmware
-     * installation.
-     * <p>
-     * (Required)
-     */
+
     public PublishFirmwareStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This contains the progress status of the publishfirmware
-     * installation.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(PublishFirmwareStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
-     */
+
     public List<String> getLocation() {
         return location;
     }
 
-    /**
-     * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
-     */
+
     public void setLocation(List<String> location) {
         this.location = location;
     }
 
-    /**
-     * The request id that was
-     * provided in the
-     * PublishFirmwareRequest which
-     * triggered this action.
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The request id that was
-     * provided in the
-     * PublishFirmwareRequest which
-     * triggered this action.
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

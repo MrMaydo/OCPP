@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * The physical system where an Electrical Vehicle (EV) can be charged.
  */
@@ -19,53 +20,42 @@ public class ChargingStation implements JsonInterface {
      */
     @Optional
     private String serialNumber;
+
     /**
      * Defines the model of the device.
-     * <p>
-     * (Required)
      */
     @Required
     private String model;
+
     /**
-     * Defines parameters required for initiating and maintaining wireless communication with other devices.
+     * Defines the functional parameters of a communication link.
      */
     @Optional
     private Modem modem;
+
     /**
      * Identifies the vendor (not necessarily in a unique manner).
-     * <p>
-     * (Required)
      */
     @Required
     private String vendorName;
+
     /**
      * This contains the firmware version of the Charging Station.
      */
     @Optional
     private String firmwareVersion;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChargingStation() {
     }
 
-    /**
-     * @param serialNumber    Vendor-specific device identifier.
-     *                        .
-     * @param model           Defines the model of the device.
-     *                        .
-     * @param vendorName      Identifies the vendor (not necessarily in a unique manner).
-     *                        .
-     * @param firmwareVersion This contains the firmware version of the Charging Station.
-     *                        <p>
-     *                        .
-     */
+
     public ChargingStation(String serialNumber, String model, Modem modem, String vendorName, String firmwareVersion, CustomData customData) {
         super();
         this.serialNumber = serialNumber;
@@ -76,94 +66,62 @@ public class ChargingStation implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Vendor-specific device identifier.
-     */
+
     public String getSerialNumber() {
         return serialNumber;
     }
 
-    /**
-     * Vendor-specific device identifier.
-     */
+
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    /**
-     * Defines the model of the device.
-     * <p>
-     * (Required)
-     */
+
     public String getModel() {
         return model;
     }
 
-    /**
-     * Defines the model of the device.
-     * <p>
-     * (Required)
-     */
+
     public void setModel(String model) {
         this.model = model;
     }
 
-    /**
-     * Defines parameters required for initiating and maintaining wireless communication with other devices.
-     */
+
     public Modem getModem() {
         return modem;
     }
 
-    /**
-     * Defines parameters required for initiating and maintaining wireless communication with other devices.
-     */
+
     public void setModem(Modem modem) {
         this.modem = modem;
     }
 
-    /**
-     * Identifies the vendor (not necessarily in a unique manner).
-     * <p>
-     * (Required)
-     */
+
     public String getVendorName() {
         return vendorName;
     }
 
-    /**
-     * Identifies the vendor (not necessarily in a unique manner).
-     * <p>
-     * (Required)
-     */
+
     public void setVendorName(String vendorName) {
         this.vendorName = vendorName;
     }
 
-    /**
-     * This contains the firmware version of the Charging Station.
-     */
+
     public String getFirmwareVersion() {
         return firmwareVersion;
     }
 
-    /**
-     * This contains the firmware version of the Charging Station.
-     */
+
     public void setFirmwareVersion(String firmwareVersion) {
         this.firmwareVersion = firmwareVersion;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

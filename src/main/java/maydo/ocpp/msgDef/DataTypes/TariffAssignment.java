@@ -16,54 +16,52 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Shows assignment of tariffs to EVSE or IdToken.
+ */
 public class TariffAssignment implements JsonInterface {
 
     /**
      * Tariff id.
-     * <p>
-     * (Required)
      */
     @Required
     private String tariffId;
+
     /**
      * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
      */
     @Required
     private TariffKindEnum tariffKind;
+
     /**
      * Date/time when this tariff become active.
      */
     @Optional
     private Date validFrom;
+
+    /**
+     *
+     */
     @Optional
     private List<Integer> evseIds;
+
     /**
      * IdTokens related to tariff
      */
     @Optional
     private List<String> idTokens;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TariffAssignment() {
     }
 
-    /**
-     * @param idTokens  IdTokens related to tariff
-     *                  .
-     * @param tariffId  Tariff id.
-     *                  .
-     * @param validFrom Date/time when this tariff become active.
-     *                  .
-     */
+
     public TariffAssignment(String tariffId, TariffKindEnum tariffKind, Date validFrom, List<Integer> evseIds, List<String> idTokens, CustomData customData) {
         super();
         this.tariffId = tariffId;
@@ -74,52 +72,32 @@ public class TariffAssignment implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Tariff id.
-     * <p>
-     * (Required)
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Tariff id.
-     * <p>
-     * (Required)
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
-     */
+
     public TariffKindEnum getTariffKind() {
         return tariffKind;
     }
 
-    /**
-     * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
-     */
+
     public void setTariffKind(TariffKindEnum tariffKind) {
         this.tariffKind = tariffKind;
     }
 
-    /**
-     * Date/time when this tariff become active.
-     */
+
     public Date getValidFrom() {
         return validFrom;
     }
 
-    /**
-     * Date/time when this tariff become active.
-     */
+
     public void setValidFrom(Date validFrom) {
         this.validFrom = validFrom;
     }
@@ -132,30 +110,22 @@ public class TariffAssignment implements JsonInterface {
         this.evseIds = evseIds;
     }
 
-    /**
-     * IdTokens related to tariff
-     */
+
     public List<String> getIdTokens() {
         return idTokens;
     }
 
-    /**
-     * IdTokens related to tariff
-     */
+
     public void setIdTokens(List<String> idTokens) {
         this.idTokens = idTokens;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,42 +9,42 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
+ */
 public class ClearChargingProfile implements JsonInterface {
 
     /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
+     * Specifies the id of the EVSE for which to clear charging profiles.
+     * An evseId of zero (0) specifies the charging profile for the overall Charging Station.
+     * Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
      */
     @Optional
     private Integer evseId;
+
     /**
      * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
      */
     @Optional
     private ChargingProfilePurposeEnum chargingProfilePurpose;
+
     /**
      * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
      */
     @Optional
     private Integer stackLevel;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearChargingProfile() {
     }
 
-    /**
-     * @param evseId     Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     *                   <p>
-     *                   .
-     * @param stackLevel Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     *                   .
-     */
+
     public ClearChargingProfile(Integer evseId, ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -53,58 +53,42 @@ public class ClearChargingProfile implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     */
+
     public ChargingProfilePurposeEnum getChargingProfilePurpose() {
         return chargingProfilePurpose;
     }
 
-    /**
-     * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     */
+
     public void setChargingProfilePurpose(ChargingProfilePurposeEnum chargingProfilePurpose) {
         this.chargingProfilePurpose = chargingProfilePurpose;
     }
 
-    /**
-     * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     */
+
     public Integer getStackLevel() {
         return stackLevel;
     }
 
-    /**
-     * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     */
+
     public void setStackLevel(Integer stackLevel) {
         this.stackLevel = stackLevel;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

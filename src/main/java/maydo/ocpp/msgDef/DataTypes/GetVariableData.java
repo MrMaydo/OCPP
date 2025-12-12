@@ -10,6 +10,9 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Class to hold parameters for GetVariables request
+ */
 public class GetVariableData implements JsonInterface {
 
     /**
@@ -17,29 +20,26 @@ public class GetVariableData implements JsonInterface {
      */
     @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
+
     /**
-     * A physical or logical component
-     * <p>
-     * (Required)
+     * Component for which the Variable is requested.
      */
     @Required
     private Component component;
+
     /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
+     * Variable for which the attribute value is requested.
      */
     @Required
     private Variable variable;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetVariableData() {
     }
 
@@ -51,66 +51,42 @@ public class GetVariableData implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Attribute type for which value is requested. When absent, default Actual is assumed.
-     */
+
     public AttributeEnum getAttributeType() {
         return attributeType;
     }
 
-    /**
-     * Attribute type for which value is requested. When absent, default Actual is assumed.
-     */
+
     public void setAttributeType(AttributeEnum attributeType) {
         this.attributeType = attributeType;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public Component getComponent() {
         return component;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public void setComponent(Component component) {
         this.component = component;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public Variable getVariable() {
         return variable;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Part of ISO 15118-20 price schedule.
  */
@@ -16,91 +17,63 @@ public class TaxRule implements JsonInterface {
 
     /**
      * Id for the tax rule.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer taxRuleID;
+
     /**
      * Human readable string to identify the tax rule.
      */
     @Optional
     private String taxRuleName;
+
     /**
      * Indicates whether the tax is included in any price or not.
      */
     @Optional
     private Boolean taxIncludedInPrice;
+
     /**
      * Indicates whether this tax applies to Energy Fees.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean appliesToEnergyFee;
+
     /**
-     * Indicates whether this tax applies to Parking Fees.
-     * <p>
-     * <p>
-     * (Required)
+     * Indicates whether this tax applies to Parking Fees
      */
     @Required
     private Boolean appliesToParkingFee;
+
     /**
      * Indicates whether this tax applies to Overstay Fees.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean appliesToOverstayFee;
+
     /**
      * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean appliesToMinimumMaximumCost;
+
     /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
+     * Percentage of the total amount of applying fee (energy, parking, overstay, MinimumCost and/or MaximumCost).
      */
     @Required
     private RationalNumber taxRate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TaxRule() {
     }
 
-    /**
-     * @param appliesToEnergyFee          Indicates whether this tax applies to Energy Fees.
-     *                                    .
-     * @param taxRuleID                   Id for the tax rule.
-     *                                    .
-     * @param taxRuleName                 Human readable string to identify the tax rule.
-     *                                    .
-     * @param appliesToOverstayFee        Indicates whether this tax applies to Overstay Fees.
-     *                                    <p>
-     *                                    .
-     * @param taxIncludedInPrice          Indicates whether the tax is included in any price or not.
-     *                                    .
-     * @param appliesToParkingFee         Indicates whether this tax applies to Parking Fees.
-     *                                    <p>
-     *                                    .
-     * @param appliesToMinimumMaximumCost Indicates whether this tax applies to Minimum/Maximum Cost.
-     *                                    <p>
-     *                                    .
-     */
+
     public TaxRule(Integer taxRuleID, String taxRuleName, Boolean taxIncludedInPrice, Boolean appliesToEnergyFee, Boolean appliesToParkingFee, Boolean appliesToOverstayFee, Boolean appliesToMinimumMaximumCost, RationalNumber taxRate, CustomData customData) {
         super();
         this.taxRuleID = taxRuleID;
@@ -114,160 +87,92 @@ public class TaxRule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id for the tax rule.
-     * <p>
-     * (Required)
-     */
+
     public Integer getTaxRuleID() {
         return taxRuleID;
     }
 
-    /**
-     * Id for the tax rule.
-     * <p>
-     * (Required)
-     */
+
     public void setTaxRuleID(Integer taxRuleID) {
         this.taxRuleID = taxRuleID;
     }
 
-    /**
-     * Human readable string to identify the tax rule.
-     */
+
     public String getTaxRuleName() {
         return taxRuleName;
     }
 
-    /**
-     * Human readable string to identify the tax rule.
-     */
+
     public void setTaxRuleName(String taxRuleName) {
         this.taxRuleName = taxRuleName;
     }
 
-    /**
-     * Indicates whether the tax is included in any price or not.
-     */
+
     public Boolean getTaxIncludedInPrice() {
         return taxIncludedInPrice;
     }
 
-    /**
-     * Indicates whether the tax is included in any price or not.
-     */
+
     public void setTaxIncludedInPrice(Boolean taxIncludedInPrice) {
         this.taxIncludedInPrice = taxIncludedInPrice;
     }
 
-    /**
-     * Indicates whether this tax applies to Energy Fees.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getAppliesToEnergyFee() {
         return appliesToEnergyFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Energy Fees.
-     * <p>
-     * (Required)
-     */
+
     public void setAppliesToEnergyFee(Boolean appliesToEnergyFee) {
         this.appliesToEnergyFee = appliesToEnergyFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Parking Fees.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getAppliesToParkingFee() {
         return appliesToParkingFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Parking Fees.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setAppliesToParkingFee(Boolean appliesToParkingFee) {
         this.appliesToParkingFee = appliesToParkingFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Overstay Fees.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getAppliesToOverstayFee() {
         return appliesToOverstayFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Overstay Fees.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setAppliesToOverstayFee(Boolean appliesToOverstayFee) {
         this.appliesToOverstayFee = appliesToOverstayFee;
     }
 
-    /**
-     * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getAppliesToMinimumMaximumCost() {
         return appliesToMinimumMaximumCost;
     }
 
-    /**
-     * Indicates whether this tax applies to Minimum/Maximum Cost.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setAppliesToMinimumMaximumCost(Boolean appliesToMinimumMaximumCost) {
         this.appliesToMinimumMaximumCost = appliesToMinimumMaximumCost;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public RationalNumber getTaxRate() {
         return taxRate;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setTaxRate(RationalNumber taxRate) {
         this.taxRate = taxRate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

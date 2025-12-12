@@ -8,39 +8,37 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+
 /**
- * Total cost with and without tax. Contains the total of energy, charging time, idle time, fixed and reservation costs including and/or excluding tax.
+ * Total cost with and without tax.
+ * Contains the total of energy, charging time, idle time, fixed and reservation costs including
+ * and/or excluding tax.
  */
 public class TotalPrice implements JsonInterface {
 
     /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
+     * Price/cost excluding tax. Can be absent if inclTax is present.
      */
     @Optional
     private Float exclTax;
+
     /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
+     * Price/cost including tax. Can be absent if exclTax is present.
      */
     @Optional
     private Float inclTax;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TotalPrice() {
     }
 
-    /**
-     * @param inclTax Price/cost including tax. Can be absent if _exclTax_ is present.
-     *                .
-     * @param exclTax Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     *                .
-     */
+
     public TotalPrice(Float exclTax, Float inclTax, CustomData customData) {
         super();
         this.exclTax = exclTax;
@@ -48,44 +46,32 @@ public class TotalPrice implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     */
+
     public Float getExclTax() {
         return exclTax;
     }
 
-    /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     */
+
     public void setExclTax(Float exclTax) {
         this.exclTax = exclTax;
     }
 
-    /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
-     */
+
     public Float getInclTax() {
         return inclTax;
     }
 
-    /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
-     */
+
     public void setInclTax(Float inclTax) {
         this.inclTax = inclTax;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

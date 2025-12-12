@@ -11,52 +11,46 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetDERControlRequest implements JsonInterface {
 
     /**
      * RequestId to be used in ReportDERControlRequest.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * True: get a default DER control. False: get a scheduled control.
      */
     @Optional
     private Boolean isDefault;
+
     /**
-     * Type of control settings to retrieve. Not used when _controlId_ is provided.
+     * Type of control settings to retrieve. Not used when controlId is provided.
      */
     @Optional
     private DERControlEnum controlType;
+
     /**
-     * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
+     * Id of setting to get. When omitted all settings for controlType are retrieved.
      */
     @Optional
     private String controlId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetDERControlRequest() {
     }
 
-    /**
-     * @param isDefault True: get a default DER control. False: get a scheduled control.
-     *                  <p>
-     *                  .
-     * @param requestId RequestId to be used in ReportDERControlRequest.
-     *                  .
-     * @param controlId Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     *                  <p>
-     *                  .
-     */
+
     public GetDERControlRequest(Integer requestId, Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
         super();
         this.requestId = requestId;
@@ -66,76 +60,52 @@ public class GetDERControlRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * RequestId to be used in ReportDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * RequestId to be used in ReportDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * True: get a default DER control. False: get a scheduled control.
-     */
+
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True: get a default DER control. False: get a scheduled control.
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * Type of control settings to retrieve. Not used when _controlId_ is provided.
-     */
+
     public DERControlEnum getControlType() {
         return controlType;
     }
 
-    /**
-     * Type of control settings to retrieve. Not used when _controlId_ is provided.
-     */
+
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
     }
 
-    /**
-     * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     */
+
     public String getControlId() {
         return controlId;
     }
 
-    /**
-     * Id of setting to get. When omitted all settings for _controlType_ are retrieved.
-     */
+
     public void setControlId(String controlId) {
         this.controlId = controlId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

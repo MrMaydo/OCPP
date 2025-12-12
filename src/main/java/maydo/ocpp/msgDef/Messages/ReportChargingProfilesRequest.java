@@ -12,61 +12,56 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Reports charging profiles installed in the Charging Station, as requested via a GetChargingProfilesRequest message.
+ * The charging profile report can be split over multiple ReportChargingProfilesRequest messages,
+ * this can be because charging profiles for different charging sources need to be reported,
+ * or because there is just to much data for one message.
+ */
 public class ReportChargingProfilesRequest implements JsonInterface {
 
     /**
-     * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * <p>
-     * (Required)
+     * Id used to match the GetChargingProfilesRequest message with the resulting ReportChargingProfilesRequest messages.
+     * When the CSMS provided a requestId in the GetChargingProfilesRequest, this field SHALL contain the same value.
      */
     @Required
     private Integer requestId;
+
     /**
      * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
      */
     @Required
     private String chargingLimitSource;
+
     /**
-     * (Required)
+     * The charging profile as configured in the Charging Station.
      */
     @Required
     private List<ChargingProfile> chargingProfile;
+
     /**
      * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
      */
     @Optional
     private Boolean tbc = false;
+
     /**
      * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReportChargingProfilesRequest() {
     }
 
-    /**
-     * @param evseId              The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     *                            .
-     * @param tbc                 To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     *                            .
-     * @param requestId           Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     *                            .
-     * @param chargingLimitSource Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     *                            .
-     */
+
     public ReportChargingProfilesRequest(Integer requestId, String chargingLimitSource, List<ChargingProfile> chargingProfile, Boolean tbc, Integer evseId, CustomData customData) {
         super();
         this.requestId = requestId;
@@ -77,98 +72,62 @@ public class ReportChargingProfilesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * Id used to match the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt; message with the resulting ReportChargingProfilesRequest messages. When the CSMS provided a requestId in the &lt;&lt;getchargingprofilesrequest, GetChargingProfilesRequest&gt;&gt;, this field SHALL contain the same value.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public String getChargingLimitSource() {
         return chargingLimitSource;
     }
 
-    /**
-     * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingLimitSource(String chargingLimitSource) {
         this.chargingLimitSource = chargingLimitSource;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ChargingProfile> getChargingProfile() {
         return chargingProfile;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingProfile(List<ChargingProfile> chargingProfile) {
         this.chargingProfile = chargingProfile;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. false indicates that there are no further messages as part of this report.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

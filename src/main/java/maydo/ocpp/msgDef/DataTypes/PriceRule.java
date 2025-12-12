@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Part of ISO 15118-20 price schedule.
  */
@@ -16,62 +17,55 @@ public class PriceRule implements JsonInterface {
 
     /**
      * The duration of the parking fee period (in seconds).
-     * When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
+     * When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session..
      */
     @Optional
     private Integer parkingFeePeriod;
+
     /**
      * Number of grams of CO2 per kWh.
      */
     @Optional
     private Integer carbonDioxideEmission;
+
     /**
      * Percentage of the power that is created by renewable resources.
      */
     @Optional
     private Integer renewableGenerationPercentage;
+
     /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
+     * Cost per kWh. Use zero for free energy.
      */
     @Required
     private RationalNumber energyFee;
+
     /**
-     * Part of ISO 15118-20 price schedule.
+     * Cost of parking. Mandatory whenever a parking fee applies
      */
     @Optional
     private RationalNumber parkingFee;
+
     /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
+     * For values 0 and above, this is the power level above which this price rule applies.
+     * If there is another PriceRule with a higher value, and the current power is above that value,
+     * then that other PriceRule applies.For negative values, this is the power level below which this price rule applies.
+     * If there is another PriceRule with a lower value, and the current power is below that value, then that other PriceRule applies.
      */
     @Required
     private RationalNumber powerRangeStart;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PriceRule() {
     }
 
-    /**
-     * @param renewableGenerationPercentage Percentage of the power that is created by renewable resources.
-     *                                      .
-     * @param parkingFeePeriod              The duration of the parking fee period (in seconds).
-     *                                      When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
-     *                                      .
-     * @param carbonDioxideEmission         Number of grams of CO2 per kWh.
-     *                                      .
-     */
+
     public PriceRule(Integer parkingFeePeriod, Integer carbonDioxideEmission, Integer renewableGenerationPercentage, RationalNumber energyFee, RationalNumber parkingFee, RationalNumber powerRangeStart, CustomData customData) {
         super();
         this.parkingFeePeriod = parkingFeePeriod;
@@ -83,114 +77,72 @@ public class PriceRule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The duration of the parking fee period (in seconds).
-     * When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
-     */
+
     public Integer getParkingFeePeriod() {
         return parkingFeePeriod;
     }
 
-    /**
-     * The duration of the parking fee period (in seconds).
-     * When the time enters into a ParkingFeePeriod, the ParkingFee will apply to the session. .
-     */
+
     public void setParkingFeePeriod(Integer parkingFeePeriod) {
         this.parkingFeePeriod = parkingFeePeriod;
     }
 
-    /**
-     * Number of grams of CO2 per kWh.
-     */
+
     public Integer getCarbonDioxideEmission() {
         return carbonDioxideEmission;
     }
 
-    /**
-     * Number of grams of CO2 per kWh.
-     */
+
     public void setCarbonDioxideEmission(Integer carbonDioxideEmission) {
         this.carbonDioxideEmission = carbonDioxideEmission;
     }
 
-    /**
-     * Percentage of the power that is created by renewable resources.
-     */
+
     public Integer getRenewableGenerationPercentage() {
         return renewableGenerationPercentage;
     }
 
-    /**
-     * Percentage of the power that is created by renewable resources.
-     */
+
     public void setRenewableGenerationPercentage(Integer renewableGenerationPercentage) {
         this.renewableGenerationPercentage = renewableGenerationPercentage;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public RationalNumber getEnergyFee() {
         return energyFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEnergyFee(RationalNumber energyFee) {
         this.energyFee = energyFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public RationalNumber getParkingFee() {
         return parkingFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public void setParkingFee(RationalNumber parkingFee) {
         this.parkingFee = parkingFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public RationalNumber getPowerRangeStart() {
         return powerRangeStart;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setPowerRangeStart(RationalNumber powerRangeStart) {
         this.powerRangeStart = powerRangeStart;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

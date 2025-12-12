@@ -13,49 +13,47 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
-     * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
+     * If provided the Charging Station shall return Display Messages of the given ids.
+     * This field SHALL NOT contain more ids than set in NumberOfDisplayMessages.maxLimit
      */
     @Optional
     private List<Integer> id;
+
     /**
      * The Id of this request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * If provided the Charging Station shall return Display Messages with the given priority only.
      */
     @Optional
     private MessagePriorityEnum priority;
+
     /**
      * If provided the Charging Station shall return Display Messages with the given state only.
      */
     @Optional
     private MessageStateEnum state;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetDisplayMessagesRequest() {
     }
 
-    /**
-     * @param requestId The Id of this request.
-     *                  .
-     * @param id        If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     *                  <p>
-     *                  .
-     */
+
     public GetDisplayMessagesRequest(List<Integer> id, Integer requestId, MessagePriorityEnum priority, MessageStateEnum state, CustomData customData) {
         super();
         this.id = id;
@@ -65,76 +63,52 @@ public class GetDisplayMessagesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     */
+
     public List<Integer> getId() {
         return id;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages of the given ids. This field SHALL NOT contain more ids than set in &lt;&lt;configkey-number-of-display-messages,NumberOfDisplayMessages.maxLimit&gt;&gt;
-     */
+
     public void setId(List<Integer> id) {
         this.id = id;
     }
 
-    /**
-     * The Id of this request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of this request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages with the given priority only.
-     */
+
     public MessagePriorityEnum getPriority() {
         return priority;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages with the given priority only.
-     */
+
     public void setPriority(MessagePriorityEnum priority) {
         this.priority = priority;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages with the given state only.
-     */
+
     public MessageStateEnum getState() {
         return state;
     }
 
-    /**
-     * If provided the Charging Station shall return Display Messages with the given state only.
-     */
+
     public void setState(MessageStateEnum state) {
         this.state = state;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

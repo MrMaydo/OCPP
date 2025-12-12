@@ -13,39 +13,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SendLocalListRequest PDU sent by the CSMS to the Charging Station.
+ * If no (empty) localAuthorizationList is given and the updateType is Full, all IdTokens are removed from the list.
+ * Requesting a Differential update without or with empty localAuthorizationList will have no effect on the list.
+ * All IdTokens in the localAuthorizationList MUST be unique, no duplicate values are allowed.
+ */
 public class SendLocalListRequest implements JsonInterface {
 
-    private List<AuthorizationData> localAuthorizationList;
     /**
-     * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * <p>
-     * (Required)
+     * This contains the Local Authorization List entries.
+     */
+    @Optional
+    private List<AuthorizationData> localAuthorizationList;
+
+    /**
+     * In case of a full update this is the version number of the full list.
+     * In case of a differential update it is the version number of the list after the update has been applied.
      */
     @Required
     private Integer versionNumber;
+
     /**
      * This contains the type of update (full or differential) of this request.
-     * <p>
-     * (Required)
      */
     @Required
     private UpdateEnum updateType;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SendLocalListRequest() {
     }
 
-    /**
-     * @param versionNumber In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     *                      .
-     */
+
     public SendLocalListRequest(List<AuthorizationData> localAuthorizationList, Integer versionNumber, UpdateEnum updateType, CustomData customData) {
         super();
         this.localAuthorizationList = localAuthorizationList;
@@ -62,52 +67,32 @@ public class SendLocalListRequest implements JsonInterface {
         this.localAuthorizationList = localAuthorizationList;
     }
 
-    /**
-     * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * <p>
-     * (Required)
-     */
+
     public Integer getVersionNumber() {
         return versionNumber;
     }
 
-    /**
-     * In case of a full update this is the version number of the full list. In case of a differential update it is the version number of the list after the update has been applied.
-     * <p>
-     * (Required)
-     */
+
     public void setVersionNumber(Integer versionNumber) {
         this.versionNumber = versionNumber;
     }
 
-    /**
-     * This contains the type of update (full or differential) of this request.
-     * <p>
-     * (Required)
-     */
+
     public UpdateEnum getUpdateType() {
         return updateType;
     }
 
-    /**
-     * This contains the type of update (full or differential) of this request.
-     * <p>
-     * (Required)
-     */
+
     public void setUpdateType(UpdateEnum updateType) {
         this.updateType = updateType;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

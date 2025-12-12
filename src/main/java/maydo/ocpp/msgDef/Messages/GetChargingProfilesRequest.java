@@ -11,48 +11,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * The message GetChargingProfilesRequest can be used by the CSMS to request installed charging profiles from the Charging Station.
+ * The charging profiles will then be reported by the Charging Station via ReportChargingProfilesRequest messages.
+ */
 public class GetChargingProfilesRequest implements JsonInterface {
 
     /**
-     * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * <p>
-     * (Required)
+     * Reference identification that is to be used by the Charging Station in the ReportChargingProfilesRequest when provided.
      */
     @Required
     private Integer requestId;
+
     /**
-     * For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
-     * Reported charging profiles SHALL match the criteria in field _chargingProfile_.
+     * For which EVSE installed charging profiles SHALL be reported.
+     * If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported.
+     * If omitted, all installed charging profiles SHALL be reported.
+     * Reported charging profiles SHALL match the criteria in field chargingProfile.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * <p>
-     * <p>
-     * (Required)
+     * Specifies the charging profile.
      */
     @Required
     private ChargingProfileCriterion chargingProfile;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetChargingProfilesRequest() {
     }
 
-    /**
-     * @param evseId    For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
-     *                  Reported charging profiles SHALL match the criteria in field _chargingProfile_.
-     *                  .
-     * @param requestId Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     *                  .
-     */
+
     public GetChargingProfilesRequest(Integer requestId, Integer evseId, ChargingProfileCriterion chargingProfile, CustomData customData) {
         super();
         this.requestId = requestId;
@@ -61,70 +57,42 @@ public class GetChargingProfilesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * Reference identification that is to be used by the Charging Station in the &lt;&lt;reportchargingprofilesrequest, ReportChargingProfilesRequest&gt;&gt; when provided.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
-     * Reported charging profiles SHALL match the criteria in field _chargingProfile_.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * For which EVSE installed charging profiles SHALL be reported. If 0, only charging profiles installed on the Charging Station itself (the grid connection) SHALL be reported. If omitted, all installed charging profiles SHALL be reported. +
-     * Reported charging profiles SHALL match the criteria in field _chargingProfile_.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfileCriterion getChargingProfile() {
         return chargingProfile;
     }
 
-    /**
-     * A ChargingProfileCriterionType is a filter for charging profiles to be selected by a GetChargingProfilesRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfile(ChargingProfileCriterion chargingProfile) {
         this.chargingProfile = chargingProfile;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

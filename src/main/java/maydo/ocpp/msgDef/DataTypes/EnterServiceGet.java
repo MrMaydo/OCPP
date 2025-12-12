@@ -9,38 +9,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class EnterServiceGet implements JsonInterface {
 
     /**
-     * (Required)
+     * Enter Service settings
      */
     @Required
     private EnterService enterService;
+
     /**
      * Id of setting
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EnterServiceGet() {
     }
 
-    /**
-     * @param id Id of setting
-     *           <p>
-     *           .
-     */
+
     public EnterServiceGet(EnterService enterService, String id, CustomData customData) {
         super();
         this.enterService = enterService;
@@ -48,50 +44,32 @@ public class EnterServiceGet implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public EnterService getEnterService() {
         return enterService;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEnterService(EnterService enterService) {
         this.enterService = enterService;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

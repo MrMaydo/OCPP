@@ -9,44 +9,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class LimitAtSoC implements JsonInterface {
 
     /**
      * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer soc;
+
     /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
+     * Charging rate limit beyond the SoC value. The unit is defined by chargingSchedule.chargingRateUnit.
      */
     @Required
     private Float limit;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public LimitAtSoC() {
     }
 
-    /**
-     * @param soc   The SoC value beyond which the charging rate limit should be applied.
-     *              .
-     * @param limit Charging rate limit beyond the SoC value.
-     *              The unit is defined by _chargingSchedule.chargingRateUnit_.
-     *              <p>
-     *              .
-     */
+
     public LimitAtSoC(Integer soc, Float limit, CustomData customData) {
         super();
         this.soc = soc;
@@ -54,56 +44,32 @@ public class LimitAtSoC implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSoc() {
         return soc;
     }
 
-    /**
-     * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
-     */
+
     public void setSoc(Integer soc) {
         this.soc = soc;
     }
 
-    /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getLimit() {
         return limit;
     }
 
-    /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setLimit(Float limit) {
         this.limit = limit;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

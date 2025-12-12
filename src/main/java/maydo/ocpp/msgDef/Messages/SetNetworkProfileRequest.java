@@ -11,38 +11,35 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * With this message the CSMS gains the ability to configure the connection data
+ * (e.g. CSMS URL, OCPP version, APN, etc) on a Charging Station.
+ */
 public class SetNetworkProfileRequest implements JsonInterface {
 
     /**
      * Slot in which the configuration should be stored.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer configurationSlot;
+
     /**
-     * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * <p>
-     * (Required)
+     * Connection details.
      */
     @Required
     private NetworkConnectionProfile connectionData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetNetworkProfileRequest() {
     }
 
-    /**
-     * @param configurationSlot Slot in which the configuration should be stored.
-     *                          .
-     */
+
     public SetNetworkProfileRequest(Integer configurationSlot, NetworkConnectionProfile connectionData, CustomData customData) {
         super();
         this.configurationSlot = configurationSlot;
@@ -50,52 +47,32 @@ public class SetNetworkProfileRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Slot in which the configuration should be stored.
-     * <p>
-     * (Required)
-     */
+
     public Integer getConfigurationSlot() {
         return configurationSlot;
     }
 
-    /**
-     * Slot in which the configuration should be stored.
-     * <p>
-     * (Required)
-     */
+
     public void setConfigurationSlot(Integer configurationSlot) {
         this.configurationSlot = configurationSlot;
     }
 
-    /**
-     * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * <p>
-     * (Required)
-     */
+
     public NetworkConnectionProfile getConnectionData() {
         return connectionData;
     }
 
-    /**
-     * The NetworkConnectionProfile defines the functional and technical parameters of a communication link.
-     * <p>
-     * (Required)
-     */
+
     public void setConnectionData(NetworkConnectionProfile connectionData) {
         this.connectionData = connectionData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

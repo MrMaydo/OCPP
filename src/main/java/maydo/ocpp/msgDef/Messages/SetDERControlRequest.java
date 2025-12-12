@@ -11,68 +11,88 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetDERControlRequest implements JsonInterface {
 
     /**
      * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean isDefault;
+
     /**
      * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String controlId;
+
     /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
+     * Type of control. Determines which setting field below is used.
      */
     @Required
     private DERControlEnum controlType;
+
+    /**
+     * Voltage/Frequency/Active/Reactive curve
+     */
     @Optional
     private DERCurve curve;
+
+    /**
+     * Enter service after trip parameters (default control only)
+     */
     @Optional
     private EnterService enterService;
+
+    /**
+     * Fixed power factor setpoint when absorbing active power
+     */
     @Optional
     private FixedPF fixedPFAbsorb;
+
+    /**
+     * Fixed power factor setpoint when injecting active power
+     */
     @Optional
     private FixedPF fixedPFInject;
+
+    /**
+     * Fixed reactive power
+     */
     @Optional
     private FixedVar fixedVar;
+
+    /**
+     * Frequency-Watt parameterized mode
+     */
     @Optional
     private FreqDroop freqDroop;
+
+    /**
+     * Gradient (default ramp rate) settings (default control only)
+     */
     @Optional
     private Gradient gradient;
+
+    /**
+     * Limit maximum discharge as percentage of rated capability
+     */
     @Optional
     private LimitMaxDischarge limitMaxDischarge;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDERControlRequest() {
     }
 
-    /**
-     * @param isDefault True if this is a default DER control
-     *                  <p>
-     *                  .
-     * @param controlId Unique id of this control, e.g. UUID
-     *                  <p>
-     *                  .
-     */
+
     public SetDERControlRequest(Boolean isDefault, String controlId, DERControlEnum controlType, DERCurve curve, EnterService enterService, FixedPF fixedPFAbsorb, FixedPF fixedPFInject, FixedVar fixedVar, FreqDroop freqDroop, Gradient gradient, LimitMaxDischarge limitMaxDischarge, CustomData customData) {
         super();
         this.isDefault = isDefault;
@@ -89,62 +109,32 @@ public class SetDERControlRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getControlId() {
         return controlId;
     }
 
-    /**
-     * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setControlId(String controlId) {
         this.controlId = controlId;
     }
 
-    /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public DERControlEnum getControlType() {
         return controlType;
     }
 
-    /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
     }
@@ -213,16 +203,12 @@ public class SetDERControlRequest implements JsonInterface {
         this.limitMaxDischarge = limitMaxDischarge;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

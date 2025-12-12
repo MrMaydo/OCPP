@@ -12,42 +12,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the TriggerMessageRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class TriggerMessageRequest implements JsonInterface {
 
     /**
-     * Electric Vehicle Supply Equipment
+     * Can be used to specifiy the EVSE and Connector if required for the message which needs to be sent.
      */
     @Optional
     private EVSE evse;
+
     /**
      * Type of message to be triggered.
-     * <p>
-     * (Required)
      */
     @Required
     private MessageTriggerEnum requestedMessage;
+
     /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
+     * (2.1) When requestedMessage = CustomTrigger  this will trigger sending the corresponding message in field customTrigger,
+     * if supported by Charging Station.
      */
     @Optional
     private String customTrigger;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TriggerMessageRequest() {
     }
 
-    /**
-     * @param customTrigger *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     *                      <p>
-     *                      .
-     */
+
     public TriggerMessageRequest(EVSE evse, MessageTriggerEnum requestedMessage, String customTrigger, CustomData customData) {
         super();
         this.evse = evse;
@@ -56,62 +55,42 @@ public class TriggerMessageRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public EVSE getEvse() {
         return evse;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public void setEvse(EVSE evse) {
         this.evse = evse;
     }
 
-    /**
-     * Type of message to be triggered.
-     * <p>
-     * (Required)
-     */
+
     public MessageTriggerEnum getRequestedMessage() {
         return requestedMessage;
     }
 
-    /**
-     * Type of message to be triggered.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestedMessage(MessageTriggerEnum requestedMessage) {
         this.requestedMessage = requestedMessage;
     }
 
-    /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     */
+
     public String getCustomTrigger() {
         return customTrigger;
     }
 
-    /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     */
+
     public void setCustomTrigger(String customTrigger) {
         this.customTrigger = customTrigger;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

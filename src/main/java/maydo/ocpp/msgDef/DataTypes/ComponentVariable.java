@@ -9,32 +9,31 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Class to report components, variables and variable attributes and characteristics.
  */
 public class ComponentVariable implements JsonInterface {
 
     /**
-     * A physical or logical component
-     * <p>
-     * (Required)
+     * Component for which a report of Variable is requested.
      */
     @Required
     private Component component;
+
     /**
-     * Reference key to a component-variable.
+     * Variable for which the report is requested.
      */
     @Optional
     private Variable variable;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ComponentVariable() {
     }
 
@@ -45,48 +44,32 @@ public class ComponentVariable implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public Component getComponent() {
         return component;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public void setComponent(Component component) {
         this.component = component;
     }
 
-    /**
-     * Reference key to a component-variable.
-     */
+
     public Variable getVariable() {
         return variable;
     }
 
-    /**
-     * Reference key to a component-variable.
-     */
+
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

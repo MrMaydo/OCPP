@@ -13,39 +13,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetMonitoringReportRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class GetMonitoringReportRequest implements JsonInterface {
 
+    /**
+     * This field specifies the components and variables for which a monitoring report is requested.
+     */
+    @Optional
     private List<ComponentVariable> componentVariable;
+
     /**
      * The Id of the request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * This field contains criteria for components for which a monitoring report is requested
      */
     @Optional
     private List<MonitoringCriterionEnum> monitoringCriteria;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetMonitoringReportRequest() {
     }
 
-    /**
-     * @param monitoringCriteria This field contains criteria for components for which a monitoring report is requested
-     *                           .
-     * @param requestId          The Id of the request.
-     *                           .
-     */
+
     public GetMonitoringReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<MonitoringCriterionEnum> monitoringCriteria, CustomData customData) {
         super();
         this.componentVariable = componentVariable;
@@ -62,48 +63,32 @@ public class GetMonitoringReportRequest implements JsonInterface {
         this.componentVariable = componentVariable;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This field contains criteria for components for which a monitoring report is requested
-     */
+
     public List<MonitoringCriterionEnum> getMonitoringCriteria() {
         return monitoringCriteria;
     }
 
-    /**
-     * This field contains criteria for components for which a monitoring report is requested
-     */
+
     public void setMonitoringCriteria(List<MonitoringCriterionEnum> monitoringCriteria) {
         this.monitoringCriteria = monitoringCriteria;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -10,36 +10,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) An entry in price schedule over time for which EV is willing to discharge.
+ */
 public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
-     * (Required)
+     * A set of pricing rules for energy costs.
      */
     @Required
     private List<EVPriceRule> evPriceRule;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVAbsolutePriceScheduleEntry() {
     }
 
-    /**
-     * @param duration The amount of seconds of this entry.
-     *                 .
-     */
+
     public EVAbsolutePriceScheduleEntry(Integer duration, List<EVPriceRule> evPriceRule, CustomData customData) {
         super();
         this.duration = duration;
@@ -47,48 +45,32 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The amount of seconds of this entry.
-     * <p>
-     * (Required)
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * The amount of seconds of this entry.
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<EVPriceRule> getEvPriceRule() {
         return evPriceRule;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvPriceRule(List<EVPriceRule> evPriceRule) {
         this.evPriceRule = evPriceRule;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,38 +9,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GradientGet implements JsonInterface {
 
     /**
-     * (Required)
+     * Gradient setting
      */
     @Required
     private Gradient gradient;
+
     /**
      * Id of setting
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GradientGet() {
     }
 
-    /**
-     * @param id Id of setting
-     *           <p>
-     *           .
-     */
+
     public GradientGet(Gradient gradient, String id, CustomData customData) {
         super();
         this.gradient = gradient;
@@ -48,50 +44,32 @@ public class GradientGet implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public Gradient getGradient() {
         return gradient;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setGradient(Gradient gradient) {
         this.gradient = gradient;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

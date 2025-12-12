@@ -11,111 +11,75 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Data necessary to request the revocation status of a certificate
+ */
 public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
-     * (Required)
+     * Hash data of certificate.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
      * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateStatusSourceEnum source;
+
     /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
+     * URL(s) of source.
      */
     @Required
     private List<String> urls;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateStatusRequestInfo() {
     }
 
-    /**
-     * @param urls URL(s) of _source_.
-     *             .
-     */
-    public CertificateStatusRequestInfo(CertificateHashData certificateHashData, CertificateStatusSourceEnum source, List<String> urls, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.source = source;
-        this.urls = urls;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusSourceEnum getSource() {
         return source;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public void setSource(CertificateStatusSourceEnum source) {
         this.source = source;
     }
 
-    /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
-     */
+
     public List<String> getUrls() {
         return urls;
     }
 
-    /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
-     */
+
     public void setUrls(List<String> urls) {
         this.urls = urls;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

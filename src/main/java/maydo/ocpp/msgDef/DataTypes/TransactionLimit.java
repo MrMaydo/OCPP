@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+
 /**
  * Cost, energy, time or SoC limit for a transaction.
  */
@@ -18,43 +19,36 @@ public class TransactionLimit implements JsonInterface {
      */
     @Optional
     private Float maxCost;
+
     /**
      * Maximum allowed energy in Wh to charge in transaction.
      */
     @Optional
     private Float maxEnergy;
+
     /**
      * Maximum duration of transaction in seconds from start to end.
      */
     @Optional
     private Integer maxTime;
+
     /**
      * Maximum State of Charge of EV in percentage.
      */
     @Optional
     private Integer maxSoC;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TransactionLimit() {
     }
 
-    /**
-     * @param maxEnergy Maximum allowed energy in Wh to charge in transaction.
-     *                  .
-     * @param maxTime   Maximum duration of transaction in seconds from start to end.
-     *                  .
-     * @param maxCost   Maximum allowed cost of transaction in currency of tariff.
-     *                  .
-     * @param maxSoC    Maximum State of Charge of EV in percentage.
-     *                  .
-     */
+
     public TransactionLimit(Float maxCost, Float maxEnergy, Integer maxTime, Integer maxSoC, CustomData customData) {
         super();
         this.maxCost = maxCost;
@@ -64,72 +58,52 @@ public class TransactionLimit implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Maximum allowed cost of transaction in currency of tariff.
-     */
+
     public Float getMaxCost() {
         return maxCost;
     }
 
-    /**
-     * Maximum allowed cost of transaction in currency of tariff.
-     */
+
     public void setMaxCost(Float maxCost) {
         this.maxCost = maxCost;
     }
 
-    /**
-     * Maximum allowed energy in Wh to charge in transaction.
-     */
+
     public Float getMaxEnergy() {
         return maxEnergy;
     }
 
-    /**
-     * Maximum allowed energy in Wh to charge in transaction.
-     */
+
     public void setMaxEnergy(Float maxEnergy) {
         this.maxEnergy = maxEnergy;
     }
 
-    /**
-     * Maximum duration of transaction in seconds from start to end.
-     */
+
     public Integer getMaxTime() {
         return maxTime;
     }
 
-    /**
-     * Maximum duration of transaction in seconds from start to end.
-     */
+
     public void setMaxTime(Integer maxTime) {
         this.maxTime = maxTime;
     }
 
-    /**
-     * Maximum State of Charge of EV in percentage.
-     */
+
     public Integer getMaxSoC() {
         return maxSoC;
     }
 
-    /**
-     * Maximum State of Charge of EV in percentage.
-     */
+
     public void setMaxSoC(Integer maxSoC) {
         this.maxSoC = maxSoC;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

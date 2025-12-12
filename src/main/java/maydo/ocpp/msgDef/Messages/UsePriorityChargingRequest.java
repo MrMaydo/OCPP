@@ -10,42 +10,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by CSMS to tell Charging Station to switch to the priority charging profile,
+ * that allows for the maximum possible current or power under current circumstances.
+ * Message contains a transactionId, because it only applies to the transaction in progress.
+ */
 public class UsePriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
+     * True to request priority charging. False to request stopping priority charging.
      */
     @Required
     private Boolean activate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UsePriorityChargingRequest() {
     }
 
-    /**
-     * @param activate      True to request priority charging.
-     *                      False to request stopping priority charging.
-     *                      .
-     * @param transactionId The transaction for which priority charging is requested.
-     *                      .
-     */
+
     public UsePriorityChargingRequest(String transactionId, Boolean activate, CustomData customData) {
         super();
         this.transactionId = transactionId;
@@ -53,54 +47,32 @@ public class UsePriorityChargingRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getActivate() {
         return activate;
     }
 
-    /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
-     */
+
     public void setActivate(Boolean activate) {
         this.activate = activate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -14,31 +14,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Response to a GetInstalledCertificateIDsRequest.
+ */
 public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
+     * Charging Station indicates if it can process the request
      */
     @Required
     private GetInstalledCertificateStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
+    /**
+     * The Charging Station includes the Certificate information for each available certificate.
+     */
     @Optional
     private List<CertificateHashDataChain> certificateHashDataChain;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetInstalledCertificateIdsResponse() {
     }
 
@@ -50,34 +55,22 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
-     */
+
     public GetInstalledCertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GetInstalledCertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
@@ -90,16 +83,12 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
         this.certificateHashDataChain = certificateHashDataChain;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

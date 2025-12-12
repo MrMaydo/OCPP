@@ -9,17 +9,19 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * Sent by the CSMS to the Charging Station to confirm the receipt of a SecurityEventNotificationRequest message.
+ * No fields are defined.
+ */
 public class SecurityEventNotificationResponse implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SecurityEventNotificationResponse() {
     }
 
@@ -28,16 +30,12 @@ public class SecurityEventNotificationResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

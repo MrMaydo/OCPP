@@ -11,46 +11,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearDERControlRequest implements JsonInterface {
 
     /**
      * True: clearing default DER controls. False: clearing scheduled controls.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean isDefault;
+
     /**
-     * Name of control settings to clear. Not used when _controlId_ is provided.
+     * Name of control settings to clear. Not used when controlId is provided.
      */
     @Optional
     private DERControlEnum controlType;
+
     /**
-     * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
+     * Id of control setting to clear. When omitted all settings for controlType are cleared.
      */
     @Optional
     private String controlId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearDERControlRequest() {
     }
 
-    /**
-     * @param isDefault True: clearing default DER controls. False: clearing scheduled controls.
-     *                  <p>
-     *                  .
-     * @param controlId Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     *                  <p>
-     *                  .
-     */
+
     public ClearDERControlRequest(Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
         super();
         this.isDefault = isDefault;
@@ -59,64 +53,42 @@ public class ClearDERControlRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * True: clearing default DER controls. False: clearing scheduled controls.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True: clearing default DER controls. False: clearing scheduled controls.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * Name of control settings to clear. Not used when _controlId_ is provided.
-     */
+
     public DERControlEnum getControlType() {
         return controlType;
     }
 
-    /**
-     * Name of control settings to clear. Not used when _controlId_ is provided.
-     */
+
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
     }
 
-    /**
-     * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     */
+
     public String getControlId() {
         return controlId;
     }
 
-    /**
-     * Id of control setting to clear. When omitted all settings for _controlType_ are cleared.
-     */
+
     public void setControlId(String controlId) {
         this.controlId = controlId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

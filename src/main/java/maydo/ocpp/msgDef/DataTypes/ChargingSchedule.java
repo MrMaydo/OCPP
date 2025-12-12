@@ -16,150 +16,133 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Charging schedule structure defines a list of charging periods, as used in:
+ * NotifyEVChargingScheduleRequest and ChargingProfileType.
+ * When used in a NotifyEVChargingScheduleRequest only duration and chargingSchedulePeriod are relevant and chargingRateUnit must be 'W'.
+ * An ISO 15118-20 session may provide either an absolutePriceSchedule or a priceLevelSchedule.
+ * An ISO 15118-2 session can only provide a_salesTariff_ element.
+ * The field digestValue is used when price schedule or sales tariff are signed.
+ */
 public class ChargingSchedule implements JsonInterface {
 
     /**
-     * (Required)
+     * When present and SoC of EV is greater than or equal to soc, then charging limit or setpoint will be capped to the value of limit.
      */
     @Required
     private Integer id;
+
+    /**
+     *
+     */
     @Optional
     private LimitAtSoC limitAtSoC;
+
     /**
      * Starting point of an absolute schedule or recurring schedule.
      */
     @Optional
     private Date startSchedule;
+
     /**
-     * Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
+     * Duration of the charging schedule in seconds.
+     * If the duration is left empty, the last period will continue indefinitely
+     * or until end of the transaction in case startSchedule is absent.
      */
     @Optional
     private Integer duration;
+
     /**
      * The unit of measure in which limits and setpoints are expressed.
-     * <p>
-     * (Required)
      */
     @Required
     private ChargingRateUnitEnum chargingRateUnit;
+
     /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
+     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit.
+     * This parameter is intended to be used by a local smart charging algorithm
+     * to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
      */
     @Optional
     private Float minChargingRate;
+
     /**
-     * *(2.1)* Power tolerance when following EVPowerProfile.
+     * Power tolerance when following EVPowerProfile.
      */
     @Optional
     private Float powerTolerance;
+
     /**
-     * *(2.1)* Id of this element for referencing in a signature.
+     * Id of this element for referencing in a signature.
      */
     @Optional
     private Integer signatureId;
+
     /**
-     * *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
+     * Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element.
+     * Used in signature
      */
     @Optional
     private String digestValue;
+
     /**
-     * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
+     * Defaults to false. When true, disregard time zone offset in dateTime fields of ChargingScheduleType
+     * and use unqualified local time at Charging Station instead.
+     * This allows the same Absolute  or  Recurring  charging profile to be used in both summer and winter time.
      */
     @Optional
     private Boolean useLocalTime;
+
     /**
-     * (Required)
+     * List of ChargingSchedulePeriod elements defining maximum power or current usage over time.
+     * The maximum number of periods, that is supported by the Charging Station,
+     * if less than 1024, is set by device model variable SmartChargingCtrlr.PeriodsPerSchedule.
      */
     @Required
     private List<ChargingSchedulePeriod> chargingSchedulePeriod;
+
     /**
-     * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
+     * Defaults to 0. When randomizedDelay not equals zero,
+     * then the start of each ChargingSchedulePeriodType is delayed by a randomly chosen number of seconds between 0 and randomizedDelay.
+     * Only allowed for TxProfile and TxDefaultProfile.
      */
     @Optional
     private Integer randomizedDelay;
+
     /**
-     * A SalesTariff provided by a Mobility Operator (EMSP) .
-     * NOTE: This dataType is based on dataTypes from &lt;&lt;ref-ISOIEC15118-2,ISO 15118-2&gt;&gt;.
+     * Sales tariff for charging associated with this schedule.
      */
     @Optional
     private SalesTariff salesTariff;
+
     /**
-     * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * <p>
-     * image::images/AbsolutePriceSchedule-Simple.png[]
+     * The ISO 15118-20 absolute price schedule.
      */
     @Optional
     private AbsolutePriceSchedule absolutePriceSchedule;
+
     /**
-     * The PriceLevelScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
+     * The ISO 15118-20 price level schedule
      */
     @Optional
     private PriceLevelSchedule priceLevelSchedule;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChargingSchedule() {
     }
 
-    /**
-     * @param duration        Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
-     *                        .
-     * @param minChargingRate Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
-     *                        .
-     * @param digestValue     *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
-     *                        .
-     * @param startSchedule   Starting point of an absolute schedule or recurring schedule.
-     *                        .
-     * @param useLocalTime    *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     *                        This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     *                        <p>
-     *                        .
-     * @param randomizedDelay *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     *                        <p>
-     *                        .
-     * @param powerTolerance  *(2.1)* Power tolerance when following EVPowerProfile.
-     *                        <p>
-     *                        .
-     * @param signatureId     *(2.1)* Id of this element for referencing in a signature.
-     *                        .
-     */
-    public ChargingSchedule(Integer id, LimitAtSoC limitAtSoC, Date startSchedule, Integer duration, ChargingRateUnitEnum chargingRateUnit, Float minChargingRate, Float powerTolerance, Integer signatureId, String digestValue, Boolean useLocalTime, List<ChargingSchedulePeriod> chargingSchedulePeriod, Integer randomizedDelay, SalesTariff salesTariff, AbsolutePriceSchedule absolutePriceSchedule, PriceLevelSchedule priceLevelSchedule, CustomData customData) {
-        super();
-        this.id = id;
-        this.limitAtSoC = limitAtSoC;
-        this.startSchedule = startSchedule;
-        this.duration = duration;
-        this.chargingRateUnit = chargingRateUnit;
-        this.minChargingRate = minChargingRate;
-        this.powerTolerance = powerTolerance;
-        this.signatureId = signatureId;
-        this.digestValue = digestValue;
-        this.useLocalTime = useLocalTime;
-        this.chargingSchedulePeriod = chargingSchedulePeriod;
-        this.randomizedDelay = randomizedDelay;
-        this.salesTariff = salesTariff;
-        this.absolutePriceSchedule = absolutePriceSchedule;
-        this.priceLevelSchedule = priceLevelSchedule;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -172,210 +155,142 @@ public class ChargingSchedule implements JsonInterface {
         this.limitAtSoC = limitAtSoC;
     }
 
-    /**
-     * Starting point of an absolute schedule or recurring schedule.
-     */
+
     public Date getStartSchedule() {
         return startSchedule;
     }
 
-    /**
-     * Starting point of an absolute schedule or recurring schedule.
-     */
+
     public void setStartSchedule(Date startSchedule) {
         this.startSchedule = startSchedule;
     }
 
-    /**
-     * Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * Duration of the charging schedule in seconds. If the duration is left empty, the last period will continue indefinitely or until end of the transaction in case startSchedule is absent.
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * The unit of measure in which limits and setpoints are expressed.
-     * <p>
-     * (Required)
-     */
+
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
     }
 
-    /**
-     * The unit of measure in which limits and setpoints are expressed.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
     }
 
-    /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
-     */
+
     public Float getMinChargingRate() {
         return minChargingRate;
     }
 
-    /**
-     * Minimum charging rate supported by the EV. The unit of measure is defined by the chargingRateUnit. This parameter is intended to be used by a local smart charging algorithm to optimize the power allocation for in the case a charging process is inefficient at lower charging rates.
-     */
+
     public void setMinChargingRate(Float minChargingRate) {
         this.minChargingRate = minChargingRate;
     }
 
-    /**
-     * *(2.1)* Power tolerance when following EVPowerProfile.
-     */
+
     public Float getPowerTolerance() {
         return powerTolerance;
     }
 
-    /**
-     * *(2.1)* Power tolerance when following EVPowerProfile.
-     */
+
     public void setPowerTolerance(Float powerTolerance) {
         this.powerTolerance = powerTolerance;
     }
 
-    /**
-     * *(2.1)* Id of this element for referencing in a signature.
-     */
+
     public Integer getSignatureId() {
         return signatureId;
     }
 
-    /**
-     * *(2.1)* Id of this element for referencing in a signature.
-     */
+
     public void setSignatureId(Integer signatureId) {
         this.signatureId = signatureId;
     }
 
-    /**
-     * *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
-     */
+
     public String getDigestValue() {
         return digestValue;
     }
 
-    /**
-     * *(2.1)* Base64 encoded hash (SHA256 for ISO 15118-2, SHA512 for ISO 15118-20) of the EXI price schedule element. Used in signature.
-     */
+
     public void setDigestValue(String digestValue) {
         this.digestValue = digestValue;
     }
 
-    /**
-     * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     */
+
     public Boolean getUseLocalTime() {
         return useLocalTime;
     }
 
-    /**
-     * *(2.1)* Defaults to false. When true, disregard time zone offset in dateTime fields of  _ChargingScheduleType_ and use unqualified local time at Charging Station instead.
-     * This allows the same `Absolute` or `Recurring` charging profile to be used in both summer and winter time.
-     */
+
     public void setUseLocalTime(Boolean useLocalTime) {
         this.useLocalTime = useLocalTime;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ChargingSchedulePeriod> getChargingSchedulePeriod() {
         return chargingSchedulePeriod;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingSchedulePeriod(List<ChargingSchedulePeriod> chargingSchedulePeriod) {
         this.chargingSchedulePeriod = chargingSchedulePeriod;
     }
 
-    /**
-     * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     */
+
     public Integer getRandomizedDelay() {
         return randomizedDelay;
     }
 
-    /**
-     * *(2.1)* Defaults to 0. When _randomizedDelay_ not equals zero, then the start of each &lt;&lt;cmn_chargingscheduleperiodtype,ChargingSchedulePeriodType&gt;&gt; is delayed by a randomly chosen number of seconds between 0 and _randomizedDelay_.  Only allowed for TxProfile and TxDefaultProfile.
-     */
+
     public void setRandomizedDelay(Integer randomizedDelay) {
         this.randomizedDelay = randomizedDelay;
     }
 
-    /**
-     * A SalesTariff provided by a Mobility Operator (EMSP) .
-     * NOTE: This dataType is based on dataTypes from &lt;&lt;ref-ISOIEC15118-2,ISO 15118-2&gt;&gt;.
-     */
+
     public SalesTariff getSalesTariff() {
         return salesTariff;
     }
 
-    /**
-     * A SalesTariff provided by a Mobility Operator (EMSP) .
-     * NOTE: This dataType is based on dataTypes from &lt;&lt;ref-ISOIEC15118-2,ISO 15118-2&gt;&gt;.
-     */
+
     public void setSalesTariff(SalesTariff salesTariff) {
         this.salesTariff = salesTariff;
     }
 
-    /**
-     * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * <p>
-     * image::images/AbsolutePriceSchedule-Simple.png[]
-     */
+
     public AbsolutePriceSchedule getAbsolutePriceSchedule() {
         return absolutePriceSchedule;
     }
 
-    /**
-     * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     * <p>
-     * image::images/AbsolutePriceSchedule-Simple.png[]
-     */
+
     public void setAbsolutePriceSchedule(AbsolutePriceSchedule absolutePriceSchedule) {
         this.absolutePriceSchedule = absolutePriceSchedule;
     }
 
-    /**
-     * The PriceLevelScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     */
+
     public PriceLevelSchedule getPriceLevelSchedule() {
         return priceLevelSchedule;
     }
 
-    /**
-     * The PriceLevelScheduleType is modeled after the same type that is defined in ISO 15118-20, such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
-     */
+
     public void setPriceLevelSchedule(PriceLevelSchedule priceLevelSchedule) {
         this.priceLevelSchedule = priceLevelSchedule;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

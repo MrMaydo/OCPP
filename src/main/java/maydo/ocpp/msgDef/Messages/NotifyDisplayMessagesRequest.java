@@ -12,39 +12,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the NotifyDisplayMessagesRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class NotifyDisplayMessagesRequest implements JsonInterface {
 
-    private List<MessageInfo> messageInfo;
     /**
-     * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
-     * (Required)
+     * The requested display message as configured in the Charging Station.
+     */
+    @Optional
+    private List<MessageInfo> messageInfo;
+
+    /**
+     * The id of the GetDisplayMessagesRequest that requested this message.
      */
     @Required
     private Integer requestId;
+
     /**
-     * "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
+     *. "to be continued" indicator. Indicates whether another part of the report follows in
+     * an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
      */
     @Optional
     private Boolean tbc = false;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyDisplayMessagesRequest() {
     }
 
-    /**
-     * @param tbc       "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
-     *                  .
-     * @param requestId The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     *                  .
-     */
+
     public NotifyDisplayMessagesRequest(List<MessageInfo> messageInfo, Integer requestId, Boolean tbc, CustomData customData) {
         super();
         this.messageInfo = messageInfo;
@@ -61,48 +63,32 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         this.messageInfo = messageInfo;
     }
 
-    /**
-     * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The id of the &lt;&lt;getdisplaymessagesrequest,GetDisplayMessagesRequest&gt;&gt; that requested this message.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * "to be continued" indicator. Indicates whether another part of the report follows in an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

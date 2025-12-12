@@ -10,6 +10,9 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Fixed read-only parameters of a variable.
+ */
 public class VariableCharacteristics implements JsonInterface {
 
     /**
@@ -17,92 +20,65 @@ public class VariableCharacteristics implements JsonInterface {
      */
     @Optional
     private String unit;
+
     /**
      * Data type of this variable.
-     * <p>
-     * (Required)
      */
     @Required
     private DataEnum dataType;
+
     /**
      * Minimum possible value of this variable.
      */
     @Optional
     private Float minLimit;
+
     /**
-     * Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
+     * Maximum possible value of this variable.
+     * When the datatype of this Variable is String, OptionList, SequenceList or MemberList,
+     * this field defines the maximum length of the (CSV) string.
      */
     @Optional
     private Float maxLimit;
+
     /**
-     * *(2.1)* Maximum number of elements from _valuesList_ that are supported as _attributeValue_.
+     * (2.1) Maximum number of elements from valuesList that are supported as attributeValue.
      */
     @Optional
     private Integer maxElements;
+
     /**
-     * Mandatory when _dataType_ = OptionList, MemberList or SequenceList. In that case _valuesList_ specifies the allowed values for the type.
-     * <p>
+     * Mandatory when dataType = OptionList, MemberList or SequenceList.
+     * In that case valuesList specifies the allowed values for the type.
      * The length of this field can be limited by DeviceDataCtrlr.ConfigurationValueSize.
-     * <p>
-     * * OptionList: The (Actual) Variable value must be a single value from the reported (CSV) enumeration list.
-     * <p>
-     * * MemberList: The (Actual) Variable value  may be an (unordered) (sub-)set of the reported (CSV) valid values list.
-     * <p>
-     * * SequenceList: The (Actual) Variable value  may be an ordered (priority, etc)  (sub-)set of the reported (CSV) valid values.
-     * <p>
-     * This is a comma separated list.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
+     * <p> OptionList: The (Actual) Variable value must be a single value from the reported (CSV) enumeration list. </p>
+     * <p> MemberList: The (Actual) Variable value may be an (unordered) (sub-)set of the reported (CSV) valid values list. </p>
+     * <p> SequenceList: The (Actual) Variable value may be an ordered (priority, etc) (sub-)set of the reported (CSV) valid values. </p>
+     * <p> This is a comma separated list. </p>
+     * The Configuration Variable ConfigurationValueSize can be used to limit
+     * SetVariableData.attributeValue and VariableCharacteristics.valuesList.
+     * The max size of these values will always remain equal.
      */
     @Optional
     private String valuesList;
+
     /**
      * Flag indicating if this variable supports monitoring.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean supportsMonitoring;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public VariableCharacteristics() {
     }
 
-    /**
-     * @param unit               Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
-     *                           .
-     * @param valuesList         Mandatory when _dataType_ = OptionList, MemberList or SequenceList. In that case _valuesList_ specifies the allowed values for the type.
-     *                           <p>
-     *                           The length of this field can be limited by DeviceDataCtrlr.ConfigurationValueSize.
-     *                           <p>
-     *                           * OptionList: The (Actual) Variable value must be a single value from the reported (CSV) enumeration list.
-     *                           <p>
-     *                           * MemberList: The (Actual) Variable value  may be an (unordered) (sub-)set of the reported (CSV) valid values list.
-     *                           <p>
-     *                           * SequenceList: The (Actual) Variable value  may be an ordered (priority, etc)  (sub-)set of the reported (CSV) valid values.
-     *                           <p>
-     *                           This is a comma separated list.
-     *                           <p>
-     *                           The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     *                           <p>
-     *                           <p>
-     *                           .
-     * @param supportsMonitoring Flag indicating if this variable supports monitoring.
-     *                           .
-     * @param maxLimit           Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
-     *                           .
-     * @param maxElements        *(2.1)* Maximum number of elements from _valuesList_ that are supported as _attributeValue_.
-     *                           .
-     * @param minLimit           Minimum possible value of this variable.
-     *                           .
-     */
+
     public VariableCharacteristics(String unit, DataEnum dataType, Float minLimit, Float maxLimit, Integer maxElements, String valuesList, Boolean supportsMonitoring, CustomData customData) {
         super();
         this.unit = unit;
@@ -115,146 +91,82 @@ public class VariableCharacteristics implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
-     */
+
     public String getUnit() {
         return unit;
     }
 
-    /**
-     * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
-     */
+
     public void setUnit(String unit) {
         this.unit = unit;
     }
 
-    /**
-     * Data type of this variable.
-     * <p>
-     * (Required)
-     */
+
     public DataEnum getDataType() {
         return dataType;
     }
 
-    /**
-     * Data type of this variable.
-     * <p>
-     * (Required)
-     */
+
     public void setDataType(DataEnum dataType) {
         this.dataType = dataType;
     }
 
-    /**
-     * Minimum possible value of this variable.
-     */
+
     public Float getMinLimit() {
         return minLimit;
     }
 
-    /**
-     * Minimum possible value of this variable.
-     */
+
     public void setMinLimit(Float minLimit) {
         this.minLimit = minLimit;
     }
 
-    /**
-     * Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
-     */
+
     public Float getMaxLimit() {
         return maxLimit;
     }
 
-    /**
-     * Maximum possible value of this variable. When the datatype of this Variable is String, OptionList, SequenceList or MemberList, this field defines the maximum length of the (CSV) string.
-     */
+
     public void setMaxLimit(Float maxLimit) {
         this.maxLimit = maxLimit;
     }
 
-    /**
-     * *(2.1)* Maximum number of elements from _valuesList_ that are supported as _attributeValue_.
-     */
+
     public Integer getMaxElements() {
         return maxElements;
     }
 
-    /**
-     * *(2.1)* Maximum number of elements from _valuesList_ that are supported as _attributeValue_.
-     */
+
     public void setMaxElements(Integer maxElements) {
         this.maxElements = maxElements;
     }
 
-    /**
-     * Mandatory when _dataType_ = OptionList, MemberList or SequenceList. In that case _valuesList_ specifies the allowed values for the type.
-     * <p>
-     * The length of this field can be limited by DeviceDataCtrlr.ConfigurationValueSize.
-     * <p>
-     * * OptionList: The (Actual) Variable value must be a single value from the reported (CSV) enumeration list.
-     * <p>
-     * * MemberList: The (Actual) Variable value  may be an (unordered) (sub-)set of the reported (CSV) valid values list.
-     * <p>
-     * * SequenceList: The (Actual) Variable value  may be an ordered (priority, etc)  (sub-)set of the reported (CSV) valid values.
-     * <p>
-     * This is a comma separated list.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     */
+
     public String getValuesList() {
         return valuesList;
     }
 
-    /**
-     * Mandatory when _dataType_ = OptionList, MemberList or SequenceList. In that case _valuesList_ specifies the allowed values for the type.
-     * <p>
-     * The length of this field can be limited by DeviceDataCtrlr.ConfigurationValueSize.
-     * <p>
-     * * OptionList: The (Actual) Variable value must be a single value from the reported (CSV) enumeration list.
-     * <p>
-     * * MemberList: The (Actual) Variable value  may be an (unordered) (sub-)set of the reported (CSV) valid values list.
-     * <p>
-     * * SequenceList: The (Actual) Variable value  may be an ordered (priority, etc)  (sub-)set of the reported (CSV) valid values.
-     * <p>
-     * This is a comma separated list.
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     */
+
     public void setValuesList(String valuesList) {
         this.valuesList = valuesList;
     }
 
-    /**
-     * Flag indicating if this variable supports monitoring.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getSupportsMonitoring() {
         return supportsMonitoring;
     }
 
-    /**
-     * Flag indicating if this variable supports monitoring.
-     * <p>
-     * (Required)
-     */
+
     public void setSupportsMonitoring(Boolean supportsMonitoring) {
         this.supportsMonitoring = supportsMonitoring;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

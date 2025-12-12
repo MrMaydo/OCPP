@@ -15,54 +15,46 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * (2.1) Price schedule of EV energy offer.
+ */
 public class EVAbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point in time of the EVEnergyOffer.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
      * Currency code according to ISO 4217.
-     * <p>
-     * (Required)
      */
     @Required
     private String currency;
+
     /**
-     * (Required)
+     * Schedule of prices for which EV is willing to discharge.
      */
     @Required
     private List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries;
+
     /**
-     * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * <p>
-     * (Required)
+     * <p> ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
      */
     @Required
     private String priceAlgorithm;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVAbsolutePriceSchedule() {
     }
 
-    /**
-     * @param timeAnchor     Starting point in time of the EVEnergyOffer.
-     *                       .
-     * @param currency       Currency code according to ISO 4217.
-     *                       .
-     * @param priceAlgorithm ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     *                       .
-     */
+
     public EVAbsolutePriceSchedule(Date timeAnchor, String currency, List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries, String priceAlgorithm, CustomData customData) {
         super();
         this.timeAnchor = timeAnchor;
@@ -72,84 +64,52 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Starting point in time of the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * Starting point in time of the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * Currency code according to ISO 4217.
-     * <p>
-     * (Required)
-     */
+
     public String getCurrency() {
         return currency;
     }
 
-    /**
-     * Currency code according to ISO 4217.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<EVAbsolutePriceScheduleEntry> getEvAbsolutePriceScheduleEntries() {
         return evAbsolutePriceScheduleEntries;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvAbsolutePriceScheduleEntries(List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries) {
         this.evAbsolutePriceScheduleEntries = evAbsolutePriceScheduleEntries;
     }
 
-    /**
-     * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * <p>
-     * (Required)
-     */
+
     public String getPriceAlgorithm() {
         return priceAlgorithm;
     }
 
-    /**
-     * ISO 15118-20 URN of price algorithm: Power, PeakPower, StackedEnergy.
-     * <p>
-     * (Required)
-     */
+
     public void setPriceAlgorithm(String priceAlgorithm) {
         this.priceAlgorithm = priceAlgorithm;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

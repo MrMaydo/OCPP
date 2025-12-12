@@ -10,65 +10,50 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetTariffsRequest implements JsonInterface {
 
     /**
-     * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * <p>
-     * (Required)
+     * EVSE id to get tariff from. When evseId = 0, this gets tariffs from all EVSEs.
      */
     @Required
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetTariffsRequest() {
     }
 
-    /**
-     * @param evseId EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     *               .
-     */
+
     public GetTariffsRequest(Integer evseId, CustomData customData) {
         super();
         this.evseId = evseId;
         this.customData = customData;
     }
 
-    /**
-     * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE id to get tariff from. When _evseId_ = 0, this gets tariffs from all EVSEs.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

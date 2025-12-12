@@ -10,24 +10,31 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class TariffFixed implements JsonInterface {
 
     /**
-     * (Required)
+     *
      */
     @Required
     private List<TariffFixedPrice> prices;
+
+    /**
+     * Applicable tax percentages for this tariff dimension. If omitted, no tax is applicable.
+     * Not providing a tax is different from 0% tax, which would be a value of 0.0 here.
+     */
     @Optional
     private List<TaxRate> taxRates;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TariffFixed() {
     }
 
@@ -38,16 +45,12 @@ public class TariffFixed implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<TariffFixedPrice> getPrices() {
         return prices;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setPrices(List<TariffFixedPrice> prices) {
         this.prices = prices;
     }
@@ -60,16 +63,12 @@ public class TariffFixed implements JsonInterface {
         this.taxRates = taxRates;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

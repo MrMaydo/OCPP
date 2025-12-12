@@ -16,42 +16,48 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class CompositeSchedule implements JsonInterface {
 
     /**
-     * (Required)
+     *
      */
     @Required
     private Integer evseId;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private Integer duration;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private Date scheduleStart;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private ChargingRateUnitEnum chargingRateUnit;
+
     /**
-     * (Required)
+     * List of ChargingSchedulePeriod elements defining maximum power or current over time.
      */
     @Required
     private List<ChargingSchedulePeriod> chargingSchedulePeriod;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CompositeSchedule() {
     }
 
@@ -65,86 +71,62 @@ public class CompositeSchedule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * (Required)
-     */
+
     public Date getScheduleStart() {
         return scheduleStart;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setScheduleStart(Date scheduleStart) {
         this.scheduleStart = scheduleStart;
     }
 
-    /**
-     * (Required)
-     */
+
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ChargingSchedulePeriod> getChargingSchedulePeriod() {
         return chargingSchedulePeriod;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingSchedulePeriod(List<ChargingSchedulePeriod> chargingSchedulePeriod) {
         this.chargingSchedulePeriod = chargingSchedulePeriod;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

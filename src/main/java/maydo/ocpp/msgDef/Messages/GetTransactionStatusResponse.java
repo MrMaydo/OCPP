@@ -10,6 +10,9 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * The response to a GetTransactionStatusRequest, sent by the Charging Station to the CSMS.
+ */
 public class GetTransactionStatusResponse implements JsonInterface {
 
     /**
@@ -17,31 +20,24 @@ public class GetTransactionStatusResponse implements JsonInterface {
      */
     @Optional
     private Boolean ongoingIndicator;
+
     /**
      * Whether there are still message to be delivered.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean messagesInQueue;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetTransactionStatusResponse() {
     }
 
-    /**
-     * @param ongoingIndicator Whether the transaction is still ongoing.
-     *                         .
-     * @param messagesInQueue  Whether there are still message to be delivered.
-     *                         .
-     */
+
     public GetTransactionStatusResponse(Boolean ongoingIndicator, Boolean messagesInQueue, CustomData customData) {
         super();
         this.ongoingIndicator = ongoingIndicator;
@@ -49,48 +45,32 @@ public class GetTransactionStatusResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Whether the transaction is still ongoing.
-     */
+
     public Boolean getOngoingIndicator() {
         return ongoingIndicator;
     }
 
-    /**
-     * Whether the transaction is still ongoing.
-     */
+
     public void setOngoingIndicator(Boolean ongoingIndicator) {
         this.ongoingIndicator = ongoingIndicator;
     }
 
-    /**
-     * Whether there are still message to be delivered.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getMessagesInQueue() {
         return messagesInQueue;
     }
 
-    /**
-     * Whether there are still message to be delivered.
-     * <p>
-     * (Required)
-     */
+
     public void setMessagesInQueue(Boolean messagesInQueue) {
         this.messagesInQueue = messagesInQueue;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

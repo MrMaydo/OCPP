@@ -14,54 +14,46 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by Charging Station when a battery is swapped in or out of a battery swap station.
+ */
 public class BatterySwapRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Info on batteries inserted or taken out.
      */
     @Required
     private List<BatteryData> batteryData;
+
     /**
      * Battery in/out
-     * <p>
-     * (Required)
      */
     @Required
     private BatterySwapEventEnum eventType;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * Id token of EV Driver
      */
     @Required
     private IdToken idToken;
+
     /**
      * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BatterySwapRequest() {
     }
 
-    /**
-     * @param requestId RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     *                  <p>
-     *                  <p>
-     *                  .
-     */
+
     public BatterySwapRequest(List<BatteryData> batteryData, BatterySwapEventEnum eventType, IdToken idToken, Integer requestId, CustomData customData) {
         super();
         this.batteryData = batteryData;
@@ -71,88 +63,52 @@ public class BatterySwapRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<BatteryData> getBatteryData() {
         return batteryData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setBatteryData(List<BatteryData> batteryData) {
         this.batteryData = batteryData;
     }
 
-    /**
-     * Battery in/out
-     * <p>
-     * (Required)
-     */
+
     public BatterySwapEventEnum getEventType() {
         return eventType;
     }
 
-    /**
-     * Battery in/out
-     * <p>
-     * (Required)
-     */
+
     public void setEventType(BatterySwapEventEnum eventType) {
         this.eventType = eventType;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

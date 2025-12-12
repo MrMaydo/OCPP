@@ -12,45 +12,49 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Sent by the Charging Station to the CSMS to request that the Certificate Authority signs the public key into a certificate.
+ */
 public class SignCertificateRequest implements JsonInterface {
 
     /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
+     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR)
+     * as described in RFC 2986 [22] and then PEM encoded, using the SignCertificateRequest message.
      */
     @Required
     private String csr;
+
     /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
+     * Indicates the type of certificate that is to be signed.
+     * When omitted the certificate is to be used for both the 15118 connection (if implemented)
+     * and the Charging Station to CSMS connection.
      */
     @Optional
     private CertificateSigningUseEnum certificateType;
+
+    /**
+     * (2.1) The hash of the root certificate to identify the PKI to use.
+     */
     @Optional
     private CertificateHashData hashRootCertificate;
+
     /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
+     * (2.1) RequestId to match this message with the CertificateSignedRequest.
      */
     @Optional
     private Integer requestId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SignCertificateRequest() {
     }
 
-    /**
-     * @param csr       The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     *                  .
-     * @param requestId *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     *                  .
-     */
+
     public SignCertificateRequest(String csr, CertificateSigningUseEnum certificateType, CertificateHashData hashRootCertificate, Integer requestId, CustomData customData) {
         super();
         this.csr = csr;
@@ -60,34 +64,22 @@ public class SignCertificateRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
-     */
+
     public String getCsr() {
         return csr;
     }
 
-    /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
-     */
+
     public void setCsr(String csr) {
         this.csr = csr;
     }
 
-    /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     */
+
     public CertificateSigningUseEnum getCertificateType() {
         return certificateType;
     }
 
-    /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     */
+
     public void setCertificateType(CertificateSigningUseEnum certificateType) {
         this.certificateType = certificateType;
     }
@@ -100,30 +92,22 @@ public class SignCertificateRequest implements JsonInterface {
         this.hashRootCertificate = hashRootCertificate;
     }
 
-    /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

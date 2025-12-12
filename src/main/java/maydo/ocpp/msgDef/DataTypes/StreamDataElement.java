@@ -9,36 +9,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class StreamDataElement implements JsonInterface {
 
     /**
-     * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * <p>
-     * (Required)
+     * Offset relative to basetime of this message. basetime + t is timestamp of recorded value.
      */
     @Required
     private Float t;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private String v;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public StreamDataElement() {
     }
 
-    /**
-     * @param t Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     *          .
-     */
+
     public StreamDataElement(Float t, String v, CustomData customData) {
         super();
         this.t = t;
@@ -46,48 +44,32 @@ public class StreamDataElement implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * <p>
-     * (Required)
-     */
+
     public Float getT() {
         return t;
     }
 
-    /**
-     * Offset relative to _basetime_ of this message. _basetime_ + _t_ is timestamp of recorded value.
-     * <p>
-     * (Required)
-     */
+
     public void setT(Float t) {
         this.t = t;
     }
 
-    /**
-     * (Required)
-     */
+
     public String getV() {
         return v;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setV(String v) {
         this.v = v;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

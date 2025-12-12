@@ -9,45 +9,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ConstantStreamData implements JsonInterface {
 
     /**
      * Uniquely identifies the stream
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * (Required)
+     * Max time and items parameters
      */
     @Required
     private PeriodicEventStreamParams params;
+
     /**
      * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer variableMonitoringId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ConstantStreamData() {
     }
 
-    /**
-     * @param variableMonitoringId Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     *                             .
-     * @param id                   Uniquely identifies the stream
-     *                             .
-     */
+
     public ConstantStreamData(Integer id, PeriodicEventStreamParams params, Integer variableMonitoringId, CustomData customData) {
         super();
         this.id = id;
@@ -56,66 +51,42 @@ public class ConstantStreamData implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Uniquely identifies the stream
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Uniquely identifies the stream
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * (Required)
-     */
+
     public PeriodicEventStreamParams getParams() {
         return params;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setParams(PeriodicEventStreamParams params) {
         this.params = params;
     }
 
-    /**
-     * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
-     */
+
     public Integer getVariableMonitoringId() {
         return variableMonitoringId;
     }
 
-    /**
-     * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
-     */
+
     public void setVariableMonitoringId(Integer variableMonitoringId) {
         this.variableMonitoringId = variableMonitoringId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

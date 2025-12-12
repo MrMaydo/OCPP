@@ -14,31 +14,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetTariffsResponse implements JsonInterface {
 
     /**
      * Status of operation
-     * <p>
-     * (Required)
      */
     @Required
     private TariffGetStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Details status information
      */
     @Optional
     private StatusInfo statusInfo;
+
+    /**
+     * Installed default and user-specific tariffs per EVSE
+     */
     @Optional
     private List<TariffAssignment> tariffAssignments;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetTariffsResponse() {
     }
 
@@ -50,34 +55,22 @@ public class GetTariffsResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Status of operation
-     * <p>
-     * (Required)
-     */
+
     public TariffGetStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Status of operation
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(TariffGetStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
@@ -90,16 +83,12 @@ public class GetTariffsResponse implements JsonInterface {
         this.tariffAssignments = tariffAssignments;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

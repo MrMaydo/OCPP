@@ -12,22 +12,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearVariableMonitoringResponse PDU sent by the Charging Station to the CSMS.
+ */
 public class ClearVariableMonitoringResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * List of status per monitor.
      */
     @Required
     private List<ClearMonitoringResult> clearMonitoringResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearVariableMonitoringResponse() {
     }
 
@@ -37,30 +39,22 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ClearMonitoringResult> getClearMonitoringResult() {
         return clearMonitoringResult;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setClearMonitoringResult(List<ClearMonitoringResult> clearMonitoringResult) {
         this.clearMonitoringResult = clearMonitoringResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -11,22 +11,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Used by the CSMS to request deletion of an installed certificate on a Charging Station.
+ */
 public class DeleteCertificateRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Indicates the certificate of which deletion is requested.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DeleteCertificateRequest() {
     }
 
@@ -36,30 +38,22 @@ public class DeleteCertificateRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

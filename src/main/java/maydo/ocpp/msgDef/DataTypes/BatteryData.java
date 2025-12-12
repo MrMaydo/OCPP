@@ -14,198 +14,123 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class BatteryData implements JsonInterface {
 
     /**
      * Slot number where battery is inserted or removed.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
      * Serial number of battery.
-     * <p>
-     * (Required)
      */
     @Required
     private String serialNumber;
+
     /**
      * State of charge
-     * <p>
-     * (Required)
      */
     @Required
     private Float soC;
+
     /**
      * State of health
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float soH;
+
     /**
      * Production date of battery.
      */
     @Optional
     private Date productionDate;
+
     /**
      * Vendor-specific info from battery in undefined format.
      */
     @Optional
     private String vendorInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BatteryData() {
     }
 
-    /**
-     * @param evseId         Slot number where battery is inserted or removed.
-     *                       .
-     * @param serialNumber   Serial number of battery.
-     *                       .
-     * @param productionDate Production date of battery.
-     *                       <p>
-     *                       .
-     * @param soC            State of charge
-     *                       .
-     * @param vendorInfo     Vendor-specific info from battery in undefined format.
-     *                       .
-     * @param soH            State of health
-     *                       <p>
-     *                       .
-     */
-    public BatteryData(Integer evseId, String serialNumber, Float soC, Float soH, Date productionDate, String vendorInfo, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.serialNumber = serialNumber;
-        this.soC = soC;
-        this.soH = soH;
-        this.productionDate = productionDate;
-        this.vendorInfo = vendorInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * Slot number where battery is inserted or removed.
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Slot number where battery is inserted or removed.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Serial number of battery.
-     * <p>
-     * (Required)
-     */
+
     public String getSerialNumber() {
         return serialNumber;
     }
 
-    /**
-     * Serial number of battery.
-     * <p>
-     * (Required)
-     */
+
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    /**
-     * State of charge
-     * <p>
-     * (Required)
-     */
+
     public Float getSoC() {
         return soC;
     }
 
-    /**
-     * State of charge
-     * <p>
-     * (Required)
-     */
+
     public void setSoC(Float soC) {
         this.soC = soC;
     }
 
-    /**
-     * State of health
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getSoH() {
         return soH;
     }
 
-    /**
-     * State of health
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setSoH(Float soH) {
         this.soH = soH;
     }
 
-    /**
-     * Production date of battery.
-     */
+
     public Date getProductionDate() {
         return productionDate;
     }
 
-    /**
-     * Production date of battery.
-     */
+
     public void setProductionDate(Date productionDate) {
         this.productionDate = productionDate;
     }
 
-    /**
-     * Vendor-specific info from battery in undefined format.
-     */
+
     public String getVendorInfo() {
         return vendorInfo;
     }
 
-    /**
-     * Vendor-specific info from battery in undefined format.
-     */
+
     public void setVendorInfo(String vendorInfo) {
         this.vendorInfo = vendorInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

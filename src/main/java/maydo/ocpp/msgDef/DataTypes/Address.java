@@ -9,196 +9,124 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
- * *(2.1)* A generic address format.
+ * (2.1) A generic address format.
  */
 public class Address implements JsonInterface {
 
     /**
      * Name of person/company
-     * <p>
-     * (Required)
      */
     @Required
     private String name;
+
     /**
      * Address line 1
-     * <p>
-     * (Required)
      */
     @Required
     private String address1;
+
     /**
      * Address line 2
      */
     @Optional
     private String address2;
+
     /**
      * City
-     * <p>
-     * (Required)
      */
     @Required
     private String city;
+
     /**
      * Postal code
      */
     @Optional
     private String postalCode;
+
     /**
      * Country name
-     * <p>
-     * (Required)
      */
     @Required
     private String country;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Address() {
     }
 
-    /**
-     * @param country    Country name
-     *                   .
-     * @param address2   Address line 2
-     *                   .
-     * @param city       City
-     *                   .
-     * @param address1   Address line 1
-     *                   .
-     * @param postalCode Postal code
-     *                   .
-     * @param name       Name of person/company
-     *                   .
-     */
-    public Address(String name, String address1, String address2, String city, String postalCode, String country, CustomData customData) {
-        super();
-        this.name = name;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.country = country;
-        this.customData = customData;
-    }
 
-    /**
-     * Name of person/company
-     * <p>
-     * (Required)
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Name of person/company
-     * <p>
-     * (Required)
-     */
+
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Address line 1
-     * <p>
-     * (Required)
-     */
+
     public String getAddress1() {
         return address1;
     }
 
-    /**
-     * Address line 1
-     * <p>
-     * (Required)
-     */
+
     public void setAddress1(String address1) {
         this.address1 = address1;
     }
 
-    /**
-     * Address line 2
-     */
+
     public String getAddress2() {
         return address2;
     }
 
-    /**
-     * Address line 2
-     */
+
     public void setAddress2(String address2) {
         this.address2 = address2;
     }
 
-    /**
-     * City
-     * <p>
-     * (Required)
-     */
+
     public String getCity() {
         return city;
     }
 
-    /**
-     * City
-     * <p>
-     * (Required)
-     */
+
     public void setCity(String city) {
         this.city = city;
     }
 
-    /**
-     * Postal code
-     */
+
     public String getPostalCode() {
         return postalCode;
     }
 
-    /**
-     * Postal code
-     */
+
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
-    /**
-     * Country name
-     * <p>
-     * (Required)
-     */
+
     public String getCountry() {
         return country;
     }
 
-    /**
-     * Country name
-     * <p>
-     * (Required)
-     */
+
     public void setCountry(String country) {
         this.country = country;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

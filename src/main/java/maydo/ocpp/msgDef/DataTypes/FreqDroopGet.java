@@ -9,58 +9,46 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class FreqDroopGet implements JsonInterface {
 
     /**
-     * (Required)
+     * FreqDroop parameters
      */
     @Required
     private FreqDroop freqDroop;
+
     /**
      * Id of setting
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String id;
+
     /**
      * True if setting is a default control.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean isDefault;
+
     /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
+     * True if this setting is superseded by a higher priority setting (i.e. lower value of priority)
      */
     @Required
     private Boolean isSuperseded;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public FreqDroopGet() {
     }
 
-    /**
-     * @param isDefault    True if setting is a default control.
-     *                     .
-     * @param isSuperseded True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     *                     <p>
-     *                     .
-     * @param id           Id of setting
-     *                     <p>
-     *                     .
-     */
+
     public FreqDroopGet(FreqDroop freqDroop, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
         super();
         this.freqDroop = freqDroop;
@@ -70,88 +58,52 @@ public class FreqDroopGet implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public FreqDroop getFreqDroop() {
         return freqDroop;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setFreqDroop(FreqDroop freqDroop) {
         this.freqDroop = freqDroop;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * True if setting is a default control.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True if setting is a default control.
-     * <p>
-     * (Required)
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsSuperseded() {
         return isSuperseded;
     }
 
-    /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsSuperseded(Boolean isSuperseded) {
         this.isSuperseded = isSuperseded;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

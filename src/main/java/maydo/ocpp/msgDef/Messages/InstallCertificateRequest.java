@@ -11,38 +11,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Used by the CSMS to request installation of a certificate on a Charging Station.
+ * Note: This message is not for installing a TLS client certificate in a charging station.
+ * The CertificateSignedRequest mechanism is used for that.
+ */
 public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
      */
     @Required
     private InstallCertificateUseEnum certificateType;
+
     /**
      * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
      */
     @Required
     private String certificate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public InstallCertificateRequest() {
     }
 
-    /**
-     * @param certificate A PEM encoded X.509 certificate.
-     *                    .
-     */
+
     public InstallCertificateRequest(InstallCertificateUseEnum certificateType, String certificate, CustomData customData) {
         super();
         this.certificateType = certificateType;
@@ -50,52 +48,32 @@ public class InstallCertificateRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
-     */
+
     public InstallCertificateUseEnum getCertificateType() {
         return certificateType;
     }
 
-    /**
-     * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
-     */
+
     public void setCertificateType(InstallCertificateUseEnum certificateType) {
         this.certificateType = certificateType;
     }
 
-    /**
-     * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
-     */
+
     public String getCertificate() {
         return certificate;
     }
 
-    /**
-     * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
-     */
+
     public void setCertificate(String certificate) {
         this.certificate = certificate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

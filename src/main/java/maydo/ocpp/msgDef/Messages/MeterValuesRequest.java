@@ -12,36 +12,39 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the MeterValuesRequest PDU sent by the Charging Station to the CSMS. This message might be
+ * removed in a future version of OCPP. It will be replaced by Device Management Monitoring events.
+ */
 public class MeterValuesRequest implements JsonInterface {
 
     /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
+     * This contains a number (>0) designating an EVSE of the Charging Station.
+     * ‘0’ (zero) is used to designate the main power meter.
      */
     @Required
     private Integer evseId;
+
     /**
-     * (Required)
+     * The sampled meter values with timestamps.
+     * The following Configuration Variables are used to configure which measurands are sent:
+     * <p> -  AlignedDataMeasurands </p>
+     * <p> - AlignedDataUpstreamMeasurands </p>
      */
     @Required
     private List<MeterValue> meterValue;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MeterValuesRequest() {
     }
 
-    /**
-     * @param evseId This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     *               .
-     */
+
     public MeterValuesRequest(Integer evseId, List<MeterValue> meterValue, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -49,48 +52,32 @@ public class MeterValuesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<MeterValue> getMeterValue() {
         return meterValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setMeterValue(List<MeterValue> meterValue) {
         this.meterValue = meterValue;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

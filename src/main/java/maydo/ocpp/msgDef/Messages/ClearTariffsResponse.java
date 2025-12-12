@@ -12,22 +12,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * Result per tariff.
      */
     @Required
     private List<ClearTariffsResult> clearTariffsResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsResponse() {
     }
 
@@ -37,30 +39,22 @@ public class ClearTariffsResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ClearTariffsResult> getClearTariffsResult() {
         return clearTariffsResult;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setClearTariffsResult(List<ClearTariffsResult> clearTariffsResult) {
         this.clearTariffsResult = clearTariffsResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

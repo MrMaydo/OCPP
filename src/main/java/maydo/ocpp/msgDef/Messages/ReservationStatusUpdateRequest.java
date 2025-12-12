@@ -11,38 +11,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ReservationStatusUpdateRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The ID of the reservation.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer reservationId;
+
     /**
      * The updated reservation status.
-     * <p>
-     * (Required)
      */
     @Required
     private ReservationUpdateStatusEnum reservationUpdateStatus;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReservationStatusUpdateRequest() {
     }
 
-    /**
-     * @param reservationId The ID of the reservation.
-     *                      .
-     */
+
     public ReservationStatusUpdateRequest(Integer reservationId, ReservationUpdateStatusEnum reservationUpdateStatus, CustomData customData) {
         super();
         this.reservationId = reservationId;
@@ -50,52 +46,32 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The ID of the reservation.
-     * <p>
-     * (Required)
-     */
+
     public Integer getReservationId() {
         return reservationId;
     }
 
-    /**
-     * The ID of the reservation.
-     * <p>
-     * (Required)
-     */
+
     public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 
-    /**
-     * The updated reservation status.
-     * <p>
-     * (Required)
-     */
+
     public ReservationUpdateStatusEnum getReservationUpdateStatus() {
         return reservationUpdateStatus;
     }
 
-    /**
-     * The updated reservation status.
-     * <p>
-     * (Required)
-     */
+
     public void setReservationUpdateStatus(ReservationUpdateStatusEnum reservationUpdateStatus) {
         this.reservationUpdateStatus = reservationUpdateStatus;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

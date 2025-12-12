@@ -10,65 +10,53 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearDisplayMessageRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS asks the Charging Station to clear a display message
+ * that has been configured in the Charging Station to be cleared/removed.
+ * See also O05 - Clear a Display Message.
+ */
 public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearDisplayMessageRequest() {
     }
 
-    /**
-     * @param id Id of the message that SHALL be removed from the Charging Station.
-     *           .
-     */
+
     public ClearDisplayMessageRequest(Integer id, CustomData customData) {
         super();
         this.id = id;
         this.customData = customData;
     }
 
-    /**
-     * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

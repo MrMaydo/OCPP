@@ -17,54 +17,46 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This is a message of messageType SEND. It does not have a response.
+ */
 public class NotifyPeriodicEventStream implements JsonInterface {
 
     /**
-     * (Required)
+     * Variable part of stream data
      */
     @Required
     private List<StreamDataElement> data;
+
     /**
      * Id of stream.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
      * Number of data elements still pending to be sent.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer pending;
+
     /**
      * Base timestamp to add to time offset of values.
-     * <p>
-     * (Required)
      */
     @Required
     private Date basetime;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyPeriodicEventStream() {
     }
 
-    /**
-     * @param pending  Number of data elements still pending to be sent.
-     *                 .
-     * @param id       Id of stream.
-     *                 .
-     * @param basetime Base timestamp to add to time offset of values.
-     *                 .
-     */
+
     public NotifyPeriodicEventStream(List<StreamDataElement> data, Integer id, Integer pending, Date basetime, CustomData customData) {
         super();
         this.data = data;
@@ -74,84 +66,52 @@ public class NotifyPeriodicEventStream implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<StreamDataElement> getData() {
         return data;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setData(List<StreamDataElement> data) {
         this.data = data;
     }
 
-    /**
-     * Id of stream.
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of stream.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Number of data elements still pending to be sent.
-     * <p>
-     * (Required)
-     */
+
     public Integer getPending() {
         return pending;
     }
 
-    /**
-     * Number of data elements still pending to be sent.
-     * <p>
-     * (Required)
-     */
+
     public void setPending(Integer pending) {
         this.pending = pending;
     }
 
-    /**
-     * Base timestamp to add to time offset of values.
-     * <p>
-     * (Required)
-     */
+
     public Date getBasetime() {
         return basetime;
     }
 
-    /**
-     * Base timestamp to add to time offset of values.
-     * <p>
-     * (Required)
-     */
+
     public void setBasetime(Date basetime) {
         this.basetime = basetime;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

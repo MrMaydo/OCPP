@@ -11,24 +11,26 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetDisplayMessageRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS asks the Charging Station to configure a new display message that the Charging Station will display (in the future).
+ * See also O01 - Set Display Message, O02 - Set Display Message for Transaction and O06 - Replace Display Message
+ */
 public class SetDisplayMessageRequest implements JsonInterface {
 
     /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
+     * Message to be configured in the Charging Station, to be displayed.
      */
     @Required
     private MessageInfo message;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDisplayMessageRequest() {
     }
 
@@ -38,34 +40,22 @@ public class SetDisplayMessageRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public MessageInfo getMessage() {
         return message;
     }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setMessage(MessageInfo message) {
         this.message = message;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -15,65 +15,51 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the HeartbeatResponse PDU sent by
+ * the CSMS to the Charging Station in response to a HeartbeatRequest.
+ */
 public class HeartbeatResponse implements JsonInterface {
 
     /**
      * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private Date currentTime;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public HeartbeatResponse() {
     }
 
-    /**
-     * @param currentTime Contains the current time of the CSMS.
-     *                    .
-     */
+
     public HeartbeatResponse(Date currentTime, CustomData customData) {
         super();
         this.currentTime = currentTime;
         this.customData = customData;
     }
 
-    /**
-     * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public Date getCurrentTime() {
         return currentTime;
     }
 
-    /**
-     * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrentTime(Date currentTime) {
         this.currentTime = currentTime;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

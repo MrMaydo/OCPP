@@ -13,41 +13,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the AuthorizeRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class AuthorizeRequest implements JsonInterface {
 
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * This contains the identifier that needs to be authorized.
      */
     @Required
     private IdToken idToken;
+
     /**
-     * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
+     * (2.1) The X.509 certificate chain presented by EV and encoded in PEM format.
+     * Order of certificates in chain is from leaf up to (but excluding) root certificate.
      * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
      */
     @Optional
     private String certificate;
+
+    /**
+     * Contains the information needed to verify the EV Contract Certificate via OCSP.
+     * Not needed if certificate is provided.
+     */
     @Optional
     private List<OCSPRequestData> iso15118CertificateHashData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AuthorizeRequest() {
     }
 
-    /**
-     * @param certificate *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
-     *                    Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     *                    <p>
-     *                    .
-     */
+
     public AuthorizeRequest(IdToken idToken, String certificate, List<OCSPRequestData> iso15118CertificateHashData, CustomData customData) {
         super();
         this.idToken = idToken;
@@ -56,36 +58,22 @@ public class AuthorizeRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
-     * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     */
+
     public String getCertificate() {
         return certificate;
     }
 
-    /**
-     * *(2.1)* The X.509 certificate chain presented by EV and encoded in PEM format. Order of certificates in chain is from leaf up to (but excluding) root certificate. +
-     * Only needed in case of central contract validation when Charging Station cannot validate the contract certificate.
-     */
+
     public void setCertificate(String certificate) {
         this.certificate = certificate;
     }
@@ -98,16 +86,12 @@ public class AuthorizeRequest implements JsonInterface {
         this.iso15118CertificateHashData = iso15118CertificateHashData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

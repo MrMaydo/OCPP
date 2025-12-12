@@ -11,6 +11,9 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetVariableResult implements JsonInterface {
 
     /**
@@ -18,41 +21,38 @@ public class SetVariableResult implements JsonInterface {
      */
     @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
+
     /**
      * Result status of setting the variable.
-     * <p>
-     * (Required)
      */
     @Required
     private SetVariableStatusEnum attributeStatus;
+
     /**
-     * Element providing more information about the status.
+     * Detailed attribute status information.
      */
     @Optional
     private StatusInfo attributeStatusInfo;
+
     /**
-     * A physical or logical component
-     * <p>
-     * (Required)
+     * The component for which result is returned.
      */
     @Required
     private Component component;
+
     /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
+     * The variable for which the result is returned.
      */
     @Required
     private Variable variable;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetVariableResult() {
     }
 
@@ -66,98 +66,62 @@ public class SetVariableResult implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     */
+
     public AttributeEnum getAttributeType() {
         return attributeType;
     }
 
-    /**
-     * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     */
+
     public void setAttributeType(AttributeEnum attributeType) {
         this.attributeType = attributeType;
     }
 
-    /**
-     * Result status of setting the variable.
-     * <p>
-     * (Required)
-     */
+
     public SetVariableStatusEnum getAttributeStatus() {
         return attributeStatus;
     }
 
-    /**
-     * Result status of setting the variable.
-     * <p>
-     * (Required)
-     */
+
     public void setAttributeStatus(SetVariableStatusEnum attributeStatus) {
         this.attributeStatus = attributeStatus;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getAttributeStatusInfo() {
         return attributeStatusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setAttributeStatusInfo(StatusInfo attributeStatusInfo) {
         this.attributeStatusInfo = attributeStatusInfo;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public Component getComponent() {
         return component;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public void setComponent(Component component) {
         this.component = component;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public Variable getVariable() {
         return variable;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

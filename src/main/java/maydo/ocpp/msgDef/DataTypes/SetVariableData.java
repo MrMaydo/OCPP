@@ -10,6 +10,9 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetVariableData implements JsonInterface {
 
     /**
@@ -17,49 +20,39 @@ public class SetVariableData implements JsonInterface {
      */
     @Optional
     private AttributeEnum attributeType = AttributeEnum.fromValue("Actual");
+
     /**
-     * Value to be assigned to attribute of variable.
-     * This value is allowed to be an empty string ("").
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     * <p>
-     * (Required)
+     * Value to be assigned to attribute of variable. This value is allowed to be an empty string ("").
+     * The Configuration Variable ConfigurationValueSize can be used to limit
+     * SetVariableData.attributeValue and VariableCharacteristics.valuesList.
+     * The max size of these values will always remain equal.
      */
     @Required
     private String attributeValue;
+
     /**
-     * A physical or logical component
-     * <p>
-     * (Required)
+     *
      */
     @Required
     private Component component;
+
     /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
+     *
      */
     @Required
     private Variable variable;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetVariableData() {
     }
 
-    /**
-     * @param attributeValue Value to be assigned to attribute of variable.
-     *                       This value is allowed to be an empty string ("").
-     *                       <p>
-     *                       The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     *                       .
-     */
+
     public SetVariableData(AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
         super();
         this.attributeType = attributeType;
@@ -69,90 +62,52 @@ public class SetVariableData implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     */
+
     public AttributeEnum getAttributeType() {
         return attributeType;
     }
 
-    /**
-     * Type of attribute: Actual, Target, MinSet, MaxSet. Default is Actual when omitted.
-     */
+
     public void setAttributeType(AttributeEnum attributeType) {
         this.attributeType = attributeType;
     }
 
-    /**
-     * Value to be assigned to attribute of variable.
-     * This value is allowed to be an empty string ("").
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     * <p>
-     * (Required)
-     */
+
     public String getAttributeValue() {
         return attributeValue;
     }
 
-    /**
-     * Value to be assigned to attribute of variable.
-     * This value is allowed to be an empty string ("").
-     * <p>
-     * The Configuration Variable &lt;&lt;configkey-configuration-value-size,ConfigurationValueSize&gt;&gt; can be used to limit SetVariableData.attributeValue and VariableCharacteristics.valuesList. The max size of these values will always remain equal.
-     * <p>
-     * (Required)
-     */
+
     public void setAttributeValue(String attributeValue) {
         this.attributeValue = attributeValue;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public Component getComponent() {
         return component;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public void setComponent(Component component) {
         this.component = component;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public Variable getVariable() {
         return variable;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

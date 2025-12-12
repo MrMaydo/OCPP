@@ -15,60 +15,49 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the AuthorizeResponse PDU sent by the CSMS to the Charging Station in response to an
+ * AuthorizeRequest.
+ */
 public class AuthorizeResponse implements JsonInterface {
 
     /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * <p>
-     * (Required)
+     * This contains information about authorization status, expiry and group id.
      */
     @Required
     private IdTokenInfo idTokenInfo;
+
     /**
-     * Certificate status information.
-     * - if all certificates are valid: return 'Accepted'.
-     * - if one of the certificates was revoked, return 'CertificateRevoked'.
+     * Certificate status information:
+     * <p> - if all certificates are valid, return: 'Accepted'. </p>
+     * <p> - if one of the certificates was revoked, return: 'CertificateRevoked'. </p>
      */
     @Optional
     private AuthorizeCertificateStatusEnum certificateStatus;
+
     /**
-     * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
+     * (2.1) List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
      */
     @Optional
     private List<EnergyTransferModeEnum> allowedEnergyTransfer;
+
     /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
+     * (2.1) Tariff for this idToken.
      */
     @Optional
     private Tariff tariff;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AuthorizeResponse() {
     }
 
-    /**
-     * @param allowedEnergyTransfer *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     *                              <p>
-     *                              <p>
-     *                              .
-     */
+
     public AuthorizeResponse(IdTokenInfo idTokenInfo, AuthorizeCertificateStatusEnum certificateStatus, List<EnergyTransferModeEnum> allowedEnergyTransfer, Tariff tariff, CustomData customData) {
         super();
         this.idTokenInfo = idTokenInfo;
@@ -78,100 +67,52 @@ public class AuthorizeResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * <p>
-     * (Required)
-     */
+
     public IdTokenInfo getIdTokenInfo() {
         return idTokenInfo;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     * <p>
-     * (Required)
-     */
+
     public void setIdTokenInfo(IdTokenInfo idTokenInfo) {
         this.idTokenInfo = idTokenInfo;
     }
 
-    /**
-     * Certificate status information.
-     * - if all certificates are valid: return 'Accepted'.
-     * - if one of the certificates was revoked, return 'CertificateRevoked'.
-     */
+
     public AuthorizeCertificateStatusEnum getCertificateStatus() {
         return certificateStatus;
     }
 
-    /**
-     * Certificate status information.
-     * - if all certificates are valid: return 'Accepted'.
-     * - if one of the certificates was revoked, return 'CertificateRevoked'.
-     */
+
     public void setCertificateStatus(AuthorizeCertificateStatusEnum certificateStatus) {
         this.certificateStatus = certificateStatus;
     }
 
-    /**
-     * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     */
+
     public List<EnergyTransferModeEnum> getAllowedEnergyTransfer() {
         return allowedEnergyTransfer;
     }
 
-    /**
-     * *(2.1)* List of allowed energy transfer modes the EV can choose from. If omitted this defaults to charging only.
-     */
+
     public void setAllowedEnergyTransfer(List<EnergyTransferModeEnum> allowedEnergyTransfer) {
         this.allowedEnergyTransfer = allowedEnergyTransfer;
     }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     */
+
     public Tariff getTariff() {
         return tariff;
     }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     */
+
     public void setTariff(Tariff tariff) {
         this.tariff = tariff;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

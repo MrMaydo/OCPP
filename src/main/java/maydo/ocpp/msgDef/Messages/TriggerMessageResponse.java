@@ -12,29 +12,31 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the TriggerMessageResponse PDU sent by
+ * the Charging Station to the CSMS in response to TriggerMessageResponse.
+ */
 public class TriggerMessageResponse implements JsonInterface {
 
     /**
      * Indicates whether the Charging Station will send the requested notification or not.
-     * <p>
-     * (Required)
      */
     @Required
     private TriggerMessageStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TriggerMessageResponse() {
     }
 
@@ -45,48 +47,32 @@ public class TriggerMessageResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Indicates whether the Charging Station will send the requested notification or not.
-     * <p>
-     * (Required)
-     */
+
     public TriggerMessageStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Indicates whether the Charging Station will send the requested notification or not.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(TriggerMessageStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

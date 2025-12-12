@@ -12,45 +12,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the FirmwareStatusNotificationRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class FirmwareStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the progress status of the firmware installation.
-     * <p>
-     * (Required)
      */
     @Required
     private FirmwareStatusEnum status;
+
     /**
-     * The request id that was provided in the
-     * UpdateFirmwareRequest that started this firmware update.
+     * The request id that was provided in the UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
      */
     @Optional
     private Integer requestId;
+
     /**
-     * Element providing more information about the status.
+     * (2.1) Detailed status info
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public FirmwareStatusNotificationRequest() {
     }
 
-    /**
-     * @param requestId The request id that was provided in the
-     *                  UpdateFirmwareRequest that started this firmware update.
-     *                  This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     *                  .
-     */
+
     public FirmwareStatusNotificationRequest(FirmwareStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
         super();
         this.status = status;
@@ -59,66 +55,42 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains the progress status of the firmware installation.
-     * <p>
-     * (Required)
-     */
+
     public FirmwareStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This contains the progress status of the firmware installation.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(FirmwareStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * The request id that was provided in the
-     * UpdateFirmwareRequest that started this firmware update.
-     * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The request id that was provided in the
-     * UpdateFirmwareRequest that started this firmware update.
-     * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

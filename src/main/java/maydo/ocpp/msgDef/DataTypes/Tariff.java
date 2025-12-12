@@ -15,83 +15,100 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * A tariff is described by fields with prices for:
+ * energy, charging time, idle time, fixed fee, reservation time, reservation fixed fee.
+ * Each of these fields may have (optional) conditions that specify when a price is applicable.
+ * The description contains a human-readable explanation of the tariff to be shown to the user.
+ * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
+ */
 public class Tariff implements JsonInterface {
 
     /**
      * Unique id of tariff
-     * <p>
-     * (Required)
      */
     @Required
     private String tariffId;
+
+    /**
+     * List of multi-language tariff information texts to be shown to the user.
+     */
     @Optional
     private List<MessageContent> description;
+
     /**
      * Currency code according to ISO 4217
-     * <p>
-     * (Required)
      */
     @Required
     private String currency;
+
     /**
-     * Price elements and tax for energy
+     * Energy tariff
      */
     @Optional
     private TariffEnergy energy;
+
     /**
      * Time when this tariff becomes active. When absent, it is immediately active.
      */
     @Optional
     private Date validFrom;
+
     /**
-     * Price elements and tax for time
+     * Charging time tariff
      */
     @Optional
     private TariffTime chargingTime;
+
     /**
-     * Price elements and tax for time
+     * Idle time tariff
      */
     @Optional
     private TariffTime idleTime;
+
+    /**
+     * Fixed fee tariff
+     */
     @Optional
     private TariffFixed fixedFee;
+
     /**
-     * Price elements and tax for time
+     * Reservation time tariff
      */
     @Optional
     private TariffTime reservationTime;
+
+    /**
+     * Fixed fee for a reservation
+     */
     @Optional
     private TariffFixed reservationFixed;
+
     /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
+     * The minimal cost for a transaction with this tariff including and excluding taxes.
+     * Minimum can be including tax or excluding tax, or both.
      */
     @Optional
     private Price minCost;
+
     /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
+     * The maximum cost for a transaction with this tariff.
+     * Maximum can be including tax or excluding tax, or both.
      */
     @Optional
     private Price maxCost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Tariff() {
     }
 
-    /**
-     * @param currency  Currency code according to ISO 4217
-     *                  .
-     * @param tariffId  Unique id of tariff
-     *                  .
-     * @param validFrom Time when this tariff becomes active. When absent, it is immediately active.
-     *                  .
-     */
+
     public Tariff(String tariffId, List<MessageContent> description, String currency, TariffEnergy energy, Date validFrom, TariffTime chargingTime, TariffTime idleTime, TariffFixed fixedFee, TariffTime reservationTime, TariffFixed reservationFixed, Price minCost, Price maxCost, CustomData customData) {
         super();
         this.tariffId = tariffId;
@@ -109,20 +126,12 @@ public class Tariff implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Unique id of tariff
-     * <p>
-     * (Required)
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Unique id of tariff
-     * <p>
-     * (Required)
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
@@ -135,76 +144,52 @@ public class Tariff implements JsonInterface {
         this.description = description;
     }
 
-    /**
-     * Currency code according to ISO 4217
-     * <p>
-     * (Required)
-     */
+
     public String getCurrency() {
         return currency;
     }
 
-    /**
-     * Currency code according to ISO 4217
-     * <p>
-     * (Required)
-     */
+
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
-    /**
-     * Price elements and tax for energy
-     */
+
     public TariffEnergy getEnergy() {
         return energy;
     }
 
-    /**
-     * Price elements and tax for energy
-     */
+
     public void setEnergy(TariffEnergy energy) {
         this.energy = energy;
     }
 
-    /**
-     * Time when this tariff becomes active. When absent, it is immediately active.
-     */
+
     public Date getValidFrom() {
         return validFrom;
     }
 
-    /**
-     * Time when this tariff becomes active. When absent, it is immediately active.
-     */
+
     public void setValidFrom(Date validFrom) {
         this.validFrom = validFrom;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getChargingTime() {
         return chargingTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setChargingTime(TariffTime chargingTime) {
         this.chargingTime = chargingTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getIdleTime() {
         return idleTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setIdleTime(TariffTime idleTime) {
         this.idleTime = idleTime;
     }
@@ -217,16 +202,12 @@ public class Tariff implements JsonInterface {
         this.fixedFee = fixedFee;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getReservationTime() {
         return reservationTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setReservationTime(TariffTime reservationTime) {
         this.reservationTime = reservationTime;
     }
@@ -239,44 +220,32 @@ public class Tariff implements JsonInterface {
         this.reservationFixed = reservationFixed;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public Price getMinCost() {
         return minCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public void setMinCost(Price minCost) {
         this.minCost = minCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public Price getMaxCost() {
         return maxCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public void setMaxCost(Price maxCost) {
         this.maxCost = maxCost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,87 +9,63 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Contains the identifier to use for authorization.
  */
 public class AuthorizationData implements JsonInterface {
 
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * This contains the identifier which needs to be stored for authorization.
      */
     @Required
     private IdToken idToken;
+
     /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
+     * Required when UpdateType is Full. This contains information about authorization status, expiry and group id.
+     * For a Differential update the following applies:
+     * <p> If this element is present, then this entry SHALL be added or updated in the Local Authorization List. </p>
+     * <p> If this element is absent, the entry for this IdToken in the Local Authorization List SHALL be deleted. </p>
      */
     @Optional
     private IdTokenInfo idTokenInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AuthorizationData() {
     }
 
-    public AuthorizationData(IdToken idToken, IdTokenInfo idTokenInfo, CustomData customData) {
-        super();
-        this.idToken = idToken;
-        this.idTokenInfo = idTokenInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     */
+
     public IdTokenInfo getIdTokenInfo() {
         return idTokenInfo;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     */
+
     public void setIdTokenInfo(IdTokenInfo idTokenInfo) {
         this.idTokenInfo = idTokenInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

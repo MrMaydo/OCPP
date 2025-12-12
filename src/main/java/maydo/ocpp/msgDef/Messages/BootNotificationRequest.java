@@ -12,31 +12,30 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the BootNotificationRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class BootNotificationRequest implements JsonInterface {
 
     /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
+     * Identifies the Charging Station
      */
     @Required
     private ChargingStation chargingStation;
+
     /**
      * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private BootReasonEnum reason;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BootNotificationRequest() {
     }
 
@@ -47,52 +46,32 @@ public class BootNotificationRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
-     */
+
     public ChargingStation getChargingStation() {
         return chargingStation;
     }
 
-    /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingStation(ChargingStation chargingStation) {
         this.chargingStation = chargingStation;
     }
 
-    /**
-     * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public BootReasonEnum getReason() {
         return reason;
     }
 
-    /**
-     * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setReason(BootReasonEnum reason) {
         this.reason = reason;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

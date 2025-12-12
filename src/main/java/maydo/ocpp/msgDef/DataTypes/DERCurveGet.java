@@ -10,68 +10,52 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class DERCurveGet implements JsonInterface {
 
     /**
-     * (Required)
+     * Parameters defining the DER curve
      */
     @Required
     private DERCurve curve;
+
     /**
      * Id of DER curve
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String id;
+
     /**
      * Type of DER curve
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private DERControlEnum curveType;
+
     /**
      * True if this is a default curve
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean isDefault;
+
     /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
+     * True if this setting is superseded by a higher priority setting (i.e. lower value of priority)
      */
     @Required
     private Boolean isSuperseded;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DERCurveGet() {
     }
 
-    /**
-     * @param isDefault    True if this is a default curve
-     *                     <p>
-     *                     .
-     * @param isSuperseded True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     *                     <p>
-     *                     .
-     * @param id           Id of DER curve
-     *                     <p>
-     *                     .
-     */
+
     public DERCurveGet(DERCurve curve, String id, DERControlEnum curveType, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
         super();
         this.curve = curve;
@@ -82,110 +66,62 @@ public class DERCurveGet implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public DERCurve getCurve() {
         return curve;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCurve(DERCurve curve) {
         this.curve = curve;
     }
 
-    /**
-     * Id of DER curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Id of DER curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * Type of DER curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public DERControlEnum getCurveType() {
         return curveType;
     }
 
-    /**
-     * Type of DER curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setCurveType(DERControlEnum curveType) {
         this.curveType = curveType;
     }
 
-    /**
-     * True if this is a default curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True if this is a default curve
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getIsSuperseded() {
         return isSuperseded;
     }
 
-    /**
-     * True if this setting is superseded by a higher priority setting (i.e. lower value of _priority_)
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsSuperseded(Boolean isSuperseded) {
         this.isSuperseded = isSuperseded;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

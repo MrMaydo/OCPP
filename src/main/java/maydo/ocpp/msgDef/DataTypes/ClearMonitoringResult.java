@@ -10,46 +10,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearMonitoringResult implements JsonInterface {
 
     /**
      * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private ClearMonitoringStatusEnum status;
+
     /**
      * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
      * Element providing more information about the status.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearMonitoringResult() {
     }
 
-    /**
-     * @param id Id of the monitor of which a clear was requested.
-     *           <p>
-     *           .
-     */
+
     public ClearMonitoringResult(ClearMonitoringStatusEnum status, Integer id, StatusInfo statusInfo, CustomData customData) {
         super();
         this.status = status;
@@ -58,70 +52,42 @@ public class ClearMonitoringResult implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ClearMonitoringStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of the clear request for this monitor, identified by its Id.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(ClearMonitoringStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of the monitor of which a clear was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

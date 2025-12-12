@@ -10,65 +10,50 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     /**
      * Id of stream to close.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClosePeriodicEventStreamRequest() {
     }
 
-    /**
-     * @param id Id of stream to close.
-     *           .
-     */
+
     public ClosePeriodicEventStreamRequest(Integer id, CustomData customData) {
         super();
         this.id = id;
         this.customData = customData;
     }
 
-    /**
-     * Id of stream to close.
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of stream to close.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -10,36 +10,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Class to hold parameters of SetVariableMonitoring request.
+ */
 public class MonitoringData implements JsonInterface {
 
     /**
-     * A physical or logical component
-     * <p>
-     * (Required)
+     * Component for which monitoring report was requested.
      */
     @Required
     private Component component;
+
     /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
+     * Variable for which monitoring report was requested.
      */
     @Required
     private Variable variable;
+
     /**
-     * (Required)
+     * List of monitors for this Component-Variable pair.
      */
     @Required
     private List<VariableMonitoring> variableMonitoring;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MonitoringData() {
     }
 
@@ -51,66 +51,42 @@ public class MonitoringData implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public Component getComponent() {
         return component;
     }
 
-    /**
-     * A physical or logical component
-     * <p>
-     * (Required)
-     */
+
     public void setComponent(Component component) {
         this.component = component;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public Variable getVariable() {
         return variable;
     }
 
-    /**
-     * Reference key to a component-variable.
-     * <p>
-     * (Required)
-     */
+
     public void setVariable(Variable variable) {
         this.variable = variable;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<VariableMonitoring> getVariableMonitoring() {
         return variableMonitoring;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setVariableMonitoring(List<VariableMonitoring> variableMonitoring) {
         this.variableMonitoring = variableMonitoring;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

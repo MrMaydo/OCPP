@@ -9,58 +9,47 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Part of ISO 15118-20 price schedule.
  */
 public class OverstayRule implements JsonInterface {
 
     /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
+     * Fee that applies to this overstay.
      */
     @Required
     private RationalNumber overstayFee;
+
     /**
      * Human readable string to identify the overstay rule.
      */
     @Optional
     private String overstayRuleDescription;
+
     /**
      * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer startTime;
+
     /**
      * Time till overstay will be reapplied
-     * <p>
-     * (Required)
      */
     @Required
     private Integer overstayFeePeriod;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public OverstayRule() {
     }
 
-    /**
-     * @param overstayFeePeriod       Time till overstay will be reapplied
-     *                                .
-     * @param overstayRuleDescription Human readable string to identify the overstay rule.
-     *                                .
-     * @param startTime               Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     *                                .
-     */
+
     public OverstayRule(RationalNumber overstayFee, String overstayRuleDescription, Integer startTime, Integer overstayFeePeriod, CustomData customData) {
         super();
         this.overstayFee = overstayFee;
@@ -70,86 +59,52 @@ public class OverstayRule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public RationalNumber getOverstayFee() {
         return overstayFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setOverstayFee(RationalNumber overstayFee) {
         this.overstayFee = overstayFee;
     }
 
-    /**
-     * Human readable string to identify the overstay rule.
-     */
+
     public String getOverstayRuleDescription() {
         return overstayRuleDescription;
     }
 
-    /**
-     * Human readable string to identify the overstay rule.
-     */
+
     public void setOverstayRuleDescription(String overstayRuleDescription) {
         this.overstayRuleDescription = overstayRuleDescription;
     }
 
-    /**
-     * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * <p>
-     * (Required)
-     */
+
     public Integer getStartTime() {
         return startTime;
     }
 
-    /**
-     * Time in seconds after trigger of the parent Overstay Rules for this particular fee to apply.
-     * <p>
-     * (Required)
-     */
+
     public void setStartTime(Integer startTime) {
         this.startTime = startTime;
     }
 
-    /**
-     * Time till overstay will be reapplied
-     * <p>
-     * (Required)
-     */
+
     public Integer getOverstayFeePeriod() {
         return overstayFeePeriod;
     }
 
-    /**
-     * Time till overstay will be reapplied
-     * <p>
-     * (Required)
-     */
+
     public void setOverstayFeePeriod(Integer overstayFeePeriod) {
         this.overstayFeePeriod = overstayFeePeriod;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

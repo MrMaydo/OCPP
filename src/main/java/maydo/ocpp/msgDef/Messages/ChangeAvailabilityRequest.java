@@ -12,30 +12,31 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ChangeAvailabilityRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
-     * Electric Vehicle Supply Equipment
+     * Contains Id’s to designate a specific EVSE/connector by index numbers.
+     * When omitted, the message refers to the Charging Station as a whole.
      */
     @Optional
     private EVSE evse;
+
     /**
      * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private OperationalStatusEnum operationalStatus;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChangeAvailabilityRequest() {
     }
 
@@ -46,50 +47,32 @@ public class ChangeAvailabilityRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public EVSE getEvse() {
         return evse;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public void setEvse(EVSE evse) {
         this.evse = evse;
     }
 
-    /**
-     * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public OperationalStatusEnum getOperationalStatus() {
         return operationalStatus;
     }
 
-    /**
-     * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setOperationalStatus(OperationalStatusEnum operationalStatus) {
         this.operationalStatus = operationalStatus;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

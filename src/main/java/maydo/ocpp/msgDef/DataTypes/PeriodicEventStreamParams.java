@@ -8,6 +8,9 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class PeriodicEventStreamParams implements JsonInterface {
 
     /**
@@ -15,29 +18,24 @@ public class PeriodicEventStreamParams implements JsonInterface {
      */
     @Optional
     private Integer interval;
+
     /**
      * Number of items to be sent together in stream.
      */
     @Optional
     private Integer values;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PeriodicEventStreamParams() {
     }
 
-    /**
-     * @param values   Number of items to be sent together in stream.
-     *                 .
-     * @param interval Time in seconds after which stream data is sent.
-     *                 .
-     */
+
     public PeriodicEventStreamParams(Integer interval, Integer values, CustomData customData) {
         super();
         this.interval = interval;
@@ -45,44 +43,32 @@ public class PeriodicEventStreamParams implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Time in seconds after which stream data is sent.
-     */
+
     public Integer getInterval() {
         return interval;
     }
 
-    /**
-     * Time in seconds after which stream data is sent.
-     */
+
     public void setInterval(Integer interval) {
         this.interval = interval;
     }
 
-    /**
-     * Number of items to be sent together in stream.
-     */
+
     public Integer getValues() {
         return values;
     }
 
-    /**
-     * Number of items to be sent together in stream.
-     */
+
     public void setValues(Integer values) {
         this.values = values;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

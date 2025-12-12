@@ -11,24 +11,25 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the UnpublishFirmwareResponse PDU sent by
+ * the Charging Station to the CSMS in response to a UnpublishFirmwareRequest.
+ */
 public class UnpublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
      */
     @Required
     private UnpublishFirmwareStatusEnum status;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UnpublishFirmwareResponse() {
     }
 
@@ -38,34 +39,22 @@ public class UnpublishFirmwareResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
-     */
+
     public UnpublishFirmwareStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(UnpublishFirmwareStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

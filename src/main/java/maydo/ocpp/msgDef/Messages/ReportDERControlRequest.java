@@ -11,55 +11,82 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Reports DER controls requested by a GetDERControlRequest message. The report may consist of more than one message.
+ */
 public class ReportDERControlRequest implements JsonInterface {
 
+    /**
+     * Voltage/Frequency/Active/Reactive curve
+     */
+    @Optional
     private List<DERCurveGet> curve;
+
+    /**
+     * Enter service after trip parameters
+     */
     @Optional
     private List<EnterServiceGet> enterService;
+
+    /**
+     * Fixed power factor setpoint when absorbing active power
+     */
     @Optional
     private List<FixedPFGet> fixedPFAbsorb;
+
+    /**
+     * Fixed power factor setpoint when injecting active power
+     */
     @Optional
     private List<FixedPFGet> fixedPFInject;
+
+    /**
+     * Fixed reactive power setting
+     */
     @Optional
     private List<FixedVarGet> fixedVar;
+
+    /**
+     *. Frequency-Watt parameterized mode
+     */
     @Optional
     private List<FreqDroopGet> freqDroop;
+
+    /**
+     * Gradient settings
+     */
     @Optional
     private List<GradientGet> gradient;
+
+    /**
+     * Limit maximum discharge as percentage of rated capability
+     */
     @Optional
     private List<LimitMaxDischargeGet> limitMaxDischarge;
+
     /**
      * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
+     * To Be Continued. Default value when omitted: false. False indicates that there are no further messages as part of this report.
      */
     @Optional
     private Boolean tbc;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReportDERControlRequest() {
     }
 
-    /**
-     * @param tbc       To Be Continued. Default value when omitted: false. +
-     *                  False indicates that there are no further messages as part of this report.
-     *                  .
-     * @param requestId RequestId from GetDERControlRequest.
-     *                  .
-     */
+
     public ReportDERControlRequest(List<DERCurveGet> curve, List<EnterServiceGet> enterService, List<FixedPFGet> fixedPFAbsorb, List<FixedPFGet> fixedPFInject, List<FixedVarGet> fixedVar, List<FreqDroopGet> freqDroop, List<GradientGet> gradient, List<LimitMaxDischargeGet> limitMaxDischarge, Integer requestId, Boolean tbc, CustomData customData) {
         super();
         this.curve = curve;
@@ -139,50 +166,32 @@ public class ReportDERControlRequest implements JsonInterface {
         this.limitMaxDischarge = limitMaxDischarge;
     }
 
-    /**
-     * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

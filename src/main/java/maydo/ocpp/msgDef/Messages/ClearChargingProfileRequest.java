@@ -10,6 +10,12 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearChargingProfileRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS can use this message to clear (remove) either a specific charging profile (denoted by id)
+ * or a selection of charging profiles that match with the values
+ * of the optional evse, stackLevel and ChargingProfilePurpose fields.
+ */
 public class ClearChargingProfileRequest implements JsonInterface {
 
     /**
@@ -17,27 +23,24 @@ public class ClearChargingProfileRequest implements JsonInterface {
      */
     @Optional
     private Integer chargingProfileId;
+
     /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
+     * Specifies the charging profile.
      */
     @Optional
     private ClearChargingProfile chargingProfileCriteria;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearChargingProfileRequest() {
     }
 
-    /**
-     * @param chargingProfileId The Id of the charging profile to clear.
-     *                          .
-     */
+
     public ClearChargingProfileRequest(Integer chargingProfileId, ClearChargingProfile chargingProfileCriteria, CustomData customData) {
         super();
         this.chargingProfileId = chargingProfileId;
@@ -45,44 +48,32 @@ public class ClearChargingProfileRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The Id of the charging profile to clear.
-     */
+
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * The Id of the charging profile to clear.
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     */
+
     public ClearChargingProfile getChargingProfileCriteria() {
         return chargingProfileCriteria;
     }
 
-    /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     */
+
     public void setChargingProfileCriteria(ClearChargingProfile chargingProfileCriteria) {
         this.chargingProfileCriteria = chargingProfileCriteria;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

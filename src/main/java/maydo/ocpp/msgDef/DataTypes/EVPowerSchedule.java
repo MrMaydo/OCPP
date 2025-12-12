@@ -15,36 +15,34 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * (2.1) Schedule of EV energy offer.
+ */
 public class EVPowerSchedule implements JsonInterface {
 
     /**
-     * (Required)
+     * List of EVPowerScheduleEntries.
      */
     @Required
     private List<EVPowerScheduleEntry> evPowerScheduleEntries;
+
     /**
      * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVPowerSchedule() {
     }
 
-    /**
-     * @param timeAnchor The time that defines the starting point for the EVEnergyOffer.
-     *                   .
-     */
+
     public EVPowerSchedule(List<EVPowerScheduleEntry> evPowerScheduleEntries, Date timeAnchor, CustomData customData) {
         super();
         this.evPowerScheduleEntries = evPowerScheduleEntries;
@@ -52,48 +50,32 @@ public class EVPowerSchedule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<EVPowerScheduleEntry> getEvPowerScheduleEntries() {
         return evPowerScheduleEntries;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvPowerScheduleEntries(List<EVPowerScheduleEntry> evPowerScheduleEntries) {
         this.evPowerScheduleEntries = evPowerScheduleEntries;
     }
 
-    /**
-     * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

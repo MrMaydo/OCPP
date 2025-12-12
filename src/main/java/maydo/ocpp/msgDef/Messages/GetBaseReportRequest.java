@@ -11,38 +11,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetBaseReportRequest PDU sent by the CSMS to the Charging Station
+ */
 public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * This field specifies the report base.
-     * <p>
-     * (Required)
      */
     @Required
     private ReportBaseEnum reportBase;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetBaseReportRequest() {
     }
 
-    /**
-     * @param requestId The Id of the request.
-     *                  .
-     */
+
     public GetBaseReportRequest(Integer requestId, ReportBaseEnum reportBase, CustomData customData) {
         super();
         this.requestId = requestId;
@@ -50,52 +46,32 @@ public class GetBaseReportRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This field specifies the report base.
-     * <p>
-     * (Required)
-     */
+
     public ReportBaseEnum getReportBase() {
         return reportBase;
     }
 
-    /**
-     * This field specifies the report base.
-     * <p>
-     * (Required)
-     */
+
     public void setReportBase(ReportBaseEnum reportBase) {
         this.reportBase = reportBase;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

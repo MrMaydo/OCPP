@@ -10,65 +10,50 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definitions of the RequestStopTransactionRequest PDU sent to Charging Station by CSMS.
+ */
 public class RequestStopTransactionRequest implements JsonInterface {
 
     /**
      * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public RequestStopTransactionRequest() {
     }
 
-    /**
-     * @param transactionId The identifier of the transaction which the Charging Station is requested to stop.
-     *                      .
-     */
+
     public RequestStopTransactionRequest(String transactionId, CustomData customData) {
         super();
         this.transactionId = transactionId;
         this.customData = customData;
     }
 
-    /**
-     * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

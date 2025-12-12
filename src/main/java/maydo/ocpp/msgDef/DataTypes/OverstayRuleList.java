@@ -10,39 +10,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Part of ISO 15118-20 price schedule.
+ */
 public class OverstayRuleList implements JsonInterface {
 
     /**
-     * Part of ISO 15118-20 price schedule.
+     * Power threshold in W at which the overstay applies
      */
     @Optional
     private RationalNumber overstayPowerThreshold;
+
     /**
-     * (Required)
+     * Overstay rules that will be applied.
      */
     @Required
     private List<OverstayRule> overstayRule;
+
     /**
      * Time till overstay is applied in seconds.
      */
     @Optional
     private Integer overstayTimeThreshold;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public OverstayRuleList() {
     }
 
-    /**
-     * @param overstayTimeThreshold Time till overstay is applied in seconds.
-     *                              .
-     */
+
     public OverstayRuleList(RationalNumber overstayPowerThreshold, List<OverstayRule> overstayRule, Integer overstayTimeThreshold, CustomData customData) {
         super();
         this.overstayPowerThreshold = overstayPowerThreshold;
@@ -51,58 +52,42 @@ public class OverstayRuleList implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public RationalNumber getOverstayPowerThreshold() {
         return overstayPowerThreshold;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public void setOverstayPowerThreshold(RationalNumber overstayPowerThreshold) {
         this.overstayPowerThreshold = overstayPowerThreshold;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<OverstayRule> getOverstayRule() {
         return overstayRule;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setOverstayRule(List<OverstayRule> overstayRule) {
         this.overstayRule = overstayRule;
     }
 
-    /**
-     * Time till overstay is applied in seconds.
-     */
+
     public Integer getOverstayTimeThreshold() {
         return overstayTimeThreshold;
     }
 
-    /**
-     * Time till overstay is applied in seconds.
-     */
+
     public void setOverstayTimeThreshold(Integer overstayTimeThreshold) {
         this.overstayTimeThreshold = overstayTimeThreshold;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

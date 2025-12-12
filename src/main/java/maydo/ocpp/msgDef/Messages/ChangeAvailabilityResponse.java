@@ -12,29 +12,30 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ChangeAvailabilityResponse PDU sent by the Charging Station to the CSMS.
+ */
 public class ChangeAvailabilityResponse implements JsonInterface {
 
     /**
      * This indicates whether the Charging Station is able to perform the availability change.
-     * <p>
-     * (Required)
      */
     @Required
     private ChangeAvailabilityStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChangeAvailabilityResponse() {
     }
 
@@ -45,48 +46,32 @@ public class ChangeAvailabilityResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This indicates whether the Charging Station is able to perform the availability change.
-     * <p>
-     * (Required)
-     */
+
     public ChangeAvailabilityStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This indicates whether the Charging Station is able to perform the availability change.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(ChangeAvailabilityStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

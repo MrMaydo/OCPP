@@ -16,57 +16,49 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *The Charging Station uses this message to communicate the charging needs as calculated by the EV to the CSMS.
+ */
 public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
+     * Contains the maximum elements the EV supports for:
+     * <p> - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). </p>
+     * <p> - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.</p>
      */
     @Optional
     private Integer maxScheduleTuples;
+
     /**
-     * (Required)
+     * The characteristics of the energy delivery required.
      */
     @Required
     private ChargingNeeds chargingNeeds;
+
     /**
-     * *(2.1)* Time when EV charging needs were received. +
+     * (2.1) Time when EV charging needs were received.
      * Field can be added when charging station was offline when charging needs were received.
      */
     @Optional
     private Date timestamp;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyEVChargingNeedsRequest() {
     }
 
-    /**
-     * @param evseId            Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     *                          .
-     * @param maxScheduleTuples Contains the maximum elements the EV supports for: +
-     *                          - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     *                          - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     *                          .
-     * @param timestamp         *(2.1)* Time when EV charging needs were received. +
-     *                          Field can be added when charging station was offline when charging needs were received.
-     *                          <p>
-     *                          .
-     */
+
     public NotifyEVChargingNeedsRequest(Integer evseId, Integer maxScheduleTuples, ChargingNeeds chargingNeeds, Date timestamp, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -76,82 +68,52 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     */
+
     public Integer getMaxScheduleTuples() {
         return maxScheduleTuples;
     }
 
-    /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     */
+
     public void setMaxScheduleTuples(Integer maxScheduleTuples) {
         this.maxScheduleTuples = maxScheduleTuples;
     }
 
-    /**
-     * (Required)
-     */
+
     public ChargingNeeds getChargingNeeds() {
         return chargingNeeds;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingNeeds(ChargingNeeds chargingNeeds) {
         this.chargingNeeds = chargingNeeds;
     }
 
-    /**
-     * *(2.1)* Time when EV charging needs were received. +
-     * Field can be added when charging station was offline when charging needs were received.
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * *(2.1)* Time when EV charging needs were received. +
-     * Field can be added when charging station was offline when charging needs were received.
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

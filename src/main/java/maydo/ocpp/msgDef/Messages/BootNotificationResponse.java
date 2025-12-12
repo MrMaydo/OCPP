@@ -17,53 +17,49 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the BootNotificationResponse PDU sent by
+ * the CSMS to the Charging Station in response to a BootNotificationRequest.
+ */
 public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
      */
     @Required
     private Date currentTime;
+
     /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
+     * When Status is Accepted, this contains the heartbeat interval in seconds.
+     * If the CSMS returns something other than Accepted,
+     * the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
      */
     @Required
     private Integer interval;
+
     /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
+     * This contains whether the Charging Station has been registered within the CSMS.
      */
     @Required
     private RegistrationStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BootNotificationResponse() {
     }
 
-    /**
-     * @param currentTime This contains the CSMS’s current time.
-     *                    .
-     * @param interval    When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     *                    .
-     */
+
     public BootNotificationResponse(Date currentTime, Integer interval, RegistrationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
         super();
         this.currentTime = currentTime;
@@ -73,86 +69,52 @@ public class BootNotificationResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
-     */
+
     public Date getCurrentTime() {
         return currentTime;
     }
 
-    /**
-     * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrentTime(Date currentTime) {
         this.currentTime = currentTime;
     }
 
-    /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getInterval() {
         return interval;
     }
 
-    /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
-     */
+
     public void setInterval(Integer interval) {
         this.interval = interval;
     }
 
-    /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public RegistrationStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(RegistrationStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -10,179 +10,93 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class CertificateHashData implements JsonInterface {
 
     /**
      * Used algorithms for the hashes provided.
-     * <p>
-     * (Required)
      */
     @Required
     private HashAlgorithmEnum hashAlgorithm;
+
     /**
-     * The hash of the issuer’s distinguished
-     * name (DN), that must be calculated over the DER
-     * encoding of the issuer’s name field in the certificate
-     * being checked.
-     * <p>
-     * <p>
-     * (Required)
+     * The hash of the issuer’s distinguished name (DN),
+     * that must be calculated over the DER encoding of the issuer’s name field in the certificate being checked.
      */
     @Required
     private String issuerNameHash;
+
     /**
      * The hash of the DER encoded public key:
-     * the value (excluding tag and length) of the subject
-     * public key field in the issuer’s certificate.
-     * <p>
-     * (Required)
+     * the value (excluding tag and length) of the subject public key field in the issuer’s certificate.
      */
     @Required
     private String issuerKeyHash;
+
     /**
-     * The string representation of the
-     * hexadecimal value of the serial number without the
-     * prefix "0x" and without leading zeroes.
-     * <p>
-     * (Required)
+     * The string representation of the hexadecimal value of the serial number without the prefix "0x" and without leading zeroes.
      */
     @Required
     private String serialNumber;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateHashData() {
     }
 
-    /**
-     * @param issuerNameHash The hash of the issuer’s distinguished
-     *                       name (DN), that must be calculated over the DER
-     *                       encoding of the issuer’s name field in the certificate
-     *                       being checked.
-     *                       <p>
-     *                       .
-     * @param issuerKeyHash  The hash of the DER encoded public key:
-     *                       the value (excluding tag and length) of the subject
-     *                       public key field in the issuer’s certificate.
-     *                       .
-     * @param serialNumber   The string representation of the
-     *                       hexadecimal value of the serial number without the
-     *                       prefix "0x" and without leading zeroes.
-     *                       .
-     */
-    public CertificateHashData(HashAlgorithmEnum hashAlgorithm, String issuerNameHash, String issuerKeyHash, String serialNumber, CustomData customData) {
-        super();
-        this.hashAlgorithm = hashAlgorithm;
-        this.issuerNameHash = issuerNameHash;
-        this.issuerKeyHash = issuerKeyHash;
-        this.serialNumber = serialNumber;
-        this.customData = customData;
-    }
 
-    /**
-     * Used algorithms for the hashes provided.
-     * <p>
-     * (Required)
-     */
     public HashAlgorithmEnum getHashAlgorithm() {
         return hashAlgorithm;
     }
 
-    /**
-     * Used algorithms for the hashes provided.
-     * <p>
-     * (Required)
-     */
+
     public void setHashAlgorithm(HashAlgorithmEnum hashAlgorithm) {
         this.hashAlgorithm = hashAlgorithm;
     }
 
-    /**
-     * The hash of the issuer’s distinguished
-     * name (DN), that must be calculated over the DER
-     * encoding of the issuer’s name field in the certificate
-     * being checked.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getIssuerNameHash() {
         return issuerNameHash;
     }
 
-    /**
-     * The hash of the issuer’s distinguished
-     * name (DN), that must be calculated over the DER
-     * encoding of the issuer’s name field in the certificate
-     * being checked.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIssuerNameHash(String issuerNameHash) {
         this.issuerNameHash = issuerNameHash;
     }
 
-    /**
-     * The hash of the DER encoded public key:
-     * the value (excluding tag and length) of the subject
-     * public key field in the issuer’s certificate.
-     * <p>
-     * (Required)
-     */
+
     public String getIssuerKeyHash() {
         return issuerKeyHash;
     }
 
-    /**
-     * The hash of the DER encoded public key:
-     * the value (excluding tag and length) of the subject
-     * public key field in the issuer’s certificate.
-     * <p>
-     * (Required)
-     */
+
     public void setIssuerKeyHash(String issuerKeyHash) {
         this.issuerKeyHash = issuerKeyHash;
     }
 
-    /**
-     * The string representation of the
-     * hexadecimal value of the serial number without the
-     * prefix "0x" and without leading zeroes.
-     * <p>
-     * (Required)
-     */
+
     public String getSerialNumber() {
         return serialNumber;
     }
 
-    /**
-     * The string representation of the
-     * hexadecimal value of the serial number without the
-     * prefix "0x" and without leading zeroes.
-     * <p>
-     * (Required)
-     */
+
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -9,43 +9,39 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
- * *(2.1)* An entry in schedule of the energy amount over time that EV is willing to discharge. A negative value indicates the willingness to discharge under specific conditions, a positive value indicates that the EV currently is not able to offer energy to discharge.
+ * (2.1) An entry in schedule of the energy amount over time that EV is willing to discharge.
+ * A negative value indicates the willingness to discharge under specific conditions,
+ * a positive value indicates that the EV currently is not able to offer energy to discharge.
  */
 public class EVPowerScheduleEntry implements JsonInterface {
 
     /**
      * The duration of this entry.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
-     * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * <p>
-     * (Required)
+     * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged
+     * from the EV battery through EVSE power outlet.
+     * Negative values are used for discharging.
      */
     @Required
     private Float power;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVPowerScheduleEntry() {
     }
 
-    /**
-     * @param duration The duration of this entry.
-     *                 .
-     * @param power    Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     *                 .
-     */
+
     public EVPowerScheduleEntry(Integer duration, Float power, CustomData customData) {
         super();
         this.duration = duration;
@@ -53,52 +49,32 @@ public class EVPowerScheduleEntry implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The duration of this entry.
-     * <p>
-     * (Required)
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * The duration of this entry.
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * <p>
-     * (Required)
-     */
+
     public Float getPower() {
         return power;
     }
 
-    /**
-     * Defines maximum amount of power for the duration of this EVPowerScheduleEntry to be discharged from the EV battery through EVSE power outlet. Negative values are used for discharging.
-     * <p>
-     * (Required)
-     */
+
     public void setPower(Float power) {
         this.power = power;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

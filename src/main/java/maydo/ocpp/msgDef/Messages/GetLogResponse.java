@@ -12,41 +12,42 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetLogResponse PDU sent by
+ * the Charging Station to the CSMS in response to a GetLogRequest.
+ */
 public class GetLogResponse implements JsonInterface {
 
     /**
      * This field indicates whether the Charging Station was able to accept the request.
-     * <p>
-     * (Required)
      */
     @Required
     private LogStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
+     * This contains the name of the log file that will be uploaded.
+     * This field is not present when no logging information is available.
      */
     @Optional
     private String filename;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetLogResponse() {
     }
 
-    /**
-     * @param filename This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
-     *                 .
-     */
+
     public GetLogResponse(LogStatusEnum status, StatusInfo statusInfo, String filename, CustomData customData) {
         super();
         this.status = status;
@@ -55,62 +56,42 @@ public class GetLogResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This field indicates whether the Charging Station was able to accept the request.
-     * <p>
-     * (Required)
-     */
+
     public LogStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This field indicates whether the Charging Station was able to accept the request.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(LogStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
-     */
+
     public String getFilename() {
         return filename;
     }
 
-    /**
-     * This contains the name of the log file that will be uploaded. This field is not present when no logging information is available.
-     */
+
     public void setFilename(String filename) {
         this.filename = filename;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

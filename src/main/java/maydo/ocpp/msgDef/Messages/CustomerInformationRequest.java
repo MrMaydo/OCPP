@@ -12,66 +12,63 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the CustomerInformationRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class CustomerInformationRequest implements JsonInterface {
 
-    private CertificateHashData customerCertificate;
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
+     * The Certificate of the customer this request refers to.
+     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
+     */
+    @Optional
+    private CertificateHashData customerCertificate;
+
+    /**
+     * The IdToken of the customer this request refers to.
+     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
      */
     @Optional
     private IdToken idToken;
+
     /**
      * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
+     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages
+     * containing information about the customer referred to.
      */
     @Required
     private Boolean report;
+
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean clear;
+
     /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
+     * A (e.g. vendor specific) identifier of the customer this request refers to.
+     * This field contains a custom identifier other than IdToken and Certificate.
      * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
      */
     @Optional
     private String customerIdentifier;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CustomerInformationRequest() {
     }
 
-    /**
-     * @param requestId          The Id of the request.
-     *                           <p>
-     *                           .
-     * @param report             Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     *                           .
-     * @param clear              Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     *                           .
-     * @param customerIdentifier A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     *                           One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     *                           .
-     */
+
     public CustomerInformationRequest(CertificateHashData customerCertificate, IdToken idToken, Integer requestId, Boolean report, Boolean clear, String customerIdentifier, CustomData customData) {
         super();
         this.customerCertificate = customerCertificate;
@@ -91,102 +88,62 @@ public class CustomerInformationRequest implements JsonInterface {
         this.customerCertificate = customerCertificate;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getReport() {
         return report;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public void setReport(Boolean report) {
         this.report = report;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getClear() {
         return clear;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public void setClear(Boolean clear) {
         this.clear = clear;
     }
 
-    /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     */
+
     public String getCustomerIdentifier() {
         return customerIdentifier;
     }
 
-    /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     */
+
     public void setCustomerIdentifier(String customerIdentifier) {
         this.customerIdentifier = customerIdentifier;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

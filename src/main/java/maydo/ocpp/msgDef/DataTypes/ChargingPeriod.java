@@ -15,49 +15,42 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * A ChargingPeriodType consists of a start time, and a list of possible values that influence this period,
+ * for example: amount of energy charged this period, maximum current during this period etc.
+ */
 public class ChargingPeriod implements JsonInterface {
 
-    private List<CostDimension> dimensions;
     /**
-     * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
+     * List of volume per cost dimension for this charging period.
+     */
+    @Optional
+    private List<CostDimension> dimensions;
+
+    /**
+     * Unique identifier of the Tariff that was used to calculate cost.
+     * If not provided, then cost was calculated by some other means.
      */
     @Optional
     private String tariffId;
+
     /**
-     * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * <p>
-     * <p>
-     * (Required)
+     * Start timestamp of charging period. A period ends when the next period starts.
+     * The last period ends when the session ends.
      */
     @Required
     private Date startPeriod;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChargingPeriod() {
     }
 
-    /**
-     * @param startPeriod Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     *                    <p>
-     *                    .
-     * @param tariffId    Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     *                    <p>
-     *                    .
-     */
-    public ChargingPeriod(List<CostDimension> dimensions, String tariffId, Date startPeriod, CustomData customData) {
-        super();
-        this.dimensions = dimensions;
-        this.tariffId = tariffId;
-        this.startPeriod = startPeriod;
-        this.customData = customData;
-    }
 
     public List<CostDimension> getDimensions() {
         return dimensions;
@@ -67,50 +60,32 @@ public class ChargingPeriod implements JsonInterface {
         this.dimensions = dimensions;
     }
 
-    /**
-     * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Unique identifier of the Tariff that was used to calculate cost. If not provided, then cost was calculated by some other means.
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Date getStartPeriod() {
         return startPeriod;
     }
 
-    /**
-     * Start timestamp of charging period. A period ends when the next period starts. The last period ends when the session ends.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStartPeriod(Date startPeriod) {
         this.startPeriod = startPeriod;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -11,24 +11,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCertificateStatusRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
+     * Indicates the certificate of which the status is requested.
      */
     @Required
     private OCSPRequestData ocspRequestData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCertificateStatusRequest() {
     }
 
@@ -38,34 +38,22 @@ public class GetCertificateStatusRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
-     */
+
     public OCSPRequestData getOcspRequestData() {
         return ocspRequestData;
     }
 
-    /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
-     */
+
     public void setOcspRequestData(OCSPRequestData ocspRequestData) {
         this.ocspRequestData = ocspRequestData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -10,65 +10,51 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetLocalListVersionResponse PDU sent by
+ * the Charging Station to CSMS in response to a GetLocalListVersionRequest.
+ */
 public class GetLocalListVersionResponse implements JsonInterface {
 
     /**
      * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer versionNumber;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetLocalListVersionResponse() {
     }
 
-    /**
-     * @param versionNumber This contains the current version number of the local authorization list in the Charging Station.
-     *                      .
-     */
+
     public GetLocalListVersionResponse(Integer versionNumber, CustomData customData) {
         super();
         this.versionNumber = versionNumber;
         this.customData = customData;
     }
 
-    /**
-     * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Integer getVersionNumber() {
         return versionNumber;
     }
 
-    /**
-     * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setVersionNumber(Integer versionNumber) {
         this.versionNumber = versionNumber;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -16,65 +16,46 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class NotifyDERStartStopRequest implements JsonInterface {
 
     /**
-     * Id of the started or stopped DER control.
-     * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * <p>
-     * <p>
-     * (Required)
+     * Id of the started or stopped DER control. Corresponds to the controlId of the SetDERControlRequest.
      */
     @Required
     private String controlId;
+
     /**
      * True if DER control has started. False if it has ended.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean started;
+
     /**
      * Time of start or end of event.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
      * List of controlIds that are superseded as a result of this control starting.
      */
     @Optional
     private List<String> supersededIds;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyDERStartStopRequest() {
     }
 
-    /**
-     * @param started       True if DER control has started. False if it has ended.
-     *                      <p>
-     *                      .
-     * @param controlId     Id of the started or stopped DER control.
-     *                      Corresponds to the _controlId_ of the SetDERControlRequest.
-     *                      <p>
-     *                      .
-     * @param supersededIds List of controlIds that are superseded as a result of this control starting.
-     *                      <p>
-     *                      .
-     * @param timestamp     Time of start or end of event.
-     *                      <p>
-     *                      .
-     */
+
     public NotifyDERStartStopRequest(String controlId, Boolean started, Date timestamp, List<String> supersededIds, CustomData customData) {
         super();
         this.controlId = controlId;
@@ -84,92 +65,52 @@ public class NotifyDERStartStopRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id of the started or stopped DER control.
-     * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getControlId() {
         return controlId;
     }
 
-    /**
-     * Id of the started or stopped DER control.
-     * Corresponds to the _controlId_ of the SetDERControlRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setControlId(String controlId) {
         this.controlId = controlId;
     }
 
-    /**
-     * True if DER control has started. False if it has ended.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Boolean getStarted() {
         return started;
     }
 
-    /**
-     * True if DER control has started. False if it has ended.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStarted(Boolean started) {
         this.started = started;
     }
 
-    /**
-     * Time of start or end of event.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Time of start or end of event.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of this control starting.
-     */
+
     public List<String> getSupersededIds() {
         return supersededIds;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of this control starting.
-     */
+
     public void setSupersededIds(List<String> supersededIds) {
         this.supersededIds = supersededIds;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

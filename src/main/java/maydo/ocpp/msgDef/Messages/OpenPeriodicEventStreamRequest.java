@@ -11,22 +11,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class OpenPeriodicEventStreamRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Constant part of stream data
      */
     @Required
     private ConstantStreamData constantStreamData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public OpenPeriodicEventStreamRequest() {
     }
 
@@ -36,30 +38,22 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public ConstantStreamData getConstantStreamData() {
         return constantStreamData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setConstantStreamData(ConstantStreamData constantStreamData) {
         this.constantStreamData = constantStreamData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

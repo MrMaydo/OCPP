@@ -11,27 +11,30 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class AdjustPeriodicEventStreamRequest implements JsonInterface {
 
     /**
-     * (Required)
+     *
      */
     @Required
     private Integer id;
+
     /**
-     * (Required)
+     * Updated rate of sending data
      */
     @Required
     private PeriodicEventStreamParams params;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AdjustPeriodicEventStreamRequest() {
     }
 
@@ -42,44 +45,32 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * (Required)
-     */
+
     public PeriodicEventStreamParams getParams() {
         return params;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setParams(PeriodicEventStreamParams params) {
         this.params = params;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

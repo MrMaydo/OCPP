@@ -10,50 +10,48 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A SalesTariff provided by a Mobility Operator (EMSP). NOTE: This dataType is based on dataTypes from ISO 15118-2.
+ */
 public class SalesTariff implements JsonInterface {
 
     /**
-     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
-     * (Required)
+     * SalesTariff identifier used to identify one sales tariff.
+     * An SAID remains a unique identifier for one schedule throughout a charging session.
      */
     @Required
     private Integer id;
+
     /**
      * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
      */
     @Optional
     private String salesTariffDescription;
+
     /**
      * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
      */
     @Optional
     private Integer numEPriceLevels;
+
     /**
-     * (Required)
+     * Encapsulating element describing all relevant details for one time interval of the SalesTariff.
+     * The number of SalesTariffEntry elements is limited by the parameter maxScheduleTuples.
      */
     @Required
     private List<SalesTariffEntry> salesTariffEntry;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SalesTariff() {
     }
 
-    /**
-     * @param salesTariffDescription A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     *                               .
-     * @param numEPriceLevels        Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     *                               .
-     * @param id                     SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     *                               .
-     */
+
     public SalesTariff(Integer id, String salesTariffDescription, Integer numEPriceLevels, List<SalesTariffEntry> salesTariffEntry, CustomData customData) {
         super();
         this.id = id;
@@ -63,76 +61,52 @@ public class SalesTariff implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
-     * (Required)
-     */
+
     public Integer getId() {
         return id;
     }
 
-    /**
-     * SalesTariff identifier used to identify one sales tariff. An SAID remains a unique identifier for one schedule throughout a charging session.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     */
+
     public String getSalesTariffDescription() {
         return salesTariffDescription;
     }
 
-    /**
-     * A human readable title/short description of the sales tariff e.g. for HMI display purposes.
-     */
+
     public void setSalesTariffDescription(String salesTariffDescription) {
         this.salesTariffDescription = salesTariffDescription;
     }
 
-    /**
-     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     */
+
     public Integer getNumEPriceLevels() {
         return numEPriceLevels;
     }
 
-    /**
-     * Defines the overall number of distinct price levels used across all provided SalesTariff elements.
-     */
+
     public void setNumEPriceLevels(Integer numEPriceLevels) {
         this.numEPriceLevels = numEPriceLevels;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<SalesTariffEntry> getSalesTariffEntry() {
         return salesTariffEntry;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSalesTariffEntry(List<SalesTariffEntry> salesTariffEntry) {
         this.salesTariffEntry = salesTariffEntry;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

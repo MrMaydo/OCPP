@@ -11,65 +11,50 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearVariableMonitoringRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class ClearVariableMonitoringRequest implements JsonInterface {
 
     /**
      * List of the monitors to be cleared, identified by there Id.
-     * <p>
-     * (Required)
      */
     @Required
     private List<Integer> id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearVariableMonitoringRequest() {
     }
 
-    /**
-     * @param id List of the monitors to be cleared, identified by there Id.
-     *           .
-     */
+
     public ClearVariableMonitoringRequest(List<Integer> id, CustomData customData) {
         super();
         this.id = id;
         this.customData = customData;
     }
 
-    /**
-     * List of the monitors to be cleared, identified by there Id.
-     * <p>
-     * (Required)
-     */
+
     public List<Integer> getId() {
         return id;
     }
 
-    /**
-     * List of the monitors to be cleared, identified by there Id.
-     * <p>
-     * (Required)
-     */
+
     public void setId(List<Integer> id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

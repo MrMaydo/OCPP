@@ -11,47 +11,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCompositeScheduleRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
      * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
      * Can be used to force a power or current profile.
      */
     @Optional
     private ChargingRateUnitEnum chargingRateUnit;
+
     /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
+     * The ID of the EVSE for which the schedule is requested.
+     * When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
      */
     @Required
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCompositeScheduleRequest() {
     }
 
-    /**
-     * @param duration Length of the requested schedule in seconds.
-     *                 <p>
-     *                 .
-     * @param evseId   The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     *                 .
-     */
+
     public GetCompositeScheduleRequest(Integer duration, ChargingRateUnitEnum chargingRateUnit, Integer evseId, CustomData customData) {
         super();
         this.duration = duration;
@@ -60,68 +54,42 @@ public class GetCompositeScheduleRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * Can be used to force a power or current profile.
-     */
+
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
     }
 
-    /**
-     * Can be used to force a power or current profile.
-     */
+
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
     }
 
-    /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

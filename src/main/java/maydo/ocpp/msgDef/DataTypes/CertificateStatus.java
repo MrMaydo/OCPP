@@ -16,127 +16,91 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Revocation status of certificate
+ */
 public class CertificateStatus implements JsonInterface {
 
     /**
-     * (Required)
+     * Hash data of the certificate.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
      * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateStatusSourceEnum source;
+
     /**
      * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateStatusEnum status;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private Date nextUpdate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateStatus() {
     }
 
-    public CertificateStatus(CertificateHashData certificateHashData, CertificateStatusSourceEnum source, CertificateStatusEnum status, Date nextUpdate, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.source = source;
-        this.status = status;
-        this.nextUpdate = nextUpdate;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusSourceEnum getSource() {
         return source;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public void setSource(CertificateStatusSourceEnum source) {
         this.source = source;
     }
 
-    /**
-     * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(CertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * (Required)
-     */
+
     public Date getNextUpdate() {
         return nextUpdate;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setNextUpdate(Date nextUpdate) {
         this.nextUpdate = nextUpdate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

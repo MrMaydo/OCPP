@@ -10,39 +10,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsResult implements JsonInterface {
 
     /**
-     * Element providing more information about the status.
+     * Additional info on status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
+     * Optional. Id of tariff for which status is reported.
+     * If no tariffs were found, then this field is absent, and status will be  NoTariff.
      */
     @Optional
     private String tariffId;
+
     /**
-     * (Required)
+     *
      */
     @Required
     private TariffClearStatusEnum status;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsResult() {
     }
 
-    /**
-     * @param tariffId Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     *                 .
-     */
+
     public ClearTariffsResult(StatusInfo statusInfo, String tariffId, TariffClearStatusEnum status, CustomData customData) {
         super();
         this.statusInfo = statusInfo;
@@ -51,58 +53,42 @@ public class ClearTariffsResult implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * (Required)
-     */
+
     public TariffClearStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setStatus(TariffClearStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -12,22 +12,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetCertificateChainStatusResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * Status of the certificate revocation check.
      */
     @Required
     private List<CertificateStatus> certificateStatus;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCertificateChainStatusResponse() {
     }
 
@@ -37,30 +39,22 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<CertificateStatus> getCertificateStatus() {
         return certificateStatus;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateStatus(List<CertificateStatus> certificateStatus) {
         this.certificateStatus = certificateStatus;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

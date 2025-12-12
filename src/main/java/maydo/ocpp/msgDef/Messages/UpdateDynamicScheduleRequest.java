@@ -11,39 +11,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) This message is used to update a setpoint or limit in a dynamic charging profile.
+ */
 public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer chargingProfileId;
+
     /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
+     * Updated values for charging schedule period.
      */
     @Required
     private ChargingScheduleUpdate scheduleUpdate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UpdateDynamicScheduleRequest() {
     }
 
-    /**
-     * @param chargingProfileId Id of charging profile to update.
-     *                          .
-     */
+
     public UpdateDynamicScheduleRequest(Integer chargingProfileId, ChargingScheduleUpdate scheduleUpdate, CustomData customData) {
         super();
         this.chargingProfileId = chargingProfileId;
@@ -51,54 +46,32 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ChargingScheduleUpdate getScheduleUpdate() {
         return scheduleUpdate;
     }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setScheduleUpdate(ChargingScheduleUpdate scheduleUpdate) {
         this.scheduleUpdate = scheduleUpdate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

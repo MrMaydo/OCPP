@@ -9,63 +9,48 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * This contains the calculated usage of energy, charging time and idle time during a transaction.
  */
 public class TotalUsage implements JsonInterface {
 
     /**
-     * (Required)
+     *
      */
     @Required
     private Float energy;
+
     /**
      * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer chargingTime;
+
     /**
-     * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
+     * Total duration of the charging session where the EV was not charging
+     * (no energy was transferred between EVSE and EV), in seconds.
      */
     @Required
     private Integer idleTime;
+
     /**
      * Total time of reservation in seconds.
      */
     @Optional
     private Integer reservationTime;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TotalUsage() {
     }
 
-    /**
-     * @param chargingTime    Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     *                        <p>
-     *                        <p>
-     *                        .
-     * @param reservationTime Total time of reservation in seconds.
-     *                        .
-     * @param idleTime        Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     *                        <p>
-     *                        <p>
-     *                        .
-     */
+
     public TotalUsage(Float energy, Integer chargingTime, Integer idleTime, Integer reservationTime, CustomData customData) {
         super();
         this.energy = energy;
@@ -75,88 +60,52 @@ public class TotalUsage implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public Float getEnergy() {
         return energy;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEnergy(Float energy) {
         this.energy = energy;
     }
 
-    /**
-     * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getChargingTime() {
         return chargingTime;
     }
 
-    /**
-     * Total duration of the charging session (including the duration of charging and not charging), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setChargingTime(Integer chargingTime) {
         this.chargingTime = chargingTime;
     }
 
-    /**
-     * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getIdleTime() {
         return idleTime;
     }
 
-    /**
-     * Total duration of the charging session where the EV was not charging (no energy was transferred between EVSE and EV), in seconds.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIdleTime(Integer idleTime) {
         this.idleTime = idleTime;
     }
 
-    /**
-     * Total time of reservation in seconds.
-     */
+
     public Integer getReservationTime() {
         return reservationTime;
     }
 
-    /**
-     * Total time of reservation in seconds.
-     */
+
     public void setReservationTime(Integer reservationTime) {
         this.reservationTime = reservationTime;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

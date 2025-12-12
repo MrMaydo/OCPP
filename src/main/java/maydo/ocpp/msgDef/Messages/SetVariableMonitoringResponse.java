@@ -12,22 +12,25 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetVariableMonitoringResponse PDU sent by
+ * the Charging Station to the CSMS in response to a SetVariableMonitoringRequest.
+ */
 public class SetVariableMonitoringResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * List of result statuses per monitor.
      */
     @Required
     private List<SetMonitoringResult> setMonitoringResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetVariableMonitoringResponse() {
     }
 
@@ -37,30 +40,22 @@ public class SetVariableMonitoringResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<SetMonitoringResult> getSetMonitoringResult() {
         return setMonitoringResult;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSetMonitoringResult(List<SetMonitoringResult> setMonitoringResult) {
         this.setMonitoringResult = setMonitoringResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -13,32 +13,38 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCompositeScheduleResponse PDU sent by the Charging Station to the CSMS in
+ * response to a GetCompositeScheduleRequest.
+ */
 public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
+     * The Charging Station will indicate if it was able to process the request
      */
     @Required
     private GenericStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
+    /**
+     * This field contains the calculated composite schedule.
+     * It may only be omitted when this message contains status Rejected.
+     */
     @Optional
     private CompositeSchedule schedule;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCompositeScheduleResponse() {
     }
 
@@ -50,36 +56,22 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
-     */
+
     public GenericStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GenericStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
@@ -92,16 +84,12 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         this.schedule = schedule;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

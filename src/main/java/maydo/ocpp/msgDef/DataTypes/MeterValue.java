@@ -15,36 +15,35 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Collection of one or more sampled values in MeterValuesRequest and TransactionEvent.
+ * All sampled values in a MeterValue are sampled at the same point in time.
+ */
 public class MeterValue implements JsonInterface {
 
     /**
-     * (Required)
+     * One or more measured values
      */
     @Required
     private List<SampledValue> sampledValue;
+
     /**
      * Timestamp for measured value(s).
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MeterValue() {
     }
 
-    /**
-     * @param timestamp Timestamp for measured value(s).
-     *                  .
-     */
+
     public MeterValue(List<SampledValue> sampledValue, Date timestamp, CustomData customData) {
         super();
         this.sampledValue = sampledValue;
@@ -52,48 +51,32 @@ public class MeterValue implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<SampledValue> getSampledValue() {
         return sampledValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSampledValue(List<SampledValue> sampledValue) {
         this.sampledValue = sampledValue;
     }
 
-    /**
-     * Timestamp for measured value(s).
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Timestamp for measured value(s).
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

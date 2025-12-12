@@ -12,44 +12,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCertificateStatusResponse PDU sent by the CSMS to the Charging Station.
+ */
 public class GetCertificateStatusResponse implements JsonInterface {
 
     /**
      * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * <p>
-     * (Required)
      */
     @Required
     private GetCertificateStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
-     * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
+     * (2.1) OCSPResponse class as defined in IETF RFC 6960. DER encoded (as defined in IETF RFC 6960),
+     * and then base64 encoded. MAY only be omitted when status is not Accepted.
+     * The minimum supported length is 18000. If a longer ocspResult is supported, then the supported length
+     * must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
      */
     @Optional
     private String ocspResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCertificateStatusResponse() {
     }
 
-    /**
-     * @param ocspResult *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
-     *                   The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     *                   <p>
-     *                   .
-     */
+
     public GetCertificateStatusResponse(GetCertificateStatusEnum status, StatusInfo statusInfo, String ocspResult, CustomData customData) {
         super();
         this.status = status;
@@ -58,64 +57,42 @@ public class GetCertificateStatusResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * <p>
-     * (Required)
-     */
+
     public GetCertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This indicates whether the charging station was able to retrieve the OCSP certificate status.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GetCertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
-     * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     */
+
     public String getOcspResult() {
         return ocspResult;
     }
 
-    /**
-     * *(2.1)* OCSPResponse class as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;. DER encoded (as defined in &lt;&lt;ref-ocpp_security_24, IETF RFC 6960&gt;&gt;), and then base64 encoded. MAY only be omitted when status is not Accepted. +
-     * The minimum supported length is 18000. If a longer _ocspResult_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "GetCertificateStatusResponse.ocspResult" ].
-     */
+
     public void setOcspResult(String ocspResult) {
         this.ocspResult = ocspResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

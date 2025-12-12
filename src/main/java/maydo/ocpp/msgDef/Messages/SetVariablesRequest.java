@@ -12,22 +12,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetVariablesRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class SetVariablesRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * List of Component-Variable pairs and attribute values to set.
      */
     @Required
     private List<SetVariableData> setVariableData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetVariablesRequest() {
     }
 
@@ -37,30 +39,22 @@ public class SetVariablesRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<SetVariableData> getSetVariableData() {
         return setVariableData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSetVariableData(List<SetVariableData> setVariableData) {
         this.setVariableData = setVariableData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

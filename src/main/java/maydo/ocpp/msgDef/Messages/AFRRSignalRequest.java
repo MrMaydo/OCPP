@@ -15,40 +15,36 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * (2.1) This message passes an aFRR signal on to the charging station.
+ * Charging station uses the value of signal to select a  matching power value
+ * from the v2xSignalWattCurve in the ChargingSchedulePeriod.
+ */
 public class AFRRSignalRequest implements JsonInterface {
 
     /**
      * Time when signal becomes active.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
-     * Value of signal in _v2xSignalWattCurve_.
-     * <p>
-     * (Required)
+     * Value of signal in v2xSignalWattCurve.
      */
     @Required
     private Integer signal;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AFRRSignalRequest() {
     }
 
-    /**
-     * @param signal    Value of signal in _v2xSignalWattCurve_.
-     *                  .
-     * @param timestamp Time when signal becomes active.
-     *                  .
-     */
+
     public AFRRSignalRequest(Date timestamp, Integer signal, CustomData customData) {
         super();
         this.timestamp = timestamp;
@@ -56,52 +52,32 @@ public class AFRRSignalRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Time when signal becomes active.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Time when signal becomes active.
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Value of signal in _v2xSignalWattCurve_.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSignal() {
         return signal;
     }
 
-    /**
-     * Value of signal in _v2xSignalWattCurve_.
-     * <p>
-     * (Required)
-     */
+
     public void setSignal(Integer signal) {
         this.signal = signal;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

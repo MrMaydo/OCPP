@@ -12,57 +12,57 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definitions of the RequestStartTransactionRequest PDU sent to Charging Station by CSMS.
+ */
 public class RequestStartTransactionRequest implements JsonInterface {
 
     /**
-     * Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
+     * Number of the EVSE on which to start the transaction. EvseId SHALL be > 0
      */
     @Optional
     private Integer evseId;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
+     * The groupIdToken is only relevant when the transaction is to be started on an EVSE for which
+     * a reservation for groupIdToken is active,
+     * and the configuration variable AuthorizeRemoteStart = false (otherwise the AuthorizeResponse could return the groupIdToken).
      */
     @Optional
     private IdToken groupIdToken;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * The identifier that the Charging Station must use to start a transaction.
      */
     @Required
     private IdToken idToken;
+
     /**
-     * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * <p>
-     * (Required)
+     * Id given by the server to this start request. The Charging Station will return this in the TransactionEventRequest,
+     * letting the server know which transaction was started for this request.
+     * Use to start a transaction.
      */
     @Required
     private Integer remoteStartId;
+
     /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
+     * Charging Profile to be used by the Charging Station for the requested transaction.
+     * ChargingProfilePurpose MUST be set to TxProfile
      */
     @Optional
     private ChargingProfile chargingProfile;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public RequestStartTransactionRequest() {
     }
 
-    /**
-     * @param evseId        Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
-     *                      .
-     * @param remoteStartId Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     *                      .
-     */
+
     public RequestStartTransactionRequest(Integer evseId, IdToken groupIdToken, IdToken idToken, Integer remoteStartId, ChargingProfile chargingProfile, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -73,98 +73,62 @@ public class RequestStartTransactionRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Number of the EVSE on which to start the transaction. EvseId SHALL be &gt; 0
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public IdToken getGroupIdToken() {
         return groupIdToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public void setGroupIdToken(IdToken groupIdToken) {
         this.groupIdToken = groupIdToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRemoteStartId() {
         return remoteStartId;
     }
 
-    /**
-     * Id given by the server to this start request. The Charging Station will return this in the &lt;&lt;transactioneventrequest, TransactionEventRequest&gt;&gt;, letting the server know which transaction was started for this request. Use to start a transaction.
-     * <p>
-     * (Required)
-     */
+
     public void setRemoteStartId(Integer remoteStartId) {
         this.remoteStartId = remoteStartId;
     }
 
-    /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
-     */
+
     public ChargingProfile getChargingProfile() {
         return chargingProfile;
     }
 
-    /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
-     */
+
     public void setChargingProfile(ChargingProfile chargingProfile) {
         this.chargingProfile = chargingProfile;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

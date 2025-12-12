@@ -8,20 +8,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
- * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+ * A CustomData element exists as an optional element in the JSON schemas of all types.
+ * CustomData is the only class in the JSON schema files that allows additional properties.
+ * It can thus be used to add additional custom attributes to any type.
+ * The CustomData has been deliberately left out of the specification document,
+ * because it would introduce a lot of clutter and it is not meant to be used in standard implementations.
+ * See also [OCPP2.1-PART4].
  */
 public class CustomData implements JsonInterface {
 
     /**
-     * (Required)
+     *
      */
     @Required
     private String vendorId;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CustomData() {
     }
 
@@ -30,16 +34,12 @@ public class CustomData implements JsonInterface {
         this.vendorId = vendorId;
     }
 
-    /**
-     * (Required)
-     */
+
     public String getVendorId() {
         return vendorId;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setVendorId(String vendorId) {
         this.vendorId = vendorId;
     }

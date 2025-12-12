@@ -17,52 +17,51 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the NotifyEventRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class NotifyEventRequest implements JsonInterface {
 
     /**
-     * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
+     * Timestamp of the moment this message was generated at the Charging Station
      */
     @Required
     private Date generatedAt;
+
     /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
+     * “to be continued” indicator.
+     * Indicates whether another part of the report follows in an upcoming notifyEventRequest message.
+     * Default value when omitted is false.
      */
     @Optional
     private Boolean tbc = false;
+
     /**
      * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer seqNo;
+
     /**
-     * (Required)
+     * List of EventData. An EventData element contains only the Component, Variable and VariableMonitoring data
+     * that caused the event. The list of EventData will usally contain one eventData element,
+     * but the Charging Station may decide to group multiple events in one notification.
+     * For example, when multiple events triggered at the same time.
      */
     @Required
     private List<EventData> eventData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyEventRequest() {
     }
 
-    /**
-     * @param tbc         “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
-     *                    .
-     * @param seqNo       Sequence number of this message. First message starts at 0.
-     *                    .
-     * @param generatedAt Timestamp of the moment this message was generated at the Charging Station.
-     *                    .
-     */
+
     public NotifyEventRequest(Date generatedAt, Boolean tbc, Integer seqNo, List<EventData> eventData, CustomData customData) {
         super();
         this.generatedAt = generatedAt;
@@ -72,80 +71,52 @@ public class NotifyEventRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Date getGeneratedAt() {
         return generatedAt;
     }
 
-    /**
-     * Timestamp of the moment this message was generated at the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setGeneratedAt(Date generatedAt) {
         this.generatedAt = generatedAt;
     }
 
-    /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * “to be continued” indicator. Indicates whether another part of the report follows in an upcoming notifyEventRequest message. Default value when omitted is false.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSeqNo() {
         return seqNo;
     }
 
-    /**
-     * Sequence number of this message. First message starts at 0.
-     * <p>
-     * (Required)
-     */
+
     public void setSeqNo(Integer seqNo) {
         this.seqNo = seqNo;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<EventData> getEventData() {
         return eventData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEventData(List<EventData> eventData) {
         this.eventData = eventData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

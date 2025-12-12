@@ -9,17 +9,20 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the CostUpdatedResponse PDU sent by
+ * the Charging Station to the CSMS in response to CostUpdatedRequest.
+ * No fields are defined.
+ */
 public class CostUpdatedResponse implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CostUpdatedResponse() {
     }
 
@@ -28,16 +31,12 @@ public class CostUpdatedResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

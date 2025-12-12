@@ -16,56 +16,48 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the StatusNotificationRequest PDU sent by
+ * the Charging Station to the CSMS. This message might be removed in a future version of OCPP.
+ * It will be replaced by Device Management Monitoring events.
+ */
 public class StatusNotificationRequest implements JsonInterface {
 
     /**
      * The time for which the status is reported.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
      * This contains the current status of the Connector.
-     * <p>
-     * (Required)
      */
     @Required
     private ConnectorStatusEnum connectorStatus;
+
     /**
      * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
      * The id of the connector within the EVSE for which the status is reported.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer connectorId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public StatusNotificationRequest() {
     }
 
-    /**
-     * @param evseId      The id of the EVSE to which the connector belongs for which the the status is reported.
-     *                    .
-     * @param connectorId The id of the connector within the EVSE for which the status is reported.
-     *                    .
-     * @param timestamp   The time for which the status is reported.
-     *                    .
-     */
+
     public StatusNotificationRequest(Date timestamp, ConnectorStatusEnum connectorStatus, Integer evseId, Integer connectorId, CustomData customData) {
         super();
         this.timestamp = timestamp;
@@ -75,88 +67,52 @@ public class StatusNotificationRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The time for which the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * The time for which the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * This contains the current status of the Connector.
-     * <p>
-     * (Required)
-     */
+
     public ConnectorStatusEnum getConnectorStatus() {
         return connectorStatus;
     }
 
-    /**
-     * This contains the current status of the Connector.
-     * <p>
-     * (Required)
-     */
+
     public void setConnectorStatus(ConnectorStatusEnum connectorStatus) {
         this.connectorStatus = connectorStatus;
     }
 
-    /**
-     * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The id of the EVSE to which the connector belongs for which the the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * The id of the connector within the EVSE for which the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public Integer getConnectorId() {
         return connectorId;
     }
 
-    /**
-     * The id of the connector within the EVSE for which the status is reported.
-     * <p>
-     * (Required)
-     */
+
     public void setConnectorId(Integer connectorId) {
         this.connectorId = connectorId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -15,61 +15,54 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * The PriceLevelScheduleType is modeled after the same type that is defined in ISO 15118-20,
+ * such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP)
+ * and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
+ */
 public class PriceLevelSchedule implements JsonInterface {
 
     /**
-     * (Required)
+     * List of entries of the schedule.
      */
     @Required
     private List<PriceLevelScheduleEntry> priceLevelScheduleEntries;
+
     /**
      * Starting point of this price schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
      * Unique ID of this price schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priceScheduleId;
+
     /**
      * Description of the price schedule.
      */
     @Optional
     private String priceScheduleDescription;
+
     /**
      * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer numberOfPriceLevels;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PriceLevelSchedule() {
     }
 
-    /**
-     * @param priceScheduleId          Unique ID of this price schedule.
-     *                                 .
-     * @param timeAnchor               Starting point of this price schedule.
-     *                                 .
-     * @param priceScheduleDescription Description of the price schedule.
-     *                                 .
-     * @param numberOfPriceLevels      Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     *                                 .
-     */
+
     public PriceLevelSchedule(List<PriceLevelScheduleEntry> priceLevelScheduleEntries, Date timeAnchor, Integer priceScheduleId, String priceScheduleDescription, Integer numberOfPriceLevels, CustomData customData) {
         super();
         this.priceLevelScheduleEntries = priceLevelScheduleEntries;
@@ -80,98 +73,62 @@ public class PriceLevelSchedule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<PriceLevelScheduleEntry> getPriceLevelScheduleEntries() {
         return priceLevelScheduleEntries;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setPriceLevelScheduleEntries(List<PriceLevelScheduleEntry> priceLevelScheduleEntries) {
         this.priceLevelScheduleEntries = priceLevelScheduleEntries;
     }
 
-    /**
-     * Starting point of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * Starting point of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * Unique ID of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriceScheduleId() {
         return priceScheduleId;
     }
 
-    /**
-     * Unique ID of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setPriceScheduleId(Integer priceScheduleId) {
         this.priceScheduleId = priceScheduleId;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public String getPriceScheduleDescription() {
         return priceScheduleDescription;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public void setPriceScheduleDescription(String priceScheduleDescription) {
         this.priceScheduleDescription = priceScheduleDescription;
     }
 
-    /**
-     * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
-     */
+
     public Integer getNumberOfPriceLevels() {
         return numberOfPriceLevels;
     }
 
-    /**
-     * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
-     */
+
     public void setNumberOfPriceLevels(Integer numberOfPriceLevels) {
         this.numberOfPriceLevels = numberOfPriceLevels;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

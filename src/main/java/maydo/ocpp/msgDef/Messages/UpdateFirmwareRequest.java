@@ -11,54 +11,49 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the UpdateFirmwareRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class UpdateFirmwareRequest implements JsonInterface {
 
     /**
-     * This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
+     * This specifies how many times Charging Station must retry to download the firmware before giving up.
+     * If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
      * If the value is 0, it means: no retries.
      */
     @Optional
     private Integer retries;
+
     /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
+     * The interval in seconds after which a retry may be attempted.
+     * If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
      */
     @Optional
     private Integer retryInterval;
+
     /**
      * The Id of this request
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * <p>
-     * (Required)
+     * Specifies the firmware to be updated on the Charging Station.
      */
     @Required
     private Firmware firmware;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UpdateFirmwareRequest() {
     }
 
-    /**
-     * @param retries       This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     *                      If the value is 0, it means: no retries.
-     *                      .
-     * @param requestId     The Id of this request
-     *                      .
-     * @param retryInterval The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     *                      .
-     */
+
     public UpdateFirmwareRequest(Integer retries, Integer retryInterval, Integer requestId, Firmware firmware, CustomData customData) {
         super();
         this.retries = retries;
@@ -68,82 +63,52 @@ public class UpdateFirmwareRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * If the value is 0, it means: no retries.
-     */
+
     public Integer getRetries() {
         return retries;
     }
 
-    /**
-     * This specifies how many times Charging Station must retry to download the firmware before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
-     * If the value is 0, it means: no retries.
-     */
+
     public void setRetries(Integer retries) {
         this.retries = retries;
     }
 
-    /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     */
+
     public Integer getRetryInterval() {
         return retryInterval;
     }
 
-    /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     */
+
     public void setRetryInterval(Integer retryInterval) {
         this.retryInterval = retryInterval;
     }
 
-    /**
-     * The Id of this request
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of this request
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public Firmware getFirmware() {
         return firmware;
     }
 
-    /**
-     * Represents a copy of the firmware that can be loaded/updated on the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setFirmware(Firmware firmware) {
         this.firmware = firmware;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

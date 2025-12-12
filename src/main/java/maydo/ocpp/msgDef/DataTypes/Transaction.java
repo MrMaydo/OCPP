@@ -12,74 +12,78 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Transaction implements JsonInterface {
 
     /**
      * This contains the Id of the transaction.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * Current charging state, is required when state
-     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
+     * Current charging state, is required when state has changed.
+     * Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
      */
     @Optional
     private ChargingStateEnum chargingState;
+
     /**
-     * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
+     * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds).
+     * Note that timeSpentCharging is smaller or equal to the duration of the transaction.
      */
     @Optional
     private Integer timeSpentCharging;
+
     /**
-     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
-     * MAY only be omitted when _stoppedReason_ is "Local"
+     * The stoppedReason is the reason/event that initiated the process of stopping the transaction.
+     * It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote),
+     * but it can also be CSMS revoking authorization (DeAuthorized),
+     * or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected).
+     * Most other reasons are related to technical faults or energy limitations.
+     * MAY only be omitted when stoppedReason is "Local"
      */
     @Optional
     private ReasonEnum stoppedReason;
+
     /**
-     * The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
+     * The ID given to remote start request (RequestStartTransactionRequest.
+     * This enables to CSMS to match the started transaction to the given start request.
      */
     @Optional
     private Integer remoteStartId;
+
     /**
-     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
+     * (2.1) The operationMode that is currently in effect for the transaction.
      */
     @Optional
     private OperationModeEnum operationMode;
+
     /**
-     * *(2.1)* Id of tariff in use for transaction
+     * (2.1) Id of tariff in use for transaction
      */
     @Optional
     private String tariffId;
+
     /**
-     * Cost, energy, time or SoC limit for a transaction.
+     * (2.1) Maximum cost/energy/time allowed for this transaction.
      */
     @Optional
     private TransactionLimit transactionLimit;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Transaction() {
     }
 
-    /**
-     * @param remoteStartId     The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
-     *                          .
-     * @param tariffId          *(2.1)* Id of tariff in use for transaction
-     *                          .
-     * @param transactionId     This contains the Id of the transaction.
-     *                          .
-     * @param timeSpentCharging Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
-     *                          .
-     */
+
     public Transaction(String transactionId, ChargingStateEnum chargingState, Integer timeSpentCharging, ReasonEnum stoppedReason, Integer remoteStartId, OperationModeEnum operationMode, String tariffId, TransactionLimit transactionLimit, CustomData customData) {
         super();
         this.transactionId = transactionId;
@@ -93,136 +97,92 @@ public class Transaction implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains the Id of the transaction.
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * This contains the Id of the transaction.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * Current charging state, is required when state
-     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
-     */
+
     public ChargingStateEnum getChargingState() {
         return chargingState;
     }
 
-    /**
-     * Current charging state, is required when state
-     * has changed. Omitted when there is no communication between EVSE and EV, because no cable is plugged in.
-     */
+
     public void setChargingState(ChargingStateEnum chargingState) {
         this.chargingState = chargingState;
     }
 
-    /**
-     * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
-     */
+
     public Integer getTimeSpentCharging() {
         return timeSpentCharging;
     }
 
-    /**
-     * Contains the total time that energy flowed from EVSE to EV during the transaction (in seconds). Note that timeSpentCharging is smaller or equal to the duration of the transaction.
-     */
+
     public void setTimeSpentCharging(Integer timeSpentCharging) {
         this.timeSpentCharging = timeSpentCharging;
     }
 
-    /**
-     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
-     * MAY only be omitted when _stoppedReason_ is "Local"
-     */
+
     public ReasonEnum getStoppedReason() {
         return stoppedReason;
     }
 
-    /**
-     * The _stoppedReason_ is the reason/event that initiated the process of stopping the transaction. It will normally be the user stopping authorization via card (Local or MasterPass) or app (Remote), but it can also be CSMS revoking authorization (DeAuthorized), or disconnecting the EV when TxStopPoint = EVConnected (EVDisconnected). Most other reasons are related to technical faults or energy limitations. +
-     * MAY only be omitted when _stoppedReason_ is "Local"
-     */
+
     public void setStoppedReason(ReasonEnum stoppedReason) {
         this.stoppedReason = stoppedReason;
     }
 
-    /**
-     * The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
-     */
+
     public Integer getRemoteStartId() {
         return remoteStartId;
     }
 
-    /**
-     * The ID given to remote start request (&lt;&lt;requeststarttransactionrequest, RequestStartTransactionRequest&gt;&gt;. This enables to CSMS to match the started transaction to the given start request.
-     */
+
     public void setRemoteStartId(Integer remoteStartId) {
         this.remoteStartId = remoteStartId;
     }
 
-    /**
-     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
-     */
+
     public OperationModeEnum getOperationMode() {
         return operationMode;
     }
 
-    /**
-     * *(2.1)* The _operationMode_ that is currently in effect for the transaction.
-     */
+
     public void setOperationMode(OperationModeEnum operationMode) {
         this.operationMode = operationMode;
     }
 
-    /**
-     * *(2.1)* Id of tariff in use for transaction
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * *(2.1)* Id of tariff in use for transaction
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * Cost, energy, time or SoC limit for a transaction.
-     */
+
     public TransactionLimit getTransactionLimit() {
         return transactionLimit;
     }
 
-    /**
-     * Cost, energy, time or SoC limit for a transaction.
-     */
+
     public void setTransactionLimit(TransactionLimit transactionLimit) {
         this.transactionLimit = transactionLimit;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -11,24 +11,24 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetMonitoringBaseRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class SetMonitoringBaseRequest implements JsonInterface {
 
     /**
      * Specify which monitoring base will be set
-     * <p>
-     * (Required)
      */
     @Required
     private MonitoringBaseEnum monitoringBase;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetMonitoringBaseRequest() {
     }
 
@@ -38,34 +38,22 @@ public class SetMonitoringBaseRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Specify which monitoring base will be set
-     * <p>
-     * (Required)
-     */
+
     public MonitoringBaseEnum getMonitoringBase() {
         return monitoringBase;
     }
 
-    /**
-     * Specify which monitoring base will be set
-     * <p>
-     * (Required)
-     */
+
     public void setMonitoringBase(MonitoringBaseEnum monitoringBase) {
         this.monitoringBase = monitoringBase;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -16,76 +16,74 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Contains status information about an identifier.
+ * It is advised to not stop charging for a token that expires during charging,
+ * as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
+ */
 public class IdTokenInfo implements JsonInterface {
 
     /**
      * Current status of the ID Token.
-     * <p>
-     * (Required)
      */
     @Required
     private AuthorizationStatusEnum status;
+
     /**
      * Date and Time after which the token must be considered invalid.
      */
     @Optional
     private Date cacheExpiryDateTime;
+
     /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
+     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9.
+     * Higher values indicate a higher priority. The chargingPriority in TransactionEventResponse overrules this one.
      */
     @Optional
     private Integer chargingPriority;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
+     * This contains the group identifier.
      */
     @Optional
     private IdToken groupIdToken;
+
     /**
-     * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     * Preferred user interface language of identifier user. Contains a language code as defined in [RFC5646].
      */
     @Optional
     private String language1;
+
     /**
-     * Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     * Second preferred user interface language of identifier user. Don’t use when language1 is omitted,
+     * has to be different from language1. Contains a language code as defined in [RFC5646].
      */
     @Optional
     private String language2;
+
     /**
      * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
      */
     @Optional
     private List<Integer> evseId;
+
     /**
-     * Contains message details, for a message to be displayed on a Charging Station.
+     * Personal message that can be shown to the EV Driver and can be used for tariff information, user greetings etc.
      */
     @Optional
     private MessageContent personalMessage;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public IdTokenInfo() {
     }
 
-    /**
-     * @param evseId              Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     *                            <p>
-     *                            .
-     * @param language2           Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *                            .
-     * @param language1           Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *                            <p>
-     *                            .
-     * @param cacheExpiryDateTime Date and Time after which the token must be considered invalid.
-     *                            .
-     * @param chargingPriority    Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
-     *                            .
-     */
+
     public IdTokenInfo(AuthorizationStatusEnum status, Date cacheExpiryDateTime, Integer chargingPriority, IdToken groupIdToken, String language1, String language2, List<Integer> evseId, MessageContent personalMessage, CustomData customData) {
         super();
         this.status = status;
@@ -99,132 +97,92 @@ public class IdTokenInfo implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Current status of the ID Token.
-     * <p>
-     * (Required)
-     */
+
     public AuthorizationStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Current status of the ID Token.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(AuthorizationStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Date and Time after which the token must be considered invalid.
-     */
+
     public Date getCacheExpiryDateTime() {
         return cacheExpiryDateTime;
     }
 
-    /**
-     * Date and Time after which the token must be considered invalid.
-     */
+
     public void setCacheExpiryDateTime(Date cacheExpiryDateTime) {
         this.cacheExpiryDateTime = cacheExpiryDateTime;
     }
 
-    /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
-     */
+
     public Integer getChargingPriority() {
         return chargingPriority;
     }
 
-    /**
-     * Priority from a business point of view. Default priority is 0, The range is from -9 to 9. Higher values indicate a higher priority. The chargingPriority in &lt;&lt;transactioneventresponse,TransactionEventResponse&gt;&gt; overrules this one.
-     */
+
     public void setChargingPriority(Integer chargingPriority) {
         this.chargingPriority = chargingPriority;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public IdToken getGroupIdToken() {
         return groupIdToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public void setGroupIdToken(IdToken groupIdToken) {
         this.groupIdToken = groupIdToken;
     }
 
-    /**
-     * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public String getLanguage1() {
         return language1;
     }
 
-    /**
-     * Preferred user interface language of identifier user. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public void setLanguage1(String language1) {
         this.language1 = language1;
     }
 
-    /**
-     * Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public String getLanguage2() {
         return language2;
     }
 
-    /**
-     * Second preferred user interface language of identifier user. Don’t use when language1 is omitted, has to be different from language1. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public void setLanguage2(String language2) {
         this.language2 = language2;
     }
 
-    /**
-     * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     */
+
     public List<Integer> getEvseId() {
         return evseId;
     }
 
-    /**
-     * Only used when the IdToken is only valid for one or more specific EVSEs, not for the entire Charging Station.
-     */
+
     public void setEvseId(List<Integer> evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     */
+
     public MessageContent getPersonalMessage() {
         return personalMessage;
     }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     */
+
     public void setPersonalMessage(MessageContent personalMessage) {
         this.personalMessage = personalMessage;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

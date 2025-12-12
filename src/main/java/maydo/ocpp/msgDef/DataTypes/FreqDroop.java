@@ -14,114 +14,70 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class FreqDroop implements JsonInterface {
 
     /**
      * Priority of setting (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priority;
+
     /**
      * Over-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float overFreq;
+
     /**
      * Under-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float underFreq;
+
     /**
      * Over-frequency droop per unit, oFDroop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float overDroop;
+
     /**
      * Under-frequency droop per unit, uFDroop
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float underDroop;
+
     /**
      * Open loop response time in seconds
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float responseTime;
+
     /**
      * Time when this setting becomes active
      */
     @Optional
     private Date startTime;
+
     /**
      * Duration in seconds that this setting is active
      */
     @Optional
     private Float duration;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public FreqDroop() {
     }
 
-    /**
-     * @param duration     Duration in seconds that this setting is active
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param underDroop   Under-frequency droop per unit, uFDroop
-     *                     <p>
-     *                     .
-     * @param overDroop    Over-frequency droop per unit, oFDroop
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param responseTime Open loop response time in seconds
-     *                     <p>
-     *                     .
-     * @param underFreq    Under-frequency start of droop
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param startTime    Time when this setting becomes active
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param priority     Priority of setting (0=highest)
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param overFreq     Over-frequency start of droop
-     *                     <p>
-     *                     <p>
-     *                     .
-     */
+
     public FreqDroop(Integer priority, Float overFreq, Float underFreq, Float overDroop, Float underDroop, Float responseTime, Date startTime, Float duration, CustomData customData) {
         super();
         this.priority = priority;
@@ -135,172 +91,92 @@ public class FreqDroop implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Priority of setting (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriority() {
         return priority;
     }
 
-    /**
-     * Priority of setting (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
-    /**
-     * Over-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getOverFreq() {
         return overFreq;
     }
 
-    /**
-     * Over-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setOverFreq(Float overFreq) {
         this.overFreq = overFreq;
     }
 
-    /**
-     * Under-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getUnderFreq() {
         return underFreq;
     }
 
-    /**
-     * Under-frequency start of droop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setUnderFreq(Float underFreq) {
         this.underFreq = underFreq;
     }
 
-    /**
-     * Over-frequency droop per unit, oFDroop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getOverDroop() {
         return overDroop;
     }
 
-    /**
-     * Over-frequency droop per unit, oFDroop
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setOverDroop(Float overDroop) {
         this.overDroop = overDroop;
     }
 
-    /**
-     * Under-frequency droop per unit, uFDroop
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getUnderDroop() {
         return underDroop;
     }
 
-    /**
-     * Under-frequency droop per unit, uFDroop
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setUnderDroop(Float underDroop) {
         this.underDroop = underDroop;
     }
 
-    /**
-     * Open loop response time in seconds
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getResponseTime() {
         return responseTime;
     }
 
-    /**
-     * Open loop response time in seconds
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setResponseTime(Float responseTime) {
         this.responseTime = responseTime;
     }
 
-    /**
-     * Time when this setting becomes active
-     */
+
     public Date getStartTime() {
         return startTime;
     }
 
-    /**
-     * Time when this setting becomes active
-     */
+
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    /**
-     * Duration in seconds that this setting is active
-     */
+
     public Float getDuration() {
         return duration;
     }
 
-    /**
-     * Duration in seconds that this setting is active
-     */
+
     public void setDuration(Float duration) {
         this.duration = duration;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

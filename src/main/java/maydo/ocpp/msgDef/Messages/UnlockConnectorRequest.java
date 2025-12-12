@@ -10,40 +10,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the UnlockConnectorRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class UnlockConnectorRequest implements JsonInterface {
 
     /**
      * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
      * This contains the identifier of the connector that needs to be unlocked.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer connectorId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UnlockConnectorRequest() {
     }
 
-    /**
-     * @param evseId      This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     *                    .
-     * @param connectorId This contains the identifier of the connector that needs to be unlocked.
-     *                    .
-     */
+
     public UnlockConnectorRequest(Integer evseId, Integer connectorId, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -51,52 +45,32 @@ public class UnlockConnectorRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * This contains the identifier of the EVSE for which a connector needs to be unlocked.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This contains the identifier of the connector that needs to be unlocked.
-     * <p>
-     * (Required)
-     */
+
     public Integer getConnectorId() {
         return connectorId;
     }
 
-    /**
-     * This contains the identifier of the connector that needs to be unlocked.
-     * <p>
-     * (Required)
-     */
+
     public void setConnectorId(Integer connectorId) {
         this.connectorId = connectorId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

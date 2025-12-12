@@ -10,41 +10,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Contains a case insensitive identifier to use for the authorization
+ * and the type of authorization to support multiple forms of identifiers.
+ */
 public class IdToken implements JsonInterface {
 
-    private List<AdditionalInfo> additionalInfo;
     /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
+     * AdditionalInfo can be used to send extra information which can be validated by the CSMS in addition to
+     * the regular authorization with IdToken.  AdditionalInfo contains one or more custom types,
+     * which need to be agreed upon by all parties involved.
+     * When AdditionalInfo is NOT implemented or a not supported AdditionalInfo.type is used,
+     * the CSMS/Charging Station MAY ignore the AdditionalInfo.
+     */
+    private List<AdditionalInfo> additionalInfo;
+
+    /**
+     * (2.1) IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
      */
     @Required
     private String idToken;
+
     /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
+     * (2.1) Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
      */
     @Required
     private String type;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public IdToken() {
     }
 
-    /**
-     * @param idToken *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     *                .
-     * @param type    *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     *                .
-     */
+
     public IdToken(List<AdditionalInfo> additionalInfo, String idToken, String type, CustomData customData) {
         super();
         this.additionalInfo = additionalInfo;
@@ -61,52 +64,32 @@ public class IdToken implements JsonInterface {
         this.additionalInfo = additionalInfo;
     }
 
-    /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
-     */
+
     public String getIdToken() {
         return idToken;
     }
 
-    /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(String idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public String getType() {
         return type;
     }
 
-    /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

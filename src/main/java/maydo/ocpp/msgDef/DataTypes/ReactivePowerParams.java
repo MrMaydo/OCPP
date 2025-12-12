@@ -8,6 +8,9 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ReactivePowerParams implements JsonInterface {
 
     /**
@@ -15,42 +18,30 @@ public class ReactivePowerParams implements JsonInterface {
      */
     @Optional
     private Float vRef;
+
     /**
      * Only for VoltVar: Enable/disable autonomous VRef adjustment
      */
     @Optional
     private Boolean autonomousVRefEnable;
+
     /**
      * Only for VoltVar: Adjustment range for VRef time constant
      */
     @Optional
     private Float autonomousVRefTimeConstant;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReactivePowerParams() {
     }
 
-    /**
-     * @param autonomousVRefEnable       Only for VoltVar: Enable/disable autonomous VRef adjustment
-     *                                   <p>
-     *                                   <p>
-     *                                   .
-     * @param autonomousVRefTimeConstant Only for VoltVar: Adjustment range for VRef time constant
-     *                                   <p>
-     *                                   <p>
-     *                                   .
-     * @param vRef                       Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     *                                   <p>
-     *                                   <p>
-     *                                   .
-     */
+
     public ReactivePowerParams(Float vRef, Boolean autonomousVRefEnable, Float autonomousVRefTimeConstant, CustomData customData) {
         super();
         this.vRef = vRef;
@@ -59,58 +50,42 @@ public class ReactivePowerParams implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     */
+
     public Float getvRef() {
         return vRef;
     }
 
-    /**
-     * Only for VoltVar curve: The nominal ac voltage (rms) adjustment to the voltage curve points for Volt-Var curves (percentage).
-     */
+
     public void setvRef(Float vRef) {
         this.vRef = vRef;
     }
 
-    /**
-     * Only for VoltVar: Enable/disable autonomous VRef adjustment
-     */
+
     public Boolean getAutonomousVRefEnable() {
         return autonomousVRefEnable;
     }
 
-    /**
-     * Only for VoltVar: Enable/disable autonomous VRef adjustment
-     */
+
     public void setAutonomousVRefEnable(Boolean autonomousVRefEnable) {
         this.autonomousVRefEnable = autonomousVRefEnable;
     }
 
-    /**
-     * Only for VoltVar: Adjustment range for VRef time constant
-     */
+
     public Float getAutonomousVRefTimeConstant() {
         return autonomousVRefTimeConstant;
     }
 
-    /**
-     * Only for VoltVar: Adjustment range for VRef time constant
-     */
+
     public void setAutonomousVRefTimeConstant(Float autonomousVRefTimeConstant) {
         this.autonomousVRefTimeConstant = autonomousVRefTimeConstant;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -12,40 +12,40 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by CSMS to update the list of authorized energy services,
+ * e.g. to allow bidirectional charging for a charging  session that is already in progress.
+ * One example is that the EV has already started a transaction in charging-only mode and meanwhile the CSMS has found
+ * that this EV is authorized by some secondary actor, such as an aggregating party, to use bidirectional charging.
+ * This message is then used to give the EV the opportunity to change energy service from charging-only to bidirectional charging.
+ * Another example is that the CSMS wishes to change the active energy service.
+ * This is done by updating the list of authorized energy services and omitting the currently active energy service.
+ */
 public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
      * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private List<EnergyTransferModeEnum> allowedEnergyTransfer;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyAllowedEnergyTransferRequest() {
     }
 
-    /**
-     * @param allowedEnergyTransfer Modes of energy transfer that are accepted by CSMS.
-     *                              .
-     * @param transactionId         The transaction for which the allowed energy transfer is allowed.
-     *                              .
-     */
+
     public NotifyAllowedEnergyTransferRequest(String transactionId, List<EnergyTransferModeEnum> allowedEnergyTransfer, CustomData customData) {
         super();
         this.transactionId = transactionId;
@@ -53,52 +53,32 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
-     */
+
     public List<EnergyTransferModeEnum> getAllowedEnergyTransfer() {
         return allowedEnergyTransfer;
     }
 
-    /**
-     * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setAllowedEnergyTransfer(List<EnergyTransferModeEnum> allowedEnergyTransfer) {
         this.allowedEnergyTransfer = allowedEnergyTransfer;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

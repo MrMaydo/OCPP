@@ -9,6 +9,10 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * With this message, the CSMS can ask the Charging Station whether it has transaction-related messages waiting to be delivered to
+ * the CSMS. When a transactionId is provided, only messages for a specific transaction are asked for.
+ */
 public class GetTransactionStatusRequest implements JsonInterface {
 
     /**
@@ -16,52 +20,40 @@ public class GetTransactionStatusRequest implements JsonInterface {
      */
     @Optional
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetTransactionStatusRequest() {
     }
 
-    /**
-     * @param transactionId The Id of the transaction for which the status is requested.
-     *                      .
-     */
+
     public GetTransactionStatusRequest(String transactionId, CustomData customData) {
         super();
         this.transactionId = transactionId;
         this.customData = customData;
     }
 
-    /**
-     * The Id of the transaction for which the status is requested.
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The Id of the transaction for which the status is requested.
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

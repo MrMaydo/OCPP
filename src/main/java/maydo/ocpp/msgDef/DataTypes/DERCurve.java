@@ -16,79 +16,77 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class DERCurve implements JsonInterface {
 
     /**
-     * (Required)
+     * Coordinates of the DER curve. X-axis is determined by curveType. Y-axis is determined by yUnit.
      */
     @Required
     private List<DERCurvePoints> curveData;
+
+    /**
+     * Hysteresis parameters for curve.
+     */
     @Optional
     private Hysteresis hysteresis;
+
     /**
      * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priority;
+
+    /**
+     * Additional parameters for VoltVar curve.
+     */
     @Optional
     private ReactivePowerParams reactivePowerParams;
+
+    /**
+     * Additional parameters for voltage curves.
+     */
     @Optional
     private VoltageParams voltageParams;
+
     /**
      * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
      */
     @Required
     private DERUnitEnum yUnit;
+
     /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
+     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds.
+     * A value of 0 is used to mean no limit. When not present, the device should follow its default behavior
      */
     @Optional
     private Float responseTime;
+
     /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
+     * Point in time when this curve will become activated. Only absent when default is true.
      */
     @Optional
     private Date startTime;
+
     /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
+     * Duration in seconds that this curve will be active. Only absent when default is true
      */
     @Optional
     private Float duration;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DERCurve() {
     }
 
-    /**
-     * @param duration     Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param responseTime Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param startTime    Point in time when this curve will become activated. Only absent when _default_ is true.
-     *                     <p>
-     *                     .
-     * @param priority     Priority of curve (0=highest)
-     *                     <p>
-     *                     <p>
-     *                     .
-     */
+
     public DERCurve(List<DERCurvePoints> curveData, Hysteresis hysteresis, Integer priority, ReactivePowerParams reactivePowerParams, VoltageParams voltageParams, DERUnitEnum yUnit, Float responseTime, Date startTime, Float duration, CustomData customData) {
         super();
         this.curveData = curveData;
@@ -103,16 +101,12 @@ public class DERCurve implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<DERCurvePoints> getCurveData() {
         return curveData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCurveData(List<DERCurvePoints> curveData) {
         this.curveData = curveData;
     }
@@ -125,24 +119,12 @@ public class DERCurve implements JsonInterface {
         this.hysteresis = hysteresis;
     }
 
-    /**
-     * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriority() {
         return priority;
     }
 
-    /**
-     * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
@@ -163,76 +145,52 @@ public class DERCurve implements JsonInterface {
         this.voltageParams = voltageParams;
     }
 
-    /**
-     * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
-     */
+
     public DERUnitEnum getyUnit() {
         return yUnit;
     }
 
-    /**
-     * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
-     */
+
     public void setyUnit(DERUnitEnum yUnit) {
         this.yUnit = yUnit;
     }
 
-    /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     */
+
     public Float getResponseTime() {
         return responseTime;
     }
 
-    /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     */
+
     public void setResponseTime(Float responseTime) {
         this.responseTime = responseTime;
     }
 
-    /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
-     */
+
     public Date getStartTime() {
         return startTime;
     }
 
-    /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
-     */
+
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     */
+
     public Float getDuration() {
         return duration;
     }
 
-    /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     */
+
     public void setDuration(Float duration) {
         this.duration = duration;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

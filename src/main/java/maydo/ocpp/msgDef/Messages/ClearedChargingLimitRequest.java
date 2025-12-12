@@ -10,38 +10,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearedChargingLimitRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class ClearedChargingLimitRequest implements JsonInterface {
 
     /**
      * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
      */
     @Required
     private String chargingLimitSource;
+
     /**
      * EVSE Identifier.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearedChargingLimitRequest() {
     }
 
-    /**
-     * @param evseId              EVSE Identifier.
-     *                            .
-     * @param chargingLimitSource Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     *                            .
-     */
+
     public ClearedChargingLimitRequest(String chargingLimitSource, Integer evseId, CustomData customData) {
         super();
         this.chargingLimitSource = chargingLimitSource;
@@ -49,48 +45,32 @@ public class ClearedChargingLimitRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public String getChargingLimitSource() {
         return chargingLimitSource;
     }
 
-    /**
-     * Source of the charging limit. Allowed values defined in Appendix as ChargingLimitSourceEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingLimitSource(String chargingLimitSource) {
         this.chargingLimitSource = chargingLimitSource;
     }
 
-    /**
-     * EVSE Identifier.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE Identifier.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

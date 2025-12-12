@@ -15,98 +15,100 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * The AbsolutePriceScheduleType is modeled after the same type that is defined in ISO 15118-20,
+ * such that if it is supplied by an EMSP as a signed EXI message,
+ * the conversion from EXI to JSON (in OCPP) and back to EXI (for ISO 15118-20)
+ * does not change the digest and therefore does not invalidate the signature
+ */
 public class AbsolutePriceSchedule implements JsonInterface {
 
     /**
      * Starting point of price schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
      * Unique ID of price schedule
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priceScheduleID;
+
     /**
      * Description of the price schedule.
      */
     @Optional
     private String priceScheduleDescription;
+
     /**
      * Currency according to ISO 4217.
-     * <p>
-     * (Required)
      */
     @Required
     private String currency;
+
     /**
-     * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * <p>
-     * (Required)
+     * String that indicates what language is used for the human readable strings in the price schedule.
+     * Based on ISO 639.
      */
     @Required
     private String language;
+
     /**
-     * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * <p>
-     * (Required)
+     * A string in URN notation which shall uniquely identify an algorithm that defines
+     * how to compute an energy fee sum for a specific power profile
+     * based on the EnergyFee information from the PriceRule elements.
      */
     @Required
     private String priceAlgorithm;
+
     /**
-     * Part of ISO 15118-20 price schedule.
+     * Minimum amount to be billed for the overall charging session (e.g. including energy, parking, and overstay).
      */
     @Optional
     private RationalNumber minimumCost;
+
     /**
-     * Part of ISO 15118-20 price schedule.
+     * Maximum amount to be billed for the overall charging session (e.g. including energy, parking, and overstay).
      */
     @Optional
     private RationalNumber maximumCost;
+
     /**
-     * (Required)
+     * A set of pricing rules for parking and energy costs.
      */
     @Required
     private List<PriceRuleStack> priceRuleStacks;
+
+    /**
+     * Describes the applicable tax rule(s) for this price schedule
+     */
     @Optional
     private List<TaxRule> taxRules;
+
     /**
-     * Part of ISO 15118-20 price schedule.
+     * A set of overstay rules that allows for escalation of charges after the overstay is triggered.
      */
     @Optional
     private OverstayRuleList overstayRuleList;
+
+    /**
+     * A set of prices for optional services (e.g. valet, carwash).
+     */
     @Optional
     private List<AdditionalSelectedServices> additionalSelectedServices;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AbsolutePriceSchedule() {
     }
 
-    /**
-     * @param priceScheduleID          Unique ID of price schedule
-     *                                 .
-     * @param timeAnchor               Starting point of price schedule.
-     *                                 .
-     * @param priceScheduleDescription Description of the price schedule.
-     *                                 .
-     * @param currency                 Currency according to ISO 4217.
-     *                                 .
-     * @param language                 String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     *                                 .
-     * @param priceAlgorithm           A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     *                                 .
-     */
+
     public AbsolutePriceSchedule(Date timeAnchor, Integer priceScheduleID, String priceScheduleDescription, String currency, String language, String priceAlgorithm, RationalNumber minimumCost, RationalNumber maximumCost, List<PriceRuleStack> priceRuleStacks, List<TaxRule> taxRules, OverstayRuleList overstayRuleList, List<AdditionalSelectedServices> additionalSelectedServices, CustomData customData) {
         super();
         this.timeAnchor = timeAnchor;
@@ -124,148 +126,92 @@ public class AbsolutePriceSchedule implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Starting point of price schedule.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * Starting point of price schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * Unique ID of price schedule
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriceScheduleID() {
         return priceScheduleID;
     }
 
-    /**
-     * Unique ID of price schedule
-     * <p>
-     * (Required)
-     */
+
     public void setPriceScheduleID(Integer priceScheduleID) {
         this.priceScheduleID = priceScheduleID;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public String getPriceScheduleDescription() {
         return priceScheduleDescription;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public void setPriceScheduleDescription(String priceScheduleDescription) {
         this.priceScheduleDescription = priceScheduleDescription;
     }
 
-    /**
-     * Currency according to ISO 4217.
-     * <p>
-     * (Required)
-     */
+
     public String getCurrency() {
         return currency;
     }
 
-    /**
-     * Currency according to ISO 4217.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
-    /**
-     * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * <p>
-     * (Required)
-     */
+
     public String getLanguage() {
         return language;
     }
 
-    /**
-     * String that indicates what language is used for the human readable strings in the price schedule. Based on ISO 639.
-     * <p>
-     * (Required)
-     */
+
     public void setLanguage(String language) {
         this.language = language;
     }
 
-    /**
-     * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * <p>
-     * (Required)
-     */
+
     public String getPriceAlgorithm() {
         return priceAlgorithm;
     }
 
-    /**
-     * A string in URN notation which shall uniquely identify an algorithm that defines how to compute an energy fee sum for a specific power profile based on the EnergyFee information from the PriceRule elements.
-     * <p>
-     * (Required)
-     */
+
     public void setPriceAlgorithm(String priceAlgorithm) {
         this.priceAlgorithm = priceAlgorithm;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public RationalNumber getMinimumCost() {
         return minimumCost;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public void setMinimumCost(RationalNumber minimumCost) {
         this.minimumCost = minimumCost;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public RationalNumber getMaximumCost() {
         return maximumCost;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public void setMaximumCost(RationalNumber maximumCost) {
         this.maximumCost = maximumCost;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<PriceRuleStack> getPriceRuleStacks() {
         return priceRuleStacks;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setPriceRuleStacks(List<PriceRuleStack> priceRuleStacks) {
         this.priceRuleStacks = priceRuleStacks;
     }
@@ -278,16 +224,12 @@ public class AbsolutePriceSchedule implements JsonInterface {
         this.taxRules = taxRules;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public OverstayRuleList getOverstayRuleList() {
         return overstayRuleList;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     */
+
     public void setOverstayRuleList(OverstayRuleList overstayRuleList) {
         this.overstayRuleList = overstayRuleList;
     }
@@ -300,16 +242,12 @@ public class AbsolutePriceSchedule implements JsonInterface {
         this.additionalSelectedServices = additionalSelectedServices;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

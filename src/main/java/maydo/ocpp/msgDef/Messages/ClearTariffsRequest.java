@@ -10,38 +10,34 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsRequest implements JsonInterface {
 
     /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
+     * List of tariff Ids to clear. When absent clears all tariffs at evseId.
      */
     @Optional
     private List<String> tariffIds;
+
     /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
+     * When present only clear tariffs matching tariffIds at EVSE evseId.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsRequest() {
     }
 
-    /**
-     * @param tariffIds List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     *                  <p>
-     *                  .
-     * @param evseId    When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     *                  <p>
-     *                  .
-     */
+
     public ClearTariffsRequest(List<String> tariffIds, Integer evseId, CustomData customData) {
         super();
         this.tariffIds = tariffIds;
@@ -49,44 +45,32 @@ public class ClearTariffsRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     */
+
     public List<String> getTariffIds() {
         return tariffIds;
     }
 
-    /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     */
+
     public void setTariffIds(List<String> tariffIds) {
         this.tariffIds = tariffIds;
     }
 
-    /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

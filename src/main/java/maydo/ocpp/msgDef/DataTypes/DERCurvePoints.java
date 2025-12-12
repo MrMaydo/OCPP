@@ -9,46 +9,36 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class DERCurvePoints implements JsonInterface {
 
     /**
      * The data value of the X-axis (independent) variable, depending on the curve type.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Float x;
+
     /**
-     * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * <p>
-     * <p>
-     * (Required)
+     * The data value of the Y-axis (dependent) variable, depending on the DERUnitEnumType of the curve.
+     * If y is power factor, then a positive value means DER is absorbing reactive power (under-excited),
+     * a negative value when DER is injecting reactive power (over-excited).
      */
     @Required
     private Float y;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DERCurvePoints() {
     }
 
-    /**
-     * @param x The data value of the X-axis (independent) variable, depending on the curve type.
-     *          <p>
-     *          <p>
-     *          .
-     * @param y The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     *          <p>
-     *          .
-     */
+
     public DERCurvePoints(Float x, Float y, CustomData customData) {
         super();
         this.x = x;
@@ -56,58 +46,32 @@ public class DERCurvePoints implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The data value of the X-axis (independent) variable, depending on the curve type.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getX() {
         return x;
     }
 
-    /**
-     * The data value of the X-axis (independent) variable, depending on the curve type.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setX(Float x) {
         this.x = x;
     }
 
-    /**
-     * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getY() {
         return y;
     }
 
-    /**
-     * The data value of the Y-axis (dependent) variable, depending on the  &lt;&lt;cmn_derunitenumtype&gt;&gt; of the curve. If _y_ is power factor, then a positive value means DER is absorbing reactive power (under-excited), a negative value when DER is injecting reactive power (over-excited).
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setY(Float y) {
         this.y = y;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

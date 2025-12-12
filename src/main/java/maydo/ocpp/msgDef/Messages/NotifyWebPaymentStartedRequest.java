@@ -10,42 +10,34 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
      * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer timeout;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyWebPaymentStartedRequest() {
     }
 
-    /**
-     * @param evseId  EVSE id for which transaction is requested.
-     *                <p>
-     *                .
-     * @param timeout Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     *                .
-     */
+
     public NotifyWebPaymentStartedRequest(Integer evseId, Integer timeout, CustomData customData) {
         super();
         this.evseId = evseId;
@@ -53,54 +45,32 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
-     */
+
     public Integer getTimeout() {
         return timeout;
     }
 
-    /**
-     * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeout(Integer timeout) {
         this.timeout = timeout;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

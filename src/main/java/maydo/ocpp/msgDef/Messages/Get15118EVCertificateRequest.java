@@ -12,67 +12,60 @@ import maydo.ocpp.msgDef.annotations.Required;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This message is sent by the Charging Station to the CSMS if an ISO 15118 vehicle selects the service Certificate installation.
+ * NOTE:
+ * This message is based on CertificateInstallationReq Res from ISO 15118 2.
+ */
 public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
+     * Schema version currently used for the 15118 session between EV and Charging Station.
+     * Needed for parsing of the EXI stream by the CSMS.
      */
     @Required
     private String iso15118SchemaVersion;
+
     /**
      * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateActionEnum action;
+
     /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
+     * (2.1) Raw CertificateInstallationReq request from EV, Base64 encoded. Extended to support ISO 15118-20 certificates.
+     * The minimum supported length is 11000. If a longer exiRequest is supported,
+     * then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
      */
     @Required
     private String exiRequest;
+
     /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
+     * (2.1) Absent during ISO 15118-2 session. Required during ISO 15118-20 session.
      * Maximum number of contracts that EV wants to install.
      */
     @Optional
     private Integer maximumContractCertificateChains;
+
     /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
+     * (2.1) Absent during ISO 15118-2 session. Optional during ISO 15118-20 session.
+     * List of EMAIDs for which contract certificates must be requested first,
+     * in case there are more certificates than allowed by maximumContractCertificateChains.
      */
     @Optional
     private List<String> prioritizedEMAIDs;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Get15118EVCertificateRequest() {
     }
 
-    /**
-     * @param iso15118SchemaVersion            Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     *                                         <p>
-     *                                         .
-     * @param prioritizedEMAIDs                *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     *                                         .
-     * @param exiRequest                       *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     *                                         Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     *                                         .
-     * @param maximumContractCertificateChains *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     *                                         Maximum number of contracts that EV wants to install.
-     *                                         .
-     */
+
     public Get15118EVCertificateRequest(String iso15118SchemaVersion, CertificateActionEnum action, String exiRequest, Integer maximumContractCertificateChains, List<String> prioritizedEMAIDs, CustomData customData) {
         super();
         this.iso15118SchemaVersion = iso15118SchemaVersion;
@@ -83,104 +76,62 @@ public class Get15118EVCertificateRequest implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getIso15118SchemaVersion() {
         return iso15118SchemaVersion;
     }
 
-    /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIso15118SchemaVersion(String iso15118SchemaVersion) {
         this.iso15118SchemaVersion = iso15118SchemaVersion;
     }
 
-    /**
-     * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
-     */
+
     public CertificateActionEnum getAction() {
         return action;
     }
 
-    /**
-     * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
-     */
+
     public void setAction(CertificateActionEnum action) {
         this.action = action;
     }
 
-    /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
-     */
+
     public String getExiRequest() {
         return exiRequest;
     }
 
-    /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
-     */
+
     public void setExiRequest(String exiRequest) {
         this.exiRequest = exiRequest;
     }
 
-    /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     * Maximum number of contracts that EV wants to install.
-     */
+
     public Integer getMaximumContractCertificateChains() {
         return maximumContractCertificateChains;
     }
 
-    /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     * Maximum number of contracts that EV wants to install.
-     */
+
     public void setMaximumContractCertificateChains(Integer maximumContractCertificateChains) {
         this.maximumContractCertificateChains = maximumContractCertificateChains;
     }
 
-    /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     */
+
     public List<String> getPrioritizedEMAIDs() {
         return prioritizedEMAIDs;
     }
 
-    /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     */
+
     public void setPrioritizedEMAIDs(List<String> prioritizedEMAIDs) {
         this.prioritizedEMAIDs = prioritizedEMAIDs;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

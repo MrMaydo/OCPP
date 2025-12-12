@@ -10,45 +10,41 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class Cost implements JsonInterface {
 
     /**
      * The kind of cost referred to in the message element amount
-     * <p>
-     * (Required)
      */
     @Required
     private CostKindEnum costKind;
+
     /**
      * The estimated or actual cost per kWh
-     * <p>
-     * (Required)
      */
     @Required
     private Integer amount;
+
     /**
-     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
+     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec).
+     * The final value is determined by: amount * 10 ^ amountMultiplier
      */
     @Optional
     private Integer amountMultiplier;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Cost() {
     }
 
-    /**
-     * @param amount           The estimated or actual cost per kWh
-     *                         .
-     * @param amountMultiplier Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     *                         .
-     */
+
     public Cost(CostKindEnum costKind, Integer amount, Integer amountMultiplier, CustomData customData) {
         super();
         this.costKind = costKind;
@@ -57,66 +53,42 @@ public class Cost implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The kind of cost referred to in the message element amount
-     * <p>
-     * (Required)
-     */
+
     public CostKindEnum getCostKind() {
         return costKind;
     }
 
-    /**
-     * The kind of cost referred to in the message element amount
-     * <p>
-     * (Required)
-     */
+
     public void setCostKind(CostKindEnum costKind) {
         this.costKind = costKind;
     }
 
-    /**
-     * The estimated or actual cost per kWh
-     * <p>
-     * (Required)
-     */
+
     public Integer getAmount() {
         return amount;
     }
 
-    /**
-     * The estimated or actual cost per kWh
-     * <p>
-     * (Required)
-     */
+
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
-    /**
-     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     */
+
     public Integer getAmountMultiplier() {
         return amountMultiplier;
     }
 
-    /**
-     * Values: -3..3, The amountMultiplier defines the exponent to base 10 (dec). The final value is determined by: amount * 10 ^ amountMultiplier
-     */
+
     public void setAmountMultiplier(Integer amountMultiplier) {
         this.amountMultiplier = amountMultiplier;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

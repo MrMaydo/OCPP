@@ -12,29 +12,33 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetChargingProfileResponse PDU sent by
+ * the Charging Station to the CSMS in response to SetChargingProfileRequest PDU.
+ */
 public class SetChargingProfileResponse implements JsonInterface {
 
     /**
-     * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * <p>
-     * (Required)
+     * Returns whether the Charging Station has been able to process the message successfully.
+     * This does not guarantee the schedule will be followed to the letter.
+     * There might be other constraints the Charging Station may need to take into account.
      */
     @Required
     private ChargingProfileStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetChargingProfileResponse() {
     }
 
@@ -45,48 +49,32 @@ public class SetChargingProfileResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfileStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Returns whether the Charging Station has been able to process the message successfully. This does not guarantee the schedule will be followed to the letter. There might be other constraints the Charging Station may need to take into account.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(ChargingProfileStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

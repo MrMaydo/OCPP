@@ -14,45 +14,40 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Generic class for the configuration of logging entries.
+ */
 public class LogParameters implements JsonInterface {
 
     /**
      * The URL of the location at the remote system where the log should be stored.
-     * <p>
-     * (Required)
      */
     @Required
     private String remoteLocation;
+
     /**
      * This contains the date and time of the oldest logging information to include in the diagnostics.
      */
     @Optional
     private Date oldestTimestamp;
+
     /**
      * This contains the date and time of the latest logging information to include in the diagnostics.
      */
     @Optional
     private Date latestTimestamp;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public LogParameters() {
     }
 
-    /**
-     * @param oldestTimestamp This contains the date and time of the oldest logging information to include in the diagnostics.
-     *                        .
-     * @param latestTimestamp This contains the date and time of the latest logging information to include in the diagnostics.
-     *                        .
-     * @param remoteLocation  The URL of the location at the remote system where the log should be stored.
-     *                        .
-     */
+
     public LogParameters(String remoteLocation, Date oldestTimestamp, Date latestTimestamp, CustomData customData) {
         super();
         this.remoteLocation = remoteLocation;
@@ -61,62 +56,42 @@ public class LogParameters implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * The URL of the location at the remote system where the log should be stored.
-     * <p>
-     * (Required)
-     */
+
     public String getRemoteLocation() {
         return remoteLocation;
     }
 
-    /**
-     * The URL of the location at the remote system where the log should be stored.
-     * <p>
-     * (Required)
-     */
+
     public void setRemoteLocation(String remoteLocation) {
         this.remoteLocation = remoteLocation;
     }
 
-    /**
-     * This contains the date and time of the oldest logging information to include in the diagnostics.
-     */
+
     public Date getOldestTimestamp() {
         return oldestTimestamp;
     }
 
-    /**
-     * This contains the date and time of the oldest logging information to include in the diagnostics.
-     */
+
     public void setOldestTimestamp(Date oldestTimestamp) {
         this.oldestTimestamp = oldestTimestamp;
     }
 
-    /**
-     * This contains the date and time of the latest logging information to include in the diagnostics.
-     */
+
     public Date getLatestTimestamp() {
         return latestTimestamp;
     }
 
-    /**
-     * This contains the date and time of the latest logging information to include in the diagnostics.
-     */
+
     public void setLatestTimestamp(Date latestTimestamp) {
         this.latestTimestamp = latestTimestamp;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

@@ -13,58 +13,52 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class VatNumberValidationResponse implements JsonInterface {
 
     /**
-     * *(2.1)* A generic address format.
+     * Company address associated with vatNumber.
      */
     @Optional
     private Address company;
+
     /**
-     * Element providing more information about the status.
+     * Additional info on status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
      * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String vatNumber;
+
     /**
      * EVSE id for which check was requested.
      */
     @Optional
     private Integer evseId;
+
     /**
      * Result of operation.
-     * <p>
-     * (Required)
      */
     @Required
     private GenericStatusEnum status;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public VatNumberValidationResponse() {
     }
 
-    /**
-     * @param evseId    EVSE id for which check was requested.
-     *                  <p>
-     *                  .
-     * @param vatNumber VAT number that was requested.
-     *                  <p>
-     *                  .
-     */
+
     public VatNumberValidationResponse(Address company, StatusInfo statusInfo, String vatNumber, Integer evseId, GenericStatusEnum status, CustomData customData) {
         super();
         this.company = company;
@@ -75,96 +69,62 @@ public class VatNumberValidationResponse implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * *(2.1)* A generic address format.
-     */
+
     public Address getCompany() {
         return company;
     }
 
-    /**
-     * *(2.1)* A generic address format.
-     */
+
     public void setCompany(Address company) {
         this.company = company;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getVatNumber() {
         return vatNumber;
     }
 
-    /**
-     * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setVatNumber(String vatNumber) {
         this.vatNumber = vatNumber;
     }
 
-    /**
-     * EVSE id for which check was requested.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE id for which check was requested.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * (Required)
-     */
+
     public GenericStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GenericStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }

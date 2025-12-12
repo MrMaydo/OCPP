@@ -10,51 +10,42 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Contains message details, for a message to be displayed on a Charging Station.
+ */
 public class MessageContent implements JsonInterface {
 
     /**
      * Format of the message.
-     * <p>
-     * (Required)
      */
     @Required
     private MessageFormatEnum format;
+
     /**
-     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
+     * Message language identifier. Contains a language code as defined in [RFC5646].
      */
     @Optional
     private String language;
+
     /**
-     * *(2.1)* Required. Message contents. +
-     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
+     * (2.1) Required. Message contents. Maximum length supported by Charging Station is given
+     * in OCPPCommCtrlr.FieldLength["MessageContentType.cont ent"].
      * Maximum length defaults to 1024.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String content;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MessageContent() {
     }
 
-    /**
-     * @param language Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     *                 .
-     * @param content  *(2.1)* Required. Message contents. +
-     *                 Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     *                 Maximum length defaults to 1024.
-     *                 <p>
-     *                 .
-     */
+
     public MessageContent(MessageFormatEnum format, String language, String content, CustomData customData) {
         super();
         this.format = format;
@@ -63,72 +54,42 @@ public class MessageContent implements JsonInterface {
         this.customData = customData;
     }
 
-    /**
-     * Format of the message.
-     * <p>
-     * (Required)
-     */
+
     public MessageFormatEnum getFormat() {
         return format;
     }
 
-    /**
-     * Format of the message.
-     * <p>
-     * (Required)
-     */
+
     public void setFormat(MessageFormatEnum format) {
         this.format = format;
     }
 
-    /**
-     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public String getLanguage() {
         return language;
     }
 
-    /**
-     * Message language identifier. Contains a language code as defined in &lt;&lt;ref-RFC5646,[RFC5646]&gt;&gt;.
-     */
+
     public void setLanguage(String language) {
         this.language = language;
     }
 
-    /**
-     * *(2.1)* Required. Message contents. +
-     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     * Maximum length defaults to 1024.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getContent() {
         return content;
     }
 
-    /**
-     * *(2.1)* Required. Message contents. +
-     * Maximum length supported by Charging Station is given in OCPPCommCtrlr.FieldLength["MessageContentType.content"].
-     * Maximum length defaults to 1024.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setContent(String content) {
         this.content = content;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
