@@ -40,13 +40,6 @@ public class SetMonitoringLevelResponse implements JsonInterface {
     public SetMonitoringLevelResponse() {
     }
 
-    public SetMonitoringLevelResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

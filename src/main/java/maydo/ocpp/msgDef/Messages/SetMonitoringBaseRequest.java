@@ -32,12 +32,6 @@ public class SetMonitoringBaseRequest implements JsonInterface {
     public SetMonitoringBaseRequest() {
     }
 
-    public SetMonitoringBaseRequest(MonitoringBaseEnum monitoringBase, CustomData customData) {
-        super();
-        this.monitoringBase = monitoringBase;
-        this.customData = customData;
-    }
-
 
     public MonitoringBaseEnum getMonitoringBase() {
         return monitoringBase;

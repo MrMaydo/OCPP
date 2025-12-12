@@ -38,14 +38,6 @@ public class CostDimension implements JsonInterface {
     }
 
 
-    public CostDimension(CostDimensionEnum type, Float volume, CustomData customData) {
-        super();
-        this.type = type;
-        this.volume = volume;
-        this.customData = customData;
-    }
-
-
     public CostDimensionEnum getType() {
         return type;
     }

@@ -353,53 +353,6 @@ public class DERChargingParameters implements JsonInterface {
     }
 
 
-    public DERChargingParameters(List<DERControlEnum> evSupportedDERControl, Float evOverExcitedMaxDischargePower, Float evOverExcitedPowerFactor, Float evUnderExcitedMaxDischargePower, Float evUnderExcitedPowerFactor, Float maxApparentPower, Float maxChargeApparentPower, Float maxChargeApparentPowerL2, Float maxChargeApparentPowerL3, Float maxDischargeApparentPower, Float maxDischargeApparentPowerL2, Float maxDischargeApparentPowerL3, Float maxChargeReactivePower, Float maxChargeReactivePowerL2, Float maxChargeReactivePowerL3, Float minChargeReactivePower, Float minChargeReactivePowerL2, Float minChargeReactivePowerL3, Float maxDischargeReactivePower, Float maxDischargeReactivePowerL2, Float maxDischargeReactivePowerL3, Float minDischargeReactivePower, Float minDischargeReactivePowerL2, Float minDischargeReactivePowerL3, Float nominalVoltage, Float nominalVoltageOffset, Float maxNominalVoltage, Float minNominalVoltage, String evInverterManufacturer, String evInverterModel, String evInverterSerialNumber, String evInverterSwVersion, String evInverterHwVersion, List<IslandingDetectionEnum> evIslandingDetectionMethod, Float evIslandingTripTime, Float evMaximumLevel1DCInjection, Float evDurationLevel1DCInjection, Float evMaximumLevel2DCInjection, Float evDurationLevel2DCInjection, Float evReactiveSusceptance, Float evSessionTotalDischargeEnergyAvailable, CustomData customData) {
-        super();
-        this.evSupportedDERControl = evSupportedDERControl;
-        this.evOverExcitedMaxDischargePower = evOverExcitedMaxDischargePower;
-        this.evOverExcitedPowerFactor = evOverExcitedPowerFactor;
-        this.evUnderExcitedMaxDischargePower = evUnderExcitedMaxDischargePower;
-        this.evUnderExcitedPowerFactor = evUnderExcitedPowerFactor;
-        this.maxApparentPower = maxApparentPower;
-        this.maxChargeApparentPower = maxChargeApparentPower;
-        this.maxChargeApparentPowerL2 = maxChargeApparentPowerL2;
-        this.maxChargeApparentPowerL3 = maxChargeApparentPowerL3;
-        this.maxDischargeApparentPower = maxDischargeApparentPower;
-        this.maxDischargeApparentPowerL2 = maxDischargeApparentPowerL2;
-        this.maxDischargeApparentPowerL3 = maxDischargeApparentPowerL3;
-        this.maxChargeReactivePower = maxChargeReactivePower;
-        this.maxChargeReactivePowerL2 = maxChargeReactivePowerL2;
-        this.maxChargeReactivePowerL3 = maxChargeReactivePowerL3;
-        this.minChargeReactivePower = minChargeReactivePower;
-        this.minChargeReactivePowerL2 = minChargeReactivePowerL2;
-        this.minChargeReactivePowerL3 = minChargeReactivePowerL3;
-        this.maxDischargeReactivePower = maxDischargeReactivePower;
-        this.maxDischargeReactivePowerL2 = maxDischargeReactivePowerL2;
-        this.maxDischargeReactivePowerL3 = maxDischargeReactivePowerL3;
-        this.minDischargeReactivePower = minDischargeReactivePower;
-        this.minDischargeReactivePowerL2 = minDischargeReactivePowerL2;
-        this.minDischargeReactivePowerL3 = minDischargeReactivePowerL3;
-        this.nominalVoltage = nominalVoltage;
-        this.nominalVoltageOffset = nominalVoltageOffset;
-        this.maxNominalVoltage = maxNominalVoltage;
-        this.minNominalVoltage = minNominalVoltage;
-        this.evInverterManufacturer = evInverterManufacturer;
-        this.evInverterModel = evInverterModel;
-        this.evInverterSerialNumber = evInverterSerialNumber;
-        this.evInverterSwVersion = evInverterSwVersion;
-        this.evInverterHwVersion = evInverterHwVersion;
-        this.evIslandingDetectionMethod = evIslandingDetectionMethod;
-        this.evIslandingTripTime = evIslandingTripTime;
-        this.evMaximumLevel1DCInjection = evMaximumLevel1DCInjection;
-        this.evDurationLevel1DCInjection = evDurationLevel1DCInjection;
-        this.evMaximumLevel2DCInjection = evMaximumLevel2DCInjection;
-        this.evDurationLevel2DCInjection = evDurationLevel2DCInjection;
-        this.evReactiveSusceptance = evReactiveSusceptance;
-        this.evSessionTotalDischargeEnergyAvailable = evSessionTotalDischargeEnergyAvailable;
-        this.customData = customData;
-    }
-
-
     public List<DERControlEnum> getEvSupportedDERControl() {
         return evSupportedDERControl;
     }

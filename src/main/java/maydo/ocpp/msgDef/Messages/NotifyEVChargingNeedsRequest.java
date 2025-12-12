@@ -59,16 +59,6 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     }
 
 
-    public NotifyEVChargingNeedsRequest(Integer evseId, Integer maxScheduleTuples, ChargingNeeds chargingNeeds, Date timestamp, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.maxScheduleTuples = maxScheduleTuples;
-        this.chargingNeeds = chargingNeeds;
-        this.timestamp = timestamp;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

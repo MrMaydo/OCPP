@@ -26,11 +26,6 @@ public class ReservationStatusUpdateResponse implements JsonInterface {
     public ReservationStatusUpdateResponse() {
     }
 
-    public ReservationStatusUpdateResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

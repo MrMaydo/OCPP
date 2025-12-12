@@ -39,14 +39,6 @@ public class GetBaseReportRequest implements JsonInterface {
     }
 
 
-    public GetBaseReportRequest(Integer requestId, ReportBaseEnum reportBase, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.reportBase = reportBase;
-        this.customData = customData;
-    }
-
-
     public Integer getRequestId() {
         return requestId;
     }

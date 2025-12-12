@@ -32,13 +32,6 @@ public class GetTariffsRequest implements JsonInterface {
     }
 
 
-    public GetTariffsRequest(Integer evseId, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

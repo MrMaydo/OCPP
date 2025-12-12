@@ -46,15 +46,6 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
 
-    public SalesTariffEntry(RelativeTimeInterval relativeTimeInterval, Integer ePriceLevel, List<ConsumptionCost> consumptionCost, CustomData customData) {
-        super();
-        this.relativeTimeInterval = relativeTimeInterval;
-        this.ePriceLevel = ePriceLevel;
-        this.consumptionCost = consumptionCost;
-        this.customData = customData;
-    }
-
-
     public RelativeTimeInterval getRelativeTimeInterval() {
         return relativeTimeInterval;
     }

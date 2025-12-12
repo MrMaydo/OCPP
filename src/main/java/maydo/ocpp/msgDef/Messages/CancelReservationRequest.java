@@ -32,13 +32,6 @@ public class CancelReservationRequest implements JsonInterface {
     }
 
 
-    public CancelReservationRequest(Integer reservationId, CustomData customData) {
-        super();
-        this.reservationId = reservationId;
-        this.customData = customData;
-    }
-
-
     public Integer getReservationId() {
         return reservationId;
     }

@@ -42,15 +42,6 @@ public class ReactivePowerParams implements JsonInterface {
     }
 
 
-    public ReactivePowerParams(Float vRef, Boolean autonomousVRefEnable, Float autonomousVRefTimeConstant, CustomData customData) {
-        super();
-        this.vRef = vRef;
-        this.autonomousVRefEnable = autonomousVRefEnable;
-        this.autonomousVRefTimeConstant = autonomousVRefTimeConstant;
-        this.customData = customData;
-    }
-
-
     public Float getvRef() {
         return vRef;
     }

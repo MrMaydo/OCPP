@@ -40,13 +40,6 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     public ChangeAvailabilityRequest() {
     }
 
-    public ChangeAvailabilityRequest(EVSE evse, OperationalStatusEnum operationalStatus, CustomData customData) {
-        super();
-        this.evse = evse;
-        this.operationalStatus = operationalStatus;
-        this.customData = customData;
-    }
-
 
     public EVSE getEvse() {
         return evse;

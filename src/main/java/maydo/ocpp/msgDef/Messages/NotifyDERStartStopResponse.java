@@ -24,11 +24,6 @@ public class NotifyDERStartStopResponse implements JsonInterface {
     public NotifyDERStartStopResponse() {
     }
 
-    public NotifyDERStartStopResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

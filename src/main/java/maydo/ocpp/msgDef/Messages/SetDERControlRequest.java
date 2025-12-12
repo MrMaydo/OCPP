@@ -93,23 +93,6 @@ public class SetDERControlRequest implements JsonInterface {
     }
 
 
-    public SetDERControlRequest(Boolean isDefault, String controlId, DERControlEnum controlType, DERCurve curve, EnterService enterService, FixedPF fixedPFAbsorb, FixedPF fixedPFInject, FixedVar fixedVar, FreqDroop freqDroop, Gradient gradient, LimitMaxDischarge limitMaxDischarge, CustomData customData) {
-        super();
-        this.isDefault = isDefault;
-        this.controlId = controlId;
-        this.controlType = controlType;
-        this.curve = curve;
-        this.enterService = enterService;
-        this.fixedPFAbsorb = fixedPFAbsorb;
-        this.fixedPFInject = fixedPFInject;
-        this.fixedVar = fixedVar;
-        this.freqDroop = freqDroop;
-        this.gradient = gradient;
-        this.limitMaxDischarge = limitMaxDischarge;
-        this.customData = customData;
-    }
-
-
     public Boolean getIsDefault() {
         return isDefault;
     }

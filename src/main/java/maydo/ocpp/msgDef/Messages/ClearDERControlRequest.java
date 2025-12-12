@@ -45,15 +45,6 @@ public class ClearDERControlRequest implements JsonInterface {
     }
 
 
-    public ClearDERControlRequest(Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
-        super();
-        this.isDefault = isDefault;
-        this.controlType = controlType;
-        this.controlId = controlId;
-        this.customData = customData;
-    }
-
-
     public Boolean getIsDefault() {
         return isDefault;
     }

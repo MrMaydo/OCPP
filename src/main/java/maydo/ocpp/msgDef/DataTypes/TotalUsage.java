@@ -51,16 +51,6 @@ public class TotalUsage implements JsonInterface {
     }
 
 
-    public TotalUsage(Float energy, Integer chargingTime, Integer idleTime, Integer reservationTime, CustomData customData) {
-        super();
-        this.energy = energy;
-        this.chargingTime = chargingTime;
-        this.idleTime = idleTime;
-        this.reservationTime = reservationTime;
-        this.customData = customData;
-    }
-
-
     public Float getEnergy() {
         return energy;
     }

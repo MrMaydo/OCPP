@@ -43,14 +43,6 @@ public class GetVariableData implements JsonInterface {
     public GetVariableData() {
     }
 
-    public GetVariableData(AttributeEnum attributeType, Component component, Variable variable, CustomData customData) {
-        super();
-        this.attributeType = attributeType;
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
 
     public AttributeEnum getAttributeType() {
         return attributeType;

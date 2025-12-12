@@ -40,14 +40,6 @@ public class UsePriorityChargingRequest implements JsonInterface {
     }
 
 
-    public UsePriorityChargingRequest(String transactionId, Boolean activate, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.activate = activate;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

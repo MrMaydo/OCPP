@@ -47,15 +47,6 @@ public class SetDERControlResponse implements JsonInterface {
     }
 
 
-    public SetDERControlResponse(DERControlStatusEnum status, StatusInfo statusInfo, List<String> supersededIds, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.supersededIds = supersededIds;
-        this.customData = customData;
-    }
-
-
     public DERControlStatusEnum getStatus() {
         return status;
     }

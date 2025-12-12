@@ -42,13 +42,6 @@ public class SetChargingProfileResponse implements JsonInterface {
     public SetChargingProfileResponse() {
     }
 
-    public SetChargingProfileResponse(ChargingProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ChargingProfileStatusEnum getStatus() {
         return status;

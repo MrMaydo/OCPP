@@ -39,13 +39,6 @@ public class GetDisplayMessagesResponse implements JsonInterface {
     public GetDisplayMessagesResponse() {
     }
 
-    public GetDisplayMessagesResponse(GetDisplayMessagesStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GetDisplayMessagesStatusEnum getStatus() {
         return status;

@@ -40,13 +40,6 @@ public class SendLocalListResponse implements JsonInterface {
     public SendLocalListResponse() {
     }
 
-    public SendLocalListResponse(SendLocalListStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public SendLocalListStatusEnum getStatus() {
         return status;

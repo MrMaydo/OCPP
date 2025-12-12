@@ -49,16 +49,6 @@ public class FixedPFGet implements JsonInterface {
     }
 
 
-    public FixedPFGet(FixedPF fixedPF, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
-        super();
-        this.fixedPF = fixedPF;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.isSuperseded = isSuperseded;
-        this.customData = customData;
-    }
-
-
     public FixedPF getFixedPF() {
         return fixedPF;
     }

@@ -52,16 +52,6 @@ public class SalesTariff implements JsonInterface {
     }
 
 
-    public SalesTariff(Integer id, String salesTariffDescription, Integer numEPriceLevels, List<SalesTariffEntry> salesTariffEntry, CustomData customData) {
-        super();
-        this.id = id;
-        this.salesTariffDescription = salesTariffDescription;
-        this.numEPriceLevels = numEPriceLevels;
-        this.salesTariffEntry = salesTariffEntry;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

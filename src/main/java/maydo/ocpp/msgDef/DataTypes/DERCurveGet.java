@@ -56,17 +56,6 @@ public class DERCurveGet implements JsonInterface {
     }
 
 
-    public DERCurveGet(DERCurve curve, String id, DERControlEnum curveType, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
-        super();
-        this.curve = curve;
-        this.id = id;
-        this.curveType = curveType;
-        this.isDefault = isDefault;
-        this.isSuperseded = isSuperseded;
-        this.customData = customData;
-    }
-
-
     public DERCurve getCurve() {
         return curve;
     }

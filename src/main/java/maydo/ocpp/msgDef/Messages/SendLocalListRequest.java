@@ -51,14 +51,6 @@ public class SendLocalListRequest implements JsonInterface {
     }
 
 
-    public SendLocalListRequest(List<AuthorizationData> localAuthorizationList, Integer versionNumber, UpdateEnum updateType, CustomData customData) {
-        super();
-        this.localAuthorizationList = localAuthorizationList;
-        this.versionNumber = versionNumber;
-        this.updateType = updateType;
-        this.customData = customData;
-    }
-
     public List<AuthorizationData> getLocalAuthorizationList() {
         return localAuthorizationList;
     }

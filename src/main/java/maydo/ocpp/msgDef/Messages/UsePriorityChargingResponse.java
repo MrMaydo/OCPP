@@ -39,13 +39,6 @@ public class UsePriorityChargingResponse implements JsonInterface {
     public UsePriorityChargingResponse() {
     }
 
-    public UsePriorityChargingResponse(PriorityChargingStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public PriorityChargingStatusEnum getStatus() {
         return status;

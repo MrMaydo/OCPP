@@ -47,14 +47,6 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     }
 
 
-    public NotifyDisplayMessagesRequest(List<MessageInfo> messageInfo, Integer requestId, Boolean tbc, CustomData customData) {
-        super();
-        this.messageInfo = messageInfo;
-        this.requestId = requestId;
-        this.tbc = tbc;
-        this.customData = customData;
-    }
-
     public List<MessageInfo> getMessageInfo() {
         return messageInfo;
     }

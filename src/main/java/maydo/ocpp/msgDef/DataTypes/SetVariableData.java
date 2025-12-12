@@ -53,16 +53,6 @@ public class SetVariableData implements JsonInterface {
     }
 
 
-    public SetVariableData(AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
-        super();
-        this.attributeType = attributeType;
-        this.attributeValue = attributeValue;
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
-
     public AttributeEnum getAttributeType() {
         return attributeType;
     }

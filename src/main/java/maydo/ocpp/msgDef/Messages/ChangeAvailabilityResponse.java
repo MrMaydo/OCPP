@@ -39,13 +39,6 @@ public class ChangeAvailabilityResponse implements JsonInterface {
     public ChangeAvailabilityResponse() {
     }
 
-    public ChangeAvailabilityResponse(ChangeAvailabilityStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ChangeAvailabilityStatusEnum getStatus() {
         return status;

@@ -47,15 +47,6 @@ public class Component implements JsonInterface {
     }
 
 
-    public Component(EVSE evse, String name, String instance, CustomData customData) {
-        super();
-        this.evse = evse;
-        this.name = name;
-        this.instance = instance;
-        this.customData = customData;
-    }
-
-
     public EVSE getEvse() {
         return evse;
     }

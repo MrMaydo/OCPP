@@ -40,13 +40,6 @@ public class GetChargingProfilesResponse implements JsonInterface {
     public GetChargingProfilesResponse() {
     }
 
-    public GetChargingProfilesResponse(GetChargingProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GetChargingProfileStatusEnum getStatus() {
         return status;

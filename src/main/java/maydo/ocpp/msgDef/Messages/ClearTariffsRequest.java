@@ -38,14 +38,6 @@ public class ClearTariffsRequest implements JsonInterface {
     }
 
 
-    public ClearTariffsRequest(List<String> tariffIds, Integer evseId, CustomData customData) {
-        super();
-        this.tariffIds = tariffIds;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public List<String> getTariffIds() {
         return tariffIds;
     }

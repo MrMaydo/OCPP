@@ -109,24 +109,6 @@ public class Tariff implements JsonInterface {
     }
 
 
-    public Tariff(String tariffId, List<MessageContent> description, String currency, TariffEnergy energy, Date validFrom, TariffTime chargingTime, TariffTime idleTime, TariffFixed fixedFee, TariffTime reservationTime, TariffFixed reservationFixed, Price minCost, Price maxCost, CustomData customData) {
-        super();
-        this.tariffId = tariffId;
-        this.description = description;
-        this.currency = currency;
-        this.energy = energy;
-        this.validFrom = validFrom;
-        this.chargingTime = chargingTime;
-        this.idleTime = idleTime;
-        this.fixedFee = fixedFee;
-        this.reservationTime = reservationTime;
-        this.reservationFixed = reservationFixed;
-        this.minCost = minCost;
-        this.maxCost = maxCost;
-        this.customData = customData;
-    }
-
-
     public String getTariffId() {
         return tariffId;
     }

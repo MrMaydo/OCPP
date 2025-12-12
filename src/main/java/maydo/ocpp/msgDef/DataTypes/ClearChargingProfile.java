@@ -45,15 +45,6 @@ public class ClearChargingProfile implements JsonInterface {
     }
 
 
-    public ClearChargingProfile(Integer evseId, ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.chargingProfilePurpose = chargingProfilePurpose;
-        this.stackLevel = stackLevel;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

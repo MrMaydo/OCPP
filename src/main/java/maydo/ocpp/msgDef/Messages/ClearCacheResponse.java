@@ -40,13 +40,6 @@ public class ClearCacheResponse implements JsonInterface {
     public ClearCacheResponse() {
     }
 
-    public ClearCacheResponse(ClearCacheStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ClearCacheStatusEnum getStatus() {
         return status;

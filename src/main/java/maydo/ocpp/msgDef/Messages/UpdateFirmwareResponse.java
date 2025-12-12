@@ -40,13 +40,6 @@ public class UpdateFirmwareResponse implements JsonInterface {
     public UpdateFirmwareResponse() {
     }
 
-    public UpdateFirmwareResponse(UpdateFirmwareStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public UpdateFirmwareStatusEnum getStatus() {
         return status;

@@ -40,13 +40,6 @@ public class AFRRSignalResponse implements JsonInterface {
     public AFRRSignalResponse() {
     }
 
-    public AFRRSignalResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

@@ -48,14 +48,6 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     }
 
 
-    public NotifyChargingLimitRequest(List<ChargingSchedule> chargingSchedule, Integer evseId, ChargingLimit chargingLimit, CustomData customData) {
-        super();
-        this.chargingSchedule = chargingSchedule;
-        this.evseId = evseId;
-        this.chargingLimit = chargingLimit;
-        this.customData = customData;
-    }
-
     public List<ChargingSchedule> getChargingSchedule() {
         return chargingSchedule;
     }

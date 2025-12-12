@@ -58,16 +58,6 @@ public class StatusNotificationRequest implements JsonInterface {
     }
 
 
-    public StatusNotificationRequest(Date timestamp, ConnectorStatusEnum connectorStatus, Integer evseId, Integer connectorId, CustomData customData) {
-        super();
-        this.timestamp = timestamp;
-        this.connectorStatus = connectorStatus;
-        this.evseId = evseId;
-        this.connectorId = connectorId;
-        this.customData = customData;
-    }
-
-
     public Date getTimestamp() {
         return timestamp;
     }

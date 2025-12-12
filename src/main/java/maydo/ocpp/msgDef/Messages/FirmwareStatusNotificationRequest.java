@@ -47,15 +47,6 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     }
 
 
-    public FirmwareStatusNotificationRequest(FirmwareStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.requestId = requestId;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
-
     public FirmwareStatusEnum getStatus() {
         return status;
     }

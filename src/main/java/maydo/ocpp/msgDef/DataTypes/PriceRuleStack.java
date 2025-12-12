@@ -38,14 +38,6 @@ public class PriceRuleStack implements JsonInterface {
     }
 
 
-    public PriceRuleStack(Integer duration, List<PriceRule> priceRule, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.priceRule = priceRule;
-        this.customData = customData;
-    }
-
-
     public Integer getDuration() {
         return duration;
     }

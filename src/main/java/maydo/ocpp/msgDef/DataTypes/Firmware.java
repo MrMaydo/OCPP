@@ -60,17 +60,6 @@ public class Firmware implements JsonInterface {
     }
 
 
-    public Firmware(String location, Date retrieveDateTime, Date installDateTime, String signingCertificate, String signature, CustomData customData) {
-        super();
-        this.location = location;
-        this.retrieveDateTime = retrieveDateTime;
-        this.installDateTime = installDateTime;
-        this.signingCertificate = signingCertificate;
-        this.signature = signature;
-        this.customData = customData;
-    }
-
-
     public String getLocation() {
         return location;
     }

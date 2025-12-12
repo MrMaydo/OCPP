@@ -24,11 +24,6 @@ public class ReportDERControlResponse implements JsonInterface {
     public ReportDERControlResponse() {
     }
 
-    public ReportDERControlResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

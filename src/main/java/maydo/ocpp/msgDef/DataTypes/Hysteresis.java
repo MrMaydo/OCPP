@@ -51,16 +51,6 @@ public class Hysteresis implements JsonInterface {
     }
 
 
-    public Hysteresis(Float hysteresisHigh, Float hysteresisLow, Float hysteresisDelay, Float hysteresisGradient, CustomData customData) {
-        super();
-        this.hysteresisHigh = hysteresisHigh;
-        this.hysteresisLow = hysteresisLow;
-        this.hysteresisDelay = hysteresisDelay;
-        this.hysteresisGradient = hysteresisGradient;
-        this.customData = customData;
-    }
-
-
     public Float getHysteresisHigh() {
         return hysteresisHigh;
     }

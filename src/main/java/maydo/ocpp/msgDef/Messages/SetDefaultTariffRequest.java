@@ -39,14 +39,6 @@ public class SetDefaultTariffRequest implements JsonInterface {
     }
 
 
-    public SetDefaultTariffRequest(Integer evseId, Tariff tariff, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.tariff = tariff;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

@@ -43,14 +43,6 @@ public class EVPowerSchedule implements JsonInterface {
     }
 
 
-    public EVPowerSchedule(List<EVPowerScheduleEntry> evPowerScheduleEntries, Date timeAnchor, CustomData customData) {
-        super();
-        this.evPowerScheduleEntries = evPowerScheduleEntries;
-        this.timeAnchor = timeAnchor;
-        this.customData = customData;
-    }
-
-
     public List<EVPowerScheduleEntry> getEvPowerScheduleEntries() {
         return evPowerScheduleEntries;
     }

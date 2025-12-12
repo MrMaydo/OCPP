@@ -39,13 +39,6 @@ public class GetMonitoringReportResponse implements JsonInterface {
     public GetMonitoringReportResponse() {
     }
 
-    public GetMonitoringReportResponse(GenericDeviceModelStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericDeviceModelStatusEnum getStatus() {
         return status;

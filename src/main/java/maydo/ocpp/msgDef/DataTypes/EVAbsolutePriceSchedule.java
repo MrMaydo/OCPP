@@ -55,16 +55,6 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     }
 
 
-    public EVAbsolutePriceSchedule(Date timeAnchor, String currency, List<EVAbsolutePriceScheduleEntry> evAbsolutePriceScheduleEntries, String priceAlgorithm, CustomData customData) {
-        super();
-        this.timeAnchor = timeAnchor;
-        this.currency = currency;
-        this.evAbsolutePriceScheduleEntries = evAbsolutePriceScheduleEntries;
-        this.priceAlgorithm = priceAlgorithm;
-        this.customData = customData;
-    }
-
-
     public Date getTimeAnchor() {
         return timeAnchor;
     }

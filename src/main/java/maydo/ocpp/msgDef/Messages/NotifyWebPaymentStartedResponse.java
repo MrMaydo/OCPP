@@ -24,11 +24,6 @@ public class NotifyWebPaymentStartedResponse implements JsonInterface {
     public NotifyWebPaymentStartedResponse() {
     }
 
-    public NotifyWebPaymentStartedResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

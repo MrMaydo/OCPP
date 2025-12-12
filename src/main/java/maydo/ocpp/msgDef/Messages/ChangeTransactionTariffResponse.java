@@ -39,13 +39,6 @@ public class ChangeTransactionTariffResponse implements JsonInterface {
     public ChangeTransactionTariffResponse() {
     }
 
-    public ChangeTransactionTariffResponse(TariffChangeStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public TariffChangeStatusEnum getStatus() {
         return status;

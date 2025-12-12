@@ -26,11 +26,6 @@ public class CostUpdatedResponse implements JsonInterface {
     public CostUpdatedResponse() {
     }
 
-    public CostUpdatedResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

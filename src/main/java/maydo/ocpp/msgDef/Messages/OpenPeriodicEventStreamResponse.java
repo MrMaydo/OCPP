@@ -39,13 +39,6 @@ public class OpenPeriodicEventStreamResponse implements JsonInterface {
     public OpenPeriodicEventStreamResponse() {
     }
 
-    public OpenPeriodicEventStreamResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

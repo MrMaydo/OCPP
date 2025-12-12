@@ -32,12 +32,6 @@ public class DeleteCertificateRequest implements JsonInterface {
     public DeleteCertificateRequest() {
     }
 
-    public DeleteCertificateRequest(CertificateHashData certificateHashData, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.customData = customData;
-    }
-
 
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;

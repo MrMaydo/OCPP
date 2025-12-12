@@ -37,14 +37,6 @@ public class LimitAtSoC implements JsonInterface {
     }
 
 
-    public LimitAtSoC(Integer soc, Float limit, CustomData customData) {
-        super();
-        this.soc = soc;
-        this.limit = limit;
-        this.customData = customData;
-    }
-
-
     public Integer getSoc() {
         return soc;
     }

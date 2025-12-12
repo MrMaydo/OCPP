@@ -41,14 +41,6 @@ public class InstallCertificateRequest implements JsonInterface {
     }
 
 
-    public InstallCertificateRequest(InstallCertificateUseEnum certificateType, String certificate, CustomData customData) {
-        super();
-        this.certificateType = certificateType;
-        this.certificate = certificate;
-        this.customData = customData;
-    }
-
-
     public InstallCertificateUseEnum getCertificateType() {
         return certificateType;
     }

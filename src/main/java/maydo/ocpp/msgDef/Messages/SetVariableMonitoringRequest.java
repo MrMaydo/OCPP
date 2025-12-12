@@ -33,12 +33,6 @@ public class SetVariableMonitoringRequest implements JsonInterface {
     public SetVariableMonitoringRequest() {
     }
 
-    public SetVariableMonitoringRequest(List<SetMonitoringData> setMonitoringData, CustomData customData) {
-        super();
-        this.setMonitoringData = setMonitoringData;
-        this.customData = customData;
-    }
-
 
     public List<SetMonitoringData> getSetMonitoringData() {
         return setMonitoringData;

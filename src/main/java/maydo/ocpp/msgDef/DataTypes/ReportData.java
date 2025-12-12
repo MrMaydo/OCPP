@@ -49,15 +49,6 @@ public class ReportData implements JsonInterface {
     public ReportData() {
     }
 
-    public ReportData(Component component, Variable variable, List<VariableAttribute> variableAttribute, VariableCharacteristics variableCharacteristics, CustomData customData) {
-        super();
-        this.component = component;
-        this.variable = variable;
-        this.variableAttribute = variableAttribute;
-        this.variableCharacteristics = variableCharacteristics;
-        this.customData = customData;
-    }
-
 
     public Component getComponent() {
         return component;

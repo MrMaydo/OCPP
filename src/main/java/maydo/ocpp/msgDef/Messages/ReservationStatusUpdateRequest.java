@@ -39,14 +39,6 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     }
 
 
-    public ReservationStatusUpdateRequest(Integer reservationId, ReservationUpdateStatusEnum reservationUpdateStatus, CustomData customData) {
-        super();
-        this.reservationId = reservationId;
-        this.reservationUpdateStatus = reservationUpdateStatus;
-        this.customData = customData;
-    }
-
-
     public Integer getReservationId() {
         return reservationId;
     }

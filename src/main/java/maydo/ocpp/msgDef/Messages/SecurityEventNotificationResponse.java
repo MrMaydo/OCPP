@@ -25,11 +25,6 @@ public class SecurityEventNotificationResponse implements JsonInterface {
     public SecurityEventNotificationResponse() {
     }
 
-    public SecurityEventNotificationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

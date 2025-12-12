@@ -64,16 +64,6 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     }
 
 
-    public NotifyMonitoringReportRequest(List<MonitoringData> monitor, Integer requestId, Boolean tbc, Integer seqNo, Date generatedAt, CustomData customData) {
-        super();
-        this.monitor = monitor;
-        this.requestId = requestId;
-        this.tbc = tbc;
-        this.seqNo = seqNo;
-        this.generatedAt = generatedAt;
-        this.customData = customData;
-    }
-
     public List<MonitoringData> getMonitor() {
         return monitor;
     }

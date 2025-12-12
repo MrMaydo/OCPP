@@ -37,14 +37,6 @@ public class RelativeTimeInterval implements JsonInterface {
     }
 
 
-    public RelativeTimeInterval(Integer start, Integer duration, CustomData customData) {
-        super();
-        this.start = start;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public Integer getStart() {
         return start;
     }

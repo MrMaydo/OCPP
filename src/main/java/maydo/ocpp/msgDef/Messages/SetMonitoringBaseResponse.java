@@ -40,13 +40,6 @@ public class SetMonitoringBaseResponse implements JsonInterface {
     public SetMonitoringBaseResponse() {
     }
 
-    public SetMonitoringBaseResponse(GenericDeviceModelStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericDeviceModelStatusEnum getStatus() {
         return status;

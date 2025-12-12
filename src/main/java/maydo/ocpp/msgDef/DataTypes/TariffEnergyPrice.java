@@ -38,14 +38,6 @@ public class TariffEnergyPrice implements JsonInterface {
     }
 
 
-    public TariffEnergyPrice(Float priceKwh, TariffConditions conditions, CustomData customData) {
-        super();
-        this.priceKwh = priceKwh;
-        this.conditions = conditions;
-        this.customData = customData;
-    }
-
-
     public Float getPriceKwh() {
         return priceKwh;
     }

@@ -24,11 +24,6 @@ public class NotifyCustomerInformationResponse implements JsonInterface {
     public NotifyCustomerInformationResponse() {
     }
 
-    public NotifyCustomerInformationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

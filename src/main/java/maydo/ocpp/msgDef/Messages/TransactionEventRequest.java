@@ -138,27 +138,6 @@ public class TransactionEventRequest implements JsonInterface {
     }
 
 
-    public TransactionEventRequest(CostDetails costDetails, TransactionEventEnum eventType, List<MeterValue> meterValue, Date timestamp, TriggerReasonEnum triggerReason, Integer seqNo, Boolean offline, Integer numberOfPhasesUsed, Integer cableMaxCurrent, Integer reservationId, PreconditioningStatusEnum preconditioningStatus, Boolean evseSleep, Transaction transactionInfo, EVSE evse, IdToken idToken, CustomData customData) {
-        super();
-        this.costDetails = costDetails;
-        this.eventType = eventType;
-        this.meterValue = meterValue;
-        this.timestamp = timestamp;
-        this.triggerReason = triggerReason;
-        this.seqNo = seqNo;
-        this.offline = offline;
-        this.numberOfPhasesUsed = numberOfPhasesUsed;
-        this.cableMaxCurrent = cableMaxCurrent;
-        this.reservationId = reservationId;
-        this.preconditioningStatus = preconditioningStatus;
-        this.evseSleep = evseSleep;
-        this.transactionInfo = transactionInfo;
-        this.evse = evse;
-        this.idToken = idToken;
-        this.customData = customData;
-    }
-
-
     public CostDetails getCostDetails() {
         return costDetails;
     }

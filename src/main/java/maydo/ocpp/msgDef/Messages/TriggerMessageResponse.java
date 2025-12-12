@@ -40,13 +40,6 @@ public class TriggerMessageResponse implements JsonInterface {
     public TriggerMessageResponse() {
     }
 
-    public TriggerMessageResponse(TriggerMessageStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public TriggerMessageStatusEnum getStatus() {
         return status;

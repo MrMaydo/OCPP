@@ -24,11 +24,6 @@ public class GetPeriodicEventStreamRequest implements JsonInterface {
     public GetPeriodicEventStreamRequest() {
     }
 
-    public GetPeriodicEventStreamRequest(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

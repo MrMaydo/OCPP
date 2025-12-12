@@ -63,17 +63,6 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     }
 
 
-    public NotifyEVChargingScheduleRequest(Date timeBase, ChargingSchedule chargingSchedule, Integer evseId, Integer selectedChargingScheduleId, Boolean powerToleranceAcceptance, CustomData customData) {
-        super();
-        this.timeBase = timeBase;
-        this.chargingSchedule = chargingSchedule;
-        this.evseId = evseId;
-        this.selectedChargingScheduleId = selectedChargingScheduleId;
-        this.powerToleranceAcceptance = powerToleranceAcceptance;
-        this.customData = customData;
-    }
-
-
     public Date getTimeBase() {
         return timeBase;
     }

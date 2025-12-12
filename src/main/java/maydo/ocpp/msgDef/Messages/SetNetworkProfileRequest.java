@@ -40,14 +40,6 @@ public class SetNetworkProfileRequest implements JsonInterface {
     }
 
 
-    public SetNetworkProfileRequest(Integer configurationSlot, NetworkConnectionProfile connectionData, CustomData customData) {
-        super();
-        this.configurationSlot = configurationSlot;
-        this.connectionData = connectionData;
-        this.customData = customData;
-    }
-
-
     public Integer getConfigurationSlot() {
         return configurationSlot;
     }

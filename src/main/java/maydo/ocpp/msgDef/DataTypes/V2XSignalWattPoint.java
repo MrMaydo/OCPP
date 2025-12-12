@@ -38,14 +38,6 @@ public class V2XSignalWattPoint implements JsonInterface {
     }
 
 
-    public V2XSignalWattPoint(Integer signal, Float power, CustomData customData) {
-        super();
-        this.signal = signal;
-        this.power = power;
-        this.customData = customData;
-    }
-
-
     public Integer getSignal() {
         return signal;
     }

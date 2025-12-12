@@ -39,14 +39,6 @@ public class StatusInfo implements JsonInterface {
     }
 
 
-    public StatusInfo(String reasonCode, String additionalInfo, CustomData customData) {
-        super();
-        this.reasonCode = reasonCode;
-        this.additionalInfo = additionalInfo;
-        this.customData = customData;
-    }
-
-
     public String getReasonCode() {
         return reasonCode;
     }

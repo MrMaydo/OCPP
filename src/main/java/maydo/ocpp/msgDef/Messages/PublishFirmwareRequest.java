@@ -59,17 +59,6 @@ public class PublishFirmwareRequest implements JsonInterface {
     }
 
 
-    public PublishFirmwareRequest(String location, Integer retries, String checksum, Integer requestId, Integer retryInterval, CustomData customData) {
-        super();
-        this.location = location;
-        this.retries = retries;
-        this.checksum = checksum;
-        this.requestId = requestId;
-        this.retryInterval = retryInterval;
-        this.customData = customData;
-    }
-
-
     public String getLocation() {
         return location;
     }

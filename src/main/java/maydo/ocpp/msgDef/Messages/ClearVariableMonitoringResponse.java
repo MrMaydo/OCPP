@@ -33,12 +33,6 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
     public ClearVariableMonitoringResponse() {
     }
 
-    public ClearVariableMonitoringResponse(List<ClearMonitoringResult> clearMonitoringResult, CustomData customData) {
-        super();
-        this.clearMonitoringResult = clearMonitoringResult;
-        this.customData = customData;
-    }
-
 
     public List<ClearMonitoringResult> getClearMonitoringResult() {
         return clearMonitoringResult;

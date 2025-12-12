@@ -87,19 +87,6 @@ public class SetMonitoringResult implements JsonInterface {
     }
 
 
-    public SetMonitoringResult(Integer id, StatusInfo statusInfo, SetMonitoringStatusEnum status, MonitorEnum type, Component component, Variable variable, Integer severity, CustomData customData) {
-        super();
-        this.id = id;
-        this.statusInfo = statusInfo;
-        this.status = status;
-        this.type = type;
-        this.component = component;
-        this.variable = variable;
-        this.severity = severity;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

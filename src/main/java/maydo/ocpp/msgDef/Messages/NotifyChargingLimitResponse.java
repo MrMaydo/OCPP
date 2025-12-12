@@ -26,11 +26,6 @@ public class NotifyChargingLimitResponse implements JsonInterface {
     public NotifyChargingLimitResponse() {
     }
 
-    public NotifyChargingLimitResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

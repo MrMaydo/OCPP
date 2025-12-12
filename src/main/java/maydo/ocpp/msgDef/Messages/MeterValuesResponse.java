@@ -28,11 +28,6 @@ public class MeterValuesResponse implements JsonInterface {
     public MeterValuesResponse() {
     }
 
-    public MeterValuesResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

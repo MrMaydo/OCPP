@@ -65,17 +65,6 @@ public class NotifyReportRequest implements JsonInterface {
     }
 
 
-    public NotifyReportRequest(Integer requestId, Date generatedAt, List<ReportData> reportData, Boolean tbc, Integer seqNo, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.generatedAt = generatedAt;
-        this.reportData = reportData;
-        this.tbc = tbc;
-        this.seqNo = seqNo;
-        this.customData = customData;
-    }
-
-
     public Integer getRequestId() {
         return requestId;
     }

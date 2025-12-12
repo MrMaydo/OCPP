@@ -45,14 +45,6 @@ public class AFRRSignalRequest implements JsonInterface {
     }
 
 
-    public AFRRSignalRequest(Date timestamp, Integer signal, CustomData customData) {
-        super();
-        this.timestamp = timestamp;
-        this.signal = signal;
-        this.customData = customData;
-    }
-
-
     public Date getTimestamp() {
         return timestamp;
     }

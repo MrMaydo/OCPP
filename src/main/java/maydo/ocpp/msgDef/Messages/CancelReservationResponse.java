@@ -40,13 +40,6 @@ public class CancelReservationResponse implements JsonInterface {
     public CancelReservationResponse() {
     }
 
-    public CancelReservationResponse(CancelReservationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public CancelReservationStatusEnum getStatus() {
         return status;

@@ -40,13 +40,6 @@ public class PublishFirmwareResponse implements JsonInterface {
     public PublishFirmwareResponse() {
     }
 
-    public PublishFirmwareResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

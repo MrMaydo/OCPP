@@ -39,13 +39,6 @@ public class SetDefaultTariffResponse implements JsonInterface {
     public SetDefaultTariffResponse() {
     }
 
-    public SetDefaultTariffResponse(TariffSetStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public TariffSetStatusEnum getStatus() {
         return status;

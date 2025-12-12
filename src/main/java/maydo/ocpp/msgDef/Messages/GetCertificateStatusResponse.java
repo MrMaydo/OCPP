@@ -49,15 +49,6 @@ public class GetCertificateStatusResponse implements JsonInterface {
     }
 
 
-    public GetCertificateStatusResponse(GetCertificateStatusEnum status, StatusInfo statusInfo, String ocspResult, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.ocspResult = ocspResult;
-        this.customData = customData;
-    }
-
-
     public GetCertificateStatusEnum getStatus() {
         return status;
     }

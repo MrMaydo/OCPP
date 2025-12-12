@@ -42,14 +42,6 @@ public class EVPowerScheduleEntry implements JsonInterface {
     }
 
 
-    public EVPowerScheduleEntry(Integer duration, Float power, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.power = power;
-        this.customData = customData;
-    }
-
-
     public Integer getDuration() {
         return duration;
     }

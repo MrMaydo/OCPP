@@ -39,14 +39,6 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     }
 
 
-    public UpdateDynamicScheduleRequest(Integer chargingProfileId, ChargingScheduleUpdate scheduleUpdate, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.scheduleUpdate = scheduleUpdate;
-        this.customData = customData;
-    }
-
-
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }

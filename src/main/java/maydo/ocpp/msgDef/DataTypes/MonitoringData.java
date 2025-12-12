@@ -43,14 +43,6 @@ public class MonitoringData implements JsonInterface {
     public MonitoringData() {
     }
 
-    public MonitoringData(Component component, Variable variable, List<VariableMonitoring> variableMonitoring, CustomData customData) {
-        super();
-        this.component = component;
-        this.variable = variable;
-        this.variableMonitoring = variableMonitoring;
-        this.customData = customData;
-    }
-
 
     public Component getComponent() {
         return component;

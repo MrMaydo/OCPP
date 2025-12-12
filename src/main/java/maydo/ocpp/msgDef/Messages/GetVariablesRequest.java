@@ -33,12 +33,6 @@ public class GetVariablesRequest implements JsonInterface {
     public GetVariablesRequest() {
     }
 
-    public GetVariablesRequest(List<GetVariableData> getVariableData, CustomData customData) {
-        super();
-        this.getVariableData = getVariableData;
-        this.customData = customData;
-    }
-
 
     public List<GetVariableData> getGetVariableData() {
         return getVariableData;

@@ -38,13 +38,6 @@ public class TariffFixed implements JsonInterface {
     public TariffFixed() {
     }
 
-    public TariffFixed(List<TariffFixedPrice> prices, List<TaxRate> taxRates, CustomData customData) {
-        super();
-        this.prices = prices;
-        this.taxRates = taxRates;
-        this.customData = customData;
-    }
-
 
     public List<TariffFixedPrice> getPrices() {
         return prices;

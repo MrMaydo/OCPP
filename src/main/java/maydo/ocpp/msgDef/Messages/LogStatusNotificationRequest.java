@@ -47,15 +47,6 @@ public class LogStatusNotificationRequest implements JsonInterface {
     }
 
 
-    public LogStatusNotificationRequest(UploadLogStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.requestId = requestId;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
-
     public UploadLogStatusEnum getStatus() {
         return status;
     }

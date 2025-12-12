@@ -47,14 +47,6 @@ public class GetTariffsResponse implements JsonInterface {
     public GetTariffsResponse() {
     }
 
-    public GetTariffsResponse(TariffGetStatusEnum status, StatusInfo statusInfo, List<TariffAssignment> tariffAssignments, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.tariffAssignments = tariffAssignments;
-        this.customData = customData;
-    }
-
 
     public TariffGetStatusEnum getStatus() {
         return status;

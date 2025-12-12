@@ -32,13 +32,6 @@ public class RequestStopTransactionRequest implements JsonInterface {
     }
 
 
-    public RequestStopTransactionRequest(String transactionId, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

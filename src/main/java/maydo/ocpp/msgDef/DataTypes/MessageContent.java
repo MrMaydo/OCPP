@@ -46,15 +46,6 @@ public class MessageContent implements JsonInterface {
     }
 
 
-    public MessageContent(MessageFormatEnum format, String language, String content, CustomData customData) {
-        super();
-        this.format = format;
-        this.language = language;
-        this.content = content;
-        this.customData = customData;
-    }
-
-
     public MessageFormatEnum getFormat() {
         return format;
     }

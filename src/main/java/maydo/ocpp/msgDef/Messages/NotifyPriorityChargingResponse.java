@@ -24,11 +24,6 @@ public class NotifyPriorityChargingResponse implements JsonInterface {
     public NotifyPriorityChargingResponse() {
     }
 
-    public NotifyPriorityChargingResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

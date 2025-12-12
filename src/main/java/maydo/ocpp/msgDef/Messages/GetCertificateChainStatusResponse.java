@@ -33,12 +33,6 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
     public GetCertificateChainStatusResponse() {
     }
 
-    public GetCertificateChainStatusResponse(List<CertificateStatus> certificateStatus, CustomData customData) {
-        super();
-        this.certificateStatus = certificateStatus;
-        this.customData = customData;
-    }
-
 
     public List<CertificateStatus> getCertificateStatus() {
         return certificateStatus;

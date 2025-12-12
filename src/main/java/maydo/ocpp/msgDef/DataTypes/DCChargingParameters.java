@@ -90,20 +90,6 @@ public class DCChargingParameters implements JsonInterface {
     }
 
 
-    public DCChargingParameters(Float evMaxCurrent, Float evMaxVoltage, Float evMaxPower, Float evEnergyCapacity, Float energyAmount, Integer stateOfCharge, Integer fullSoC, Integer bulkSoC, CustomData customData) {
-        super();
-        this.evMaxCurrent = evMaxCurrent;
-        this.evMaxVoltage = evMaxVoltage;
-        this.evMaxPower = evMaxPower;
-        this.evEnergyCapacity = evEnergyCapacity;
-        this.energyAmount = energyAmount;
-        this.stateOfCharge = stateOfCharge;
-        this.fullSoC = fullSoC;
-        this.bulkSoC = bulkSoC;
-        this.customData = customData;
-    }
-
-
     public Float getEvMaxCurrent() {
         return evMaxCurrent;
     }

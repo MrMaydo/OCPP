@@ -33,12 +33,6 @@ public class ClearTariffsResponse implements JsonInterface {
     public ClearTariffsResponse() {
     }
 
-    public ClearTariffsResponse(List<ClearTariffsResult> clearTariffsResult, CustomData customData) {
-        super();
-        this.clearTariffsResult = clearTariffsResult;
-        this.customData = customData;
-    }
-
 
     public List<ClearTariffsResult> getClearTariffsResult() {
         return clearTariffsResult;

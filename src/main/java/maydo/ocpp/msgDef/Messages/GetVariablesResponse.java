@@ -34,12 +34,6 @@ public class GetVariablesResponse implements JsonInterface {
     public GetVariablesResponse() {
     }
 
-    public GetVariablesResponse(List<GetVariableResult> getVariableResult, CustomData customData) {
-        super();
-        this.getVariableResult = getVariableResult;
-        this.customData = customData;
-    }
-
 
     public List<GetVariableResult> getGetVariableResult() {
         return getVariableResult;

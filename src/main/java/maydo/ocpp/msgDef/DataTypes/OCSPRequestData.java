@@ -58,17 +58,6 @@ public class OCSPRequestData implements JsonInterface {
     }
 
 
-    public OCSPRequestData(HashAlgorithmEnum hashAlgorithm, String issuerNameHash, String issuerKeyHash, String serialNumber, String responderURL, CustomData customData) {
-        super();
-        this.hashAlgorithm = hashAlgorithm;
-        this.issuerNameHash = issuerNameHash;
-        this.issuerKeyHash = issuerKeyHash;
-        this.serialNumber = serialNumber;
-        this.responderURL = responderURL;
-        this.customData = customData;
-    }
-
-
     public HashAlgorithmEnum getHashAlgorithm() {
         return hashAlgorithm;
     }

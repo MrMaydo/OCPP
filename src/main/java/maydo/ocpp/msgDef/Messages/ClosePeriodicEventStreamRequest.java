@@ -32,13 +32,6 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
     }
 
 
-    public ClosePeriodicEventStreamRequest(Integer id, CustomData customData) {
-        super();
-        this.id = id;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

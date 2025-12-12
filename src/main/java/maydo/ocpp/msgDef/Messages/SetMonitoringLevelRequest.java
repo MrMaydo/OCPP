@@ -44,13 +44,6 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     }
 
 
-    public SetMonitoringLevelRequest(Integer severity, CustomData customData) {
-        super();
-        this.severity = severity;
-        this.customData = customData;
-    }
-
-
     public Integer getSeverity() {
         return severity;
     }

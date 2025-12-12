@@ -39,13 +39,6 @@ public class InstallCertificateResponse implements JsonInterface {
     public InstallCertificateResponse() {
     }
 
-    public InstallCertificateResponse(InstallCertificateStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public InstallCertificateStatusEnum getStatus() {
         return status;

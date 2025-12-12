@@ -24,11 +24,6 @@ public class NotifyEventResponse implements JsonInterface {
     public NotifyEventResponse() {
     }
 
-    public NotifyEventResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

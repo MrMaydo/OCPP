@@ -50,15 +50,6 @@ public class AuthorizeRequest implements JsonInterface {
     }
 
 
-    public AuthorizeRequest(IdToken idToken, String certificate, List<OCSPRequestData> iso15118CertificateHashData, CustomData customData) {
-        super();
-        this.idToken = idToken;
-        this.certificate = certificate;
-        this.iso15118CertificateHashData = iso15118CertificateHashData;
-        this.customData = customData;
-    }
-
-
     public IdToken getIdToken() {
         return idToken;
     }

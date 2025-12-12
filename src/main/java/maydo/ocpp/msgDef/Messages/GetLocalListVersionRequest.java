@@ -25,11 +25,6 @@ public class GetLocalListVersionRequest implements JsonInterface {
     public GetLocalListVersionRequest() {
     }
 
-    public GetLocalListVersionRequest(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

@@ -78,20 +78,6 @@ public class FreqDroop implements JsonInterface {
     }
 
 
-    public FreqDroop(Integer priority, Float overFreq, Float underFreq, Float overDroop, Float underDroop, Float responseTime, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.overFreq = overFreq;
-        this.underFreq = underFreq;
-        this.overDroop = overDroop;
-        this.underDroop = underDroop;
-        this.responseTime = responseTime;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

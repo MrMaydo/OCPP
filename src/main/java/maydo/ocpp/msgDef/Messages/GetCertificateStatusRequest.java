@@ -32,12 +32,6 @@ public class GetCertificateStatusRequest implements JsonInterface {
     public GetCertificateStatusRequest() {
     }
 
-    public GetCertificateStatusRequest(OCSPRequestData ocspRequestData, CustomData customData) {
-        super();
-        this.ocspRequestData = ocspRequestData;
-        this.customData = customData;
-    }
-
 
     public OCSPRequestData getOcspRequestData() {
         return ocspRequestData;

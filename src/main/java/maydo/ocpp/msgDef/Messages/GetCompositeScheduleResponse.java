@@ -48,14 +48,6 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     public GetCompositeScheduleResponse() {
     }
 
-    public GetCompositeScheduleResponse(GenericStatusEnum status, StatusInfo statusInfo, CompositeSchedule schedule, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.schedule = schedule;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

@@ -38,14 +38,6 @@ public class NotifySettlementResponse implements JsonInterface {
     }
 
 
-    public NotifySettlementResponse(String receiptUrl, String receiptId, CustomData customData) {
-        super();
-        this.receiptUrl = receiptUrl;
-        this.receiptId = receiptId;
-        this.customData = customData;
-    }
-
-
     public String getReceiptUrl() {
         return receiptUrl;
     }

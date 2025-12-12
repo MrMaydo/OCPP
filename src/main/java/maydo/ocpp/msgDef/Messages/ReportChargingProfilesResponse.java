@@ -25,11 +25,6 @@ public class ReportChargingProfilesResponse implements JsonInterface {
     public ReportChargingProfilesResponse() {
     }
 
-    public ReportChargingProfilesResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

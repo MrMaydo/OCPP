@@ -40,13 +40,6 @@ public class SetNetworkProfileResponse implements JsonInterface {
     public SetNetworkProfileResponse() {
     }
 
-    public SetNetworkProfileResponse(SetNetworkProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public SetNetworkProfileStatusEnum getStatus() {
         return status;

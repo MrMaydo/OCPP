@@ -45,15 +45,6 @@ public class ClearTariffsResult implements JsonInterface {
     }
 
 
-    public ClearTariffsResult(StatusInfo statusInfo, String tariffId, TariffClearStatusEnum status, CustomData customData) {
-        super();
-        this.statusInfo = statusInfo;
-        this.tariffId = tariffId;
-        this.status = status;
-        this.customData = customData;
-    }
-
-
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }

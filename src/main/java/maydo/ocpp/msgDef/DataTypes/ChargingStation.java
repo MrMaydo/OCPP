@@ -56,17 +56,6 @@ public class ChargingStation implements JsonInterface {
     }
 
 
-    public ChargingStation(String serialNumber, String model, Modem modem, String vendorName, String firmwareVersion, CustomData customData) {
-        super();
-        this.serialNumber = serialNumber;
-        this.model = model;
-        this.modem = modem;
-        this.vendorName = vendorName;
-        this.firmwareVersion = firmwareVersion;
-        this.customData = customData;
-    }
-
-
     public String getSerialNumber() {
         return serialNumber;
     }

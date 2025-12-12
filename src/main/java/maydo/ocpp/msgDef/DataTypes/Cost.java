@@ -45,15 +45,6 @@ public class Cost implements JsonInterface {
     }
 
 
-    public Cost(CostKindEnum costKind, Integer amount, Integer amountMultiplier, CustomData customData) {
-        super();
-        this.costKind = costKind;
-        this.amount = amount;
-        this.amountMultiplier = amountMultiplier;
-        this.customData = customData;
-    }
-
-
     public CostKindEnum getCostKind() {
         return costKind;
     }

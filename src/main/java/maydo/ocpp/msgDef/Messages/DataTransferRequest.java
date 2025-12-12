@@ -44,15 +44,6 @@ public class DataTransferRequest implements JsonInterface {
     }
 
 
-    public DataTransferRequest(String messageId, Object data, String vendorId, CustomData customData) {
-        super();
-        this.messageId = messageId;
-        this.data = data;
-        this.vendorId = vendorId;
-        this.customData = customData;
-    }
-
-
     public String getMessageId() {
         return messageId;
     }

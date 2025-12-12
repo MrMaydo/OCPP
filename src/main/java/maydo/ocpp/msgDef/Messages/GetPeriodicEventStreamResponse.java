@@ -32,12 +32,6 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
     public GetPeriodicEventStreamResponse() {
     }
 
-    public GetPeriodicEventStreamResponse(List<ConstantStreamData> constantStreamData, CustomData customData) {
-        super();
-        this.constantStreamData = constantStreamData;
-        this.customData = customData;
-    }
-
     public List<ConstantStreamData> getConstantStreamData() {
         return constantStreamData;
     }

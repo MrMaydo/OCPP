@@ -58,16 +58,6 @@ public class CostDetails implements JsonInterface {
     }
 
 
-    public CostDetails(List<ChargingPeriod> chargingPeriods, TotalCost totalCost, TotalUsage totalUsage, Boolean failureToCalculate, String failureReason, CustomData customData) {
-        super();
-        this.chargingPeriods = chargingPeriods;
-        this.totalCost = totalCost;
-        this.totalUsage = totalUsage;
-        this.failureToCalculate = failureToCalculate;
-        this.failureReason = failureReason;
-        this.customData = customData;
-    }
-
     public List<ChargingPeriod> getChargingPeriods() {
         return chargingPeriods;
     }

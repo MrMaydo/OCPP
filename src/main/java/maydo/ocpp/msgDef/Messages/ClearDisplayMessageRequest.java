@@ -35,13 +35,6 @@ public class ClearDisplayMessageRequest implements JsonInterface {
     }
 
 
-    public ClearDisplayMessageRequest(Integer id, CustomData customData) {
-        super();
-        this.id = id;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

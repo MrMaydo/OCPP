@@ -33,12 +33,6 @@ public class SetVariablesRequest implements JsonInterface {
     public SetVariablesRequest() {
     }
 
-    public SetVariablesRequest(List<SetVariableData> setVariableData, CustomData customData) {
-        super();
-        this.setVariableData = setVariableData;
-        this.customData = customData;
-    }
-
 
     public List<SetVariableData> getSetVariableData() {
         return setVariableData;

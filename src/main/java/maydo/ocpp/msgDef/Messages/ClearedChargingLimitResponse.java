@@ -26,11 +26,6 @@ public class ClearedChargingLimitResponse implements JsonInterface {
     public ClearedChargingLimitResponse() {
     }
 
-    public ClearedChargingLimitResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

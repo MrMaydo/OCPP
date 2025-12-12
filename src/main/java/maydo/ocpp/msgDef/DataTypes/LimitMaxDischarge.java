@@ -66,17 +66,6 @@ public class LimitMaxDischarge implements JsonInterface {
     }
 
 
-    public LimitMaxDischarge(Integer priority, Float pctMaxDischargePower, DERCurve powerMonitoringMustTrip, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.pctMaxDischargePower = pctMaxDischargePower;
-        this.powerMonitoringMustTrip = powerMonitoringMustTrip;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

@@ -66,17 +66,6 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     }
 
 
-    public Get15118EVCertificateRequest(String iso15118SchemaVersion, CertificateActionEnum action, String exiRequest, Integer maximumContractCertificateChains, List<String> prioritizedEMAIDs, CustomData customData) {
-        super();
-        this.iso15118SchemaVersion = iso15118SchemaVersion;
-        this.action = action;
-        this.exiRequest = exiRequest;
-        this.maximumContractCertificateChains = maximumContractCertificateChains;
-        this.prioritizedEMAIDs = prioritizedEMAIDs;
-        this.customData = customData;
-    }
-
-
     public String getIso15118SchemaVersion() {
         return iso15118SchemaVersion;
     }

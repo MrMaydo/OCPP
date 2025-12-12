@@ -94,22 +94,6 @@ public class NotifySettlementRequest implements JsonInterface {
     }
 
 
-    public NotifySettlementRequest(String transactionId, String pspRef, PaymentStatusEnum status, String statusInfo, Float settlementAmount, Date settlementTime, String receiptId, String receiptUrl, Address vatCompany, String vatNumber, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.pspRef = pspRef;
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.settlementAmount = settlementAmount;
-        this.settlementTime = settlementTime;
-        this.receiptId = receiptId;
-        this.receiptUrl = receiptUrl;
-        this.vatCompany = vatCompany;
-        this.vatNumber = vatNumber;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

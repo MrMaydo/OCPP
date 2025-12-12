@@ -39,13 +39,6 @@ public class ResetResponse implements JsonInterface {
     public ResetResponse() {
     }
 
-    public ResetResponse(ResetStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ResetStatusEnum getStatus() {
         return status;

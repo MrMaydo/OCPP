@@ -76,19 +76,6 @@ public class SampledValue implements JsonInterface {
     }
 
 
-    public SampledValue(Float value, MeasurandEnum measurand, ReadingContextEnum context, PhaseEnum phase, LocationEnum location, SignedMeterValue signedMeterValue, UnitOfMeasure unitOfMeasure, CustomData customData) {
-        super();
-        this.value = value;
-        this.measurand = measurand;
-        this.context = context;
-        this.phase = phase;
-        this.location = location;
-        this.signedMeterValue = signedMeterValue;
-        this.unitOfMeasure = unitOfMeasure;
-        this.customData = customData;
-    }
-
-
     public Float getValue() {
         return value;
     }

@@ -90,20 +90,6 @@ public class TariffConditionsFixed implements JsonInterface {
     }
 
 
-    public TariffConditionsFixed(String startTimeOfDay, String endTimeOfDay, List<DayOfWeekEnum> dayOfWeek, String validFromDate, String validToDate, EvseKindEnum evseKind, String paymentBrand, String paymentRecognition, CustomData customData) {
-        super();
-        this.startTimeOfDay = startTimeOfDay;
-        this.endTimeOfDay = endTimeOfDay;
-        this.dayOfWeek = dayOfWeek;
-        this.validFromDate = validFromDate;
-        this.validToDate = validToDate;
-        this.evseKind = evseKind;
-        this.paymentBrand = paymentBrand;
-        this.paymentRecognition = paymentRecognition;
-        this.customData = customData;
-    }
-
-
     public String getStartTimeOfDay() {
         return startTimeOfDay;
     }

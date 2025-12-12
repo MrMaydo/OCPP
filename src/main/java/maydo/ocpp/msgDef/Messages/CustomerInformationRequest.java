@@ -69,17 +69,6 @@ public class CustomerInformationRequest implements JsonInterface {
     }
 
 
-    public CustomerInformationRequest(CertificateHashData customerCertificate, IdToken idToken, Integer requestId, Boolean report, Boolean clear, String customerIdentifier, CustomData customData) {
-        super();
-        this.customerCertificate = customerCertificate;
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.report = report;
-        this.clear = clear;
-        this.customerIdentifier = customerIdentifier;
-        this.customData = customData;
-    }
-
     public CertificateHashData getCustomerCertificate() {
         return customerCertificate;
     }

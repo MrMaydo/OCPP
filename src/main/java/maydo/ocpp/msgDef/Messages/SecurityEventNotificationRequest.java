@@ -49,15 +49,6 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     }
 
 
-    public SecurityEventNotificationRequest(String type, Date timestamp, String techInfo, CustomData customData) {
-        super();
-        this.type = type;
-        this.timestamp = timestamp;
-        this.techInfo = techInfo;
-        this.customData = customData;
-    }
-
-
     public String getType() {
         return type;
     }

@@ -47,15 +47,6 @@ public class DataTransferResponse implements JsonInterface {
     }
 
 
-    public DataTransferResponse(DataTransferStatusEnum status, StatusInfo statusInfo, Object data, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.data = data;
-        this.customData = customData;
-    }
-
-
     public DataTransferStatusEnum getStatus() {
         return status;
     }

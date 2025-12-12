@@ -48,15 +48,6 @@ public class VoltageParams implements JsonInterface {
     }
 
 
-    public VoltageParams(Float hv10MinMeanValue, Float hv10MinMeanTripDelay, PowerDuringCessationEnum powerDuringCessation, CustomData customData) {
-        super();
-        this.hv10MinMeanValue = hv10MinMeanValue;
-        this.hv10MinMeanTripDelay = hv10MinMeanTripDelay;
-        this.powerDuringCessation = powerDuringCessation;
-        this.customData = customData;
-    }
-
-
     public Float getHv10MinMeanValue() {
         return hv10MinMeanValue;
     }

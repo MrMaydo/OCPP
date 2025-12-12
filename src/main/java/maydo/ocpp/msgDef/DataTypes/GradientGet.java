@@ -37,14 +37,6 @@ public class GradientGet implements JsonInterface {
     }
 
 
-    public GradientGet(Gradient gradient, String id, CustomData customData) {
-        super();
-        this.gradient = gradient;
-        this.id = id;
-        this.customData = customData;
-    }
-
-
     public Gradient getGradient() {
         return gradient;
     }

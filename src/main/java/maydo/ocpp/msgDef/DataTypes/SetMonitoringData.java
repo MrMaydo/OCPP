@@ -93,20 +93,6 @@ public class SetMonitoringData implements JsonInterface {
     }
 
 
-    public SetMonitoringData(Integer id, PeriodicEventStreamParams periodicEventStream, Boolean transaction, Float value, MonitorEnum type, Integer severity, Component component, Variable variable, CustomData customData) {
-        super();
-        this.id = id;
-        this.periodicEventStream = periodicEventStream;
-        this.transaction = transaction;
-        this.value = value;
-        this.type = type;
-        this.severity = severity;
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

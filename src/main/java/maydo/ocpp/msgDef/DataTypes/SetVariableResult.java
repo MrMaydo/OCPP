@@ -56,16 +56,6 @@ public class SetVariableResult implements JsonInterface {
     public SetVariableResult() {
     }
 
-    public SetVariableResult(AttributeEnum attributeType, SetVariableStatusEnum attributeStatus, StatusInfo attributeStatusInfo, Component component, Variable variable, CustomData customData) {
-        super();
-        this.attributeType = attributeType;
-        this.attributeStatus = attributeStatus;
-        this.attributeStatusInfo = attributeStatusInfo;
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
 
     public AttributeEnum getAttributeType() {
         return attributeType;

@@ -25,11 +25,6 @@ public class PublishFirmwareStatusNotificationResponse implements JsonInterface 
     public PublishFirmwareStatusNotificationResponse() {
     }
 
-    public PublishFirmwareStatusNotificationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

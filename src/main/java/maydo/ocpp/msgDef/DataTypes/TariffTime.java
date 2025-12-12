@@ -38,13 +38,6 @@ public class TariffTime implements JsonInterface {
     public TariffTime() {
     }
 
-    public TariffTime(List<TariffTimePrice> prices, List<TaxRate> taxRates, CustomData customData) {
-        super();
-        this.prices = prices;
-        this.taxRates = taxRates;
-        this.customData = customData;
-    }
-
 
     public List<TariffTimePrice> getPrices() {
         return prices;

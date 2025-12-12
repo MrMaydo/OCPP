@@ -39,14 +39,6 @@ public class TotalPrice implements JsonInterface {
     }
 
 
-    public TotalPrice(Float exclTax, Float inclTax, CustomData customData) {
-        super();
-        this.exclTax = exclTax;
-        this.inclTax = inclTax;
-        this.customData = customData;
-    }
-
-
     public Float getExclTax() {
         return exclTax;
     }

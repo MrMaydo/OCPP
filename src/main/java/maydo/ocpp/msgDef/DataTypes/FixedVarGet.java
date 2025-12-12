@@ -49,16 +49,6 @@ public class FixedVarGet implements JsonInterface {
     }
 
 
-    public FixedVarGet(FixedVar fixedVar, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
-        super();
-        this.fixedVar = fixedVar;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.isSuperseded = isSuperseded;
-        this.customData = customData;
-    }
-
-
     public FixedVar getFixedVar() {
         return fixedVar;
     }

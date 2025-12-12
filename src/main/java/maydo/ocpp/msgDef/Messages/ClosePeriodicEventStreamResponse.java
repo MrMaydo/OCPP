@@ -24,11 +24,6 @@ public class ClosePeriodicEventStreamResponse implements JsonInterface {
     public ClosePeriodicEventStreamResponse() {
     }
 
-    public ClosePeriodicEventStreamResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

@@ -57,16 +57,6 @@ public class NotifyPeriodicEventStream implements JsonInterface {
     }
 
 
-    public NotifyPeriodicEventStream(List<StreamDataElement> data, Integer id, Integer pending, Date basetime, CustomData customData) {
-        super();
-        this.data = data;
-        this.id = id;
-        this.pending = pending;
-        this.basetime = basetime;
-        this.customData = customData;
-    }
-
-
     public List<StreamDataElement> getData() {
         return data;
     }

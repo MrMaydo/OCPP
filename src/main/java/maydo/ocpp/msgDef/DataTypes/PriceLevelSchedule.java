@@ -63,17 +63,6 @@ public class PriceLevelSchedule implements JsonInterface {
     }
 
 
-    public PriceLevelSchedule(List<PriceLevelScheduleEntry> priceLevelScheduleEntries, Date timeAnchor, Integer priceScheduleId, String priceScheduleDescription, Integer numberOfPriceLevels, CustomData customData) {
-        super();
-        this.priceLevelScheduleEntries = priceLevelScheduleEntries;
-        this.timeAnchor = timeAnchor;
-        this.priceScheduleId = priceScheduleId;
-        this.priceScheduleDescription = priceScheduleDescription;
-        this.numberOfPriceLevels = numberOfPriceLevels;
-        this.customData = customData;
-    }
-
-
     public List<PriceLevelScheduleEntry> getPriceLevelScheduleEntries() {
         return priceLevelScheduleEntries;
     }

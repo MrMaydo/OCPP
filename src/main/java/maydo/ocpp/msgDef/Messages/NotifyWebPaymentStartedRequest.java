@@ -38,14 +38,6 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
     }
 
 
-    public NotifyWebPaymentStartedRequest(Integer evseId, Integer timeout, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.timeout = timeout;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

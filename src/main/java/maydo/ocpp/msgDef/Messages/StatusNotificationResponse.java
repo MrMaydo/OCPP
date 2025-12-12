@@ -28,11 +28,6 @@ public class StatusNotificationResponse implements JsonInterface {
     public StatusNotificationResponse() {
     }
 
-    public StatusNotificationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

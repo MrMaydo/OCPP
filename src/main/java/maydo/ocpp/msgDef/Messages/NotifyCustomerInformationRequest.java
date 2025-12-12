@@ -62,17 +62,6 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     }
 
 
-    public NotifyCustomerInformationRequest(String data, Boolean tbc, Integer seqNo, Date generatedAt, Integer requestId, CustomData customData) {
-        super();
-        this.data = data;
-        this.tbc = tbc;
-        this.seqNo = seqNo;
-        this.generatedAt = generatedAt;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
-
-
     public String getData() {
         return data;
     }

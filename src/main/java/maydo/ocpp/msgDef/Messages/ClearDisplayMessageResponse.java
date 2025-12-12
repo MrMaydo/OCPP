@@ -41,13 +41,6 @@ public class ClearDisplayMessageResponse implements JsonInterface {
     public ClearDisplayMessageResponse() {
     }
 
-    public ClearDisplayMessageResponse(ClearMessageStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ClearMessageStatusEnum getStatus() {
         return status;

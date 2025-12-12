@@ -25,11 +25,6 @@ public class ClearCacheRequest implements JsonInterface {
     public ClearCacheRequest() {
     }
 
-    public ClearCacheRequest(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

@@ -38,13 +38,6 @@ public class HeartbeatResponse implements JsonInterface {
     }
 
 
-    public HeartbeatResponse(Date currentTime, CustomData customData) {
-        super();
-        this.currentTime = currentTime;
-        this.customData = customData;
-    }
-
-
     public Date getCurrentTime() {
         return currentTime;
     }

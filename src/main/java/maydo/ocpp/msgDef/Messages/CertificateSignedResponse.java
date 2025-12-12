@@ -40,13 +40,6 @@ public class CertificateSignedResponse implements JsonInterface {
     public CertificateSignedResponse() {
     }
 
-    public CertificateSignedResponse(CertificateSignedStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public CertificateSignedStatusEnum getStatus() {
         return status;

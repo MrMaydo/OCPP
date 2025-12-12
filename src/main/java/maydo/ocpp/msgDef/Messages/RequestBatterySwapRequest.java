@@ -39,14 +39,6 @@ public class RequestBatterySwapRequest implements JsonInterface {
     }
 
 
-    public RequestBatterySwapRequest(IdToken idToken, Integer requestId, CustomData customData) {
-        super();
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
-
-
     public IdToken getIdToken() {
         return idToken;
     }

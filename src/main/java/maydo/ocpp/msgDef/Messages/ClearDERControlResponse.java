@@ -39,13 +39,6 @@ public class ClearDERControlResponse implements JsonInterface {
     public ClearDERControlResponse() {
     }
 
-    public ClearDERControlResponse(DERControlStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public DERControlStatusEnum getStatus() {
         return status;

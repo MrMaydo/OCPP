@@ -40,14 +40,6 @@ public class EVPriceRule implements JsonInterface {
     }
 
 
-    public EVPriceRule(Float energyFee, Float powerRangeStart, CustomData customData) {
-        super();
-        this.energyFee = energyFee;
-        this.powerRangeStart = powerRangeStart;
-        this.customData = customData;
-    }
-
-
     public Float getEnergyFee() {
         return energyFee;
     }

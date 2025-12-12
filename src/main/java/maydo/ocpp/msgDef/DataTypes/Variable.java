@@ -40,14 +40,6 @@ public class Variable implements JsonInterface {
     }
 
 
-    public Variable(String name, String instance, CustomData customData) {
-        super();
-        this.name = name;
-        this.instance = instance;
-        this.customData = customData;
-    }
-
-
     public String getName() {
         return name;
     }

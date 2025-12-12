@@ -45,14 +45,6 @@ public class MeterValuesRequest implements JsonInterface {
     }
 
 
-    public MeterValuesRequest(Integer evseId, List<MeterValue> meterValue, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.meterValue = meterValue;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

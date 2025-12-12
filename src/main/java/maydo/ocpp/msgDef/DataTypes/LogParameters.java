@@ -48,15 +48,6 @@ public class LogParameters implements JsonInterface {
     }
 
 
-    public LogParameters(String remoteLocation, Date oldestTimestamp, Date latestTimestamp, CustomData customData) {
-        super();
-        this.remoteLocation = remoteLocation;
-        this.oldestTimestamp = oldestTimestamp;
-        this.latestTimestamp = latestTimestamp;
-        this.customData = customData;
-    }
-
-
     public String getRemoteLocation() {
         return remoteLocation;
     }

@@ -47,14 +47,6 @@ public class GetReportRequest implements JsonInterface {
     }
 
 
-    public GetReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<ComponentCriterionEnum> componentCriteria, CustomData customData) {
-        super();
-        this.componentVariable = componentVariable;
-        this.requestId = requestId;
-        this.componentCriteria = componentCriteria;
-        this.customData = customData;
-    }
-
     public List<ComponentVariable> getComponentVariable() {
         return componentVariable;
     }

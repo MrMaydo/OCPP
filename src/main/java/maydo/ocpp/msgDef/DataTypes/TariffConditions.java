@@ -173,30 +173,6 @@ public class TariffConditions implements JsonInterface {
     }
 
 
-    public TariffConditions(String startTimeOfDay, String endTimeOfDay, List<DayOfWeekEnum> dayOfWeek, String validFromDate, String validToDate, EvseKindEnum evseKind, Float minEnergy, Float maxEnergy, Float minCurrent, Float maxCurrent, Float minPower, Float maxPower, Integer minTime, Integer maxTime, Integer minChargingTime, Integer maxChargingTime, Integer minIdleTime, Integer maxIdleTime, CustomData customData) {
-        super();
-        this.startTimeOfDay = startTimeOfDay;
-        this.endTimeOfDay = endTimeOfDay;
-        this.dayOfWeek = dayOfWeek;
-        this.validFromDate = validFromDate;
-        this.validToDate = validToDate;
-        this.evseKind = evseKind;
-        this.minEnergy = minEnergy;
-        this.maxEnergy = maxEnergy;
-        this.minCurrent = minCurrent;
-        this.maxCurrent = maxCurrent;
-        this.minPower = minPower;
-        this.maxPower = maxPower;
-        this.minTime = minTime;
-        this.maxTime = maxTime;
-        this.minChargingTime = minChargingTime;
-        this.maxChargingTime = maxChargingTime;
-        this.minIdleTime = minIdleTime;
-        this.maxIdleTime = maxIdleTime;
-        this.customData = customData;
-    }
-
-
     public String getStartTimeOfDay() {
         return startTimeOfDay;
     }

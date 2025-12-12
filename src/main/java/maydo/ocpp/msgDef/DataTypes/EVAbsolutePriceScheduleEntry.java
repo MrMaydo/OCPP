@@ -38,14 +38,6 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     }
 
 
-    public EVAbsolutePriceScheduleEntry(Integer duration, List<EVPriceRule> evPriceRule, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.evPriceRule = evPriceRule;
-        this.customData = customData;
-    }
-
-
     public Integer getDuration() {
         return duration;
     }

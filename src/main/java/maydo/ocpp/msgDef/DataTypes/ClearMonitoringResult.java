@@ -44,15 +44,6 @@ public class ClearMonitoringResult implements JsonInterface {
     }
 
 
-    public ClearMonitoringResult(ClearMonitoringStatusEnum status, Integer id, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.id = id;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
-
     public ClearMonitoringStatusEnum getStatus() {
         return status;
     }

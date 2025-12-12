@@ -38,14 +38,6 @@ public class GetTransactionStatusResponse implements JsonInterface {
     }
 
 
-    public GetTransactionStatusResponse(Boolean ongoingIndicator, Boolean messagesInQueue, CustomData customData) {
-        super();
-        this.ongoingIndicator = ongoingIndicator;
-        this.messagesInQueue = messagesInQueue;
-        this.customData = customData;
-    }
-
-
     public Boolean getOngoingIndicator() {
         return ongoingIndicator;
     }

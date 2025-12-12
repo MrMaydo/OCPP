@@ -231,36 +231,6 @@ public class V2XChargingParameters implements JsonInterface {
     }
 
 
-    public V2XChargingParameters(Float minChargePower, Float minChargePowerL2, Float minChargePowerL3, Float maxChargePower, Float maxChargePowerL2, Float maxChargePowerL3, Float minDischargePower, Float minDischargePowerL2, Float minDischargePowerL3, Float maxDischargePower, Float maxDischargePowerL2, Float maxDischargePowerL3, Float minChargeCurrent, Float maxChargeCurrent, Float minDischargeCurrent, Float maxDischargeCurrent, Float minVoltage, Float maxVoltage, Float evTargetEnergyRequest, Float evMinEnergyRequest, Float evMaxEnergyRequest, Float evMinV2XEnergyRequest, Float evMaxV2XEnergyRequest, Integer targetSoC, CustomData customData) {
-        super();
-        this.minChargePower = minChargePower;
-        this.minChargePowerL2 = minChargePowerL2;
-        this.minChargePowerL3 = minChargePowerL3;
-        this.maxChargePower = maxChargePower;
-        this.maxChargePowerL2 = maxChargePowerL2;
-        this.maxChargePowerL3 = maxChargePowerL3;
-        this.minDischargePower = minDischargePower;
-        this.minDischargePowerL2 = minDischargePowerL2;
-        this.minDischargePowerL3 = minDischargePowerL3;
-        this.maxDischargePower = maxDischargePower;
-        this.maxDischargePowerL2 = maxDischargePowerL2;
-        this.maxDischargePowerL3 = maxDischargePowerL3;
-        this.minChargeCurrent = minChargeCurrent;
-        this.maxChargeCurrent = maxChargeCurrent;
-        this.minDischargeCurrent = minDischargeCurrent;
-        this.maxDischargeCurrent = maxDischargeCurrent;
-        this.minVoltage = minVoltage;
-        this.maxVoltage = maxVoltage;
-        this.evTargetEnergyRequest = evTargetEnergyRequest;
-        this.evMinEnergyRequest = evMinEnergyRequest;
-        this.evMaxEnergyRequest = evMaxEnergyRequest;
-        this.evMinV2XEnergyRequest = evMinV2XEnergyRequest;
-        this.evMaxV2XEnergyRequest = evMaxV2XEnergyRequest;
-        this.targetSoC = targetSoC;
-        this.customData = customData;
-    }
-
-
     public Float getMinChargePower() {
         return minChargePower;
     }

@@ -39,13 +39,6 @@ public class UpdateDynamicScheduleResponse implements JsonInterface {
     public UpdateDynamicScheduleResponse() {
     }
 
-    public UpdateDynamicScheduleResponse(ChargingProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ChargingProfileStatusEnum getStatus() {
         return status;

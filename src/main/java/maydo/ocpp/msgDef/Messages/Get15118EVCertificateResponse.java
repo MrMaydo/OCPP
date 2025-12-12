@@ -56,16 +56,6 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     }
 
 
-    public Get15118EVCertificateResponse(Iso15118EVCertificateStatusEnum status, StatusInfo statusInfo, String exiResponse, Integer remainingContracts, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.exiResponse = exiResponse;
-        this.remainingContracts = remainingContracts;
-        this.customData = customData;
-    }
-
-
     public Iso15118EVCertificateStatusEnum getStatus() {
         return status;
     }

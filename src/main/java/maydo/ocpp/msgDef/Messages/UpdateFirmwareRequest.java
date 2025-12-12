@@ -54,16 +54,6 @@ public class UpdateFirmwareRequest implements JsonInterface {
     }
 
 
-    public UpdateFirmwareRequest(Integer retries, Integer retryInterval, Integer requestId, Firmware firmware, CustomData customData) {
-        super();
-        this.retries = retries;
-        this.retryInterval = retryInterval;
-        this.requestId = requestId;
-        this.firmware = firmware;
-        this.customData = customData;
-    }
-
-
     public Integer getRetries() {
         return retries;
     }

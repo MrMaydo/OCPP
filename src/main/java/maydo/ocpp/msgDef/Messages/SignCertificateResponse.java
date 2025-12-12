@@ -39,13 +39,6 @@ public class SignCertificateResponse implements JsonInterface {
     public SignCertificateResponse() {
     }
 
-    public SignCertificateResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

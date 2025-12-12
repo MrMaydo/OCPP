@@ -63,17 +63,6 @@ public class RequestStartTransactionRequest implements JsonInterface {
     }
 
 
-    public RequestStartTransactionRequest(Integer evseId, IdToken groupIdToken, IdToken idToken, Integer remoteStartId, ChargingProfile chargingProfile, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.groupIdToken = groupIdToken;
-        this.idToken = idToken;
-        this.remoteStartId = remoteStartId;
-        this.chargingProfile = chargingProfile;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

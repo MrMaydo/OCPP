@@ -34,12 +34,6 @@ public class SetVariableMonitoringResponse implements JsonInterface {
     public SetVariableMonitoringResponse() {
     }
 
-    public SetVariableMonitoringResponse(List<SetMonitoringResult> setMonitoringResult, CustomData customData) {
-        super();
-        this.setMonitoringResult = setMonitoringResult;
-        this.customData = customData;
-    }
-
 
     public List<SetMonitoringResult> getSetMonitoringResult() {
         return setMonitoringResult;

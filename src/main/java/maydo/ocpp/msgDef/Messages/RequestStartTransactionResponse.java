@@ -48,15 +48,6 @@ public class RequestStartTransactionResponse implements JsonInterface {
     }
 
 
-    public RequestStartTransactionResponse(RequestStartStopStatusEnum status, StatusInfo statusInfo, String transactionId, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
-
-
     public RequestStartStopStatusEnum getStatus() {
         return status;
     }

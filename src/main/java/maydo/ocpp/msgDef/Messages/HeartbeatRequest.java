@@ -25,11 +25,6 @@ public class HeartbeatRequest implements JsonInterface {
     public HeartbeatRequest() {
     }
 
-    public HeartbeatRequest(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

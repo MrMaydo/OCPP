@@ -29,11 +29,6 @@ public class CustomData implements JsonInterface {
     public CustomData() {
     }
 
-    public CustomData(String vendorId) {
-        super();
-        this.vendorId = vendorId;
-    }
-
 
     public String getVendorId() {
         return vendorId;

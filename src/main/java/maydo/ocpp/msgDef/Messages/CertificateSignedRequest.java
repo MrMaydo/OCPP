@@ -53,15 +53,6 @@ public class CertificateSignedRequest implements JsonInterface {
     }
 
 
-    public CertificateSignedRequest(String certificateChain, CertificateSigningUseEnum certificateType, Integer requestId, CustomData customData) {
-        super();
-        this.certificateChain = certificateChain;
-        this.certificateType = certificateType;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
-
-
     public String getCertificateChain() {
         return certificateChain;
     }

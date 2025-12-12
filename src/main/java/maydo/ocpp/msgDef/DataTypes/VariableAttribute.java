@@ -59,17 +59,6 @@ public class VariableAttribute implements JsonInterface {
     }
 
 
-    public VariableAttribute(AttributeEnum type, String value, MutabilityEnum mutability, Boolean persistent, Boolean constant, CustomData customData) {
-        super();
-        this.type = type;
-        this.value = value;
-        this.mutability = mutability;
-        this.persistent = persistent;
-        this.constant = constant;
-        this.customData = customData;
-    }
-
-
     public AttributeEnum getType() {
         return type;
     }

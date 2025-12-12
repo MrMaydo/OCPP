@@ -74,20 +74,6 @@ public class TaxRule implements JsonInterface {
     }
 
 
-    public TaxRule(Integer taxRuleID, String taxRuleName, Boolean taxIncludedInPrice, Boolean appliesToEnergyFee, Boolean appliesToParkingFee, Boolean appliesToOverstayFee, Boolean appliesToMinimumMaximumCost, RationalNumber taxRate, CustomData customData) {
-        super();
-        this.taxRuleID = taxRuleID;
-        this.taxRuleName = taxRuleName;
-        this.taxIncludedInPrice = taxIncludedInPrice;
-        this.appliesToEnergyFee = appliesToEnergyFee;
-        this.appliesToParkingFee = appliesToParkingFee;
-        this.appliesToOverstayFee = appliesToOverstayFee;
-        this.appliesToMinimumMaximumCost = appliesToMinimumMaximumCost;
-        this.taxRate = taxRate;
-        this.customData = customData;
-    }
-
-
     public Integer getTaxRuleID() {
         return taxRuleID;
     }

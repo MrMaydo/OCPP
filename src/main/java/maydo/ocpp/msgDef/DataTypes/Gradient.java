@@ -43,15 +43,6 @@ public class Gradient implements JsonInterface {
     }
 
 
-    public Gradient(Integer priority, Float gradient, Float softGradient, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.gradient = gradient;
-        this.softGradient = softGradient;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

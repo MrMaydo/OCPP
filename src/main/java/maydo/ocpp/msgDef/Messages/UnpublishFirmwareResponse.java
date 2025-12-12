@@ -33,12 +33,6 @@ public class UnpublishFirmwareResponse implements JsonInterface {
     public UnpublishFirmwareResponse() {
     }
 
-    public UnpublishFirmwareResponse(UnpublishFirmwareStatusEnum status, CustomData customData) {
-        super();
-        this.status = status;
-        this.customData = customData;
-    }
-
 
     public UnpublishFirmwareStatusEnum getStatus() {
         return status;

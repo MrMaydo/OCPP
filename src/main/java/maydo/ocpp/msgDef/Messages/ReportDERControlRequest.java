@@ -87,21 +87,6 @@ public class ReportDERControlRequest implements JsonInterface {
     }
 
 
-    public ReportDERControlRequest(List<DERCurveGet> curve, List<EnterServiceGet> enterService, List<FixedPFGet> fixedPFAbsorb, List<FixedPFGet> fixedPFInject, List<FixedVarGet> fixedVar, List<FreqDroopGet> freqDroop, List<GradientGet> gradient, List<LimitMaxDischargeGet> limitMaxDischarge, Integer requestId, Boolean tbc, CustomData customData) {
-        super();
-        this.curve = curve;
-        this.enterService = enterService;
-        this.fixedPFAbsorb = fixedPFAbsorb;
-        this.fixedPFInject = fixedPFInject;
-        this.fixedVar = fixedVar;
-        this.freqDroop = freqDroop;
-        this.gradient = gradient;
-        this.limitMaxDischarge = limitMaxDischarge;
-        this.requestId = requestId;
-        this.tbc = tbc;
-        this.customData = customData;
-    }
-
     public List<DERCurveGet> getCurve() {
         return curve;
     }

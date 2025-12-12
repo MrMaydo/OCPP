@@ -32,12 +32,6 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     public OpenPeriodicEventStreamRequest() {
     }
 
-    public OpenPeriodicEventStreamRequest(ConstantStreamData constantStreamData, CustomData customData) {
-        super();
-        this.constantStreamData = constantStreamData;
-        this.customData = customData;
-    }
-
 
     public ConstantStreamData getConstantStreamData() {
         return constantStreamData;

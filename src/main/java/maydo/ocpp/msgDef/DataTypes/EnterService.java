@@ -73,20 +73,6 @@ public class EnterService implements JsonInterface {
     }
 
 
-    public EnterService(Integer priority, Float highVoltage, Float lowVoltage, Float highFreq, Float lowFreq, Float delay, Float randomDelay, Float rampRate, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.highVoltage = highVoltage;
-        this.lowVoltage = lowVoltage;
-        this.highFreq = highFreq;
-        this.lowFreq = lowFreq;
-        this.delay = delay;
-        this.randomDelay = randomDelay;
-        this.rampRate = rampRate;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

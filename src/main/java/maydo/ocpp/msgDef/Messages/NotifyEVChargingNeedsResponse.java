@@ -40,13 +40,6 @@ public class NotifyEVChargingNeedsResponse implements JsonInterface {
     public NotifyEVChargingNeedsResponse() {
     }
 
-    public NotifyEVChargingNeedsResponse(NotifyEVChargingNeedsStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public NotifyEVChargingNeedsStatusEnum getStatus() {
         return status;

@@ -24,11 +24,6 @@ public class BatterySwapResponse implements JsonInterface {
     public BatterySwapResponse() {
     }
 
-    public BatterySwapResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

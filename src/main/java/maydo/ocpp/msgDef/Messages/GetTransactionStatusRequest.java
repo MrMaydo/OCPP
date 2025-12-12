@@ -32,13 +32,6 @@ public class GetTransactionStatusRequest implements JsonInterface {
     }
 
 
-    public GetTransactionStatusRequest(String transactionId, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

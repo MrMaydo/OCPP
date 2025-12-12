@@ -50,16 +50,6 @@ public class OverstayRule implements JsonInterface {
     }
 
 
-    public OverstayRule(RationalNumber overstayFee, String overstayRuleDescription, Integer startTime, Integer overstayFeePeriod, CustomData customData) {
-        super();
-        this.overstayFee = overstayFee;
-        this.overstayRuleDescription = overstayRuleDescription;
-        this.startTime = startTime;
-        this.overstayFeePeriod = overstayFeePeriod;
-        this.customData = customData;
-    }
-
-
     public RationalNumber getOverstayFee() {
         return overstayFee;
     }

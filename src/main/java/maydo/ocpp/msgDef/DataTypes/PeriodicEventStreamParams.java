@@ -36,14 +36,6 @@ public class PeriodicEventStreamParams implements JsonInterface {
     }
 
 
-    public PeriodicEventStreamParams(Integer interval, Integer values, CustomData customData) {
-        super();
-        this.interval = interval;
-        this.values = values;
-        this.customData = customData;
-    }
-
-
     public Integer getInterval() {
         return interval;
     }

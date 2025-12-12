@@ -38,14 +38,6 @@ public class TariffTimePrice implements JsonInterface {
     }
 
 
-    public TariffTimePrice(Float priceMinute, TariffConditions conditions, CustomData customData) {
-        super();
-        this.priceMinute = priceMinute;
-        this.conditions = conditions;
-        this.customData = customData;
-    }
-
-
     public Float getPriceMinute() {
         return priceMinute;
     }

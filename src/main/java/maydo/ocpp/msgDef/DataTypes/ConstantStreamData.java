@@ -43,15 +43,6 @@ public class ConstantStreamData implements JsonInterface {
     }
 
 
-    public ConstantStreamData(Integer id, PeriodicEventStreamParams params, Integer variableMonitoringId, CustomData customData) {
-        super();
-        this.id = id;
-        this.params = params;
-        this.variableMonitoringId = variableMonitoringId;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

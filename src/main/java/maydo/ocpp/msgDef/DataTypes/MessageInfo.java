@@ -89,21 +89,6 @@ public class MessageInfo implements JsonInterface {
     }
 
 
-    public MessageInfo(Component display, Integer id, MessagePriorityEnum priority, MessageStateEnum state, Date startDateTime, Date endDateTime, String transactionId, MessageContent message, List<MessageContent> messageExtra, CustomData customData) {
-        super();
-        this.display = display;
-        this.id = id;
-        this.priority = priority;
-        this.state = state;
-        this.startDateTime = startDateTime;
-        this.endDateTime = endDateTime;
-        this.transactionId = transactionId;
-        this.message = message;
-        this.messageExtra = messageExtra;
-        this.customData = customData;
-    }
-
-
     public Component getDisplay() {
         return display;
     }

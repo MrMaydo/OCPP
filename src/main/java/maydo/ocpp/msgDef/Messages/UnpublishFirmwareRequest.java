@@ -32,13 +32,6 @@ public class UnpublishFirmwareRequest implements JsonInterface {
     }
 
 
-    public UnpublishFirmwareRequest(String checksum, CustomData customData) {
-        super();
-        this.checksum = checksum;
-        this.customData = customData;
-    }
-
-
     public String getChecksum() {
         return checksum;
     }

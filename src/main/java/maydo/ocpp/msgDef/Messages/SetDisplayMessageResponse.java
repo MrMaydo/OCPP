@@ -41,13 +41,6 @@ public class SetDisplayMessageResponse implements JsonInterface {
     public SetDisplayMessageResponse() {
     }
 
-    public SetDisplayMessageResponse(DisplayMessageStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public DisplayMessageStatusEnum getStatus() {
         return status;

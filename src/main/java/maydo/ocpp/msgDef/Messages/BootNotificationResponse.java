@@ -60,16 +60,6 @@ public class BootNotificationResponse implements JsonInterface {
     }
 
 
-    public BootNotificationResponse(Date currentTime, Integer interval, RegistrationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.currentTime = currentTime;
-        this.interval = interval;
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
-
     public Date getCurrentTime() {
         return currentTime;
     }

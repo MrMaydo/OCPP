@@ -38,14 +38,6 @@ public class V2XFreqWattPoint implements JsonInterface {
     }
 
 
-    public V2XFreqWattPoint(Float frequency, Float power, CustomData customData) {
-        super();
-        this.frequency = frequency;
-        this.power = power;
-        this.customData = customData;
-    }
-
-
     public Float getFrequency() {
         return frequency;
     }

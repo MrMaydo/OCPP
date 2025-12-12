@@ -62,17 +62,6 @@ public class TariffAssignment implements JsonInterface {
     }
 
 
-    public TariffAssignment(String tariffId, TariffKindEnum tariffKind, Date validFrom, List<Integer> evseIds, List<String> idTokens, CustomData customData) {
-        super();
-        this.tariffId = tariffId;
-        this.tariffKind = tariffKind;
-        this.validFrom = validFrom;
-        this.evseIds = evseIds;
-        this.idTokens = idTokens;
-        this.customData = customData;
-    }
-
-
     public String getTariffId() {
         return tariffId;
     }

@@ -43,15 +43,6 @@ public class Price implements JsonInterface {
     }
 
 
-    public Price(Float exclTax, Float inclTax, List<TaxRate> taxRates, CustomData customData) {
-        super();
-        this.exclTax = exclTax;
-        this.inclTax = inclTax;
-        this.taxRates = taxRates;
-        this.customData = customData;
-    }
-
-
     public Float getExclTax() {
         return exclTax;
     }

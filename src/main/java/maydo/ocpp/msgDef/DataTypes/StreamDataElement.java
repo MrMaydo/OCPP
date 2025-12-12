@@ -37,14 +37,6 @@ public class StreamDataElement implements JsonInterface {
     }
 
 
-    public StreamDataElement(Float t, String v, CustomData customData) {
-        super();
-        this.t = t;
-        this.v = v;
-        this.customData = customData;
-    }
-
-
     public Float getT() {
         return t;
     }

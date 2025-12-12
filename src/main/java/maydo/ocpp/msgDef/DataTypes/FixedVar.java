@@ -63,17 +63,6 @@ public class FixedVar implements JsonInterface {
     }
 
 
-    public FixedVar(Integer priority, Float setpoint, DERUnitEnum unit, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.setpoint = setpoint;
-        this.unit = unit;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

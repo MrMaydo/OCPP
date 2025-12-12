@@ -38,14 +38,6 @@ public class ClearedChargingLimitRequest implements JsonInterface {
     }
 
 
-    public ClearedChargingLimitRequest(String chargingLimitSource, Integer evseId, CustomData customData) {
-        super();
-        this.chargingLimitSource = chargingLimitSource;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public String getChargingLimitSource() {
         return chargingLimitSource;
     }

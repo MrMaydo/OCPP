@@ -62,17 +62,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     }
 
 
-    public ReportChargingProfilesRequest(Integer requestId, String chargingLimitSource, List<ChargingProfile> chargingProfile, Boolean tbc, Integer evseId, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.chargingLimitSource = chargingLimitSource;
-        this.chargingProfile = chargingProfile;
-        this.tbc = tbc;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public Integer getRequestId() {
         return requestId;
     }

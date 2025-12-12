@@ -59,17 +59,6 @@ public class VatNumberValidationResponse implements JsonInterface {
     }
 
 
-    public VatNumberValidationResponse(Address company, StatusInfo statusInfo, String vatNumber, Integer evseId, GenericStatusEnum status, CustomData customData) {
-        super();
-        this.company = company;
-        this.statusInfo = statusInfo;
-        this.vatNumber = vatNumber;
-        this.evseId = evseId;
-        this.status = status;
-        this.customData = customData;
-    }
-
-
     public Address getCompany() {
         return company;
     }

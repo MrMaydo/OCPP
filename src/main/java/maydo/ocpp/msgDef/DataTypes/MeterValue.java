@@ -44,14 +44,6 @@ public class MeterValue implements JsonInterface {
     }
 
 
-    public MeterValue(List<SampledValue> sampledValue, Date timestamp, CustomData customData) {
-        super();
-        this.sampledValue = sampledValue;
-        this.timestamp = timestamp;
-        this.customData = customData;
-    }
-
-
     public List<SampledValue> getSampledValue() {
         return sampledValue;
     }

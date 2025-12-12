@@ -76,18 +76,6 @@ public class TransactionEventResponse implements JsonInterface {
     }
 
 
-    public TransactionEventResponse(Float totalCost, Integer chargingPriority, IdTokenInfo idTokenInfo, TransactionLimit transactionLimit, MessageContent updatedPersonalMessage, List<MessageContent> updatedPersonalMessageExtra, CustomData customData) {
-        super();
-        this.totalCost = totalCost;
-        this.chargingPriority = chargingPriority;
-        this.idTokenInfo = idTokenInfo;
-        this.transactionLimit = transactionLimit;
-        this.updatedPersonalMessage = updatedPersonalMessage;
-        this.updatedPersonalMessageExtra = updatedPersonalMessageExtra;
-        this.customData = customData;
-    }
-
-
     public Float getTotalCost() {
         return totalCost;
     }

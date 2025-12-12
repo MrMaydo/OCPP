@@ -40,13 +40,6 @@ public class UnlockConnectorResponse implements JsonInterface {
     public UnlockConnectorResponse() {
     }
 
-    public UnlockConnectorResponse(UnlockStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public UnlockStatusEnum getStatus() {
         return status;

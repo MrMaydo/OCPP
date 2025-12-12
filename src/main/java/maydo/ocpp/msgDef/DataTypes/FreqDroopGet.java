@@ -49,16 +49,6 @@ public class FreqDroopGet implements JsonInterface {
     }
 
 
-    public FreqDroopGet(FreqDroop freqDroop, String id, Boolean isDefault, Boolean isSuperseded, CustomData customData) {
-        super();
-        this.freqDroop = freqDroop;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.isSuperseded = isSuperseded;
-        this.customData = customData;
-    }
-
-
     public FreqDroop getFreqDroop() {
         return freqDroop;
     }

@@ -39,13 +39,6 @@ public class AdjustPeriodicEventStreamResponse implements JsonInterface {
     public AdjustPeriodicEventStreamResponse() {
     }
 
-    public AdjustPeriodicEventStreamResponse(GenericStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public GenericStatusEnum getStatus() {
         return status;

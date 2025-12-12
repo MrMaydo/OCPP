@@ -25,11 +25,6 @@ public class LogStatusNotificationResponse implements JsonInterface {
     public LogStatusNotificationResponse() {
     }
 
-    public LogStatusNotificationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

@@ -47,15 +47,6 @@ public class TriggerMessageRequest implements JsonInterface {
     }
 
 
-    public TriggerMessageRequest(EVSE evse, MessageTriggerEnum requestedMessage, String customTrigger, CustomData customData) {
-        super();
-        this.evse = evse;
-        this.requestedMessage = requestedMessage;
-        this.customTrigger = customTrigger;
-        this.customData = customData;
-    }
-
-
     public EVSE getEvse() {
         return evse;
     }

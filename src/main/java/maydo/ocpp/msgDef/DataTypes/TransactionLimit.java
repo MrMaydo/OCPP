@@ -49,16 +49,6 @@ public class TransactionLimit implements JsonInterface {
     }
 
 
-    public TransactionLimit(Float maxCost, Float maxEnergy, Integer maxTime, Integer maxSoC, CustomData customData) {
-        super();
-        this.maxCost = maxCost;
-        this.maxEnergy = maxEnergy;
-        this.maxTime = maxTime;
-        this.maxSoC = maxSoC;
-        this.customData = customData;
-    }
-
-
     public Float getMaxCost() {
         return maxCost;
     }

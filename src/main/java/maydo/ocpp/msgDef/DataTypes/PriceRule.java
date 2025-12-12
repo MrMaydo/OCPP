@@ -66,18 +66,6 @@ public class PriceRule implements JsonInterface {
     }
 
 
-    public PriceRule(Integer parkingFeePeriod, Integer carbonDioxideEmission, Integer renewableGenerationPercentage, RationalNumber energyFee, RationalNumber parkingFee, RationalNumber powerRangeStart, CustomData customData) {
-        super();
-        this.parkingFeePeriod = parkingFeePeriod;
-        this.carbonDioxideEmission = carbonDioxideEmission;
-        this.renewableGenerationPercentage = renewableGenerationPercentage;
-        this.energyFee = energyFee;
-        this.parkingFee = parkingFee;
-        this.powerRangeStart = powerRangeStart;
-        this.customData = customData;
-    }
-
-
     public Integer getParkingFeePeriod() {
         return parkingFeePeriod;
     }

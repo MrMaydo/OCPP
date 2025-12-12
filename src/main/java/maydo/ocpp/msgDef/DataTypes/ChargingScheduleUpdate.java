@@ -112,24 +112,6 @@ public class ChargingScheduleUpdate implements JsonInterface {
     }
 
 
-    public ChargingScheduleUpdate(Float limit, Float limitL2, Float limitL3, Float dischargeLimit, Float dischargeLimitL2, Float dischargeLimitL3, Float setpoint, Float setpointL2, Float setpointL3, Float setpointReactive, Float setpointReactiveL2, Float setpointReactiveL3, CustomData customData) {
-        super();
-        this.limit = limit;
-        this.limitL2 = limitL2;
-        this.limitL3 = limitL3;
-        this.dischargeLimit = dischargeLimit;
-        this.dischargeLimitL2 = dischargeLimitL2;
-        this.dischargeLimitL3 = dischargeLimitL3;
-        this.setpoint = setpoint;
-        this.setpointL2 = setpointL2;
-        this.setpointL3 = setpointL3;
-        this.setpointReactive = setpointReactive;
-        this.setpointReactiveL2 = setpointReactiveL2;
-        this.setpointReactiveL3 = setpointReactiveL3;
-        this.customData = customData;
-    }
-
-
     public Float getLimit() {
         return limit;
     }

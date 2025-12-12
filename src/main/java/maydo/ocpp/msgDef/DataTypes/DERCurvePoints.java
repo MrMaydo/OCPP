@@ -39,14 +39,6 @@ public class DERCurvePoints implements JsonInterface {
     }
 
 
-    public DERCurvePoints(Float x, Float y, CustomData customData) {
-        super();
-        this.x = x;
-        this.y = y;
-        this.customData = customData;
-    }
-
-
     public Float getX() {
         return x;
     }

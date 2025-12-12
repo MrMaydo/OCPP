@@ -40,14 +40,6 @@ public class NotifyPriorityChargingRequest implements JsonInterface {
     }
 
 
-    public NotifyPriorityChargingRequest(String transactionId, Boolean activated, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.activated = activated;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

@@ -62,16 +62,6 @@ public class NotifyEventRequest implements JsonInterface {
     }
 
 
-    public NotifyEventRequest(Date generatedAt, Boolean tbc, Integer seqNo, List<EventData> eventData, CustomData customData) {
-        super();
-        this.generatedAt = generatedAt;
-        this.tbc = tbc;
-        this.seqNo = seqNo;
-        this.eventData = eventData;
-        this.customData = customData;
-    }
-
-
     public Date getGeneratedAt() {
         return generatedAt;
     }

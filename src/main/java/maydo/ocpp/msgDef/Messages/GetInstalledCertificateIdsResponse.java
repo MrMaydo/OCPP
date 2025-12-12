@@ -47,14 +47,6 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
     public GetInstalledCertificateIdsResponse() {
     }
 
-    public GetInstalledCertificateIdsResponse(GetInstalledCertificateStatusEnum status, StatusInfo statusInfo, List<CertificateHashDataChain> certificateHashDataChain, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.certificateHashDataChain = certificateHashDataChain;
-        this.customData = customData;
-    }
-
 
     public GetInstalledCertificateStatusEnum getStatus() {
         return status;

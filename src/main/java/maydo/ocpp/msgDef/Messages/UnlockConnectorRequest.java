@@ -38,14 +38,6 @@ public class UnlockConnectorRequest implements JsonInterface {
     }
 
 
-    public UnlockConnectorRequest(Integer evseId, Integer connectorId, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.connectorId = connectorId;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

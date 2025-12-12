@@ -60,17 +60,6 @@ public class FixedPF implements JsonInterface {
     }
 
 
-    public FixedPF(Integer priority, Float displacement, Boolean excitation, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.priority = priority;
-        this.displacement = displacement;
-        this.excitation = excitation;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public Integer getPriority() {
         return priority;
     }

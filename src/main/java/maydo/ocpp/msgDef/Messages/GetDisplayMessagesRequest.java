@@ -54,16 +54,6 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     }
 
 
-    public GetDisplayMessagesRequest(List<Integer> id, Integer requestId, MessagePriorityEnum priority, MessageStateEnum state, CustomData customData) {
-        super();
-        this.id = id;
-        this.requestId = requestId;
-        this.priority = priority;
-        this.state = state;
-        this.customData = customData;
-    }
-
-
     public List<Integer> getId() {
         return id;
     }

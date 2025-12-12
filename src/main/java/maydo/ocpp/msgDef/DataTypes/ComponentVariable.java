@@ -37,13 +37,6 @@ public class ComponentVariable implements JsonInterface {
     public ComponentVariable() {
     }
 
-    public ComponentVariable(Component component, Variable variable, CustomData customData) {
-        super();
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
 
     public Component getComponent() {
         return component;

@@ -55,16 +55,6 @@ public class SignCertificateRequest implements JsonInterface {
     }
 
 
-    public SignCertificateRequest(String csr, CertificateSigningUseEnum certificateType, CertificateHashData hashRootCertificate, Integer requestId, CustomData customData) {
-        super();
-        this.csr = csr;
-        this.certificateType = certificateType;
-        this.hashRootCertificate = hashRootCertificate;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
-
-
     public String getCsr() {
         return csr;
     }

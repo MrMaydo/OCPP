@@ -41,14 +41,6 @@ public class ClearChargingProfileRequest implements JsonInterface {
     }
 
 
-    public ClearChargingProfileRequest(Integer chargingProfileId, ClearChargingProfile chargingProfileCriteria, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.chargingProfileCriteria = chargingProfileCriteria;
-        this.customData = customData;
-    }
-
-
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }

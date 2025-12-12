@@ -46,14 +46,6 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
     }
 
 
-    public NotifyAllowedEnergyTransferRequest(String transactionId, List<EnergyTransferModeEnum> allowedEnergyTransfer, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.allowedEnergyTransfer = allowedEnergyTransfer;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

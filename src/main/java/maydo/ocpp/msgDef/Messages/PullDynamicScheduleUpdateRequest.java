@@ -33,13 +33,6 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
     }
 
 
-    public PullDynamicScheduleUpdateRequest(Integer chargingProfileId, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.customData = customData;
-    }
-
-
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }

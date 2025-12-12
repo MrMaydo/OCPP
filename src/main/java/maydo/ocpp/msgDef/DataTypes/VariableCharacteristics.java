@@ -79,19 +79,6 @@ public class VariableCharacteristics implements JsonInterface {
     }
 
 
-    public VariableCharacteristics(String unit, DataEnum dataType, Float minLimit, Float maxLimit, Integer maxElements, String valuesList, Boolean supportsMonitoring, CustomData customData) {
-        super();
-        this.unit = unit;
-        this.dataType = dataType;
-        this.minLimit = minLimit;
-        this.maxLimit = maxLimit;
-        this.maxElements = maxElements;
-        this.valuesList = valuesList;
-        this.supportsMonitoring = supportsMonitoring;
-        this.customData = customData;
-    }
-
-
     public String getUnit() {
         return unit;
     }

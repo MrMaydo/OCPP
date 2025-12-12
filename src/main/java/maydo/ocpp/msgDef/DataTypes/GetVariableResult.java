@@ -67,18 +67,6 @@ public class GetVariableResult implements JsonInterface {
     }
 
 
-    public GetVariableResult(GetVariableStatusEnum attributeStatus, StatusInfo attributeStatusInfo, AttributeEnum attributeType, String attributeValue, Component component, Variable variable, CustomData customData) {
-        super();
-        this.attributeStatus = attributeStatus;
-        this.attributeStatusInfo = attributeStatusInfo;
-        this.attributeType = attributeType;
-        this.attributeValue = attributeValue;
-        this.component = component;
-        this.variable = variable;
-        this.customData = customData;
-    }
-
-
     public GetVariableStatusEnum getAttributeStatus() {
         return attributeStatus;
     }

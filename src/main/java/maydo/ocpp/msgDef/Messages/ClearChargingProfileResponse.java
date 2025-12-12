@@ -40,13 +40,6 @@ public class ClearChargingProfileResponse implements JsonInterface {
     public ClearChargingProfileResponse() {
     }
 
-    public ClearChargingProfileResponse(ClearChargingProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ClearChargingProfileStatusEnum getStatus() {
         return status;

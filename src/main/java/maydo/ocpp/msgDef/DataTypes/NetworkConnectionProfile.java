@@ -94,22 +94,6 @@ public class NetworkConnectionProfile implements JsonInterface {
     }
 
 
-    public NetworkConnectionProfile(APN apn, OCPPVersionEnum ocppVersion, OCPPInterfaceEnum ocppInterface, OCPPTransportEnum ocppTransport, Integer messageTimeout, String ocppCsmsUrl, Integer securityProfile, String identity, String basicAuthPassword, VPN vpn, CustomData customData) {
-        super();
-        this.apn = apn;
-        this.ocppVersion = ocppVersion;
-        this.ocppInterface = ocppInterface;
-        this.ocppTransport = ocppTransport;
-        this.messageTimeout = messageTimeout;
-        this.ocppCsmsUrl = ocppCsmsUrl;
-        this.securityProfile = securityProfile;
-        this.identity = identity;
-        this.basicAuthPassword = basicAuthPassword;
-        this.vpn = vpn;
-        this.customData = customData;
-    }
-
-
     public APN getApn() {
         return apn;
     }

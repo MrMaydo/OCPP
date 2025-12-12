@@ -48,15 +48,6 @@ public class GetLogResponse implements JsonInterface {
     }
 
 
-    public GetLogResponse(LogStatusEnum status, StatusInfo statusInfo, String filename, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.filename = filename;
-        this.customData = customData;
-    }
-
-
     public LogStatusEnum getStatus() {
         return status;
     }

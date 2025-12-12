@@ -38,13 +38,6 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
     public AdjustPeriodicEventStreamRequest() {
     }
 
-    public AdjustPeriodicEventStreamRequest(Integer id, PeriodicEventStreamParams params, CustomData customData) {
-        super();
-        this.id = id;
-        this.params = params;
-        this.customData = customData;
-    }
-
 
     public Integer getId() {
         return id;

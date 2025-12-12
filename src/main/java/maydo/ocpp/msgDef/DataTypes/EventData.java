@@ -119,26 +119,6 @@ public class EventData implements JsonInterface {
     }
 
 
-    public EventData(Integer eventId, Date timestamp, EventTriggerEnum trigger, Integer cause, String actualValue, String techCode, String techInfo, Boolean cleared, String transactionId, Component component, Integer variableMonitoringId, EventNotificationEnum eventNotificationType, Variable variable, Integer severity, CustomData customData) {
-        super();
-        this.eventId = eventId;
-        this.timestamp = timestamp;
-        this.trigger = trigger;
-        this.cause = cause;
-        this.actualValue = actualValue;
-        this.techCode = techCode;
-        this.techInfo = techInfo;
-        this.cleared = cleared;
-        this.transactionId = transactionId;
-        this.component = component;
-        this.variableMonitoringId = variableMonitoringId;
-        this.eventNotificationType = eventNotificationType;
-        this.variable = variable;
-        this.severity = severity;
-        this.customData = customData;
-    }
-
-
     public Integer getEventId() {
         return eventId;
     }

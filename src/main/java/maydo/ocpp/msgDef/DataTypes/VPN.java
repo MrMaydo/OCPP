@@ -62,18 +62,6 @@ public class VPN implements JsonInterface {
     }
 
 
-    public VPN(String server, String user, String group, String password, String key, VPNEnum type, CustomData customData) {
-        super();
-        this.server = server;
-        this.user = user;
-        this.group = group;
-        this.password = password;
-        this.key = key;
-        this.type = type;
-        this.customData = customData;
-    }
-
-
     public String getServer() {
         return server;
     }

@@ -56,16 +56,6 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     }
 
 
-    public NotifyDERStartStopRequest(String controlId, Boolean started, Date timestamp, List<String> supersededIds, CustomData customData) {
-        super();
-        this.controlId = controlId;
-        this.started = started;
-        this.timestamp = timestamp;
-        this.supersededIds = supersededIds;
-        this.customData = customData;
-    }
-
-
     public String getControlId() {
         return controlId;
     }

@@ -39,14 +39,6 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
     }
 
 
-    public ChangeTransactionTariffRequest(Tariff tariff, String transactionId, CustomData customData) {
-        super();
-        this.tariff = tariff;
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
-
-
     public Tariff getTariff() {
         return tariff;
     }

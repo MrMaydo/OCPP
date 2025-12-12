@@ -109,24 +109,6 @@ public class AbsolutePriceSchedule implements JsonInterface {
     }
 
 
-    public AbsolutePriceSchedule(Date timeAnchor, Integer priceScheduleID, String priceScheduleDescription, String currency, String language, String priceAlgorithm, RationalNumber minimumCost, RationalNumber maximumCost, List<PriceRuleStack> priceRuleStacks, List<TaxRule> taxRules, OverstayRuleList overstayRuleList, List<AdditionalSelectedServices> additionalSelectedServices, CustomData customData) {
-        super();
-        this.timeAnchor = timeAnchor;
-        this.priceScheduleID = priceScheduleID;
-        this.priceScheduleDescription = priceScheduleDescription;
-        this.currency = currency;
-        this.language = language;
-        this.priceAlgorithm = priceAlgorithm;
-        this.minimumCost = minimumCost;
-        this.maximumCost = maximumCost;
-        this.priceRuleStacks = priceRuleStacks;
-        this.taxRules = taxRules;
-        this.overstayRuleList = overstayRuleList;
-        this.additionalSelectedServices = additionalSelectedServices;
-        this.customData = customData;
-    }
-
-
     public Date getTimeAnchor() {
         return timeAnchor;
     }

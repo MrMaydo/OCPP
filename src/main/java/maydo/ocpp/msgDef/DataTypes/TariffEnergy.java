@@ -38,13 +38,6 @@ public class TariffEnergy implements JsonInterface {
     public TariffEnergy() {
     }
 
-    public TariffEnergy(List<TariffEnergyPrice> prices, List<TaxRate> taxRates, CustomData customData) {
-        super();
-        this.prices = prices;
-        this.taxRates = taxRates;
-        this.customData = customData;
-    }
-
 
     public List<TariffEnergyPrice> getPrices() {
         return prices;

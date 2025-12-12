@@ -63,17 +63,6 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     }
 
 
-    public NotifyDERAlarmRequest(DERControlEnum controlType, GridEventFaultEnum gridEventFault, Boolean alarmEnded, Date timestamp, String extraInfo, CustomData customData) {
-        super();
-        this.controlType = controlType;
-        this.gridEventFault = gridEventFault;
-        this.alarmEnded = alarmEnded;
-        this.timestamp = timestamp;
-        this.extraInfo = extraInfo;
-        this.customData = customData;
-    }
-
-
     public DERControlEnum getControlType() {
         return controlType;
     }

@@ -41,14 +41,6 @@ public class UnitOfMeasure implements JsonInterface {
     }
 
 
-    public UnitOfMeasure(String unit, Integer multiplier, CustomData customData) {
-        super();
-        this.unit = unit;
-        this.multiplier = multiplier;
-        this.customData = customData;
-    }
-
-
     public String getUnit() {
         return unit;
     }

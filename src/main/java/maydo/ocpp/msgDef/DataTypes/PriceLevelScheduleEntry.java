@@ -40,14 +40,6 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     }
 
 
-    public PriceLevelScheduleEntry(Integer duration, Integer priceLevel, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.priceLevel = priceLevel;
-        this.customData = customData;
-    }
-
-
     public Integer getDuration() {
         return duration;
     }

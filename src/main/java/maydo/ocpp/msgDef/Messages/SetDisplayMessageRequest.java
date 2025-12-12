@@ -34,12 +34,6 @@ public class SetDisplayMessageRequest implements JsonInterface {
     public SetDisplayMessageRequest() {
     }
 
-    public SetDisplayMessageRequest(MessageInfo message, CustomData customData) {
-        super();
-        this.message = message;
-        this.customData = customData;
-    }
-
 
     public MessageInfo getMessage() {
         return message;

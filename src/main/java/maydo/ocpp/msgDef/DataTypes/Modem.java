@@ -37,14 +37,6 @@ public class Modem implements JsonInterface {
     }
 
 
-    public Modem(String iccid, String imsi, CustomData customData) {
-        super();
-        this.iccid = iccid;
-        this.imsi = imsi;
-        this.customData = customData;
-    }
-
-
     public String getIccid() {
         return iccid;
     }

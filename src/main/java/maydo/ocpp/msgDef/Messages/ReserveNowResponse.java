@@ -40,13 +40,6 @@ public class ReserveNowResponse implements JsonInterface {
     public ReserveNowResponse() {
     }
 
-    public ReserveNowResponse(ReserveNowStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public ReserveNowStatusEnum getStatus() {
         return status;

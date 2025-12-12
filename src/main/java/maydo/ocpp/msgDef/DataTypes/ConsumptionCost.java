@@ -39,14 +39,6 @@ public class ConsumptionCost implements JsonInterface {
     }
 
 
-    public ConsumptionCost(Float startValue, List<Cost> cost, CustomData customData) {
-        super();
-        this.startValue = startValue;
-        this.cost = cost;
-        this.customData = customData;
-    }
-
-
     public Float getStartValue() {
         return startValue;
     }

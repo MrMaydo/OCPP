@@ -53,16 +53,6 @@ public class SignedMeterValue implements JsonInterface {
     }
 
 
-    public SignedMeterValue(String signedMeterData, String signingMethod, String encodingMethod, String publicKey, CustomData customData) {
-        super();
-        this.signedMeterData = signedMeterData;
-        this.signingMethod = signingMethod;
-        this.encodingMethod = encodingMethod;
-        this.publicKey = publicKey;
-        this.customData = customData;
-    }
-
-
     public String getSignedMeterData() {
         return signedMeterData;
     }

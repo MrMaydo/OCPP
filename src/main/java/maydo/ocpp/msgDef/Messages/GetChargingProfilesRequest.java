@@ -49,15 +49,6 @@ public class GetChargingProfilesRequest implements JsonInterface {
     }
 
 
-    public GetChargingProfilesRequest(Integer requestId, Integer evseId, ChargingProfileCriterion chargingProfile, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.evseId = evseId;
-        this.chargingProfile = chargingProfile;
-        this.customData = customData;
-    }
-
-
     public Integer getRequestId() {
         return requestId;
     }

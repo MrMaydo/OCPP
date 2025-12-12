@@ -40,13 +40,6 @@ public class NotifyAllowedEnergyTransferResponse implements JsonInterface {
     public NotifyAllowedEnergyTransferResponse() {
     }
 
-    public NotifyAllowedEnergyTransferResponse(NotifyAllowedEnergyTransferStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public NotifyAllowedEnergyTransferStatusEnum getStatus() {
         return status;

@@ -61,17 +61,6 @@ public class GetLogRequest implements JsonInterface {
     }
 
 
-    public GetLogRequest(LogParameters log, LogEnum logType, Integer requestId, Integer retries, Integer retryInterval, CustomData customData) {
-        super();
-        this.log = log;
-        this.logType = logType;
-        this.requestId = requestId;
-        this.retries = retries;
-        this.retryInterval = retryInterval;
-        this.customData = customData;
-    }
-
-
     public LogParameters getLog() {
         return log;
     }

@@ -38,14 +38,6 @@ public class RationalNumber implements JsonInterface {
     }
 
 
-    public RationalNumber(Integer exponent, Integer value, CustomData customData) {
-        super();
-        this.exponent = exponent;
-        this.value = value;
-        this.customData = customData;
-    }
-
-
     public Integer getExponent() {
         return exponent;
     }

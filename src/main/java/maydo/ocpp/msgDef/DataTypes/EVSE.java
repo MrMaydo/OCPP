@@ -38,14 +38,6 @@ public class EVSE implements JsonInterface {
     }
 
 
-    public EVSE(Integer id, Integer connectorId, CustomData customData) {
-        super();
-        this.id = id;
-        this.connectorId = connectorId;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

@@ -40,14 +40,6 @@ public class CostUpdatedRequest implements JsonInterface {
     }
 
 
-    public CostUpdatedRequest(Float totalCost, String transactionId, CustomData customData) {
-        super();
-        this.totalCost = totalCost;
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
-
-
     public Float getTotalCost() {
         return totalCost;
     }

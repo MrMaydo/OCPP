@@ -48,14 +48,6 @@ public class IdToken implements JsonInterface {
     }
 
 
-    public IdToken(List<AdditionalInfo> additionalInfo, String idToken, String type, CustomData customData) {
-        super();
-        this.additionalInfo = additionalInfo;
-        this.idToken = idToken;
-        this.type = type;
-        this.customData = customData;
-    }
-
     public List<AdditionalInfo> getAdditionalInfo() {
         return additionalInfo;
     }

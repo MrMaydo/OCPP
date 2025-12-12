@@ -49,16 +49,6 @@ public class LimitMaxDischargeGet implements JsonInterface {
     }
 
 
-    public LimitMaxDischargeGet(String id, Boolean isDefault, Boolean isSuperseded, LimitMaxDischarge limitMaxDischarge, CustomData customData) {
-        super();
-        this.id = id;
-        this.isDefault = isDefault;
-        this.isSuperseded = isSuperseded;
-        this.limitMaxDischarge = limitMaxDischarge;
-        this.customData = customData;
-    }
-
-
     public String getId() {
         return id;
     }

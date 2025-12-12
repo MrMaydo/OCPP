@@ -54,16 +54,6 @@ public class BatterySwapRequest implements JsonInterface {
     }
 
 
-    public BatterySwapRequest(List<BatteryData> batteryData, BatterySwapEventEnum eventType, IdToken idToken, Integer requestId, CustomData customData) {
-        super();
-        this.batteryData = batteryData;
-        this.eventType = eventType;
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
-
-
     public List<BatteryData> getBatteryData() {
         return batteryData;
     }

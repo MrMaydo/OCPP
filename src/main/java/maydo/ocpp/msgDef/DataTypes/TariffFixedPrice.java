@@ -38,14 +38,6 @@ public class TariffFixedPrice implements JsonInterface {
     }
 
 
-    public TariffFixedPrice(TariffConditionsFixed conditions, Float priceFixed, CustomData customData) {
-        super();
-        this.conditions = conditions;
-        this.priceFixed = priceFixed;
-        this.customData = customData;
-    }
-
-
     public TariffConditionsFixed getConditions() {
         return conditions;
     }

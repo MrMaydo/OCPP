@@ -42,14 +42,6 @@ public class SetChargingProfileRequest implements JsonInterface {
     }
 
 
-    public SetChargingProfileRequest(Integer evseId, ChargingProfile chargingProfile, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.chargingProfile = chargingProfile;
-        this.customData = customData;
-    }
-
-
     public Integer getEvseId() {
         return evseId;
     }

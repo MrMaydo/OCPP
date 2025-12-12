@@ -53,16 +53,6 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     }
 
 
-    public PublishFirmwareStatusNotificationRequest(PublishFirmwareStatusEnum status, List<String> location, Integer requestId, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.location = location;
-        this.requestId = requestId;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
-
     public PublishFirmwareStatusEnum getStatus() {
         return status;
     }

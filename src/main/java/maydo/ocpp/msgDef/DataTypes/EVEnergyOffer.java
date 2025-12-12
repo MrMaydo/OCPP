@@ -39,13 +39,6 @@ public class EVEnergyOffer implements JsonInterface {
     public EVEnergyOffer() {
     }
 
-    public EVEnergyOffer(EVAbsolutePriceSchedule evAbsolutePriceSchedule, EVPowerSchedule evPowerSchedule, CustomData customData) {
-        super();
-        this.evAbsolutePriceSchedule = evAbsolutePriceSchedule;
-        this.evPowerSchedule = evPowerSchedule;
-        this.customData = customData;
-    }
-
 
     public EVAbsolutePriceSchedule getEvAbsolutePriceSchedule() {
         return evAbsolutePriceSchedule;

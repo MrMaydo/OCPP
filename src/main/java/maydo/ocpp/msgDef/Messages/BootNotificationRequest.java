@@ -39,13 +39,6 @@ public class BootNotificationRequest implements JsonInterface {
     public BootNotificationRequest() {
     }
 
-    public BootNotificationRequest(ChargingStation chargingStation, BootReasonEnum reason, CustomData customData) {
-        super();
-        this.chargingStation = chargingStation;
-        this.reason = reason;
-        this.customData = customData;
-    }
-
 
     public ChargingStation getChargingStation() {
         return chargingStation;

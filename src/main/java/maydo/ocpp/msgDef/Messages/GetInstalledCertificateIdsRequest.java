@@ -33,13 +33,6 @@ public class GetInstalledCertificateIdsRequest implements JsonInterface {
     }
 
 
-    public GetInstalledCertificateIdsRequest(List<GetCertificateIdUseEnum> certificateType, CustomData customData) {
-        super();
-        this.certificateType = certificateType;
-        this.customData = customData;
-    }
-
-
     public List<GetCertificateIdUseEnum> getCertificateType() {
         return certificateType;
     }

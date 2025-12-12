@@ -51,16 +51,6 @@ public class GetDERControlRequest implements JsonInterface {
     }
 
 
-    public GetDERControlRequest(Integer requestId, Boolean isDefault, DERControlEnum controlType, String controlId, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.isDefault = isDefault;
-        this.controlType = controlType;
-        this.controlId = controlId;
-        this.customData = customData;
-    }
-
-
     public Integer getRequestId() {
         return requestId;
     }

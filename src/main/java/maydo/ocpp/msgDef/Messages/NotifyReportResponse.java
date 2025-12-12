@@ -25,11 +25,6 @@ public class NotifyReportResponse implements JsonInterface {
     public NotifyReportResponse() {
     }
 
-    public NotifyReportResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

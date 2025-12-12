@@ -61,16 +61,6 @@ public class CompositeSchedule implements JsonInterface {
     public CompositeSchedule() {
     }
 
-    public CompositeSchedule(Integer evseId, Integer duration, Date scheduleStart, ChargingRateUnitEnum chargingRateUnit, List<ChargingSchedulePeriod> chargingSchedulePeriod, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.duration = duration;
-        this.scheduleStart = scheduleStart;
-        this.chargingRateUnit = chargingRateUnit;
-        this.chargingSchedulePeriod = chargingSchedulePeriod;
-        this.customData = customData;
-    }
-
 
     public Integer getEvseId() {
         return evseId;

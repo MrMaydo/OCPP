@@ -39,13 +39,6 @@ public class RequestStopTransactionResponse implements JsonInterface {
     public RequestStopTransactionResponse() {
     }
 
-    public RequestStopTransactionResponse(RequestStartStopStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public RequestStartStopStatusEnum getStatus() {
         return status;

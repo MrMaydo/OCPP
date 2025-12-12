@@ -46,15 +46,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     }
 
 
-    public GetCompositeScheduleRequest(Integer duration, ChargingRateUnitEnum chargingRateUnit, Integer evseId, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.chargingRateUnit = chargingRateUnit;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public Integer getDuration() {
         return duration;
     }

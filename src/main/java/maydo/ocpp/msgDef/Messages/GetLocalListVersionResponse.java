@@ -33,13 +33,6 @@ public class GetLocalListVersionResponse implements JsonInterface {
     }
 
 
-    public GetLocalListVersionResponse(Integer versionNumber, CustomData customData) {
-        super();
-        this.versionNumber = versionNumber;
-        this.customData = customData;
-    }
-
-
     public Integer getVersionNumber() {
         return versionNumber;
     }

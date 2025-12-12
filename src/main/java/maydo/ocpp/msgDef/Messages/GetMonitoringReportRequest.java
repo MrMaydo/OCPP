@@ -47,14 +47,6 @@ public class GetMonitoringReportRequest implements JsonInterface {
     }
 
 
-    public GetMonitoringReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<MonitoringCriterionEnum> monitoringCriteria, CustomData customData) {
-        super();
-        this.componentVariable = componentVariable;
-        this.requestId = requestId;
-        this.monitoringCriteria = monitoringCriteria;
-        this.customData = customData;
-    }
-
     public List<ComponentVariable> getComponentVariable() {
         return componentVariable;
     }

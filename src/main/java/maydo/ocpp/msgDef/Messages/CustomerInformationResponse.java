@@ -39,13 +39,6 @@ public class CustomerInformationResponse implements JsonInterface {
     public CustomerInformationResponse() {
     }
 
-    public CustomerInformationResponse(CustomerInformationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public CustomerInformationStatusEnum getStatus() {
         return status;

@@ -82,21 +82,6 @@ public class TotalCost implements JsonInterface {
     }
 
 
-    public TotalCost(String currency, TariffCostEnum typeOfCost, Price fixed, Price energy, Price chargingTime, Price idleTime, Price reservationTime, Price reservationFixed, TotalPrice total, CustomData customData) {
-        super();
-        this.currency = currency;
-        this.typeOfCost = typeOfCost;
-        this.fixed = fixed;
-        this.energy = energy;
-        this.chargingTime = chargingTime;
-        this.idleTime = idleTime;
-        this.reservationTime = reservationTime;
-        this.reservationFixed = reservationFixed;
-        this.total = total;
-        this.customData = customData;
-    }
-
-
     public String getCurrency() {
         return currency;
     }

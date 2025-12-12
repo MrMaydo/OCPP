@@ -87,21 +87,6 @@ public class DERCurve implements JsonInterface {
     }
 
 
-    public DERCurve(List<DERCurvePoints> curveData, Hysteresis hysteresis, Integer priority, ReactivePowerParams reactivePowerParams, VoltageParams voltageParams, DERUnitEnum yUnit, Float responseTime, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.curveData = curveData;
-        this.hysteresis = hysteresis;
-        this.priority = priority;
-        this.reactivePowerParams = reactivePowerParams;
-        this.voltageParams = voltageParams;
-        this.yUnit = yUnit;
-        this.responseTime = responseTime;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
-
-
     public List<DERCurvePoints> getCurveData() {
         return curveData;
     }

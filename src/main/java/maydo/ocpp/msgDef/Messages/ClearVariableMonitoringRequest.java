@@ -33,13 +33,6 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
     }
 
 
-    public ClearVariableMonitoringRequest(List<Integer> id, CustomData customData) {
-        super();
-        this.id = id;
-        this.customData = customData;
-    }
-
-
     public List<Integer> getId() {
         return id;
     }

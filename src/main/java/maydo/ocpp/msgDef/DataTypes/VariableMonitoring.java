@@ -78,18 +78,6 @@ public class VariableMonitoring implements JsonInterface {
     }
 
 
-    public VariableMonitoring(Integer id, Boolean transaction, Float value, MonitorEnum type, Integer severity, EventNotificationEnum eventNotificationType, CustomData customData) {
-        super();
-        this.id = id;
-        this.transaction = transaction;
-        this.value = value;
-        this.type = type;
-        this.severity = severity;
-        this.eventNotificationType = eventNotificationType;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

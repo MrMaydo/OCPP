@@ -44,15 +44,6 @@ public class OverstayRuleList implements JsonInterface {
     }
 
 
-    public OverstayRuleList(RationalNumber overstayPowerThreshold, List<OverstayRule> overstayRule, Integer overstayTimeThreshold, CustomData customData) {
-        super();
-        this.overstayPowerThreshold = overstayPowerThreshold;
-        this.overstayRule = overstayRule;
-        this.overstayTimeThreshold = overstayTimeThreshold;
-        this.customData = customData;
-    }
-
-
     public RationalNumber getOverstayPowerThreshold() {
         return overstayPowerThreshold;
     }

@@ -84,20 +84,6 @@ public class IdTokenInfo implements JsonInterface {
     }
 
 
-    public IdTokenInfo(AuthorizationStatusEnum status, Date cacheExpiryDateTime, Integer chargingPriority, IdToken groupIdToken, String language1, String language2, List<Integer> evseId, MessageContent personalMessage, CustomData customData) {
-        super();
-        this.status = status;
-        this.cacheExpiryDateTime = cacheExpiryDateTime;
-        this.chargingPriority = chargingPriority;
-        this.groupIdToken = groupIdToken;
-        this.language1 = language1;
-        this.language2 = language2;
-        this.evseId = evseId;
-        this.personalMessage = personalMessage;
-        this.customData = customData;
-    }
-
-
     public AuthorizationStatusEnum getStatus() {
         return status;
     }

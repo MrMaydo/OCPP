@@ -39,14 +39,6 @@ public class ResetRequest implements JsonInterface {
     }
 
 
-    public ResetRequest(ResetEnum type, Integer evseId, CustomData customData) {
-        super();
-        this.type = type;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public ResetEnum getType() {
         return type;
     }

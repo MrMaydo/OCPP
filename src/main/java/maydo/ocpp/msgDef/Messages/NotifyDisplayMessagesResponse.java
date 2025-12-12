@@ -25,11 +25,6 @@ public class NotifyDisplayMessagesResponse implements JsonInterface {
     public NotifyDisplayMessagesResponse() {
     }
 
-    public NotifyDisplayMessagesResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

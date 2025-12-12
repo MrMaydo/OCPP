@@ -37,14 +37,6 @@ public class EnterServiceGet implements JsonInterface {
     }
 
 
-    public EnterServiceGet(EnterService enterService, String id, CustomData customData) {
-        super();
-        this.enterService = enterService;
-        this.id = id;
-        this.customData = customData;
-    }
-
-
     public EnterService getEnterService() {
         return enterService;
     }

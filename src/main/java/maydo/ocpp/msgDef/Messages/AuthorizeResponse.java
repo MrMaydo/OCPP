@@ -58,16 +58,6 @@ public class AuthorizeResponse implements JsonInterface {
     }
 
 
-    public AuthorizeResponse(IdTokenInfo idTokenInfo, AuthorizeCertificateStatusEnum certificateStatus, List<EnergyTransferModeEnum> allowedEnergyTransfer, Tariff tariff, CustomData customData) {
-        super();
-        this.idTokenInfo = idTokenInfo;
-        this.certificateStatus = certificateStatus;
-        this.allowedEnergyTransfer = allowedEnergyTransfer;
-        this.tariff = tariff;
-        this.customData = customData;
-    }
-
-
     public IdTokenInfo getIdTokenInfo() {
         return idTokenInfo;
     }

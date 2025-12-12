@@ -84,20 +84,6 @@ public class Transaction implements JsonInterface {
     }
 
 
-    public Transaction(String transactionId, ChargingStateEnum chargingState, Integer timeSpentCharging, ReasonEnum stoppedReason, Integer remoteStartId, OperationModeEnum operationMode, String tariffId, TransactionLimit transactionLimit, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.chargingState = chargingState;
-        this.timeSpentCharging = timeSpentCharging;
-        this.stoppedReason = stoppedReason;
-        this.remoteStartId = remoteStartId;
-        this.operationMode = operationMode;
-        this.tariffId = tariffId;
-        this.transactionLimit = transactionLimit;
-        this.customData = customData;
-    }
-
-
     public String getTransactionId() {
         return transactionId;
     }

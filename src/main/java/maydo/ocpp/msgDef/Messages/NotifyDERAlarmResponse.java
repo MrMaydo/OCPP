@@ -24,11 +24,6 @@ public class NotifyDERAlarmResponse implements JsonInterface {
     public NotifyDERAlarmResponse() {
     }
 
-    public NotifyDERAlarmResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
-
 
     public CustomData getCustomData() {
         return customData;

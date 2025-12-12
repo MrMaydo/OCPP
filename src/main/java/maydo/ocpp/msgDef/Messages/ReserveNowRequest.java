@@ -68,18 +68,6 @@ public class ReserveNowRequest implements JsonInterface {
     }
 
 
-    public ReserveNowRequest(Integer id, Date expiryDateTime, String connectorType, IdToken idToken, Integer evseId, IdToken groupIdToken, CustomData customData) {
-        super();
-        this.id = id;
-        this.expiryDateTime = expiryDateTime;
-        this.connectorType = connectorType;
-        this.idToken = idToken;
-        this.evseId = evseId;
-        this.groupIdToken = groupIdToken;
-        this.customData = customData;
-    }
-
-
     public Integer getId() {
         return id;
     }

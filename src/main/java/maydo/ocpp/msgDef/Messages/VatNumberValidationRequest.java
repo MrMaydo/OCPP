@@ -38,14 +38,6 @@ public class VatNumberValidationRequest implements JsonInterface {
     }
 
 
-    public VatNumberValidationRequest(String vatNumber, Integer evseId, CustomData customData) {
-        super();
-        this.vatNumber = vatNumber;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
-
-
     public String getVatNumber() {
         return vatNumber;
     }

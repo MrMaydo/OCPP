@@ -47,15 +47,6 @@ public class TaxRate implements JsonInterface {
     }
 
 
-    public TaxRate(String type, Float tax, Integer stack, CustomData customData) {
-        super();
-        this.type = type;
-        this.tax = tax;
-        this.stack = stack;
-        this.customData = customData;
-    }
-
-
     public String getType() {
         return type;
     }

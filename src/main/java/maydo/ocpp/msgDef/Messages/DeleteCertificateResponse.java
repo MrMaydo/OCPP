@@ -39,13 +39,6 @@ public class DeleteCertificateResponse implements JsonInterface {
     public DeleteCertificateResponse() {
     }
 
-    public DeleteCertificateResponse(DeleteCertificateStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
-
 
     public DeleteCertificateStatusEnum getStatus() {
         return status;
