@@ -180,28 +180,27 @@ public class SampledValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("value")) {
-            this.value = jsonObject.get("value").getAsFloat();
+            setValue(jsonObject.get("value").getAsFloat());
         }
 
         if (jsonObject.has("phase")) {
-            this.phase = PhaseEnum.valueOf(jsonObject.get("phase").getAsString());
+            setPhase(PhaseEnum.valueOf(jsonObject.get("phase").getAsString()));
         }
 
         if (jsonObject.has("signedMeterValue")) {
-            this.signedMeterValue = new SignedMeterValue();
-            this.signedMeterValue.fromJsonObject(jsonObject.getAsJsonObject("signedMeterValue"));
+            setSignedMeterValue(new SignedMeterValue());
+            getSignedMeterValue().fromJsonObject(jsonObject.getAsJsonObject("signedMeterValue"));
         }
 
         if (jsonObject.has("unitOfMeasure")) {
-            this.unitOfMeasure = new UnitOfMeasure();
-            this.unitOfMeasure.fromJsonObject(jsonObject.getAsJsonObject("unitOfMeasure"));
+            setUnitOfMeasure(new UnitOfMeasure());
+            getUnitOfMeasure().fromJsonObject(jsonObject.getAsJsonObject("unitOfMeasure"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

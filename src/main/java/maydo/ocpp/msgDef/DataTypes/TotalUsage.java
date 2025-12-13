@@ -125,26 +125,25 @@ public class TotalUsage implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("energy")) {
-            this.energy = jsonObject.get("energy").getAsFloat();
+            setEnergy(jsonObject.get("energy").getAsFloat());
         }
 
         if (jsonObject.has("chargingTime")) {
-            this.chargingTime = jsonObject.get("chargingTime").getAsInt();
+            setChargingTime(jsonObject.get("chargingTime").getAsInt());
         }
 
         if (jsonObject.has("idleTime")) {
-            this.idleTime = jsonObject.get("idleTime").getAsInt();
+            setIdleTime(jsonObject.get("idleTime").getAsInt());
         }
 
         if (jsonObject.has("reservationTime")) {
-            this.reservationTime = jsonObject.get("reservationTime").getAsInt();
+            setReservationTime(jsonObject.get("reservationTime").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

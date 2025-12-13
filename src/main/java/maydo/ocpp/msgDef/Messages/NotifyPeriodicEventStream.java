@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -11,6 +13,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -129,28 +132,37 @@ public class NotifyPeriodicEventStream implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("data")) {
+            setData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("data");
+            for (JsonElement el : arr) {
+                StreamDataElement item = new StreamDataElement();
+                item.fromJsonObject(el.getAsJsonObject());
+                getData().add(item);
+            }
+        }
+
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("pending")) {
-            this.pending = jsonObject.get("pending").getAsInt();
+            setPending(jsonObject.get("pending").getAsInt());
         }
 
         if (jsonObject.has("basetime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.basetime = dateFormat.parse(jsonObject.get("basetime").getAsString());
+                setBasetime(dateFormat.parse(jsonObject.get("basetime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for basetime" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

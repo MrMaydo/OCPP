@@ -110,22 +110,21 @@ public class TaxRate implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("tax")) {
-            this.tax = jsonObject.get("tax").getAsFloat();
+            setTax(jsonObject.get("tax").getAsFloat());
         }
 
         if (jsonObject.has("stack")) {
-            this.stack = jsonObject.get("stack").getAsInt();
+            setStack(jsonObject.get("stack").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

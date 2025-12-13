@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
@@ -12,6 +14,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -325,29 +328,29 @@ public class ChargingProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("stackLevel")) {
-            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+            setStackLevel(jsonObject.get("stackLevel").getAsInt());
         }
 
         if (jsonObject.has("chargingProfilePurpose")) {
-            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+            setChargingProfilePurpose(ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString()));
         }
 
         if (jsonObject.has("chargingProfileKind")) {
-            this.chargingProfileKind = ChargingProfileKindEnum.valueOf(jsonObject.get("chargingProfileKind").getAsString());
+            setChargingProfileKind(ChargingProfileKindEnum.valueOf(jsonObject.get("chargingProfileKind").getAsString()));
         }
 
         if (jsonObject.has("recurrencyKind")) {
-            this.recurrencyKind = RecurrencyKindEnum.valueOf(jsonObject.get("recurrencyKind").getAsString());
+            setRecurrencyKind(RecurrencyKindEnum.valueOf(jsonObject.get("recurrencyKind").getAsString()));
         }
 
         if (jsonObject.has("validFrom")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+                setValidFrom(dateFormat.parse(jsonObject.get("validFrom").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validFrom" + e);
             }
@@ -356,46 +359,55 @@ public class ChargingProfile implements JsonInterface {
         if (jsonObject.has("validTo")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validTo = dateFormat.parse(jsonObject.get("validTo").getAsString());
+                setValidTo(dateFormat.parse(jsonObject.get("validTo").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validTo" + e);
             }
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("maxOfflineDuration")) {
-            this.maxOfflineDuration = jsonObject.get("maxOfflineDuration").getAsInt();
+            setMaxOfflineDuration(jsonObject.get("maxOfflineDuration").getAsInt());
+        }
+
+        if (jsonObject.has("chargingSchedule")) {
+            setChargingSchedule(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedule");
+            for (JsonElement el : arr) {
+                ChargingSchedule item = new ChargingSchedule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingSchedule().add(item);
+            }
         }
 
         if (jsonObject.has("invalidAfterOfflineDuration")) {
-            this.invalidAfterOfflineDuration = jsonObject.get("invalidAfterOfflineDuration").getAsBoolean();
+            setInvalidAfterOfflineDuration(jsonObject.get("invalidAfterOfflineDuration").getAsBoolean());
         }
 
         if (jsonObject.has("dynUpdateInterval")) {
-            this.dynUpdateInterval = jsonObject.get("dynUpdateInterval").getAsInt();
+            setDynUpdateInterval(jsonObject.get("dynUpdateInterval").getAsInt());
         }
 
         if (jsonObject.has("dynUpdateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.dynUpdateTime = dateFormat.parse(jsonObject.get("dynUpdateTime").getAsString());
+                setDynUpdateTime(dateFormat.parse(jsonObject.get("dynUpdateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for dynUpdateTime" + e);
             }
         }
 
         if (jsonObject.has("priceScheduleSignature")) {
-            this.priceScheduleSignature = jsonObject.get("priceScheduleSignature").getAsString();
+            setPriceScheduleSignature(jsonObject.get("priceScheduleSignature").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

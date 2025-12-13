@@ -99,21 +99,20 @@ public class AFRRSignalRequest implements JsonInterface {
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("signal")) {
-            this.signal = jsonObject.get("signal").getAsInt();
+            setSignal(jsonObject.get("signal").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

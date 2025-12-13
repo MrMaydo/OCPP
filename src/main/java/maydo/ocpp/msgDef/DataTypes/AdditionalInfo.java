@@ -93,18 +93,17 @@ public class AdditionalInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("additionalIdToken")) {
-            this.additionalIdToken = jsonObject.get("additionalIdToken").getAsString();
+            setAdditionalIdToken(jsonObject.get("additionalIdToken").getAsString());
         }
 
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

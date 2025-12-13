@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.AuthorizationStatusEnum;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -201,45 +204,52 @@ public class IdTokenInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = AuthorizationStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(AuthorizationStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("cacheExpiryDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.cacheExpiryDateTime = dateFormat.parse(jsonObject.get("cacheExpiryDateTime").getAsString());
+                setCacheExpiryDateTime(dateFormat.parse(jsonObject.get("cacheExpiryDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for cacheExpiryDateTime" + e);
             }
         }
 
         if (jsonObject.has("chargingPriority")) {
-            this.chargingPriority = jsonObject.get("chargingPriority").getAsInt();
+            setChargingPriority(jsonObject.get("chargingPriority").getAsInt());
         }
 
         if (jsonObject.has("groupIdToken")) {
-            this.groupIdToken = new IdToken();
-            this.groupIdToken.fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
+            setGroupIdToken(new IdToken());
+            getGroupIdToken().fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
         }
 
         if (jsonObject.has("language1")) {
-            this.language1 = jsonObject.get("language1").getAsString();
+            setLanguage1(jsonObject.get("language1").getAsString());
         }
 
         if (jsonObject.has("language2")) {
-            this.language2 = jsonObject.get("language2").getAsString();
+            setLanguage2(jsonObject.get("language2").getAsString());
+        }
+
+        if (jsonObject.has("evseId")) {
+            setEvseId(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evseId");
+            for (JsonElement el : arr) {
+                getEvseId().add(el.getAsInt());
+            }
         }
 
         if (jsonObject.has("personalMessage")) {
-            this.personalMessage = new MessageContent();
-            this.personalMessage.fromJsonObject(jsonObject.getAsJsonObject("personalMessage"));
+            setPersonalMessage(new MessageContent());
+            getPersonalMessage().fromJsonObject(jsonObject.getAsJsonObject("personalMessage"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

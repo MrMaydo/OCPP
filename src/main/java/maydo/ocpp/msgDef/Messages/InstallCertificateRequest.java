@@ -93,18 +93,17 @@ public class InstallCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateType")) {
-            this.certificateType = InstallCertificateUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+            setCertificateType(InstallCertificateUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
         }
 
         if (jsonObject.has("certificate")) {
-            this.certificate = jsonObject.get("certificate").getAsString();
+            setCertificate(jsonObject.get("certificate").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

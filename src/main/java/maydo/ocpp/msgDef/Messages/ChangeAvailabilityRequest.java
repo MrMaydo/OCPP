@@ -93,19 +93,18 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evse")) {
-            this.evse = new EVSE();
-            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+            setEvse(new EVSE());
+            getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
         }
 
         if (jsonObject.has("operationalStatus")) {
-            this.operationalStatus = OperationalStatusEnum.valueOf(jsonObject.get("operationalStatus").getAsString());
+            setOperationalStatus(OperationalStatusEnum.valueOf(jsonObject.get("operationalStatus").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

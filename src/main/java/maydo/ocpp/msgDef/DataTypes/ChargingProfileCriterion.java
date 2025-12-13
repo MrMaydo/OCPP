@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfilePurposeEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -126,18 +129,33 @@ public class ChargingProfileCriterion implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingProfilePurpose")) {
-            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+            setChargingProfilePurpose(ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString()));
         }
 
         if (jsonObject.has("stackLevel")) {
-            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+            setStackLevel(jsonObject.get("stackLevel").getAsInt());
+        }
+
+        if (jsonObject.has("chargingProfileId")) {
+            setChargingProfileId(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingProfileId");
+            for (JsonElement el : arr) {
+                getChargingProfileId().add(el.getAsInt());
+            }
+        }
+
+        if (jsonObject.has("chargingLimitSource")) {
+            setChargingLimitSource(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingLimitSource");
+            for (JsonElement el : arr) {
+                getChargingLimitSource().add(el.getAsString());
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

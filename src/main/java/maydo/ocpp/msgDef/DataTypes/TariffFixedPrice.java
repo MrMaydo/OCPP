@@ -90,19 +90,18 @@ public class TariffFixedPrice implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("conditions")) {
-            this.conditions = new TariffConditionsFixed();
-            this.conditions.fromJsonObject(jsonObject.getAsJsonObject("conditions"));
+            setConditions(new TariffConditionsFixed());
+            getConditions().fromJsonObject(jsonObject.getAsJsonObject("conditions"));
         }
 
         if (jsonObject.has("priceFixed")) {
-            this.priceFixed = jsonObject.get("priceFixed").getAsFloat();
+            setPriceFixed(jsonObject.get("priceFixed").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

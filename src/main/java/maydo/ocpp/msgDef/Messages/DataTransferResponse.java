@@ -34,7 +34,7 @@ public class DataTransferResponse implements JsonInterface {
      * Data without specified length or format, in response to request.
      */
     @Optional
-    private Object data;
+    private String data;
 
     /**
      *
@@ -72,7 +72,7 @@ public class DataTransferResponse implements JsonInterface {
     }
 
 
-    public void setData(Object data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -110,21 +110,21 @@ public class DataTransferResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = DataTransferStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(DataTransferStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("data")) {
-            this.data = jsonObject.getAsJsonObject("data").getAsString();
+            setData(jsonObject.get("data").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
     }
 

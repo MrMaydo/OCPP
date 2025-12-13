@@ -123,26 +123,25 @@ public class TransactionLimit implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("maxCost")) {
-            this.maxCost = jsonObject.get("maxCost").getAsFloat();
+            setMaxCost(jsonObject.get("maxCost").getAsFloat());
         }
 
         if (jsonObject.has("maxEnergy")) {
-            this.maxEnergy = jsonObject.get("maxEnergy").getAsFloat();
+            setMaxEnergy(jsonObject.get("maxEnergy").getAsFloat());
         }
 
         if (jsonObject.has("maxTime")) {
-            this.maxTime = jsonObject.get("maxTime").getAsInt();
+            setMaxTime(jsonObject.get("maxTime").getAsInt());
         }
 
         if (jsonObject.has("maxSoC")) {
-            this.maxSoC = jsonObject.get("maxSoC").getAsInt();
+            setMaxSoC(jsonObject.get("maxSoC").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

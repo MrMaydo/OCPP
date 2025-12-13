@@ -1,11 +1,14 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -103,18 +106,27 @@ public class Price implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("exclTax")) {
-            this.exclTax = jsonObject.get("exclTax").getAsFloat();
+            setExclTax(jsonObject.get("exclTax").getAsFloat());
         }
 
         if (jsonObject.has("inclTax")) {
-            this.inclTax = jsonObject.get("inclTax").getAsFloat();
+            setInclTax(jsonObject.get("inclTax").getAsFloat());
+        }
+
+        if (jsonObject.has("taxRates")) {
+            setTaxRates(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("taxRates");
+            for (JsonElement el : arr) {
+                TaxRate item = new TaxRate();
+                item.fromJsonObject(el.getAsJsonObject());
+                getTaxRates().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

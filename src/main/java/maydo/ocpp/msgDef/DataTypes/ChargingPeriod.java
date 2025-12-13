@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -112,24 +115,33 @@ public class ChargingPeriod implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("dimensions")) {
+            setDimensions(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("dimensions");
+            for (JsonElement el : arr) {
+                CostDimension item = new CostDimension();
+                item.fromJsonObject(el.getAsJsonObject());
+                getDimensions().add(item);
+            }
+        }
+
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
         if (jsonObject.has("startPeriod")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startPeriod = dateFormat.parse(jsonObject.get("startPeriod").getAsString());
+                setStartPeriod(dateFormat.parse(jsonObject.get("startPeriod").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startPeriod" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

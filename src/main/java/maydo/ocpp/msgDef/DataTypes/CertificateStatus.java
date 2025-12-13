@@ -130,32 +130,31 @@ public class CertificateStatus implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("source")) {
-            this.source = CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString());
+            setSource(CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString()));
         }
 
         if (jsonObject.has("status")) {
-            this.status = CertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(CertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("nextUpdate")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.nextUpdate = dateFormat.parse(jsonObject.get("nextUpdate").getAsString());
+                setNextUpdate(dateFormat.parse(jsonObject.get("nextUpdate").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for nextUpdate" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

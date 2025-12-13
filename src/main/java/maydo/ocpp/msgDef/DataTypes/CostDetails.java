@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -140,29 +143,38 @@ public class CostDetails implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("chargingPeriods")) {
+            setChargingPeriods(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingPeriods");
+            for (JsonElement el : arr) {
+                ChargingPeriod item = new ChargingPeriod();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingPeriods().add(item);
+            }
+        }
+
         if (jsonObject.has("totalCost")) {
-            this.totalCost = new TotalCost();
-            this.totalCost.fromJsonObject(jsonObject.getAsJsonObject("totalCost"));
+            setTotalCost(new TotalCost());
+            getTotalCost().fromJsonObject(jsonObject.getAsJsonObject("totalCost"));
         }
 
         if (jsonObject.has("totalUsage")) {
-            this.totalUsage = new TotalUsage();
-            this.totalUsage.fromJsonObject(jsonObject.getAsJsonObject("totalUsage"));
+            setTotalUsage(new TotalUsage());
+            getTotalUsage().fromJsonObject(jsonObject.getAsJsonObject("totalUsage"));
         }
 
         if (jsonObject.has("failureToCalculate")) {
-            this.failureToCalculate = jsonObject.get("failureToCalculate").getAsBoolean();
+            setFailureToCalculate(jsonObject.get("failureToCalculate").getAsBoolean());
         }
 
         if (jsonObject.has("failureReason")) {
-            this.failureReason = jsonObject.get("failureReason").getAsString();
+            setFailureReason(jsonObject.get("failureReason").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -73,14 +73,13 @@ public class GetTransactionStatusRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

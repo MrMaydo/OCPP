@@ -107,23 +107,22 @@ public class ClearMonitoringResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = ClearMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(ClearMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

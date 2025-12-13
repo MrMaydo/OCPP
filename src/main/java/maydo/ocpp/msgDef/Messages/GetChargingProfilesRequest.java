@@ -112,23 +112,22 @@ public class GetChargingProfilesRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfile")) {
-            this.chargingProfile = new ChargingProfileCriterion();
-            this.chargingProfile.fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
+            setChargingProfile(new ChargingProfileCriterion());
+            getChargingProfile().fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

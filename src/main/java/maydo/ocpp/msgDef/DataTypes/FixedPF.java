@@ -145,35 +145,34 @@ public class FixedPF implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("displacement")) {
-            this.displacement = jsonObject.get("displacement").getAsFloat();
+            setDisplacement(jsonObject.get("displacement").getAsFloat());
         }
 
         if (jsonObject.has("excitation")) {
-            this.excitation = jsonObject.get("excitation").getAsBoolean();
+            setExcitation(jsonObject.get("excitation").getAsBoolean());
         }
 
         if (jsonObject.has("startTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startTime = dateFormat.parse(jsonObject.get("startTime").getAsString());
+                setStartTime(dateFormat.parse(jsonObject.get("startTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startTime" + e);
             }
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsFloat();
+            setDuration(jsonObject.get("duration").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

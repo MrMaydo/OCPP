@@ -133,32 +133,31 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("maxScheduleTuples")) {
-            this.maxScheduleTuples = jsonObject.get("maxScheduleTuples").getAsInt();
+            setMaxScheduleTuples(jsonObject.get("maxScheduleTuples").getAsInt());
         }
 
         if (jsonObject.has("chargingNeeds")) {
-            this.chargingNeeds = new ChargingNeeds();
-            this.chargingNeeds.fromJsonObject(jsonObject.getAsJsonObject("chargingNeeds"));
+            setChargingNeeds(new ChargingNeeds());
+            getChargingNeeds().fromJsonObject(jsonObject.getAsJsonObject("chargingNeeds"));
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

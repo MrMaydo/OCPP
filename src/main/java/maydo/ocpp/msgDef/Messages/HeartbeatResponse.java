@@ -81,17 +81,16 @@ public class HeartbeatResponse implements JsonInterface {
         if (jsonObject.has("currentTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.currentTime = dateFormat.parse(jsonObject.get("currentTime").getAsString());
+                setCurrentTime(dateFormat.parse(jsonObject.get("currentTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for currentTime" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

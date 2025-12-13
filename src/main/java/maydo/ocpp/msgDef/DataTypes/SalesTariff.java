@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -125,22 +128,31 @@ public class SalesTariff implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("salesTariffDescription")) {
-            this.salesTariffDescription = jsonObject.get("salesTariffDescription").getAsString();
+            setSalesTariffDescription(jsonObject.get("salesTariffDescription").getAsString());
         }
 
         if (jsonObject.has("numEPriceLevels")) {
-            this.numEPriceLevels = jsonObject.get("numEPriceLevels").getAsInt();
+            setNumEPriceLevels(jsonObject.get("numEPriceLevels").getAsInt());
+        }
+
+        if (jsonObject.has("salesTariffEntry")) {
+            setSalesTariffEntry(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("salesTariffEntry");
+            for (JsonElement el : arr) {
+                SalesTariffEntry item = new SalesTariffEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getSalesTariffEntry().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

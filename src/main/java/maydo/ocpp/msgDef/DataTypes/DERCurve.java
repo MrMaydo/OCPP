@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.DERUnitEnum;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -131,12 +134,12 @@ public class DERCurve implements JsonInterface {
     }
 
 
-    public DERUnitEnum getyUnit() {
+    public DERUnitEnum getYUnit() {
         return yUnit;
     }
 
 
-    public void setyUnit(DERUnitEnum yUnit) {
+    public void setYUnit(DERUnitEnum yUnit) {
         this.yUnit = yUnit;
     }
 
@@ -208,51 +211,60 @@ public class DERCurve implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("curveData")) {
+            setCurveData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("curveData");
+            for (JsonElement el : arr) {
+                DERCurvePoints item = new DERCurvePoints();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCurveData().add(item);
+            }
+        }
+
         if (jsonObject.has("hysteresis")) {
-            this.hysteresis = new Hysteresis();
-            this.hysteresis.fromJsonObject(jsonObject.getAsJsonObject("hysteresis"));
+            setHysteresis(new Hysteresis());
+            getHysteresis().fromJsonObject(jsonObject.getAsJsonObject("hysteresis"));
         }
 
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("reactivePowerParams")) {
-            this.reactivePowerParams = new ReactivePowerParams();
-            this.reactivePowerParams.fromJsonObject(jsonObject.getAsJsonObject("reactivePowerParams"));
+            setReactivePowerParams(new ReactivePowerParams());
+            getReactivePowerParams().fromJsonObject(jsonObject.getAsJsonObject("reactivePowerParams"));
         }
 
         if (jsonObject.has("voltageParams")) {
-            this.voltageParams = new VoltageParams();
-            this.voltageParams.fromJsonObject(jsonObject.getAsJsonObject("voltageParams"));
+            setVoltageParams(new VoltageParams());
+            getVoltageParams().fromJsonObject(jsonObject.getAsJsonObject("voltageParams"));
         }
 
         if (jsonObject.has("yUnit")) {
-            this.yUnit = DERUnitEnum.valueOf(jsonObject.get("yUnit").getAsString());
+            setYUnit(DERUnitEnum.valueOf(jsonObject.get("yUnit").getAsString()));
         }
 
         if (jsonObject.has("responseTime")) {
-            this.responseTime = jsonObject.get("responseTime").getAsFloat();
+            setResponseTime(jsonObject.get("responseTime").getAsFloat());
         }
 
         if (jsonObject.has("startTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startTime = dateFormat.parse(jsonObject.get("startTime").getAsString());
+                setStartTime(dateFormat.parse(jsonObject.get("startTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startTime" + e);
             }
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsFloat();
+            setDuration(jsonObject.get("duration").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

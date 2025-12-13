@@ -143,30 +143,29 @@ public class OCSPRequestData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("hashAlgorithm")) {
-            this.hashAlgorithm = HashAlgorithmEnum.valueOf(jsonObject.get("hashAlgorithm").getAsString());
+            setHashAlgorithm(HashAlgorithmEnum.valueOf(jsonObject.get("hashAlgorithm").getAsString()));
         }
 
         if (jsonObject.has("issuerNameHash")) {
-            this.issuerNameHash = jsonObject.get("issuerNameHash").getAsString();
+            setIssuerNameHash(jsonObject.get("issuerNameHash").getAsString());
         }
 
         if (jsonObject.has("issuerKeyHash")) {
-            this.issuerKeyHash = jsonObject.get("issuerKeyHash").getAsString();
+            setIssuerKeyHash(jsonObject.get("issuerKeyHash").getAsString());
         }
 
         if (jsonObject.has("serialNumber")) {
-            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+            setSerialNumber(jsonObject.get("serialNumber").getAsString());
         }
 
         if (jsonObject.has("responderURL")) {
-            this.responderURL = jsonObject.get("responderURL").getAsString();
+            setResponderURL(jsonObject.get("responderURL").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

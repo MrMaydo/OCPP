@@ -303,73 +303,72 @@ public class EventData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("eventId")) {
-            this.eventId = jsonObject.get("eventId").getAsInt();
+            setEventId(jsonObject.get("eventId").getAsInt());
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("trigger")) {
-            this.trigger = EventTriggerEnum.valueOf(jsonObject.get("trigger").getAsString());
+            setTrigger(EventTriggerEnum.valueOf(jsonObject.get("trigger").getAsString()));
         }
 
         if (jsonObject.has("cause")) {
-            this.cause = jsonObject.get("cause").getAsInt();
+            setCause(jsonObject.get("cause").getAsInt());
         }
 
         if (jsonObject.has("actualValue")) {
-            this.actualValue = jsonObject.get("actualValue").getAsString();
+            setActualValue(jsonObject.get("actualValue").getAsString());
         }
 
         if (jsonObject.has("techCode")) {
-            this.techCode = jsonObject.get("techCode").getAsString();
+            setTechCode(jsonObject.get("techCode").getAsString());
         }
 
         if (jsonObject.has("techInfo")) {
-            this.techInfo = jsonObject.get("techInfo").getAsString();
+            setTechInfo(jsonObject.get("techInfo").getAsString());
         }
 
         if (jsonObject.has("cleared")) {
-            this.cleared = jsonObject.get("cleared").getAsBoolean();
+            setCleared(jsonObject.get("cleared").getAsBoolean());
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("component")) {
-            this.component = new Component();
-            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+            setComponent(new Component());
+            getComponent().fromJsonObject(jsonObject.getAsJsonObject("component"));
         }
 
         if (jsonObject.has("variableMonitoringId")) {
-            this.variableMonitoringId = jsonObject.get("variableMonitoringId").getAsInt();
+            setVariableMonitoringId(jsonObject.get("variableMonitoringId").getAsInt());
         }
 
         if (jsonObject.has("eventNotificationType")) {
-            this.eventNotificationType = EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString());
+            setEventNotificationType(EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString()));
         }
 
         if (jsonObject.has("variable")) {
-            this.variable = new Variable();
-            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+            setVariable(new Variable());
+            getVariable().fromJsonObject(jsonObject.getAsJsonObject("variable"));
         }
 
         if (jsonObject.has("severity")) {
-            this.severity = jsonObject.get("severity").getAsInt();
+            setSeverity(jsonObject.get("severity").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

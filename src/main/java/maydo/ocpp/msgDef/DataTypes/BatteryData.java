@@ -162,39 +162,38 @@ public class BatteryData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("serialNumber")) {
-            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+            setSerialNumber(jsonObject.get("serialNumber").getAsString());
         }
 
         if (jsonObject.has("soC")) {
-            this.soC = jsonObject.get("soC").getAsFloat();
+            setSoC(jsonObject.get("soC").getAsFloat());
         }
 
         if (jsonObject.has("soH")) {
-            this.soH = jsonObject.get("soH").getAsFloat();
+            setSoH(jsonObject.get("soH").getAsFloat());
         }
 
         if (jsonObject.has("productionDate")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.productionDate = dateFormat.parse(jsonObject.get("productionDate").getAsString());
+                setProductionDate(dateFormat.parse(jsonObject.get("productionDate").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for productionDate" + e);
             }
         }
 
         if (jsonObject.has("vendorInfo")) {
-            this.vendorInfo = jsonObject.get("vendorInfo").getAsString();
+            setVendorInfo(jsonObject.get("vendorInfo").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

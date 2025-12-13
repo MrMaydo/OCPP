@@ -92,18 +92,17 @@ public class EVPriceRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("energyFee")) {
-            this.energyFee = jsonObject.get("energyFee").getAsFloat();
+            setEnergyFee(jsonObject.get("energyFee").getAsFloat());
         }
 
         if (jsonObject.has("powerRangeStart")) {
-            this.powerRangeStart = jsonObject.get("powerRangeStart").getAsFloat();
+            setPowerRangeStart(jsonObject.get("powerRangeStart").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

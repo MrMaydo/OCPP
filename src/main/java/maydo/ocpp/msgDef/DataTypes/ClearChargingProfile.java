@@ -108,22 +108,21 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfilePurpose")) {
-            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+            setChargingProfilePurpose(ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString()));
         }
 
         if (jsonObject.has("stackLevel")) {
-            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+            setStackLevel(jsonObject.get("stackLevel").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

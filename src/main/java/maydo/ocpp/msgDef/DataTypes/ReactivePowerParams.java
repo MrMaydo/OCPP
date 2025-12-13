@@ -42,12 +42,12 @@ public class ReactivePowerParams implements JsonInterface {
     }
 
 
-    public Float getvRef() {
+    public Float getVRef() {
         return vRef;
     }
 
 
-    public void setvRef(Float vRef) {
+    public void setVRef(Float vRef) {
         this.vRef = vRef;
     }
 
@@ -105,22 +105,21 @@ public class ReactivePowerParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("vRef")) {
-            this.vRef = jsonObject.get("vRef").getAsFloat();
+            setVRef(jsonObject.get("vRef").getAsFloat());
         }
 
         if (jsonObject.has("autonomousVRefEnable")) {
-            this.autonomousVRefEnable = jsonObject.get("autonomousVRefEnable").getAsBoolean();
+            setAutonomousVRefEnable(jsonObject.get("autonomousVRefEnable").getAsBoolean());
         }
 
         if (jsonObject.has("autonomousVRefTimeConstant")) {
-            this.autonomousVRefTimeConstant = jsonObject.get("autonomousVRefTimeConstant").getAsFloat();
+            setAutonomousVRefTimeConstant(jsonObject.get("autonomousVRefTimeConstant").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

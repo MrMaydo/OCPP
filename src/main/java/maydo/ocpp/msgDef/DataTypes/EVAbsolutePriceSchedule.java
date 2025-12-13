@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -130,25 +133,34 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
         if (jsonObject.has("currency")) {
-            this.currency = jsonObject.get("currency").getAsString();
+            setCurrency(jsonObject.get("currency").getAsString());
+        }
+
+        if (jsonObject.has("evAbsolutePriceScheduleEntries")) {
+            setEvAbsolutePriceScheduleEntries(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evAbsolutePriceScheduleEntries");
+            for (JsonElement el : arr) {
+                EVAbsolutePriceScheduleEntry item = new EVAbsolutePriceScheduleEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEvAbsolutePriceScheduleEntries().add(item);
+            }
         }
 
         if (jsonObject.has("priceAlgorithm")) {
-            this.priceAlgorithm = jsonObject.get("priceAlgorithm").getAsString();
+            setPriceAlgorithm(jsonObject.get("priceAlgorithm").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -90,18 +90,17 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("timeout")) {
-            this.timeout = jsonObject.get("timeout").getAsInt();
+            setTimeout(jsonObject.get("timeout").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

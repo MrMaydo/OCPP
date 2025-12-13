@@ -148,33 +148,32 @@ public class RequestStartTransactionRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("groupIdToken")) {
-            this.groupIdToken = new IdToken();
-            this.groupIdToken.fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
+            setGroupIdToken(new IdToken());
+            getGroupIdToken().fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("remoteStartId")) {
-            this.remoteStartId = jsonObject.get("remoteStartId").getAsInt();
+            setRemoteStartId(jsonObject.get("remoteStartId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfile")) {
-            this.chargingProfile = new ChargingProfile();
-            this.chargingProfile.fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
+            setChargingProfile(new ChargingProfile());
+            getChargingProfile().fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

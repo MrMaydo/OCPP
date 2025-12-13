@@ -144,30 +144,29 @@ public class PublishFirmwareRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("location")) {
-            this.location = jsonObject.get("location").getAsString();
+            setLocation(jsonObject.get("location").getAsString());
         }
 
         if (jsonObject.has("retries")) {
-            this.retries = jsonObject.get("retries").getAsInt();
+            setRetries(jsonObject.get("retries").getAsInt());
         }
 
         if (jsonObject.has("checksum")) {
-            this.checksum = jsonObject.get("checksum").getAsString();
+            setChecksum(jsonObject.get("checksum").getAsString());
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("retryInterval")) {
-            this.retryInterval = jsonObject.get("retryInterval").getAsInt();
+            setRetryInterval(jsonObject.get("retryInterval").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

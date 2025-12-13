@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.DataTypes.TransactionLimit;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -169,33 +172,42 @@ public class TransactionEventResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("totalCost")) {
-            this.totalCost = jsonObject.get("totalCost").getAsFloat();
+            setTotalCost(jsonObject.get("totalCost").getAsFloat());
         }
 
         if (jsonObject.has("chargingPriority")) {
-            this.chargingPriority = jsonObject.get("chargingPriority").getAsInt();
+            setChargingPriority(jsonObject.get("chargingPriority").getAsInt());
         }
 
         if (jsonObject.has("idTokenInfo")) {
-            this.idTokenInfo = new IdTokenInfo();
-            this.idTokenInfo.fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
+            setIdTokenInfo(new IdTokenInfo());
+            getIdTokenInfo().fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
         }
 
         if (jsonObject.has("transactionLimit")) {
-            this.transactionLimit = new TransactionLimit();
-            this.transactionLimit.fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
+            setTransactionLimit(new TransactionLimit());
+            getTransactionLimit().fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
         }
 
         if (jsonObject.has("updatedPersonalMessage")) {
-            this.updatedPersonalMessage = new MessageContent();
-            this.updatedPersonalMessage.fromJsonObject(jsonObject.getAsJsonObject("updatedPersonalMessage"));
+            setUpdatedPersonalMessage(new MessageContent());
+            getUpdatedPersonalMessage().fromJsonObject(jsonObject.getAsJsonObject("updatedPersonalMessage"));
+        }
+
+        if (jsonObject.has("updatedPersonalMessageExtra")) {
+            setUpdatedPersonalMessageExtra(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("updatedPersonalMessageExtra");
+            for (JsonElement el : arr) {
+                MessageContent item = new MessageContent();
+                item.fromJsonObject(el.getAsJsonObject());
+                getUpdatedPersonalMessageExtra().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

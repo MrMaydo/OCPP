@@ -232,56 +232,55 @@ public class NotifySettlementRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("pspRef")) {
-            this.pspRef = jsonObject.get("pspRef").getAsString();
+            setPspRef(jsonObject.get("pspRef").getAsString());
         }
 
         if (jsonObject.has("status")) {
-            this.status = PaymentStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(PaymentStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = jsonObject.get("statusInfo").getAsString();
+            setStatusInfo(jsonObject.get("statusInfo").getAsString());
         }
 
         if (jsonObject.has("settlementAmount")) {
-            this.settlementAmount = jsonObject.get("settlementAmount").getAsFloat();
+            setSettlementAmount(jsonObject.get("settlementAmount").getAsFloat());
         }
 
         if (jsonObject.has("settlementTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.settlementTime = dateFormat.parse(jsonObject.get("settlementTime").getAsString());
+                setSettlementTime(dateFormat.parse(jsonObject.get("settlementTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for settlementTime" + e);
             }
         }
 
         if (jsonObject.has("receiptId")) {
-            this.receiptId = jsonObject.get("receiptId").getAsString();
+            setReceiptId(jsonObject.get("receiptId").getAsString());
         }
 
         if (jsonObject.has("receiptUrl")) {
-            this.receiptUrl = jsonObject.get("receiptUrl").getAsString();
+            setReceiptUrl(jsonObject.get("receiptUrl").getAsString());
         }
 
         if (jsonObject.has("vatCompany")) {
-            this.vatCompany = new Address();
-            this.vatCompany.fromJsonObject(jsonObject.getAsJsonObject("vatCompany"));
+            setVatCompany(new Address());
+            getVatCompany().fromJsonObject(jsonObject.getAsJsonObject("vatCompany"));
         }
 
         if (jsonObject.has("vatNumber")) {
-            this.vatNumber = jsonObject.get("vatNumber").getAsString();
+            setVatNumber(jsonObject.get("vatNumber").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

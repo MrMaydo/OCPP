@@ -174,34 +174,33 @@ public class APN implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("apn")) {
-            this.apn = jsonObject.get("apn").getAsString();
+            setApn(jsonObject.get("apn").getAsString());
         }
 
         if (jsonObject.has("apnUserName")) {
-            this.apnUserName = jsonObject.get("apnUserName").getAsString();
+            setApnUserName(jsonObject.get("apnUserName").getAsString());
         }
 
         if (jsonObject.has("apnPassword")) {
-            this.apnPassword = jsonObject.get("apnPassword").getAsString();
+            setApnPassword(jsonObject.get("apnPassword").getAsString());
         }
 
         if (jsonObject.has("simPin")) {
-            this.simPin = jsonObject.get("simPin").getAsInt();
+            setSimPin(jsonObject.get("simPin").getAsInt());
         }
 
         if (jsonObject.has("preferredNetwork")) {
-            this.preferredNetwork = jsonObject.get("preferredNetwork").getAsString();
+            setPreferredNetwork(jsonObject.get("preferredNetwork").getAsString());
         }
 
         if (jsonObject.has("apnAuthentication")) {
-            this.apnAuthentication = APNAuthenticationEnum.valueOf(jsonObject.get("apnAuthentication").getAsString());
+            setApnAuthentication(APNAuthenticationEnum.valueOf(jsonObject.get("apnAuthentication").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

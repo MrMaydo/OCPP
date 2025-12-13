@@ -90,19 +90,18 @@ public class AdditionalSelectedServices implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("serviceFee")) {
-            this.serviceFee = new RationalNumber();
-            this.serviceFee.fromJsonObject(jsonObject.getAsJsonObject("serviceFee"));
+            setServiceFee(new RationalNumber());
+            getServiceFee().fromJsonObject(jsonObject.getAsJsonObject("serviceFee"));
         }
 
         if (jsonObject.has("serviceName")) {
-            this.serviceName = jsonObject.get("serviceName").getAsString();
+            setServiceName(jsonObject.get("serviceName").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

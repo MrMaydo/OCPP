@@ -111,22 +111,21 @@ public class VoltageParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("hv10MinMeanValue")) {
-            this.hv10MinMeanValue = jsonObject.get("hv10MinMeanValue").getAsFloat();
+            setHv10MinMeanValue(jsonObject.get("hv10MinMeanValue").getAsFloat());
         }
 
         if (jsonObject.has("hv10MinMeanTripDelay")) {
-            this.hv10MinMeanTripDelay = jsonObject.get("hv10MinMeanTripDelay").getAsFloat();
+            setHv10MinMeanTripDelay(jsonObject.get("hv10MinMeanTripDelay").getAsFloat());
         }
 
         if (jsonObject.has("powerDuringCessation")) {
-            this.powerDuringCessation = PowerDuringCessationEnum.valueOf(jsonObject.get("powerDuringCessation").getAsString());
+            setPowerDuringCessation(PowerDuringCessationEnum.valueOf(jsonObject.get("powerDuringCessation").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

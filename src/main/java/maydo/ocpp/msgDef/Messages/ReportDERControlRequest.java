@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.*;
@@ -8,6 +10,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -203,19 +206,98 @@ public class ReportDERControlRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("curve")) {
+            setCurve(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("curve");
+            for (JsonElement el : arr) {
+                DERCurveGet item = new DERCurveGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCurve().add(item);
+            }
+        }
+
+        if (jsonObject.has("enterService")) {
+            setEnterService(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("enterService");
+            for (JsonElement el : arr) {
+                EnterServiceGet item = new EnterServiceGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEnterService().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedPFAbsorb")) {
+            setFixedPFAbsorb(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedPFAbsorb");
+            for (JsonElement el : arr) {
+                FixedPFGet item = new FixedPFGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedPFAbsorb().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedPFInject")) {
+            setFixedPFInject(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedPFInject");
+            for (JsonElement el : arr) {
+                FixedPFGet item = new FixedPFGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedPFInject().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedVar")) {
+            setFixedVar(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedVar");
+            for (JsonElement el : arr) {
+                FixedVarGet item = new FixedVarGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedVar().add(item);
+            }
+        }
+
+        if (jsonObject.has("freqDroop")) {
+            setFreqDroop(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("freqDroop");
+            for (JsonElement el : arr) {
+                FreqDroopGet item = new FreqDroopGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFreqDroop().add(item);
+            }
+        }
+
+        if (jsonObject.has("gradient")) {
+            setGradient(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("gradient");
+            for (JsonElement el : arr) {
+                GradientGet item = new GradientGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getGradient().add(item);
+            }
+        }
+
+        if (jsonObject.has("limitMaxDischarge")) {
+            setLimitMaxDischarge(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("limitMaxDischarge");
+            for (JsonElement el : arr) {
+                LimitMaxDischargeGet item = new LimitMaxDischargeGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getLimitMaxDischarge().add(item);
+            }
+        }
+
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("tbc")) {
-            this.tbc = jsonObject.get("tbc").getAsBoolean();
+            setTbc(jsonObject.get("tbc").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

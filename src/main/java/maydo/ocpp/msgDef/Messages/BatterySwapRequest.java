@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.BatteryData;
@@ -11,6 +13,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -126,24 +129,33 @@ public class BatterySwapRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("batteryData")) {
+            setBatteryData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("batteryData");
+            for (JsonElement el : arr) {
+                BatteryData item = new BatteryData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getBatteryData().add(item);
+            }
+        }
+
         if (jsonObject.has("eventType")) {
-            this.eventType = BatterySwapEventEnum.valueOf(jsonObject.get("eventType").getAsString());
+            setEventType(BatterySwapEventEnum.valueOf(jsonObject.get("eventType").getAsString()));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -136,30 +136,29 @@ public class BootNotificationResponse implements JsonInterface {
         if (jsonObject.has("currentTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.currentTime = dateFormat.parse(jsonObject.get("currentTime").getAsString());
+                setCurrentTime(dateFormat.parse(jsonObject.get("currentTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for currentTime" + e);
             }
         }
 
         if (jsonObject.has("interval")) {
-            this.interval = jsonObject.get("interval").getAsInt();
+            setInterval(jsonObject.get("interval").getAsInt());
         }
 
         if (jsonObject.has("status")) {
-            this.status = RegistrationStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(RegistrationStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

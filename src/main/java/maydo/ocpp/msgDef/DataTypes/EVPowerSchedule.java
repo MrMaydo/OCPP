@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -93,20 +96,29 @@ public class EVPowerSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evPowerScheduleEntries")) {
+            setEvPowerScheduleEntries(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evPowerScheduleEntries");
+            for (JsonElement el : arr) {
+                EVPowerScheduleEntry item = new EVPowerScheduleEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEvPowerScheduleEntries().add(item);
+            }
+        }
+
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

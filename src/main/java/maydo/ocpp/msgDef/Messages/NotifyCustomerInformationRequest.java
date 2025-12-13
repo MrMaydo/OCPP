@@ -146,31 +146,30 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("data")) {
-            this.data = jsonObject.get("data").getAsString();
+            setData(jsonObject.get("data").getAsString());
         }
 
         if (jsonObject.has("seqNo")) {
-            this.seqNo = jsonObject.get("seqNo").getAsInt();
+            setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
 
         if (jsonObject.has("generatedAt")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.generatedAt = dateFormat.parse(jsonObject.get("generatedAt").getAsString());
+                setGeneratedAt(dateFormat.parse(jsonObject.get("generatedAt").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for generatedAt" + e);
             }
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

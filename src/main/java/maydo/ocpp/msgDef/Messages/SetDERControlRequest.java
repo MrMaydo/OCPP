@@ -228,62 +228,61 @@ public class SetDERControlRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("isDefault")) {
-            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+            setIsDefault(jsonObject.get("isDefault").getAsBoolean());
         }
 
         if (jsonObject.has("controlId")) {
-            this.controlId = jsonObject.get("controlId").getAsString();
+            setControlId(jsonObject.get("controlId").getAsString());
         }
 
         if (jsonObject.has("controlType")) {
-            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+            setControlType(DERControlEnum.valueOf(jsonObject.get("controlType").getAsString()));
         }
 
         if (jsonObject.has("curve")) {
-            this.curve = new DERCurve();
-            this.curve.fromJsonObject(jsonObject.getAsJsonObject("curve"));
+            setCurve(new DERCurve());
+            getCurve().fromJsonObject(jsonObject.getAsJsonObject("curve"));
         }
 
         if (jsonObject.has("enterService")) {
-            this.enterService = new EnterService();
-            this.enterService.fromJsonObject(jsonObject.getAsJsonObject("enterService"));
+            setEnterService(new EnterService());
+            getEnterService().fromJsonObject(jsonObject.getAsJsonObject("enterService"));
         }
 
         if (jsonObject.has("fixedPFAbsorb")) {
-            this.fixedPFAbsorb = new FixedPF();
-            this.fixedPFAbsorb.fromJsonObject(jsonObject.getAsJsonObject("fixedPFAbsorb"));
+            setFixedPFAbsorb(new FixedPF());
+            getFixedPFAbsorb().fromJsonObject(jsonObject.getAsJsonObject("fixedPFAbsorb"));
         }
 
         if (jsonObject.has("fixedPFInject")) {
-            this.fixedPFInject = new FixedPF();
-            this.fixedPFInject.fromJsonObject(jsonObject.getAsJsonObject("fixedPFInject"));
+            setFixedPFInject(new FixedPF());
+            getFixedPFInject().fromJsonObject(jsonObject.getAsJsonObject("fixedPFInject"));
         }
 
         if (jsonObject.has("fixedVar")) {
-            this.fixedVar = new FixedVar();
-            this.fixedVar.fromJsonObject(jsonObject.getAsJsonObject("fixedVar"));
+            setFixedVar(new FixedVar());
+            getFixedVar().fromJsonObject(jsonObject.getAsJsonObject("fixedVar"));
         }
 
         if (jsonObject.has("freqDroop")) {
-            this.freqDroop = new FreqDroop();
-            this.freqDroop.fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
+            setFreqDroop(new FreqDroop());
+            getFreqDroop().fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
         }
 
         if (jsonObject.has("gradient")) {
-            this.gradient = new Gradient();
-            this.gradient.fromJsonObject(jsonObject.getAsJsonObject("gradient"));
+            setGradient(new Gradient());
+            getGradient().fromJsonObject(jsonObject.getAsJsonObject("gradient"));
         }
 
         if (jsonObject.has("limitMaxDischarge")) {
-            this.limitMaxDischarge = new LimitMaxDischarge();
-            this.limitMaxDischarge.fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
+            setLimitMaxDischarge(new LimitMaxDischarge());
+            getLimitMaxDischarge().fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

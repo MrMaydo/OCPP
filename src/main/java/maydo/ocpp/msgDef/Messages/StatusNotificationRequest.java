@@ -134,29 +134,28 @@ public class StatusNotificationRequest implements JsonInterface {
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("connectorStatus")) {
-            this.connectorStatus = ConnectorStatusEnum.valueOf(jsonObject.get("connectorStatus").getAsString());
+            setConnectorStatus(ConnectorStatusEnum.valueOf(jsonObject.get("connectorStatus").getAsString()));
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("connectorId")) {
-            this.connectorId = jsonObject.get("connectorId").getAsInt();
+            setConnectorId(jsonObject.get("connectorId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

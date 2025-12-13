@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -150,26 +153,33 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("iso15118SchemaVersion")) {
-            this.iso15118SchemaVersion = jsonObject.get("iso15118SchemaVersion").getAsString();
+            setIso15118SchemaVersion(jsonObject.get("iso15118SchemaVersion").getAsString());
         }
 
         if (jsonObject.has("action")) {
-            this.action = CertificateActionEnum.valueOf(jsonObject.get("action").getAsString());
+            setAction(CertificateActionEnum.valueOf(jsonObject.get("action").getAsString()));
         }
 
         if (jsonObject.has("exiRequest")) {
-            this.exiRequest = jsonObject.get("exiRequest").getAsString();
+            setExiRequest(jsonObject.get("exiRequest").getAsString());
         }
 
         if (jsonObject.has("maximumContractCertificateChains")) {
-            this.maximumContractCertificateChains = jsonObject.get("maximumContractCertificateChains").getAsInt();
+            setMaximumContractCertificateChains(jsonObject.get("maximumContractCertificateChains").getAsInt());
+        }
+
+        if (jsonObject.has("prioritizedEMAIDs")) {
+            setPrioritizedEMAIDs(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("prioritizedEMAIDs");
+            for (JsonElement el : arr) {
+                getPrioritizedEMAIDs().add(el.getAsString());
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

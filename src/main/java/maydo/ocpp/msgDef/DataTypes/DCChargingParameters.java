@@ -208,42 +208,41 @@ public class DCChargingParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evMaxCurrent")) {
-            this.evMaxCurrent = jsonObject.get("evMaxCurrent").getAsFloat();
+            setEvMaxCurrent(jsonObject.get("evMaxCurrent").getAsFloat());
         }
 
         if (jsonObject.has("evMaxVoltage")) {
-            this.evMaxVoltage = jsonObject.get("evMaxVoltage").getAsFloat();
+            setEvMaxVoltage(jsonObject.get("evMaxVoltage").getAsFloat());
         }
 
         if (jsonObject.has("evMaxPower")) {
-            this.evMaxPower = jsonObject.get("evMaxPower").getAsFloat();
+            setEvMaxPower(jsonObject.get("evMaxPower").getAsFloat());
         }
 
         if (jsonObject.has("evEnergyCapacity")) {
-            this.evEnergyCapacity = jsonObject.get("evEnergyCapacity").getAsFloat();
+            setEvEnergyCapacity(jsonObject.get("evEnergyCapacity").getAsFloat());
         }
 
         if (jsonObject.has("energyAmount")) {
-            this.energyAmount = jsonObject.get("energyAmount").getAsFloat();
+            setEnergyAmount(jsonObject.get("energyAmount").getAsFloat());
         }
 
         if (jsonObject.has("stateOfCharge")) {
-            this.stateOfCharge = jsonObject.get("stateOfCharge").getAsInt();
+            setStateOfCharge(jsonObject.get("stateOfCharge").getAsInt());
         }
 
         if (jsonObject.has("fullSoC")) {
-            this.fullSoC = jsonObject.get("fullSoC").getAsInt();
+            setFullSoC(jsonObject.get("fullSoC").getAsInt());
         }
 
         if (jsonObject.has("bulkSoC")) {
-            this.bulkSoC = jsonObject.get("bulkSoC").getAsInt();
+            setBulkSoC(jsonObject.get("bulkSoC").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

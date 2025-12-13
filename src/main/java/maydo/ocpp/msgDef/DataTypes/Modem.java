@@ -89,18 +89,17 @@ public class Modem implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("iccid")) {
-            this.iccid = jsonObject.get("iccid").getAsString();
+            setIccid(jsonObject.get("iccid").getAsString());
         }
 
         if (jsonObject.has("imsi")) {
-            this.imsi = jsonObject.get("imsi").getAsString();
+            setImsi(jsonObject.get("imsi").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

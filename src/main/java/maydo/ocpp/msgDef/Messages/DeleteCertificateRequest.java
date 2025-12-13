@@ -74,15 +74,14 @@ public class DeleteCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

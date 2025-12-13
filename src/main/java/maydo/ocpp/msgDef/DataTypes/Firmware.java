@@ -145,13 +145,13 @@ public class Firmware implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("location")) {
-            this.location = jsonObject.get("location").getAsString();
+            setLocation(jsonObject.get("location").getAsString());
         }
 
         if (jsonObject.has("retrieveDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.retrieveDateTime = dateFormat.parse(jsonObject.get("retrieveDateTime").getAsString());
+                setRetrieveDateTime(dateFormat.parse(jsonObject.get("retrieveDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for retrieveDateTime" + e);
             }
@@ -160,25 +160,24 @@ public class Firmware implements JsonInterface {
         if (jsonObject.has("installDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.installDateTime = dateFormat.parse(jsonObject.get("installDateTime").getAsString());
+                setInstallDateTime(dateFormat.parse(jsonObject.get("installDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for installDateTime" + e);
             }
         }
 
         if (jsonObject.has("signingCertificate")) {
-            this.signingCertificate = jsonObject.get("signingCertificate").getAsString();
+            setSigningCertificate(jsonObject.get("signingCertificate").getAsString());
         }
 
         if (jsonObject.has("signature")) {
-            this.signature = jsonObject.get("signature").getAsString();
+            setSignature(jsonObject.get("signature").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

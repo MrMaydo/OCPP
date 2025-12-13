@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -146,32 +149,41 @@ public class PriceLevelSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("priceLevelScheduleEntries")) {
+            setPriceLevelScheduleEntries(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("priceLevelScheduleEntries");
+            for (JsonElement el : arr) {
+                PriceLevelScheduleEntry item = new PriceLevelScheduleEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getPriceLevelScheduleEntries().add(item);
+            }
+        }
+
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
         if (jsonObject.has("priceScheduleId")) {
-            this.priceScheduleId = jsonObject.get("priceScheduleId").getAsInt();
+            setPriceScheduleId(jsonObject.get("priceScheduleId").getAsInt());
         }
 
         if (jsonObject.has("priceScheduleDescription")) {
-            this.priceScheduleDescription = jsonObject.get("priceScheduleDescription").getAsString();
+            setPriceScheduleDescription(jsonObject.get("priceScheduleDescription").getAsString());
         }
 
         if (jsonObject.has("numberOfPriceLevels")) {
-            this.numberOfPriceLevels = jsonObject.get("numberOfPriceLevels").getAsInt();
+            setNumberOfPriceLevels(jsonObject.get("numberOfPriceLevels").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

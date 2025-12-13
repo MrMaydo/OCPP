@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -126,23 +129,30 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("id")) {
+            setId(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("id");
+            for (JsonElement el : arr) {
+                getId().add(el.getAsInt());
+            }
+        }
+
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("priority")) {
-            this.priority = MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString());
+            setPriority(MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString()));
         }
 
         if (jsonObject.has("state")) {
-            this.state = MessageStateEnum.valueOf(jsonObject.get("state").getAsString());
+            setState(MessageStateEnum.valueOf(jsonObject.get("state").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

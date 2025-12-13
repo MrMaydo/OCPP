@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -264,67 +267,76 @@ public class Tariff implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
+        }
+
+        if (jsonObject.has("description")) {
+            setDescription(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("description");
+            for (JsonElement el : arr) {
+                MessageContent item = new MessageContent();
+                item.fromJsonObject(el.getAsJsonObject());
+                getDescription().add(item);
+            }
         }
 
         if (jsonObject.has("currency")) {
-            this.currency = jsonObject.get("currency").getAsString();
+            setCurrency(jsonObject.get("currency").getAsString());
         }
 
         if (jsonObject.has("energy")) {
-            this.energy = new TariffEnergy();
-            this.energy.fromJsonObject(jsonObject.getAsJsonObject("energy"));
+            setEnergy(new TariffEnergy());
+            getEnergy().fromJsonObject(jsonObject.getAsJsonObject("energy"));
         }
 
         if (jsonObject.has("validFrom")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+                setValidFrom(dateFormat.parse(jsonObject.get("validFrom").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validFrom" + e);
             }
         }
 
         if (jsonObject.has("chargingTime")) {
-            this.chargingTime = new TariffTime();
-            this.chargingTime.fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
+            setChargingTime(new TariffTime());
+            getChargingTime().fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
         }
 
         if (jsonObject.has("idleTime")) {
-            this.idleTime = new TariffTime();
-            this.idleTime.fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
+            setIdleTime(new TariffTime());
+            getIdleTime().fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
         }
 
         if (jsonObject.has("fixedFee")) {
-            this.fixedFee = new TariffFixed();
-            this.fixedFee.fromJsonObject(jsonObject.getAsJsonObject("fixedFee"));
+            setFixedFee(new TariffFixed());
+            getFixedFee().fromJsonObject(jsonObject.getAsJsonObject("fixedFee"));
         }
 
         if (jsonObject.has("reservationTime")) {
-            this.reservationTime = new TariffTime();
-            this.reservationTime.fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
+            setReservationTime(new TariffTime());
+            getReservationTime().fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
         }
 
         if (jsonObject.has("reservationFixed")) {
-            this.reservationFixed = new TariffFixed();
-            this.reservationFixed.fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
+            setReservationFixed(new TariffFixed());
+            getReservationFixed().fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
         }
 
         if (jsonObject.has("minCost")) {
-            this.minCost = new Price();
-            this.minCost.fromJsonObject(jsonObject.getAsJsonObject("minCost"));
+            setMinCost(new Price());
+            getMinCost().fromJsonObject(jsonObject.getAsJsonObject("minCost"));
         }
 
         if (jsonObject.has("maxCost")) {
-            this.maxCost = new Price();
-            this.maxCost.fromJsonObject(jsonObject.getAsJsonObject("maxCost"));
+            setMaxCost(new Price());
+            getMaxCost().fromJsonObject(jsonObject.getAsJsonObject("maxCost"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

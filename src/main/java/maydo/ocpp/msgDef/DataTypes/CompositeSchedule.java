@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingRateUnitEnum;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -146,31 +149,40 @@ public class CompositeSchedule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsInt();
+            setDuration(jsonObject.get("duration").getAsInt());
         }
 
         if (jsonObject.has("scheduleStart")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.scheduleStart = dateFormat.parse(jsonObject.get("scheduleStart").getAsString());
+                setScheduleStart(dateFormat.parse(jsonObject.get("scheduleStart").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for scheduleStart" + e);
             }
         }
 
         if (jsonObject.has("chargingRateUnit")) {
-            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
+            setChargingRateUnit(ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString()));
+        }
+
+        if (jsonObject.has("chargingSchedulePeriod")) {
+            setChargingSchedulePeriod(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedulePeriod");
+            for (JsonElement el : arr) {
+                ChargingSchedulePeriod item = new ChargingSchedulePeriod();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingSchedulePeriod().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

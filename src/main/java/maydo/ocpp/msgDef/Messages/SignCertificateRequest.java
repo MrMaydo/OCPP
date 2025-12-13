@@ -127,27 +127,26 @@ public class SignCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("csr")) {
-            this.csr = jsonObject.get("csr").getAsString();
+            setCsr(jsonObject.get("csr").getAsString());
         }
 
         if (jsonObject.has("certificateType")) {
-            this.certificateType = CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+            setCertificateType(CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
         }
 
         if (jsonObject.has("hashRootCertificate")) {
-            this.hashRootCertificate = new CertificateHashData();
-            this.hashRootCertificate.fromJsonObject(jsonObject.getAsJsonObject("hashRootCertificate"));
+            setHashRootCertificate(new CertificateHashData());
+            getHashRootCertificate().fromJsonObject(jsonObject.getAsJsonObject("hashRootCertificate"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

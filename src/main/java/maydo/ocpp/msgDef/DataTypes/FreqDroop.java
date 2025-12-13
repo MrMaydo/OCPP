@@ -196,47 +196,46 @@ public class FreqDroop implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("overFreq")) {
-            this.overFreq = jsonObject.get("overFreq").getAsFloat();
+            setOverFreq(jsonObject.get("overFreq").getAsFloat());
         }
 
         if (jsonObject.has("underFreq")) {
-            this.underFreq = jsonObject.get("underFreq").getAsFloat();
+            setUnderFreq(jsonObject.get("underFreq").getAsFloat());
         }
 
         if (jsonObject.has("overDroop")) {
-            this.overDroop = jsonObject.get("overDroop").getAsFloat();
+            setOverDroop(jsonObject.get("overDroop").getAsFloat());
         }
 
         if (jsonObject.has("underDroop")) {
-            this.underDroop = jsonObject.get("underDroop").getAsFloat();
+            setUnderDroop(jsonObject.get("underDroop").getAsFloat());
         }
 
         if (jsonObject.has("responseTime")) {
-            this.responseTime = jsonObject.get("responseTime").getAsFloat();
+            setResponseTime(jsonObject.get("responseTime").getAsFloat());
         }
 
         if (jsonObject.has("startTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startTime = dateFormat.parse(jsonObject.get("startTime").getAsString());
+                setStartTime(dateFormat.parse(jsonObject.get("startTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startTime" + e);
             }
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsFloat();
+            setDuration(jsonObject.get("duration").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

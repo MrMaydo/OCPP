@@ -150,34 +150,33 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
         if (jsonObject.has("timeBase")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeBase = dateFormat.parse(jsonObject.get("timeBase").getAsString());
+                setTimeBase(dateFormat.parse(jsonObject.get("timeBase").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeBase" + e);
             }
         }
 
         if (jsonObject.has("chargingSchedule")) {
-            this.chargingSchedule = new ChargingSchedule();
-            this.chargingSchedule.fromJsonObject(jsonObject.getAsJsonObject("chargingSchedule"));
+            setChargingSchedule(new ChargingSchedule());
+            getChargingSchedule().fromJsonObject(jsonObject.getAsJsonObject("chargingSchedule"));
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("selectedChargingScheduleId")) {
-            this.selectedChargingScheduleId = jsonObject.get("selectedChargingScheduleId").getAsInt();
+            setSelectedChargingScheduleId(jsonObject.get("selectedChargingScheduleId").getAsInt());
         }
 
         if (jsonObject.has("powerToleranceAcceptance")) {
-            this.powerToleranceAcceptance = jsonObject.get("powerToleranceAcceptance").getAsBoolean();
+            setPowerToleranceAcceptance(jsonObject.get("powerToleranceAcceptance").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

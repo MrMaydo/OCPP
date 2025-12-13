@@ -123,27 +123,26 @@ public class LimitMaxDischargeGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsString();
+            setId(jsonObject.get("id").getAsString());
         }
 
         if (jsonObject.has("isDefault")) {
-            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+            setIsDefault(jsonObject.get("isDefault").getAsBoolean());
         }
 
         if (jsonObject.has("isSuperseded")) {
-            this.isSuperseded = jsonObject.get("isSuperseded").getAsBoolean();
+            setIsSuperseded(jsonObject.get("isSuperseded").getAsBoolean());
         }
 
         if (jsonObject.has("limitMaxDischarge")) {
-            this.limitMaxDischarge = new LimitMaxDischarge();
-            this.limitMaxDischarge.fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
+            setLimitMaxDischarge(new LimitMaxDischarge());
+            getLimitMaxDischarge().fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

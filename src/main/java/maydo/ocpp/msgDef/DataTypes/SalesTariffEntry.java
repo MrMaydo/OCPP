@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -56,12 +59,12 @@ public class SalesTariffEntry implements JsonInterface {
     }
 
 
-    public Integer getePriceLevel() {
+    public Integer getEPriceLevel() {
         return ePriceLevel;
     }
 
 
-    public void setePriceLevel(Integer ePriceLevel) {
+    public void setEPriceLevel(Integer ePriceLevel) {
         this.ePriceLevel = ePriceLevel;
     }
 
@@ -106,19 +109,28 @@ public class SalesTariffEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("relativeTimeInterval")) {
-            this.relativeTimeInterval = new RelativeTimeInterval();
-            this.relativeTimeInterval.fromJsonObject(jsonObject.getAsJsonObject("relativeTimeInterval"));
+            setRelativeTimeInterval(new RelativeTimeInterval());
+            getRelativeTimeInterval().fromJsonObject(jsonObject.getAsJsonObject("relativeTimeInterval"));
         }
 
         if (jsonObject.has("ePriceLevel")) {
-            this.ePriceLevel = jsonObject.get("ePriceLevel").getAsInt();
+            setEPriceLevel(jsonObject.get("ePriceLevel").getAsInt());
+        }
+
+        if (jsonObject.has("consumptionCost")) {
+            setConsumptionCost(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("consumptionCost");
+            for (JsonElement el : arr) {
+                ConsumptionCost item = new ConsumptionCost();
+                item.fromJsonObject(el.getAsJsonObject());
+                getConsumptionCost().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

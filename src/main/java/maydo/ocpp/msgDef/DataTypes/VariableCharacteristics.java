@@ -186,38 +186,37 @@ public class VariableCharacteristics implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("unit")) {
-            this.unit = jsonObject.get("unit").getAsString();
+            setUnit(jsonObject.get("unit").getAsString());
         }
 
         if (jsonObject.has("dataType")) {
-            this.dataType = DataEnum.valueOf(jsonObject.get("dataType").getAsString());
+            setDataType(DataEnum.valueOf(jsonObject.get("dataType").getAsString()));
         }
 
         if (jsonObject.has("minLimit")) {
-            this.minLimit = jsonObject.get("minLimit").getAsFloat();
+            setMinLimit(jsonObject.get("minLimit").getAsFloat());
         }
 
         if (jsonObject.has("maxLimit")) {
-            this.maxLimit = jsonObject.get("maxLimit").getAsFloat();
+            setMaxLimit(jsonObject.get("maxLimit").getAsFloat());
         }
 
         if (jsonObject.has("maxElements")) {
-            this.maxElements = jsonObject.get("maxElements").getAsInt();
+            setMaxElements(jsonObject.get("maxElements").getAsInt());
         }
 
         if (jsonObject.has("valuesList")) {
-            this.valuesList = jsonObject.get("valuesList").getAsString();
+            setValuesList(jsonObject.get("valuesList").getAsString());
         }
 
         if (jsonObject.has("supportsMonitoring")) {
-            this.supportsMonitoring = jsonObject.get("supportsMonitoring").getAsBoolean();
+            setSupportsMonitoring(jsonObject.get("supportsMonitoring").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

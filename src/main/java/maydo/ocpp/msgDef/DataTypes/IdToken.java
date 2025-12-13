@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -108,19 +111,28 @@ public class IdToken implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("additionalInfo")) {
+            setAdditionalInfo(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("additionalInfo");
+            for (JsonElement el : arr) {
+                AdditionalInfo item = new AdditionalInfo();
+                item.fromJsonObject(el.getAsJsonObject());
+                getAdditionalInfo().add(item);
+            }
+        }
+
         if (jsonObject.has("idToken")) {
-            this.idToken = jsonObject.get("idToken").getAsString();
+            setIdToken(jsonObject.get("idToken").getAsString());
         }
 
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

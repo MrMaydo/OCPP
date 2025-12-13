@@ -141,31 +141,30 @@ public class DERCurveGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("curve")) {
-            this.curve = new DERCurve();
-            this.curve.fromJsonObject(jsonObject.getAsJsonObject("curve"));
+            setCurve(new DERCurve());
+            getCurve().fromJsonObject(jsonObject.getAsJsonObject("curve"));
         }
 
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsString();
+            setId(jsonObject.get("id").getAsString());
         }
 
         if (jsonObject.has("curveType")) {
-            this.curveType = DERControlEnum.valueOf(jsonObject.get("curveType").getAsString());
+            setCurveType(DERControlEnum.valueOf(jsonObject.get("curveType").getAsString()));
         }
 
         if (jsonObject.has("isDefault")) {
-            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+            setIsDefault(jsonObject.get("isDefault").getAsBoolean());
         }
 
         if (jsonObject.has("isSuperseded")) {
-            this.isSuperseded = jsonObject.get("isSuperseded").getAsBoolean();
+            setIsSuperseded(jsonObject.get("isSuperseded").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

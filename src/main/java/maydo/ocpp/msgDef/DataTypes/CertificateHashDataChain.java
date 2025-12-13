@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.GetCertificateIdUseEnum;
@@ -8,6 +10,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -105,19 +108,28 @@ public class CertificateHashDataChain implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("certificateType")) {
-            this.certificateType = GetCertificateIdUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+            setCertificateType(GetCertificateIdUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
+        }
+
+        if (jsonObject.has("childCertificateHashData")) {
+            setChildCertificateHashData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("childCertificateHashData");
+            for (JsonElement el : arr) {
+                CertificateHashData item = new CertificateHashData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChildCertificateHashData().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

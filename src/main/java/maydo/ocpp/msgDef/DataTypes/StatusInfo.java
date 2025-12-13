@@ -91,18 +91,17 @@ public class StatusInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("reasonCode")) {
-            this.reasonCode = jsonObject.get("reasonCode").getAsString();
+            setReasonCode(jsonObject.get("reasonCode").getAsString());
         }
 
         if (jsonObject.has("additionalInfo")) {
-            this.additionalInfo = jsonObject.get("additionalInfo").getAsString();
+            setAdditionalInfo(jsonObject.get("additionalInfo").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

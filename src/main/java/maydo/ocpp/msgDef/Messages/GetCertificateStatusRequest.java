@@ -74,15 +74,14 @@ public class GetCertificateStatusRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("ocspRequestData")) {
-            this.ocspRequestData = new OCSPRequestData();
-            this.ocspRequestData.fromJsonObject(jsonObject.getAsJsonObject("ocspRequestData"));
+            setOcspRequestData(new OCSPRequestData());
+            getOcspRequestData().fromJsonObject(jsonObject.getAsJsonObject("ocspRequestData"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

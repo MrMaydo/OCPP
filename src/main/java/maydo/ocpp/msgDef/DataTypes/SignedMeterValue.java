@@ -127,26 +127,25 @@ public class SignedMeterValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("signedMeterData")) {
-            this.signedMeterData = jsonObject.get("signedMeterData").getAsString();
+            setSignedMeterData(jsonObject.get("signedMeterData").getAsString());
         }
 
         if (jsonObject.has("signingMethod")) {
-            this.signingMethod = jsonObject.get("signingMethod").getAsString();
+            setSigningMethod(jsonObject.get("signingMethod").getAsString());
         }
 
         if (jsonObject.has("encodingMethod")) {
-            this.encodingMethod = jsonObject.get("encodingMethod").getAsString();
+            setEncodingMethod(jsonObject.get("encodingMethod").getAsString());
         }
 
         if (jsonObject.has("publicKey")) {
-            this.publicKey = jsonObject.get("publicKey").getAsString();
+            setPublicKey(jsonObject.get("publicKey").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

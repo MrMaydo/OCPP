@@ -1,12 +1,15 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -123,25 +126,34 @@ public class ReportData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("component")) {
-            this.component = new Component();
-            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+            setComponent(new Component());
+            getComponent().fromJsonObject(jsonObject.getAsJsonObject("component"));
         }
 
         if (jsonObject.has("variable")) {
-            this.variable = new Variable();
-            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+            setVariable(new Variable());
+            getVariable().fromJsonObject(jsonObject.getAsJsonObject("variable"));
+        }
+
+        if (jsonObject.has("variableAttribute")) {
+            setVariableAttribute(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("variableAttribute");
+            for (JsonElement el : arr) {
+                VariableAttribute item = new VariableAttribute();
+                item.fromJsonObject(el.getAsJsonObject());
+                getVariableAttribute().add(item);
+            }
         }
 
         if (jsonObject.has("variableCharacteristics")) {
-            this.variableCharacteristics = new VariableCharacteristics();
-            this.variableCharacteristics.fromJsonObject(jsonObject.getAsJsonObject("variableCharacteristics"));
+            setVariableCharacteristics(new VariableCharacteristics());
+            getVariableCharacteristics().fromJsonObject(jsonObject.getAsJsonObject("variableCharacteristics"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

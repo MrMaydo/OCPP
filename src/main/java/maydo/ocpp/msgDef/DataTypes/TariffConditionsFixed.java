@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.DayOfWeekEnum;
@@ -8,6 +10,7 @@ import maydo.ocpp.msgDef.Enumerations.EvseKindEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -207,38 +210,45 @@ public class TariffConditionsFixed implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("startTimeOfDay")) {
-            this.startTimeOfDay = jsonObject.get("startTimeOfDay").getAsString();
+            setStartTimeOfDay(jsonObject.get("startTimeOfDay").getAsString());
         }
 
         if (jsonObject.has("endTimeOfDay")) {
-            this.endTimeOfDay = jsonObject.get("endTimeOfDay").getAsString();
+            setEndTimeOfDay(jsonObject.get("endTimeOfDay").getAsString());
+        }
+
+        if (jsonObject.has("dayOfWeek")) {
+            setDayOfWeek(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("dayOfWeek");
+            for (JsonElement el : arr) {
+                getDayOfWeek().add(DayOfWeekEnum.valueOf(el.getAsString()));
+            }
         }
 
         if (jsonObject.has("validFromDate")) {
-            this.validFromDate = jsonObject.get("validFromDate").getAsString();
+            setValidFromDate(jsonObject.get("validFromDate").getAsString());
         }
 
         if (jsonObject.has("validToDate")) {
-            this.validToDate = jsonObject.get("validToDate").getAsString();
+            setValidToDate(jsonObject.get("validToDate").getAsString());
         }
 
         if (jsonObject.has("evseKind")) {
-            this.evseKind = EvseKindEnum.valueOf(jsonObject.get("evseKind").getAsString());
+            setEvseKind(EvseKindEnum.valueOf(jsonObject.get("evseKind").getAsString()));
         }
 
         if (jsonObject.has("paymentBrand")) {
-            this.paymentBrand = jsonObject.get("paymentBrand").getAsString();
+            setPaymentBrand(jsonObject.get("paymentBrand").getAsString());
         }
 
         if (jsonObject.has("paymentRecognition")) {
-            this.paymentRecognition = jsonObject.get("paymentRecognition").getAsString();
+            setPaymentRecognition(jsonObject.get("paymentRecognition").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

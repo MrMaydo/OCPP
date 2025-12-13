@@ -106,22 +106,21 @@ public class Gradient implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("gradient")) {
-            this.gradient = jsonObject.get("gradient").getAsFloat();
+            setGradient(jsonObject.get("gradient").getAsFloat());
         }
 
         if (jsonObject.has("softGradient")) {
-            this.softGradient = jsonObject.get("softGradient").getAsFloat();
+            setSoftGradient(jsonObject.get("softGradient").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

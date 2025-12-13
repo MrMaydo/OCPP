@@ -191,42 +191,41 @@ public class EnterService implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("highVoltage")) {
-            this.highVoltage = jsonObject.get("highVoltage").getAsFloat();
+            setHighVoltage(jsonObject.get("highVoltage").getAsFloat());
         }
 
         if (jsonObject.has("lowVoltage")) {
-            this.lowVoltage = jsonObject.get("lowVoltage").getAsFloat();
+            setLowVoltage(jsonObject.get("lowVoltage").getAsFloat());
         }
 
         if (jsonObject.has("highFreq")) {
-            this.highFreq = jsonObject.get("highFreq").getAsFloat();
+            setHighFreq(jsonObject.get("highFreq").getAsFloat());
         }
 
         if (jsonObject.has("lowFreq")) {
-            this.lowFreq = jsonObject.get("lowFreq").getAsFloat();
+            setLowFreq(jsonObject.get("lowFreq").getAsFloat());
         }
 
         if (jsonObject.has("delay")) {
-            this.delay = jsonObject.get("delay").getAsFloat();
+            setDelay(jsonObject.get("delay").getAsFloat());
         }
 
         if (jsonObject.has("randomDelay")) {
-            this.randomDelay = jsonObject.get("randomDelay").getAsFloat();
+            setRandomDelay(jsonObject.get("randomDelay").getAsFloat());
         }
 
         if (jsonObject.has("rampRate")) {
-            this.rampRate = jsonObject.get("rampRate").getAsFloat();
+            setRampRate(jsonObject.get("rampRate").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.*;
@@ -13,6 +15,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -329,71 +332,80 @@ public class TransactionEventRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("costDetails")) {
-            this.costDetails = new CostDetails();
-            this.costDetails.fromJsonObject(jsonObject.getAsJsonObject("costDetails"));
+            setCostDetails(new CostDetails());
+            getCostDetails().fromJsonObject(jsonObject.getAsJsonObject("costDetails"));
         }
 
         if (jsonObject.has("eventType")) {
-            this.eventType = TransactionEventEnum.valueOf(jsonObject.get("eventType").getAsString());
+            setEventType(TransactionEventEnum.valueOf(jsonObject.get("eventType").getAsString()));
+        }
+
+        if (jsonObject.has("meterValue")) {
+            setMeterValue(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("meterValue");
+            for (JsonElement el : arr) {
+                MeterValue item = new MeterValue();
+                item.fromJsonObject(el.getAsJsonObject());
+                getMeterValue().add(item);
+            }
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("triggerReason")) {
-            this.triggerReason = TriggerReasonEnum.valueOf(jsonObject.get("triggerReason").getAsString());
+            setTriggerReason(TriggerReasonEnum.valueOf(jsonObject.get("triggerReason").getAsString()));
         }
 
         if (jsonObject.has("seqNo")) {
-            this.seqNo = jsonObject.get("seqNo").getAsInt();
+            setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
 
         if (jsonObject.has("numberOfPhasesUsed")) {
-            this.numberOfPhasesUsed = jsonObject.get("numberOfPhasesUsed").getAsInt();
+            setNumberOfPhasesUsed(jsonObject.get("numberOfPhasesUsed").getAsInt());
         }
 
         if (jsonObject.has("cableMaxCurrent")) {
-            this.cableMaxCurrent = jsonObject.get("cableMaxCurrent").getAsInt();
+            setCableMaxCurrent(jsonObject.get("cableMaxCurrent").getAsInt());
         }
 
         if (jsonObject.has("reservationId")) {
-            this.reservationId = jsonObject.get("reservationId").getAsInt();
+            setReservationId(jsonObject.get("reservationId").getAsInt());
         }
 
         if (jsonObject.has("preconditioningStatus")) {
-            this.preconditioningStatus = PreconditioningStatusEnum.valueOf(jsonObject.get("preconditioningStatus").getAsString());
+            setPreconditioningStatus(PreconditioningStatusEnum.valueOf(jsonObject.get("preconditioningStatus").getAsString()));
         }
 
         if (jsonObject.has("evseSleep")) {
-            this.evseSleep = jsonObject.get("evseSleep").getAsBoolean();
+            setEvseSleep(jsonObject.get("evseSleep").getAsBoolean());
         }
 
         if (jsonObject.has("transactionInfo")) {
-            this.transactionInfo = new Transaction();
-            this.transactionInfo.fromJsonObject(jsonObject.getAsJsonObject("transactionInfo"));
+            setTransactionInfo(new Transaction());
+            getTransactionInfo().fromJsonObject(jsonObject.getAsJsonObject("transactionInfo"));
         }
 
         if (jsonObject.has("evse")) {
-            this.evse = new EVSE();
-            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+            setEvse(new EVSE());
+            getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

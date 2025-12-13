@@ -88,18 +88,17 @@ public class PeriodicEventStreamParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("interval")) {
-            this.interval = jsonObject.get("interval").getAsInt();
+            setInterval(jsonObject.get("interval").getAsInt());
         }
 
         if (jsonObject.has("values")) {
-            this.values = jsonObject.get("values").getAsInt();
+            setValues(jsonObject.get("values").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -90,18 +90,17 @@ public class NotifySettlementResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("receiptUrl")) {
-            this.receiptUrl = jsonObject.get("receiptUrl").getAsString();
+            setReceiptUrl(jsonObject.get("receiptUrl").getAsString());
         }
 
         if (jsonObject.has("receiptId")) {
-            this.receiptId = jsonObject.get("receiptId").getAsString();
+            setReceiptId(jsonObject.get("receiptId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

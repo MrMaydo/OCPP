@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -110,19 +113,28 @@ public class AuthorizeRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("certificate")) {
-            this.certificate = jsonObject.get("certificate").getAsString();
+            setCertificate(jsonObject.get("certificate").getAsString());
+        }
+
+        if (jsonObject.has("iso15118CertificateHashData")) {
+            setIso15118CertificateHashData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("iso15118CertificateHashData");
+            for (JsonElement el : arr) {
+                OCSPRequestData item = new OCSPRequestData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getIso15118CertificateHashData().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

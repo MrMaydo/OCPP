@@ -274,58 +274,57 @@ public class ChargingScheduleUpdate implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("limit")) {
-            this.limit = jsonObject.get("limit").getAsFloat();
+            setLimit(jsonObject.get("limit").getAsFloat());
         }
 
         if (jsonObject.has("limitL2")) {
-            this.limitL2 = jsonObject.get("limitL2").getAsFloat();
+            setLimitL2(jsonObject.get("limitL2").getAsFloat());
         }
 
         if (jsonObject.has("limitL3")) {
-            this.limitL3 = jsonObject.get("limitL3").getAsFloat();
+            setLimitL3(jsonObject.get("limitL3").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimit")) {
-            this.dischargeLimit = jsonObject.get("dischargeLimit").getAsFloat();
+            setDischargeLimit(jsonObject.get("dischargeLimit").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimitL2")) {
-            this.dischargeLimitL2 = jsonObject.get("dischargeLimitL2").getAsFloat();
+            setDischargeLimitL2(jsonObject.get("dischargeLimitL2").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimitL3")) {
-            this.dischargeLimitL3 = jsonObject.get("dischargeLimitL3").getAsFloat();
+            setDischargeLimitL3(jsonObject.get("dischargeLimitL3").getAsFloat());
         }
 
         if (jsonObject.has("setpoint")) {
-            this.setpoint = jsonObject.get("setpoint").getAsFloat();
+            setSetpoint(jsonObject.get("setpoint").getAsFloat());
         }
 
         if (jsonObject.has("setpointL2")) {
-            this.setpointL2 = jsonObject.get("setpointL2").getAsFloat();
+            setSetpointL2(jsonObject.get("setpointL2").getAsFloat());
         }
 
         if (jsonObject.has("setpointL3")) {
-            this.setpointL3 = jsonObject.get("setpointL3").getAsFloat();
+            setSetpointL3(jsonObject.get("setpointL3").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactive")) {
-            this.setpointReactive = jsonObject.get("setpointReactive").getAsFloat();
+            setSetpointReactive(jsonObject.get("setpointReactive").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactiveL2")) {
-            this.setpointReactiveL2 = jsonObject.get("setpointReactiveL2").getAsFloat();
+            setSetpointReactiveL2(jsonObject.get("setpointReactiveL2").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactiveL3")) {
-            this.setpointReactiveL3 = jsonObject.get("setpointReactiveL3").getAsFloat();
+            setSetpointReactiveL3(jsonObject.get("setpointReactiveL3").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

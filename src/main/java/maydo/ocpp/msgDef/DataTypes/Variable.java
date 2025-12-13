@@ -92,18 +92,17 @@ public class Variable implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("name")) {
-            this.name = jsonObject.get("name").getAsString();
+            setName(jsonObject.get("name").getAsString());
         }
 
         if (jsonObject.has("instance")) {
-            this.instance = jsonObject.get("instance").getAsString();
+            setInstance(jsonObject.get("instance").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

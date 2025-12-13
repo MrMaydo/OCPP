@@ -74,14 +74,13 @@ public class SetMonitoringBaseRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("monitoringBase")) {
-            this.monitoringBase = MonitoringBaseEnum.valueOf(jsonObject.get("monitoringBase").getAsString());
+            setMonitoringBase(MonitoringBaseEnum.valueOf(jsonObject.get("monitoringBase").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

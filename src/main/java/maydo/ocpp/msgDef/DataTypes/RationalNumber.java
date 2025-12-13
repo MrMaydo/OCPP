@@ -90,18 +90,17 @@ public class RationalNumber implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("exponent")) {
-            this.exponent = jsonObject.get("exponent").getAsInt();
+            setExponent(jsonObject.get("exponent").getAsInt());
         }
 
         if (jsonObject.has("value")) {
-            this.value = jsonObject.get("value").getAsInt();
+            setValue(jsonObject.get("value").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -11,6 +13,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -146,27 +149,36 @@ public class NotifyReportRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("generatedAt")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.generatedAt = dateFormat.parse(jsonObject.get("generatedAt").getAsString());
+                setGeneratedAt(dateFormat.parse(jsonObject.get("generatedAt").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for generatedAt" + e);
             }
         }
 
+        if (jsonObject.has("reportData")) {
+            setReportData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("reportData");
+            for (JsonElement el : arr) {
+                ReportData item = new ReportData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getReportData().add(item);
+            }
+        }
+
         if (jsonObject.has("seqNo")) {
-            this.seqNo = jsonObject.get("seqNo").getAsInt();
+            setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

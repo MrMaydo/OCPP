@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.MessagePriorityEnum;
@@ -11,6 +13,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -215,26 +218,26 @@ public class MessageInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("display")) {
-            this.display = new Component();
-            this.display.fromJsonObject(jsonObject.getAsJsonObject("display"));
+            setDisplay(new Component());
+            getDisplay().fromJsonObject(jsonObject.getAsJsonObject("display"));
         }
 
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("priority")) {
-            this.priority = MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString());
+            setPriority(MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString()));
         }
 
         if (jsonObject.has("state")) {
-            this.state = MessageStateEnum.valueOf(jsonObject.get("state").getAsString());
+            setState(MessageStateEnum.valueOf(jsonObject.get("state").getAsString()));
         }
 
         if (jsonObject.has("startDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startDateTime = dateFormat.parse(jsonObject.get("startDateTime").getAsString());
+                setStartDateTime(dateFormat.parse(jsonObject.get("startDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startDateTime" + e);
             }
@@ -243,26 +246,35 @@ public class MessageInfo implements JsonInterface {
         if (jsonObject.has("endDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.endDateTime = dateFormat.parse(jsonObject.get("endDateTime").getAsString());
+                setEndDateTime(dateFormat.parse(jsonObject.get("endDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for endDateTime" + e);
             }
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("message")) {
-            this.message = new MessageContent();
-            this.message.fromJsonObject(jsonObject.getAsJsonObject("message"));
+            setMessage(new MessageContent());
+            getMessage().fromJsonObject(jsonObject.getAsJsonObject("message"));
+        }
+
+        if (jsonObject.has("messageExtra")) {
+            setMessageExtra(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("messageExtra");
+            for (JsonElement el : arr) {
+                MessageContent item = new MessageContent();
+                item.fromJsonObject(el.getAsJsonObject());
+                getMessageExtra().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -130,27 +130,26 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = Iso15118EVCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(Iso15118EVCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("exiResponse")) {
-            this.exiResponse = jsonObject.get("exiResponse").getAsString();
+            setExiResponse(jsonObject.get("exiResponse").getAsString());
         }
 
         if (jsonObject.has("remainingContracts")) {
-            this.remainingContracts = jsonObject.get("remainingContracts").getAsInt();
+            setRemainingContracts(jsonObject.get("remainingContracts").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

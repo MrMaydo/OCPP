@@ -146,31 +146,30 @@ public class GetLogRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("log")) {
-            this.log = new LogParameters();
-            this.log.fromJsonObject(jsonObject.getAsJsonObject("log"));
+            setLog(new LogParameters());
+            getLog().fromJsonObject(jsonObject.getAsJsonObject("log"));
         }
 
         if (jsonObject.has("logType")) {
-            this.logType = LogEnum.valueOf(jsonObject.get("logType").getAsString());
+            setLogType(LogEnum.valueOf(jsonObject.get("logType").getAsString()));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("retries")) {
-            this.retries = jsonObject.get("retries").getAsInt();
+            setRetries(jsonObject.get("retries").getAsInt());
         }
 
         if (jsonObject.has("retryInterval")) {
-            this.retryInterval = jsonObject.get("retryInterval").getAsInt();
+            setRetryInterval(jsonObject.get("retryInterval").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

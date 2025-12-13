@@ -93,20 +93,19 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("idTokenInfo")) {
-            this.idTokenInfo = new IdTokenInfo();
-            this.idTokenInfo.fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
+            setIdTokenInfo(new IdTokenInfo());
+            getIdTokenInfo().fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

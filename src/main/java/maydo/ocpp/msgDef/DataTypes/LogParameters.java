@@ -111,13 +111,13 @@ public class LogParameters implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("remoteLocation")) {
-            this.remoteLocation = jsonObject.get("remoteLocation").getAsString();
+            setRemoteLocation(jsonObject.get("remoteLocation").getAsString());
         }
 
         if (jsonObject.has("oldestTimestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.oldestTimestamp = dateFormat.parse(jsonObject.get("oldestTimestamp").getAsString());
+                setOldestTimestamp(dateFormat.parse(jsonObject.get("oldestTimestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for oldestTimestamp" + e);
             }
@@ -126,17 +126,16 @@ public class LogParameters implements JsonInterface {
         if (jsonObject.has("latestTimestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.latestTimestamp = dateFormat.parse(jsonObject.get("latestTimestamp").getAsString());
+                setLatestTimestamp(dateFormat.parse(jsonObject.get("latestTimestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for latestTimestamp" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

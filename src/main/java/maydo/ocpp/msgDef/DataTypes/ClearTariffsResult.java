@@ -108,23 +108,22 @@ public class ClearTariffsResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
         if (jsonObject.has("status")) {
-            this.status = TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

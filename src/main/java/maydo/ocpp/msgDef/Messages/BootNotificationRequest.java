@@ -92,19 +92,18 @@ public class BootNotificationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingStation")) {
-            this.chargingStation = new ChargingStation();
-            this.chargingStation.fromJsonObject(jsonObject.getAsJsonObject("chargingStation"));
+            setChargingStation(new ChargingStation());
+            getChargingStation().fromJsonObject(jsonObject.getAsJsonObject("chargingStation"));
         }
 
         if (jsonObject.has("reason")) {
-            this.reason = BootReasonEnum.valueOf(jsonObject.get("reason").getAsString());
+            setReason(BootReasonEnum.valueOf(jsonObject.get("reason").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

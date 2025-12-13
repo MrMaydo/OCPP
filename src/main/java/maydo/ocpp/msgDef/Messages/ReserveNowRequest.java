@@ -164,41 +164,40 @@ public class ReserveNowRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("expiryDateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.expiryDateTime = dateFormat.parse(jsonObject.get("expiryDateTime").getAsString());
+                setExpiryDateTime(dateFormat.parse(jsonObject.get("expiryDateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for expiryDateTime" + e);
             }
         }
 
         if (jsonObject.has("connectorType")) {
-            this.connectorType = jsonObject.get("connectorType").getAsString();
+            setConnectorType(jsonObject.get("connectorType").getAsString());
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("groupIdToken")) {
-            this.groupIdToken = new IdToken();
-            this.groupIdToken.fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
+            setGroupIdToken(new IdToken());
+            getGroupIdToken().fromJsonObject(jsonObject.getAsJsonObject("groupIdToken"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

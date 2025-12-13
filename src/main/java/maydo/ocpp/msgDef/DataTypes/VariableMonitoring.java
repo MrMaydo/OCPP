@@ -174,34 +174,33 @@ public class VariableMonitoring implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("transaction")) {
-            this.transaction = jsonObject.get("transaction").getAsBoolean();
+            setTransaction(jsonObject.get("transaction").getAsBoolean());
         }
 
         if (jsonObject.has("value")) {
-            this.value = jsonObject.get("value").getAsFloat();
+            setValue(jsonObject.get("value").getAsFloat());
         }
 
         if (jsonObject.has("type")) {
-            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+            setType(MonitorEnum.valueOf(jsonObject.get("type").getAsString()));
         }
 
         if (jsonObject.has("severity")) {
-            this.severity = jsonObject.get("severity").getAsInt();
+            setSeverity(jsonObject.get("severity").getAsInt());
         }
 
         if (jsonObject.has("eventNotificationType")) {
-            this.eventNotificationType = EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString());
+            setEventNotificationType(EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

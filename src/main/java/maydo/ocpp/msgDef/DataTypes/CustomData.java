@@ -60,9 +60,8 @@ public class CustomData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("vendorId")) {
-            this.vendorId = jsonObject.get("vendorId").getAsString();
+            setVendorId(jsonObject.get("vendorId").getAsString());
         }
-
     }
 
     @Override

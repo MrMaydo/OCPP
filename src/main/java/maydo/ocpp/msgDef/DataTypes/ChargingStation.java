@@ -141,31 +141,30 @@ public class ChargingStation implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("serialNumber")) {
-            this.serialNumber = jsonObject.get("serialNumber").getAsString();
+            setSerialNumber(jsonObject.get("serialNumber").getAsString());
         }
 
         if (jsonObject.has("model")) {
-            this.model = jsonObject.get("model").getAsString();
+            setModel(jsonObject.get("model").getAsString());
         }
 
         if (jsonObject.has("modem")) {
-            this.modem = new Modem();
-            this.modem.fromJsonObject(jsonObject.getAsJsonObject("modem"));
+            setModem(new Modem());
+            getModem().fromJsonObject(jsonObject.getAsJsonObject("modem"));
         }
 
         if (jsonObject.has("vendorName")) {
-            this.vendorName = jsonObject.get("vendorName").getAsString();
+            setVendorName(jsonObject.get("vendorName").getAsString());
         }
 
         if (jsonObject.has("firmwareVersion")) {
-            this.firmwareVersion = jsonObject.get("firmwareVersion").getAsString();
+            setFirmwareVersion(jsonObject.get("firmwareVersion").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

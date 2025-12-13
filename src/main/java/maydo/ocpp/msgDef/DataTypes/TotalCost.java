@@ -211,53 +211,52 @@ public class TotalCost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("currency")) {
-            this.currency = jsonObject.get("currency").getAsString();
+            setCurrency(jsonObject.get("currency").getAsString());
         }
 
         if (jsonObject.has("typeOfCost")) {
-            this.typeOfCost = TariffCostEnum.valueOf(jsonObject.get("typeOfCost").getAsString());
+            setTypeOfCost(TariffCostEnum.valueOf(jsonObject.get("typeOfCost").getAsString()));
         }
 
         if (jsonObject.has("fixed")) {
-            this.fixed = new Price();
-            this.fixed.fromJsonObject(jsonObject.getAsJsonObject("fixed"));
+            setFixed(new Price());
+            getFixed().fromJsonObject(jsonObject.getAsJsonObject("fixed"));
         }
 
         if (jsonObject.has("energy")) {
-            this.energy = new Price();
-            this.energy.fromJsonObject(jsonObject.getAsJsonObject("energy"));
+            setEnergy(new Price());
+            getEnergy().fromJsonObject(jsonObject.getAsJsonObject("energy"));
         }
 
         if (jsonObject.has("chargingTime")) {
-            this.chargingTime = new Price();
-            this.chargingTime.fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
+            setChargingTime(new Price());
+            getChargingTime().fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
         }
 
         if (jsonObject.has("idleTime")) {
-            this.idleTime = new Price();
-            this.idleTime.fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
+            setIdleTime(new Price());
+            getIdleTime().fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
         }
 
         if (jsonObject.has("reservationTime")) {
-            this.reservationTime = new Price();
-            this.reservationTime.fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
+            setReservationTime(new Price());
+            getReservationTime().fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
         }
 
         if (jsonObject.has("reservationFixed")) {
-            this.reservationFixed = new Price();
-            this.reservationFixed.fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
+            setReservationFixed(new Price());
+            getReservationFixed().fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
         }
 
         if (jsonObject.has("total")) {
-            this.total = new TotalPrice();
-            this.total.fromJsonObject(jsonObject.getAsJsonObject("total"));
+            setTotal(new TotalPrice());
+            getTotal().fromJsonObject(jsonObject.getAsJsonObject("total"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

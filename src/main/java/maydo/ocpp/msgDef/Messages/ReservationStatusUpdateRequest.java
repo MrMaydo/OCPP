@@ -91,18 +91,17 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("reservationId")) {
-            this.reservationId = jsonObject.get("reservationId").getAsInt();
+            setReservationId(jsonObject.get("reservationId").getAsInt());
         }
 
         if (jsonObject.has("reservationUpdateStatus")) {
-            this.reservationUpdateStatus = ReservationUpdateStatusEnum.valueOf(jsonObject.get("reservationUpdateStatus").getAsString());
+            setReservationUpdateStatus(ReservationUpdateStatusEnum.valueOf(jsonObject.get("reservationUpdateStatus").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

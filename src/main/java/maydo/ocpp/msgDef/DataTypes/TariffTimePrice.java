@@ -90,19 +90,18 @@ public class TariffTimePrice implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("priceMinute")) {
-            this.priceMinute = jsonObject.get("priceMinute").getAsFloat();
+            setPriceMinute(jsonObject.get("priceMinute").getAsFloat());
         }
 
         if (jsonObject.has("conditions")) {
-            this.conditions = new TariffConditions();
-            this.conditions.fromJsonObject(jsonObject.getAsJsonObject("conditions"));
+            setConditions(new TariffConditions());
+            getConditions().fromJsonObject(jsonObject.getAsJsonObject("conditions"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

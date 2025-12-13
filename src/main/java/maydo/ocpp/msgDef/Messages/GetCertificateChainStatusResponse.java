@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CertificateStatus;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -73,11 +76,20 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("certificateStatus")) {
+            setCertificateStatus(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("certificateStatus");
+            for (JsonElement el : arr) {
+                CertificateStatus item = new CertificateStatus();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCertificateStatus().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override

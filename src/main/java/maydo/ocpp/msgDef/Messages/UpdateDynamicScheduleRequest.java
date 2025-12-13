@@ -91,19 +91,18 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingProfileId")) {
-            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+            setChargingProfileId(jsonObject.get("chargingProfileId").getAsInt());
         }
 
         if (jsonObject.has("scheduleUpdate")) {
-            this.scheduleUpdate = new ChargingScheduleUpdate();
-            this.scheduleUpdate.fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
+            setScheduleUpdate(new ChargingScheduleUpdate());
+            getScheduleUpdate().fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

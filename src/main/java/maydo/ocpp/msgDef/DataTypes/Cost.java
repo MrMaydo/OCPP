@@ -108,22 +108,21 @@ public class Cost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("costKind")) {
-            this.costKind = CostKindEnum.valueOf(jsonObject.get("costKind").getAsString());
+            setCostKind(CostKindEnum.valueOf(jsonObject.get("costKind").getAsString()));
         }
 
         if (jsonObject.has("amount")) {
-            this.amount = jsonObject.get("amount").getAsInt();
+            setAmount(jsonObject.get("amount").getAsInt());
         }
 
         if (jsonObject.has("amountMultiplier")) {
-            this.amountMultiplier = jsonObject.get("amountMultiplier").getAsInt();
+            setAmountMultiplier(jsonObject.get("amountMultiplier").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

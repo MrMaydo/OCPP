@@ -25,7 +25,7 @@ public class DataTransferRequest implements JsonInterface {
      * Data without specified length or format. This needs to be decided by both parties (Open to implementation).
      */
     @Optional
-    private Object data;
+    private String data;
 
     /**
      * This identifies the Vendor specific implementation
@@ -59,7 +59,7 @@ public class DataTransferRequest implements JsonInterface {
     }
 
 
-    public void setData(Object data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -107,20 +107,20 @@ public class DataTransferRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("messageId")) {
-            this.messageId = jsonObject.get("messageId").getAsString();
+            setMessageId(jsonObject.get("messageId").getAsString());
         }
 
         if (jsonObject.has("data")) {
-            this.data = jsonObject.getAsJsonObject("data").getAsString();
+            setData(jsonObject.get("data").getAsString());
         }
 
         if (jsonObject.has("vendorId")) {
-            this.vendorId = jsonObject.get("vendorId").getAsString();
+            setVendorId(jsonObject.get("vendorId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
     }
 

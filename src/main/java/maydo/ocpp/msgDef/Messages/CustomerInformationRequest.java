@@ -164,36 +164,35 @@ public class CustomerInformationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("customerCertificate")) {
-            this.customerCertificate = new CertificateHashData();
-            this.customerCertificate.fromJsonObject(jsonObject.getAsJsonObject("customerCertificate"));
+            setCustomerCertificate(new CertificateHashData());
+            getCustomerCertificate().fromJsonObject(jsonObject.getAsJsonObject("customerCertificate"));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("report")) {
-            this.report = jsonObject.get("report").getAsBoolean();
+            setReport(jsonObject.get("report").getAsBoolean());
         }
 
         if (jsonObject.has("clear")) {
-            this.clear = jsonObject.get("clear").getAsBoolean();
+            setClear(jsonObject.get("clear").getAsBoolean());
         }
 
         if (jsonObject.has("customerIdentifier")) {
-            this.customerIdentifier = jsonObject.get("customerIdentifier").getAsString();
+            setCustomerIdentifier(jsonObject.get("customerIdentifier").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

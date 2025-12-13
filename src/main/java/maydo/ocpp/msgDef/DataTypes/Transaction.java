@@ -202,43 +202,42 @@ public class Transaction implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("chargingState")) {
-            this.chargingState = ChargingStateEnum.valueOf(jsonObject.get("chargingState").getAsString());
+            setChargingState(ChargingStateEnum.valueOf(jsonObject.get("chargingState").getAsString()));
         }
 
         if (jsonObject.has("timeSpentCharging")) {
-            this.timeSpentCharging = jsonObject.get("timeSpentCharging").getAsInt();
+            setTimeSpentCharging(jsonObject.get("timeSpentCharging").getAsInt());
         }
 
         if (jsonObject.has("stoppedReason")) {
-            this.stoppedReason = ReasonEnum.valueOf(jsonObject.get("stoppedReason").getAsString());
+            setStoppedReason(ReasonEnum.valueOf(jsonObject.get("stoppedReason").getAsString()));
         }
 
         if (jsonObject.has("remoteStartId")) {
-            this.remoteStartId = jsonObject.get("remoteStartId").getAsInt();
+            setRemoteStartId(jsonObject.get("remoteStartId").getAsInt());
         }
 
         if (jsonObject.has("operationMode")) {
-            this.operationMode = OperationModeEnum.valueOf(jsonObject.get("operationMode").getAsString());
+            setOperationMode(OperationModeEnum.valueOf(jsonObject.get("operationMode").getAsString()));
         }
 
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
         if (jsonObject.has("transactionLimit")) {
-            this.transactionLimit = new TransactionLimit();
-            this.transactionLimit.fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
+            setTransactionLimit(new TransactionLimit());
+            getTransactionLimit().fromJsonObject(jsonObject.getAsJsonObject("transactionLimit"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

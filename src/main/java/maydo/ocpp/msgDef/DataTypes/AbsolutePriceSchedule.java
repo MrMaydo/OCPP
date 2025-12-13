@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,6 +11,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -266,52 +269,81 @@ public class AbsolutePriceSchedule implements JsonInterface {
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
         if (jsonObject.has("priceScheduleID")) {
-            this.priceScheduleID = jsonObject.get("priceScheduleID").getAsInt();
+            setPriceScheduleID(jsonObject.get("priceScheduleID").getAsInt());
         }
 
         if (jsonObject.has("priceScheduleDescription")) {
-            this.priceScheduleDescription = jsonObject.get("priceScheduleDescription").getAsString();
+            setPriceScheduleDescription(jsonObject.get("priceScheduleDescription").getAsString());
         }
 
         if (jsonObject.has("currency")) {
-            this.currency = jsonObject.get("currency").getAsString();
+            setCurrency(jsonObject.get("currency").getAsString());
         }
 
         if (jsonObject.has("language")) {
-            this.language = jsonObject.get("language").getAsString();
+            setLanguage(jsonObject.get("language").getAsString());
         }
 
         if (jsonObject.has("priceAlgorithm")) {
-            this.priceAlgorithm = jsonObject.get("priceAlgorithm").getAsString();
+            setPriceAlgorithm(jsonObject.get("priceAlgorithm").getAsString());
         }
 
         if (jsonObject.has("minimumCost")) {
-            this.minimumCost = new RationalNumber();
-            this.minimumCost.fromJsonObject(jsonObject.getAsJsonObject("minimumCost"));
+            setMinimumCost(new RationalNumber());
+            getMinimumCost().fromJsonObject(jsonObject.getAsJsonObject("minimumCost"));
         }
 
         if (jsonObject.has("maximumCost")) {
-            this.maximumCost = new RationalNumber();
-            this.maximumCost.fromJsonObject(jsonObject.getAsJsonObject("maximumCost"));
+            setMaximumCost(new RationalNumber());
+            getMaximumCost().fromJsonObject(jsonObject.getAsJsonObject("maximumCost"));
+        }
+
+        if (jsonObject.has("priceRuleStacks")) {
+            setPriceRuleStacks(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("priceRuleStacks");
+            for (JsonElement el : arr) {
+                PriceRuleStack item = new PriceRuleStack();
+                item.fromJsonObject(el.getAsJsonObject());
+                getPriceRuleStacks().add(item);
+            }
+        }
+
+        if (jsonObject.has("taxRules")) {
+            setTaxRules(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("taxRules");
+            for (JsonElement el : arr) {
+                TaxRule item = new TaxRule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getTaxRules().add(item);
+            }
         }
 
         if (jsonObject.has("overstayRuleList")) {
-            this.overstayRuleList = new OverstayRuleList();
-            this.overstayRuleList.fromJsonObject(jsonObject.getAsJsonObject("overstayRuleList"));
+            setOverstayRuleList(new OverstayRuleList());
+            getOverstayRuleList().fromJsonObject(jsonObject.getAsJsonObject("overstayRuleList"));
+        }
+
+        if (jsonObject.has("additionalSelectedServices")) {
+            setAdditionalSelectedServices(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("additionalSelectedServices");
+            for (JsonElement el : arr) {
+                AdditionalSelectedServices item = new AdditionalSelectedServices();
+                item.fromJsonObject(el.getAsJsonObject());
+                getAdditionalSelectedServices().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

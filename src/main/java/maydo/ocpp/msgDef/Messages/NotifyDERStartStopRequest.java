@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -10,6 +12,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -129,27 +132,34 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("controlId")) {
-            this.controlId = jsonObject.get("controlId").getAsString();
+            setControlId(jsonObject.get("controlId").getAsString());
         }
 
         if (jsonObject.has("started")) {
-            this.started = jsonObject.get("started").getAsBoolean();
+            setStarted(jsonObject.get("started").getAsBoolean());
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("supersededIds")) {
+            setSupersededIds(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("supersededIds");
+            for (JsonElement el : arr) {
+                getSupersededIds().add(el.getAsString());
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override

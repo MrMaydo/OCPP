@@ -106,20 +106,19 @@ public class GetVariableData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("component")) {
-            this.component = new Component();
-            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+            setComponent(new Component());
+            getComponent().fromJsonObject(jsonObject.getAsJsonObject("component"));
         }
 
         if (jsonObject.has("variable")) {
-            this.variable = new Variable();
-            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+            setVariable(new Variable());
+            getVariable().fromJsonObject(jsonObject.getAsJsonObject("variable"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

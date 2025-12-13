@@ -148,35 +148,34 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("controlType")) {
-            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+            setControlType(DERControlEnum.valueOf(jsonObject.get("controlType").getAsString()));
         }
 
         if (jsonObject.has("gridEventFault")) {
-            this.gridEventFault = GridEventFaultEnum.valueOf(jsonObject.get("gridEventFault").getAsString());
+            setGridEventFault(GridEventFaultEnum.valueOf(jsonObject.get("gridEventFault").getAsString()));
         }
 
         if (jsonObject.has("alarmEnded")) {
-            this.alarmEnded = jsonObject.get("alarmEnded").getAsBoolean();
+            setAlarmEnded(jsonObject.get("alarmEnded").getAsBoolean());
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("extraInfo")) {
-            this.extraInfo = jsonObject.get("extraInfo").getAsString();
+            setExtraInfo(jsonObject.get("extraInfo").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

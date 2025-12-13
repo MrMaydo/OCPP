@@ -91,19 +91,18 @@ public class SetDefaultTariffRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("tariff")) {
-            this.tariff = new Tariff();
-            this.tariff.fromJsonObject(jsonObject.getAsJsonObject("tariff"));
+            setTariff(new Tariff());
+            getTariff().fromJsonObject(jsonObject.getAsJsonObject("tariff"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

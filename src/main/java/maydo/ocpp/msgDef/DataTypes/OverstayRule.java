@@ -124,27 +124,26 @@ public class OverstayRule implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("overstayFee")) {
-            this.overstayFee = new RationalNumber();
-            this.overstayFee.fromJsonObject(jsonObject.getAsJsonObject("overstayFee"));
+            setOverstayFee(new RationalNumber());
+            getOverstayFee().fromJsonObject(jsonObject.getAsJsonObject("overstayFee"));
         }
 
         if (jsonObject.has("overstayRuleDescription")) {
-            this.overstayRuleDescription = jsonObject.get("overstayRuleDescription").getAsString();
+            setOverstayRuleDescription(jsonObject.get("overstayRuleDescription").getAsString());
         }
 
         if (jsonObject.has("startTime")) {
-            this.startTime = jsonObject.get("startTime").getAsInt();
+            setStartTime(jsonObject.get("startTime").getAsInt());
         }
 
         if (jsonObject.has("overstayFeePeriod")) {
-            this.overstayFeePeriod = jsonObject.get("overstayFeePeriod").getAsInt();
+            setOverstayFeePeriod(jsonObject.get("overstayFeePeriod").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

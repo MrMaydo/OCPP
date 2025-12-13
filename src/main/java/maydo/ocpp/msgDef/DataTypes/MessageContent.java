@@ -109,22 +109,21 @@ public class MessageContent implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("format")) {
-            this.format = MessageFormatEnum.valueOf(jsonObject.get("format").getAsString());
+            setFormat(MessageFormatEnum.valueOf(jsonObject.get("format").getAsString()));
         }
 
         if (jsonObject.has("language")) {
-            this.language = jsonObject.get("language").getAsString();
+            setLanguage(jsonObject.get("language").getAsString());
         }
 
         if (jsonObject.has("content")) {
-            this.content = jsonObject.get("content").getAsString();
+            setContent(jsonObject.get("content").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

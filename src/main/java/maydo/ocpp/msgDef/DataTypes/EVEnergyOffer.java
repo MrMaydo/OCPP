@@ -92,20 +92,19 @@ public class EVEnergyOffer implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evAbsolutePriceSchedule")) {
-            this.evAbsolutePriceSchedule = new EVAbsolutePriceSchedule();
-            this.evAbsolutePriceSchedule.fromJsonObject(jsonObject.getAsJsonObject("evAbsolutePriceSchedule"));
+            setEvAbsolutePriceSchedule(new EVAbsolutePriceSchedule());
+            getEvAbsolutePriceSchedule().fromJsonObject(jsonObject.getAsJsonObject("evAbsolutePriceSchedule"));
         }
 
         if (jsonObject.has("evPowerSchedule")) {
-            this.evPowerSchedule = new EVPowerSchedule();
-            this.evPowerSchedule.fromJsonObject(jsonObject.getAsJsonObject("evPowerSchedule"));
+            setEvPowerSchedule(new EVPowerSchedule());
+            getEvPowerSchedule().fromJsonObject(jsonObject.getAsJsonObject("evPowerSchedule"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

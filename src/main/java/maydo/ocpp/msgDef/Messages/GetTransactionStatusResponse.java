@@ -90,18 +90,17 @@ public class GetTransactionStatusResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("ongoingIndicator")) {
-            this.ongoingIndicator = jsonObject.get("ongoingIndicator").getAsBoolean();
+            setOngoingIndicator(jsonObject.get("ongoingIndicator").getAsBoolean());
         }
 
         if (jsonObject.has("messagesInQueue")) {
-            this.messagesInQueue = jsonObject.get("messagesInQueue").getAsBoolean();
+            setMessagesInQueue(jsonObject.get("messagesInQueue").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

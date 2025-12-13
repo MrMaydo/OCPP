@@ -108,22 +108,21 @@ public class ClearDERControlRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("isDefault")) {
-            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+            setIsDefault(jsonObject.get("isDefault").getAsBoolean());
         }
 
         if (jsonObject.has("controlType")) {
-            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+            setControlType(DERControlEnum.valueOf(jsonObject.get("controlType").getAsString()));
         }
 
         if (jsonObject.has("controlId")) {
-            this.controlId = jsonObject.get("controlId").getAsString();
+            setControlId(jsonObject.get("controlId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

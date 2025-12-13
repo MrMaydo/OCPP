@@ -106,22 +106,21 @@ public class ChargingLimit implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingLimitSource")) {
-            this.chargingLimitSource = jsonObject.get("chargingLimitSource").getAsString();
+            setChargingLimitSource(jsonObject.get("chargingLimitSource").getAsString());
         }
 
         if (jsonObject.has("isLocalGeneration")) {
-            this.isLocalGeneration = jsonObject.get("isLocalGeneration").getAsBoolean();
+            setIsLocalGeneration(jsonObject.get("isLocalGeneration").getAsBoolean());
         }
 
         if (jsonObject.has("isGridCritical")) {
-            this.isGridCritical = jsonObject.get("isGridCritical").getAsBoolean();
+            setIsGridCritical(jsonObject.get("isGridCritical").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -90,18 +90,17 @@ public class V2XSignalWattPoint implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("signal")) {
-            this.signal = jsonObject.get("signal").getAsInt();
+            setSignal(jsonObject.get("signal").getAsInt());
         }
 
         if (jsonObject.has("power")) {
-            this.power = jsonObject.get("power").getAsFloat();
+            setPower(jsonObject.get("power").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

@@ -90,18 +90,17 @@ public class V2XFreqWattPoint implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("frequency")) {
-            this.frequency = jsonObject.get("frequency").getAsFloat();
+            setFrequency(jsonObject.get("frequency").getAsFloat());
         }
 
         if (jsonObject.has("power")) {
-            this.power = jsonObject.get("power").getAsFloat();
+            setPower(jsonObject.get("power").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override

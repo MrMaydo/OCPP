@@ -194,41 +194,40 @@ public class SetMonitoringResult implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("status")) {
-            this.status = SetMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(SetMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("type")) {
-            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+            setType(MonitorEnum.valueOf(jsonObject.get("type").getAsString()));
         }
 
         if (jsonObject.has("component")) {
-            this.component = new Component();
-            this.component.fromJsonObject(jsonObject.getAsJsonObject("component"));
+            setComponent(new Component());
+            getComponent().fromJsonObject(jsonObject.getAsJsonObject("component"));
         }
 
         if (jsonObject.has("variable")) {
-            this.variable = new Variable();
-            this.variable.fromJsonObject(jsonObject.getAsJsonObject("variable"));
+            setVariable(new Variable());
+            getVariable().fromJsonObject(jsonObject.getAsJsonObject("variable"));
         }
 
         if (jsonObject.has("severity")) {
-            this.severity = jsonObject.get("severity").getAsInt();
+            setSeverity(jsonObject.get("severity").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
