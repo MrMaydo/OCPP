@@ -123,12 +123,24 @@ public class ChargingStation implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("serialNumber", serialNumber);
-        json.addProperty("model", model);
-        json.add("modem", modem.toJsonObject());
-        json.addProperty("vendorName", vendorName);
-        json.addProperty("firmwareVersion", firmwareVersion);
-        json.add("customData", customData.toJsonObject());
+
+        if (getSerialNumber() != null) {
+            json.addProperty("serialNumber", getSerialNumber());
+        }
+        json.addProperty("model", getModel());
+
+        if (getModem() != null) {
+            json.add("modem", getModem().toJsonObject());
+        }
+        json.addProperty("vendorName", getVendorName());
+
+        if (getFirmwareVersion() != null) {
+            json.addProperty("firmwareVersion", getFirmwareVersion());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

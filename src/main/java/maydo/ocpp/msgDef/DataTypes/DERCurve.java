@@ -191,15 +191,39 @@ public class DERCurve implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("hysteresis", hysteresis.toJsonObject());
-        json.addProperty("priority", priority);
-        json.add("reactivePowerParams", reactivePowerParams.toJsonObject());
-        json.add("voltageParams", voltageParams.toJsonObject());
-        json.addProperty("yUnit", yUnit.toString());
-        json.addProperty("responseTime", responseTime);
-        json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(startTime));
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray curveDataArray = new JsonArray();
+        for (DERCurvePoints item : getCurveData()) {
+            curveDataArray.add(item.toJsonObject());
+        }
+        json.add("curveData", curveDataArray);
+
+        if (getHysteresis() != null) {
+            json.add("hysteresis", getHysteresis().toJsonObject());
+        }
+        json.addProperty("priority", getPriority());
+
+        if (getReactivePowerParams() != null) {
+            json.add("reactivePowerParams", getReactivePowerParams().toJsonObject());
+        }
+        if (getVoltageParams() != null) {
+            json.add("voltageParams", getVoltageParams().toJsonObject());
+        }
+        json.addProperty("yUnit", getYUnit().toString());
+
+        if (getResponseTime() != null) {
+            json.addProperty("responseTime", getResponseTime());
+        }
+        if (getStartTime() != null) {
+            json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(getStartTime()));
+        }
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

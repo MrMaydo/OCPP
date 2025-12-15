@@ -130,12 +130,24 @@ public class RequestStartTransactionRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("groupIdToken", groupIdToken.toJsonObject());
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("remoteStartId", remoteStartId);
-        json.add("chargingProfile", chargingProfile.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getGroupIdToken() != null) {
+            json.add("groupIdToken", getGroupIdToken().toJsonObject());
+        }
+        json.add("idToken", getIdToken().toJsonObject());
+
+        json.addProperty("remoteStartId", getRemoteStartId());
+
+        if (getChargingProfile() != null) {
+            json.add("chargingProfile", getChargingProfile().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -143,13 +143,27 @@ public class PriceRule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("parkingFeePeriod", parkingFeePeriod);
-        json.addProperty("carbonDioxideEmission", carbonDioxideEmission);
-        json.addProperty("renewableGenerationPercentage", renewableGenerationPercentage);
-        json.add("energyFee", energyFee.toJsonObject());
-        json.add("parkingFee", parkingFee.toJsonObject());
-        json.add("powerRangeStart", powerRangeStart.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getParkingFeePeriod() != null) {
+            json.addProperty("parkingFeePeriod", getParkingFeePeriod());
+        }
+        if (getCarbonDioxideEmission() != null) {
+            json.addProperty("carbonDioxideEmission", getCarbonDioxideEmission());
+        }
+        if (getRenewableGenerationPercentage() != null) {
+            json.addProperty("renewableGenerationPercentage", getRenewableGenerationPercentage());
+        }
+        json.add("energyFee", getEnergyFee().toJsonObject());
+
+        if (getParkingFee() != null) {
+            json.add("parkingFee", getParkingFee().toJsonObject());
+        }
+        json.add("powerRangeStart", getPowerRangeStart().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

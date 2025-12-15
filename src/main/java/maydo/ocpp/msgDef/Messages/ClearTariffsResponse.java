@@ -64,7 +64,17 @@ public class ClearTariffsResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray clearTariffsResultArray = new JsonArray();
+        for (ClearTariffsResult item : getClearTariffsResult()) {
+            clearTariffsResultArray.add(item.toJsonObject());
+        }
+        json.add("clearTariffsResult", clearTariffsResultArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

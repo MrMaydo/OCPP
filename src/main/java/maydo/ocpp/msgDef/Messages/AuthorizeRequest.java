@@ -98,9 +98,23 @@ public class AuthorizeRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("certificate", certificate);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        if (getCertificate() != null) {
+            json.addProperty("certificate", getCertificate());
+        }
+        if (getIso15118CertificateHashData() != null) {
+            JsonArray iso15118CertificateHashDataArray = new JsonArray();
+            for (OCSPRequestData item : getIso15118CertificateHashData()) {
+                iso15118CertificateHashDataArray.add(item.toJsonObject());
+            }
+            json.add("iso15118CertificateHashData", iso15118CertificateHashDataArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

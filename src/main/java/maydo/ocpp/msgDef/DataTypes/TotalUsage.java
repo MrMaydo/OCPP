@@ -108,11 +108,20 @@ public class TotalUsage implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("energy", energy);
-        json.addProperty("chargingTime", chargingTime);
-        json.addProperty("idleTime", idleTime);
-        json.addProperty("reservationTime", reservationTime);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("energy", getEnergy());
+
+        json.addProperty("chargingTime", getChargingTime());
+
+        json.addProperty("idleTime", getIdleTime());
+
+        if (getReservationTime() != null) {
+            json.addProperty("reservationTime", getReservationTime());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

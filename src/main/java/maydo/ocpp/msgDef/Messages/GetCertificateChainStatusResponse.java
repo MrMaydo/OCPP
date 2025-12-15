@@ -64,7 +64,17 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray certificateStatusArray = new JsonArray();
+        for (CertificateStatus item : getCertificateStatus()) {
+            certificateStatusArray.add(item.toJsonObject());
+        }
+        json.add("certificateStatus", certificateStatusArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

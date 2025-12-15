@@ -115,11 +115,19 @@ public class StatusNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("connectorStatus", connectorStatus.toString());
-        json.addProperty("evseId", evseId);
-        json.addProperty("connectorId", connectorId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        json.addProperty("connectorStatus", getConnectorStatus().toString());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.addProperty("connectorId", getConnectorId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

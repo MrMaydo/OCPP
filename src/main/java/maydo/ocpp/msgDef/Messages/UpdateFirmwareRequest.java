@@ -111,11 +111,21 @@ public class UpdateFirmwareRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("retries", retries);
-        json.addProperty("retryInterval", retryInterval);
-        json.addProperty("requestId", requestId);
-        json.add("firmware", firmware.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getRetries() != null) {
+            json.addProperty("retries", getRetries());
+        }
+        if (getRetryInterval() != null) {
+            json.addProperty("retryInterval", getRetryInterval());
+        }
+        json.addProperty("requestId", getRequestId());
+
+        json.add("firmware", getFirmware().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

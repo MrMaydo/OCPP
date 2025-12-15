@@ -128,12 +128,23 @@ public class GetLogRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("log", log.toJsonObject());
-        json.addProperty("logType", logType.toString());
-        json.addProperty("requestId", requestId);
-        json.addProperty("retries", retries);
-        json.addProperty("retryInterval", retryInterval);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("log", getLog().toJsonObject());
+
+        json.addProperty("logType", getLogType().toString());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getRetries() != null) {
+            json.addProperty("retries", getRetries());
+        }
+        if (getRetryInterval() != null) {
+            json.addProperty("retryInterval", getRetryInterval());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

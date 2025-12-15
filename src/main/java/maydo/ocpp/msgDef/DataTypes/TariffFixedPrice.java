@@ -75,9 +75,16 @@ public class TariffFixedPrice implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("conditions", conditions.toJsonObject());
-        json.addProperty("priceFixed", priceFixed);
-        json.add("customData", customData.toJsonObject());
+
+        if (getConditions() != null) {
+            json.add("conditions", getConditions().toJsonObject());
+        }
+        json.addProperty("priceFixed", getPriceFixed());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

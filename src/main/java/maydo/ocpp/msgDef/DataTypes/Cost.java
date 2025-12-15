@@ -92,10 +92,18 @@ public class Cost implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("costKind", costKind.toString());
-        json.addProperty("amount", amount);
-        json.addProperty("amountMultiplier", amountMultiplier);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("costKind", getCostKind().toString());
+
+        json.addProperty("amount", getAmount());
+
+        if (getAmountMultiplier() != null) {
+            json.addProperty("amountMultiplier", getAmountMultiplier());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

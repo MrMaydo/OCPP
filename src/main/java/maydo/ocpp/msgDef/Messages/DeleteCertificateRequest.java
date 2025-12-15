@@ -60,8 +60,13 @@ public class DeleteCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

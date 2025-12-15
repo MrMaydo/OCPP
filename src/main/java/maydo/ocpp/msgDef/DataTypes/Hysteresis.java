@@ -108,11 +108,23 @@ public class Hysteresis implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("hysteresisHigh", hysteresisHigh);
-        json.addProperty("hysteresisLow", hysteresisLow);
-        json.addProperty("hysteresisDelay", hysteresisDelay);
-        json.addProperty("hysteresisGradient", hysteresisGradient);
-        json.add("customData", customData.toJsonObject());
+
+        if (getHysteresisHigh() != null) {
+            json.addProperty("hysteresisHigh", getHysteresisHigh());
+        }
+        if (getHysteresisLow() != null) {
+            json.addProperty("hysteresisLow", getHysteresisLow());
+        }
+        if (getHysteresisDelay() != null) {
+            json.addProperty("hysteresisDelay", getHysteresisDelay());
+        }
+        if (getHysteresisGradient() != null) {
+            json.addProperty("hysteresisGradient", getHysteresisGradient());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -97,9 +97,21 @@ public class IdToken implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("idToken", idToken);
-        json.addProperty("type", type);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray additionalInfoArray = new JsonArray();
+        for (AdditionalInfo item : getAdditionalInfo()) {
+            additionalInfoArray.add(item.toJsonObject());
+        }
+        json.add("additionalInfo", additionalInfoArray);
+
+        json.addProperty("idToken", getIdToken());
+
+        json.addProperty("type", getType());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

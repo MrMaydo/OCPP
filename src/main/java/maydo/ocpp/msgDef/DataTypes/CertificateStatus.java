@@ -113,11 +113,19 @@ public class CertificateStatus implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.addProperty("source", source.toString());
-        json.addProperty("status", status.toString());
-        json.addProperty("nextUpdate", new SimpleDateFormat(DATE_FORMAT).format(nextUpdate));
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        json.addProperty("source", getSource().toString());
+
+        json.addProperty("status", getStatus().toString());
+
+        json.addProperty("nextUpdate", new SimpleDateFormat(DATE_FORMAT).format(getNextUpdate()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

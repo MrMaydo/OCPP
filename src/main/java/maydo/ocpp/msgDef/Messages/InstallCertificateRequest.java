@@ -78,9 +78,15 @@ public class InstallCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("certificateType", certificateType.toString());
-        json.addProperty("certificate", certificate);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("certificateType", getCertificateType().toString());
+
+        json.addProperty("certificate", getCertificate());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

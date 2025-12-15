@@ -130,12 +130,23 @@ public class FixedVar implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("priority", priority);
-        json.addProperty("setpoint", setpoint);
-        json.addProperty("unit", unit.toString());
-        json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(startTime));
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("priority", getPriority());
+
+        json.addProperty("setpoint", getSetpoint());
+
+        json.addProperty("unit", getUnit().toString());
+
+        if (getStartTime() != null) {
+            json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(getStartTime()));
+        }
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

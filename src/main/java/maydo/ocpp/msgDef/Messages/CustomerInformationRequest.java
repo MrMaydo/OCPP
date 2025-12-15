@@ -145,13 +145,26 @@ public class CustomerInformationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customerCertificate", customerCertificate.toJsonObject());
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.addProperty("report", report);
-        json.addProperty("clear", clear);
-        json.addProperty("customerIdentifier", customerIdentifier);
-        json.add("customData", customData.toJsonObject());
+
+        if (getCustomerCertificate() != null) {
+            json.add("customerCertificate", getCustomerCertificate().toJsonObject());
+        }
+        if (getIdToken() != null) {
+            json.add("idToken", getIdToken().toJsonObject());
+        }
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("report", getReport());
+
+        json.addProperty("clear", getClear());
+
+        if (getCustomerIdentifier() != null) {
+            json.addProperty("customerIdentifier", getCustomerIdentifier());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

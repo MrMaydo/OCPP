@@ -124,11 +124,20 @@ public class SetVariableResult implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("attributeStatus", attributeStatus.toString());
-        json.add("attributeStatusInfo", attributeStatusInfo.toJsonObject());
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("attributeStatus", getAttributeStatus().toString());
+
+        if (getAttributeStatusInfo() != null) {
+            json.add("attributeStatusInfo", getAttributeStatusInfo().toJsonObject());
+        }
+        json.add("component", getComponent().toJsonObject());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

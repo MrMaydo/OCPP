@@ -78,8 +78,21 @@ public class ClearTariffsRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getTariffIds() != null) {
+            JsonArray tariffIdsArray = new JsonArray();
+            for (String item : getTariffIds()) {
+                tariffIdsArray.add(item);
+            }
+            json.add("tariffIds", tariffIdsArray);
+        }
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

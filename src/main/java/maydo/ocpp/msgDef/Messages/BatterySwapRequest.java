@@ -114,10 +114,23 @@ public class BatterySwapRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("eventType", eventType.toString());
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray batteryDataArray = new JsonArray();
+        for (BatteryData item : getBatteryData()) {
+            batteryDataArray.add(item.toJsonObject());
+        }
+        json.add("batteryData", batteryDataArray);
+
+        json.addProperty("eventType", getEventType().toString());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

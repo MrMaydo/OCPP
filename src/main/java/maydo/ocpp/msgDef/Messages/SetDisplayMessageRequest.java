@@ -62,8 +62,13 @@ public class SetDisplayMessageRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("message", message.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("message", getMessage().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

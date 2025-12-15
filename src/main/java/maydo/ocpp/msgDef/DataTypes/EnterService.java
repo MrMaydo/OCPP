@@ -170,15 +170,30 @@ public class EnterService implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("priority", priority);
-        json.addProperty("highVoltage", highVoltage);
-        json.addProperty("lowVoltage", lowVoltage);
-        json.addProperty("highFreq", highFreq);
-        json.addProperty("lowFreq", lowFreq);
-        json.addProperty("delay", delay);
-        json.addProperty("randomDelay", randomDelay);
-        json.addProperty("rampRate", rampRate);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("priority", getPriority());
+
+        json.addProperty("highVoltage", getHighVoltage());
+
+        json.addProperty("lowVoltage", getLowVoltage());
+
+        json.addProperty("highFreq", getHighFreq());
+
+        json.addProperty("lowFreq", getLowFreq());
+
+        if (getDelay() != null) {
+            json.addProperty("delay", getDelay());
+        }
+        if (getRandomDelay() != null) {
+            json.addProperty("randomDelay", getRandomDelay());
+        }
+        if (getRampRate() != null) {
+            json.addProperty("rampRate", getRampRate());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -50,7 +50,7 @@ public class ReportDERControlRequest implements JsonInterface {
     private List<FixedVarGet> fixedVar;
 
     /**
-     *. Frequency-Watt parameterized mode
+     * Frequency-Watt parameterized mode
      */
     @Optional
     private List<FreqDroopGet> freqDroop;
@@ -192,9 +192,72 @@ public class ReportDERControlRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("tbc", tbc);
-        json.add("customData", customData.toJsonObject());
+
+        if (getCurve() != null) {
+            JsonArray curveArray = new JsonArray();
+            for (DERCurveGet item : getCurve()) {
+                curveArray.add(item.toJsonObject());
+            }
+            json.add("curve", curveArray);
+        }
+        if (getEnterService() != null) {
+            JsonArray enterServiceArray = new JsonArray();
+            for (EnterServiceGet item : getEnterService()) {
+                enterServiceArray.add(item.toJsonObject());
+            }
+            json.add("enterService", enterServiceArray);
+        }
+        if (getFixedPFAbsorb() != null) {
+            JsonArray fixedPFAbsorbArray = new JsonArray();
+            for (FixedPFGet item : getFixedPFAbsorb()) {
+                fixedPFAbsorbArray.add(item.toJsonObject());
+            }
+            json.add("fixedPFAbsorb", fixedPFAbsorbArray);
+        }
+        if (getFixedPFInject() != null) {
+            JsonArray fixedPFInjectArray = new JsonArray();
+            for (FixedPFGet item : getFixedPFInject()) {
+                fixedPFInjectArray.add(item.toJsonObject());
+            }
+            json.add("fixedPFInject", fixedPFInjectArray);
+        }
+        if (getFixedVar() != null) {
+            JsonArray fixedVarArray = new JsonArray();
+            for (FixedVarGet item : getFixedVar()) {
+                fixedVarArray.add(item.toJsonObject());
+            }
+            json.add("fixedVar", fixedVarArray);
+        }
+        if (getFreqDroop() != null) {
+            JsonArray freqDroopArray = new JsonArray();
+            for (FreqDroopGet item : getFreqDroop()) {
+                freqDroopArray.add(item.toJsonObject());
+            }
+            json.add("freqDroop", freqDroopArray);
+        }
+        if (getGradient() != null) {
+            JsonArray gradientArray = new JsonArray();
+            for (GradientGet item : getGradient()) {
+                gradientArray.add(item.toJsonObject());
+            }
+            json.add("gradient", gradientArray);
+        }
+        if (getLimitMaxDischarge() != null) {
+            JsonArray limitMaxDischargeArray = new JsonArray();
+            for (LimitMaxDischargeGet item : getLimitMaxDischarge()) {
+                limitMaxDischargeArray.add(item.toJsonObject());
+            }
+            json.add("limitMaxDischarge", limitMaxDischargeArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

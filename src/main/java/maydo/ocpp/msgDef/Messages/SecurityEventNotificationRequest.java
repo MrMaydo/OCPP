@@ -96,10 +96,18 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("type", type);
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("techInfo", techInfo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("type", getType());
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getTechInfo() != null) {
+            json.addProperty("techInfo", getTechInfo());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

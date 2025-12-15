@@ -126,12 +126,24 @@ public class VatNumberValidationResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("company", company.toJsonObject());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("vatNumber", vatNumber);
-        json.addProperty("evseId", evseId);
-        json.addProperty("status", status.toString());
-        json.add("customData", customData.toJsonObject());
+
+        if (getCompany() != null) {
+            json.add("company", getCompany().toJsonObject());
+        }
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        json.addProperty("vatNumber", getVatNumber());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        json.addProperty("status", getStatus().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

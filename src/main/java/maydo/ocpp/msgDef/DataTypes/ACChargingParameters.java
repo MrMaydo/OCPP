@@ -116,11 +116,19 @@ public class ACChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("energyAmount", energyAmount);
-        json.addProperty("evMinCurrent", evMinCurrent);
-        json.addProperty("evMaxCurrent", evMaxCurrent);
-        json.addProperty("evMaxVoltage", evMaxVoltage);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("energyAmount", getEnergyAmount());
+
+        json.addProperty("evMinCurrent", getEvMinCurrent());
+
+        json.addProperty("evMaxCurrent", getEvMaxCurrent());
+
+        json.addProperty("evMaxVoltage", getEvMaxVoltage());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

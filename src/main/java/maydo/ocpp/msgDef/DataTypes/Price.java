@@ -91,9 +91,24 @@ public class Price implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("exclTax", exclTax);
-        json.addProperty("inclTax", inclTax);
-        json.add("customData", customData.toJsonObject());
+
+        if (getExclTax() != null) {
+            json.addProperty("exclTax", getExclTax());
+        }
+        if (getInclTax() != null) {
+            json.addProperty("inclTax", getInclTax());
+        }
+        if (getTaxRates() != null) {
+            JsonArray taxRatesArray = new JsonArray();
+            for (TaxRate item : getTaxRates()) {
+                taxRatesArray.add(item.toJsonObject());
+            }
+            json.add("taxRates", taxRatesArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

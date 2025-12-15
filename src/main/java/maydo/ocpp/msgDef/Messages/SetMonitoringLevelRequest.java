@@ -71,8 +71,13 @@ public class SetMonitoringLevelRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("severity", severity);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("severity", getSeverity());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -60,8 +60,13 @@ public class SetMonitoringBaseRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("monitoringBase", monitoringBase.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("monitoringBase", getMonitoringBase().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

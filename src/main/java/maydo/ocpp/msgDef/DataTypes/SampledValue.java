@@ -163,11 +163,22 @@ public class SampledValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("value", value);
-        json.addProperty("phase", phase.toString());
-        json.add("signedMeterValue", signedMeterValue.toJsonObject());
-        json.add("unitOfMeasure", unitOfMeasure.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("value", getValue());
+
+        if (getPhase() != null) {
+            json.addProperty("phase", getPhase().toString());
+        }
+        if (getSignedMeterValue() != null) {
+            json.add("signedMeterValue", getSignedMeterValue().toJsonObject());
+        }
+        if (getUnitOfMeasure() != null) {
+            json.add("unitOfMeasure", getUnitOfMeasure().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

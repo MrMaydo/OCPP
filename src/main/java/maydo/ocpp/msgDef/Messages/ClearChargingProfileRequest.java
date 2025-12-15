@@ -78,9 +78,17 @@ public class ClearChargingProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("chargingProfileCriteria", chargingProfileCriteria.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingProfileId() != null) {
+            json.addProperty("chargingProfileId", getChargingProfileId());
+        }
+        if (getChargingProfileCriteria() != null) {
+            json.add("chargingProfileCriteria", getChargingProfileCriteria().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

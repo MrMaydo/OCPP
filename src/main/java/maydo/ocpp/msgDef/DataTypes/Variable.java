@@ -77,9 +77,16 @@ public class Variable implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("name", name);
-        json.addProperty("instance", instance);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("name", getName());
+
+        if (getInstance() != null) {
+            json.addProperty("instance", getInstance());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

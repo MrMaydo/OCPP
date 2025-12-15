@@ -63,7 +63,17 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray idArray = new JsonArray();
+        for (Integer item : getId()) {
+            idArray.add(item);
+        }
+        json.add("id", idArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

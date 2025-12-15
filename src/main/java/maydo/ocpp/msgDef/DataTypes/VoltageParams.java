@@ -95,10 +95,20 @@ public class VoltageParams implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("hv10MinMeanValue", hv10MinMeanValue);
-        json.addProperty("hv10MinMeanTripDelay", hv10MinMeanTripDelay);
-        json.addProperty("powerDuringCessation", powerDuringCessation.toString());
-        json.add("customData", customData.toJsonObject());
+
+        if (getHv10MinMeanValue() != null) {
+            json.addProperty("hv10MinMeanValue", getHv10MinMeanValue());
+        }
+        if (getHv10MinMeanTripDelay() != null) {
+            json.addProperty("hv10MinMeanTripDelay", getHv10MinMeanTripDelay());
+        }
+        if (getPowerDuringCessation() != null) {
+            json.addProperty("powerDuringCessation", getPowerDuringCessation().toString());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

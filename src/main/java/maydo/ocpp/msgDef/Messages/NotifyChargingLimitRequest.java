@@ -97,9 +97,23 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("chargingLimit", chargingLimit.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingSchedule() != null) {
+            JsonArray chargingScheduleArray = new JsonArray();
+            for (ChargingSchedule item : getChargingSchedule()) {
+                chargingScheduleArray.add(item.toJsonObject());
+            }
+            json.add("chargingSchedule", chargingScheduleArray);
+        }
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        json.add("chargingLimit", getChargingLimit().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

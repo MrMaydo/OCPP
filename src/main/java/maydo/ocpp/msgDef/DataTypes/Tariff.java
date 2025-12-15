@@ -243,18 +243,49 @@ public class Tariff implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("currency", currency);
-        json.add("energy", energy.toJsonObject());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.add("chargingTime", chargingTime.toJsonObject());
-        json.add("idleTime", idleTime.toJsonObject());
-        json.add("fixedFee", fixedFee.toJsonObject());
-        json.add("reservationTime", reservationTime.toJsonObject());
-        json.add("reservationFixed", reservationFixed.toJsonObject());
-        json.add("minCost", minCost.toJsonObject());
-        json.add("maxCost", maxCost.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("tariffId", getTariffId());
+
+        if (getDescription() != null) {
+            JsonArray descriptionArray = new JsonArray();
+            for (MessageContent item : getDescription()) {
+                descriptionArray.add(item.toJsonObject());
+            }
+            json.add("description", descriptionArray);
+        }
+        json.addProperty("currency", getCurrency());
+
+        if (getEnergy() != null) {
+            json.add("energy", getEnergy().toJsonObject());
+        }
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getChargingTime() != null) {
+            json.add("chargingTime", getChargingTime().toJsonObject());
+        }
+        if (getIdleTime() != null) {
+            json.add("idleTime", getIdleTime().toJsonObject());
+        }
+        if (getFixedFee() != null) {
+            json.add("fixedFee", getFixedFee().toJsonObject());
+        }
+        if (getReservationTime() != null) {
+            json.add("reservationTime", getReservationTime().toJsonObject());
+        }
+        if (getReservationFixed() != null) {
+            json.add("reservationFixed", getReservationFixed().toJsonObject());
+        }
+        if (getMinCost() != null) {
+            json.add("minCost", getMinCost().toJsonObject());
+        }
+        if (getMaxCost() != null) {
+            json.add("maxCost", getMaxCost().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

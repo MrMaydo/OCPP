@@ -77,9 +77,15 @@ public class CostUpdatedRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("totalCost", totalCost);
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("totalCost", getTotalCost());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

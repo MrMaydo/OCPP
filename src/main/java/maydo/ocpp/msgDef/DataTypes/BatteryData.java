@@ -143,13 +143,25 @@ public class BatteryData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("serialNumber", serialNumber);
-        json.addProperty("soC", soC);
-        json.addProperty("soH", soH);
-        json.addProperty("productionDate", new SimpleDateFormat(DATE_FORMAT).format(productionDate));
-        json.addProperty("vendorInfo", vendorInfo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.addProperty("serialNumber", getSerialNumber());
+
+        json.addProperty("soC", getSoC());
+
+        json.addProperty("soH", getSoH());
+
+        if (getProductionDate() != null) {
+            json.addProperty("productionDate", new SimpleDateFormat(DATE_FORMAT).format(getProductionDate()));
+        }
+        if (getVendorInfo() != null) {
+            json.addProperty("vendorInfo", getVendorInfo());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

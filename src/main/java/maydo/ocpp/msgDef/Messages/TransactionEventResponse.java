@@ -154,12 +154,33 @@ public class TransactionEventResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("totalCost", totalCost);
-        json.addProperty("chargingPriority", chargingPriority);
-        json.add("idTokenInfo", idTokenInfo.toJsonObject());
-        json.add("transactionLimit", transactionLimit.toJsonObject());
-        json.add("updatedPersonalMessage", updatedPersonalMessage.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getTotalCost() != null) {
+            json.addProperty("totalCost", getTotalCost());
+        }
+        if (getChargingPriority() != null) {
+            json.addProperty("chargingPriority", getChargingPriority());
+        }
+        if (getIdTokenInfo() != null) {
+            json.add("idTokenInfo", getIdTokenInfo().toJsonObject());
+        }
+        if (getTransactionLimit() != null) {
+            json.add("transactionLimit", getTransactionLimit().toJsonObject());
+        }
+        if (getUpdatedPersonalMessage() != null) {
+            json.add("updatedPersonalMessage", getUpdatedPersonalMessage().toJsonObject());
+        }
+        if (getUpdatedPersonalMessageExtra() != null) {
+            JsonArray updatedPersonalMessageExtraArray = new JsonArray();
+            for (MessageContent item : getUpdatedPersonalMessageExtra()) {
+                updatedPersonalMessageExtraArray.add(item.toJsonObject());
+            }
+            json.add("updatedPersonalMessageExtra", updatedPersonalMessageExtraArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

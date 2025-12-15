@@ -95,9 +95,21 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.addProperty("source", source.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        json.addProperty("source", getSource().toString());
+
+        JsonArray urlsArray = new JsonArray();
+        for (String item : getUrls()) {
+            urlsArray.add(item);
+        }
+        json.add("urls", urlsArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

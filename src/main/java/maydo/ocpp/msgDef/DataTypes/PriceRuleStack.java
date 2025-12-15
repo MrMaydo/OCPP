@@ -78,8 +78,19 @@ public class PriceRuleStack implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("duration", getDuration());
+
+        JsonArray priceRuleArray = new JsonArray();
+        for (PriceRule item : getPriceRule()) {
+            priceRuleArray.add(item.toJsonObject());
+        }
+        json.add("priceRule", priceRuleArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

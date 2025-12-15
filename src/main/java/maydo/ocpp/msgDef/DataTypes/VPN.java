@@ -139,13 +139,24 @@ public class VPN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("server", server);
-        json.addProperty("user", user);
-        json.addProperty("group", group);
-        json.addProperty("password", password);
-        json.addProperty("key", key);
-        json.addProperty("type", type.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("server", getServer());
+
+        json.addProperty("user", getUser());
+
+        if (getGroup() != null) {
+            json.addProperty("group", getGroup());
+        }
+        json.addProperty("password", getPassword());
+
+        json.addProperty("key", getKey());
+
+        json.addProperty("type", getType().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

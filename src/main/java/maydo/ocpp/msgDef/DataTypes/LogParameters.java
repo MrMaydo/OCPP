@@ -95,10 +95,19 @@ public class LogParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("remoteLocation", remoteLocation);
-        json.addProperty("oldestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(oldestTimestamp));
-        json.addProperty("latestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(latestTimestamp));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("remoteLocation", getRemoteLocation());
+
+        if (getOldestTimestamp() != null) {
+            json.addProperty("oldestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(getOldestTimestamp()));
+        }
+        if (getLatestTimestamp() != null) {
+            json.addProperty("latestTimestamp", new SimpleDateFormat(DATE_FORMAT).format(getLatestTimestamp()));
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

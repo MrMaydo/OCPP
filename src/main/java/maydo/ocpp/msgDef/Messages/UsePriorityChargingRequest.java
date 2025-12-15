@@ -77,9 +77,15 @@ public class UsePriorityChargingRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("activate", activate);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        json.addProperty("activate", getActivate());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

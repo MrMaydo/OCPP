@@ -117,10 +117,23 @@ public class NotifyPeriodicEventStream implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("pending", pending);
-        json.addProperty("basetime", new SimpleDateFormat(DATE_FORMAT).format(basetime));
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray dataArray = new JsonArray();
+        for (StreamDataElement item : getData()) {
+            dataArray.add(item.toJsonObject());
+        }
+        json.add("data", dataArray);
+
+        json.addProperty("id", getId());
+
+        json.addProperty("pending", getPending());
+
+        json.addProperty("basetime", new SimpleDateFormat(DATE_FORMAT).format(getBasetime()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

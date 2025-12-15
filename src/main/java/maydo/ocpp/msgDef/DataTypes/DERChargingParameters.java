@@ -783,46 +783,142 @@ public class DERChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evOverExcitedMaxDischargePower", evOverExcitedMaxDischargePower);
-        json.addProperty("evOverExcitedPowerFactor", evOverExcitedPowerFactor);
-        json.addProperty("evUnderExcitedMaxDischargePower", evUnderExcitedMaxDischargePower);
-        json.addProperty("evUnderExcitedPowerFactor", evUnderExcitedPowerFactor);
-        json.addProperty("maxApparentPower", maxApparentPower);
-        json.addProperty("maxChargeApparentPower", maxChargeApparentPower);
-        json.addProperty("maxChargeApparentPowerL2", maxChargeApparentPowerL2);
-        json.addProperty("maxChargeApparentPowerL3", maxChargeApparentPowerL3);
-        json.addProperty("maxDischargeApparentPower", maxDischargeApparentPower);
-        json.addProperty("maxDischargeApparentPowerL2", maxDischargeApparentPowerL2);
-        json.addProperty("maxDischargeApparentPowerL3", maxDischargeApparentPowerL3);
-        json.addProperty("maxChargeReactivePower", maxChargeReactivePower);
-        json.addProperty("maxChargeReactivePowerL2", maxChargeReactivePowerL2);
-        json.addProperty("maxChargeReactivePowerL3", maxChargeReactivePowerL3);
-        json.addProperty("minChargeReactivePower", minChargeReactivePower);
-        json.addProperty("minChargeReactivePowerL2", minChargeReactivePowerL2);
-        json.addProperty("minChargeReactivePowerL3", minChargeReactivePowerL3);
-        json.addProperty("maxDischargeReactivePower", maxDischargeReactivePower);
-        json.addProperty("maxDischargeReactivePowerL2", maxDischargeReactivePowerL2);
-        json.addProperty("maxDischargeReactivePowerL3", maxDischargeReactivePowerL3);
-        json.addProperty("minDischargeReactivePower", minDischargeReactivePower);
-        json.addProperty("minDischargeReactivePowerL2", minDischargeReactivePowerL2);
-        json.addProperty("minDischargeReactivePowerL3", minDischargeReactivePowerL3);
-        json.addProperty("nominalVoltage", nominalVoltage);
-        json.addProperty("nominalVoltageOffset", nominalVoltageOffset);
-        json.addProperty("maxNominalVoltage", maxNominalVoltage);
-        json.addProperty("minNominalVoltage", minNominalVoltage);
-        json.addProperty("evInverterManufacturer", evInverterManufacturer);
-        json.addProperty("evInverterModel", evInverterModel);
-        json.addProperty("evInverterSerialNumber", evInverterSerialNumber);
-        json.addProperty("evInverterSwVersion", evInverterSwVersion);
-        json.addProperty("evInverterHwVersion", evInverterHwVersion);
-        json.addProperty("evIslandingTripTime", evIslandingTripTime);
-        json.addProperty("evMaximumLevel1DCInjection", evMaximumLevel1DCInjection);
-        json.addProperty("evDurationLevel1DCInjection", evDurationLevel1DCInjection);
-        json.addProperty("evMaximumLevel2DCInjection", evMaximumLevel2DCInjection);
-        json.addProperty("evDurationLevel2DCInjection", evDurationLevel2DCInjection);
-        json.addProperty("evReactiveSusceptance", evReactiveSusceptance);
-        json.addProperty("evSessionTotalDischargeEnergyAvailable", evSessionTotalDischargeEnergyAvailable);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvSupportedDERControl() != null) {
+            JsonArray evSupportedDERControlArray = new JsonArray();
+            for (DERControlEnum item : getEvSupportedDERControl()) {
+                evSupportedDERControlArray.add(item.toString());
+            }
+            json.add("evSupportedDERControl", evSupportedDERControlArray);
+        }
+        if (getEvOverExcitedMaxDischargePower() != null) {
+            json.addProperty("evOverExcitedMaxDischargePower", getEvOverExcitedMaxDischargePower());
+        }
+        if (getEvOverExcitedPowerFactor() != null) {
+            json.addProperty("evOverExcitedPowerFactor", getEvOverExcitedPowerFactor());
+        }
+        if (getEvUnderExcitedMaxDischargePower() != null) {
+            json.addProperty("evUnderExcitedMaxDischargePower", getEvUnderExcitedMaxDischargePower());
+        }
+        if (getEvUnderExcitedPowerFactor() != null) {
+            json.addProperty("evUnderExcitedPowerFactor", getEvUnderExcitedPowerFactor());
+        }
+        if (getMaxApparentPower() != null) {
+            json.addProperty("maxApparentPower", getMaxApparentPower());
+        }
+        if (getMaxChargeApparentPower() != null) {
+            json.addProperty("maxChargeApparentPower", getMaxChargeApparentPower());
+        }
+        if (getMaxChargeApparentPowerL2() != null) {
+            json.addProperty("maxChargeApparentPowerL2", getMaxChargeApparentPowerL2());
+        }
+        if (getMaxChargeApparentPowerL3() != null) {
+            json.addProperty("maxChargeApparentPowerL3", getMaxChargeApparentPowerL3());
+        }
+        if (getMaxDischargeApparentPower() != null) {
+            json.addProperty("maxDischargeApparentPower", getMaxDischargeApparentPower());
+        }
+        if (getMaxDischargeApparentPowerL2() != null) {
+            json.addProperty("maxDischargeApparentPowerL2", getMaxDischargeApparentPowerL2());
+        }
+        if (getMaxDischargeApparentPowerL3() != null) {
+            json.addProperty("maxDischargeApparentPowerL3", getMaxDischargeApparentPowerL3());
+        }
+        if (getMaxChargeReactivePower() != null) {
+            json.addProperty("maxChargeReactivePower", getMaxChargeReactivePower());
+        }
+        if (getMaxChargeReactivePowerL2() != null) {
+            json.addProperty("maxChargeReactivePowerL2", getMaxChargeReactivePowerL2());
+        }
+        if (getMaxChargeReactivePowerL3() != null) {
+            json.addProperty("maxChargeReactivePowerL3", getMaxChargeReactivePowerL3());
+        }
+        if (getMinChargeReactivePower() != null) {
+            json.addProperty("minChargeReactivePower", getMinChargeReactivePower());
+        }
+        if (getMinChargeReactivePowerL2() != null) {
+            json.addProperty("minChargeReactivePowerL2", getMinChargeReactivePowerL2());
+        }
+        if (getMinChargeReactivePowerL3() != null) {
+            json.addProperty("minChargeReactivePowerL3", getMinChargeReactivePowerL3());
+        }
+        if (getMaxDischargeReactivePower() != null) {
+            json.addProperty("maxDischargeReactivePower", getMaxDischargeReactivePower());
+        }
+        if (getMaxDischargeReactivePowerL2() != null) {
+            json.addProperty("maxDischargeReactivePowerL2", getMaxDischargeReactivePowerL2());
+        }
+        if (getMaxDischargeReactivePowerL3() != null) {
+            json.addProperty("maxDischargeReactivePowerL3", getMaxDischargeReactivePowerL3());
+        }
+        if (getMinDischargeReactivePower() != null) {
+            json.addProperty("minDischargeReactivePower", getMinDischargeReactivePower());
+        }
+        if (getMinDischargeReactivePowerL2() != null) {
+            json.addProperty("minDischargeReactivePowerL2", getMinDischargeReactivePowerL2());
+        }
+        if (getMinDischargeReactivePowerL3() != null) {
+            json.addProperty("minDischargeReactivePowerL3", getMinDischargeReactivePowerL3());
+        }
+        if (getNominalVoltage() != null) {
+            json.addProperty("nominalVoltage", getNominalVoltage());
+        }
+        if (getNominalVoltageOffset() != null) {
+            json.addProperty("nominalVoltageOffset", getNominalVoltageOffset());
+        }
+        if (getMaxNominalVoltage() != null) {
+            json.addProperty("maxNominalVoltage", getMaxNominalVoltage());
+        }
+        if (getMinNominalVoltage() != null) {
+            json.addProperty("minNominalVoltage", getMinNominalVoltage());
+        }
+        if (getEvInverterManufacturer() != null) {
+            json.addProperty("evInverterManufacturer", getEvInverterManufacturer());
+        }
+        if (getEvInverterModel() != null) {
+            json.addProperty("evInverterModel", getEvInverterModel());
+        }
+        if (getEvInverterSerialNumber() != null) {
+            json.addProperty("evInverterSerialNumber", getEvInverterSerialNumber());
+        }
+        if (getEvInverterSwVersion() != null) {
+            json.addProperty("evInverterSwVersion", getEvInverterSwVersion());
+        }
+        if (getEvInverterHwVersion() != null) {
+            json.addProperty("evInverterHwVersion", getEvInverterHwVersion());
+        }
+        if (getEvIslandingDetectionMethod() != null) {
+            JsonArray evIslandingDetectionMethodArray = new JsonArray();
+            for (IslandingDetectionEnum item : getEvIslandingDetectionMethod()) {
+                evIslandingDetectionMethodArray.add(item.toString());
+            }
+            json.add("evIslandingDetectionMethod", evIslandingDetectionMethodArray);
+        }
+        if (getEvIslandingTripTime() != null) {
+            json.addProperty("evIslandingTripTime", getEvIslandingTripTime());
+        }
+        if (getEvMaximumLevel1DCInjection() != null) {
+            json.addProperty("evMaximumLevel1DCInjection", getEvMaximumLevel1DCInjection());
+        }
+        if (getEvDurationLevel1DCInjection() != null) {
+            json.addProperty("evDurationLevel1DCInjection", getEvDurationLevel1DCInjection());
+        }
+        if (getEvMaximumLevel2DCInjection() != null) {
+            json.addProperty("evMaximumLevel2DCInjection", getEvMaximumLevel2DCInjection());
+        }
+        if (getEvDurationLevel2DCInjection() != null) {
+            json.addProperty("evDurationLevel2DCInjection", getEvDurationLevel2DCInjection());
+        }
+        if (getEvReactiveSusceptance() != null) {
+            json.addProperty("evReactiveSusceptance", getEvReactiveSusceptance());
+        }
+        if (getEvSessionTotalDischargeEnergyAvailable() != null) {
+            json.addProperty("evSessionTotalDischargeEnergyAvailable", getEvSessionTotalDischargeEnergyAvailable());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

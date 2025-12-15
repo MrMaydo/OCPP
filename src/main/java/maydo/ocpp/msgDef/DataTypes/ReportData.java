@@ -110,10 +110,24 @@ public class ReportData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.add("variableCharacteristics", variableCharacteristics.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("component", getComponent().toJsonObject());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        JsonArray variableAttributeArray = new JsonArray();
+        for (VariableAttribute item : getVariableAttribute()) {
+            variableAttributeArray.add(item.toJsonObject());
+        }
+        json.add("variableAttribute", variableAttributeArray);
+
+        if (getVariableCharacteristics() != null) {
+            json.add("variableCharacteristics", getVariableCharacteristics().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

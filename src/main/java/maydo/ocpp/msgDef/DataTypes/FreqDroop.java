@@ -175,15 +175,29 @@ public class FreqDroop implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("priority", priority);
-        json.addProperty("overFreq", overFreq);
-        json.addProperty("underFreq", underFreq);
-        json.addProperty("overDroop", overDroop);
-        json.addProperty("underDroop", underDroop);
-        json.addProperty("responseTime", responseTime);
-        json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(startTime));
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("priority", getPriority());
+
+        json.addProperty("overFreq", getOverFreq());
+
+        json.addProperty("underFreq", getUnderFreq());
+
+        json.addProperty("overDroop", getOverDroop());
+
+        json.addProperty("underDroop", getUnderDroop());
+
+        json.addProperty("responseTime", getResponseTime());
+
+        if (getStartTime() != null) {
+            json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(getStartTime()));
+        }
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

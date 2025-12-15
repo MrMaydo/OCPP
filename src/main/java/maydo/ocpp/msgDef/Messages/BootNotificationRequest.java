@@ -77,9 +77,15 @@ public class BootNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("chargingStation", chargingStation.toJsonObject());
-        json.addProperty("reason", reason.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("chargingStation", getChargingStation().toJsonObject());
+
+        json.addProperty("reason", getReason().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

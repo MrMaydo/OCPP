@@ -94,9 +94,23 @@ public class SalesTariffEntry implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("relativeTimeInterval", relativeTimeInterval.toJsonObject());
-        json.addProperty("ePriceLevel", ePriceLevel);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("relativeTimeInterval", getRelativeTimeInterval().toJsonObject());
+
+        if (getEPriceLevel() != null) {
+            json.addProperty("ePriceLevel", getEPriceLevel());
+        }
+        if (getConsumptionCost() != null) {
+            JsonArray consumptionCostArray = new JsonArray();
+            for (ConsumptionCost item : getConsumptionCost()) {
+                consumptionCostArray.add(item.toJsonObject());
+            }
+            json.add("consumptionCost", consumptionCostArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

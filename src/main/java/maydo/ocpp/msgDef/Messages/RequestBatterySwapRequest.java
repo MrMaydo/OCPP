@@ -76,9 +76,15 @@ public class RequestBatterySwapRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

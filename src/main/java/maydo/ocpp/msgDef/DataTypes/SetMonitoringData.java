@@ -188,14 +188,27 @@ public class SetMonitoringData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("periodicEventStream", periodicEventStream.toJsonObject());
-        json.addProperty("value", value);
-        json.addProperty("type", type.toString());
-        json.addProperty("severity", severity);
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getId() != null) {
+            json.addProperty("id", getId());
+        }
+        if (getPeriodicEventStream() != null) {
+            json.add("periodicEventStream", getPeriodicEventStream().toJsonObject());
+        }
+        json.addProperty("value", getValue());
+
+        json.addProperty("type", getType().toString());
+
+        json.addProperty("severity", getSeverity());
+
+        json.add("component", getComponent().toJsonObject());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -127,12 +127,24 @@ public class Firmware implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("location", location);
-        json.addProperty("retrieveDateTime", new SimpleDateFormat(DATE_FORMAT).format(retrieveDateTime));
-        json.addProperty("installDateTime", new SimpleDateFormat(DATE_FORMAT).format(installDateTime));
-        json.addProperty("signingCertificate", signingCertificate);
-        json.addProperty("signature", signature);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("location", getLocation());
+
+        json.addProperty("retrieveDateTime", new SimpleDateFormat(DATE_FORMAT).format(getRetrieveDateTime()));
+
+        if (getInstallDateTime() != null) {
+            json.addProperty("installDateTime", new SimpleDateFormat(DATE_FORMAT).format(getInstallDateTime()));
+        }
+        if (getSigningCertificate() != null) {
+            json.addProperty("signingCertificate", getSigningCertificate());
+        }
+        if (getSignature() != null) {
+            json.addProperty("signature", getSignature());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -211,17 +211,36 @@ public class NetworkConnectionProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("apn", apn.toJsonObject());
-        json.addProperty("ocppVersion", ocppVersion.toString());
-        json.addProperty("ocppInterface", ocppInterface.toString());
-        json.addProperty("ocppTransport", ocppTransport.toString());
-        json.addProperty("messageTimeout", messageTimeout);
-        json.addProperty("ocppCsmsUrl", ocppCsmsUrl);
-        json.addProperty("securityProfile", securityProfile);
-        json.addProperty("identity", identity);
-        json.addProperty("basicAuthPassword", basicAuthPassword);
-        json.add("vpn", vpn.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getApn() != null) {
+            json.add("apn", getApn().toJsonObject());
+        }
+        if (getOcppVersion() != null) {
+            json.addProperty("ocppVersion", getOcppVersion().toString());
+        }
+        json.addProperty("ocppInterface", getOcppInterface().toString());
+
+        json.addProperty("ocppTransport", getOcppTransport().toString());
+
+        json.addProperty("messageTimeout", getMessageTimeout());
+
+        json.addProperty("ocppCsmsUrl", getOcppCsmsUrl());
+
+        json.addProperty("securityProfile", getSecurityProfile());
+
+        if (getIdentity() != null) {
+            json.addProperty("identity", getIdentity());
+        }
+        if (getBasicAuthPassword() != null) {
+            json.addProperty("basicAuthPassword", getBasicAuthPassword());
+        }
+        if (getVpn() != null) {
+            json.add("vpn", getVpn().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

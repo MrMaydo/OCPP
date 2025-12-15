@@ -74,9 +74,17 @@ public class Modem implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("iccid", iccid);
-        json.addProperty("imsi", imsi);
-        json.add("customData", customData.toJsonObject());
+
+        if (getIccid() != null) {
+            json.addProperty("iccid", getIccid());
+        }
+        if (getImsi() != null) {
+            json.addProperty("imsi", getImsi());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

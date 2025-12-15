@@ -83,8 +83,19 @@ public class EVPowerSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray evPowerScheduleEntriesArray = new JsonArray();
+        for (EVPowerScheduleEntry item : getEvPowerScheduleEntries()) {
+            evPowerScheduleEntriesArray.add(item.toJsonObject());
+        }
+        json.add("evPowerScheduleEntries", evPowerScheduleEntriesArray);
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

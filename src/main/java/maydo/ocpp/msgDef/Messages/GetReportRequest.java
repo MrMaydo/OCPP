@@ -96,8 +96,27 @@ public class GetReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getComponentVariable() != null) {
+            JsonArray componentVariableArray = new JsonArray();
+            for (ComponentVariable item : getComponentVariable()) {
+                componentVariableArray.add(item.toJsonObject());
+            }
+            json.add("componentVariable", componentVariableArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getComponentCriteria() != null) {
+            JsonArray componentCriteriaArray = new JsonArray();
+            for (ComponentCriterionEnum item : getComponentCriteria()) {
+                componentCriteriaArray.add(item.toString());
+            }
+            json.add("componentCriteria", componentCriteriaArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

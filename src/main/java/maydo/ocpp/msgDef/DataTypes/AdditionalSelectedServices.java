@@ -75,9 +75,15 @@ public class AdditionalSelectedServices implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("serviceFee", serviceFee.toJsonObject());
-        json.addProperty("serviceName", serviceName);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("serviceFee", getServiceFee().toJsonObject());
+
+        json.addProperty("serviceName", getServiceName());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

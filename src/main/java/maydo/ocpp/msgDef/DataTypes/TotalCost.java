@@ -189,16 +189,35 @@ public class TotalCost implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("currency", currency);
-        json.addProperty("typeOfCost", typeOfCost.toString());
-        json.add("fixed", fixed.toJsonObject());
-        json.add("energy", energy.toJsonObject());
-        json.add("chargingTime", chargingTime.toJsonObject());
-        json.add("idleTime", idleTime.toJsonObject());
-        json.add("reservationTime", reservationTime.toJsonObject());
-        json.add("reservationFixed", reservationFixed.toJsonObject());
-        json.add("total", total.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("currency", getCurrency());
+
+        json.addProperty("typeOfCost", getTypeOfCost().toString());
+
+        if (getFixed() != null) {
+            json.add("fixed", getFixed().toJsonObject());
+        }
+        if (getEnergy() != null) {
+            json.add("energy", getEnergy().toJsonObject());
+        }
+        if (getChargingTime() != null) {
+            json.add("chargingTime", getChargingTime().toJsonObject());
+        }
+        if (getIdleTime() != null) {
+            json.add("idleTime", getIdleTime().toJsonObject());
+        }
+        if (getReservationTime() != null) {
+            json.add("reservationTime", getReservationTime().toJsonObject());
+        }
+        if (getReservationFixed() != null) {
+            json.add("reservationFixed", getReservationFixed().toJsonObject());
+        }
+        json.add("total", getTotal().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -86,8 +86,19 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        JsonArray allowedEnergyTransferArray = new JsonArray();
+        for (EnergyTransferModeEnum item : getAllowedEnergyTransfer()) {
+            allowedEnergyTransferArray.add(item.toString());
+        }
+        json.add("allowedEnergyTransfer", allowedEnergyTransferArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

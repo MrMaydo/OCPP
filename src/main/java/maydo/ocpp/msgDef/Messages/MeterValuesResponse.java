@@ -10,7 +10,7 @@ import maydo.ocpp.msgDef.annotations.Optional;
 import java.util.Objects;
 
 /**
- *This contains the field definition of the MeterValuesResponse PDU sent by
+ * This contains the field definition of the MeterValuesResponse PDU sent by
  * the CSMS to the Charging Station in response to a MeterValuesRequest PDU.
  * This message might be removed in a future version of OCPP.
  * It will be replaced by Device Management Monitoring events.
@@ -46,7 +46,11 @@ public class MeterValuesResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

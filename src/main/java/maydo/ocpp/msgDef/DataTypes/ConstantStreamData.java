@@ -90,10 +90,17 @@ public class ConstantStreamData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("params", params.toJsonObject());
-        json.addProperty("variableMonitoringId", variableMonitoringId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.add("params", getParams().toJsonObject());
+
+        json.addProperty("variableMonitoringId", getVariableMonitoringId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -59,8 +59,13 @@ public class CancelReservationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("reservationId", reservationId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("reservationId", getReservationId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

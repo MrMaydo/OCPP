@@ -94,10 +94,19 @@ public class Component implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("evse", evse.toJsonObject());
-        json.addProperty("name", name);
-        json.addProperty("instance", instance);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        json.addProperty("name", getName());
+
+        if (getInstance() != null) {
+            json.addProperty("instance", getInstance());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

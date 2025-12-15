@@ -54,7 +54,7 @@ public class DataTransferRequest implements JsonInterface {
     }
 
 
-    public Object getData() {
+    public String getData() {
         return data;
     }
 
@@ -91,10 +91,19 @@ public class DataTransferRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("messageId", messageId);
-        json.addProperty("data", data.toString());
-        json.addProperty("vendorId", vendorId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getMessageId() != null) {
+            json.addProperty("messageId", getMessageId());
+        }
+        if (getData() != null) {
+            json.addProperty("data", getData());
+        }
+        json.addProperty("vendorId", getVendorId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

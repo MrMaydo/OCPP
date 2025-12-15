@@ -197,15 +197,39 @@ public class MessageInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("display", display.toJsonObject());
-        json.addProperty("id", id);
-        json.addProperty("priority", priority.toString());
-        json.addProperty("state", state.toString());
-        json.addProperty("startDateTime", new SimpleDateFormat(DATE_FORMAT).format(startDateTime));
-        json.addProperty("endDateTime", new SimpleDateFormat(DATE_FORMAT).format(endDateTime));
-        json.addProperty("transactionId", transactionId);
-        json.add("message", message.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getDisplay() != null) {
+            json.add("display", getDisplay().toJsonObject());
+        }
+        json.addProperty("id", getId());
+
+        json.addProperty("priority", getPriority().toString());
+
+        if (getState() != null) {
+            json.addProperty("state", getState().toString());
+        }
+        if (getStartDateTime() != null) {
+            json.addProperty("startDateTime", new SimpleDateFormat(DATE_FORMAT).format(getStartDateTime()));
+        }
+        if (getEndDateTime() != null) {
+            json.addProperty("endDateTime", new SimpleDateFormat(DATE_FORMAT).format(getEndDateTime()));
+        }
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        json.add("message", getMessage().toJsonObject());
+
+        if (getMessageExtra() != null) {
+            JsonArray messageExtraArray = new JsonArray();
+            for (MessageContent item : getMessageExtra()) {
+                messageExtraArray.add(item.toJsonObject());
+            }
+            json.add("messageExtra", messageExtraArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -126,8 +126,14 @@ public class VariableAttribute implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("value", value);
-        json.add("customData", customData.toJsonObject());
+
+        if (getValue() != null) {
+            json.addProperty("value", getValue());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

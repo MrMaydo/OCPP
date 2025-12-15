@@ -222,16 +222,44 @@ public class ChargingNeeds implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("acChargingParameters", acChargingParameters.toJsonObject());
-        json.add("derChargingParameters", derChargingParameters.toJsonObject());
-        json.add("evEnergyOffer", evEnergyOffer.toJsonObject());
-        json.addProperty("requestedEnergyTransfer", requestedEnergyTransfer.toString());
-        json.add("dcChargingParameters", dcChargingParameters.toJsonObject());
-        json.add("v2xChargingParameters", v2xChargingParameters.toJsonObject());
-        json.addProperty("controlMode", controlMode.toString());
-        json.addProperty("mobilityNeedsMode", mobilityNeedsMode.toString());
-        json.addProperty("departureTime", new SimpleDateFormat(DATE_FORMAT).format(departureTime));
-        json.add("customData", customData.toJsonObject());
+
+        if (getAcChargingParameters() != null) {
+            json.add("acChargingParameters", getAcChargingParameters().toJsonObject());
+        }
+        if (getDerChargingParameters() != null) {
+            json.add("derChargingParameters", getDerChargingParameters().toJsonObject());
+        }
+        if (getEvEnergyOffer() != null) {
+            json.add("evEnergyOffer", getEvEnergyOffer().toJsonObject());
+        }
+        json.addProperty("requestedEnergyTransfer", getRequestedEnergyTransfer().toString());
+
+        if (getDcChargingParameters() != null) {
+            json.add("dcChargingParameters", getDcChargingParameters().toJsonObject());
+        }
+        if (getV2xChargingParameters() != null) {
+            json.add("v2xChargingParameters", getV2xChargingParameters().toJsonObject());
+        }
+        if (getAvailableEnergyTransfer() != null) {
+            JsonArray availableEnergyTransferArray = new JsonArray();
+            for (EnergyTransferModeEnum item : getAvailableEnergyTransfer()) {
+                availableEnergyTransferArray.add(item.toString());
+            }
+            json.add("availableEnergyTransfer", availableEnergyTransferArray);
+        }
+        if (getControlMode() != null) {
+            json.addProperty("controlMode", getControlMode().toString());
+        }
+        if (getMobilityNeedsMode() != null) {
+            json.addProperty("mobilityNeedsMode", getMobilityNeedsMode().toString());
+        }
+        if (getDepartureTime() != null) {
+            json.addProperty("departureTime", new SimpleDateFormat(DATE_FORMAT).format(getDepartureTime()));
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

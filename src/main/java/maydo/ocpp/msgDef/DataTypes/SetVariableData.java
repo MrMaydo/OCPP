@@ -110,10 +110,17 @@ public class SetVariableData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("attributeValue", attributeValue);
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("attributeValue", getAttributeValue());
+
+        json.add("component", getComponent().toJsonObject());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

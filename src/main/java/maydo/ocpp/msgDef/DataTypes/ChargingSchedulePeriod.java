@@ -407,26 +407,81 @@ public class ChargingSchedulePeriod implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("startPeriod", startPeriod);
-        json.addProperty("limit", limit);
-        json.addProperty("limitL2", limitL2);
-        json.addProperty("limitL3", limitL3);
-        json.addProperty("numberPhases", numberPhases);
-        json.addProperty("phaseToUse", phaseToUse);
-        json.addProperty("dischargeLimit", dischargeLimit);
-        json.addProperty("dischargeLimitL2", dischargeLimitL2);
-        json.addProperty("dischargeLimitL3", dischargeLimitL3);
-        json.addProperty("setpoint", setpoint);
-        json.addProperty("setpointL2", setpointL2);
-        json.addProperty("setpointL3", setpointL3);
-        json.addProperty("setpointReactive", setpointReactive);
-        json.addProperty("setpointReactiveL2", setpointReactiveL2);
-        json.addProperty("setpointReactiveL3", setpointReactiveL3);
-        json.addProperty("preconditioningRequest", preconditioningRequest);
-        json.addProperty("evseSleep", evseSleep);
-        json.addProperty("v2xBaseline", v2xBaseline);
-        json.addProperty("operationMode", operationMode.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("startPeriod", getStartPeriod());
+
+        if (getLimit() != null) {
+            json.addProperty("limit", getLimit());
+        }
+        if (getLimitL2() != null) {
+            json.addProperty("limitL2", getLimitL2());
+        }
+        if (getLimitL3() != null) {
+            json.addProperty("limitL3", getLimitL3());
+        }
+        if (getNumberPhases() != null) {
+            json.addProperty("numberPhases", getNumberPhases());
+        }
+        if (getPhaseToUse() != null) {
+            json.addProperty("phaseToUse", getPhaseToUse());
+        }
+        if (getDischargeLimit() != null) {
+            json.addProperty("dischargeLimit", getDischargeLimit());
+        }
+        if (getDischargeLimitL2() != null) {
+            json.addProperty("dischargeLimitL2", getDischargeLimitL2());
+        }
+        if (getDischargeLimitL3() != null) {
+            json.addProperty("dischargeLimitL3", getDischargeLimitL3());
+        }
+        if (getSetpoint() != null) {
+            json.addProperty("setpoint", getSetpoint());
+        }
+        if (getSetpointL2() != null) {
+            json.addProperty("setpointL2", getSetpointL2());
+        }
+        if (getSetpointL3() != null) {
+            json.addProperty("setpointL3", getSetpointL3());
+        }
+        if (getSetpointReactive() != null) {
+            json.addProperty("setpointReactive", getSetpointReactive());
+        }
+        if (getSetpointReactiveL2() != null) {
+            json.addProperty("setpointReactiveL2", getSetpointReactiveL2());
+        }
+        if (getSetpointReactiveL3() != null) {
+            json.addProperty("setpointReactiveL3", getSetpointReactiveL3());
+        }
+        if (getPreconditioningRequest() != null) {
+            json.addProperty("preconditioningRequest", getPreconditioningRequest());
+        }
+        if (getEvseSleep() != null) {
+            json.addProperty("evseSleep", getEvseSleep());
+        }
+        if (getV2xBaseline() != null) {
+            json.addProperty("v2xBaseline", getV2xBaseline());
+        }
+        if (getOperationMode() != null) {
+            json.addProperty("operationMode", getOperationMode().toString());
+        }
+        if (getV2xFreqWattCurve() != null) {
+            JsonArray v2xFreqWattCurveArray = new JsonArray();
+            for (V2XFreqWattPoint item : getV2xFreqWattCurve()) {
+                v2xFreqWattCurveArray.add(item.toJsonObject());
+            }
+            json.add("v2xFreqWattCurve", v2xFreqWattCurveArray);
+        }
+        if (getV2xSignalWattCurve() != null) {
+            JsonArray v2xSignalWattCurveArray = new JsonArray();
+            for (V2XSignalWattPoint item : getV2xSignalWattCurve()) {
+                v2xSignalWattCurveArray.add(item.toJsonObject());
+            }
+            json.add("v2xSignalWattCurve", v2xSignalWattCurveArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

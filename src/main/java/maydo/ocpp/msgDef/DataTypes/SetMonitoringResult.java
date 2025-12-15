@@ -174,14 +174,27 @@ public class SetMonitoringResult implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("status", status.toString());
-        json.addProperty("type", type.toString());
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.addProperty("severity", severity);
-        json.add("customData", customData.toJsonObject());
+
+        if (getId() != null) {
+            json.addProperty("id", getId());
+        }
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        json.addProperty("status", getStatus().toString());
+
+        json.addProperty("type", getType().toString());
+
+        json.add("component", getComponent().toJsonObject());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        json.addProperty("severity", getSeverity());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

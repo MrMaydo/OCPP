@@ -33,7 +33,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     private Integer requestId;
 
     /**
-     *. "to be continued" indicator. Indicates whether another part of the report follows in
+     * "to be continued" indicator. Indicates whether another part of the report follows in
      * an upcoming NotifyDisplayMessagesRequest message. Default value when omitted is false.
      */
     @Optional
@@ -96,8 +96,20 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getMessageInfo() != null) {
+            JsonArray messageInfoArray = new JsonArray();
+            for (MessageInfo item : getMessageInfo()) {
+                messageInfoArray.add(item.toJsonObject());
+            }
+            json.add("messageInfo", messageInfoArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

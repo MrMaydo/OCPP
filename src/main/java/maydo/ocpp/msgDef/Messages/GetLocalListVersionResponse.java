@@ -60,8 +60,13 @@ public class GetLocalListVersionResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("versionNumber", versionNumber);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("versionNumber", getVersionNumber());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

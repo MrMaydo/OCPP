@@ -84,8 +84,19 @@ public class MeterValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray sampledValueArray = new JsonArray();
+        for (SampledValue item : getSampledValue()) {
+            sampledValueArray.add(item.toJsonObject());
+        }
+        json.add("sampledValue", sampledValueArray);
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

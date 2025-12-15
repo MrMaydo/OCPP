@@ -107,11 +107,20 @@ public class OverstayRule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("overstayFee", overstayFee.toJsonObject());
-        json.addProperty("overstayRuleDescription", overstayRuleDescription);
-        json.addProperty("startTime", startTime);
-        json.addProperty("overstayFeePeriod", overstayFeePeriod);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("overstayFee", getOverstayFee().toJsonObject());
+
+        if (getOverstayRuleDescription() != null) {
+            json.addProperty("overstayRuleDescription", getOverstayRuleDescription());
+        }
+        json.addProperty("startTime", getStartTime());
+
+        json.addProperty("overstayFeePeriod", getOverstayFeePeriod());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

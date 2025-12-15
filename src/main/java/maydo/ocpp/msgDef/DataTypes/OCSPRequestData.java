@@ -125,12 +125,21 @@ public class OCSPRequestData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("hashAlgorithm", hashAlgorithm.toString());
-        json.addProperty("issuerNameHash", issuerNameHash);
-        json.addProperty("issuerKeyHash", issuerKeyHash);
-        json.addProperty("serialNumber", serialNumber);
-        json.addProperty("responderURL", responderURL);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("hashAlgorithm", getHashAlgorithm().toString());
+
+        json.addProperty("issuerNameHash", getIssuerNameHash());
+
+        json.addProperty("issuerKeyHash", getIssuerKeyHash());
+
+        json.addProperty("serialNumber", getSerialNumber());
+
+        json.addProperty("responderURL", getResponderURL());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

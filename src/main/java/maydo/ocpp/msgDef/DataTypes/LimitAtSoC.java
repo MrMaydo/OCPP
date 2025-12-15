@@ -74,9 +74,15 @@ public class LimitAtSoC implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("soc", soc);
-        json.addProperty("limit", limit);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("soc", getSoc());
+
+        json.addProperty("limit", getLimit());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

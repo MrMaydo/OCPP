@@ -77,9 +77,16 @@ public class EVEnergyOffer implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("evAbsolutePriceSchedule", evAbsolutePriceSchedule.toJsonObject());
-        json.add("evPowerSchedule", evPowerSchedule.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvAbsolutePriceSchedule() != null) {
+            json.add("evAbsolutePriceSchedule", getEvAbsolutePriceSchedule().toJsonObject());
+        }
+        json.add("evPowerSchedule", getEvPowerSchedule().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

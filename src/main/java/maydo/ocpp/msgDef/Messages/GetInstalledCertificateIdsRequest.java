@@ -63,7 +63,18 @@ public class GetInstalledCertificateIdsRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        if (getCertificateType() != null) {
+            JsonArray certificateTypeArray = new JsonArray();
+            for (GetCertificateIdUseEnum item : getCertificateType()) {
+                certificateTypeArray.add(item.toString());
+            }
+            json.add("certificateType", certificateTypeArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

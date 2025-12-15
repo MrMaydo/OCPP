@@ -76,9 +76,15 @@ public class GetBaseReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("reportBase", reportBase.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("reportBase", getReportBase().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -106,11 +106,19 @@ public class FixedPFGet implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("fixedPF", fixedPF.toJsonObject());
-        json.addProperty("id", id);
-        json.addProperty("isDefault", isDefault);
-        json.addProperty("isSuperseded", isSuperseded);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("fixedPF", getFixedPF().toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("isDefault", getIsDefault());
+
+        json.addProperty("isSuperseded", getIsSuperseded());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

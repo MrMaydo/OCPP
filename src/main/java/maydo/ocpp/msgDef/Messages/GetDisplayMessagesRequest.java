@@ -114,10 +114,26 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("priority", priority.toString());
-        json.addProperty("state", state.toString());
-        json.add("customData", customData.toJsonObject());
+
+        if (getId() != null) {
+            JsonArray idArray = new JsonArray();
+            for (Integer item : getId()) {
+                idArray.add(item);
+            }
+            json.add("id", idArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getPriority() != null) {
+            json.addProperty("priority", getPriority().toString());
+        }
+        if (getState() != null) {
+            json.addProperty("state", getState().toString());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

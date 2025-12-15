@@ -51,7 +51,7 @@ public class AbsolutePriceSchedule implements JsonInterface {
     private String currency;
 
     /**
-     * String that indicates what language is used for the human readable strings in the price schedule.
+     * String that indicates what language is used for the human-readable strings in the price schedule.
      * Based on ISO 639.
      */
     @Required
@@ -245,16 +245,53 @@ public class AbsolutePriceSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.addProperty("priceScheduleID", priceScheduleID);
-        json.addProperty("priceScheduleDescription", priceScheduleDescription);
-        json.addProperty("currency", currency);
-        json.addProperty("language", language);
-        json.addProperty("priceAlgorithm", priceAlgorithm);
-        json.add("minimumCost", minimumCost.toJsonObject());
-        json.add("maximumCost", maximumCost.toJsonObject());
-        json.add("overstayRuleList", overstayRuleList.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        json.addProperty("priceScheduleID", getPriceScheduleID());
+
+        if (getPriceScheduleDescription() != null) {
+            json.addProperty("priceScheduleDescription", getPriceScheduleDescription());
+        }
+        json.addProperty("currency", getCurrency());
+
+        json.addProperty("language", getLanguage());
+
+        json.addProperty("priceAlgorithm", getPriceAlgorithm());
+
+        if (getMinimumCost() != null) {
+            json.add("minimumCost", getMinimumCost().toJsonObject());
+        }
+        if (getMaximumCost() != null) {
+            json.add("maximumCost", getMaximumCost().toJsonObject());
+        }
+        JsonArray priceRuleStacksArray = new JsonArray();
+        for (PriceRuleStack item : getPriceRuleStacks()) {
+            priceRuleStacksArray.add(item.toJsonObject());
+        }
+        json.add("priceRuleStacks", priceRuleStacksArray);
+
+        if (getTaxRules() != null) {
+            JsonArray taxRulesArray = new JsonArray();
+            for (TaxRule item : getTaxRules()) {
+                taxRulesArray.add(item.toJsonObject());
+            }
+            json.add("taxRules", taxRulesArray);
+        }
+        if (getOverstayRuleList() != null) {
+            json.add("overstayRuleList", getOverstayRuleList().toJsonObject());
+        }
+        if (getAdditionalSelectedServices() != null) {
+            JsonArray additionalSelectedServicesArray = new JsonArray();
+            for (AdditionalSelectedServices item : getAdditionalSelectedServices()) {
+                additionalSelectedServicesArray.add(item.toJsonObject());
+            }
+            json.add("additionalSelectedServices", additionalSelectedServicesArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

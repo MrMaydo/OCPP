@@ -130,10 +130,32 @@ public class TariffAssignment implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("tariffKind", tariffKind.toString());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("tariffId", getTariffId());
+
+        json.addProperty("tariffKind", getTariffKind().toString());
+
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getEvseIds() != null) {
+            JsonArray evseIdsArray = new JsonArray();
+            for (Integer item : getEvseIds()) {
+                evseIdsArray.add(item);
+            }
+            json.add("evseIds", evseIdsArray);
+        }
+        if (getIdTokens() != null) {
+            JsonArray idTokensArray = new JsonArray();
+            for (String item : getIdTokens()) {
+                idTokensArray.add(item);
+            }
+            json.add("idTokens", idTokensArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

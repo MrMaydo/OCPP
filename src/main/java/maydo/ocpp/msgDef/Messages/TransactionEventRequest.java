@@ -80,7 +80,7 @@ public class TransactionEventRequest implements JsonInterface {
     private Boolean offline = false;
 
     /**
-     *. If the Charging Station is able to report the number of phases used, then it SHALL provide it.
+     * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
      * When omitted the CSMS may be able to determine the number of phases used as follows:
      * <p> 1: The numberPhases in the currently used ChargingSchedule. </p>
      * <p> 2: The number of phases provided via device management. </p>
@@ -306,20 +306,52 @@ public class TransactionEventRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("costDetails", costDetails.toJsonObject());
-        json.addProperty("eventType", eventType.toString());
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("triggerReason", triggerReason.toString());
-        json.addProperty("seqNo", seqNo);
-        json.addProperty("numberOfPhasesUsed", numberOfPhasesUsed);
-        json.addProperty("cableMaxCurrent", cableMaxCurrent);
-        json.addProperty("reservationId", reservationId);
-        json.addProperty("preconditioningStatus", preconditioningStatus.toString());
-        json.addProperty("evseSleep", evseSleep);
-        json.add("transactionInfo", transactionInfo.toJsonObject());
-        json.add("evse", evse.toJsonObject());
-        json.add("idToken", idToken.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getCostDetails() != null) {
+            json.add("costDetails", getCostDetails().toJsonObject());
+        }
+        json.addProperty("eventType", getEventType().toString());
+
+        if (getMeterValue() != null) {
+            JsonArray meterValueArray = new JsonArray();
+            for (MeterValue item : getMeterValue()) {
+                meterValueArray.add(item.toJsonObject());
+            }
+            json.add("meterValue", meterValueArray);
+        }
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        json.addProperty("triggerReason", getTriggerReason().toString());
+
+        json.addProperty("seqNo", getSeqNo());
+
+        if (getNumberOfPhasesUsed() != null) {
+            json.addProperty("numberOfPhasesUsed", getNumberOfPhasesUsed());
+        }
+        if (getCableMaxCurrent() != null) {
+            json.addProperty("cableMaxCurrent", getCableMaxCurrent());
+        }
+        if (getReservationId() != null) {
+            json.addProperty("reservationId", getReservationId());
+        }
+        if (getPreconditioningStatus() != null) {
+            json.addProperty("preconditioningStatus", getPreconditioningStatus().toString());
+        }
+        if (getEvseSleep() != null) {
+            json.addProperty("evseSleep", getEvseSleep());
+        }
+        json.add("transactionInfo", getTransactionInfo().toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        if (getIdToken() != null) {
+            json.add("idToken", getIdToken().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

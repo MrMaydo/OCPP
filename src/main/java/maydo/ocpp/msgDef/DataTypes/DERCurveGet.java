@@ -123,12 +123,21 @@ public class DERCurveGet implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("curve", curve.toJsonObject());
-        json.addProperty("id", id);
-        json.addProperty("curveType", curveType.toString());
-        json.addProperty("isDefault", isDefault);
-        json.addProperty("isSuperseded", isSuperseded);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("curve", getCurve().toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("curveType", getCurveType().toString());
+
+        json.addProperty("isDefault", getIsDefault());
+
+        json.addProperty("isSuperseded", getIsSuperseded());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

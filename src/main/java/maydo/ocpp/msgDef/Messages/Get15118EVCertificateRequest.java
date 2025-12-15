@@ -136,11 +136,27 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("iso15118SchemaVersion", iso15118SchemaVersion);
-        json.addProperty("action", action.toString());
-        json.addProperty("exiRequest", exiRequest);
-        json.addProperty("maximumContractCertificateChains", maximumContractCertificateChains);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("iso15118SchemaVersion", getIso15118SchemaVersion());
+
+        json.addProperty("action", getAction().toString());
+
+        json.addProperty("exiRequest", getExiRequest());
+
+        if (getMaximumContractCertificateChains() != null) {
+            json.addProperty("maximumContractCertificateChains", getMaximumContractCertificateChains());
+        }
+        if (getPrioritizedEMAIDs() != null) {
+            JsonArray prioritizedEMAIDsArray = new JsonArray();
+            for (String item : getPrioritizedEMAIDs()) {
+                prioritizedEMAIDsArray.add(item);
+            }
+            json.add("prioritizedEMAIDs", prioritizedEMAIDsArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

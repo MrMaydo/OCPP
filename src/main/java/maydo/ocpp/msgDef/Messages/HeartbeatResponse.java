@@ -65,8 +65,13 @@ public class HeartbeatResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(currentTime));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(getCurrentTime()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

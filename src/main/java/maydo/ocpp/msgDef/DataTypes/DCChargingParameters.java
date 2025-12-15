@@ -187,15 +187,33 @@ public class DCChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evMaxCurrent", evMaxCurrent);
-        json.addProperty("evMaxVoltage", evMaxVoltage);
-        json.addProperty("evMaxPower", evMaxPower);
-        json.addProperty("evEnergyCapacity", evEnergyCapacity);
-        json.addProperty("energyAmount", energyAmount);
-        json.addProperty("stateOfCharge", stateOfCharge);
-        json.addProperty("fullSoC", fullSoC);
-        json.addProperty("bulkSoC", bulkSoC);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evMaxCurrent", getEvMaxCurrent());
+
+        json.addProperty("evMaxVoltage", getEvMaxVoltage());
+
+        if (getEvMaxPower() != null) {
+            json.addProperty("evMaxPower", getEvMaxPower());
+        }
+        if (getEvEnergyCapacity() != null) {
+            json.addProperty("evEnergyCapacity", getEvEnergyCapacity());
+        }
+        if (getEnergyAmount() != null) {
+            json.addProperty("energyAmount", getEnergyAmount());
+        }
+        if (getStateOfCharge() != null) {
+            json.addProperty("stateOfCharge", getStateOfCharge());
+        }
+        if (getFullSoC() != null) {
+            json.addProperty("fullSoC", getFullSoC());
+        }
+        if (getBulkSoC() != null) {
+            json.addProperty("bulkSoC", getBulkSoC());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -76,9 +76,17 @@ public class TotalPrice implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("exclTax", exclTax);
-        json.addProperty("inclTax", inclTax);
-        json.add("customData", customData.toJsonObject());
+
+        if (getExclTax() != null) {
+            json.addProperty("exclTax", getExclTax());
+        }
+        if (getInclTax() != null) {
+            json.addProperty("inclTax", getInclTax());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -94,10 +94,19 @@ public class TriggerMessageRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("evse", evse.toJsonObject());
-        json.addProperty("requestedMessage", requestedMessage.toString());
-        json.addProperty("customTrigger", customTrigger);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        json.addProperty("requestedMessage", getRequestedMessage().toString());
+
+        if (getCustomTrigger() != null) {
+            json.addProperty("customTrigger", getCustomTrigger());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -118,10 +118,26 @@ public class AuthorizeResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idTokenInfo", idTokenInfo.toJsonObject());
-        json.addProperty("certificateStatus", certificateStatus.toString());
-        json.add("tariff", tariff.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idTokenInfo", getIdTokenInfo().toJsonObject());
+
+        if (getCertificateStatus() != null) {
+            json.addProperty("certificateStatus", getCertificateStatus().toString());
+        }
+        if (getAllowedEnergyTransfer() != null) {
+            JsonArray allowedEnergyTransferArray = new JsonArray();
+            for (EnergyTransferModeEnum item : getAllowedEnergyTransfer()) {
+                allowedEnergyTransferArray.add(item.toString());
+            }
+            json.add("allowedEnergyTransfer", allowedEnergyTransferArray);
+        }
+        if (getTariff() != null) {
+            json.add("tariff", getTariff().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

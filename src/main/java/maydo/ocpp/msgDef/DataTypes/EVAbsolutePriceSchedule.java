@@ -115,10 +115,23 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.addProperty("currency", currency);
-        json.addProperty("priceAlgorithm", priceAlgorithm);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        json.addProperty("currency", getCurrency());
+
+        JsonArray evAbsolutePriceScheduleEntriesArray = new JsonArray();
+        for (EVAbsolutePriceScheduleEntry item : getEvAbsolutePriceScheduleEntries()) {
+            evAbsolutePriceScheduleEntriesArray.add(item.toJsonObject());
+        }
+        json.add("evAbsolutePriceScheduleEntries", evAbsolutePriceScheduleEntriesArray);
+
+        json.addProperty("priceAlgorithm", getPriceAlgorithm());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

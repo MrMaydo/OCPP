@@ -96,8 +96,27 @@ public class GetMonitoringReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getComponentVariable() != null) {
+            JsonArray componentVariableArray = new JsonArray();
+            for (ComponentVariable item : getComponentVariable()) {
+                componentVariableArray.add(item.toJsonObject());
+            }
+            json.add("componentVariable", componentVariableArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getMonitoringCriteria() != null) {
+            JsonArray monitoringCriteriaArray = new JsonArray();
+            for (MonitoringCriterionEnum item : getMonitoringCriteria()) {
+                monitoringCriteriaArray.add(item.toString());
+            }
+            json.add("monitoringCriteria", monitoringCriteriaArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

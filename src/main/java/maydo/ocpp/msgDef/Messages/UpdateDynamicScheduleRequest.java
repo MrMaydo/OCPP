@@ -76,9 +76,15 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("scheduleUpdate", scheduleUpdate.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("chargingProfileId", getChargingProfileId());
+
+        json.add("scheduleUpdate", getScheduleUpdate().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

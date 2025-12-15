@@ -129,11 +129,19 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("data", data);
-        json.addProperty("seqNo", seqNo);
-        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(generatedAt));
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("data", getData());
+
+        json.addProperty("seqNo", getSeqNo());
+
+        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

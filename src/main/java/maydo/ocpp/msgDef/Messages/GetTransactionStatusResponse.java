@@ -75,9 +75,16 @@ public class GetTransactionStatusResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("ongoingIndicator", ongoingIndicator);
-        json.addProperty("messagesInQueue", messagesInQueue);
-        json.add("customData", customData.toJsonObject());
+
+        if (getOngoingIndicator() != null) {
+            json.addProperty("ongoingIndicator", getOngoingIndicator());
+        }
+        json.addProperty("messagesInQueue", getMessagesInQueue());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

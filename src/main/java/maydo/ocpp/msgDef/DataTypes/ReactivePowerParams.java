@@ -89,10 +89,20 @@ public class ReactivePowerParams implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("vRef", vRef);
-        json.addProperty("autonomousVRefEnable", autonomousVRefEnable);
-        json.addProperty("autonomousVRefTimeConstant", autonomousVRefTimeConstant);
-        json.add("customData", customData.toJsonObject());
+
+        if (getVRef() != null) {
+            json.addProperty("vRef", getVRef());
+        }
+        if (getAutonomousVRefEnable() != null) {
+            json.addProperty("autonomousVRefEnable", getAutonomousVRefEnable());
+        }
+        if (getAutonomousVRefTimeConstant() != null) {
+            json.addProperty("autonomousVRefTimeConstant", getAutonomousVRefTimeConstant());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

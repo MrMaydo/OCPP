@@ -302,20 +302,52 @@ public class ChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("stackLevel", stackLevel);
-        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
-        json.addProperty("chargingProfileKind", chargingProfileKind.toString());
-        json.addProperty("recurrencyKind", recurrencyKind.toString());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.addProperty("validTo", new SimpleDateFormat(DATE_FORMAT).format(validTo));
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("maxOfflineDuration", maxOfflineDuration);
-        json.addProperty("invalidAfterOfflineDuration", invalidAfterOfflineDuration);
-        json.addProperty("dynUpdateInterval", dynUpdateInterval);
-        json.addProperty("dynUpdateTime", new SimpleDateFormat(DATE_FORMAT).format(dynUpdateTime));
-        json.addProperty("priceScheduleSignature", priceScheduleSignature);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("stackLevel", getStackLevel());
+
+        json.addProperty("chargingProfilePurpose", getChargingProfilePurpose().toString());
+
+        json.addProperty("chargingProfileKind", getChargingProfileKind().toString());
+
+        if (getRecurrencyKind() != null) {
+            json.addProperty("recurrencyKind", getRecurrencyKind().toString());
+        }
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getValidTo() != null) {
+            json.addProperty("validTo", new SimpleDateFormat(DATE_FORMAT).format(getValidTo()));
+        }
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        if (getMaxOfflineDuration() != null) {
+            json.addProperty("maxOfflineDuration", getMaxOfflineDuration());
+        }
+        JsonArray chargingScheduleArray = new JsonArray();
+        for (ChargingSchedule item : getChargingSchedule()) {
+            chargingScheduleArray.add(item.toJsonObject());
+        }
+        json.add("chargingSchedule", chargingScheduleArray);
+
+        if (getInvalidAfterOfflineDuration() != null) {
+            json.addProperty("invalidAfterOfflineDuration", getInvalidAfterOfflineDuration());
+        }
+        if (getDynUpdateInterval() != null) {
+            json.addProperty("dynUpdateInterval", getDynUpdateInterval());
+        }
+        if (getDynUpdateTime() != null) {
+            json.addProperty("dynUpdateTime", new SimpleDateFormat(DATE_FORMAT).format(getDynUpdateTime()));
+        }
+        if (getPriceScheduleSignature() != null) {
+            json.addProperty("priceScheduleSignature", getPriceScheduleSignature());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

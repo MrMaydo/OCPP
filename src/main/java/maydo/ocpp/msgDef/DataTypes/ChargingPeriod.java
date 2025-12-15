@@ -101,9 +101,23 @@ public class ChargingPeriod implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("startPeriod", new SimpleDateFormat(DATE_FORMAT).format(startPeriod));
-        json.add("customData", customData.toJsonObject());
+
+        if (getDimensions() != null) {
+            JsonArray dimensionsArray = new JsonArray();
+            for (CostDimension item : getDimensions()) {
+                dimensionsArray.add(item.toJsonObject());
+            }
+            json.add("dimensions", dimensionsArray);
+        }
+        if (getTariffId() != null) {
+            json.addProperty("tariffId", getTariffId());
+        }
+        json.addProperty("startPeriod", new SimpleDateFormat(DATE_FORMAT).format(getStartPeriod()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

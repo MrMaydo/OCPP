@@ -181,15 +181,34 @@ public class Transaction implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("chargingState", chargingState.toString());
-        json.addProperty("timeSpentCharging", timeSpentCharging);
-        json.addProperty("stoppedReason", stoppedReason.toString());
-        json.addProperty("remoteStartId", remoteStartId);
-        json.addProperty("operationMode", operationMode.toString());
-        json.addProperty("tariffId", tariffId);
-        json.add("transactionLimit", transactionLimit.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        if (getChargingState() != null) {
+            json.addProperty("chargingState", getChargingState().toString());
+        }
+        if (getTimeSpentCharging() != null) {
+            json.addProperty("timeSpentCharging", getTimeSpentCharging());
+        }
+        if (getStoppedReason() != null) {
+            json.addProperty("stoppedReason", getStoppedReason().toString());
+        }
+        if (getRemoteStartId() != null) {
+            json.addProperty("remoteStartId", getRemoteStartId());
+        }
+        if (getOperationMode() != null) {
+            json.addProperty("operationMode", getOperationMode().toString());
+        }
+        if (getTariffId() != null) {
+            json.addProperty("tariffId", getTariffId());
+        }
+        if (getTransactionLimit() != null) {
+            json.add("transactionLimit", getTransactionLimit().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

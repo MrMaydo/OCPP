@@ -77,9 +77,15 @@ public class SetNetworkProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("configurationSlot", configurationSlot);
-        json.add("connectionData", connectionData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("configurationSlot", getConfigurationSlot());
+
+        json.add("connectionData", getConnectionData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

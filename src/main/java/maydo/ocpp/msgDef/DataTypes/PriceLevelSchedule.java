@@ -133,11 +133,26 @@ public class PriceLevelSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.addProperty("priceScheduleId", priceScheduleId);
-        json.addProperty("priceScheduleDescription", priceScheduleDescription);
-        json.addProperty("numberOfPriceLevels", numberOfPriceLevels);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray priceLevelScheduleEntriesArray = new JsonArray();
+        for (PriceLevelScheduleEntry item : getPriceLevelScheduleEntries()) {
+            priceLevelScheduleEntriesArray.add(item.toJsonObject());
+        }
+        json.add("priceLevelScheduleEntries", priceLevelScheduleEntriesArray);
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        json.addProperty("priceScheduleId", getPriceScheduleId());
+
+        if (getPriceScheduleDescription() != null) {
+            json.addProperty("priceScheduleDescription", getPriceScheduleDescription());
+        }
+        json.addProperty("numberOfPriceLevels", getNumberOfPriceLevels());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

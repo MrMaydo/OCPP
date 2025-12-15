@@ -133,10 +133,23 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("seqNo", seqNo);
-        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(generatedAt));
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray monitorArray = new JsonArray();
+        for (MonitoringData item : getMonitor()) {
+            monitorArray.add(item.toJsonObject());
+        }
+        json.add("monitor", monitorArray);
+
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("seqNo", getSeqNo());
+
+        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

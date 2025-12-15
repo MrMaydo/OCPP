@@ -488,31 +488,83 @@ public class V2XChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("minChargePower", minChargePower);
-        json.addProperty("minChargePowerL2", minChargePowerL2);
-        json.addProperty("minChargePowerL3", minChargePowerL3);
-        json.addProperty("maxChargePower", maxChargePower);
-        json.addProperty("maxChargePowerL2", maxChargePowerL2);
-        json.addProperty("maxChargePowerL3", maxChargePowerL3);
-        json.addProperty("minDischargePower", minDischargePower);
-        json.addProperty("minDischargePowerL2", minDischargePowerL2);
-        json.addProperty("minDischargePowerL3", minDischargePowerL3);
-        json.addProperty("maxDischargePower", maxDischargePower);
-        json.addProperty("maxDischargePowerL2", maxDischargePowerL2);
-        json.addProperty("maxDischargePowerL3", maxDischargePowerL3);
-        json.addProperty("minChargeCurrent", minChargeCurrent);
-        json.addProperty("maxChargeCurrent", maxChargeCurrent);
-        json.addProperty("minDischargeCurrent", minDischargeCurrent);
-        json.addProperty("maxDischargeCurrent", maxDischargeCurrent);
-        json.addProperty("minVoltage", minVoltage);
-        json.addProperty("maxVoltage", maxVoltage);
-        json.addProperty("evTargetEnergyRequest", evTargetEnergyRequest);
-        json.addProperty("evMinEnergyRequest", evMinEnergyRequest);
-        json.addProperty("evMaxEnergyRequest", evMaxEnergyRequest);
-        json.addProperty("evMinV2XEnergyRequest", evMinV2XEnergyRequest);
-        json.addProperty("evMaxV2XEnergyRequest", evMaxV2XEnergyRequest);
-        json.addProperty("targetSoC", targetSoC);
-        json.add("customData", customData.toJsonObject());
+
+        if (getMinChargePower() != null) {
+            json.addProperty("minChargePower", getMinChargePower());
+        }
+        if (getMinChargePowerL2() != null) {
+            json.addProperty("minChargePowerL2", getMinChargePowerL2());
+        }
+        if (getMinChargePowerL3() != null) {
+            json.addProperty("minChargePowerL3", getMinChargePowerL3());
+        }
+        if (getMaxChargePower() != null) {
+            json.addProperty("maxChargePower", getMaxChargePower());
+        }
+        if (getMaxChargePowerL2() != null) {
+            json.addProperty("maxChargePowerL2", getMaxChargePowerL2());
+        }
+        if (getMaxChargePowerL3() != null) {
+            json.addProperty("maxChargePowerL3", getMaxChargePowerL3());
+        }
+        if (getMinDischargePower() != null) {
+            json.addProperty("minDischargePower", getMinDischargePower());
+        }
+        if (getMinDischargePowerL2() != null) {
+            json.addProperty("minDischargePowerL2", getMinDischargePowerL2());
+        }
+        if (getMinDischargePowerL3() != null) {
+            json.addProperty("minDischargePowerL3", getMinDischargePowerL3());
+        }
+        if (getMaxDischargePower() != null) {
+            json.addProperty("maxDischargePower", getMaxDischargePower());
+        }
+        if (getMaxDischargePowerL2() != null) {
+            json.addProperty("maxDischargePowerL2", getMaxDischargePowerL2());
+        }
+        if (getMaxDischargePowerL3() != null) {
+            json.addProperty("maxDischargePowerL3", getMaxDischargePowerL3());
+        }
+        if (getMinChargeCurrent() != null) {
+            json.addProperty("minChargeCurrent", getMinChargeCurrent());
+        }
+        if (getMaxChargeCurrent() != null) {
+            json.addProperty("maxChargeCurrent", getMaxChargeCurrent());
+        }
+        if (getMinDischargeCurrent() != null) {
+            json.addProperty("minDischargeCurrent", getMinDischargeCurrent());
+        }
+        if (getMaxDischargeCurrent() != null) {
+            json.addProperty("maxDischargeCurrent", getMaxDischargeCurrent());
+        }
+        if (getMinVoltage() != null) {
+            json.addProperty("minVoltage", getMinVoltage());
+        }
+        if (getMaxVoltage() != null) {
+            json.addProperty("maxVoltage", getMaxVoltage());
+        }
+        if (getEvTargetEnergyRequest() != null) {
+            json.addProperty("evTargetEnergyRequest", getEvTargetEnergyRequest());
+        }
+        if (getEvMinEnergyRequest() != null) {
+            json.addProperty("evMinEnergyRequest", getEvMinEnergyRequest());
+        }
+        if (getEvMaxEnergyRequest() != null) {
+            json.addProperty("evMaxEnergyRequest", getEvMaxEnergyRequest());
+        }
+        if (getEvMinV2XEnergyRequest() != null) {
+            json.addProperty("evMinV2XEnergyRequest", getEvMinV2XEnergyRequest());
+        }
+        if (getEvMaxV2XEnergyRequest() != null) {
+            json.addProperty("evMaxV2XEnergyRequest", getEvMaxV2XEnergyRequest());
+        }
+        if (getTargetSoC() != null) {
+            json.addProperty("targetSoC", getTargetSoC());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

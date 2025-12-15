@@ -65,7 +65,17 @@ public class SetVariableMonitoringResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray setMonitoringResultArray = new JsonArray();
+        for (SetMonitoringResult item : getSetMonitoringResult()) {
+            setMonitoringResultArray.add(item.toJsonObject());
+        }
+        json.add("setMonitoringResult", setMonitoringResultArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

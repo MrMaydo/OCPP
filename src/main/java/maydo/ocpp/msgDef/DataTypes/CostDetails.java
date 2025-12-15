@@ -127,11 +127,28 @@ public class CostDetails implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("totalCost", totalCost.toJsonObject());
-        json.add("totalUsage", totalUsage.toJsonObject());
-        json.addProperty("failureToCalculate", failureToCalculate);
-        json.addProperty("failureReason", failureReason);
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingPeriods() != null) {
+            JsonArray chargingPeriodsArray = new JsonArray();
+            for (ChargingPeriod item : getChargingPeriods()) {
+                chargingPeriodsArray.add(item.toJsonObject());
+            }
+            json.add("chargingPeriods", chargingPeriodsArray);
+        }
+        json.add("totalCost", getTotalCost().toJsonObject());
+
+        json.add("totalUsage", getTotalUsage().toJsonObject());
+
+        if (getFailureToCalculate() != null) {
+            json.addProperty("failureToCalculate", getFailureToCalculate());
+        }
+        if (getFailureReason() != null) {
+            json.addProperty("failureReason", getFailureReason());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

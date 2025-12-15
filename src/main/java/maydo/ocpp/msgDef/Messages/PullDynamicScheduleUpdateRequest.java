@@ -60,8 +60,13 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("chargingProfileId", getChargingProfileId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

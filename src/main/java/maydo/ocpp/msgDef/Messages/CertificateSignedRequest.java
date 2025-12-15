@@ -100,10 +100,19 @@ public class CertificateSignedRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("certificateChain", certificateChain);
-        json.addProperty("certificateType", certificateType.toString());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("certificateChain", getCertificateChain());
+
+        if (getCertificateType() != null) {
+            json.addProperty("certificateType", getCertificateType().toString());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

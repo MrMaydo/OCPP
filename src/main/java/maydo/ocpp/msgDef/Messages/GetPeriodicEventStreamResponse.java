@@ -61,7 +61,18 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        if (getConstantStreamData() != null) {
+            JsonArray constantStreamDataArray = new JsonArray();
+            for (ConstantStreamData item : getConstantStreamData()) {
+                constantStreamDataArray.add(item.toJsonObject());
+            }
+            json.add("constantStreamData", constantStreamDataArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

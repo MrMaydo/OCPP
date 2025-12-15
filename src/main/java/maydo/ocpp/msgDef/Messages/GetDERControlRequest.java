@@ -108,11 +108,22 @@ public class GetDERControlRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("isDefault", isDefault);
-        json.addProperty("controlType", controlType.toString());
-        json.addProperty("controlId", controlId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getIsDefault() != null) {
+            json.addProperty("isDefault", getIsDefault());
+        }
+        if (getControlType() != null) {
+            json.addProperty("controlType", getControlType().toString());
+        }
+        if (getControlId() != null) {
+            json.addProperty("controlId", getControlId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -112,10 +112,25 @@ public class SalesTariff implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("salesTariffDescription", salesTariffDescription);
-        json.addProperty("numEPriceLevels", numEPriceLevels);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getSalesTariffDescription() != null) {
+            json.addProperty("salesTariffDescription", getSalesTariffDescription());
+        }
+        if (getNumEPriceLevels() != null) {
+            json.addProperty("numEPriceLevels", getNumEPriceLevels());
+        }
+        JsonArray salesTariffEntryArray = new JsonArray();
+        for (SalesTariffEntry item : getSalesTariffEntry()) {
+            salesTariffEntryArray.add(item.toJsonObject());
+        }
+        json.add("salesTariffEntry", salesTariffEntryArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

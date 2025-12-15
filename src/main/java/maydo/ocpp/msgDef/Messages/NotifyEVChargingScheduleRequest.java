@@ -130,12 +130,23 @@ public class NotifyEVChargingScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeBase", new SimpleDateFormat(DATE_FORMAT).format(timeBase));
-        json.add("chargingSchedule", chargingSchedule.toJsonObject());
-        json.addProperty("evseId", evseId);
-        json.addProperty("selectedChargingScheduleId", selectedChargingScheduleId);
-        json.addProperty("powerToleranceAcceptance", powerToleranceAcceptance);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("timeBase", new SimpleDateFormat(DATE_FORMAT).format(getTimeBase()));
+
+        json.add("chargingSchedule", getChargingSchedule().toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        if (getSelectedChargingScheduleId() != null) {
+            json.addProperty("selectedChargingScheduleId", getSelectedChargingScheduleId());
+        }
+        if (getPowerToleranceAcceptance() != null) {
+            json.addProperty("powerToleranceAcceptance", getPowerToleranceAcceptance());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

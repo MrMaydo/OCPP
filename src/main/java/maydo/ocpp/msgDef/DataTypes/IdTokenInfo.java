@@ -184,14 +184,38 @@ public class IdTokenInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.addProperty("cacheExpiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(cacheExpiryDateTime));
-        json.addProperty("chargingPriority", chargingPriority);
-        json.add("groupIdToken", groupIdToken.toJsonObject());
-        json.addProperty("language1", language1);
-        json.addProperty("language2", language2);
-        json.add("personalMessage", personalMessage.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getCacheExpiryDateTime() != null) {
+            json.addProperty("cacheExpiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(getCacheExpiryDateTime()));
+        }
+        if (getChargingPriority() != null) {
+            json.addProperty("chargingPriority", getChargingPriority());
+        }
+        if (getGroupIdToken() != null) {
+            json.add("groupIdToken", getGroupIdToken().toJsonObject());
+        }
+        if (getLanguage1() != null) {
+            json.addProperty("language1", getLanguage1());
+        }
+        if (getLanguage2() != null) {
+            json.addProperty("language2", getLanguage2());
+        }
+        if (getEvseId() != null) {
+            JsonArray evseIdArray = new JsonArray();
+            for (Integer item : getEvseId()) {
+                evseIdArray.add(item);
+            }
+            json.add("evseId", evseIdArray);
+        }
+        if (getPersonalMessage() != null) {
+            json.add("personalMessage", getPersonalMessage().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

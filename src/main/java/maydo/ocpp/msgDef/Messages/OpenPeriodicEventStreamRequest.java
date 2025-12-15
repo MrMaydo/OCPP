@@ -60,8 +60,13 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("constantStreamData", constantStreamData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("constantStreamData", getConstantStreamData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

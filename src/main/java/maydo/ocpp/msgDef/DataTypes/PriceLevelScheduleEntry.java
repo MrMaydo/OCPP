@@ -77,9 +77,15 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.addProperty("priceLevel", priceLevel);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("duration", getDuration());
+
+        json.addProperty("priceLevel", getPriceLevel());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

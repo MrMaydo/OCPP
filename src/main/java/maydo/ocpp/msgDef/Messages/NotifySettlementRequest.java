@@ -209,17 +209,37 @@ public class NotifySettlementRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("pspRef", pspRef);
-        json.addProperty("status", status.toString());
-        json.addProperty("statusInfo", statusInfo);
-        json.addProperty("settlementAmount", settlementAmount);
-        json.addProperty("settlementTime", new SimpleDateFormat(DATE_FORMAT).format(settlementTime));
-        json.addProperty("receiptId", receiptId);
-        json.addProperty("receiptUrl", receiptUrl);
-        json.add("vatCompany", vatCompany.toJsonObject());
-        json.addProperty("vatNumber", vatNumber);
-        json.add("customData", customData.toJsonObject());
+
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        json.addProperty("pspRef", getPspRef());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.addProperty("statusInfo", getStatusInfo());
+        }
+        json.addProperty("settlementAmount", getSettlementAmount());
+
+        json.addProperty("settlementTime", new SimpleDateFormat(DATE_FORMAT).format(getSettlementTime()));
+
+        if (getReceiptId() != null) {
+            json.addProperty("receiptId", getReceiptId());
+        }
+        if (getReceiptUrl() != null) {
+            json.addProperty("receiptUrl", getReceiptUrl());
+        }
+        if (getVatCompany() != null) {
+            json.add("vatCompany", getVatCompany().toJsonObject());
+        }
+        if (getVatNumber() != null) {
+            json.addProperty("vatNumber", getVatNumber());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

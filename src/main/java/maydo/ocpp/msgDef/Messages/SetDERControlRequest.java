@@ -204,18 +204,41 @@ public class SetDERControlRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("isDefault", isDefault);
-        json.addProperty("controlId", controlId);
-        json.addProperty("controlType", controlType.toString());
-        json.add("curve", curve.toJsonObject());
-        json.add("enterService", enterService.toJsonObject());
-        json.add("fixedPFAbsorb", fixedPFAbsorb.toJsonObject());
-        json.add("fixedPFInject", fixedPFInject.toJsonObject());
-        json.add("fixedVar", fixedVar.toJsonObject());
-        json.add("freqDroop", freqDroop.toJsonObject());
-        json.add("gradient", gradient.toJsonObject());
-        json.add("limitMaxDischarge", limitMaxDischarge.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("isDefault", getIsDefault());
+
+        json.addProperty("controlId", getControlId());
+
+        json.addProperty("controlType", getControlType().toString());
+
+        if (getCurve() != null) {
+            json.add("curve", getCurve().toJsonObject());
+        }
+        if (getEnterService() != null) {
+            json.add("enterService", getEnterService().toJsonObject());
+        }
+        if (getFixedPFAbsorb() != null) {
+            json.add("fixedPFAbsorb", getFixedPFAbsorb().toJsonObject());
+        }
+        if (getFixedPFInject() != null) {
+            json.add("fixedPFInject", getFixedPFInject().toJsonObject());
+        }
+        if (getFixedVar() != null) {
+            json.add("fixedVar", getFixedVar().toJsonObject());
+        }
+        if (getFreqDroop() != null) {
+            json.add("freqDroop", getFreqDroop().toJsonObject());
+        }
+        if (getGradient() != null) {
+            json.add("gradient", getGradient().toJsonObject());
+        }
+        if (getLimitMaxDischarge() != null) {
+            json.add("limitMaxDischarge", getLimitMaxDischarge().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

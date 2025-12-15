@@ -100,9 +100,22 @@ public class SendLocalListRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("versionNumber", versionNumber);
-        json.addProperty("updateType", updateType.toString());
-        json.add("customData", customData.toJsonObject());
+
+        if (getLocalAuthorizationList() != null) {
+            JsonArray localAuthorizationListArray = new JsonArray();
+            for (AuthorizationData item : getLocalAuthorizationList()) {
+                localAuthorizationListArray.add(item.toJsonObject());
+            }
+            json.add("localAuthorizationList", localAuthorizationListArray);
+        }
+        json.addProperty("versionNumber", getVersionNumber());
+
+        json.addProperty("updateType", getUpdateType().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

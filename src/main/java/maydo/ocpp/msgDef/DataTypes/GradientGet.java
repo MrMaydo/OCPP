@@ -74,9 +74,15 @@ public class GradientGet implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("gradient", gradient.toJsonObject());
-        json.addProperty("id", id);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("gradient", getGradient().toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

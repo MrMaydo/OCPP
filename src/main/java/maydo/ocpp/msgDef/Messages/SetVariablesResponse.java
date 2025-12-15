@@ -65,7 +65,17 @@ public class SetVariablesResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray setVariableResultArray = new JsonArray();
+        for (SetVariableResult item : getSetVariableResult()) {
+            setVariableResultArray.add(item.toJsonObject());
+        }
+        json.add("setVariableResult", setVariableResultArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

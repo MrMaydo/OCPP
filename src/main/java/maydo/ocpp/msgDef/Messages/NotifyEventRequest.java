@@ -122,9 +122,21 @@ public class NotifyEventRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(generatedAt));
-        json.addProperty("seqNo", seqNo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
+
+        json.addProperty("seqNo", getSeqNo());
+
+        JsonArray eventDataArray = new JsonArray();
+        for (EventData item : getEventData()) {
+            eventDataArray.add(item.toJsonObject());
+        }
+        json.add("eventData", eventDataArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

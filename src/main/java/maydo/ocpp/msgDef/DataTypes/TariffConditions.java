@@ -373,24 +373,69 @@ public class TariffConditions implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("startTimeOfDay", startTimeOfDay);
-        json.addProperty("endTimeOfDay", endTimeOfDay);
-        json.addProperty("validFromDate", validFromDate);
-        json.addProperty("validToDate", validToDate);
-        json.addProperty("evseKind", evseKind.toString());
-        json.addProperty("minEnergy", minEnergy);
-        json.addProperty("maxEnergy", maxEnergy);
-        json.addProperty("minCurrent", minCurrent);
-        json.addProperty("maxCurrent", maxCurrent);
-        json.addProperty("minPower", minPower);
-        json.addProperty("maxPower", maxPower);
-        json.addProperty("minTime", minTime);
-        json.addProperty("maxTime", maxTime);
-        json.addProperty("minChargingTime", minChargingTime);
-        json.addProperty("maxChargingTime", maxChargingTime);
-        json.addProperty("minIdleTime", minIdleTime);
-        json.addProperty("maxIdleTime", maxIdleTime);
-        json.add("customData", customData.toJsonObject());
+
+        if (getStartTimeOfDay() != null) {
+            json.addProperty("startTimeOfDay", getStartTimeOfDay());
+        }
+        if (getEndTimeOfDay() != null) {
+            json.addProperty("endTimeOfDay", getEndTimeOfDay());
+        }
+        if (getDayOfWeek() != null) {
+            JsonArray dayOfWeekArray = new JsonArray();
+            for (DayOfWeekEnum item : getDayOfWeek()) {
+                dayOfWeekArray.add(item.toString());
+            }
+            json.add("dayOfWeek", dayOfWeekArray);
+        }
+        if (getValidFromDate() != null) {
+            json.addProperty("validFromDate", getValidFromDate());
+        }
+        if (getValidToDate() != null) {
+            json.addProperty("validToDate", getValidToDate());
+        }
+        if (getEvseKind() != null) {
+            json.addProperty("evseKind", getEvseKind().toString());
+        }
+        if (getMinEnergy() != null) {
+            json.addProperty("minEnergy", getMinEnergy());
+        }
+        if (getMaxEnergy() != null) {
+            json.addProperty("maxEnergy", getMaxEnergy());
+        }
+        if (getMinCurrent() != null) {
+            json.addProperty("minCurrent", getMinCurrent());
+        }
+        if (getMaxCurrent() != null) {
+            json.addProperty("maxCurrent", getMaxCurrent());
+        }
+        if (getMinPower() != null) {
+            json.addProperty("minPower", getMinPower());
+        }
+        if (getMaxPower() != null) {
+            json.addProperty("maxPower", getMaxPower());
+        }
+        if (getMinTime() != null) {
+            json.addProperty("minTime", getMinTime());
+        }
+        if (getMaxTime() != null) {
+            json.addProperty("maxTime", getMaxTime());
+        }
+        if (getMinChargingTime() != null) {
+            json.addProperty("minChargingTime", getMinChargingTime());
+        }
+        if (getMaxChargingTime() != null) {
+            json.addProperty("maxChargingTime", getMaxChargingTime());
+        }
+        if (getMinIdleTime() != null) {
+            json.addProperty("minIdleTime", getMinIdleTime());
+        }
+        if (getMaxIdleTime() != null) {
+            json.addProperty("maxIdleTime", getMaxIdleTime());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

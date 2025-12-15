@@ -92,10 +92,20 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
-        json.addProperty("stackLevel", stackLevel);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getChargingProfilePurpose() != null) {
+            json.addProperty("chargingProfilePurpose", getChargingProfilePurpose().toString());
+        }
+        if (getStackLevel() != null) {
+            json.addProperty("stackLevel", getStackLevel());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

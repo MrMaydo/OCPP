@@ -74,9 +74,15 @@ public class EnterServiceGet implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("enterService", enterService.toJsonObject());
-        json.addProperty("id", id);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("enterService", getEnterService().toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

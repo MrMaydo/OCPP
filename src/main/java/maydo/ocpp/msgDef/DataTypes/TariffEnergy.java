@@ -77,7 +77,24 @@ public class TariffEnergy implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray pricesArray = new JsonArray();
+        for (TariffEnergyPrice item : getPrices()) {
+            pricesArray.add(item.toJsonObject());
+        }
+        json.add("prices", pricesArray);
+
+        if (getTaxRates() != null) {
+            JsonArray taxRatesArray = new JsonArray();
+            for (TaxRate item : getTaxRates()) {
+                taxRatesArray.add(item.toJsonObject());
+            }
+            json.add("taxRates", taxRatesArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

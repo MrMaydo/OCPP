@@ -155,13 +155,27 @@ public class APN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("apn", apn);
-        json.addProperty("apnUserName", apnUserName);
-        json.addProperty("apnPassword", apnPassword);
-        json.addProperty("simPin", simPin);
-        json.addProperty("preferredNetwork", preferredNetwork);
-        json.addProperty("apnAuthentication", apnAuthentication.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("apn", getApn());
+
+        if (getApnUserName() != null) {
+            json.addProperty("apnUserName", getApnUserName());
+        }
+        if (getApnPassword() != null) {
+            json.addProperty("apnPassword", getApnPassword());
+        }
+        if (getSimPin() != null) {
+            json.addProperty("simPin", getSimPin());
+        }
+        if (getPreferredNetwork() != null) {
+            json.addProperty("preferredNetwork", getPreferredNetwork());
+        }
+        json.addProperty("apnAuthentication", getApnAuthentication().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

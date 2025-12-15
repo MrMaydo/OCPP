@@ -132,11 +132,25 @@ public class CompositeSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("duration", duration);
-        json.addProperty("scheduleStart", new SimpleDateFormat(DATE_FORMAT).format(scheduleStart));
-        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.addProperty("duration", getDuration());
+
+        json.addProperty("scheduleStart", new SimpleDateFormat(DATE_FORMAT).format(getScheduleStart()));
+
+        json.addProperty("chargingRateUnit", getChargingRateUnit().toString());
+
+        JsonArray chargingSchedulePeriodArray = new JsonArray();
+        for (ChargingSchedulePeriod item : getChargingSchedulePeriod()) {
+            chargingSchedulePeriodArray.add(item.toJsonObject());
+        }
+        json.add("chargingSchedulePeriod", chargingSchedulePeriodArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -79,8 +79,19 @@ public class ConsumptionCost implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("startValue", startValue);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("startValue", getStartValue());
+
+        JsonArray costArray = new JsonArray();
+        for (Cost item : getCost()) {
+            costArray.add(item.toJsonObject());
+        }
+        json.add("cost", costArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

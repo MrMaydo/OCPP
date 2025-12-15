@@ -85,8 +85,19 @@ public class MeterValuesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        JsonArray meterValueArray = new JsonArray();
+        for (MeterValue item : getMeterValue()) {
+            meterValueArray.add(item.toJsonObject());
+        }
+        json.add("meterValue", meterValueArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

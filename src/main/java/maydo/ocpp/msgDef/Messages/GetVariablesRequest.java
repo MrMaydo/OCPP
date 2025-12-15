@@ -64,7 +64,17 @@ public class GetVariablesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray getVariableDataArray = new JsonArray();
+        for (GetVariableData item : getGetVariableData()) {
+            getVariableDataArray.add(item.toJsonObject());
+        }
+        json.add("getVariableData", getVariableDataArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

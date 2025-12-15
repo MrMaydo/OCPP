@@ -145,13 +145,26 @@ public class ReserveNowRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("expiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(expiryDateTime));
-        json.addProperty("connectorType", connectorType);
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("evseId", evseId);
-        json.add("groupIdToken", groupIdToken.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("expiryDateTime", new SimpleDateFormat(DATE_FORMAT).format(getExpiryDateTime()));
+
+        if (getConnectorType() != null) {
+            json.addProperty("connectorType", getConnectorType());
+        }
+        json.add("idToken", getIdToken().toJsonObject());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getGroupIdToken() != null) {
+            json.add("groupIdToken", getGroupIdToken().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

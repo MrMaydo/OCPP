@@ -75,9 +75,16 @@ public class ComponentVariable implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("component", component.toJsonObject());
-        json.add("variable", variable.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("component", getComponent().toJsonObject());
+
+        if (getVariable() != null) {
+            json.add("variable", getVariable().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

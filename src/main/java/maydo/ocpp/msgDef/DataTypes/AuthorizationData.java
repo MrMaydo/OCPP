@@ -78,9 +78,16 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idToken", idToken.toJsonObject());
-        json.add("idTokenInfo", idTokenInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        if (getIdTokenInfo() != null) {
+            json.add("idTokenInfo", getIdTokenInfo().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

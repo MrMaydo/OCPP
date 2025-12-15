@@ -133,10 +133,24 @@ public class NotifyReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(generatedAt));
-        json.addProperty("seqNo", seqNo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
+
+        if (getReportData() != null) {
+            JsonArray reportDataArray = new JsonArray();
+            for (ReportData item : getReportData()) {
+                reportDataArray.add(item.toJsonObject());
+            }
+            json.add("reportData", reportDataArray);
+        }
+        json.addProperty("seqNo", getSeqNo());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -171,15 +171,29 @@ public class TaxRule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("taxRuleID", taxRuleID);
-        json.addProperty("taxRuleName", taxRuleName);
-        json.addProperty("taxIncludedInPrice", taxIncludedInPrice);
-        json.addProperty("appliesToEnergyFee", appliesToEnergyFee);
-        json.addProperty("appliesToParkingFee", appliesToParkingFee);
-        json.addProperty("appliesToOverstayFee", appliesToOverstayFee);
-        json.addProperty("appliesToMinimumMaximumCost", appliesToMinimumMaximumCost);
-        json.add("taxRate", taxRate.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("taxRuleID", getTaxRuleID());
+
+        if (getTaxRuleName() != null) {
+            json.addProperty("taxRuleName", getTaxRuleName());
+        }
+        if (getTaxIncludedInPrice() != null) {
+            json.addProperty("taxIncludedInPrice", getTaxIncludedInPrice());
+        }
+        json.addProperty("appliesToEnergyFee", getAppliesToEnergyFee());
+
+        json.addProperty("appliesToParkingFee", getAppliesToParkingFee());
+
+        json.addProperty("appliesToOverstayFee", getAppliesToOverstayFee());
+
+        json.addProperty("appliesToMinimumMaximumCost", getAppliesToMinimumMaximumCost());
+
+        json.add("taxRate", getTaxRate().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

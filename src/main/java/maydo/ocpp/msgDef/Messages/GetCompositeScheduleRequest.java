@@ -93,10 +93,18 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("duration", getDuration());
+
+        if (getChargingRateUnit() != null) {
+            json.addProperty("chargingRateUnit", getChargingRateUnit().toString());
+        }
+        json.addProperty("evseId", getEvseId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

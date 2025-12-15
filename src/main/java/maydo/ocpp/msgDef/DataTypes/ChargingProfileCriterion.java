@@ -114,9 +114,31 @@ public class ChargingProfileCriterion implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
-        json.addProperty("stackLevel", stackLevel);
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingProfilePurpose() != null) {
+            json.addProperty("chargingProfilePurpose", getChargingProfilePurpose().toString());
+        }
+        if (getStackLevel() != null) {
+            json.addProperty("stackLevel", getStackLevel());
+        }
+        if (getChargingProfileId() != null) {
+            JsonArray chargingProfileIdArray = new JsonArray();
+            for (Integer item : getChargingProfileId()) {
+                chargingProfileIdArray.add(item);
+            }
+            json.add("chargingProfileId", chargingProfileIdArray);
+        }
+        if (getChargingLimitSource() != null) {
+            JsonArray chargingLimitSourceArray = new JsonArray();
+            for (String item : getChargingLimitSource()) {
+                chargingLimitSourceArray.add(item);
+            }
+            json.add("chargingLimitSource", chargingLimitSourceArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

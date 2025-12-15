@@ -306,21 +306,57 @@ public class ChargingSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("limitAtSoC", limitAtSoC.toJsonObject());
-        json.addProperty("startSchedule", new SimpleDateFormat(DATE_FORMAT).format(startSchedule));
-        json.addProperty("duration", duration);
-        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
-        json.addProperty("minChargingRate", minChargingRate);
-        json.addProperty("powerTolerance", powerTolerance);
-        json.addProperty("signatureId", signatureId);
-        json.addProperty("digestValue", digestValue);
-        json.addProperty("useLocalTime", useLocalTime);
-        json.addProperty("randomizedDelay", randomizedDelay);
-        json.add("salesTariff", salesTariff.toJsonObject());
-        json.add("absolutePriceSchedule", absolutePriceSchedule.toJsonObject());
-        json.add("priceLevelSchedule", priceLevelSchedule.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getLimitAtSoC() != null) {
+            json.add("limitAtSoC", getLimitAtSoC().toJsonObject());
+        }
+        if (getStartSchedule() != null) {
+            json.addProperty("startSchedule", new SimpleDateFormat(DATE_FORMAT).format(getStartSchedule()));
+        }
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        json.addProperty("chargingRateUnit", getChargingRateUnit().toString());
+
+        if (getMinChargingRate() != null) {
+            json.addProperty("minChargingRate", getMinChargingRate());
+        }
+        if (getPowerTolerance() != null) {
+            json.addProperty("powerTolerance", getPowerTolerance());
+        }
+        if (getSignatureId() != null) {
+            json.addProperty("signatureId", getSignatureId());
+        }
+        if (getDigestValue() != null) {
+            json.addProperty("digestValue", getDigestValue());
+        }
+        if (getUseLocalTime() != null) {
+            json.addProperty("useLocalTime", getUseLocalTime());
+        }
+        JsonArray chargingSchedulePeriodArray = new JsonArray();
+        for (ChargingSchedulePeriod item : getChargingSchedulePeriod()) {
+            chargingSchedulePeriodArray.add(item.toJsonObject());
+        }
+        json.add("chargingSchedulePeriod", chargingSchedulePeriodArray);
+
+        if (getRandomizedDelay() != null) {
+            json.addProperty("randomizedDelay", getRandomizedDelay());
+        }
+        if (getSalesTariff() != null) {
+            json.add("salesTariff", getSalesTariff().toJsonObject());
+        }
+        if (getAbsolutePriceSchedule() != null) {
+            json.add("absolutePriceSchedule", getAbsolutePriceSchedule().toJsonObject());
+        }
+        if (getPriceLevelSchedule() != null) {
+            json.add("priceLevelSchedule", getPriceLevelSchedule().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -110,11 +110,22 @@ public class SignCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("csr", csr);
-        json.addProperty("certificateType", certificateType.toString());
-        json.add("hashRootCertificate", hashRootCertificate.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("csr", getCsr());
+
+        if (getCertificateType() != null) {
+            json.addProperty("certificateType", getCertificateType().toString());
+        }
+        if (getHashRootCertificate() != null) {
+            json.add("hashRootCertificate", getHashRootCertificate().toJsonObject());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -17,7 +17,7 @@ import java.util.Objects;
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
 /**
- *The Charging Station uses this message to communicate the charging needs as calculated by the EV to the CSMS.
+ * The Charging Station uses this message to communicate the charging needs as calculated by the EV to the CSMS.
  */
 public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
@@ -116,11 +116,21 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("maxScheduleTuples", maxScheduleTuples);
-        json.add("chargingNeeds", chargingNeeds.toJsonObject());
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        if (getMaxScheduleTuples() != null) {
+            json.addProperty("maxScheduleTuples", getMaxScheduleTuples());
+        }
+        json.add("chargingNeeds", getChargingNeeds().toJsonObject());
+
+        if (getTimestamp() != null) {
+            json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

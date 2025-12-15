@@ -190,14 +190,39 @@ public class TariffConditionsFixed implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("startTimeOfDay", startTimeOfDay);
-        json.addProperty("endTimeOfDay", endTimeOfDay);
-        json.addProperty("validFromDate", validFromDate);
-        json.addProperty("validToDate", validToDate);
-        json.addProperty("evseKind", evseKind.toString());
-        json.addProperty("paymentBrand", paymentBrand);
-        json.addProperty("paymentRecognition", paymentRecognition);
-        json.add("customData", customData.toJsonObject());
+
+        if (getStartTimeOfDay() != null) {
+            json.addProperty("startTimeOfDay", getStartTimeOfDay());
+        }
+        if (getEndTimeOfDay() != null) {
+            json.addProperty("endTimeOfDay", getEndTimeOfDay());
+        }
+        if (getDayOfWeek() != null) {
+            JsonArray dayOfWeekArray = new JsonArray();
+            for (DayOfWeekEnum item : getDayOfWeek()) {
+                dayOfWeekArray.add(item.toString());
+            }
+            json.add("dayOfWeek", dayOfWeekArray);
+        }
+        if (getValidFromDate() != null) {
+            json.addProperty("validFromDate", getValidFromDate());
+        }
+        if (getValidToDate() != null) {
+            json.addProperty("validToDate", getValidToDate());
+        }
+        if (getEvseKind() != null) {
+            json.addProperty("evseKind", getEvseKind().toString());
+        }
+        if (getPaymentBrand() != null) {
+            json.addProperty("paymentBrand", getPaymentBrand());
+        }
+        if (getPaymentRecognition() != null) {
+            json.addProperty("paymentRecognition", getPaymentRecognition());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -116,10 +116,24 @@ public class NotifyDERStartStopRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("controlId", controlId);
-        json.addProperty("started", started);
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("controlId", getControlId());
+
+        json.addProperty("started", getStarted());
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getSupersededIds() != null) {
+            JsonArray supersededIdsArray = new JsonArray();
+            for (String item : getSupersededIds()) {
+                supersededIdsArray.add(item);
+            }
+            json.add("supersededIds", supersededIdsArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

@@ -130,12 +130,24 @@ public class NotifyDERAlarmRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("controlType", controlType.toString());
-        json.addProperty("gridEventFault", gridEventFault.toString());
-        json.addProperty("alarmEnded", alarmEnded);
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("extraInfo", extraInfo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("controlType", getControlType().toString());
+
+        if (getGridEventFault() != null) {
+            json.addProperty("gridEventFault", getGridEventFault().toString());
+        }
+        if (getAlarmEnded() != null) {
+            json.addProperty("alarmEnded", getAlarmEnded());
+        }
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getExtraInfo() != null) {
+            json.addProperty("extraInfo", getExtraInfo());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

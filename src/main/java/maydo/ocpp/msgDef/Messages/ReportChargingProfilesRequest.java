@@ -132,10 +132,23 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("chargingLimitSource", chargingLimitSource);
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("chargingLimitSource", getChargingLimitSource());
+
+        JsonArray chargingProfileArray = new JsonArray();
+        for (ChargingProfile item : getChargingProfile()) {
+            chargingProfileArray.add(item.toJsonObject());
+        }
+        json.add("chargingProfile", chargingProfileArray);
+
+        json.addProperty("evseId", getEvseId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 

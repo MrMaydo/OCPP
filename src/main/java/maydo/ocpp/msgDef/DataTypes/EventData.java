@@ -276,21 +276,46 @@ public class EventData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("eventId", eventId);
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("trigger", trigger.toString());
-        json.addProperty("cause", cause);
-        json.addProperty("actualValue", actualValue);
-        json.addProperty("techCode", techCode);
-        json.addProperty("techInfo", techInfo);
-        json.addProperty("cleared", cleared);
-        json.addProperty("transactionId", transactionId);
-        json.add("component", component.toJsonObject());
-        json.addProperty("variableMonitoringId", variableMonitoringId);
-        json.addProperty("eventNotificationType", eventNotificationType.toString());
-        json.add("variable", variable.toJsonObject());
-        json.addProperty("severity", severity);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("eventId", getEventId());
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        json.addProperty("trigger", getTrigger().toString());
+
+        if (getCause() != null) {
+            json.addProperty("cause", getCause());
+        }
+        json.addProperty("actualValue", getActualValue());
+
+        if (getTechCode() != null) {
+            json.addProperty("techCode", getTechCode());
+        }
+        if (getTechInfo() != null) {
+            json.addProperty("techInfo", getTechInfo());
+        }
+        if (getCleared() != null) {
+            json.addProperty("cleared", getCleared());
+        }
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        json.add("component", getComponent().toJsonObject());
+
+        if (getVariableMonitoringId() != null) {
+            json.addProperty("variableMonitoringId", getVariableMonitoringId());
+        }
+        json.addProperty("eventNotificationType", getEventNotificationType().toString());
+
+        json.add("variable", getVariable().toJsonObject());
+
+        if (getSeverity() != null) {
+            json.addProperty("severity", getSeverity());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
