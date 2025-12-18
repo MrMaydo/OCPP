@@ -15,65 +15,44 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the HeartbeatResponse PDU sent by
+ * the CSMS to the Charging Station in response to a HeartbeatRequest.
+ */
 public class HeartbeatResponse implements JsonInterface {
 
     /**
      * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private Date currentTime;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public HeartbeatResponse() {
     }
 
-    /**
-     * @param currentTime Contains the current time of the CSMS.
-     *                    .
-     */
-    public HeartbeatResponse(Date currentTime, CustomData customData) {
-        super();
-        this.currentTime = currentTime;
-        this.customData = customData;
-    }
 
-    /**
-     * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
-     */
     public Date getCurrentTime() {
         return currentTime;
     }
 
-    /**
-     * Contains the current time of the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrentTime(Date currentTime) {
         this.currentTime = currentTime;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -86,8 +65,13 @@ public class HeartbeatResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(currentTime));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(getCurrentTime()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -102,17 +86,16 @@ public class HeartbeatResponse implements JsonInterface {
         if (jsonObject.has("currentTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.currentTime = dateFormat.parse(jsonObject.get("currentTime").getAsString());
+                setCurrentTime(dateFormat.parse(jsonObject.get("currentTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for currentTime" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -122,15 +105,15 @@ public class HeartbeatResponse implements JsonInterface {
         if (!(obj instanceof HeartbeatResponse))
             return false;
         HeartbeatResponse that = (HeartbeatResponse) obj;
-        return Objects.equals(this.currentTime, that.currentTime)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCurrentTime(), that.getCurrentTime())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.currentTime != null ? this.currentTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurrentTime(),
+                getCustomData()
+        );
     }
 }

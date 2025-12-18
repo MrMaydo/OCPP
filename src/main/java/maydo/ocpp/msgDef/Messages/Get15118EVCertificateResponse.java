@@ -12,141 +12,95 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Response message from CSMS to Charging Station containing the status and optionally new certificate.
+ * NOTE: This message is based on CertificateInstallationReq Res from ISO 15118-2.
+ */
 public class Get15118EVCertificateResponse implements JsonInterface {
 
     /**
-     * Indicates whether the message was processed properly.
-     * <p>
-     * (Required)
+     * Indicates whether the message was processed properly
      */
     @Required
     private Iso15118EVCertificateStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * <p>
-     * <p>
-     * (Required)
+     * (2.1) Raw CertificateInstallationRes response for the EV, Base64 encoded.
+     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000.
+     * If a longer exiResponse is supported, then the supported length must be
+     * communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
      */
     @Required
     private String exiResponse;
+
     /**
-     * *(2.1)* Number of contracts that can be retrieved with additional requests.
+     * (2.1) Number of contracts that can be retrieved with additional requests.
      */
     @Optional
     private Integer remainingContracts;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Get15118EVCertificateResponse() {
     }
 
-    /**
-     * @param remainingContracts *(2.1)* Number of contracts that can be retrieved with additional requests.
-     *                           .
-     * @param exiResponse        *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
-     *                           Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     *                           <p>
-     *                           .
-     */
-    public Get15118EVCertificateResponse(Iso15118EVCertificateStatusEnum status, StatusInfo statusInfo, String exiResponse, Integer remainingContracts, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.exiResponse = exiResponse;
-        this.remainingContracts = remainingContracts;
-        this.customData = customData;
-    }
 
-    /**
-     * Indicates whether the message was processed properly.
-     * <p>
-     * (Required)
-     */
     public Iso15118EVCertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Indicates whether the message was processed properly.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(Iso15118EVCertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getExiResponse() {
         return exiResponse;
     }
 
-    /**
-     * *(2/1)* Raw CertificateInstallationRes response for the EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 17000. If a longer _exiResponse_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateResponse.exiResponse" ].
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setExiResponse(String exiResponse) {
         this.exiResponse = exiResponse;
     }
 
-    /**
-     * *(2.1)* Number of contracts that can be retrieved with additional requests.
-     */
+
     public Integer getRemainingContracts() {
         return remainingContracts;
     }
 
-    /**
-     * *(2.1)* Number of contracts that can be retrieved with additional requests.
-     */
+
     public void setRemainingContracts(Integer remainingContracts) {
         this.remainingContracts = remainingContracts;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -159,11 +113,21 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("exiResponse", exiResponse);
-        json.addProperty("remainingContracts", remainingContracts);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        json.addProperty("exiResponse", getExiResponse());
+
+        if (getRemainingContracts() != null) {
+            json.addProperty("remainingContracts", getRemainingContracts());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -176,27 +140,26 @@ public class Get15118EVCertificateResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = Iso15118EVCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(Iso15118EVCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("exiResponse")) {
-            this.exiResponse = jsonObject.get("exiResponse").getAsString();
+            setExiResponse(jsonObject.get("exiResponse").getAsString());
         }
 
         if (jsonObject.has("remainingContracts")) {
-            this.remainingContracts = jsonObject.get("remainingContracts").getAsInt();
+            setRemainingContracts(jsonObject.get("remainingContracts").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -206,21 +169,21 @@ public class Get15118EVCertificateResponse implements JsonInterface {
         if (!(obj instanceof Get15118EVCertificateResponse))
             return false;
         Get15118EVCertificateResponse that = (Get15118EVCertificateResponse) obj;
-        return Objects.equals(this.remainingContracts, that.remainingContracts)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.exiResponse, that.exiResponse)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getExiResponse(), that.getExiResponse())
+                && Objects.equals(getRemainingContracts(), that.getRemainingContracts())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.remainingContracts != null ? this.remainingContracts.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.exiResponse != null ? this.exiResponse.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getExiResponse(),
+                getRemainingContracts(),
+                getCustomData()
+        );
     }
 }

@@ -13,73 +13,57 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCompositeScheduleResponse PDU sent by the Charging Station to the CSMS in
+ * response to a GetCompositeScheduleRequest.
+ */
 public class GetCompositeScheduleResponse implements JsonInterface {
 
     /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
+     * The Charging Station will indicate if it was able to process the request
      */
     @Required
     private GenericStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
+    /**
+     * This field contains the calculated composite schedule.
+     * It may only be omitted when this message contains status Rejected.
+     */
     @Optional
     private CompositeSchedule schedule;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCompositeScheduleResponse() {
     }
 
-    public GetCompositeScheduleResponse(GenericStatusEnum status, StatusInfo statusInfo, CompositeSchedule schedule, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.schedule = schedule;
-        this.customData = customData;
-    }
 
-    /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
-     */
     public GenericStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * The Charging Station will indicate if it was
-     * able to process the request
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GenericStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
@@ -92,16 +76,12 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         this.schedule = schedule;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -114,10 +94,19 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("schedule", schedule.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getSchedule() != null) {
+            json.add("schedule", getSchedule().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -130,24 +119,23 @@ public class GetCompositeScheduleResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = GenericStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(GenericStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("schedule")) {
-            this.schedule = new CompositeSchedule();
-            this.schedule.fromJsonObject(jsonObject.getAsJsonObject("schedule"));
+            setSchedule(new CompositeSchedule());
+            getSchedule().fromJsonObject(jsonObject.getAsJsonObject("schedule"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -157,19 +145,19 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleResponse))
             return false;
         GetCompositeScheduleResponse that = (GetCompositeScheduleResponse) obj;
-        return Objects.equals(this.schedule, that.schedule)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getSchedule(), that.getSchedule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.schedule != null ? this.schedule.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getSchedule(),
+                getCustomData()
+        );
     }
 }

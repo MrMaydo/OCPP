@@ -9,35 +9,28 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the LogStatusNotificationResponse PDU sent by
+ * the CSMS to the Charging Station in response to LogStatusNotificationRequest. No fields are defined.
+ */
 public class LogStatusNotificationResponse implements JsonInterface {
 
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public LogStatusNotificationResponse() {
     }
 
-    public LogStatusNotificationResponse(CustomData customData) {
-        super();
-        this.customData = customData;
-    }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -50,7 +43,11 @@ public class LogStatusNotificationResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -63,10 +60,9 @@ public class LogStatusNotificationResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -76,13 +72,11 @@ public class LogStatusNotificationResponse implements JsonInterface {
         if (!(obj instanceof LogStatusNotificationResponse))
             return false;
         LogStatusNotificationResponse that = (LogStatusNotificationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(getCustomData());
     }
 }

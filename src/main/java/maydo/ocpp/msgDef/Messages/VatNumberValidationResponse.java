@@ -13,158 +13,107 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class VatNumberValidationResponse implements JsonInterface {
 
     /**
-     * *(2.1)* A generic address format.
+     * Result of operation.
      */
-    @Optional
-    private Address company;
+    @Required
+    private GenericStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Additional info on status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
      * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String vatNumber;
+
+    /**
+     * Company address associated with vatNumber.
+     */
+    @Optional
+    private Address company;
+
     /**
      * EVSE id for which check was requested.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * Result of operation.
-     * <p>
-     * (Required)
-     */
-    @Required
-    private GenericStatusEnum status;
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public VatNumberValidationResponse() {
     }
 
-    /**
-     * @param evseId    EVSE id for which check was requested.
-     *                  <p>
-     *                  .
-     * @param vatNumber VAT number that was requested.
-     *                  <p>
-     *                  .
-     */
-    public VatNumberValidationResponse(Address company, StatusInfo statusInfo, String vatNumber, Integer evseId, GenericStatusEnum status, CustomData customData) {
-        super();
-        this.company = company;
-        this.statusInfo = statusInfo;
-        this.vatNumber = vatNumber;
-        this.evseId = evseId;
-        this.status = status;
-        this.customData = customData;
-    }
 
-    /**
-     * *(2.1)* A generic address format.
-     */
     public Address getCompany() {
         return company;
     }
 
-    /**
-     * *(2.1)* A generic address format.
-     */
+
     public void setCompany(Address company) {
         this.company = company;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getVatNumber() {
         return vatNumber;
     }
 
-    /**
-     * VAT number that was requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setVatNumber(String vatNumber) {
         this.vatNumber = vatNumber;
     }
 
-    /**
-     * EVSE id for which check was requested.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE id for which check was requested.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * (Required)
-     */
+
     public GenericStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GenericStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -177,12 +126,24 @@ public class VatNumberValidationResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("company", company.toJsonObject());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("vatNumber", vatNumber);
-        json.addProperty("evseId", evseId);
-        json.addProperty("status", status.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        json.addProperty("vatNumber", getVatNumber());
+
+        if (getCompany() != null) {
+            json.add("company", getCompany().toJsonObject());
+        }
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -194,33 +155,32 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("company")) {
-            this.company = new Address();
-            this.company.fromJsonObject(jsonObject.getAsJsonObject("company"));
+        if (jsonObject.has("status")) {
+            setStatus(GenericStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("vatNumber")) {
-            this.vatNumber = jsonObject.get("vatNumber").getAsString();
+            setVatNumber(jsonObject.get("vatNumber").getAsString());
+        }
+
+        if (jsonObject.has("company")) {
+            setCompany(new Address());
+            getCompany().fromJsonObject(jsonObject.getAsJsonObject("company"));
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
-        }
-
-        if (jsonObject.has("status")) {
-            this.status = GenericStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -230,23 +190,23 @@ public class VatNumberValidationResponse implements JsonInterface {
         if (!(obj instanceof VatNumberValidationResponse))
             return false;
         VatNumberValidationResponse that = (VatNumberValidationResponse) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.company, that.company)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.vatNumber, that.vatNumber)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getVatNumber(), that.getVatNumber())
+                && Objects.equals(getCompany(), that.getCompany())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.company != null ? this.company.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.vatNumber != null ? this.vatNumber.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getVatNumber(),
+                getCompany(),
+                getEvseId(),
+                getCustomData()
+        );
     }
 }

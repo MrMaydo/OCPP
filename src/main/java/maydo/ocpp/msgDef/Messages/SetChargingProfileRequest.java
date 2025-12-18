@@ -11,100 +11,62 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetChargingProfileRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS uses this message to send charging profiles to a Charging Station.
+ */
 public class SetChargingProfileRequest implements JsonInterface {
 
     /**
-     * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * <p>
-     * (Required)
+     * For TxDefaultProfile an evseId=0 applies the profile to each individual evse.
+     * For ChargingStationMaxProfile and ChargingStationExternalConstraints
+     * an evseId=0 contains an overal limit for the whole Charging Station.
      */
     @Required
     private Integer evseId;
+
     /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
-     * <p>
-     * <p>
-     * (Required)
+     * The charging profile to be set at the Charging Station.
      */
     @Required
     private ChargingProfile chargingProfile;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetChargingProfileRequest() {
     }
 
-    /**
-     * @param evseId For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     *               .
-     */
-    public SetChargingProfileRequest(Integer evseId, ChargingProfile chargingProfile, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.chargingProfile = chargingProfile;
-        this.customData = customData;
-    }
 
-    /**
-     * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * For TxDefaultProfile an evseId=0 applies the profile to each individual evse. For ChargingStationMaxProfile and ChargingStationExternalConstraints an evseId=0 contains an overal limit for the whole Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfile getChargingProfile() {
         return chargingProfile;
     }
 
-    /**
-     * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods, describing the amount of power or current that can be delivered per time interval.
-     * <p>
-     * image::images/ChargingProfile-Simple.png[]
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfile(ChargingProfile chargingProfile) {
         this.chargingProfile = chargingProfile;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -117,9 +79,15 @@ public class SetChargingProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("chargingProfile", chargingProfile.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.add("chargingProfile", getChargingProfile().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -132,19 +100,18 @@ public class SetChargingProfileRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfile")) {
-            this.chargingProfile = new ChargingProfile();
-            this.chargingProfile.fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
+            setChargingProfile(new ChargingProfile());
+            getChargingProfile().fromJsonObject(jsonObject.getAsJsonObject("chargingProfile"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -154,17 +121,17 @@ public class SetChargingProfileRequest implements JsonInterface {
         if (!(obj instanceof SetChargingProfileRequest))
             return false;
         SetChargingProfileRequest that = (SetChargingProfileRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.chargingProfile != null ? this.chargingProfile.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getChargingProfile(),
+                getCustomData()
+        );
     }
 }

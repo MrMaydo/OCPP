@@ -9,130 +9,79 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Tax percentage
  */
 public class TaxRate implements JsonInterface {
 
     /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
+     * Type of this tax, e.g. "Federal ", "State", for information on receipt.
      */
     @Required
     private String type;
+
     /**
      * Tax percentage
-     * <p>
-     * (Required)
      */
     @Required
     private Float tax;
+
     /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
+     * Stack level for this type of tax. Default value, when absent, is 0.
+     * <p> stack = 0: tax on net price; </p>
+     * <p> stack = 1: tax added on top of stack 0; </p>
+     * <p> stack = 2: tax added on top of stack 1, etc. </p>
      */
     @Optional
     private Integer stack;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TaxRate() {
     }
 
-    /**
-     * @param stack Stack level for this type of tax. Default value, when absent, is 0. +
-     *              _stack_ = 0: tax on net price; +
-     *              _stack_ = 1: tax added on top of _stack_ 0; +
-     *              _stack_ = 2: tax added on top of _stack_ 1, etc.
-     *              .
-     * @param tax   Tax percentage
-     *              .
-     * @param type  Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     *              .
-     */
-    public TaxRate(String type, Float tax, Integer stack, CustomData customData) {
-        super();
-        this.type = type;
-        this.tax = tax;
-        this.stack = stack;
-        this.customData = customData;
-    }
 
-    /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
-     */
     public String getType() {
         return type;
     }
 
-    /**
-     * Type of this tax, e.g.  "Federal ",  "State", for information on receipt.
-     * <p>
-     * (Required)
-     */
+
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * Tax percentage
-     * <p>
-     * (Required)
-     */
+
     public Float getTax() {
         return tax;
     }
 
-    /**
-     * Tax percentage
-     * <p>
-     * (Required)
-     */
+
     public void setTax(Float tax) {
         this.tax = tax;
     }
 
-    /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
-     */
+
     public Integer getStack() {
         return stack;
     }
 
-    /**
-     * Stack level for this type of tax. Default value, when absent, is 0. +
-     * _stack_ = 0: tax on net price; +
-     * _stack_ = 1: tax added on top of _stack_ 0; +
-     * _stack_ = 2: tax added on top of _stack_ 1, etc.
-     */
+
     public void setStack(Integer stack) {
         this.stack = stack;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -145,10 +94,18 @@ public class TaxRate implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("type", type);
-        json.addProperty("tax", tax);
-        json.addProperty("stack", stack);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("type", getType());
+
+        json.addProperty("tax", getTax());
+
+        if (getStack() != null) {
+            json.addProperty("stack", getStack());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -161,22 +118,21 @@ public class TaxRate implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("tax")) {
-            this.tax = jsonObject.get("tax").getAsFloat();
+            setTax(jsonObject.get("tax").getAsFloat());
         }
 
         if (jsonObject.has("stack")) {
-            this.stack = jsonObject.get("stack").getAsInt();
+            setStack(jsonObject.get("stack").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -186,19 +142,19 @@ public class TaxRate implements JsonInterface {
         if (!(obj instanceof TaxRate))
             return false;
         TaxRate that = (TaxRate) obj;
-        return Objects.equals(this.tax, that.tax)
-                && Objects.equals(this.stack, that.stack)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getTax(), that.getTax())
+                && Objects.equals(getStack(), that.getStack())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tax != null ? this.tax.hashCode() : 0);
-        result = 31 * result + (this.stack != null ? this.stack.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getType(),
+                getTax(),
+                getStack(),
+                getCustomData()
+        );
     }
 }

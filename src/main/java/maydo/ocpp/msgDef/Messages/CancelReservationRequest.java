@@ -10,65 +10,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the CancelReservationRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class CancelReservationRequest implements JsonInterface {
 
     /**
      * Id of the reservation to cancel.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer reservationId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CancelReservationRequest() {
     }
 
-    /**
-     * @param reservationId Id of the reservation to cancel.
-     *                      .
-     */
-    public CancelReservationRequest(Integer reservationId, CustomData customData) {
-        super();
-        this.reservationId = reservationId;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of the reservation to cancel.
-     * <p>
-     * (Required)
-     */
     public Integer getReservationId() {
         return reservationId;
     }
 
-    /**
-     * Id of the reservation to cancel.
-     * <p>
-     * (Required)
-     */
+
     public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +59,13 @@ public class CancelReservationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("reservationId", reservationId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("reservationId", getReservationId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +78,13 @@ public class CancelReservationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("reservationId")) {
-            this.reservationId = jsonObject.get("reservationId").getAsInt();
+            setReservationId(jsonObject.get("reservationId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +94,15 @@ public class CancelReservationRequest implements JsonInterface {
         if (!(obj instanceof CancelReservationRequest))
             return false;
         CancelReservationRequest that = (CancelReservationRequest) obj;
-        return Objects.equals(this.reservationId, that.reservationId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getReservationId(), that.getReservationId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getReservationId(),
+                getCustomData()
+        );
     }
 }

@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.TariffKindEnum;
@@ -10,116 +12,84 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Shows assignment of tariffs to EVSE or IdToken.
+ */
 public class TariffAssignment implements JsonInterface {
 
     /**
      * Tariff id.
-     * <p>
-     * (Required)
      */
     @Required
     private String tariffId;
+
     /**
      * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
      */
     @Required
     private TariffKindEnum tariffKind;
+
     /**
      * Date/time when this tariff become active.
      */
     @Optional
     private Date validFrom;
+
+    /**
+     *
+     */
     @Optional
     private List<Integer> evseIds;
+
     /**
      * IdTokens related to tariff
      */
     @Optional
     private List<String> idTokens;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TariffAssignment() {
     }
 
-    /**
-     * @param idTokens  IdTokens related to tariff
-     *                  .
-     * @param tariffId  Tariff id.
-     *                  .
-     * @param validFrom Date/time when this tariff become active.
-     *                  .
-     */
-    public TariffAssignment(String tariffId, TariffKindEnum tariffKind, Date validFrom, List<Integer> evseIds, List<String> idTokens, CustomData customData) {
-        super();
-        this.tariffId = tariffId;
-        this.tariffKind = tariffKind;
-        this.validFrom = validFrom;
-        this.evseIds = evseIds;
-        this.idTokens = idTokens;
-        this.customData = customData;
-    }
 
-    /**
-     * Tariff id.
-     * <p>
-     * (Required)
-     */
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Tariff id.
-     * <p>
-     * (Required)
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
-     */
+
     public TariffKindEnum getTariffKind() {
         return tariffKind;
     }
 
-    /**
-     * Kind of tariff (driver/default)
-     * <p>
-     * (Required)
-     */
+
     public void setTariffKind(TariffKindEnum tariffKind) {
         this.tariffKind = tariffKind;
     }
 
-    /**
-     * Date/time when this tariff become active.
-     */
+
     public Date getValidFrom() {
         return validFrom;
     }
 
-    /**
-     * Date/time when this tariff become active.
-     */
+
     public void setValidFrom(Date validFrom) {
         this.validFrom = validFrom;
     }
@@ -132,30 +102,22 @@ public class TariffAssignment implements JsonInterface {
         this.evseIds = evseIds;
     }
 
-    /**
-     * IdTokens related to tariff
-     */
+
     public List<String> getIdTokens() {
         return idTokens;
     }
 
-    /**
-     * IdTokens related to tariff
-     */
+
     public void setIdTokens(List<String> idTokens) {
         this.idTokens = idTokens;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -168,10 +130,32 @@ public class TariffAssignment implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("tariffKind", tariffKind.toString());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("tariffId", getTariffId());
+
+        json.addProperty("tariffKind", getTariffKind().toString());
+
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getEvseIds() != null) {
+            JsonArray evseIdsArray = new JsonArray();
+            for (Integer item : getEvseIds()) {
+                evseIdsArray.add(item);
+            }
+            json.add("evseIds", evseIdsArray);
+        }
+        if (getIdTokens() != null) {
+            JsonArray idTokensArray = new JsonArray();
+            for (String item : getIdTokens()) {
+                idTokensArray.add(item);
+            }
+            json.add("idTokens", idTokensArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -184,27 +168,42 @@ public class TariffAssignment implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
         if (jsonObject.has("tariffKind")) {
-            this.tariffKind = TariffKindEnum.valueOf(jsonObject.get("tariffKind").getAsString());
+            setTariffKind(TariffKindEnum.valueOf(jsonObject.get("tariffKind").getAsString()));
         }
 
         if (jsonObject.has("validFrom")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+                setValidFrom(dateFormat.parse(jsonObject.get("validFrom").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validFrom" + e);
             }
         }
 
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("evseIds")) {
+            setEvseIds(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evseIds");
+            for (JsonElement el : arr) {
+                getEvseIds().add(el.getAsInt());
+            }
         }
 
+        if (jsonObject.has("idTokens")) {
+            setIdTokens(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("idTokens");
+            for (JsonElement el : arr) {
+                getIdTokens().add(el.getAsString());
+            }
+        }
+
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -214,23 +213,23 @@ public class TariffAssignment implements JsonInterface {
         if (!(obj instanceof TariffAssignment))
             return false;
         TariffAssignment that = (TariffAssignment) obj;
-        return Objects.equals(this.tariffKind, that.tariffKind)
-                && Objects.equals(this.evseIds, that.evseIds)
-                && Objects.equals(this.idTokens, that.idTokens)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.validFrom, that.validFrom);
+        return Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getTariffKind(), that.getTariffKind())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getEvseIds(), that.getEvseIds())
+                && Objects.equals(getIdTokens(), that.getIdTokens())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tariffKind != null ? this.tariffKind.hashCode() : 0);
-        result = 31 * result + (this.evseIds != null ? this.evseIds.hashCode() : 0);
-        result = 31 * result + (this.idTokens != null ? this.idTokens.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.validFrom != null ? this.validFrom.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTariffId(),
+                getTariffKind(),
+                getValidFrom(),
+                getEvseIds(),
+                getIdTokens(),
+                getCustomData()
+        );
     }
 }

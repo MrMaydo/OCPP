@@ -10,197 +10,123 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * VPN Configuration settings
+ */
 public class VPN implements JsonInterface {
 
     /**
      * VPN Server Address
-     * <p>
-     * (Required)
      */
     @Required
     private String server;
+
     /**
      * VPN User
-     * <p>
-     * (Required)
      */
     @Required
     private String user;
+
     /**
      * VPN group.
      */
     @Optional
     private String group;
+
     /**
-     * *(2.1)* VPN Password.
-     * <p>
-     * (Required)
+     * (2.1) VPN Password.
      */
     @Required
     private String password;
+
     /**
      * VPN shared secret.
-     * <p>
-     * (Required)
      */
     @Required
     private String key;
+
     /**
      * Type of VPN
-     * <p>
-     * (Required)
      */
     @Required
     private VPNEnum type;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public VPN() {
     }
 
-    /**
-     * @param server   VPN Server Address
-     *                 .
-     * @param password *(2.1)* VPN Password.
-     *                 .
-     * @param user     VPN User
-     *                 .
-     * @param key      VPN shared secret.
-     *                 .
-     * @param group    VPN group.
-     *                 .
-     */
-    public VPN(String server, String user, String group, String password, String key, VPNEnum type, CustomData customData) {
-        super();
-        this.server = server;
-        this.user = user;
-        this.group = group;
-        this.password = password;
-        this.key = key;
-        this.type = type;
-        this.customData = customData;
-    }
 
-    /**
-     * VPN Server Address
-     * <p>
-     * (Required)
-     */
     public String getServer() {
         return server;
     }
 
-    /**
-     * VPN Server Address
-     * <p>
-     * (Required)
-     */
+
     public void setServer(String server) {
         this.server = server;
     }
 
-    /**
-     * VPN User
-     * <p>
-     * (Required)
-     */
+
     public String getUser() {
         return user;
     }
 
-    /**
-     * VPN User
-     * <p>
-     * (Required)
-     */
+
     public void setUser(String user) {
         this.user = user;
     }
 
-    /**
-     * VPN group.
-     */
+
     public String getGroup() {
         return group;
     }
 
-    /**
-     * VPN group.
-     */
+
     public void setGroup(String group) {
         this.group = group;
     }
 
-    /**
-     * *(2.1)* VPN Password.
-     * <p>
-     * (Required)
-     */
+
     public String getPassword() {
         return password;
     }
 
-    /**
-     * *(2.1)* VPN Password.
-     * <p>
-     * (Required)
-     */
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     * VPN shared secret.
-     * <p>
-     * (Required)
-     */
+
     public String getKey() {
         return key;
     }
 
-    /**
-     * VPN shared secret.
-     * <p>
-     * (Required)
-     */
+
     public void setKey(String key) {
         this.key = key;
     }
 
-    /**
-     * Type of VPN
-     * <p>
-     * (Required)
-     */
+
     public VPNEnum getType() {
         return type;
     }
 
-    /**
-     * Type of VPN
-     * <p>
-     * (Required)
-     */
+
     public void setType(VPNEnum type) {
         this.type = type;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -213,13 +139,24 @@ public class VPN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("server", server);
-        json.addProperty("user", user);
-        json.addProperty("group", group);
-        json.addProperty("password", password);
-        json.addProperty("key", key);
-        json.addProperty("type", type.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("server", getServer());
+
+        json.addProperty("user", getUser());
+
+        if (getGroup() != null) {
+            json.addProperty("group", getGroup());
+        }
+        json.addProperty("password", getPassword());
+
+        json.addProperty("key", getKey());
+
+        json.addProperty("type", getType().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -232,34 +169,33 @@ public class VPN implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("server")) {
-            this.server = jsonObject.get("server").getAsString();
+            setServer(jsonObject.get("server").getAsString());
         }
 
         if (jsonObject.has("user")) {
-            this.user = jsonObject.get("user").getAsString();
+            setUser(jsonObject.get("user").getAsString());
         }
 
         if (jsonObject.has("group")) {
-            this.group = jsonObject.get("group").getAsString();
+            setGroup(jsonObject.get("group").getAsString());
         }
 
         if (jsonObject.has("password")) {
-            this.password = jsonObject.get("password").getAsString();
+            setPassword(jsonObject.get("password").getAsString());
         }
 
         if (jsonObject.has("key")) {
-            this.key = jsonObject.get("key").getAsString();
+            setKey(jsonObject.get("key").getAsString());
         }
 
         if (jsonObject.has("type")) {
-            this.type = VPNEnum.valueOf(jsonObject.get("type").getAsString());
+            setType(VPNEnum.valueOf(jsonObject.get("type").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -269,25 +205,25 @@ public class VPN implements JsonInterface {
         if (!(obj instanceof VPN))
             return false;
         VPN that = (VPN) obj;
-        return Objects.equals(this.server, that.server)
-                && Objects.equals(this.password, that.password)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.user, that.user)
-                && Objects.equals(this.key, that.key)
-                && Objects.equals(this.group, that.group);
+        return Objects.equals(getServer(), that.getServer())
+                && Objects.equals(getUser(), that.getUser())
+                && Objects.equals(getGroup(), that.getGroup())
+                && Objects.equals(getPassword(), that.getPassword())
+                && Objects.equals(getKey(), that.getKey())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.server != null ? this.server.hashCode() : 0);
-        result = 31 * result + (this.password != null ? this.password.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.user != null ? this.user.hashCode() : 0);
-        result = 31 * result + (this.key != null ? this.key.hashCode() : 0);
-        result = 31 * result + (this.group != null ? this.group.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getServer(),
+                getUser(),
+                getGroup(),
+                getPassword(),
+                getKey(),
+                getType(),
+                getCustomData()
+        );
     }
 }

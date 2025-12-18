@@ -11,55 +11,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Used by the CSMS to request deletion of an installed certificate on a Charging Station.
+ */
 public class DeleteCertificateRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Indicates the certificate of which deletion is requested.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DeleteCertificateRequest() {
     }
 
-    public DeleteCertificateRequest(CertificateHashData certificateHashData, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -72,8 +60,13 @@ public class DeleteCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -86,15 +79,14 @@ public class DeleteCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -104,15 +96,15 @@ public class DeleteCertificateRequest implements JsonInterface {
         if (!(obj instanceof DeleteCertificateRequest))
             return false;
         DeleteCertificateRequest that = (DeleteCertificateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateHashData(),
+                getCustomData()
+        );
     }
 }

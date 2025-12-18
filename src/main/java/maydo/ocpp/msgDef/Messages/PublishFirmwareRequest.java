@@ -10,201 +10,110 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the PublishFirmwareRequest PDU sent by the CSMS to the Local Controller.
+ */
 public class PublishFirmwareRequest implements JsonInterface {
 
     /**
-     * This contains a string containing a URI pointing to a
-     * location from which to retrieve the firmware.
-     * <p>
-     * (Required)
+     * This contains a string containing a URI pointing to a location from which to retrieve the firmware.
      */
     @Required
     private String location;
+
     /**
-     * This specifies how many times Charging Station must retry
-     * to download the firmware before giving up. If this field is not
-     * present, it is left to Charging Station to decide how many times it wants to retry.
+     * This specifies how many times Charging Station must retry to download the firmware before giving up.
+     * If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
      * If the value is 0, it means: no retries.
      */
     @Optional
     private Integer retries;
+
     /**
      * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
      */
     @Required
     private String checksum;
+
     /**
      * The Id of the request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * The interval in seconds
-     * after which a retry may be
-     * attempted. If this field is not
-     * present, it is left to Charging
-     * Station to decide how long to wait
-     * between attempts.
+     * The interval in seconds after which a retry may be attempted.
+     * If this field is not present, it is left to Charging Station to decide how long to wait between attempts
      */
     @Optional
     private Integer retryInterval;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PublishFirmwareRequest() {
     }
 
-    /**
-     * @param retries       This specifies how many times Charging Station must retry
-     *                      to download the firmware before giving up. If this field is not
-     *                      present, it is left to Charging Station to decide how many times it wants to retry.
-     *                      If the value is 0, it means: no retries.
-     *                      .
-     * @param requestId     The Id of the request.
-     *                      .
-     * @param checksum      The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     *                      .
-     * @param location      This contains a string containing a URI pointing to a
-     *                      location from which to retrieve the firmware.
-     *                      .
-     * @param retryInterval The interval in seconds
-     *                      after which a retry may be
-     *                      attempted. If this field is not
-     *                      present, it is left to Charging
-     *                      Station to decide how long to wait
-     *                      between attempts.
-     *                      .
-     */
-    public PublishFirmwareRequest(String location, Integer retries, String checksum, Integer requestId, Integer retryInterval, CustomData customData) {
-        super();
-        this.location = location;
-        this.retries = retries;
-        this.checksum = checksum;
-        this.requestId = requestId;
-        this.retryInterval = retryInterval;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains a string containing a URI pointing to a
-     * location from which to retrieve the firmware.
-     * <p>
-     * (Required)
-     */
     public String getLocation() {
         return location;
     }
 
-    /**
-     * This contains a string containing a URI pointing to a
-     * location from which to retrieve the firmware.
-     * <p>
-     * (Required)
-     */
+
     public void setLocation(String location) {
         this.location = location;
     }
 
-    /**
-     * This specifies how many times Charging Station must retry
-     * to download the firmware before giving up. If this field is not
-     * present, it is left to Charging Station to decide how many times it wants to retry.
-     * If the value is 0, it means: no retries.
-     */
+
     public Integer getRetries() {
         return retries;
     }
 
-    /**
-     * This specifies how many times Charging Station must retry
-     * to download the firmware before giving up. If this field is not
-     * present, it is left to Charging Station to decide how many times it wants to retry.
-     * If the value is 0, it means: no retries.
-     */
+
     public void setRetries(Integer retries) {
         this.retries = retries;
     }
 
-    /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
-     */
+
     public String getChecksum() {
         return checksum;
     }
 
-    /**
-     * The MD5 checksum over the entire firmware file as a hexadecimal string of length 32.
-     * <p>
-     * (Required)
-     */
+
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * The interval in seconds
-     * after which a retry may be
-     * attempted. If this field is not
-     * present, it is left to Charging
-     * Station to decide how long to wait
-     * between attempts.
-     */
+
     public Integer getRetryInterval() {
         return retryInterval;
     }
 
-    /**
-     * The interval in seconds
-     * after which a retry may be
-     * attempted. If this field is not
-     * present, it is left to Charging
-     * Station to decide how long to wait
-     * between attempts.
-     */
+
     public void setRetryInterval(Integer retryInterval) {
         this.retryInterval = retryInterval;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -217,12 +126,23 @@ public class PublishFirmwareRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("location", location);
-        json.addProperty("retries", retries);
-        json.addProperty("checksum", checksum);
-        json.addProperty("requestId", requestId);
-        json.addProperty("retryInterval", retryInterval);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("location", getLocation());
+
+        if (getRetries() != null) {
+            json.addProperty("retries", getRetries());
+        }
+        json.addProperty("checksum", getChecksum());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getRetryInterval() != null) {
+            json.addProperty("retryInterval", getRetryInterval());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -235,30 +155,29 @@ public class PublishFirmwareRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("location")) {
-            this.location = jsonObject.get("location").getAsString();
+            setLocation(jsonObject.get("location").getAsString());
         }
 
         if (jsonObject.has("retries")) {
-            this.retries = jsonObject.get("retries").getAsInt();
+            setRetries(jsonObject.get("retries").getAsInt());
         }
 
         if (jsonObject.has("checksum")) {
-            this.checksum = jsonObject.get("checksum").getAsString();
+            setChecksum(jsonObject.get("checksum").getAsString());
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("retryInterval")) {
-            this.retryInterval = jsonObject.get("retryInterval").getAsInt();
+            setRetryInterval(jsonObject.get("retryInterval").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -268,23 +187,23 @@ public class PublishFirmwareRequest implements JsonInterface {
         if (!(obj instanceof PublishFirmwareRequest))
             return false;
         PublishFirmwareRequest that = (PublishFirmwareRequest) obj;
-        return Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.checksum, that.checksum)
-                && Objects.equals(this.location, that.location)
-                && Objects.equals(this.retryInterval, that.retryInterval)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getLocation(), that.getLocation())
+                && Objects.equals(getRetries(), that.getRetries())
+                && Objects.equals(getChecksum(), that.getChecksum())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getRetryInterval(), that.getRetryInterval())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.retries != null ? this.retries.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.checksum != null ? this.checksum.hashCode() : 0);
-        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
-        result = 31 * result + (this.retryInterval != null ? this.retryInterval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLocation(),
+                getRetries(),
+                getChecksum(),
+                getRequestId(),
+                getRetryInterval(),
+                getCustomData()
+        );
     }
 }

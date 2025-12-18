@@ -11,118 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ChangeTransactionTariffRequest implements JsonInterface {
 
     /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
+     * New tariff to use for transaction.
      */
     @Required
     private Tariff tariff;
+
     /**
      * Transaction id for new tariff.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChangeTransactionTariffRequest() {
     }
 
-    /**
-     * @param transactionId Transaction id for new tariff.
-     *                      .
-     */
-    public ChangeTransactionTariffRequest(Tariff tariff, String transactionId, CustomData customData) {
-        super();
-        this.tariff = tariff;
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
-     */
     public Tariff getTariff() {
         return tariff;
     }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
-     */
+
     public void setTariff(Tariff tariff) {
         this.tariff = tariff;
     }
 
-    /**
-     * Transaction id for new tariff.
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * Transaction id for new tariff.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -135,9 +76,15 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("tariff", tariff.toJsonObject());
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("tariff", getTariff().toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -150,19 +97,18 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("tariff")) {
-            this.tariff = new Tariff();
-            this.tariff.fromJsonObject(jsonObject.getAsJsonObject("tariff"));
+            setTariff(new Tariff());
+            getTariff().fromJsonObject(jsonObject.getAsJsonObject("tariff"));
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -172,17 +118,17 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
         if (!(obj instanceof ChangeTransactionTariffRequest))
             return false;
         ChangeTransactionTariffRequest that = (ChangeTransactionTariffRequest) obj;
-        return Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTariff(), that.getTariff())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tariff != null ? this.tariff.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTariff(),
+                getTransactionId(),
+                getCustomData()
+        );
     }
 }

@@ -11,91 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetBaseReportRequest PDU sent by the CSMS to the Charging Station
+ */
 public class GetBaseReportRequest implements JsonInterface {
 
     /**
      * The Id of the request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * This field specifies the report base.
-     * <p>
-     * (Required)
      */
     @Required
     private ReportBaseEnum reportBase;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetBaseReportRequest() {
     }
 
-    /**
-     * @param requestId The Id of the request.
-     *                  .
-     */
-    public GetBaseReportRequest(Integer requestId, ReportBaseEnum reportBase, CustomData customData) {
-        super();
-        this.requestId = requestId;
-        this.reportBase = reportBase;
-        this.customData = customData;
-    }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This field specifies the report base.
-     * <p>
-     * (Required)
-     */
+
     public ReportBaseEnum getReportBase() {
         return reportBase;
     }
 
-    /**
-     * This field specifies the report base.
-     * <p>
-     * (Required)
-     */
+
     public void setReportBase(ReportBaseEnum reportBase) {
         this.reportBase = reportBase;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -108,9 +76,15 @@ public class GetBaseReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("reportBase", reportBase.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("reportBase", getReportBase().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -123,18 +97,17 @@ public class GetBaseReportRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("reportBase")) {
-            this.reportBase = ReportBaseEnum.valueOf(jsonObject.get("reportBase").getAsString());
+            setReportBase(ReportBaseEnum.valueOf(jsonObject.get("reportBase").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -144,17 +117,17 @@ public class GetBaseReportRequest implements JsonInterface {
         if (!(obj instanceof GetBaseReportRequest))
             return false;
         GetBaseReportRequest that = (GetBaseReportRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reportBase, that.reportBase)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getReportBase(), that.getReportBase())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.reportBase != null ? this.reportBase.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRequestId(),
+                getReportBase(),
+                getCustomData()
+        );
     }
 }

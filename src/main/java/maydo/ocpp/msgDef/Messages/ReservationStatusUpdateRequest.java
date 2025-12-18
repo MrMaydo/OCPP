@@ -11,91 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ReservationStatusUpdateRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class ReservationStatusUpdateRequest implements JsonInterface {
 
     /**
      * The ID of the reservation.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer reservationId;
+
     /**
      * The updated reservation status.
-     * <p>
-     * (Required)
      */
     @Required
     private ReservationUpdateStatusEnum reservationUpdateStatus;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReservationStatusUpdateRequest() {
     }
 
-    /**
-     * @param reservationId The ID of the reservation.
-     *                      .
-     */
-    public ReservationStatusUpdateRequest(Integer reservationId, ReservationUpdateStatusEnum reservationUpdateStatus, CustomData customData) {
-        super();
-        this.reservationId = reservationId;
-        this.reservationUpdateStatus = reservationUpdateStatus;
-        this.customData = customData;
-    }
 
-    /**
-     * The ID of the reservation.
-     * <p>
-     * (Required)
-     */
     public Integer getReservationId() {
         return reservationId;
     }
 
-    /**
-     * The ID of the reservation.
-     * <p>
-     * (Required)
-     */
+
     public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 
-    /**
-     * The updated reservation status.
-     * <p>
-     * (Required)
-     */
+
     public ReservationUpdateStatusEnum getReservationUpdateStatus() {
         return reservationUpdateStatus;
     }
 
-    /**
-     * The updated reservation status.
-     * <p>
-     * (Required)
-     */
+
     public void setReservationUpdateStatus(ReservationUpdateStatusEnum reservationUpdateStatus) {
         this.reservationUpdateStatus = reservationUpdateStatus;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -108,9 +76,15 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("reservationId", reservationId);
-        json.addProperty("reservationUpdateStatus", reservationUpdateStatus.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("reservationId", getReservationId());
+
+        json.addProperty("reservationUpdateStatus", getReservationUpdateStatus().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -123,18 +97,17 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("reservationId")) {
-            this.reservationId = jsonObject.get("reservationId").getAsInt();
+            setReservationId(jsonObject.get("reservationId").getAsInt());
         }
 
         if (jsonObject.has("reservationUpdateStatus")) {
-            this.reservationUpdateStatus = ReservationUpdateStatusEnum.valueOf(jsonObject.get("reservationUpdateStatus").getAsString());
+            setReservationUpdateStatus(ReservationUpdateStatusEnum.valueOf(jsonObject.get("reservationUpdateStatus").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -144,17 +117,17 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
         if (!(obj instanceof ReservationStatusUpdateRequest))
             return false;
         ReservationStatusUpdateRequest that = (ReservationStatusUpdateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reservationId, that.reservationId)
-                && Objects.equals(this.reservationUpdateStatus, that.reservationUpdateStatus);
+        return Objects.equals(getReservationId(), that.getReservationId())
+                && Objects.equals(getReservationUpdateStatus(), that.getReservationUpdateStatus())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
-        result = 31 * result + (this.reservationUpdateStatus != null ? this.reservationUpdateStatus.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getReservationId(),
+                getReservationUpdateStatus(),
+                getCustomData()
+        );
     }
 }

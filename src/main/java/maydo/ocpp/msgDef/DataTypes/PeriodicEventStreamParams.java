@@ -8,6 +8,9 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class PeriodicEventStreamParams implements JsonInterface {
 
     /**
@@ -15,74 +18,49 @@ public class PeriodicEventStreamParams implements JsonInterface {
      */
     @Optional
     private Integer interval;
+
     /**
      * Number of items to be sent together in stream.
      */
     @Optional
     private Integer values;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PeriodicEventStreamParams() {
     }
 
-    /**
-     * @param values   Number of items to be sent together in stream.
-     *                 .
-     * @param interval Time in seconds after which stream data is sent.
-     *                 .
-     */
-    public PeriodicEventStreamParams(Integer interval, Integer values, CustomData customData) {
-        super();
-        this.interval = interval;
-        this.values = values;
-        this.customData = customData;
-    }
 
-    /**
-     * Time in seconds after which stream data is sent.
-     */
     public Integer getInterval() {
         return interval;
     }
 
-    /**
-     * Time in seconds after which stream data is sent.
-     */
+
     public void setInterval(Integer interval) {
         this.interval = interval;
     }
 
-    /**
-     * Number of items to be sent together in stream.
-     */
+
     public Integer getValues() {
         return values;
     }
 
-    /**
-     * Number of items to be sent together in stream.
-     */
+
     public void setValues(Integer values) {
         this.values = values;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -95,9 +73,17 @@ public class PeriodicEventStreamParams implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("interval", interval);
-        json.addProperty("values", values);
-        json.add("customData", customData.toJsonObject());
+
+        if (getInterval() != null) {
+            json.addProperty("interval", getInterval());
+        }
+        if (getValues() != null) {
+            json.addProperty("values", getValues());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -110,18 +96,17 @@ public class PeriodicEventStreamParams implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("interval")) {
-            this.interval = jsonObject.get("interval").getAsInt();
+            setInterval(jsonObject.get("interval").getAsInt());
         }
 
         if (jsonObject.has("values")) {
-            this.values = jsonObject.get("values").getAsInt();
+            setValues(jsonObject.get("values").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -131,17 +116,17 @@ public class PeriodicEventStreamParams implements JsonInterface {
         if (!(obj instanceof PeriodicEventStreamParams))
             return false;
         PeriodicEventStreamParams that = (PeriodicEventStreamParams) obj;
-        return Objects.equals(this.interval, that.interval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.values, that.values);
+        return Objects.equals(getInterval(), that.getInterval())
+                && Objects.equals(getValues(), that.getValues())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.interval != null ? this.interval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.values != null ? this.values.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getInterval(),
+                getValues(),
+                getCustomData()
+        );
     }
 }

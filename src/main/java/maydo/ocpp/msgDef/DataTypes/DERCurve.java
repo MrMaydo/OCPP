@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.DERUnitEnum;
@@ -10,109 +12,89 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ *
+ */
 public class DERCurve implements JsonInterface {
 
     /**
-     * (Required)
+     * Coordinates of the DER curve. X-axis is determined by curveType. Y-axis is determined by yUnit.
      */
     @Required
     private List<DERCurvePoints> curveData;
+
+    /**
+     * Hysteresis parameters for curve.
+     */
     @Optional
     private Hysteresis hysteresis;
+
     /**
      * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priority;
+
+    /**
+     * Additional parameters for VoltVar curve.
+     */
     @Optional
     private ReactivePowerParams reactivePowerParams;
+
+    /**
+     * Additional parameters for voltage curves.
+     */
     @Optional
     private VoltageParams voltageParams;
+
     /**
      * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
      */
     @Required
     private DERUnitEnum yUnit;
+
     /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
+     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds.
+     * A value of 0 is used to mean no limit. When not present, the device should follow its default behavior
      */
     @Optional
     private Float responseTime;
+
     /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
+     * Point in time when this curve will become activated. Only absent when default is true.
      */
     @Optional
     private Date startTime;
+
     /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
+     * Duration in seconds that this curve will be active. Only absent when default is true
      */
     @Optional
     private Float duration;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DERCurve() {
     }
 
-    /**
-     * @param duration     Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param responseTime Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     *                     <p>
-     *                     <p>
-     *                     .
-     * @param startTime    Point in time when this curve will become activated. Only absent when _default_ is true.
-     *                     <p>
-     *                     .
-     * @param priority     Priority of curve (0=highest)
-     *                     <p>
-     *                     <p>
-     *                     .
-     */
-    public DERCurve(List<DERCurvePoints> curveData, Hysteresis hysteresis, Integer priority, ReactivePowerParams reactivePowerParams, VoltageParams voltageParams, DERUnitEnum yUnit, Float responseTime, Date startTime, Float duration, CustomData customData) {
-        super();
-        this.curveData = curveData;
-        this.hysteresis = hysteresis;
-        this.priority = priority;
-        this.reactivePowerParams = reactivePowerParams;
-        this.voltageParams = voltageParams;
-        this.yUnit = yUnit;
-        this.responseTime = responseTime;
-        this.startTime = startTime;
-        this.duration = duration;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<DERCurvePoints> getCurveData() {
         return curveData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCurveData(List<DERCurvePoints> curveData) {
         this.curveData = curveData;
     }
@@ -125,24 +107,12 @@ public class DERCurve implements JsonInterface {
         this.hysteresis = hysteresis;
     }
 
-    /**
-     * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriority() {
         return priority;
     }
 
-    /**
-     * Priority of curve (0=highest)
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setPriority(Integer priority) {
         this.priority = priority;
     }
@@ -163,76 +133,52 @@ public class DERCurve implements JsonInterface {
         this.voltageParams = voltageParams;
     }
 
-    /**
-     * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
-     */
-    public DERUnitEnum getyUnit() {
+
+    public DERUnitEnum getYUnit() {
         return yUnit;
     }
 
-    /**
-     * Unit of the Y-axis of DER curve
-     * <p>
-     * (Required)
-     */
-    public void setyUnit(DERUnitEnum yUnit) {
+
+    public void setYUnit(DERUnitEnum yUnit) {
         this.yUnit = yUnit;
     }
 
-    /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     */
+
     public Float getResponseTime() {
         return responseTime;
     }
 
-    /**
-     * Open loop response time, the time to ramp up to 90% of the new target in response to the change in voltage, in seconds. A value of 0 is used to mean no limit. When not present, the device should follow its default behavior.
-     */
+
     public void setResponseTime(Float responseTime) {
         this.responseTime = responseTime;
     }
 
-    /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
-     */
+
     public Date getStartTime() {
         return startTime;
     }
 
-    /**
-     * Point in time when this curve will become activated. Only absent when _default_ is true.
-     */
+
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     */
+
     public Float getDuration() {
         return duration;
     }
 
-    /**
-     * Duration in seconds that this curve will be active. Only absent when _default_ is true.
-     */
+
     public void setDuration(Float duration) {
         this.duration = duration;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -245,15 +191,39 @@ public class DERCurve implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("hysteresis", hysteresis.toJsonObject());
-        json.addProperty("priority", priority);
-        json.add("reactivePowerParams", reactivePowerParams.toJsonObject());
-        json.add("voltageParams", voltageParams.toJsonObject());
-        json.addProperty("yUnit", yUnit.toString());
-        json.addProperty("responseTime", responseTime);
-        json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(startTime));
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray curveDataArray = new JsonArray();
+        for (DERCurvePoints item : getCurveData()) {
+            curveDataArray.add(item.toJsonObject());
+        }
+        json.add("curveData", curveDataArray);
+
+        if (getHysteresis() != null) {
+            json.add("hysteresis", getHysteresis().toJsonObject());
+        }
+        json.addProperty("priority", getPriority());
+
+        if (getReactivePowerParams() != null) {
+            json.add("reactivePowerParams", getReactivePowerParams().toJsonObject());
+        }
+        if (getVoltageParams() != null) {
+            json.add("voltageParams", getVoltageParams().toJsonObject());
+        }
+        json.addProperty("yUnit", getYUnit().toString());
+
+        if (getResponseTime() != null) {
+            json.addProperty("responseTime", getResponseTime());
+        }
+        if (getStartTime() != null) {
+            json.addProperty("startTime", new SimpleDateFormat(DATE_FORMAT).format(getStartTime()));
+        }
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -265,51 +235,60 @@ public class DERCurve implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("curveData")) {
+            setCurveData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("curveData");
+            for (JsonElement el : arr) {
+                DERCurvePoints item = new DERCurvePoints();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCurveData().add(item);
+            }
+        }
+
         if (jsonObject.has("hysteresis")) {
-            this.hysteresis = new Hysteresis();
-            this.hysteresis.fromJsonObject(jsonObject.getAsJsonObject("hysteresis"));
+            setHysteresis(new Hysteresis());
+            getHysteresis().fromJsonObject(jsonObject.getAsJsonObject("hysteresis"));
         }
 
         if (jsonObject.has("priority")) {
-            this.priority = jsonObject.get("priority").getAsInt();
+            setPriority(jsonObject.get("priority").getAsInt());
         }
 
         if (jsonObject.has("reactivePowerParams")) {
-            this.reactivePowerParams = new ReactivePowerParams();
-            this.reactivePowerParams.fromJsonObject(jsonObject.getAsJsonObject("reactivePowerParams"));
+            setReactivePowerParams(new ReactivePowerParams());
+            getReactivePowerParams().fromJsonObject(jsonObject.getAsJsonObject("reactivePowerParams"));
         }
 
         if (jsonObject.has("voltageParams")) {
-            this.voltageParams = new VoltageParams();
-            this.voltageParams.fromJsonObject(jsonObject.getAsJsonObject("voltageParams"));
+            setVoltageParams(new VoltageParams());
+            getVoltageParams().fromJsonObject(jsonObject.getAsJsonObject("voltageParams"));
         }
 
         if (jsonObject.has("yUnit")) {
-            this.yUnit = DERUnitEnum.valueOf(jsonObject.get("yUnit").getAsString());
+            setYUnit(DERUnitEnum.valueOf(jsonObject.get("yUnit").getAsString()));
         }
 
         if (jsonObject.has("responseTime")) {
-            this.responseTime = jsonObject.get("responseTime").getAsFloat();
+            setResponseTime(jsonObject.get("responseTime").getAsFloat());
         }
 
         if (jsonObject.has("startTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.startTime = dateFormat.parse(jsonObject.get("startTime").getAsString());
+                setStartTime(dateFormat.parse(jsonObject.get("startTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for startTime" + e);
             }
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsFloat();
+            setDuration(jsonObject.get("duration").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -319,31 +298,31 @@ public class DERCurve implements JsonInterface {
         if (!(obj instanceof DERCurve))
             return false;
         DERCurve that = (DERCurve) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.responseTime, that.responseTime)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.curveData, that.curveData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.yUnit, that.yUnit)
-                && Objects.equals(this.reactivePowerParams, that.reactivePowerParams)
-                && Objects.equals(this.voltageParams, that.voltageParams)
-                && Objects.equals(this.hysteresis, that.hysteresis);
+        return Objects.equals(getCurveData(), that.getCurveData())
+                && Objects.equals(getHysteresis(), that.getHysteresis())
+                && Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getReactivePowerParams(), that.getReactivePowerParams())
+                && Objects.equals(getVoltageParams(), that.getVoltageParams())
+                && Objects.equals(getYUnit(), that.getYUnit())
+                && Objects.equals(getResponseTime(), that.getResponseTime())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.responseTime != null ? this.responseTime.hashCode() : 0);
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.curveData != null ? this.curveData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.yUnit != null ? this.yUnit.hashCode() : 0);
-        result = 31 * result + (this.reactivePowerParams != null ? this.reactivePowerParams.hashCode() : 0);
-        result = 31 * result + (this.voltageParams != null ? this.voltageParams.hashCode() : 0);
-        result = 31 * result + (this.hysteresis != null ? this.hysteresis.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurveData(),
+                getHysteresis(),
+                getPriority(),
+                getReactivePowerParams(),
+                getVoltageParams(),
+                getYUnit(),
+                getResponseTime(),
+                getStartTime(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

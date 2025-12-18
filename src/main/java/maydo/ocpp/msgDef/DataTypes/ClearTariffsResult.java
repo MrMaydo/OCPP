@@ -10,99 +10,76 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsResult implements JsonInterface {
 
     /**
-     * Element providing more information about the status.
-     */
-    @Optional
-    private StatusInfo statusInfo;
-    /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     */
-    @Optional
-    private String tariffId;
-    /**
-     * (Required)
+     *
      */
     @Required
     private TariffClearStatusEnum status;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * Additional info on status
+     */
+    @Optional
+    private StatusInfo statusInfo;
+
+    /**
+     * Optional. Id of tariff for which status is reported.
+     * If no tariffs were found, then this field is absent, and status will be  NoTariff.
+     */
+    @Optional
+    private String tariffId;
+
+    /**
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsResult() {
     }
 
-    /**
-     * @param tariffId Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     *                 .
-     */
-    public ClearTariffsResult(StatusInfo statusInfo, String tariffId, TariffClearStatusEnum status, CustomData customData) {
-        super();
-        this.statusInfo = statusInfo;
-        this.tariffId = tariffId;
-        this.status = status;
-        this.customData = customData;
-    }
 
-    /**
-     * Element providing more information about the status.
-     */
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     */
+
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Id of tariff for which _status_ is reported. If no tariffs were found, then this field is absent, and _status_ will be `NoTariff`.
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
 
-    /**
-     * (Required)
-     */
+
     public TariffClearStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setStatus(TariffClearStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -115,10 +92,19 @@ public class ClearTariffsResult implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("status", status.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getTariffId() != null) {
+            json.addProperty("tariffId", getTariffId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -130,24 +116,23 @@ public class ClearTariffsResult implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("status")) {
+            setStatus(TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        }
+
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
-        }
-
-        if (jsonObject.has("status")) {
-            this.status = TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -157,19 +142,19 @@ public class ClearTariffsResult implements JsonInterface {
         if (!(obj instanceof ClearTariffsResult))
             return false;
         ClearTariffsResult that = (ClearTariffsResult) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getTariffId(),
+                getCustomData()
+        );
     }
 }

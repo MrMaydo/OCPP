@@ -9,101 +9,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class LimitAtSoC implements JsonInterface {
 
     /**
      * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer soc;
+
     /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
+     * Charging rate limit beyond the SoC value. The unit is defined by chargingSchedule.chargingRateUnit.
      */
     @Required
     private Float limit;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public LimitAtSoC() {
     }
 
-    /**
-     * @param soc   The SoC value beyond which the charging rate limit should be applied.
-     *              .
-     * @param limit Charging rate limit beyond the SoC value.
-     *              The unit is defined by _chargingSchedule.chargingRateUnit_.
-     *              <p>
-     *              .
-     */
-    public LimitAtSoC(Integer soc, Float limit, CustomData customData) {
-        super();
-        this.soc = soc;
-        this.limit = limit;
-        this.customData = customData;
-    }
 
-    /**
-     * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
-     */
     public Integer getSoc() {
         return soc;
     }
 
-    /**
-     * The SoC value beyond which the charging rate limit should be applied.
-     * <p>
-     * (Required)
-     */
+
     public void setSoc(Integer soc) {
         this.soc = soc;
     }
 
-    /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Float getLimit() {
         return limit;
     }
 
-    /**
-     * Charging rate limit beyond the SoC value.
-     * The unit is defined by _chargingSchedule.chargingRateUnit_.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setLimit(Float limit) {
         this.limit = limit;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -116,9 +74,15 @@ public class LimitAtSoC implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("soc", soc);
-        json.addProperty("limit", limit);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("soc", getSoc());
+
+        json.addProperty("limit", getLimit());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -131,18 +95,17 @@ public class LimitAtSoC implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("soc")) {
-            this.soc = jsonObject.get("soc").getAsInt();
+            setSoc(jsonObject.get("soc").getAsInt());
         }
 
         if (jsonObject.has("limit")) {
-            this.limit = jsonObject.get("limit").getAsFloat();
+            setLimit(jsonObject.get("limit").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -152,17 +115,17 @@ public class LimitAtSoC implements JsonInterface {
         if (!(obj instanceof LimitAtSoC))
             return false;
         LimitAtSoC that = (LimitAtSoC) obj;
-        return Objects.equals(this.limit, that.limit)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.soc, that.soc);
+        return Objects.equals(getSoc(), that.getSoc())
+                && Objects.equals(getLimit(), that.getLimit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.limit != null ? this.limit.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.soc != null ? this.soc.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getSoc(),
+                getLimit(),
+                getCustomData()
+        );
     }
 }

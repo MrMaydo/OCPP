@@ -12,82 +12,64 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Sent by the Charging Station to the CSMS to request that the Certificate Authority signs the public key into a certificate.
+ */
 public class SignCertificateRequest implements JsonInterface {
 
     /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
+     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR)
+     * as described in RFC 2986 [22] and then PEM encoded, using the SignCertificateRequest message.
      */
     @Required
     private String csr;
+
     /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
+     * Indicates the type of certificate that is to be signed.
+     * When omitted the certificate is to be used for both the 15118 connection (if implemented)
+     * and the Charging Station to CSMS connection.
      */
     @Optional
     private CertificateSigningUseEnum certificateType;
+
+    /**
+     * (2.1) The hash of the root certificate to identify the PKI to use.
+     */
     @Optional
     private CertificateHashData hashRootCertificate;
+
     /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
+     * (2.1) RequestId to match this message with the CertificateSignedRequest.
      */
     @Optional
     private Integer requestId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SignCertificateRequest() {
     }
 
-    /**
-     * @param csr       The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     *                  .
-     * @param requestId *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     *                  .
-     */
-    public SignCertificateRequest(String csr, CertificateSigningUseEnum certificateType, CertificateHashData hashRootCertificate, Integer requestId, CustomData customData) {
-        super();
-        this.csr = csr;
-        this.certificateType = certificateType;
-        this.hashRootCertificate = hashRootCertificate;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
 
-    /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
-     */
     public String getCsr() {
         return csr;
     }
 
-    /**
-     * The Charging Station SHALL send the public key in form of a Certificate Signing Request (CSR) as described in RFC 2986 [22] and then PEM encoded, using the &lt;&lt;signcertificaterequest,SignCertificateRequest&gt;&gt; message.
-     * <p>
-     * (Required)
-     */
+
     public void setCsr(String csr) {
         this.csr = csr;
     }
 
-    /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     */
+
     public CertificateSigningUseEnum getCertificateType() {
         return certificateType;
     }
 
-    /**
-     * Indicates the type of certificate that is to be signed. When omitted the certificate is to be used for both the 15118 connection (if implemented) and the Charging Station to CSMS connection.
-     */
+
     public void setCertificateType(CertificateSigningUseEnum certificateType) {
         this.certificateType = certificateType;
     }
@@ -100,30 +82,22 @@ public class SignCertificateRequest implements JsonInterface {
         this.hashRootCertificate = hashRootCertificate;
     }
 
-    /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * *(2.1)* RequestId to match this message with the CertificateSignedRequest.
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -136,11 +110,22 @@ public class SignCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("csr", csr);
-        json.addProperty("certificateType", certificateType.toString());
-        json.add("hashRootCertificate", hashRootCertificate.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("csr", getCsr());
+
+        if (getCertificateType() != null) {
+            json.addProperty("certificateType", getCertificateType().toString());
+        }
+        if (getHashRootCertificate() != null) {
+            json.add("hashRootCertificate", getHashRootCertificate().toJsonObject());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -153,27 +138,26 @@ public class SignCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("csr")) {
-            this.csr = jsonObject.get("csr").getAsString();
+            setCsr(jsonObject.get("csr").getAsString());
         }
 
         if (jsonObject.has("certificateType")) {
-            this.certificateType = CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+            setCertificateType(CertificateSigningUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
         }
 
         if (jsonObject.has("hashRootCertificate")) {
-            this.hashRootCertificate = new CertificateHashData();
-            this.hashRootCertificate.fromJsonObject(jsonObject.getAsJsonObject("hashRootCertificate"));
+            setHashRootCertificate(new CertificateHashData());
+            getHashRootCertificate().fromJsonObject(jsonObject.getAsJsonObject("hashRootCertificate"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -183,21 +167,21 @@ public class SignCertificateRequest implements JsonInterface {
         if (!(obj instanceof SignCertificateRequest))
             return false;
         SignCertificateRequest that = (SignCertificateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.csr, that.csr)
-                && Objects.equals(this.hashRootCertificate, that.hashRootCertificate)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.certificateType, that.certificateType);
+        return Objects.equals(getCsr(), that.getCsr())
+                && Objects.equals(getCertificateType(), that.getCertificateType())
+                && Objects.equals(getHashRootCertificate(), that.getHashRootCertificate())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.csr != null ? this.csr.hashCode() : 0);
-        result = 31 * result + (this.hashRootCertificate != null ? this.hashRootCertificate.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCsr(),
+                getCertificateType(),
+                getHashRootCertificate(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

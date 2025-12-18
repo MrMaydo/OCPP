@@ -11,95 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class RequestBatterySwapRequest implements JsonInterface {
 
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * Id token of EV driver.
      */
     @Required
     private IdToken idToken;
+
     /**
      * Request id to match with BatterySwapRequest.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public RequestBatterySwapRequest() {
     }
 
-    /**
-     * @param requestId Request id to match with BatterySwapRequest.
-     *                  <p>
-     *                  .
-     */
-    public RequestBatterySwapRequest(IdToken idToken, Integer requestId, CustomData customData) {
-        super();
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * Request id to match with BatterySwapRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * Request id to match with BatterySwapRequest.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -112,9 +76,15 @@ public class RequestBatterySwapRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -127,19 +97,18 @@ public class RequestBatterySwapRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -149,17 +118,17 @@ public class RequestBatterySwapRequest implements JsonInterface {
         if (!(obj instanceof RequestBatterySwapRequest))
             return false;
         RequestBatterySwapRequest that = (RequestBatterySwapRequest) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIdToken(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

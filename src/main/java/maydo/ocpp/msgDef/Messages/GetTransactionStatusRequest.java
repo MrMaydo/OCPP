@@ -9,6 +9,10 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * With this message, the CSMS can ask the Charging Station whether it has transaction-related messages waiting to be delivered to
+ * the CSMS. When a transactionId is provided, only messages for a specific transaction are asked for.
+ */
 public class GetTransactionStatusRequest implements JsonInterface {
 
     /**
@@ -16,52 +20,33 @@ public class GetTransactionStatusRequest implements JsonInterface {
      */
     @Optional
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetTransactionStatusRequest() {
     }
 
-    /**
-     * @param transactionId The Id of the transaction for which the status is requested.
-     *                      .
-     */
-    public GetTransactionStatusRequest(String transactionId, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
 
-    /**
-     * The Id of the transaction for which the status is requested.
-     */
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The Id of the transaction for which the status is requested.
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -74,8 +59,14 @@ public class GetTransactionStatusRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -88,14 +79,13 @@ public class GetTransactionStatusRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -105,15 +95,15 @@ public class GetTransactionStatusRequest implements JsonInterface {
         if (!(obj instanceof GetTransactionStatusRequest))
             return false;
         GetTransactionStatusRequest that = (GetTransactionStatusRequest) obj;
-        return Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getCustomData()
+        );
     }
 }

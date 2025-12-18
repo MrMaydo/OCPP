@@ -11,91 +11,61 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Used by the CSMS to request installation of a certificate on a Charging Station.
+ * Note: This message is not for installing a TLS client certificate in a charging station.
+ * The CertificateSignedRequest mechanism is used for that.
+ */
 public class InstallCertificateRequest implements JsonInterface {
 
     /**
      * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
      */
     @Required
     private InstallCertificateUseEnum certificateType;
+
     /**
      * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
      */
     @Required
     private String certificate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public InstallCertificateRequest() {
     }
 
-    /**
-     * @param certificate A PEM encoded X.509 certificate.
-     *                    .
-     */
-    public InstallCertificateRequest(InstallCertificateUseEnum certificateType, String certificate, CustomData customData) {
-        super();
-        this.certificateType = certificateType;
-        this.certificate = certificate;
-        this.customData = customData;
-    }
 
-    /**
-     * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
-     */
     public InstallCertificateUseEnum getCertificateType() {
         return certificateType;
     }
 
-    /**
-     * Indicates the certificate type that is sent.
-     * <p>
-     * (Required)
-     */
+
     public void setCertificateType(InstallCertificateUseEnum certificateType) {
         this.certificateType = certificateType;
     }
 
-    /**
-     * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
-     */
+
     public String getCertificate() {
         return certificate;
     }
 
-    /**
-     * A PEM encoded X.509 certificate.
-     * <p>
-     * (Required)
-     */
+
     public void setCertificate(String certificate) {
         this.certificate = certificate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -108,9 +78,15 @@ public class InstallCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("certificateType", certificateType.toString());
-        json.addProperty("certificate", certificate);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("certificateType", getCertificateType().toString());
+
+        json.addProperty("certificate", getCertificate());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -123,18 +99,17 @@ public class InstallCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateType")) {
-            this.certificateType = InstallCertificateUseEnum.valueOf(jsonObject.get("certificateType").getAsString());
+            setCertificateType(InstallCertificateUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
         }
 
         if (jsonObject.has("certificate")) {
-            this.certificate = jsonObject.get("certificate").getAsString();
+            setCertificate(jsonObject.get("certificate").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -144,17 +119,17 @@ public class InstallCertificateRequest implements JsonInterface {
         if (!(obj instanceof InstallCertificateRequest))
             return false;
         InstallCertificateRequest that = (InstallCertificateRequest) obj;
-        return Objects.equals(this.certificate, that.certificate)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateType, that.certificateType);
+        return Objects.equals(getCertificateType(), that.getCertificateType())
+                && Objects.equals(getCertificate(), that.getCertificate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.certificate != null ? this.certificate.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateType(),
+                getCertificate(),
+                getCustomData()
+        );
     }
 }

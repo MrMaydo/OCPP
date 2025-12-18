@@ -9,102 +9,77 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
+ */
 public class ClearChargingProfile implements JsonInterface {
 
     /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
+     * Specifies the id of the EVSE for which to clear charging profiles.
+     * An evseId of zero (0) specifies the charging profile for the overall Charging Station.
+     * Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
      */
     @Optional
     private Integer evseId;
+
     /**
      * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
      */
     @Optional
     private ChargingProfilePurposeEnum chargingProfilePurpose;
+
     /**
      * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
      */
     @Optional
     private Integer stackLevel;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearChargingProfile() {
     }
 
-    /**
-     * @param evseId     Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     *                   <p>
-     *                   .
-     * @param stackLevel Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     *                   .
-     */
-    public ClearChargingProfile(Integer evseId, ChargingProfilePurposeEnum chargingProfilePurpose, Integer stackLevel, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.chargingProfilePurpose = chargingProfilePurpose;
-        this.stackLevel = stackLevel;
-        this.customData = customData;
-    }
 
-    /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Specifies the id of the EVSE for which to clear charging profiles. An evseId of zero (0) specifies the charging profile for the overall Charging Station. Absence of this parameter means the clearing applies to all charging profiles that match the other criteria in the request.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     */
+
     public ChargingProfilePurposeEnum getChargingProfilePurpose() {
         return chargingProfilePurpose;
     }
 
-    /**
-     * Specifies to purpose of the charging profiles that will be cleared, if they meet the other criteria in the request.
-     */
+
     public void setChargingProfilePurpose(ChargingProfilePurposeEnum chargingProfilePurpose) {
         this.chargingProfilePurpose = chargingProfilePurpose;
     }
 
-    /**
-     * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     */
+
     public Integer getStackLevel() {
         return stackLevel;
     }
 
-    /**
-     * Specifies the stackLevel for which charging profiles will be cleared, if they meet the other criteria in the request.
-     */
+
     public void setStackLevel(Integer stackLevel) {
         this.stackLevel = stackLevel;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -117,10 +92,20 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
-        json.addProperty("stackLevel", stackLevel);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getChargingProfilePurpose() != null) {
+            json.addProperty("chargingProfilePurpose", getChargingProfilePurpose().toString());
+        }
+        if (getStackLevel() != null) {
+            json.addProperty("stackLevel", getStackLevel());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -133,22 +118,21 @@ public class ClearChargingProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfilePurpose")) {
-            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+            setChargingProfilePurpose(ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString()));
         }
 
         if (jsonObject.has("stackLevel")) {
-            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+            setStackLevel(jsonObject.get("stackLevel").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -158,19 +142,19 @@ public class ClearChargingProfile implements JsonInterface {
         if (!(obj instanceof ClearChargingProfile))
             return false;
         ClearChargingProfile that = (ClearChargingProfile) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.stackLevel, that.stackLevel);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingProfilePurpose(), that.getChargingProfilePurpose())
+                && Objects.equals(getStackLevel(), that.getStackLevel())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.chargingProfilePurpose != null ? this.chargingProfilePurpose.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.stackLevel != null ? this.stackLevel.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getChargingProfilePurpose(),
+                getStackLevel(),
+                getCustomData()
+        );
     }
 }

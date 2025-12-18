@@ -1,94 +1,71 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) An entry in price schedule over time for which EV is willing to discharge.
+ */
 public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds of this entry.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
-     * (Required)
+     * A set of pricing rules for energy costs.
      */
     @Required
     private List<EVPriceRule> evPriceRule;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVAbsolutePriceScheduleEntry() {
     }
 
-    /**
-     * @param duration The amount of seconds of this entry.
-     *                 .
-     */
-    public EVAbsolutePriceScheduleEntry(Integer duration, List<EVPriceRule> evPriceRule, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.evPriceRule = evPriceRule;
-        this.customData = customData;
-    }
 
-    /**
-     * The amount of seconds of this entry.
-     * <p>
-     * (Required)
-     */
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * The amount of seconds of this entry.
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<EVPriceRule> getEvPriceRule() {
         return evPriceRule;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvPriceRule(List<EVPriceRule> evPriceRule) {
         this.evPriceRule = evPriceRule;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -101,8 +78,19 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("duration", getDuration());
+
+        JsonArray evPriceRuleArray = new JsonArray();
+        for (EVPriceRule item : getEvPriceRule()) {
+            evPriceRuleArray.add(item.toJsonObject());
+        }
+        json.add("evPriceRule", evPriceRuleArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -115,14 +103,23 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsInt();
+            setDuration(jsonObject.get("duration").getAsInt());
+        }
+
+        if (jsonObject.has("evPriceRule")) {
+            setEvPriceRule(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evPriceRule");
+            for (JsonElement el : arr) {
+                EVPriceRule item = new EVPriceRule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEvPriceRule().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -132,18 +129,18 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
         if (!(obj instanceof EVAbsolutePriceScheduleEntry))
             return false;
         EVAbsolutePriceScheduleEntry that = (EVAbsolutePriceScheduleEntry) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.evPriceRule, that.evPriceRule)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getEvPriceRule(), that.getEvPriceRule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evPriceRule != null ? this.evPriceRule.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDuration(),
+                getEvPriceRule(),
+                getCustomData()
+        );
     }
 
 }

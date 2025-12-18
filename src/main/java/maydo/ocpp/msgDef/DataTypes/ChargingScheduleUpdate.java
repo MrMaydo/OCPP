@@ -8,332 +8,235 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+
 /**
  * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
  */
 public class ChargingScheduleUpdate implements JsonInterface {
 
     /**
-     * Optional only when not required by the _operationMode_, as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency,  LocalLoadBalancing. +
-     * Charging rate limit during the schedule period, in the applicable _chargingRateUnit_.
-     * This SHOULD be a non-negative value; a negative value is only supported for backwards compatibility with older systems that use a negative value to specify a discharging limit.
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     * Optional only when not required by the operationMode,
+     * as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency, LocalLoadBalancing.
+     * Charging rate limit during the schedule period, in the applicable chargingRateUnit.
+     * This SHOULD be a non- negative value; a negative value is only supported for backwards compatibility
+     * with older systems that use a negative value to specify a discharging limit.
+     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3,
+     * in which case this field represents phase L1.
      */
     @Optional
     private Float limit;
+
     /**
-     * *(2.1)* Charging rate limit on phase L2  in the applicable _chargingRateUnit_.
+     * (2.1) Charging rate limit on phase L2 in the applicable chargingRateUnit.
      */
     @Optional
     private Float limitL2;
+
     /**
-     * *(2.1)* Charging rate limit on phase L3  in the applicable _chargingRateUnit_.
+     * (2.1) Charging rate limit on phase L3 in the applicable chargingRateUnit.
      */
     @Optional
     private Float limitL3;
+
     /**
-     * *(2.1)* Limit in _chargingRateUnit_ that the EV is allowed to discharge with. Note, these are negative values in order to be consistent with _setpoint_, which can be positive and negative.  +
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     * (2.1) Limit in chargingRateUnit that the EV is allowed to discharge with.
+     * Note, these are negative values in order to be consistent with setpoint, which can be positive and negative.
+     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3,
+     * in which case this field represents phase L1.
      */
     @Optional
     private Float dischargeLimit;
+
     /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L2 that the EV is allowed to discharge with.
+     * (2.1) Limit in chargingRateUnit on phase L2 that the EV is allowed to discharge with.
      */
     @Optional
     private Float dischargeLimitL2;
+
     /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L3 that the EV is allowed to discharge with.
+     * (2.1) Limit in chargingRateUnit on phase L3 that the EV is allowed to discharge with.
      */
     @Optional
     private Float dischargeLimitL3;
+
     /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow as close as possible. Use negative values for discharging. +
-     * When a limit and/or _dischargeLimit_ are given the overshoot when following _setpoint_ must remain within these values.
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     * (2.1) Setpoint in chargingRateUnit that the EV should follow as close as possible.
+     * Use negative values for discharging. When a limit and/or dischargeLimit are given the overshoot
+     * when following setpoint must remain within these values. This field represents the sum of all phases,
+     * unless values are provided for L2 and L3, in which case this field represents phase L1.
      */
     @Optional
     private Float setpoint;
+
     /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L2 as close as possible.
+     * (2.1) Setpoint in chargingRateUnit that the EV should follow on phase L2 as close as possible.
      */
     @Optional
     private Float setpointL2;
+
     /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L3 as close as possible.
+     * (2.1) Setpoint in chargingRateUnit that the EV should follow on phase L3 as close as possible.
      */
     @Optional
     private Float setpointL3;
+
     /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow as closely as possible. Positive values for inductive, negative for capacitive reactive power or current.  +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
+     * (2.1) Setpoint for reactive power (or current) in chargingRateUnit that the EV should follow as closely as possible.
+     * Positive values for inductive, negative for capacitive reactive power or current.
+     * This field represents the sum of all phases, unless values are provided for L2 and L3,
+     * in which case this field represents phase L1.
      */
     @Optional
     private Float setpointReactive;
+
     /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L2 as closely as possible.
+     * (2.1) Setpoint for reactive power (or current) in chargingRateUnit that the EV should follow on phase L2 as closely as possible.
      */
     @Optional
     private Float setpointReactiveL2;
+
     /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L3 as closely as possible.
+     * (2.1) Setpoint for reactive power (or current) in chargingRateUnit that the EV should follow on phase L3 as closely as possible
      */
     @Optional
     private Float setpointReactiveL3;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChargingScheduleUpdate() {
     }
 
-    /**
-     * @param setpointL3         *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L3 as close as possible.
-     *                           .
-     * @param setpointL2         *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L2 as close as possible.
-     *                           .
-     * @param setpoint           *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow as close as possible. Use negative values for discharging. +
-     *                           When a limit and/or _dischargeLimit_ are given the overshoot when following _setpoint_ must remain within these values.
-     *                           This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *                           .
-     * @param dischargeLimitL3   *(2.1)* Limit in _chargingRateUnit_ on phase L3 that the EV is allowed to discharge with.
-     *                           .
-     * @param setpointReactive   *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow as closely as possible. Positive values for inductive, negative for capacitive reactive power or current.  +
-     *                           This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *                           .
-     * @param limit              Optional only when not required by the _operationMode_, as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency,  LocalLoadBalancing. +
-     *                           Charging rate limit during the schedule period, in the applicable _chargingRateUnit_.
-     *                           This SHOULD be a non-negative value; a negative value is only supported for backwards compatibility with older systems that use a negative value to specify a discharging limit.
-     *                           For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *                           .
-     * @param setpointReactiveL2 *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L2 as closely as possible.
-     *                           .
-     * @param setpointReactiveL3 *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L3 as closely as possible.
-     *                           .
-     * @param dischargeLimitL2   *(2.1)* Limit in _chargingRateUnit_ on phase L2 that the EV is allowed to discharge with.
-     *                           .
-     * @param limitL3            *(2.1)* Charging rate limit on phase L3  in the applicable _chargingRateUnit_.
-     *                           .
-     * @param dischargeLimit     *(2.1)* Limit in _chargingRateUnit_ that the EV is allowed to discharge with. Note, these are negative values in order to be consistent with _setpoint_, which can be positive and negative.  +
-     *                           For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     *                           .
-     * @param limitL2            *(2.1)* Charging rate limit on phase L2  in the applicable _chargingRateUnit_.
-     *                           .
-     */
-    public ChargingScheduleUpdate(Float limit, Float limitL2, Float limitL3, Float dischargeLimit, Float dischargeLimitL2, Float dischargeLimitL3, Float setpoint, Float setpointL2, Float setpointL3, Float setpointReactive, Float setpointReactiveL2, Float setpointReactiveL3, CustomData customData) {
-        super();
-        this.limit = limit;
-        this.limitL2 = limitL2;
-        this.limitL3 = limitL3;
-        this.dischargeLimit = dischargeLimit;
-        this.dischargeLimitL2 = dischargeLimitL2;
-        this.dischargeLimitL3 = dischargeLimitL3;
-        this.setpoint = setpoint;
-        this.setpointL2 = setpointL2;
-        this.setpointL3 = setpointL3;
-        this.setpointReactive = setpointReactive;
-        this.setpointReactiveL2 = setpointReactiveL2;
-        this.setpointReactiveL3 = setpointReactiveL3;
-        this.customData = customData;
-    }
 
-    /**
-     * Optional only when not required by the _operationMode_, as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency,  LocalLoadBalancing. +
-     * Charging rate limit during the schedule period, in the applicable _chargingRateUnit_.
-     * This SHOULD be a non-negative value; a negative value is only supported for backwards compatibility with older systems that use a negative value to specify a discharging limit.
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
     public Float getLimit() {
         return limit;
     }
 
-    /**
-     * Optional only when not required by the _operationMode_, as in CentralSetpoint, ExternalSetpoint, ExternalLimits, LocalFrequency,  LocalLoadBalancing. +
-     * Charging rate limit during the schedule period, in the applicable _chargingRateUnit_.
-     * This SHOULD be a non-negative value; a negative value is only supported for backwards compatibility with older systems that use a negative value to specify a discharging limit.
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public void setLimit(Float limit) {
         this.limit = limit;
     }
 
-    /**
-     * *(2.1)* Charging rate limit on phase L2  in the applicable _chargingRateUnit_.
-     */
+
     public Float getLimitL2() {
         return limitL2;
     }
 
-    /**
-     * *(2.1)* Charging rate limit on phase L2  in the applicable _chargingRateUnit_.
-     */
+
     public void setLimitL2(Float limitL2) {
         this.limitL2 = limitL2;
     }
 
-    /**
-     * *(2.1)* Charging rate limit on phase L3  in the applicable _chargingRateUnit_.
-     */
+
     public Float getLimitL3() {
         return limitL3;
     }
 
-    /**
-     * *(2.1)* Charging rate limit on phase L3  in the applicable _chargingRateUnit_.
-     */
+
     public void setLimitL3(Float limitL3) {
         this.limitL3 = limitL3;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ that the EV is allowed to discharge with. Note, these are negative values in order to be consistent with _setpoint_, which can be positive and negative.  +
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public Float getDischargeLimit() {
         return dischargeLimit;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ that the EV is allowed to discharge with. Note, these are negative values in order to be consistent with _setpoint_, which can be positive and negative.  +
-     * For AC this field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public void setDischargeLimit(Float dischargeLimit) {
         this.dischargeLimit = dischargeLimit;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L2 that the EV is allowed to discharge with.
-     */
+
     public Float getDischargeLimitL2() {
         return dischargeLimitL2;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L2 that the EV is allowed to discharge with.
-     */
+
     public void setDischargeLimitL2(Float dischargeLimitL2) {
         this.dischargeLimitL2 = dischargeLimitL2;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L3 that the EV is allowed to discharge with.
-     */
+
     public Float getDischargeLimitL3() {
         return dischargeLimitL3;
     }
 
-    /**
-     * *(2.1)* Limit in _chargingRateUnit_ on phase L3 that the EV is allowed to discharge with.
-     */
+
     public void setDischargeLimitL3(Float dischargeLimitL3) {
         this.dischargeLimitL3 = dischargeLimitL3;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow as close as possible. Use negative values for discharging. +
-     * When a limit and/or _dischargeLimit_ are given the overshoot when following _setpoint_ must remain within these values.
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public Float getSetpoint() {
         return setpoint;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow as close as possible. Use negative values for discharging. +
-     * When a limit and/or _dischargeLimit_ are given the overshoot when following _setpoint_ must remain within these values.
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public void setSetpoint(Float setpoint) {
         this.setpoint = setpoint;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L2 as close as possible.
-     */
+
     public Float getSetpointL2() {
         return setpointL2;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L2 as close as possible.
-     */
+
     public void setSetpointL2(Float setpointL2) {
         this.setpointL2 = setpointL2;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L3 as close as possible.
-     */
+
     public Float getSetpointL3() {
         return setpointL3;
     }
 
-    /**
-     * *(2.1)* Setpoint in _chargingRateUnit_ that the EV should follow on phase L3 as close as possible.
-     */
+
     public void setSetpointL3(Float setpointL3) {
         this.setpointL3 = setpointL3;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow as closely as possible. Positive values for inductive, negative for capacitive reactive power or current.  +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public Float getSetpointReactive() {
         return setpointReactive;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow as closely as possible. Positive values for inductive, negative for capacitive reactive power or current.  +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3, in which case this field represents phase L1.
-     */
+
     public void setSetpointReactive(Float setpointReactive) {
         this.setpointReactive = setpointReactive;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L2 as closely as possible.
-     */
+
     public Float getSetpointReactiveL2() {
         return setpointReactiveL2;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L2 as closely as possible.
-     */
+
     public void setSetpointReactiveL2(Float setpointReactiveL2) {
         this.setpointReactiveL2 = setpointReactiveL2;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L3 as closely as possible.
-     */
+
     public Float getSetpointReactiveL3() {
         return setpointReactiveL3;
     }
 
-    /**
-     * *(2.1)* Setpoint for reactive power (or current) in _chargingRateUnit_ that the EV should follow on phase L3 as closely as possible.
-     */
+
     public void setSetpointReactiveL3(Float setpointReactiveL3) {
         this.setpointReactiveL3 = setpointReactiveL3;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -346,19 +249,47 @@ public class ChargingScheduleUpdate implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("limit", limit);
-        json.addProperty("limitL2", limitL2);
-        json.addProperty("limitL3", limitL3);
-        json.addProperty("dischargeLimit", dischargeLimit);
-        json.addProperty("dischargeLimitL2", dischargeLimitL2);
-        json.addProperty("dischargeLimitL3", dischargeLimitL3);
-        json.addProperty("setpoint", setpoint);
-        json.addProperty("setpointL2", setpointL2);
-        json.addProperty("setpointL3", setpointL3);
-        json.addProperty("setpointReactive", setpointReactive);
-        json.addProperty("setpointReactiveL2", setpointReactiveL2);
-        json.addProperty("setpointReactiveL3", setpointReactiveL3);
-        json.add("customData", customData.toJsonObject());
+
+        if (getLimit() != null) {
+            json.addProperty("limit", getLimit());
+        }
+        if (getLimitL2() != null) {
+            json.addProperty("limitL2", getLimitL2());
+        }
+        if (getLimitL3() != null) {
+            json.addProperty("limitL3", getLimitL3());
+        }
+        if (getDischargeLimit() != null) {
+            json.addProperty("dischargeLimit", getDischargeLimit());
+        }
+        if (getDischargeLimitL2() != null) {
+            json.addProperty("dischargeLimitL2", getDischargeLimitL2());
+        }
+        if (getDischargeLimitL3() != null) {
+            json.addProperty("dischargeLimitL3", getDischargeLimitL3());
+        }
+        if (getSetpoint() != null) {
+            json.addProperty("setpoint", getSetpoint());
+        }
+        if (getSetpointL2() != null) {
+            json.addProperty("setpointL2", getSetpointL2());
+        }
+        if (getSetpointL3() != null) {
+            json.addProperty("setpointL3", getSetpointL3());
+        }
+        if (getSetpointReactive() != null) {
+            json.addProperty("setpointReactive", getSetpointReactive());
+        }
+        if (getSetpointReactiveL2() != null) {
+            json.addProperty("setpointReactiveL2", getSetpointReactiveL2());
+        }
+        if (getSetpointReactiveL3() != null) {
+            json.addProperty("setpointReactiveL3", getSetpointReactiveL3());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -371,58 +302,57 @@ public class ChargingScheduleUpdate implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("limit")) {
-            this.limit = jsonObject.get("limit").getAsFloat();
+            setLimit(jsonObject.get("limit").getAsFloat());
         }
 
         if (jsonObject.has("limitL2")) {
-            this.limitL2 = jsonObject.get("limitL2").getAsFloat();
+            setLimitL2(jsonObject.get("limitL2").getAsFloat());
         }
 
         if (jsonObject.has("limitL3")) {
-            this.limitL3 = jsonObject.get("limitL3").getAsFloat();
+            setLimitL3(jsonObject.get("limitL3").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimit")) {
-            this.dischargeLimit = jsonObject.get("dischargeLimit").getAsFloat();
+            setDischargeLimit(jsonObject.get("dischargeLimit").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimitL2")) {
-            this.dischargeLimitL2 = jsonObject.get("dischargeLimitL2").getAsFloat();
+            setDischargeLimitL2(jsonObject.get("dischargeLimitL2").getAsFloat());
         }
 
         if (jsonObject.has("dischargeLimitL3")) {
-            this.dischargeLimitL3 = jsonObject.get("dischargeLimitL3").getAsFloat();
+            setDischargeLimitL3(jsonObject.get("dischargeLimitL3").getAsFloat());
         }
 
         if (jsonObject.has("setpoint")) {
-            this.setpoint = jsonObject.get("setpoint").getAsFloat();
+            setSetpoint(jsonObject.get("setpoint").getAsFloat());
         }
 
         if (jsonObject.has("setpointL2")) {
-            this.setpointL2 = jsonObject.get("setpointL2").getAsFloat();
+            setSetpointL2(jsonObject.get("setpointL2").getAsFloat());
         }
 
         if (jsonObject.has("setpointL3")) {
-            this.setpointL3 = jsonObject.get("setpointL3").getAsFloat();
+            setSetpointL3(jsonObject.get("setpointL3").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactive")) {
-            this.setpointReactive = jsonObject.get("setpointReactive").getAsFloat();
+            setSetpointReactive(jsonObject.get("setpointReactive").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactiveL2")) {
-            this.setpointReactiveL2 = jsonObject.get("setpointReactiveL2").getAsFloat();
+            setSetpointReactiveL2(jsonObject.get("setpointReactiveL2").getAsFloat());
         }
 
         if (jsonObject.has("setpointReactiveL3")) {
-            this.setpointReactiveL3 = jsonObject.get("setpointReactiveL3").getAsFloat();
+            setSetpointReactiveL3(jsonObject.get("setpointReactiveL3").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -432,37 +362,37 @@ public class ChargingScheduleUpdate implements JsonInterface {
         if (!(obj instanceof ChargingScheduleUpdate))
             return false;
         ChargingScheduleUpdate that = (ChargingScheduleUpdate) obj;
-        return Objects.equals(this.setpoint, that.setpoint)
-                && Objects.equals(this.dischargeLimitL3, that.dischargeLimitL3)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.setpointL3, that.setpointL3)
-                && Objects.equals(this.setpointL2, that.setpointL2)
-                && Objects.equals(this.setpointReactive, that.setpointReactive)
-                && Objects.equals(this.limit, that.limit)
-                && Objects.equals(this.setpointReactiveL2, that.setpointReactiveL2)
-                && Objects.equals(this.setpointReactiveL3, that.setpointReactiveL3)
-                && Objects.equals(this.dischargeLimitL2, that.dischargeLimitL2)
-                && Objects.equals(this.limitL3, that.limitL3)
-                && Objects.equals(this.dischargeLimit, that.dischargeLimit)
-                && Objects.equals(this.limitL2, that.limitL2);
+        return Objects.equals(getLimit(), that.getLimit())
+                && Objects.equals(getLimitL2(), that.getLimitL2())
+                && Objects.equals(getLimitL3(), that.getLimitL3())
+                && Objects.equals(getDischargeLimit(), that.getDischargeLimit())
+                && Objects.equals(getDischargeLimitL2(), that.getDischargeLimitL2())
+                && Objects.equals(getDischargeLimitL3(), that.getDischargeLimitL3())
+                && Objects.equals(getSetpoint(), that.getSetpoint())
+                && Objects.equals(getSetpointL2(), that.getSetpointL2())
+                && Objects.equals(getSetpointL3(), that.getSetpointL3())
+                && Objects.equals(getSetpointReactive(), that.getSetpointReactive())
+                && Objects.equals(getSetpointReactiveL2(), that.getSetpointReactiveL2())
+                && Objects.equals(getSetpointReactiveL3(), that.getSetpointReactiveL3())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.setpoint != null ? this.setpoint.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimitL3 != null ? this.dischargeLimitL3.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.setpointL3 != null ? this.setpointL3.hashCode() : 0);
-        result = 31 * result + (this.setpointL2 != null ? this.setpointL2.hashCode() : 0);
-        result = 31 * result + (this.setpointReactive != null ? this.setpointReactive.hashCode() : 0);
-        result = 31 * result + (this.limit != null ? this.limit.hashCode() : 0);
-        result = 31 * result + (this.setpointReactiveL2 != null ? this.setpointReactiveL2.hashCode() : 0);
-        result = 31 * result + (this.setpointReactiveL3 != null ? this.setpointReactiveL3.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimitL2 != null ? this.dischargeLimitL2.hashCode() : 0);
-        result = 31 * result + (this.limitL3 != null ? this.limitL3.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimit != null ? this.dischargeLimit.hashCode() : 0);
-        result = 31 * result + (this.limitL2 != null ? this.limitL2.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLimit(),
+                getLimitL2(),
+                getLimitL3(),
+                getDischargeLimit(),
+                getDischargeLimitL2(),
+                getDischargeLimitL3(),
+                getSetpoint(),
+                getSetpointL2(),
+                getSetpointL3(),
+                getSetpointReactive(),
+                getSetpointReactiveL2(),
+                getSetpointReactiveL3(),
+                getCustomData()
+        );
     }
 }

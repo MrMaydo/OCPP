@@ -17,142 +17,94 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This contains the field definition of the BootNotificationResponse PDU sent by
+ * the CSMS to the Charging Station in response to a BootNotificationRequest.
+ */
 public class BootNotificationResponse implements JsonInterface {
 
     /**
      * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
      */
     @Required
     private Date currentTime;
+
     /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
+     * When Status is Accepted, this contains the heartbeat interval in seconds.
+     * If the CSMS returns something other than Accepted,
+     * the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
      */
     @Required
     private Integer interval;
+
     /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
+     * This contains whether the Charging Station has been registered within the CSMS.
      */
     @Required
     private RegistrationStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BootNotificationResponse() {
     }
 
-    /**
-     * @param currentTime This contains the CSMS’s current time.
-     *                    .
-     * @param interval    When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     *                    .
-     */
-    public BootNotificationResponse(Date currentTime, Integer interval, RegistrationStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.currentTime = currentTime;
-        this.interval = interval;
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
-     */
     public Date getCurrentTime() {
         return currentTime;
     }
 
-    /**
-     * This contains the CSMS’s current time.
-     * <p>
-     * (Required)
-     */
+
     public void setCurrentTime(Date currentTime) {
         this.currentTime = currentTime;
     }
 
-    /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getInterval() {
         return interval;
     }
 
-    /**
-     * When &lt;&lt;cmn_registrationstatusenumtype,Status&gt;&gt; is Accepted, this contains the heartbeat interval in seconds. If the CSMS returns something other than Accepted, the value of the interval field indicates the minimum wait time before sending a next BootNotification request.
-     * <p>
-     * (Required)
-     */
+
     public void setInterval(Integer interval) {
         this.interval = interval;
     }
 
-    /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public RegistrationStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This contains whether the Charging Station has been registered
-     * within the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(RegistrationStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -165,11 +117,20 @@ public class BootNotificationResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(currentTime));
-        json.addProperty("interval", interval);
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("currentTime", new SimpleDateFormat(DATE_FORMAT).format(getCurrentTime()));
+
+        json.addProperty("interval", getInterval());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -184,30 +145,29 @@ public class BootNotificationResponse implements JsonInterface {
         if (jsonObject.has("currentTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.currentTime = dateFormat.parse(jsonObject.get("currentTime").getAsString());
+                setCurrentTime(dateFormat.parse(jsonObject.get("currentTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for currentTime" + e);
             }
         }
 
         if (jsonObject.has("interval")) {
-            this.interval = jsonObject.get("interval").getAsInt();
+            setInterval(jsonObject.get("interval").getAsInt());
         }
 
         if (jsonObject.has("status")) {
-            this.status = RegistrationStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(RegistrationStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -217,21 +177,21 @@ public class BootNotificationResponse implements JsonInterface {
         if (!(obj instanceof BootNotificationResponse))
             return false;
         BootNotificationResponse that = (BootNotificationResponse) obj;
-        return Objects.equals(this.currentTime, that.currentTime)
-                && Objects.equals(this.interval, that.interval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getCurrentTime(), that.getCurrentTime())
+                && Objects.equals(getInterval(), that.getInterval())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.currentTime != null ? this.currentTime.hashCode() : 0);
-        result = 31 * result + (this.interval != null ? this.interval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurrentTime(),
+                getInterval(),
+                getStatus(),
+                getStatusInfo(),
+                getCustomData()
+        );
     }
 }

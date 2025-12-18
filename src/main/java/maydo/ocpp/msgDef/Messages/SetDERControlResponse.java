@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -10,111 +12,79 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetDERControlResponse implements JsonInterface {
 
     /**
      * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private DERControlStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Additional details on status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
      * List of controlIds that are superseded as a result of setting this control.
      */
     @Optional
     private List<String> supersededIds;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDERControlResponse() {
     }
 
-    /**
-     * @param supersededIds List of controlIds that are superseded as a result of setting this control.
-     *                      .
-     */
-    public SetDERControlResponse(DERControlStatusEnum status, StatusInfo statusInfo, List<String> supersededIds, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.supersededIds = supersededIds;
-        this.customData = customData;
-    }
 
-    /**
-     * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public DERControlStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of operation.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(DERControlStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of setting this control.
-     */
+
     public List<String> getSupersededIds() {
         return supersededIds;
     }
 
-    /**
-     * List of controlIds that are superseded as a result of setting this control.
-     */
+
     public void setSupersededIds(List<String> supersededIds) {
         this.supersededIds = supersededIds;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -127,9 +97,23 @@ public class SetDERControlResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getSupersededIds() != null) {
+            JsonArray supersededIdsArray = new JsonArray();
+            for (String item : getSupersededIds()) {
+                supersededIdsArray.add(item);
+            }
+            json.add("supersededIds", supersededIdsArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -142,19 +126,26 @@ public class SetDERControlResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = DERControlStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(DERControlStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("supersededIds")) {
+            setSupersededIds(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("supersededIds");
+            for (JsonElement el : arr) {
+                getSupersededIds().add(el.getAsString());
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -164,19 +155,19 @@ public class SetDERControlResponse implements JsonInterface {
         if (!(obj instanceof SetDERControlResponse))
             return false;
         SetDERControlResponse that = (SetDERControlResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.supersededIds, that.supersededIds)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getSupersededIds(), that.getSupersededIds())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.supersededIds != null ? this.supersededIds.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getSupersededIds(),
+                getCustomData()
+        );
     }
 }

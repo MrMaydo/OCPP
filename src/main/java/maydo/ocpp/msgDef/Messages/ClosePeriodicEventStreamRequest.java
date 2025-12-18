@@ -10,65 +10,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     /**
      * Id of stream to close.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClosePeriodicEventStreamRequest() {
     }
 
-    /**
-     * @param id Id of stream to close.
-     *           .
-     */
-    public ClosePeriodicEventStreamRequest(Integer id, CustomData customData) {
-        super();
-        this.id = id;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of stream to close.
-     * <p>
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of stream to close.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +59,13 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +78,13 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +94,15 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
         if (!(obj instanceof ClosePeriodicEventStreamRequest))
             return false;
         ClosePeriodicEventStreamRequest that = (ClosePeriodicEventStreamRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getCustomData()
+        );
     }
 }

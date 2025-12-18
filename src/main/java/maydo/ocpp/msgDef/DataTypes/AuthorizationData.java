@@ -9,87 +9,63 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Contains the identifier to use for authorization.
  */
 public class AuthorizationData implements JsonInterface {
 
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * This contains the identifier which needs to be stored for authorization.
      */
     @Required
     private IdToken idToken;
+
     /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
+     * Required when UpdateType is Full. This contains information about authorization status, expiry and group id.
+     * For a Differential update the following applies:
+     * <p> If this element is present, then this entry SHALL be added or updated in the Local Authorization List. </p>
+     * <p> If this element is absent, the entry for this IdToken in the Local Authorization List SHALL be deleted. </p>
      */
     @Optional
     private IdTokenInfo idTokenInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AuthorizationData() {
     }
 
-    public AuthorizationData(IdToken idToken, IdTokenInfo idTokenInfo, CustomData customData) {
-        super();
-        this.idToken = idToken;
-        this.idTokenInfo = idTokenInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     */
+
     public IdTokenInfo getIdTokenInfo() {
         return idTokenInfo;
     }
 
-    /**
-     * Contains status information about an identifier.
-     * It is advised to not stop charging for a token that expires during charging, as ExpiryDate is only used for caching purposes. If ExpiryDate is not given, the status has no end date.
-     */
+
     public void setIdTokenInfo(IdTokenInfo idTokenInfo) {
         this.idTokenInfo = idTokenInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -102,9 +78,16 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("idToken", idToken.toJsonObject());
-        json.add("idTokenInfo", idTokenInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        if (getIdTokenInfo() != null) {
+            json.add("idTokenInfo", getIdTokenInfo().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -117,20 +100,19 @@ public class AuthorizationData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("idTokenInfo")) {
-            this.idTokenInfo = new IdTokenInfo();
-            this.idTokenInfo.fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
+            setIdTokenInfo(new IdTokenInfo());
+            getIdTokenInfo().fromJsonObject(jsonObject.getAsJsonObject("idTokenInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -140,17 +122,17 @@ public class AuthorizationData implements JsonInterface {
         if (!(obj instanceof AuthorizationData))
             return false;
         AuthorizationData that = (AuthorizationData) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.idTokenInfo, that.idTokenInfo);
+        return Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getIdTokenInfo(), that.getIdTokenInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.idTokenInfo != null ? this.idTokenInfo.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIdToken(),
+                getIdTokenInfo(),
+                getCustomData()
+        );
     }
 }

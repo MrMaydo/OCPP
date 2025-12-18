@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CertificateStatusRequestInfo;
@@ -9,58 +11,47 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetCertificateChainStatusRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Certificate to check revocation status for.
      */
     @Required
     private List<CertificateStatusRequestInfo> certificateStatusRequests;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCertificateChainStatusRequest() {
     }
 
-    public GetCertificateChainStatusRequest(List<CertificateStatusRequestInfo> certificateStatusRequests, CustomData customData) {
-        super();
-        this.certificateStatusRequests = certificateStatusRequests;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<CertificateStatusRequestInfo> getCertificateStatusRequests() {
         return certificateStatusRequests;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateStatusRequests(List<CertificateStatusRequestInfo> certificateStatusRequests) {
         this.certificateStatusRequests = certificateStatusRequests;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -73,7 +64,17 @@ public class GetCertificateChainStatusRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray certificateStatusRequestsArray = new JsonArray();
+        for (CertificateStatusRequestInfo item : getCertificateStatusRequests()) {
+            certificateStatusRequestsArray.add(item.toJsonObject());
+        }
+        json.add("certificateStatusRequests", certificateStatusRequestsArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -85,11 +86,20 @@ public class GetCertificateChainStatusRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("certificateStatusRequests")) {
+            setCertificateStatusRequests(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("certificateStatusRequests");
+            for (JsonElement el : arr) {
+                CertificateStatusRequestInfo item = new CertificateStatusRequestInfo();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCertificateStatusRequests().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -99,15 +109,15 @@ public class GetCertificateChainStatusRequest implements JsonInterface {
         if (!(obj instanceof GetCertificateChainStatusRequest))
             return false;
         GetCertificateChainStatusRequest that = (GetCertificateChainStatusRequest) obj;
-        return Objects.equals(this.certificateStatusRequests, that.certificateStatusRequests)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCertificateStatusRequests(), that.getCertificateStatusRequests())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.certificateStatusRequests != null ? this.certificateStatusRequests.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateStatusRequests(),
+                getCustomData()
+        );
     }
 }

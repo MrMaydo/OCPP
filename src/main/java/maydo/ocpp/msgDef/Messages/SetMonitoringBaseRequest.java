@@ -11,61 +11,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetMonitoringBaseRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class SetMonitoringBaseRequest implements JsonInterface {
 
     /**
      * Specify which monitoring base will be set
-     * <p>
-     * (Required)
      */
     @Required
     private MonitoringBaseEnum monitoringBase;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetMonitoringBaseRequest() {
     }
 
-    public SetMonitoringBaseRequest(MonitoringBaseEnum monitoringBase, CustomData customData) {
-        super();
-        this.monitoringBase = monitoringBase;
-        this.customData = customData;
-    }
 
-    /**
-     * Specify which monitoring base will be set
-     * <p>
-     * (Required)
-     */
     public MonitoringBaseEnum getMonitoringBase() {
         return monitoringBase;
     }
 
-    /**
-     * Specify which monitoring base will be set
-     * <p>
-     * (Required)
-     */
+
     public void setMonitoringBase(MonitoringBaseEnum monitoringBase) {
         this.monitoringBase = monitoringBase;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -78,8 +60,13 @@ public class SetMonitoringBaseRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("monitoringBase", monitoringBase.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("monitoringBase", getMonitoringBase().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -92,14 +79,13 @@ public class SetMonitoringBaseRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("monitoringBase")) {
-            this.monitoringBase = MonitoringBaseEnum.valueOf(jsonObject.get("monitoringBase").getAsString());
+            setMonitoringBase(MonitoringBaseEnum.valueOf(jsonObject.get("monitoringBase").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -109,15 +95,15 @@ public class SetMonitoringBaseRequest implements JsonInterface {
         if (!(obj instanceof SetMonitoringBaseRequest))
             return false;
         SetMonitoringBaseRequest that = (SetMonitoringBaseRequest) obj;
-        return Objects.equals(this.monitoringBase, that.monitoringBase)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getMonitoringBase(), that.getMonitoringBase())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.monitoringBase != null ? this.monitoringBase.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMonitoringBase(),
+                getCustomData()
+        );
     }
 }

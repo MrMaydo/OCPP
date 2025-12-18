@@ -10,65 +10,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetLocalListVersionResponse PDU sent by
+ * the Charging Station to CSMS in response to a GetLocalListVersionRequest.
+ */
 public class GetLocalListVersionResponse implements JsonInterface {
 
     /**
      * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer versionNumber;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetLocalListVersionResponse() {
     }
 
-    /**
-     * @param versionNumber This contains the current version number of the local authorization list in the Charging Station.
-     *                      .
-     */
-    public GetLocalListVersionResponse(Integer versionNumber, CustomData customData) {
-        super();
-        this.versionNumber = versionNumber;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
-     */
     public Integer getVersionNumber() {
         return versionNumber;
     }
 
-    /**
-     * This contains the current version number of the local authorization list in the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setVersionNumber(Integer versionNumber) {
         this.versionNumber = versionNumber;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +60,13 @@ public class GetLocalListVersionResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("versionNumber", versionNumber);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("versionNumber", getVersionNumber());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +79,13 @@ public class GetLocalListVersionResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("versionNumber")) {
-            this.versionNumber = jsonObject.get("versionNumber").getAsInt();
+            setVersionNumber(jsonObject.get("versionNumber").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +95,15 @@ public class GetLocalListVersionResponse implements JsonInterface {
         if (!(obj instanceof GetLocalListVersionResponse))
             return false;
         GetLocalListVersionResponse that = (GetLocalListVersionResponse) obj;
-        return Objects.equals(this.versionNumber, that.versionNumber)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getVersionNumber(), that.getVersionNumber())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.versionNumber != null ? this.versionNumber.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getVersionNumber(),
+                getCustomData()
+        );
     }
 }

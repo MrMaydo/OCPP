@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,120 +11,112 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * A tariff is described by fields with prices for:
+ * energy, charging time, idle time, fixed fee, reservation time, reservation fixed fee.
+ * Each of these fields may have (optional) conditions that specify when a price is applicable.
+ * The description contains a human-readable explanation of the tariff to be shown to the user.
+ * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
+ */
 public class Tariff implements JsonInterface {
 
     /**
      * Unique id of tariff
-     * <p>
-     * (Required)
      */
     @Required
     private String tariffId;
+
+    /**
+     * List of multi-language tariff information texts to be shown to the user.
+     */
     @Optional
     private List<MessageContent> description;
+
     /**
      * Currency code according to ISO 4217
-     * <p>
-     * (Required)
      */
     @Required
     private String currency;
+
     /**
-     * Price elements and tax for energy
+     * Energy tariff
      */
     @Optional
     private TariffEnergy energy;
+
     /**
      * Time when this tariff becomes active. When absent, it is immediately active.
      */
     @Optional
     private Date validFrom;
+
     /**
-     * Price elements and tax for time
+     * Charging time tariff
      */
     @Optional
     private TariffTime chargingTime;
+
     /**
-     * Price elements and tax for time
+     * Idle time tariff
      */
     @Optional
     private TariffTime idleTime;
+
+    /**
+     * Fixed fee tariff
+     */
     @Optional
     private TariffFixed fixedFee;
+
     /**
-     * Price elements and tax for time
+     * Reservation time tariff
      */
     @Optional
     private TariffTime reservationTime;
+
+    /**
+     * Fixed fee for a reservation
+     */
     @Optional
     private TariffFixed reservationFixed;
+
     /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
+     * The minimal cost for a transaction with this tariff including and excluding taxes.
+     * Minimum can be including tax or excluding tax, or both.
      */
     @Optional
     private Price minCost;
+
     /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
+     * The maximum cost for a transaction with this tariff.
+     * Maximum can be including tax or excluding tax, or both.
      */
     @Optional
     private Price maxCost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Tariff() {
     }
 
-    /**
-     * @param currency  Currency code according to ISO 4217
-     *                  .
-     * @param tariffId  Unique id of tariff
-     *                  .
-     * @param validFrom Time when this tariff becomes active. When absent, it is immediately active.
-     *                  .
-     */
-    public Tariff(String tariffId, List<MessageContent> description, String currency, TariffEnergy energy, Date validFrom, TariffTime chargingTime, TariffTime idleTime, TariffFixed fixedFee, TariffTime reservationTime, TariffFixed reservationFixed, Price minCost, Price maxCost, CustomData customData) {
-        super();
-        this.tariffId = tariffId;
-        this.description = description;
-        this.currency = currency;
-        this.energy = energy;
-        this.validFrom = validFrom;
-        this.chargingTime = chargingTime;
-        this.idleTime = idleTime;
-        this.fixedFee = fixedFee;
-        this.reservationTime = reservationTime;
-        this.reservationFixed = reservationFixed;
-        this.minCost = minCost;
-        this.maxCost = maxCost;
-        this.customData = customData;
-    }
 
-    /**
-     * Unique id of tariff
-     * <p>
-     * (Required)
-     */
     public String getTariffId() {
         return tariffId;
     }
 
-    /**
-     * Unique id of tariff
-     * <p>
-     * (Required)
-     */
+
     public void setTariffId(String tariffId) {
         this.tariffId = tariffId;
     }
@@ -135,76 +129,52 @@ public class Tariff implements JsonInterface {
         this.description = description;
     }
 
-    /**
-     * Currency code according to ISO 4217
-     * <p>
-     * (Required)
-     */
+
     public String getCurrency() {
         return currency;
     }
 
-    /**
-     * Currency code according to ISO 4217
-     * <p>
-     * (Required)
-     */
+
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
-    /**
-     * Price elements and tax for energy
-     */
+
     public TariffEnergy getEnergy() {
         return energy;
     }
 
-    /**
-     * Price elements and tax for energy
-     */
+
     public void setEnergy(TariffEnergy energy) {
         this.energy = energy;
     }
 
-    /**
-     * Time when this tariff becomes active. When absent, it is immediately active.
-     */
+
     public Date getValidFrom() {
         return validFrom;
     }
 
-    /**
-     * Time when this tariff becomes active. When absent, it is immediately active.
-     */
+
     public void setValidFrom(Date validFrom) {
         this.validFrom = validFrom;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getChargingTime() {
         return chargingTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setChargingTime(TariffTime chargingTime) {
         this.chargingTime = chargingTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getIdleTime() {
         return idleTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setIdleTime(TariffTime idleTime) {
         this.idleTime = idleTime;
     }
@@ -217,16 +187,12 @@ public class Tariff implements JsonInterface {
         this.fixedFee = fixedFee;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public TariffTime getReservationTime() {
         return reservationTime;
     }
 
-    /**
-     * Price elements and tax for time
-     */
+
     public void setReservationTime(TariffTime reservationTime) {
         this.reservationTime = reservationTime;
     }
@@ -239,44 +205,32 @@ public class Tariff implements JsonInterface {
         this.reservationFixed = reservationFixed;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public Price getMinCost() {
         return minCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public void setMinCost(Price minCost) {
         this.minCost = minCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public Price getMaxCost() {
         return maxCost;
     }
 
-    /**
-     * Price with and without tax. At least one of _exclTax_, _inclTax_ must be present.
-     */
+
     public void setMaxCost(Price maxCost) {
         this.maxCost = maxCost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -289,18 +243,49 @@ public class Tariff implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("tariffId", tariffId);
-        json.addProperty("currency", currency);
-        json.add("energy", energy.toJsonObject());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.add("chargingTime", chargingTime.toJsonObject());
-        json.add("idleTime", idleTime.toJsonObject());
-        json.add("fixedFee", fixedFee.toJsonObject());
-        json.add("reservationTime", reservationTime.toJsonObject());
-        json.add("reservationFixed", reservationFixed.toJsonObject());
-        json.add("minCost", minCost.toJsonObject());
-        json.add("maxCost", maxCost.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("tariffId", getTariffId());
+
+        if (getDescription() != null) {
+            JsonArray descriptionArray = new JsonArray();
+            for (MessageContent item : getDescription()) {
+                descriptionArray.add(item.toJsonObject());
+            }
+            json.add("description", descriptionArray);
+        }
+        json.addProperty("currency", getCurrency());
+
+        if (getEnergy() != null) {
+            json.add("energy", getEnergy().toJsonObject());
+        }
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getChargingTime() != null) {
+            json.add("chargingTime", getChargingTime().toJsonObject());
+        }
+        if (getIdleTime() != null) {
+            json.add("idleTime", getIdleTime().toJsonObject());
+        }
+        if (getFixedFee() != null) {
+            json.add("fixedFee", getFixedFee().toJsonObject());
+        }
+        if (getReservationTime() != null) {
+            json.add("reservationTime", getReservationTime().toJsonObject());
+        }
+        if (getReservationFixed() != null) {
+            json.add("reservationFixed", getReservationFixed().toJsonObject());
+        }
+        if (getMinCost() != null) {
+            json.add("minCost", getMinCost().toJsonObject());
+        }
+        if (getMaxCost() != null) {
+            json.add("maxCost", getMaxCost().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -313,67 +298,76 @@ public class Tariff implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("tariffId")) {
-            this.tariffId = jsonObject.get("tariffId").getAsString();
+            setTariffId(jsonObject.get("tariffId").getAsString());
+        }
+
+        if (jsonObject.has("description")) {
+            setDescription(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("description");
+            for (JsonElement el : arr) {
+                MessageContent item = new MessageContent();
+                item.fromJsonObject(el.getAsJsonObject());
+                getDescription().add(item);
+            }
         }
 
         if (jsonObject.has("currency")) {
-            this.currency = jsonObject.get("currency").getAsString();
+            setCurrency(jsonObject.get("currency").getAsString());
         }
 
         if (jsonObject.has("energy")) {
-            this.energy = new TariffEnergy();
-            this.energy.fromJsonObject(jsonObject.getAsJsonObject("energy"));
+            setEnergy(new TariffEnergy());
+            getEnergy().fromJsonObject(jsonObject.getAsJsonObject("energy"));
         }
 
         if (jsonObject.has("validFrom")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+                setValidFrom(dateFormat.parse(jsonObject.get("validFrom").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validFrom" + e);
             }
         }
 
         if (jsonObject.has("chargingTime")) {
-            this.chargingTime = new TariffTime();
-            this.chargingTime.fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
+            setChargingTime(new TariffTime());
+            getChargingTime().fromJsonObject(jsonObject.getAsJsonObject("chargingTime"));
         }
 
         if (jsonObject.has("idleTime")) {
-            this.idleTime = new TariffTime();
-            this.idleTime.fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
+            setIdleTime(new TariffTime());
+            getIdleTime().fromJsonObject(jsonObject.getAsJsonObject("idleTime"));
         }
 
         if (jsonObject.has("fixedFee")) {
-            this.fixedFee = new TariffFixed();
-            this.fixedFee.fromJsonObject(jsonObject.getAsJsonObject("fixedFee"));
+            setFixedFee(new TariffFixed());
+            getFixedFee().fromJsonObject(jsonObject.getAsJsonObject("fixedFee"));
         }
 
         if (jsonObject.has("reservationTime")) {
-            this.reservationTime = new TariffTime();
-            this.reservationTime.fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
+            setReservationTime(new TariffTime());
+            getReservationTime().fromJsonObject(jsonObject.getAsJsonObject("reservationTime"));
         }
 
         if (jsonObject.has("reservationFixed")) {
-            this.reservationFixed = new TariffFixed();
-            this.reservationFixed.fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
+            setReservationFixed(new TariffFixed());
+            getReservationFixed().fromJsonObject(jsonObject.getAsJsonObject("reservationFixed"));
         }
 
         if (jsonObject.has("minCost")) {
-            this.minCost = new Price();
-            this.minCost.fromJsonObject(jsonObject.getAsJsonObject("minCost"));
+            setMinCost(new Price());
+            getMinCost().fromJsonObject(jsonObject.getAsJsonObject("minCost"));
         }
 
         if (jsonObject.has("maxCost")) {
-            this.maxCost = new Price();
-            this.maxCost.fromJsonObject(jsonObject.getAsJsonObject("maxCost"));
+            setMaxCost(new Price());
+            getMaxCost().fromJsonObject(jsonObject.getAsJsonObject("maxCost"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -383,37 +377,37 @@ public class Tariff implements JsonInterface {
         if (!(obj instanceof Tariff))
             return false;
         Tariff that = (Tariff) obj;
-        return Objects.equals(this.chargingTime, that.chargingTime)
-                && Objects.equals(this.reservationTime, that.reservationTime)
-                && Objects.equals(this.description, that.description)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.validFrom, that.validFrom)
-                && Objects.equals(this.idleTime, that.idleTime)
-                && Objects.equals(this.reservationFixed, that.reservationFixed)
-                && Objects.equals(this.maxCost, that.maxCost)
-                && Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.fixedFee, that.fixedFee)
-                && Objects.equals(this.minCost, that.minCost)
-                && Objects.equals(this.energy, that.energy);
+        return Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getDescription(), that.getDescription())
+                && Objects.equals(getCurrency(), that.getCurrency())
+                && Objects.equals(getEnergy(), that.getEnergy())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getChargingTime(), that.getChargingTime())
+                && Objects.equals(getIdleTime(), that.getIdleTime())
+                && Objects.equals(getFixedFee(), that.getFixedFee())
+                && Objects.equals(getReservationTime(), that.getReservationTime())
+                && Objects.equals(getReservationFixed(), that.getReservationFixed())
+                && Objects.equals(getMinCost(), that.getMinCost())
+                && Objects.equals(getMaxCost(), that.getMaxCost())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.chargingTime != null ? this.chargingTime.hashCode() : 0);
-        result = 31 * result + (this.reservationTime != null ? this.reservationTime.hashCode() : 0);
-        result = 31 * result + (this.description != null ? this.description.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.validFrom != null ? this.validFrom.hashCode() : 0);
-        result = 31 * result + (this.idleTime != null ? this.idleTime.hashCode() : 0);
-        result = 31 * result + (this.reservationFixed != null ? this.reservationFixed.hashCode() : 0);
-        result = 31 * result + (this.maxCost != null ? this.maxCost.hashCode() : 0);
-        result = 31 * result + (this.currency != null ? this.currency.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.fixedFee != null ? this.fixedFee.hashCode() : 0);
-        result = 31 * result + (this.minCost != null ? this.minCost.hashCode() : 0);
-        result = 31 * result + (this.energy != null ? this.energy.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTariffId(),
+                getDescription(),
+                getCurrency(),
+                getEnergy(),
+                getValidFrom(),
+                getChargingTime(),
+                getIdleTime(),
+                getFixedFee(),
+                getReservationTime(),
+                getReservationFixed(),
+                getMinCost(),
+                getMaxCost(),
+                getCustomData()
+        );
     }
 }

@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ComponentVariable;
@@ -10,49 +12,43 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetMonitoringReportRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class GetMonitoringReportRequest implements JsonInterface {
 
+    /**
+     * This field specifies the components and variables for which a monitoring report is requested.
+     */
+    @Optional
     private List<ComponentVariable> componentVariable;
+
     /**
      * The Id of the request.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
      * This field contains criteria for components for which a monitoring report is requested
      */
     @Optional
     private List<MonitoringCriterionEnum> monitoringCriteria;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetMonitoringReportRequest() {
     }
 
-    /**
-     * @param monitoringCriteria This field contains criteria for components for which a monitoring report is requested
-     *                           .
-     * @param requestId          The Id of the request.
-     *                           .
-     */
-    public GetMonitoringReportRequest(List<ComponentVariable> componentVariable, Integer requestId, List<MonitoringCriterionEnum> monitoringCriteria, CustomData customData) {
-        super();
-        this.componentVariable = componentVariable;
-        this.requestId = requestId;
-        this.monitoringCriteria = monitoringCriteria;
-        this.customData = customData;
-    }
 
     public List<ComponentVariable> getComponentVariable() {
         return componentVariable;
@@ -62,48 +58,32 @@ public class GetMonitoringReportRequest implements JsonInterface {
         this.componentVariable = componentVariable;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This field contains criteria for components for which a monitoring report is requested
-     */
+
     public List<MonitoringCriterionEnum> getMonitoringCriteria() {
         return monitoringCriteria;
     }
 
-    /**
-     * This field contains criteria for components for which a monitoring report is requested
-     */
+
     public void setMonitoringCriteria(List<MonitoringCriterionEnum> monitoringCriteria) {
         this.monitoringCriteria = monitoringCriteria;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -116,8 +96,27 @@ public class GetMonitoringReportRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getComponentVariable() != null) {
+            JsonArray componentVariableArray = new JsonArray();
+            for (ComponentVariable item : getComponentVariable()) {
+                componentVariableArray.add(item.toJsonObject());
+            }
+            json.add("componentVariable", componentVariableArray);
+        }
+        json.addProperty("requestId", getRequestId());
+
+        if (getMonitoringCriteria() != null) {
+            JsonArray monitoringCriteriaArray = new JsonArray();
+            for (MonitoringCriterionEnum item : getMonitoringCriteria()) {
+                monitoringCriteriaArray.add(item.toString());
+            }
+            json.add("monitoringCriteria", monitoringCriteriaArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -129,15 +128,32 @@ public class GetMonitoringReportRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("componentVariable")) {
+            setComponentVariable(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("componentVariable");
+            for (JsonElement el : arr) {
+                ComponentVariable item = new ComponentVariable();
+                item.fromJsonObject(el.getAsJsonObject());
+                getComponentVariable().add(item);
+            }
+        }
+
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
+        }
+
+        if (jsonObject.has("monitoringCriteria")) {
+            setMonitoringCriteria(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("monitoringCriteria");
+            for (JsonElement el : arr) {
+                getMonitoringCriteria().add(MonitoringCriterionEnum.valueOf(el.getAsString()));
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -147,19 +163,19 @@ public class GetMonitoringReportRequest implements JsonInterface {
         if (!(obj instanceof GetMonitoringReportRequest))
             return false;
         GetMonitoringReportRequest that = (GetMonitoringReportRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.monitoringCriteria, that.monitoringCriteria)
-                && Objects.equals(this.componentVariable, that.componentVariable)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getComponentVariable(), that.getComponentVariable())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getMonitoringCriteria(), that.getMonitoringCriteria())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.monitoringCriteria != null ? this.monitoringCriteria.hashCode() : 0);
-        result = 31 * result + (this.componentVariable != null ? this.componentVariable.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getComponentVariable(),
+                getRequestId(),
+                getMonitoringCriteria(),
+                getCustomData()
+        );
     }
 }

@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.CertificateStatusSourceEnum;
@@ -8,114 +10,79 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Data necessary to request the revocation status of a certificate
+ */
 public class CertificateStatusRequestInfo implements JsonInterface {
 
     /**
-     * (Required)
+     * Hash data of certificate.
      */
     @Required
     private CertificateHashData certificateHashData;
+
     /**
      * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateStatusSourceEnum source;
+
     /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
+     * URL(s) of source.
      */
     @Required
     private List<String> urls;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateStatusRequestInfo() {
     }
 
-    /**
-     * @param urls URL(s) of _source_.
-     *             .
-     */
-    public CertificateStatusRequestInfo(CertificateHashData certificateHashData, CertificateStatusSourceEnum source, List<String> urls, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.source = source;
-        this.urls = urls;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusSourceEnum getSource() {
         return source;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public void setSource(CertificateStatusSourceEnum source) {
         this.source = source;
     }
 
-    /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
-     */
+
     public List<String> getUrls() {
         return urls;
     }
 
-    /**
-     * URL(s) of _source_.
-     * <p>
-     * (Required)
-     */
+
     public void setUrls(List<String> urls) {
         this.urls = urls;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -128,9 +95,21 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.addProperty("source", source.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        json.addProperty("source", getSource().toString());
+
+        JsonArray urlsArray = new JsonArray();
+        for (String item : getUrls()) {
+            urlsArray.add(item);
+        }
+        json.add("urls", urlsArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -143,19 +122,26 @@ public class CertificateStatusRequestInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("source")) {
-            this.source = CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString());
+            setSource(CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString()));
+        }
+
+        if (jsonObject.has("urls")) {
+            setUrls(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("urls");
+            for (JsonElement el : arr) {
+                getUrls().add(el.getAsString());
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -165,19 +151,19 @@ public class CertificateStatusRequestInfo implements JsonInterface {
         if (!(obj instanceof CertificateStatusRequestInfo))
             return false;
         CertificateStatusRequestInfo that = (CertificateStatusRequestInfo) obj;
-        return Objects.equals(this.urls, that.urls)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData)
-                && Objects.equals(this.source, that.source);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getSource(), that.getSource())
+                && Objects.equals(getUrls(), that.getUrls())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.urls != null ? this.urls.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        result = 31 * result + (this.source != null ? this.source.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateHashData(),
+                getSource(),
+                getUrls(),
+                getCustomData()
+        );
     }
 }

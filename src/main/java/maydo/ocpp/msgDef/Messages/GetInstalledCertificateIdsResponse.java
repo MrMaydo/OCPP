@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CertificateHashDataChain;
@@ -11,73 +13,59 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Response to a GetInstalledCertificateIDsRequest.
+ */
 public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
+     * Charging Station indicates if it can process the request
      */
     @Required
     private GetInstalledCertificateStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
+    /**
+     * The Charging Station includes the Certificate information for each available certificate.
+     */
     @Optional
     private List<CertificateHashDataChain> certificateHashDataChain;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetInstalledCertificateIdsResponse() {
     }
 
-    public GetInstalledCertificateIdsResponse(GetInstalledCertificateStatusEnum status, StatusInfo statusInfo, List<CertificateHashDataChain> certificateHashDataChain, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.certificateHashDataChain = certificateHashDataChain;
-        this.customData = customData;
-    }
 
-    /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
-     */
     public GetInstalledCertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Charging Station indicates if it can process the request.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(GetInstalledCertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
@@ -90,16 +78,12 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
         this.certificateHashDataChain = certificateHashDataChain;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -112,9 +96,23 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getCertificateHashDataChain() != null) {
+            JsonArray certificateHashDataChainArray = new JsonArray();
+            for (CertificateHashDataChain item : getCertificateHashDataChain()) {
+                certificateHashDataChainArray.add(item.toJsonObject());
+            }
+            json.add("certificateHashDataChain", certificateHashDataChainArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -127,19 +125,28 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = GetInstalledCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(GetInstalledCertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("certificateHashDataChain")) {
+            setCertificateHashDataChain(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("certificateHashDataChain");
+            for (JsonElement el : arr) {
+                CertificateHashDataChain item = new CertificateHashDataChain();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCertificateHashDataChain().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -149,19 +156,19 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
         if (!(obj instanceof GetInstalledCertificateIdsResponse))
             return false;
         GetInstalledCertificateIdsResponse that = (GetInstalledCertificateIdsResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.certificateHashDataChain, that.certificateHashDataChain)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCertificateHashDataChain(), that.getCertificateHashDataChain())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.certificateHashDataChain != null ? this.certificateHashDataChain.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getCertificateHashDataChain(),
+                getCustomData()
+        );
     }
 }

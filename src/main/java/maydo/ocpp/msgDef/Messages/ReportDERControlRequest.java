@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.*;
@@ -8,72 +10,85 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Reports DER controls requested by a GetDERControlRequest message. The report may consist of more than one message.
+ */
 public class ReportDERControlRequest implements JsonInterface {
 
-    private List<DERCurveGet> curve;
-    @Optional
-    private List<EnterServiceGet> enterService;
-    @Optional
-    private List<FixedPFGet> fixedPFAbsorb;
-    @Optional
-    private List<FixedPFGet> fixedPFInject;
-    @Optional
-    private List<FixedVarGet> fixedVar;
-    @Optional
-    private List<FreqDroopGet> freqDroop;
-    @Optional
-    private List<GradientGet> gradient;
-    @Optional
-    private List<LimitMaxDischargeGet> limitMaxDischarge;
     /**
      * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
+     * Voltage/Frequency/Active/Reactive curve
+     */
+    @Optional
+    private List<DERCurveGet> curve;
+
+    /**
+     * Enter service after trip parameters
+     */
+    @Optional
+    private List<EnterServiceGet> enterService;
+
+    /**
+     * Fixed power factor setpoint when absorbing active power
+     */
+    @Optional
+    private List<FixedPFGet> fixedPFAbsorb;
+
+    /**
+     * Fixed power factor setpoint when injecting active power
+     */
+    @Optional
+    private List<FixedPFGet> fixedPFInject;
+
+    /**
+     * Fixed reactive power setting
+     */
+    @Optional
+    private List<FixedVarGet> fixedVar;
+
+    /**
+     * Frequency-Watt parameterized mode
+     */
+    @Optional
+    private List<FreqDroopGet> freqDroop;
+
+    /**
+     * Gradient settings
+     */
+    @Optional
+    private List<GradientGet> gradient;
+
+    /**
+     * Limit maximum discharge as percentage of rated capability
+     */
+    @Optional
+    private List<LimitMaxDischargeGet> limitMaxDischarge;
+
+    /**
+     * To Be Continued. Default value when omitted: false. False indicates that there are no further messages as part of this report.
      */
     @Optional
     private Boolean tbc;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ReportDERControlRequest() {
     }
 
-    /**
-     * @param tbc       To Be Continued. Default value when omitted: false. +
-     *                  False indicates that there are no further messages as part of this report.
-     *                  .
-     * @param requestId RequestId from GetDERControlRequest.
-     *                  .
-     */
-    public ReportDERControlRequest(List<DERCurveGet> curve, List<EnterServiceGet> enterService, List<FixedPFGet> fixedPFAbsorb, List<FixedPFGet> fixedPFInject, List<FixedVarGet> fixedVar, List<FreqDroopGet> freqDroop, List<GradientGet> gradient, List<LimitMaxDischargeGet> limitMaxDischarge, Integer requestId, Boolean tbc, CustomData customData) {
-        super();
-        this.curve = curve;
-        this.enterService = enterService;
-        this.fixedPFAbsorb = fixedPFAbsorb;
-        this.fixedPFInject = fixedPFInject;
-        this.fixedVar = fixedVar;
-        this.freqDroop = freqDroop;
-        this.gradient = gradient;
-        this.limitMaxDischarge = limitMaxDischarge;
-        this.requestId = requestId;
-        this.tbc = tbc;
-        this.customData = customData;
-    }
 
     public List<DERCurveGet> getCurve() {
         return curve;
@@ -139,50 +154,32 @@ public class ReportDERControlRequest implements JsonInterface {
         this.limitMaxDischarge = limitMaxDischarge;
     }
 
-    /**
-     * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * RequestId from GetDERControlRequest.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
-     */
+
     public Boolean getTbc() {
         return tbc;
     }
 
-    /**
-     * To Be Continued. Default value when omitted: false. +
-     * False indicates that there are no further messages as part of this report.
-     */
+
     public void setTbc(Boolean tbc) {
         this.tbc = tbc;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -195,9 +192,72 @@ public class ReportDERControlRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("requestId", requestId);
-        json.addProperty("tbc", tbc);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCurve() != null) {
+            JsonArray curveArray = new JsonArray();
+            for (DERCurveGet item : getCurve()) {
+                curveArray.add(item.toJsonObject());
+            }
+            json.add("curve", curveArray);
+        }
+        if (getEnterService() != null) {
+            JsonArray enterServiceArray = new JsonArray();
+            for (EnterServiceGet item : getEnterService()) {
+                enterServiceArray.add(item.toJsonObject());
+            }
+            json.add("enterService", enterServiceArray);
+        }
+        if (getFixedPFAbsorb() != null) {
+            JsonArray fixedPFAbsorbArray = new JsonArray();
+            for (FixedPFGet item : getFixedPFAbsorb()) {
+                fixedPFAbsorbArray.add(item.toJsonObject());
+            }
+            json.add("fixedPFAbsorb", fixedPFAbsorbArray);
+        }
+        if (getFixedPFInject() != null) {
+            JsonArray fixedPFInjectArray = new JsonArray();
+            for (FixedPFGet item : getFixedPFInject()) {
+                fixedPFInjectArray.add(item.toJsonObject());
+            }
+            json.add("fixedPFInject", fixedPFInjectArray);
+        }
+        if (getFixedVar() != null) {
+            JsonArray fixedVarArray = new JsonArray();
+            for (FixedVarGet item : getFixedVar()) {
+                fixedVarArray.add(item.toJsonObject());
+            }
+            json.add("fixedVar", fixedVarArray);
+        }
+        if (getFreqDroop() != null) {
+            JsonArray freqDroopArray = new JsonArray();
+            for (FreqDroopGet item : getFreqDroop()) {
+                freqDroopArray.add(item.toJsonObject());
+            }
+            json.add("freqDroop", freqDroopArray);
+        }
+        if (getGradient() != null) {
+            JsonArray gradientArray = new JsonArray();
+            for (GradientGet item : getGradient()) {
+                gradientArray.add(item.toJsonObject());
+            }
+            json.add("gradient", gradientArray);
+        }
+        if (getLimitMaxDischarge() != null) {
+            JsonArray limitMaxDischargeArray = new JsonArray();
+            for (LimitMaxDischargeGet item : getLimitMaxDischarge()) {
+                limitMaxDischargeArray.add(item.toJsonObject());
+            }
+            json.add("limitMaxDischarge", limitMaxDischargeArray);
+        }
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -210,18 +270,97 @@ public class ReportDERControlRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
+        }
+
+        if (jsonObject.has("curve")) {
+            setCurve(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("curve");
+            for (JsonElement el : arr) {
+                DERCurveGet item = new DERCurveGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCurve().add(item);
+            }
+        }
+
+        if (jsonObject.has("enterService")) {
+            setEnterService(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("enterService");
+            for (JsonElement el : arr) {
+                EnterServiceGet item = new EnterServiceGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEnterService().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedPFAbsorb")) {
+            setFixedPFAbsorb(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedPFAbsorb");
+            for (JsonElement el : arr) {
+                FixedPFGet item = new FixedPFGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedPFAbsorb().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedPFInject")) {
+            setFixedPFInject(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedPFInject");
+            for (JsonElement el : arr) {
+                FixedPFGet item = new FixedPFGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedPFInject().add(item);
+            }
+        }
+
+        if (jsonObject.has("fixedVar")) {
+            setFixedVar(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("fixedVar");
+            for (JsonElement el : arr) {
+                FixedVarGet item = new FixedVarGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFixedVar().add(item);
+            }
+        }
+
+        if (jsonObject.has("freqDroop")) {
+            setFreqDroop(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("freqDroop");
+            for (JsonElement el : arr) {
+                FreqDroopGet item = new FreqDroopGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getFreqDroop().add(item);
+            }
+        }
+
+        if (jsonObject.has("gradient")) {
+            setGradient(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("gradient");
+            for (JsonElement el : arr) {
+                GradientGet item = new GradientGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getGradient().add(item);
+            }
+        }
+
+        if (jsonObject.has("limitMaxDischarge")) {
+            setLimitMaxDischarge(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("limitMaxDischarge");
+            for (JsonElement el : arr) {
+                LimitMaxDischargeGet item = new LimitMaxDischargeGet();
+                item.fromJsonObject(el.getAsJsonObject());
+                getLimitMaxDischarge().add(item);
+            }
         }
 
         if (jsonObject.has("tbc")) {
-            this.tbc = jsonObject.get("tbc").getAsBoolean();
+            setTbc(jsonObject.get("tbc").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -231,33 +370,33 @@ public class ReportDERControlRequest implements JsonInterface {
         if (!(obj instanceof ReportDERControlRequest))
             return false;
         ReportDERControlRequest that = (ReportDERControlRequest) obj;
-        return Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.curve, that.curve)
-                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb)
-                && Objects.equals(this.fixedPFInject, that.fixedPFInject)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.gradient, that.gradient)
-                && Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
-                && Objects.equals(this.fixedVar, that.fixedVar)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.freqDroop, that.freqDroop);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCurve(), that.getCurve())
+                && Objects.equals(getEnterService(), that.getEnterService())
+                && Objects.equals(getFixedPFAbsorb(), that.getFixedPFAbsorb())
+                && Objects.equals(getFixedPFInject(), that.getFixedPFInject())
+                && Objects.equals(getFixedVar(), that.getFixedVar())
+                && Objects.equals(getFreqDroop(), that.getFreqDroop())
+                && Objects.equals(getGradient(), that.getGradient())
+                && Objects.equals(getLimitMaxDischarge(), that.getLimitMaxDischarge())
+                && Objects.equals(getTbc(), that.getTbc())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
-        result = 31 * result + (this.curve != null ? this.curve.hashCode() : 0);
-        result = 31 * result + (this.fixedPFAbsorb != null ? this.fixedPFAbsorb.hashCode() : 0);
-        result = 31 * result + (this.fixedPFInject != null ? this.fixedPFInject.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.gradient != null ? this.gradient.hashCode() : 0);
-        result = 31 * result + (this.enterService != null ? this.enterService.hashCode() : 0);
-        result = 31 * result + (this.limitMaxDischarge != null ? this.limitMaxDischarge.hashCode() : 0);
-        result = 31 * result + (this.fixedVar != null ? this.fixedVar.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.freqDroop != null ? this.freqDroop.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRequestId(),
+                getCurve(),
+                getEnterService(),
+                getFixedPFAbsorb(),
+                getFixedPFInject(),
+                getFixedVar(),
+                getFreqDroop(),
+                getGradient(),
+                getLimitMaxDischarge(),
+                getTbc(),
+                getCustomData()
+        );
     }
 }

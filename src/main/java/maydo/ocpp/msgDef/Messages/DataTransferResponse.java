@@ -12,105 +12,76 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the DataTransferResponse PDU sent by
+ * the Charging Station to the CSMS or vice versa in response to a DataTransferRequest.
+ */
 public class DataTransferResponse implements JsonInterface {
 
     /**
      * This indicates the success or failure of the data transfer.
-     * <p>
-     * (Required)
      */
     @Required
     private DataTransferStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Detailed status information.
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
      * Data without specified length or format, in response to request.
      */
     @Optional
-    private Object data;
+    private String data;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DataTransferResponse() {
     }
 
-    /**
-     * @param data Data without specified length or format, in response to request.
-     *             .
-     */
-    public DataTransferResponse(DataTransferStatusEnum status, StatusInfo statusInfo, Object data, CustomData customData) {
-        super();
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.data = data;
-        this.customData = customData;
-    }
 
-    /**
-     * This indicates the success or failure of the data transfer.
-     * <p>
-     * (Required)
-     */
     public DataTransferStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This indicates the success or failure of the data transfer.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(DataTransferStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * Data without specified length or format, in response to request.
-     */
-    public Object getData() {
+
+    public String getData() {
         return data;
     }
 
-    /**
-     * Data without specified length or format, in response to request.
-     */
-    public void setData(Object data) {
+
+    public void setData(String data) {
         this.data = data;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -123,10 +94,19 @@ public class DataTransferResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.addProperty("data", data.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getData() != null) {
+            json.addProperty("data", getData());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -139,21 +119,21 @@ public class DataTransferResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = DataTransferStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(DataTransferStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("data")) {
-            this.data = jsonObject.getAsJsonObject("data").getAsString();
+            setData(jsonObject.get("data").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
     }
 
@@ -164,19 +144,19 @@ public class DataTransferResponse implements JsonInterface {
         if (!(obj instanceof DataTransferResponse))
             return false;
         DataTransferResponse that = (DataTransferResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.data, that.data)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getData(), that.getData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.data != null ? this.data.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getData(),
+                getCustomData()
+        );
     }
 }

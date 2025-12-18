@@ -9,90 +9,61 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Element providing more information about the status.
  */
 public class StatusInfo implements JsonInterface {
 
     /**
-     * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * <p>
-     * (Required)
+     * A predefined code for the reason why the status is returned in this response.
+     * The string is case-insensitive.
      */
     @Required
     private String reasonCode;
+
     /**
      * Additional text to provide detailed information.
      */
     @Optional
     private String additionalInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public StatusInfo() {
     }
 
-    /**
-     * @param additionalInfo Additional text to provide detailed information.
-     *                       .
-     * @param reasonCode     A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     *                       .
-     */
-    public StatusInfo(String reasonCode, String additionalInfo, CustomData customData) {
-        super();
-        this.reasonCode = reasonCode;
-        this.additionalInfo = additionalInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * <p>
-     * (Required)
-     */
     public String getReasonCode() {
         return reasonCode;
     }
 
-    /**
-     * A predefined code for the reason why the status is returned in this response. The string is case-insensitive.
-     * <p>
-     * (Required)
-     */
+
     public void setReasonCode(String reasonCode) {
         this.reasonCode = reasonCode;
     }
 
-    /**
-     * Additional text to provide detailed information.
-     */
+
     public String getAdditionalInfo() {
         return additionalInfo;
     }
 
-    /**
-     * Additional text to provide detailed information.
-     */
+
     public void setAdditionalInfo(String additionalInfo) {
         this.additionalInfo = additionalInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -105,9 +76,16 @@ public class StatusInfo implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("reasonCode", reasonCode);
-        json.addProperty("additionalInfo", additionalInfo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("reasonCode", getReasonCode());
+
+        if (getAdditionalInfo() != null) {
+            json.addProperty("additionalInfo", getAdditionalInfo());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -120,18 +98,17 @@ public class StatusInfo implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("reasonCode")) {
-            this.reasonCode = jsonObject.get("reasonCode").getAsString();
+            setReasonCode(jsonObject.get("reasonCode").getAsString());
         }
 
         if (jsonObject.has("additionalInfo")) {
-            this.additionalInfo = jsonObject.get("additionalInfo").getAsString();
+            setAdditionalInfo(jsonObject.get("additionalInfo").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -141,17 +118,17 @@ public class StatusInfo implements JsonInterface {
         if (!(obj instanceof StatusInfo))
             return false;
         StatusInfo that = (StatusInfo) obj;
-        return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reasonCode, that.reasonCode);
+        return Objects.equals(getReasonCode(), that.getReasonCode())
+                && Objects.equals(getAdditionalInfo(), that.getAdditionalInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.additionalInfo != null ? this.additionalInfo.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.reasonCode != null ? this.reasonCode.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getReasonCode(),
+                getAdditionalInfo(),
+                getCustomData()
+        );
     }
 }

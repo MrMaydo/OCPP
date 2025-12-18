@@ -1,78 +1,70 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SalesTariffEntry implements JsonInterface {
 
     /**
-     * (Required)
+     * Defines the time interval the SalesTariffEntry is valid for, based upon relative times.
      */
     @Required
     private RelativeTimeInterval relativeTimeInterval;
+
     /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
+     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels).
+     * Small values for the EPriceLevel represent a cheaper TariffEntry.
+     * Large values for the EPriceLevel represent a more expensive TariffEntry.
      */
     @Optional
     private Integer ePriceLevel;
+
+    /**
+     * Defines additional means for further relative price information and/or alternative costs.
+     */
     @Optional
     private List<ConsumptionCost> consumptionCost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SalesTariffEntry() {
     }
 
-    /**
-     * @param ePriceLevel Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     *                    .
-     */
-    public SalesTariffEntry(RelativeTimeInterval relativeTimeInterval, Integer ePriceLevel, List<ConsumptionCost> consumptionCost, CustomData customData) {
-        super();
-        this.relativeTimeInterval = relativeTimeInterval;
-        this.ePriceLevel = ePriceLevel;
-        this.consumptionCost = consumptionCost;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public RelativeTimeInterval getRelativeTimeInterval() {
         return relativeTimeInterval;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setRelativeTimeInterval(RelativeTimeInterval relativeTimeInterval) {
         this.relativeTimeInterval = relativeTimeInterval;
     }
 
-    /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
-    public Integer getePriceLevel() {
+
+    public Integer getEPriceLevel() {
         return ePriceLevel;
     }
 
-    /**
-     * Defines the price level of this SalesTariffEntry (referring to NumEPriceLevels). Small values for the EPriceLevel represent a cheaper TariffEntry. Large values for the EPriceLevel represent a more expensive TariffEntry.
-     */
-    public void setePriceLevel(Integer ePriceLevel) {
+
+    public void setEPriceLevel(Integer ePriceLevel) {
         this.ePriceLevel = ePriceLevel;
     }
 
@@ -84,16 +76,12 @@ public class SalesTariffEntry implements JsonInterface {
         this.consumptionCost = consumptionCost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -106,9 +94,23 @@ public class SalesTariffEntry implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("relativeTimeInterval", relativeTimeInterval.toJsonObject());
-        json.addProperty("ePriceLevel", ePriceLevel);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("relativeTimeInterval", getRelativeTimeInterval().toJsonObject());
+
+        if (getEPriceLevel() != null) {
+            json.addProperty("ePriceLevel", getEPriceLevel());
+        }
+        if (getConsumptionCost() != null) {
+            JsonArray consumptionCostArray = new JsonArray();
+            for (ConsumptionCost item : getConsumptionCost()) {
+                consumptionCostArray.add(item.toJsonObject());
+            }
+            json.add("consumptionCost", consumptionCostArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -121,19 +123,28 @@ public class SalesTariffEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("relativeTimeInterval")) {
-            this.relativeTimeInterval = new RelativeTimeInterval();
-            this.relativeTimeInterval.fromJsonObject(jsonObject.getAsJsonObject("relativeTimeInterval"));
+            setRelativeTimeInterval(new RelativeTimeInterval());
+            getRelativeTimeInterval().fromJsonObject(jsonObject.getAsJsonObject("relativeTimeInterval"));
         }
 
         if (jsonObject.has("ePriceLevel")) {
-            this.ePriceLevel = jsonObject.get("ePriceLevel").getAsInt();
+            setEPriceLevel(jsonObject.get("ePriceLevel").getAsInt());
+        }
+
+        if (jsonObject.has("consumptionCost")) {
+            setConsumptionCost(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("consumptionCost");
+            for (JsonElement el : arr) {
+                ConsumptionCost item = new ConsumptionCost();
+                item.fromJsonObject(el.getAsJsonObject());
+                getConsumptionCost().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -143,19 +154,19 @@ public class SalesTariffEntry implements JsonInterface {
         if (!(obj instanceof SalesTariffEntry))
             return false;
         SalesTariffEntry that = (SalesTariffEntry) obj;
-        return Objects.equals(this.consumptionCost, that.consumptionCost)
-                && Objects.equals(this.relativeTimeInterval, that.relativeTimeInterval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.ePriceLevel, that.ePriceLevel);
+        return Objects.equals(getRelativeTimeInterval(), that.getRelativeTimeInterval())
+                && Objects.equals(getEPriceLevel(), that.getEPriceLevel())
+                && Objects.equals(getConsumptionCost(), that.getConsumptionCost())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.consumptionCost != null ? this.consumptionCost.hashCode() : 0);
-        result = 31 * result + (this.relativeTimeInterval != null ? this.relativeTimeInterval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.ePriceLevel != null ? this.ePriceLevel.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRelativeTimeInterval(),
+                getEPriceLevel(),
+                getConsumptionCost(),
+                getCustomData()
+        );
     }
 }

@@ -9,87 +9,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class RelativeTimeInterval implements JsonInterface {
 
     /**
      * Start of the interval, in seconds from NOW.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer start;
+
     /**
      * Duration of the interval, in seconds.
      */
     @Optional
     private Integer duration;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public RelativeTimeInterval() {
     }
 
-    /**
-     * @param duration Duration of the interval, in seconds.
-     *                 .
-     * @param start    Start of the interval, in seconds from NOW.
-     *                 .
-     */
-    public RelativeTimeInterval(Integer start, Integer duration, CustomData customData) {
-        super();
-        this.start = start;
-        this.duration = duration;
-        this.customData = customData;
-    }
 
-    /**
-     * Start of the interval, in seconds from NOW.
-     * <p>
-     * (Required)
-     */
     public Integer getStart() {
         return start;
     }
 
-    /**
-     * Start of the interval, in seconds from NOW.
-     * <p>
-     * (Required)
-     */
+
     public void setStart(Integer start) {
         this.start = start;
     }
 
-    /**
-     * Duration of the interval, in seconds.
-     */
+
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * Duration of the interval, in seconds.
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -102,9 +74,16 @@ public class RelativeTimeInterval implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("start", start);
-        json.addProperty("duration", duration);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("start", getStart());
+
+        if (getDuration() != null) {
+            json.addProperty("duration", getDuration());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -117,18 +96,17 @@ public class RelativeTimeInterval implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("start")) {
-            this.start = jsonObject.get("start").getAsInt();
+            setStart(jsonObject.get("start").getAsInt());
         }
 
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsInt();
+            setDuration(jsonObject.get("duration").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -138,17 +116,17 @@ public class RelativeTimeInterval implements JsonInterface {
         if (!(obj instanceof RelativeTimeInterval))
             return false;
         RelativeTimeInterval that = (RelativeTimeInterval) obj;
-        return Objects.equals(this.start, that.start)
-                && Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getStart(), that.getStart())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.start != null ? this.start.hashCode() : 0);
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStart(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

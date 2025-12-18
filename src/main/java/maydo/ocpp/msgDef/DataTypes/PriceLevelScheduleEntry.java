@@ -9,6 +9,7 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Part of ISO 15118-20 price schedule.
  */
@@ -16,89 +17,54 @@ public class PriceLevelScheduleEntry implements JsonInterface {
 
     /**
      * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
-     * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
+     * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels).
+     * Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry.
+     * Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
      */
     @Required
     private Integer priceLevel;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PriceLevelScheduleEntry() {
     }
 
-    /**
-     * @param duration   The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     *                   .
-     * @param priceLevel Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     *                   .
-     */
-    public PriceLevelScheduleEntry(Integer duration, Integer priceLevel, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.priceLevel = priceLevel;
-        this.customData = customData;
-    }
 
-    /**
-     * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
-     */
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * The amount of seconds that define the duration of this given PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriceLevel() {
         return priceLevel;
     }
 
-    /**
-     * Defines the price level of this PriceLevelScheduleEntry (referring to NumberOfPriceLevels). Small values for the PriceLevel represent a cheaper PriceLevelScheduleEntry. Large values for the PriceLevel represent a more expensive PriceLevelScheduleEntry.
-     * <p>
-     * (Required)
-     */
+
     public void setPriceLevel(Integer priceLevel) {
         this.priceLevel = priceLevel;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -111,9 +77,15 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.addProperty("priceLevel", priceLevel);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("duration", getDuration());
+
+        json.addProperty("priceLevel", getPriceLevel());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -126,18 +98,17 @@ public class PriceLevelScheduleEntry implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsInt();
+            setDuration(jsonObject.get("duration").getAsInt());
         }
 
         if (jsonObject.has("priceLevel")) {
-            this.priceLevel = jsonObject.get("priceLevel").getAsInt();
+            setPriceLevel(jsonObject.get("priceLevel").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -147,17 +118,17 @@ public class PriceLevelScheduleEntry implements JsonInterface {
         if (!(obj instanceof PriceLevelScheduleEntry))
             return false;
         PriceLevelScheduleEntry that = (PriceLevelScheduleEntry) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceLevel, that.priceLevel);
+        return Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getPriceLevel(), that.getPriceLevel())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priceLevel != null ? this.priceLevel.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDuration(),
+                getPriceLevel(),
+                getCustomData()
+        );
     }
 }

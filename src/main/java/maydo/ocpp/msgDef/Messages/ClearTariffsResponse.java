@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ClearTariffsResult;
@@ -9,58 +11,47 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsResponse implements JsonInterface {
 
     /**
-     * (Required)
+     * Result per tariff.
      */
     @Required
     private List<ClearTariffsResult> clearTariffsResult;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsResponse() {
     }
 
-    public ClearTariffsResponse(List<ClearTariffsResult> clearTariffsResult, CustomData customData) {
-        super();
-        this.clearTariffsResult = clearTariffsResult;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<ClearTariffsResult> getClearTariffsResult() {
         return clearTariffsResult;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setClearTariffsResult(List<ClearTariffsResult> clearTariffsResult) {
         this.clearTariffsResult = clearTariffsResult;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -73,7 +64,17 @@ public class ClearTariffsResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray clearTariffsResultArray = new JsonArray();
+        for (ClearTariffsResult item : getClearTariffsResult()) {
+            clearTariffsResultArray.add(item.toJsonObject());
+        }
+        json.add("clearTariffsResult", clearTariffsResultArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -85,11 +86,20 @@ public class ClearTariffsResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("clearTariffsResult")) {
+            setClearTariffsResult(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("clearTariffsResult");
+            for (JsonElement el : arr) {
+                ClearTariffsResult item = new ClearTariffsResult();
+                item.fromJsonObject(el.getAsJsonObject());
+                getClearTariffsResult().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -99,15 +109,15 @@ public class ClearTariffsResponse implements JsonInterface {
         if (!(obj instanceof ClearTariffsResponse))
             return false;
         ClearTariffsResponse that = (ClearTariffsResponse) obj;
-        return Objects.equals(this.clearTariffsResult, that.clearTariffsResult)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getClearTariffsResult(), that.getClearTariffsResult())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.clearTariffsResult != null ? this.clearTariffsResult.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getClearTariffsResult(),
+                getCustomData()
+        );
     }
 }

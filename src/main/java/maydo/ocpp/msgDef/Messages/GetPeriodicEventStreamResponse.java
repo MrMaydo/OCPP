@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ConstantStreamData;
@@ -8,28 +10,29 @@ import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class GetPeriodicEventStreamResponse implements JsonInterface {
 
-    private List<ConstantStreamData> constantStreamData;
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * List of constant part of streams
+     */
+    @Optional
+    private List<ConstantStreamData> constantStreamData;
+
+    /**
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public GetPeriodicEventStreamResponse() {
-    }
 
-    public GetPeriodicEventStreamResponse(List<ConstantStreamData> constantStreamData, CustomData customData) {
-        super();
-        this.constantStreamData = constantStreamData;
-        this.customData = customData;
+    public GetPeriodicEventStreamResponse() {
     }
 
     public List<ConstantStreamData> getConstantStreamData() {
@@ -40,16 +43,12 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
         this.constantStreamData = constantStreamData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -62,7 +61,18 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        if (getConstantStreamData() != null) {
+            JsonArray constantStreamDataArray = new JsonArray();
+            for (ConstantStreamData item : getConstantStreamData()) {
+                constantStreamDataArray.add(item.toJsonObject());
+            }
+            json.add("constantStreamData", constantStreamDataArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -74,11 +84,20 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("constantStreamData")) {
+            setConstantStreamData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("constantStreamData");
+            for (JsonElement el : arr) {
+                ConstantStreamData item = new ConstantStreamData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getConstantStreamData().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -88,15 +107,15 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
         if (!(obj instanceof GetPeriodicEventStreamResponse))
             return false;
         GetPeriodicEventStreamResponse that = (GetPeriodicEventStreamResponse) obj;
-        return Objects.equals(this.constantStreamData, that.constantStreamData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getConstantStreamData(), that.getConstantStreamData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.constantStreamData != null ? this.constantStreamData.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getConstantStreamData(),
+                getCustomData()
+        );
     }
 }

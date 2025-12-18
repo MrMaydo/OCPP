@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,91 +11,66 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * (2.1) Schedule of EV energy offer.
+ */
 public class EVPowerSchedule implements JsonInterface {
 
     /**
-     * (Required)
-     */
-    @Required
-    private List<EVPowerScheduleEntry> evPowerScheduleEntries;
-    /**
      * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * List of EVPowerScheduleEntries.
+     */
+    @Required
+    private List<EVPowerScheduleEntry> evPowerScheduleEntries;
+
+    /**
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EVPowerSchedule() {
     }
 
-    /**
-     * @param timeAnchor The time that defines the starting point for the EVEnergyOffer.
-     *                   .
-     */
-    public EVPowerSchedule(List<EVPowerScheduleEntry> evPowerScheduleEntries, Date timeAnchor, CustomData customData) {
-        super();
-        this.evPowerScheduleEntries = evPowerScheduleEntries;
-        this.timeAnchor = timeAnchor;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<EVPowerScheduleEntry> getEvPowerScheduleEntries() {
         return evPowerScheduleEntries;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEvPowerScheduleEntries(List<EVPowerScheduleEntry> evPowerScheduleEntries) {
         this.evPowerScheduleEntries = evPowerScheduleEntries;
     }
 
-    /**
-     * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * The time that defines the starting point for the EVEnergyOffer.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -106,8 +83,19 @@ public class EVPowerSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        JsonArray evPowerScheduleEntriesArray = new JsonArray();
+        for (EVPowerScheduleEntry item : getEvPowerScheduleEntries()) {
+            evPowerScheduleEntriesArray.add(item.toJsonObject());
+        }
+        json.add("evPowerScheduleEntries", evPowerScheduleEntriesArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -122,17 +110,26 @@ public class EVPowerSchedule implements JsonInterface {
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("evPowerScheduleEntries")) {
+            setEvPowerScheduleEntries(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evPowerScheduleEntries");
+            for (JsonElement el : arr) {
+                EVPowerScheduleEntry item = new EVPowerScheduleEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getEvPowerScheduleEntries().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -142,17 +139,17 @@ public class EVPowerSchedule implements JsonInterface {
         if (!(obj instanceof EVPowerSchedule))
             return false;
         EVPowerSchedule that = (EVPowerSchedule) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evPowerScheduleEntries, that.evPowerScheduleEntries)
-                && Objects.equals(this.timeAnchor, that.timeAnchor);
+        return Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getEvPowerScheduleEntries(), that.getEvPowerScheduleEntries())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evPowerScheduleEntries != null ? this.evPowerScheduleEntries.hashCode() : 0);
-        result = 31 * result + (this.timeAnchor != null ? this.timeAnchor.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTimeAnchor(),
+                getEvPowerScheduleEntries(),
+                getCustomData()
+        );
     }
 }

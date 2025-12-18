@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -9,88 +11,68 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the MeterValuesRequest PDU sent by the Charging Station to the CSMS. This message might be
+ * removed in a future version of OCPP. It will be replaced by Device Management Monitoring events.
+ */
 public class MeterValuesRequest implements JsonInterface {
 
     /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
+     * This contains a number (>0) designating an EVSE of the Charging Station.
+     * ‘0’ (zero) is used to designate the main power meter.
      */
     @Required
     private Integer evseId;
+
     /**
-     * (Required)
+     * The sampled meter values with timestamps.
+     * The following Configuration Variables are used to configure which measurands are sent:
+     * <p> -  AlignedDataMeasurands </p>
+     * <p> - AlignedDataUpstreamMeasurands </p>
      */
     @Required
     private List<MeterValue> meterValue;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MeterValuesRequest() {
     }
 
-    /**
-     * @param evseId This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     *               .
-     */
-    public MeterValuesRequest(Integer evseId, List<MeterValue> meterValue, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.meterValue = meterValue;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * This contains a number (&gt;0) designating an EVSE of the Charging Station. ‘0’ (zero) is used to designate the main power meter.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<MeterValue> getMeterValue() {
         return meterValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setMeterValue(List<MeterValue> meterValue) {
         this.meterValue = meterValue;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -103,8 +85,19 @@ public class MeterValuesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        JsonArray meterValueArray = new JsonArray();
+        for (MeterValue item : getMeterValue()) {
+            meterValueArray.add(item.toJsonObject());
+        }
+        json.add("meterValue", meterValueArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -117,14 +110,23 @@ public class MeterValuesRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
+        }
+
+        if (jsonObject.has("meterValue")) {
+            setMeterValue(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("meterValue");
+            for (JsonElement el : arr) {
+                MeterValue item = new MeterValue();
+                item.fromJsonObject(el.getAsJsonObject());
+                getMeterValue().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -134,17 +136,17 @@ public class MeterValuesRequest implements JsonInterface {
         if (!(obj instanceof MeterValuesRequest))
             return false;
         MeterValuesRequest that = (MeterValuesRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.meterValue, that.meterValue);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getMeterValue(), that.getMeterValue())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.meterValue != null ? this.meterValue.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getMeterValue(),
+                getCustomData()
+        );
     }
 }

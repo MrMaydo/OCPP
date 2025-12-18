@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,169 +11,116 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * The PriceLevelScheduleType is modeled after the same type that is defined in ISO 15118-20,
+ * such that if it is supplied by an EMSP as a signed EXI message, the conversion from EXI to JSON (in OCPP)
+ * and back to EXI (for ISO 15118-20) does not change the digest and therefore does not invalidate the signature.
+ */
 public class PriceLevelSchedule implements JsonInterface {
 
     /**
-     * (Required)
+     * List of entries of the schedule.
      */
     @Required
     private List<PriceLevelScheduleEntry> priceLevelScheduleEntries;
+
     /**
      * Starting point of this price schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timeAnchor;
+
     /**
      * Unique ID of this price schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer priceScheduleId;
+
     /**
      * Description of the price schedule.
      */
     @Optional
     private String priceScheduleDescription;
+
     /**
      * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer numberOfPriceLevels;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PriceLevelSchedule() {
     }
 
-    /**
-     * @param priceScheduleId          Unique ID of this price schedule.
-     *                                 .
-     * @param timeAnchor               Starting point of this price schedule.
-     *                                 .
-     * @param priceScheduleDescription Description of the price schedule.
-     *                                 .
-     * @param numberOfPriceLevels      Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     *                                 .
-     */
-    public PriceLevelSchedule(List<PriceLevelScheduleEntry> priceLevelScheduleEntries, Date timeAnchor, Integer priceScheduleId, String priceScheduleDescription, Integer numberOfPriceLevels, CustomData customData) {
-        super();
-        this.priceLevelScheduleEntries = priceLevelScheduleEntries;
-        this.timeAnchor = timeAnchor;
-        this.priceScheduleId = priceScheduleId;
-        this.priceScheduleDescription = priceScheduleDescription;
-        this.numberOfPriceLevels = numberOfPriceLevels;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<PriceLevelScheduleEntry> getPriceLevelScheduleEntries() {
         return priceLevelScheduleEntries;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setPriceLevelScheduleEntries(List<PriceLevelScheduleEntry> priceLevelScheduleEntries) {
         this.priceLevelScheduleEntries = priceLevelScheduleEntries;
     }
 
-    /**
-     * Starting point of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimeAnchor() {
         return timeAnchor;
     }
 
-    /**
-     * Starting point of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeAnchor(Date timeAnchor) {
         this.timeAnchor = timeAnchor;
     }
 
-    /**
-     * Unique ID of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public Integer getPriceScheduleId() {
         return priceScheduleId;
     }
 
-    /**
-     * Unique ID of this price schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setPriceScheduleId(Integer priceScheduleId) {
         this.priceScheduleId = priceScheduleId;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public String getPriceScheduleDescription() {
         return priceScheduleDescription;
     }
 
-    /**
-     * Description of the price schedule.
-     */
+
     public void setPriceScheduleDescription(String priceScheduleDescription) {
         this.priceScheduleDescription = priceScheduleDescription;
     }
 
-    /**
-     * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
-     */
+
     public Integer getNumberOfPriceLevels() {
         return numberOfPriceLevels;
     }
 
-    /**
-     * Defines the overall number of distinct price level elements used across all PriceLevelSchedules.
-     * <p>
-     * (Required)
-     */
+
     public void setNumberOfPriceLevels(Integer numberOfPriceLevels) {
         this.numberOfPriceLevels = numberOfPriceLevels;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -184,11 +133,26 @@ public class PriceLevelSchedule implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(timeAnchor));
-        json.addProperty("priceScheduleId", priceScheduleId);
-        json.addProperty("priceScheduleDescription", priceScheduleDescription);
-        json.addProperty("numberOfPriceLevels", numberOfPriceLevels);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray priceLevelScheduleEntriesArray = new JsonArray();
+        for (PriceLevelScheduleEntry item : getPriceLevelScheduleEntries()) {
+            priceLevelScheduleEntriesArray.add(item.toJsonObject());
+        }
+        json.add("priceLevelScheduleEntries", priceLevelScheduleEntriesArray);
+
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
+        json.addProperty("priceScheduleId", getPriceScheduleId());
+
+        if (getPriceScheduleDescription() != null) {
+            json.addProperty("priceScheduleDescription", getPriceScheduleDescription());
+        }
+        json.addProperty("numberOfPriceLevels", getNumberOfPriceLevels());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -200,32 +164,41 @@ public class PriceLevelSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("priceLevelScheduleEntries")) {
+            setPriceLevelScheduleEntries(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("priceLevelScheduleEntries");
+            for (JsonElement el : arr) {
+                PriceLevelScheduleEntry item = new PriceLevelScheduleEntry();
+                item.fromJsonObject(el.getAsJsonObject());
+                getPriceLevelScheduleEntries().add(item);
+            }
+        }
+
         if (jsonObject.has("timeAnchor")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timeAnchor = dateFormat.parse(jsonObject.get("timeAnchor").getAsString());
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 
         if (jsonObject.has("priceScheduleId")) {
-            this.priceScheduleId = jsonObject.get("priceScheduleId").getAsInt();
+            setPriceScheduleId(jsonObject.get("priceScheduleId").getAsInt());
         }
 
         if (jsonObject.has("priceScheduleDescription")) {
-            this.priceScheduleDescription = jsonObject.get("priceScheduleDescription").getAsString();
+            setPriceScheduleDescription(jsonObject.get("priceScheduleDescription").getAsString());
         }
 
         if (jsonObject.has("numberOfPriceLevels")) {
-            this.numberOfPriceLevels = jsonObject.get("numberOfPriceLevels").getAsInt();
+            setNumberOfPriceLevels(jsonObject.get("numberOfPriceLevels").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -235,23 +208,23 @@ public class PriceLevelSchedule implements JsonInterface {
         if (!(obj instanceof PriceLevelSchedule))
             return false;
         PriceLevelSchedule that = (PriceLevelSchedule) obj;
-        return Objects.equals(this.priceScheduleId, that.priceScheduleId)
-                && Objects.equals(this.priceLevelScheduleEntries, that.priceLevelScheduleEntries)
-                && Objects.equals(this.timeAnchor, that.timeAnchor)
-                && Objects.equals(this.priceScheduleDescription, that.priceScheduleDescription)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.numberOfPriceLevels, that.numberOfPriceLevels);
+        return Objects.equals(getPriceLevelScheduleEntries(), that.getPriceLevelScheduleEntries())
+                && Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getPriceScheduleId(), that.getPriceScheduleId())
+                && Objects.equals(getPriceScheduleDescription(), that.getPriceScheduleDescription())
+                && Objects.equals(getNumberOfPriceLevels(), that.getNumberOfPriceLevels())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.priceScheduleId != null ? this.priceScheduleId.hashCode() : 0);
-        result = 31 * result + (this.priceLevelScheduleEntries != null ? this.priceLevelScheduleEntries.hashCode() : 0);
-        result = 31 * result + (this.timeAnchor != null ? this.timeAnchor.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleDescription != null ? this.priceScheduleDescription.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.numberOfPriceLevels != null ? this.numberOfPriceLevels.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriceLevelScheduleEntries(),
+                getTimeAnchor(),
+                getPriceScheduleId(),
+                getPriceScheduleDescription(),
+                getNumberOfPriceLevels(),
+                getCustomData()
+        );
     }
 }

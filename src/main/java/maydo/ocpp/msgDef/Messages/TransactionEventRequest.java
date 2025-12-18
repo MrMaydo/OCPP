@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.*;
@@ -13,186 +15,147 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * This section contains the field definition of the TransactionEventRequest PDU sent by
+ * the Charging Station to the CSMS. For each of the eventTypes;
+ * Started, Updated and Ended, the corresponding cardinality is specified.
+ */
 public class TransactionEventRequest implements JsonInterface {
 
     /**
-     * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * <p>
-     * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
+     * (2.1) Only required in TransactionEventRequest('Ended') and only if Charging Station calculated cost locally.
      */
     @Optional
     private CostDetails costDetails;
+
     /**
-     * This contains the type of this event.
-     * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * <p>
-     * (Required)
+     * This contains the type of this event. The first TransactionEvent of a transaction SHALL contain:
+     * <p> "Started" The last TransactionEvent of a transaction SHALL contain: </p>
+     * <p> "Ended" All others SHALL contain: "Updated" </p>
      */
     @Required
     private TransactionEventEnum eventType;
+
+    /**
+     * This contains the meter values relevant to the transaction.
+     * Depending on the eventType of this TransactionEventRequest
+     * the following Configuration Variable is used to configure which measurands are used:
+     * <p> Started:  SampledDataTxStartedMeasurands </p>
+     * <p> Updated:  SampledDataTxUpdatedMeasurands  and AlignedDataMeasurands </p>
+     * <p> Ended:  SampledDataTxEndedMeasurands  and AlignedDataTxEndedMeasurands </p>
+     */
     @Optional
     private List<MeterValue> meterValue;
+
     /**
      * The date and time at which this transaction event occurred.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
      * Reason the Charging Station sends this message to the CSMS
-     * <p>
-     * (Required)
      */
     @Required
     private TriggerReasonEnum triggerReason;
+
     /**
      * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer seqNo;
+
     /**
-     * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
+     * Indication that this transaction event happened when the Charging Station was offline.
+     * Default = false, meaning: the event occurred when the Charging Station was online.
      */
     @Optional
     private Boolean offline = false;
+
     /**
      * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
-     * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     * 1: The numberPhases in the currently used ChargingSchedule. +
-     * 2: The number of phases provided via device management.
+     * When omitted the CSMS may be able to determine the number of phases used as follows:
+     * <p> 1: The numberPhases in the currently used ChargingSchedule. </p>
+     * <p> 2: The number of phases provided via device management. </p>
      */
     @Optional
     private Integer numberOfPhasesUsed;
+
     /**
      * The maximum current of the connected cable in Ampere (A).
      */
     @Optional
     private Integer cableMaxCurrent;
+
     /**
      * This contains the Id of the reservation that terminates as a result of this transaction.
      */
     @Optional
     private Integer reservationId;
+
     /**
-     * *(2.1)* The current preconditioning status of the BMS in the EV. Default value is Unknown.
+     * (2.1) The current preconditioning status of the BMS in the EV. Default value is Unknown.
      */
     @Optional
     private PreconditioningStatusEnum preconditioningStatus;
+
     /**
-     * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
+     * (2.1) True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
      */
     @Optional
     private Boolean evseSleep;
+
     /**
-     * (Required)
+     * Contains transaction specific information.
      */
     @Required
     private Transaction transactionInfo;
+
     /**
-     * Electric Vehicle Supply Equipment
+     * This identifies which evse (and connector) of the Charging Station is used.
      */
     @Optional
     private EVSE evse;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
+     * This contains the identifier for which a transaction is (or will be) started or stopped. Is required when the EV Driver becomes authorized for this transaction and when the EV Driver ends authorization. The IdToken should only be sent once in a TransactionEventRequest for every authorization (for starting or for stopping) done for this transaction, so that CSMS can return the idTokenInfo in the TransactionEventResponse. idToken should not be present in the TransactionEventRequest when a transaction is ended by a RequestStopTransactionRequest or a ResetRequest.
      */
     @Optional
     private IdToken idToken;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TransactionEventRequest() {
     }
 
-    /**
-     * @param evseSleep          *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     *                           <p>
-     *                           .
-     * @param offline            Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     *                           .
-     * @param seqNo              Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     *                           .
-     * @param reservationId      This contains the Id of the reservation that terminates as a result of this transaction.
-     *                           .
-     * @param cableMaxCurrent    The maximum current of the connected cable in Ampere (A).
-     *                           .
-     * @param numberOfPhasesUsed If the Charging Station is able to report the number of phases used, then it SHALL provide it.
-     *                           When omitted the CSMS may be able to determine the number of phases used as follows: +
-     *                           1: The numberPhases in the currently used ChargingSchedule. +
-     *                           2: The number of phases provided via device management.
-     *                           .
-     * @param timestamp          The date and time at which this transaction event occurred.
-     *                           .
-     */
-    public TransactionEventRequest(CostDetails costDetails, TransactionEventEnum eventType, List<MeterValue> meterValue, Date timestamp, TriggerReasonEnum triggerReason, Integer seqNo, Boolean offline, Integer numberOfPhasesUsed, Integer cableMaxCurrent, Integer reservationId, PreconditioningStatusEnum preconditioningStatus, Boolean evseSleep, Transaction transactionInfo, EVSE evse, IdToken idToken, CustomData customData) {
-        super();
-        this.costDetails = costDetails;
-        this.eventType = eventType;
-        this.meterValue = meterValue;
-        this.timestamp = timestamp;
-        this.triggerReason = triggerReason;
-        this.seqNo = seqNo;
-        this.offline = offline;
-        this.numberOfPhasesUsed = numberOfPhasesUsed;
-        this.cableMaxCurrent = cableMaxCurrent;
-        this.reservationId = reservationId;
-        this.preconditioningStatus = preconditioningStatus;
-        this.evseSleep = evseSleep;
-        this.transactionInfo = transactionInfo;
-        this.evse = evse;
-        this.idToken = idToken;
-        this.customData = customData;
-    }
 
-    /**
-     * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * <p>
-     * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
-     */
     public CostDetails getCostDetails() {
         return costDetails;
     }
 
-    /**
-     * CostDetailsType contains the cost as calculated by Charging Station based on provided TariffType.
-     * <p>
-     * NOTE: Reservation is not shown as a _chargingPeriod_, because it took place outside of the transaction.
-     */
+
     public void setCostDetails(CostDetails costDetails) {
         this.costDetails = costDetails;
     }
 
-    /**
-     * This contains the type of this event.
-     * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * <p>
-     * (Required)
-     */
+
     public TransactionEventEnum getEventType() {
         return eventType;
     }
 
-    /**
-     * This contains the type of this event.
-     * The first TransactionEvent of a transaction SHALL contain: "Started" The last TransactionEvent of a transaction SHALL contain: "Ended" All others SHALL contain: "Updated"
-     * <p>
-     * (Required)
-     */
+
     public void setEventType(TransactionEventEnum eventType) {
         this.eventType = eventType;
     }
@@ -205,202 +168,132 @@ public class TransactionEventRequest implements JsonInterface {
         this.meterValue = meterValue;
     }
 
-    /**
-     * The date and time at which this transaction event occurred.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * The date and time at which this transaction event occurred.
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Reason the Charging Station sends this message to the CSMS
-     * <p>
-     * (Required)
-     */
+
     public TriggerReasonEnum getTriggerReason() {
         return triggerReason;
     }
 
-    /**
-     * Reason the Charging Station sends this message to the CSMS
-     * <p>
-     * (Required)
-     */
+
     public void setTriggerReason(TriggerReasonEnum triggerReason) {
         this.triggerReason = triggerReason;
     }
 
-    /**
-     * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSeqNo() {
         return seqNo;
     }
 
-    /**
-     * Incremental sequence number, helps with determining if all messages of a transaction have been received.
-     * <p>
-     * (Required)
-     */
+
     public void setSeqNo(Integer seqNo) {
         this.seqNo = seqNo;
     }
 
-    /**
-     * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     */
+
     public Boolean getOffline() {
         return offline;
     }
 
-    /**
-     * Indication that this transaction event happened when the Charging Station was offline. Default = false, meaning: the event occurred when the Charging Station was online.
-     */
+
     public void setOffline(Boolean offline) {
         this.offline = offline;
     }
 
-    /**
-     * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
-     * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     * 1: The numberPhases in the currently used ChargingSchedule. +
-     * 2: The number of phases provided via device management.
-     */
+
     public Integer getNumberOfPhasesUsed() {
         return numberOfPhasesUsed;
     }
 
-    /**
-     * If the Charging Station is able to report the number of phases used, then it SHALL provide it.
-     * When omitted the CSMS may be able to determine the number of phases used as follows: +
-     * 1: The numberPhases in the currently used ChargingSchedule. +
-     * 2: The number of phases provided via device management.
-     */
+
     public void setNumberOfPhasesUsed(Integer numberOfPhasesUsed) {
         this.numberOfPhasesUsed = numberOfPhasesUsed;
     }
 
-    /**
-     * The maximum current of the connected cable in Ampere (A).
-     */
+
     public Integer getCableMaxCurrent() {
         return cableMaxCurrent;
     }
 
-    /**
-     * The maximum current of the connected cable in Ampere (A).
-     */
+
     public void setCableMaxCurrent(Integer cableMaxCurrent) {
         this.cableMaxCurrent = cableMaxCurrent;
     }
 
-    /**
-     * This contains the Id of the reservation that terminates as a result of this transaction.
-     */
+
     public Integer getReservationId() {
         return reservationId;
     }
 
-    /**
-     * This contains the Id of the reservation that terminates as a result of this transaction.
-     */
+
     public void setReservationId(Integer reservationId) {
         this.reservationId = reservationId;
     }
 
-    /**
-     * *(2.1)* The current preconditioning status of the BMS in the EV. Default value is Unknown.
-     */
+
     public PreconditioningStatusEnum getPreconditioningStatus() {
         return preconditioningStatus;
     }
 
-    /**
-     * *(2.1)* The current preconditioning status of the BMS in the EV. Default value is Unknown.
-     */
+
     public void setPreconditioningStatus(PreconditioningStatusEnum preconditioningStatus) {
         this.preconditioningStatus = preconditioningStatus;
     }
 
-    /**
-     * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     */
+
     public Boolean getEvseSleep() {
         return evseSleep;
     }
 
-    /**
-     * *(2.1)* True when EVSE electronics are in sleep mode for this transaction. Default value (when absent) is false.
-     */
+
     public void setEvseSleep(Boolean evseSleep) {
         this.evseSleep = evseSleep;
     }
 
-    /**
-     * (Required)
-     */
+
     public Transaction getTransactionInfo() {
         return transactionInfo;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setTransactionInfo(Transaction transactionInfo) {
         this.transactionInfo = transactionInfo;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public EVSE getEvse() {
         return evse;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public void setEvse(EVSE evse) {
         this.evse = evse;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -413,20 +306,55 @@ public class TransactionEventRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("costDetails", costDetails.toJsonObject());
-        json.addProperty("eventType", eventType.toString());
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("triggerReason", triggerReason.toString());
-        json.addProperty("seqNo", seqNo);
-        json.addProperty("numberOfPhasesUsed", numberOfPhasesUsed);
-        json.addProperty("cableMaxCurrent", cableMaxCurrent);
-        json.addProperty("reservationId", reservationId);
-        json.addProperty("preconditioningStatus", preconditioningStatus.toString());
-        json.addProperty("evseSleep", evseSleep);
-        json.add("transactionInfo", transactionInfo.toJsonObject());
-        json.add("evse", evse.toJsonObject());
-        json.add("idToken", idToken.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getCostDetails() != null) {
+            json.add("costDetails", getCostDetails().toJsonObject());
+        }
+        json.addProperty("eventType", getEventType().toString());
+
+        if (getMeterValue() != null) {
+            JsonArray meterValueArray = new JsonArray();
+            for (MeterValue item : getMeterValue()) {
+                meterValueArray.add(item.toJsonObject());
+            }
+            json.add("meterValue", meterValueArray);
+        }
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        json.addProperty("triggerReason", getTriggerReason().toString());
+
+        json.addProperty("seqNo", getSeqNo());
+
+        if (getOffline() != null) {
+            json.addProperty("offline", getOffline());
+        }
+        if (getNumberOfPhasesUsed() != null) {
+            json.addProperty("numberOfPhasesUsed", getNumberOfPhasesUsed());
+        }
+        if (getCableMaxCurrent() != null) {
+            json.addProperty("cableMaxCurrent", getCableMaxCurrent());
+        }
+        if (getReservationId() != null) {
+            json.addProperty("reservationId", getReservationId());
+        }
+        if (getPreconditioningStatus() != null) {
+            json.addProperty("preconditioningStatus", getPreconditioningStatus().toString());
+        }
+        if (getEvseSleep() != null) {
+            json.addProperty("evseSleep", getEvseSleep());
+        }
+        json.add("transactionInfo", getTransactionInfo().toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        if (getIdToken() != null) {
+            json.add("idToken", getIdToken().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -439,71 +367,84 @@ public class TransactionEventRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("costDetails")) {
-            this.costDetails = new CostDetails();
-            this.costDetails.fromJsonObject(jsonObject.getAsJsonObject("costDetails"));
+            setCostDetails(new CostDetails());
+            getCostDetails().fromJsonObject(jsonObject.getAsJsonObject("costDetails"));
         }
 
         if (jsonObject.has("eventType")) {
-            this.eventType = TransactionEventEnum.valueOf(jsonObject.get("eventType").getAsString());
+            setEventType(TransactionEventEnum.valueOf(jsonObject.get("eventType").getAsString()));
+        }
+
+        if (jsonObject.has("meterValue")) {
+            setMeterValue(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("meterValue");
+            for (JsonElement el : arr) {
+                MeterValue item = new MeterValue();
+                item.fromJsonObject(el.getAsJsonObject());
+                getMeterValue().add(item);
+            }
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("triggerReason")) {
-            this.triggerReason = TriggerReasonEnum.valueOf(jsonObject.get("triggerReason").getAsString());
+            setTriggerReason(TriggerReasonEnum.valueOf(jsonObject.get("triggerReason").getAsString()));
         }
 
         if (jsonObject.has("seqNo")) {
-            this.seqNo = jsonObject.get("seqNo").getAsInt();
+            setSeqNo(jsonObject.get("seqNo").getAsInt());
+        }
+
+        if (jsonObject.has("offline")) {
+            setOffline(jsonObject.get("offline").getAsBoolean());
         }
 
         if (jsonObject.has("numberOfPhasesUsed")) {
-            this.numberOfPhasesUsed = jsonObject.get("numberOfPhasesUsed").getAsInt();
+            setNumberOfPhasesUsed(jsonObject.get("numberOfPhasesUsed").getAsInt());
         }
 
         if (jsonObject.has("cableMaxCurrent")) {
-            this.cableMaxCurrent = jsonObject.get("cableMaxCurrent").getAsInt();
+            setCableMaxCurrent(jsonObject.get("cableMaxCurrent").getAsInt());
         }
 
         if (jsonObject.has("reservationId")) {
-            this.reservationId = jsonObject.get("reservationId").getAsInt();
+            setReservationId(jsonObject.get("reservationId").getAsInt());
         }
 
         if (jsonObject.has("preconditioningStatus")) {
-            this.preconditioningStatus = PreconditioningStatusEnum.valueOf(jsonObject.get("preconditioningStatus").getAsString());
+            setPreconditioningStatus(PreconditioningStatusEnum.valueOf(jsonObject.get("preconditioningStatus").getAsString()));
         }
 
         if (jsonObject.has("evseSleep")) {
-            this.evseSleep = jsonObject.get("evseSleep").getAsBoolean();
+            setEvseSleep(jsonObject.get("evseSleep").getAsBoolean());
         }
 
         if (jsonObject.has("transactionInfo")) {
-            this.transactionInfo = new Transaction();
-            this.transactionInfo.fromJsonObject(jsonObject.getAsJsonObject("transactionInfo"));
+            setTransactionInfo(new Transaction());
+            getTransactionInfo().fromJsonObject(jsonObject.getAsJsonObject("transactionInfo"));
         }
 
         if (jsonObject.has("evse")) {
-            this.evse = new EVSE();
-            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+            setEvse(new EVSE());
+            getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -513,43 +454,43 @@ public class TransactionEventRequest implements JsonInterface {
         if (!(obj instanceof TransactionEventRequest))
             return false;
         TransactionEventRequest that = (TransactionEventRequest) obj;
-        return Objects.equals(this.preconditioningStatus, that.preconditioningStatus)
-                && Objects.equals(this.evseSleep, that.evseSleep)
-                && Objects.equals(this.seqNo, that.seqNo)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.eventType, that.eventType)
-                && Objects.equals(this.evse, that.evse)
-                && Objects.equals(this.transactionInfo, that.transactionInfo)
-                && Objects.equals(this.offline, that.offline)
-                && Objects.equals(this.reservationId, that.reservationId)
-                && Objects.equals(this.costDetails, that.costDetails)
-                && Objects.equals(this.triggerReason, that.triggerReason)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.meterValue, that.meterValue)
-                && Objects.equals(this.cableMaxCurrent, that.cableMaxCurrent)
-                && Objects.equals(this.numberOfPhasesUsed, that.numberOfPhasesUsed)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getCostDetails(), that.getCostDetails())
+                && Objects.equals(getEventType(), that.getEventType())
+                && Objects.equals(getMeterValue(), that.getMeterValue())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getTriggerReason(), that.getTriggerReason())
+                && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getOffline(), that.getOffline())
+                && Objects.equals(getNumberOfPhasesUsed(), that.getNumberOfPhasesUsed())
+                && Objects.equals(getCableMaxCurrent(), that.getCableMaxCurrent())
+                && Objects.equals(getReservationId(), that.getReservationId())
+                && Objects.equals(getPreconditioningStatus(), that.getPreconditioningStatus())
+                && Objects.equals(getEvseSleep(), that.getEvseSleep())
+                && Objects.equals(getTransactionInfo(), that.getTransactionInfo())
+                && Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.preconditioningStatus != null ? this.preconditioningStatus.hashCode() : 0);
-        result = 31 * result + (this.evseSleep != null ? this.evseSleep.hashCode() : 0);
-        result = 31 * result + (this.seqNo != null ? this.seqNo.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.eventType != null ? this.eventType.hashCode() : 0);
-        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
-        result = 31 * result + (this.transactionInfo != null ? this.transactionInfo.hashCode() : 0);
-        result = 31 * result + (this.offline != null ? this.offline.hashCode() : 0);
-        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
-        result = 31 * result + (this.costDetails != null ? this.costDetails.hashCode() : 0);
-        result = 31 * result + (this.triggerReason != null ? this.triggerReason.hashCode() : 0);
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.meterValue != null ? this.meterValue.hashCode() : 0);
-        result = 31 * result + (this.cableMaxCurrent != null ? this.cableMaxCurrent.hashCode() : 0);
-        result = 31 * result + (this.numberOfPhasesUsed != null ? this.numberOfPhasesUsed.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCostDetails(),
+                getEventType(),
+                getMeterValue(),
+                getTimestamp(),
+                getTriggerReason(),
+                getSeqNo(),
+                getOffline(),
+                getNumberOfPhasesUsed(),
+                getCableMaxCurrent(),
+                getReservationId(),
+                getPreconditioningStatus(),
+                getEvseSleep(),
+                getTransactionInfo(),
+                getEvse(),
+                getIdToken(),
+                getCustomData()
+        );
     }
 }

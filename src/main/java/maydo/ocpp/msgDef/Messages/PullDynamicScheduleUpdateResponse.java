@@ -13,104 +13,75 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) If no data can be provided by CSMS, then the response will only contain status.
+ */
 public class PullDynamicScheduleUpdateResponse implements JsonInterface {
 
     /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
+     * Updated charging schedule period values.
      */
     @Optional
     private ChargingScheduleUpdate scheduleUpdate;
+
     /**
      * Result of request.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private ChargingProfileStatusEnum status;
+
     /**
-     * Element providing more information about the status.
+     * Additional info about status
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PullDynamicScheduleUpdateResponse() {
     }
 
-    public PullDynamicScheduleUpdateResponse(ChargingScheduleUpdate scheduleUpdate, ChargingProfileStatusEnum status, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.scheduleUpdate = scheduleUpdate;
-        this.status = status;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     */
     public ChargingScheduleUpdate getScheduleUpdate() {
         return scheduleUpdate;
     }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     */
+
     public void setScheduleUpdate(ChargingScheduleUpdate scheduleUpdate) {
         this.scheduleUpdate = scheduleUpdate;
     }
 
-    /**
-     * Result of request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfileStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Result of request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(ChargingProfileStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -123,10 +94,19 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("scheduleUpdate", scheduleUpdate.toJsonObject());
-        json.addProperty("status", status.toString());
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getScheduleUpdate() != null) {
+            json.add("scheduleUpdate", getScheduleUpdate().toJsonObject());
+        }
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -139,24 +119,23 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("scheduleUpdate")) {
-            this.scheduleUpdate = new ChargingScheduleUpdate();
-            this.scheduleUpdate.fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
+            setScheduleUpdate(new ChargingScheduleUpdate());
+            getScheduleUpdate().fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
         }
 
         if (jsonObject.has("status")) {
-            this.status = ChargingProfileStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(ChargingProfileStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -166,19 +145,19 @@ public class PullDynamicScheduleUpdateResponse implements JsonInterface {
         if (!(obj instanceof PullDynamicScheduleUpdateResponse))
             return false;
         PullDynamicScheduleUpdateResponse that = (PullDynamicScheduleUpdateResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getScheduleUpdate(), that.getScheduleUpdate())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.scheduleUpdate != null ? this.scheduleUpdate.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getScheduleUpdate(),
+                getStatus(),
+                getStatusInfo(),
+                getCustomData()
+        );
     }
 }

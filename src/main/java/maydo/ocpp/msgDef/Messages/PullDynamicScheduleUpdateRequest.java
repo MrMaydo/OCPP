@@ -10,65 +10,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) This message is sent by a Charging Station to request an update of setpoints
+ * and/or limits of the charging profile with given chargingProfileId.
+ */
 public class PullDynamicScheduleUpdateRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer chargingProfileId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public PullDynamicScheduleUpdateRequest() {
     }
 
-    /**
-     * @param chargingProfileId Id of charging profile to update.
-     *                          .
-     */
-    public PullDynamicScheduleUpdateRequest(Integer chargingProfileId, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +60,13 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("chargingProfileId", getChargingProfileId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +79,13 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingProfileId")) {
-            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+            setChargingProfileId(jsonObject.get("chargingProfileId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +95,15 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
         if (!(obj instanceof PullDynamicScheduleUpdateRequest))
             return false;
         PullDynamicScheduleUpdateRequest that = (PullDynamicScheduleUpdateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId);
+        return Objects.equals(getChargingProfileId(), that.getChargingProfileId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileId != null ? this.chargingProfileId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingProfileId(),
+                getCustomData()
+        );
     }
 }

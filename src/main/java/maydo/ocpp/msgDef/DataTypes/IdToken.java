@@ -1,57 +1,55 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Contains a case insensitive identifier to use for the authorization
+ * and the type of authorization to support multiple forms of identifiers.
+ */
 public class IdToken implements JsonInterface {
 
-    private List<AdditionalInfo> additionalInfo;
     /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
+     * AdditionalInfo can be used to send extra information which can be validated by the CSMS in addition to
+     * the regular authorization with IdToken.  AdditionalInfo contains one or more custom types,
+     * which need to be agreed upon by all parties involved.
+     * When AdditionalInfo is NOT implemented or a not supported AdditionalInfo.type is used,
+     * the CSMS/Charging Station MAY ignore the AdditionalInfo.
+     */
+    private List<AdditionalInfo> additionalInfo;
+
+    /**
+     * (2.1) IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
      */
     @Required
     private String idToken;
+
     /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
+     * (2.1) Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
      */
     @Required
     private String type;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public IdToken() {
     }
 
-    /**
-     * @param idToken *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     *                .
-     * @param type    *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     *                .
-     */
-    public IdToken(List<AdditionalInfo> additionalInfo, String idToken, String type, CustomData customData) {
-        super();
-        this.additionalInfo = additionalInfo;
-        this.idToken = idToken;
-        this.type = type;
-        this.customData = customData;
-    }
 
     public List<AdditionalInfo> getAdditionalInfo() {
         return additionalInfo;
@@ -61,52 +59,32 @@ public class IdToken implements JsonInterface {
         this.additionalInfo = additionalInfo;
     }
 
-    /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
-     */
+
     public String getIdToken() {
         return idToken;
     }
 
-    /**
-     * *(2.1)* IdToken is case insensitive. Might hold the hidden id of an RFID tag, but can for example also contain a UUID.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(String idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public String getType() {
         return type;
     }
 
-    /**
-     * *(2.1)* Enumeration of possible idToken types. Values defined in Appendix as IdTokenEnumStringType.
-     * <p>
-     * (Required)
-     */
+
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -119,9 +97,21 @@ public class IdToken implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("idToken", idToken);
-        json.addProperty("type", type);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray additionalInfoArray = new JsonArray();
+        for (AdditionalInfo item : getAdditionalInfo()) {
+            additionalInfoArray.add(item.toJsonObject());
+        }
+        json.add("additionalInfo", additionalInfoArray);
+
+        json.addProperty("idToken", getIdToken());
+
+        json.addProperty("type", getType());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -133,19 +123,28 @@ public class IdToken implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("additionalInfo")) {
+            setAdditionalInfo(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("additionalInfo");
+            for (JsonElement el : arr) {
+                AdditionalInfo item = new AdditionalInfo();
+                item.fromJsonObject(el.getAsJsonObject());
+                getAdditionalInfo().add(item);
+            }
+        }
+
         if (jsonObject.has("idToken")) {
-            this.idToken = jsonObject.get("idToken").getAsString();
+            setIdToken(jsonObject.get("idToken").getAsString());
         }
 
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -155,19 +154,19 @@ public class IdToken implements JsonInterface {
         if (!(obj instanceof IdToken))
             return false;
         IdToken that = (IdToken) obj;
-        return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getAdditionalInfo(), that.getAdditionalInfo())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.additionalInfo != null ? this.additionalInfo.hashCode() : 0);
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getAdditionalInfo(),
+                getIdToken(),
+                getType(),
+                getCustomData()
+        );
     }
 }

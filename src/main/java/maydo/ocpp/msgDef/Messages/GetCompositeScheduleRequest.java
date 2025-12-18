@@ -11,117 +11,76 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCompositeScheduleRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
+     * The ID of the EVSE for which the schedule is requested.
+     * When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
+     */
+    @Required
+    private Integer evseId;
+
+    /**
      * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer duration;
+
     /**
      * Can be used to force a power or current profile.
      */
     @Optional
     private ChargingRateUnitEnum chargingRateUnit;
+
     /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
-     */
-    @Required
-    private Integer evseId;
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCompositeScheduleRequest() {
     }
 
-    /**
-     * @param duration Length of the requested schedule in seconds.
-     *                 <p>
-     *                 .
-     * @param evseId   The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     *                 .
-     */
-    public GetCompositeScheduleRequest(Integer duration, ChargingRateUnitEnum chargingRateUnit, Integer evseId, CustomData customData) {
-        super();
-        this.duration = duration;
-        this.chargingRateUnit = chargingRateUnit;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
 
-    /**
-     * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Integer getDuration() {
         return duration;
     }
 
-    /**
-     * Length of the requested schedule in seconds.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    /**
-     * Can be used to force a power or current profile.
-     */
+
     public ChargingRateUnitEnum getChargingRateUnit() {
         return chargingRateUnit;
     }
 
-    /**
-     * Can be used to force a power or current profile.
-     */
+
     public void setChargingRateUnit(ChargingRateUnitEnum chargingRateUnit) {
         this.chargingRateUnit = chargingRateUnit;
     }
 
-    /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The ID of the EVSE for which the schedule is requested. When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -134,10 +93,18 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("duration", duration);
-        json.addProperty("chargingRateUnit", chargingRateUnit.toString());
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.addProperty("duration", getDuration());
+
+        if (getChargingRateUnit() != null) {
+            json.addProperty("chargingRateUnit", getChargingRateUnit().toString());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -149,23 +116,22 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evseId")) {
+            setEvseId(jsonObject.get("evseId").getAsInt());
+        }
+
         if (jsonObject.has("duration")) {
-            this.duration = jsonObject.get("duration").getAsInt();
+            setDuration(jsonObject.get("duration").getAsInt());
         }
 
         if (jsonObject.has("chargingRateUnit")) {
-            this.chargingRateUnit = ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString());
-        }
-
-        if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setChargingRateUnit(ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -175,19 +141,19 @@ public class GetCompositeScheduleRequest implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleRequest))
             return false;
         GetCompositeScheduleRequest that = (GetCompositeScheduleRequest) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getChargingRateUnit(), that.getChargingRateUnit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingRateUnit != null ? this.chargingRateUnit.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getDuration(),
+                getChargingRateUnit(),
+                getCustomData()
+        );
     }
 }

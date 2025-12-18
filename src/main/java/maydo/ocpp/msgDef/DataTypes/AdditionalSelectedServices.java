@@ -9,97 +9,60 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
- * Part of ISO 15118-20 price schedule.
+ *
  */
 public class AdditionalSelectedServices implements JsonInterface {
 
     /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
-    @Required
-    private RationalNumber serviceFee;
-    /**
-     * Human readable string to identify this service.
-     * <p>
-     * (Required)
+     * Human-readable string to identify this service.
      */
     @Required
     private String serviceName;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * Part of ISO 15118-20 price schedule.
+     */
+    @Required
+    private RationalNumber serviceFee;
+
+    /**
+     * Cost of the service.
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public AdditionalSelectedServices() {
     }
 
-    /**
-     * @param serviceName Human readable string to identify this service.
-     *                    .
-     */
-    public AdditionalSelectedServices(RationalNumber serviceFee, String serviceName, CustomData customData) {
-        super();
-        this.serviceFee = serviceFee;
-        this.serviceName = serviceName;
-        this.customData = customData;
-    }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public RationalNumber getServiceFee() {
         return serviceFee;
     }
 
-    /**
-     * Part of ISO 15118-20 price schedule.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setServiceFee(RationalNumber serviceFee) {
         this.serviceFee = serviceFee;
     }
 
-    /**
-     * Human readable string to identify this service.
-     * <p>
-     * (Required)
-     */
+
     public String getServiceName() {
         return serviceName;
     }
 
-    /**
-     * Human readable string to identify this service.
-     * <p>
-     * (Required)
-     */
+
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -112,9 +75,15 @@ public class AdditionalSelectedServices implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("serviceFee", serviceFee.toJsonObject());
-        json.addProperty("serviceName", serviceName);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("serviceName", getServiceName());
+
+        json.add("serviceFee", getServiceFee().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -126,20 +95,19 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("serviceFee")) {
-            this.serviceFee = new RationalNumber();
-            this.serviceFee.fromJsonObject(jsonObject.getAsJsonObject("serviceFee"));
+        if (jsonObject.has("serviceName")) {
+            setServiceName(jsonObject.get("serviceName").getAsString());
         }
 
-        if (jsonObject.has("serviceName")) {
-            this.serviceName = jsonObject.get("serviceName").getAsString();
+        if (jsonObject.has("serviceFee")) {
+            setServiceFee(new RationalNumber());
+            getServiceFee().fromJsonObject(jsonObject.getAsJsonObject("serviceFee"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -149,17 +117,17 @@ public class AdditionalSelectedServices implements JsonInterface {
         if (!(obj instanceof AdditionalSelectedServices))
             return false;
         AdditionalSelectedServices that = (AdditionalSelectedServices) obj;
-        return Objects.equals(this.serviceFee, that.serviceFee)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.serviceName, that.serviceName);
+        return Objects.equals(getServiceName(), that.getServiceName())
+                && Objects.equals(getServiceFee(), that.getServiceFee())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.serviceFee != null ? this.serviceFee.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.serviceName != null ? this.serviceName.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getServiceName(),
+                getServiceFee(),
+                getCustomData()
+        );
     }
 }

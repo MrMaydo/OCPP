@@ -9,113 +9,75 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ConstantStreamData implements JsonInterface {
 
     /**
      * Uniquely identifies the stream
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * (Required)
+     * Max time and items parameters
      */
     @Required
     private PeriodicEventStreamParams params;
+
     /**
      * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer variableMonitoringId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ConstantStreamData() {
     }
 
-    /**
-     * @param variableMonitoringId Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     *                             .
-     * @param id                   Uniquely identifies the stream
-     *                             .
-     */
-    public ConstantStreamData(Integer id, PeriodicEventStreamParams params, Integer variableMonitoringId, CustomData customData) {
-        super();
-        this.id = id;
-        this.params = params;
-        this.variableMonitoringId = variableMonitoringId;
-        this.customData = customData;
-    }
 
-    /**
-     * Uniquely identifies the stream
-     * <p>
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Uniquely identifies the stream
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * (Required)
-     */
+
     public PeriodicEventStreamParams getParams() {
         return params;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setParams(PeriodicEventStreamParams params) {
         this.params = params;
     }
 
-    /**
-     * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
-     */
+
     public Integer getVariableMonitoringId() {
         return variableMonitoringId;
     }
 
-    /**
-     * Id of monitor used to report his event. It can be a preconfigured or hardwired monitor.
-     * <p>
-     * (Required)
-     */
+
     public void setVariableMonitoringId(Integer variableMonitoringId) {
         this.variableMonitoringId = variableMonitoringId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -128,10 +90,17 @@ public class ConstantStreamData implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("params", params.toJsonObject());
-        json.addProperty("variableMonitoringId", variableMonitoringId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.add("params", getParams().toJsonObject());
+
+        json.addProperty("variableMonitoringId", getVariableMonitoringId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -144,23 +113,22 @@ public class ConstantStreamData implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("params")) {
-            this.params = new PeriodicEventStreamParams();
-            this.params.fromJsonObject(jsonObject.getAsJsonObject("params"));
+            setParams(new PeriodicEventStreamParams());
+            getParams().fromJsonObject(jsonObject.getAsJsonObject("params"));
         }
 
         if (jsonObject.has("variableMonitoringId")) {
-            this.variableMonitoringId = jsonObject.get("variableMonitoringId").getAsInt();
+            setVariableMonitoringId(jsonObject.get("variableMonitoringId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -170,19 +138,19 @@ public class ConstantStreamData implements JsonInterface {
         if (!(obj instanceof ConstantStreamData))
             return false;
         ConstantStreamData that = (ConstantStreamData) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.params, that.params)
-                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getParams(), that.getParams())
+                && Objects.equals(getVariableMonitoringId(), that.getVariableMonitoringId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.params != null ? this.params.hashCode() : 0);
-        result = 31 * result + (this.variableMonitoringId != null ? this.variableMonitoringId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getParams(),
+                getVariableMonitoringId(),
+                getCustomData()
+        );
     }
 }

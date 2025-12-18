@@ -1,92 +1,71 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ClearTariffsRequest implements JsonInterface {
 
     /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
+     * List of tariff Ids to clear. When absent clears all tariffs at evseId.
      */
     @Optional
     private List<String> tariffIds;
+
     /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
+     * When present only clear tariffs matching tariffIds at EVSE evseId.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearTariffsRequest() {
     }
 
-    /**
-     * @param tariffIds List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     *                  <p>
-     *                  .
-     * @param evseId    When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     *                  <p>
-     *                  .
-     */
-    public ClearTariffsRequest(List<String> tariffIds, Integer evseId, CustomData customData) {
-        super();
-        this.tariffIds = tariffIds;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
 
-    /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     */
     public List<String> getTariffIds() {
         return tariffIds;
     }
 
-    /**
-     * List of tariff Ids to clear. When absent clears all tariffs at _evseId_.
-     */
+
     public void setTariffIds(List<String> tariffIds) {
         this.tariffIds = tariffIds;
     }
 
-    /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * When present only clear tariffs matching _tariffIds_ at EVSE _evseId_.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -99,8 +78,21 @@ public class ClearTariffsRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        if (getTariffIds() != null) {
+            JsonArray tariffIdsArray = new JsonArray();
+            for (String item : getTariffIds()) {
+                tariffIdsArray.add(item);
+            }
+            json.add("tariffIds", tariffIdsArray);
+        }
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -112,15 +104,22 @@ public class ClearTariffsRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("tariffIds")) {
+            setTariffIds(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("tariffIds");
+            for (JsonElement el : arr) {
+                getTariffIds().add(el.getAsString());
+            }
+        }
+
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -130,17 +129,17 @@ public class ClearTariffsRequest implements JsonInterface {
         if (!(obj instanceof ClearTariffsRequest))
             return false;
         ClearTariffsRequest that = (ClearTariffsRequest) obj;
-        return Objects.equals(this.tariffIds, that.tariffIds)
-                && Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTariffIds(), that.getTariffIds())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tariffIds != null ? this.tariffIds.hashCode() : 0);
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTariffIds(),
+                getEvseId(),
+                getCustomData()
+        );
     }
 }

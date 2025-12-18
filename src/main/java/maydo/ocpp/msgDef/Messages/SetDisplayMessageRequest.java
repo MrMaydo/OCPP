@@ -11,61 +11,45 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetDisplayMessageRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS asks the Charging Station to configure a new display message that the Charging Station will display (in the future).
+ * See also O01 - Set Display Message, O02 - Set Display Message for Transaction and O06 - Replace Display Message
+ */
 public class SetDisplayMessageRequest implements JsonInterface {
 
     /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
+     * Message to be configured in the Charging Station, to be displayed.
      */
     @Required
     private MessageInfo message;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDisplayMessageRequest() {
     }
 
-    public SetDisplayMessageRequest(MessageInfo message, CustomData customData) {
-        super();
-        this.message = message;
-        this.customData = customData;
-    }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
-     */
     public MessageInfo getMessage() {
         return message;
     }
 
-    /**
-     * Contains message details, for a message to be displayed on a Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setMessage(MessageInfo message) {
         this.message = message;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -78,8 +62,13 @@ public class SetDisplayMessageRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("message", message.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("message", getMessage().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -92,15 +81,14 @@ public class SetDisplayMessageRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("message")) {
-            this.message = new MessageInfo();
-            this.message.fromJsonObject(jsonObject.getAsJsonObject("message"));
+            setMessage(new MessageInfo());
+            getMessage().fromJsonObject(jsonObject.getAsJsonObject("message"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -110,15 +98,15 @@ public class SetDisplayMessageRequest implements JsonInterface {
         if (!(obj instanceof SetDisplayMessageRequest))
             return false;
         SetDisplayMessageRequest that = (SetDisplayMessageRequest) obj;
-        return Objects.equals(this.message, that.message)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getMessage(), that.getMessage())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.message != null ? this.message.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMessage(),
+                getCustomData()
+        );
     }
 }

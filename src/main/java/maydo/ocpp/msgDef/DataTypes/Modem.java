@@ -8,6 +8,7 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+
 /**
  * Defines parameters required for initiating and maintaining wireless communication with other devices.
  */
@@ -18,74 +19,49 @@ public class Modem implements JsonInterface {
      */
     @Optional
     private String iccid;
+
     /**
-     * This contains the IMSI of the modem’s SIM card.
+     * This contains the IMSI of the modem’s SIM card
      */
     @Optional
     private String imsi;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Modem() {
     }
 
-    /**
-     * @param iccid This contains the ICCID of the modem’s SIM card.
-     *              .
-     * @param imsi  This contains the IMSI of the modem’s SIM card.
-     *              .
-     */
-    public Modem(String iccid, String imsi, CustomData customData) {
-        super();
-        this.iccid = iccid;
-        this.imsi = imsi;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains the ICCID of the modem’s SIM card.
-     */
     public String getIccid() {
         return iccid;
     }
 
-    /**
-     * This contains the ICCID of the modem’s SIM card.
-     */
+
     public void setIccid(String iccid) {
         this.iccid = iccid;
     }
 
-    /**
-     * This contains the IMSI of the modem’s SIM card.
-     */
+
     public String getImsi() {
         return imsi;
     }
 
-    /**
-     * This contains the IMSI of the modem’s SIM card.
-     */
+
     public void setImsi(String imsi) {
         this.imsi = imsi;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -98,9 +74,17 @@ public class Modem implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("iccid", iccid);
-        json.addProperty("imsi", imsi);
-        json.add("customData", customData.toJsonObject());
+
+        if (getIccid() != null) {
+            json.addProperty("iccid", getIccid());
+        }
+        if (getImsi() != null) {
+            json.addProperty("imsi", getImsi());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -113,18 +97,17 @@ public class Modem implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("iccid")) {
-            this.iccid = jsonObject.get("iccid").getAsString();
+            setIccid(jsonObject.get("iccid").getAsString());
         }
 
         if (jsonObject.has("imsi")) {
-            this.imsi = jsonObject.get("imsi").getAsString();
+            setImsi(jsonObject.get("imsi").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -134,17 +117,17 @@ public class Modem implements JsonInterface {
         if (!(obj instanceof Modem))
             return false;
         Modem that = (Modem) obj;
-        return Objects.equals(this.iccid, that.iccid)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.imsi, that.imsi);
+        return Objects.equals(getIccid(), that.getIccid())
+                && Objects.equals(getImsi(), that.getImsi())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.iccid != null ? this.iccid.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.imsi != null ? this.imsi.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIccid(),
+                getImsi(),
+                getCustomData()
+        );
     }
 }

@@ -11,293 +11,138 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * A monitoring setting for a variable.
+ */
 public class VariableMonitoring implements JsonInterface {
 
     /**
      * Identifies the monitor.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
      * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean transaction;
+
     /**
-     * Value for threshold or delta monitoring.
-     * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * <p>
-     * (Required)
+     * Value for threshold or delta monitoring. For Periodic or PeriodicClockAligned this is the interval in seconds
      */
     @Required
     private Float value;
+
     /**
      * The type of this monitor, e.g. a threshold, delta or periodic monitor.
-     * <p>
-     * (Required)
      */
     @Required
     private MonitorEnum type;
+
     /**
-     * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * <p>
-     * The severity levels have the following meaning: +
-     * *0-Danger* +
-     * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     * *1-Hardware Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     * *2-System Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     * *3-Critical* +
-     * Indicates a critical error. Action is required. +
-     * *4-Error* +
-     * Indicates a non-urgent error. Action is required. +
-     * *5-Alert* +
-     * Indicates an alert event. Default severity for any type of monitoring event.  +
-     * *6-Warning* +
-     * Indicates a warning event. Action may be required. +
-     * *7-Notice* +
-     * Indicates an unusual event. No immediate action is required. +
-     * *8-Informational* +
-     * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     * *9-Debug* +
-     * Indicates information useful to developers for debugging, not useful during operations.
-     * <p>
-     * (Required)
+     * The severity that will be assigned to an event that is triggered by this monitor.
+     * The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
+     * The severity levels have the following meaning:
+     * <p> 0 - Danger Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. </p>
+     * <p> 1 - Hardware Failure Indicates that the Charging Station is unable to continue regular operations
+     * due to Hardware issues. Action is required. </p>
+     * <p> 2 - System Failure Indicates that the Charging Station is unable to continue regular operations
+     * due to software or minor hardware issues. Action is required. </p>
+     * <p> 3 - Critical Indicates a critical error. Action is required. </p>
+     * <p> 4 - Error Indicates a non-urgent error. Action is required. </p>
+     * <p> 5 - Alert Indicates an alert event. Default severity for any type of monitoring event. </p>
+     * <p> 6 - Warning Indicates a warning event. Action may be required. </p>
+     * <p> 7 - Notice Indicates an unusual event. No immediate action is required. </p>
+     * <p> 8 - Informational Indicates a regular operational event. May be used for reporting, measuring throughput, etc.
+     * No action is required. </p>
+     * <p> 9 - Debug Indicates information useful to developers for debugging, not useful during operations. </p>
      */
     @Required
     private Integer severity;
+
     /**
-     * *(2.1)* Type of monitor.
-     * <p>
-     * (Required)
+     * (2.1) Type of monitor.
      */
     @Required
     private EventNotificationEnum eventNotificationType;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public VariableMonitoring() {
     }
 
-    /**
-     * @param severity    The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     *                    <p>
-     *                    The severity levels have the following meaning: +
-     *                    *0-Danger* +
-     *                    Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     *                    *1-Hardware Failure* +
-     *                    Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     *                    *2-System Failure* +
-     *                    Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     *                    *3-Critical* +
-     *                    Indicates a critical error. Action is required. +
-     *                    *4-Error* +
-     *                    Indicates a non-urgent error. Action is required. +
-     *                    *5-Alert* +
-     *                    Indicates an alert event. Default severity for any type of monitoring event.  +
-     *                    *6-Warning* +
-     *                    Indicates a warning event. Action may be required. +
-     *                    *7-Notice* +
-     *                    Indicates an unusual event. No immediate action is required. +
-     *                    *8-Informational* +
-     *                    Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     *                    *9-Debug* +
-     *                    Indicates information useful to developers for debugging, not useful during operations.
-     *                    .
-     * @param id          Identifies the monitor.
-     *                    .
-     * @param value       Value for threshold or delta monitoring.
-     *                    For Periodic or PeriodicClockAligned this is the interval in seconds.
-     *                    .
-     * @param transaction Monitor only active when a transaction is ongoing on a component relevant to this transaction.
-     *                    .
-     */
-    public VariableMonitoring(Integer id, Boolean transaction, Float value, MonitorEnum type, Integer severity, EventNotificationEnum eventNotificationType, CustomData customData) {
-        super();
-        this.id = id;
-        this.transaction = transaction;
-        this.value = value;
-        this.type = type;
-        this.severity = severity;
-        this.eventNotificationType = eventNotificationType;
-        this.customData = customData;
-    }
 
-    /**
-     * Identifies the monitor.
-     * <p>
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Identifies the monitor.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getTransaction() {
         return transaction;
     }
 
-    /**
-     * Monitor only active when a transaction is ongoing on a component relevant to this transaction.
-     * <p>
-     * (Required)
-     */
+
     public void setTransaction(Boolean transaction) {
         this.transaction = transaction;
     }
 
-    /**
-     * Value for threshold or delta monitoring.
-     * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * <p>
-     * (Required)
-     */
+
     public Float getValue() {
         return value;
     }
 
-    /**
-     * Value for threshold or delta monitoring.
-     * For Periodic or PeriodicClockAligned this is the interval in seconds.
-     * <p>
-     * (Required)
-     */
+
     public void setValue(Float value) {
         this.value = value;
     }
 
-    /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
-     * <p>
-     * (Required)
-     */
+
     public MonitorEnum getType() {
         return type;
     }
 
-    /**
-     * The type of this monitor, e.g. a threshold, delta or periodic monitor.
-     * <p>
-     * (Required)
-     */
+
     public void setType(MonitorEnum type) {
         this.type = type;
     }
 
-    /**
-     * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * <p>
-     * The severity levels have the following meaning: +
-     * *0-Danger* +
-     * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     * *1-Hardware Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     * *2-System Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     * *3-Critical* +
-     * Indicates a critical error. Action is required. +
-     * *4-Error* +
-     * Indicates a non-urgent error. Action is required. +
-     * *5-Alert* +
-     * Indicates an alert event. Default severity for any type of monitoring event.  +
-     * *6-Warning* +
-     * Indicates a warning event. Action may be required. +
-     * *7-Notice* +
-     * Indicates an unusual event. No immediate action is required. +
-     * *8-Informational* +
-     * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     * *9-Debug* +
-     * Indicates information useful to developers for debugging, not useful during operations.
-     * <p>
-     * (Required)
-     */
+
     public Integer getSeverity() {
         return severity;
     }
 
-    /**
-     * The severity that will be assigned to an event that is triggered by this monitor. The severity range is 0-9, with 0 as the highest and 9 as the lowest severity level.
-     * <p>
-     * The severity levels have the following meaning: +
-     * *0-Danger* +
-     * Indicates lives are potentially in danger. Urgent attention is needed and action should be taken immediately. +
-     * *1-Hardware Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to Hardware issues. Action is required. +
-     * *2-System Failure* +
-     * Indicates that the Charging Station is unable to continue regular operations due to software or minor hardware issues. Action is required. +
-     * *3-Critical* +
-     * Indicates a critical error. Action is required. +
-     * *4-Error* +
-     * Indicates a non-urgent error. Action is required. +
-     * *5-Alert* +
-     * Indicates an alert event. Default severity for any type of monitoring event.  +
-     * *6-Warning* +
-     * Indicates a warning event. Action may be required. +
-     * *7-Notice* +
-     * Indicates an unusual event. No immediate action is required. +
-     * *8-Informational* +
-     * Indicates a regular operational event. May be used for reporting, measuring throughput, etc. No action is required. +
-     * *9-Debug* +
-     * Indicates information useful to developers for debugging, not useful during operations.
-     * <p>
-     * (Required)
-     */
+
     public void setSeverity(Integer severity) {
         this.severity = severity;
     }
 
-    /**
-     * *(2.1)* Type of monitor.
-     * <p>
-     * (Required)
-     */
+
     public EventNotificationEnum getEventNotificationType() {
         return eventNotificationType;
     }
 
-    /**
-     * *(2.1)* Type of monitor.
-     * <p>
-     * (Required)
-     */
+
     public void setEventNotificationType(EventNotificationEnum eventNotificationType) {
         this.eventNotificationType = eventNotificationType;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -310,13 +155,23 @@ public class VariableMonitoring implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("transaction", transaction);
-        json.addProperty("value", value);
-        json.addProperty("type", type.toString());
-        json.addProperty("severity", severity);
-        json.addProperty("eventNotificationType", eventNotificationType.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("transaction", getTransaction());
+
+        json.addProperty("value", getValue());
+
+        json.addProperty("type", getType().toString());
+
+        json.addProperty("severity", getSeverity());
+
+        json.addProperty("eventNotificationType", getEventNotificationType().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -329,34 +184,33 @@ public class VariableMonitoring implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("transaction")) {
-            this.transaction = jsonObject.get("transaction").getAsBoolean();
+            setTransaction(jsonObject.get("transaction").getAsBoolean());
         }
 
         if (jsonObject.has("value")) {
-            this.value = jsonObject.get("value").getAsFloat();
+            setValue(jsonObject.get("value").getAsFloat());
         }
 
         if (jsonObject.has("type")) {
-            this.type = MonitorEnum.valueOf(jsonObject.get("type").getAsString());
+            setType(MonitorEnum.valueOf(jsonObject.get("type").getAsString()));
         }
 
         if (jsonObject.has("severity")) {
-            this.severity = jsonObject.get("severity").getAsInt();
+            setSeverity(jsonObject.get("severity").getAsInt());
         }
 
         if (jsonObject.has("eventNotificationType")) {
-            this.eventNotificationType = EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString());
+            setEventNotificationType(EventNotificationEnum.valueOf(jsonObject.get("eventNotificationType").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -366,25 +220,25 @@ public class VariableMonitoring implements JsonInterface {
         if (!(obj instanceof VariableMonitoring))
             return false;
         VariableMonitoring that = (VariableMonitoring) obj;
-        return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.value, that.value)
-                && Objects.equals(this.transaction, that.transaction);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getTransaction(), that.getTransaction())
+                && Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getSeverity(), that.getSeverity())
+                && Objects.equals(getEventNotificationType(), that.getEventNotificationType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.eventNotificationType != null ? this.eventNotificationType.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
-        result = 31 * result + (this.transaction != null ? this.transaction.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getTransaction(),
+                getValue(),
+                getType(),
+                getSeverity(),
+                getEventNotificationType(),
+                getCustomData()
+        );
     }
 }

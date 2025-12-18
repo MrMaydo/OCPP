@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -9,58 +11,47 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the SetVariablesRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class SetVariablesRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * List of Component-Variable pairs and attribute values to set.
      */
     @Required
     private List<SetVariableData> setVariableData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetVariablesRequest() {
     }
 
-    public SetVariablesRequest(List<SetVariableData> setVariableData, CustomData customData) {
-        super();
-        this.setVariableData = setVariableData;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<SetVariableData> getSetVariableData() {
         return setVariableData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSetVariableData(List<SetVariableData> setVariableData) {
         this.setVariableData = setVariableData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -73,7 +64,17 @@ public class SetVariablesRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray setVariableDataArray = new JsonArray();
+        for (SetVariableData item : getSetVariableData()) {
+            setVariableDataArray.add(item.toJsonObject());
+        }
+        json.add("setVariableData", setVariableDataArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -85,11 +86,20 @@ public class SetVariablesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        if (jsonObject.has("setVariableData")) {
+            setSetVariableData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("setVariableData");
+            for (JsonElement el : arr) {
+                SetVariableData item = new SetVariableData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getSetVariableData().add(item);
+            }
         }
 
+        if (jsonObject.has("customData")) {
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
+        }
     }
 
     @Override
@@ -99,15 +109,15 @@ public class SetVariablesRequest implements JsonInterface {
         if (!(obj instanceof SetVariablesRequest))
             return false;
         SetVariablesRequest that = (SetVariablesRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.setVariableData, that.setVariableData);
+        return Objects.equals(getSetVariableData(), that.getSetVariableData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.setVariableData != null ? this.setVariableData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getSetVariableData(),
+                getCustomData()
+        );
     }
 }

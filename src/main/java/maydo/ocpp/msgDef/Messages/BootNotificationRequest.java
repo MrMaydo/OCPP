@@ -12,87 +12,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the BootNotificationRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class BootNotificationRequest implements JsonInterface {
 
     /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
+     * Identifies the Charging Station
      */
     @Required
     private ChargingStation chargingStation;
+
     /**
      * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private BootReasonEnum reason;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BootNotificationRequest() {
     }
 
-    public BootNotificationRequest(ChargingStation chargingStation, BootReasonEnum reason, CustomData customData) {
-        super();
-        this.chargingStation = chargingStation;
-        this.reason = reason;
-        this.customData = customData;
-    }
 
-    /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
-     */
     public ChargingStation getChargingStation() {
         return chargingStation;
     }
 
-    /**
-     * The physical system where an Electrical Vehicle (EV) can be charged.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingStation(ChargingStation chargingStation) {
         this.chargingStation = chargingStation;
     }
 
-    /**
-     * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public BootReasonEnum getReason() {
         return reason;
     }
 
-    /**
-     * This contains the reason for sending this message to the CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setReason(BootReasonEnum reason) {
         this.reason = reason;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -105,9 +77,15 @@ public class BootNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("chargingStation", chargingStation.toJsonObject());
-        json.addProperty("reason", reason.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("chargingStation", getChargingStation().toJsonObject());
+
+        json.addProperty("reason", getReason().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -120,19 +98,18 @@ public class BootNotificationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingStation")) {
-            this.chargingStation = new ChargingStation();
-            this.chargingStation.fromJsonObject(jsonObject.getAsJsonObject("chargingStation"));
+            setChargingStation(new ChargingStation());
+            getChargingStation().fromJsonObject(jsonObject.getAsJsonObject("chargingStation"));
         }
 
         if (jsonObject.has("reason")) {
-            this.reason = BootReasonEnum.valueOf(jsonObject.get("reason").getAsString());
+            setReason(BootReasonEnum.valueOf(jsonObject.get("reason").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -142,17 +119,17 @@ public class BootNotificationRequest implements JsonInterface {
         if (!(obj instanceof BootNotificationRequest))
             return false;
         BootNotificationRequest that = (BootNotificationRequest) obj;
-        return Objects.equals(this.reason, that.reason)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingStation, that.chargingStation);
+        return Objects.equals(getChargingStation(), that.getChargingStation())
+                && Objects.equals(getReason(), that.getReason())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.reason != null ? this.reason.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingStation != null ? this.chargingStation.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingStation(),
+                getReason(),
+                getCustomData()
+        );
     }
 }

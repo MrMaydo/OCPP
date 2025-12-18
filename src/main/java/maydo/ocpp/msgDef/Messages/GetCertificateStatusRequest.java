@@ -11,61 +11,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetCertificateStatusRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class GetCertificateStatusRequest implements JsonInterface {
 
     /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
+     * Indicates the certificate of which the status is requested.
      */
     @Required
     private OCSPRequestData ocspRequestData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetCertificateStatusRequest() {
     }
 
-    public GetCertificateStatusRequest(OCSPRequestData ocspRequestData, CustomData customData) {
-        super();
-        this.ocspRequestData = ocspRequestData;
-        this.customData = customData;
-    }
 
-    /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
-     */
     public OCSPRequestData getOcspRequestData() {
         return ocspRequestData;
     }
 
-    /**
-     * Information about a certificate for an OCSP check.
-     * <p>
-     * (Required)
-     */
+
     public void setOcspRequestData(OCSPRequestData ocspRequestData) {
         this.ocspRequestData = ocspRequestData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -78,8 +60,13 @@ public class GetCertificateStatusRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("ocspRequestData", ocspRequestData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("ocspRequestData", getOcspRequestData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -92,15 +79,14 @@ public class GetCertificateStatusRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("ocspRequestData")) {
-            this.ocspRequestData = new OCSPRequestData();
-            this.ocspRequestData.fromJsonObject(jsonObject.getAsJsonObject("ocspRequestData"));
+            setOcspRequestData(new OCSPRequestData());
+            getOcspRequestData().fromJsonObject(jsonObject.getAsJsonObject("ocspRequestData"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -110,15 +96,15 @@ public class GetCertificateStatusRequest implements JsonInterface {
         if (!(obj instanceof GetCertificateStatusRequest))
             return false;
         GetCertificateStatusRequest that = (GetCertificateStatusRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.ocspRequestData, that.ocspRequestData);
+        return Objects.equals(getOcspRequestData(), that.getOcspRequestData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.ocspRequestData != null ? this.ocspRequestData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getOcspRequestData(),
+                getCustomData()
+        );
     }
 }

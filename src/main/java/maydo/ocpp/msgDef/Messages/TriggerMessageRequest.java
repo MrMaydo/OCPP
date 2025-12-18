@@ -12,106 +12,76 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the TriggerMessageRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class TriggerMessageRequest implements JsonInterface {
 
     /**
-     * Electric Vehicle Supply Equipment
+     * Can be used to specifiy the EVSE and Connector if required for the message which needs to be sent.
      */
     @Optional
     private EVSE evse;
+
     /**
      * Type of message to be triggered.
-     * <p>
-     * (Required)
      */
     @Required
     private MessageTriggerEnum requestedMessage;
+
     /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
+     * (2.1) When requestedMessage = CustomTrigger  this will trigger sending the corresponding message in field customTrigger,
+     * if supported by Charging Station.
      */
     @Optional
     private String customTrigger;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public TriggerMessageRequest() {
     }
 
-    /**
-     * @param customTrigger *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     *                      <p>
-     *                      .
-     */
-    public TriggerMessageRequest(EVSE evse, MessageTriggerEnum requestedMessage, String customTrigger, CustomData customData) {
-        super();
-        this.evse = evse;
-        this.requestedMessage = requestedMessage;
-        this.customTrigger = customTrigger;
-        this.customData = customData;
-    }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
     public EVSE getEvse() {
         return evse;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public void setEvse(EVSE evse) {
         this.evse = evse;
     }
 
-    /**
-     * Type of message to be triggered.
-     * <p>
-     * (Required)
-     */
+
     public MessageTriggerEnum getRequestedMessage() {
         return requestedMessage;
     }
 
-    /**
-     * Type of message to be triggered.
-     * <p>
-     * (Required)
-     */
+
     public void setRequestedMessage(MessageTriggerEnum requestedMessage) {
         this.requestedMessage = requestedMessage;
     }
 
-    /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     */
+
     public String getCustomTrigger() {
         return customTrigger;
     }
 
-    /**
-     * *(2.1)* When _requestedMessage_ = `CustomTrigger` this will trigger sending the corresponding message in field _customTrigger_, if supported by Charging Station.
-     */
+
     public void setCustomTrigger(String customTrigger) {
         this.customTrigger = customTrigger;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -124,10 +94,19 @@ public class TriggerMessageRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("evse", evse.toJsonObject());
-        json.addProperty("requestedMessage", requestedMessage.toString());
-        json.addProperty("customTrigger", customTrigger);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        json.addProperty("requestedMessage", getRequestedMessage().toString());
+
+        if (getCustomTrigger() != null) {
+            json.addProperty("customTrigger", getCustomTrigger());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -140,23 +119,22 @@ public class TriggerMessageRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evse")) {
-            this.evse = new EVSE();
-            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+            setEvse(new EVSE());
+            getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
         }
 
         if (jsonObject.has("requestedMessage")) {
-            this.requestedMessage = MessageTriggerEnum.valueOf(jsonObject.get("requestedMessage").getAsString());
+            setRequestedMessage(MessageTriggerEnum.valueOf(jsonObject.get("requestedMessage").getAsString()));
         }
 
         if (jsonObject.has("customTrigger")) {
-            this.customTrigger = jsonObject.get("customTrigger").getAsString();
+            setCustomTrigger(jsonObject.get("customTrigger").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -166,19 +144,19 @@ public class TriggerMessageRequest implements JsonInterface {
         if (!(obj instanceof TriggerMessageRequest))
             return false;
         TriggerMessageRequest that = (TriggerMessageRequest) obj;
-        return Objects.equals(this.customTrigger, that.customTrigger)
-                && Objects.equals(this.requestedMessage, that.requestedMessage)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evse, that.evse);
+        return Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getRequestedMessage(), that.getRequestedMessage())
+                && Objects.equals(getCustomTrigger(), that.getCustomTrigger())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customTrigger != null ? this.customTrigger.hashCode() : 0);
-        result = 31 * result + (this.requestedMessage != null ? this.requestedMessage.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvse(),
+                getRequestedMessage(),
+                getCustomTrigger(),
+                getCustomData()
+        );
     }
 }

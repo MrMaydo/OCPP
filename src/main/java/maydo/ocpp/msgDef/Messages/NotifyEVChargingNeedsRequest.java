@@ -16,142 +16,94 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * The Charging Station uses this message to communicate the charging needs as calculated by the EV to the CSMS.
+ */
 public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     /**
      * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
+     * Contains the maximum elements the EV supports for:
+     * <p> - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). </p>
+     * <p> - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.</p>
      */
     @Optional
     private Integer maxScheduleTuples;
+
     /**
-     * (Required)
+     * The characteristics of the energy delivery required.
      */
     @Required
     private ChargingNeeds chargingNeeds;
+
     /**
-     * *(2.1)* Time when EV charging needs were received. +
+     * (2.1) Time when EV charging needs were received.
      * Field can be added when charging station was offline when charging needs were received.
      */
     @Optional
     private Date timestamp;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyEVChargingNeedsRequest() {
     }
 
-    /**
-     * @param evseId            Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     *                          .
-     * @param maxScheduleTuples Contains the maximum elements the EV supports for: +
-     *                          - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     *                          - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     *                          .
-     * @param timestamp         *(2.1)* Time when EV charging needs were received. +
-     *                          Field can be added when charging station was offline when charging needs were received.
-     *                          <p>
-     *                          .
-     */
-    public NotifyEVChargingNeedsRequest(Integer evseId, Integer maxScheduleTuples, ChargingNeeds chargingNeeds, Date timestamp, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.maxScheduleTuples = maxScheduleTuples;
-        this.chargingNeeds = chargingNeeds;
-        this.timestamp = timestamp;
-        this.customData = customData;
-    }
 
-    /**
-     * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * Defines the EVSE and connector to which the EV is connected. EvseId may not be 0.
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     */
+
     public Integer getMaxScheduleTuples() {
         return maxScheduleTuples;
     }
 
-    /**
-     * Contains the maximum elements the EV supports for: +
-     * - ISO 15118-2: schedule tuples in SASchedule (both Pmax and Tariff). +
-     * - ISO 15118-20: PowerScheduleEntry, PriceRule and PriceLevelScheduleEntries.
-     */
+
     public void setMaxScheduleTuples(Integer maxScheduleTuples) {
         this.maxScheduleTuples = maxScheduleTuples;
     }
 
-    /**
-     * (Required)
-     */
+
     public ChargingNeeds getChargingNeeds() {
         return chargingNeeds;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingNeeds(ChargingNeeds chargingNeeds) {
         this.chargingNeeds = chargingNeeds;
     }
 
-    /**
-     * *(2.1)* Time when EV charging needs were received. +
-     * Field can be added when charging station was offline when charging needs were received.
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * *(2.1)* Time when EV charging needs were received. +
-     * Field can be added when charging station was offline when charging needs were received.
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -164,11 +116,21 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("maxScheduleTuples", maxScheduleTuples);
-        json.add("chargingNeeds", chargingNeeds.toJsonObject());
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        if (getMaxScheduleTuples() != null) {
+            json.addProperty("maxScheduleTuples", getMaxScheduleTuples());
+        }
+        json.add("chargingNeeds", getChargingNeeds().toJsonObject());
+
+        if (getTimestamp() != null) {
+            json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -181,32 +143,31 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("maxScheduleTuples")) {
-            this.maxScheduleTuples = jsonObject.get("maxScheduleTuples").getAsInt();
+            setMaxScheduleTuples(jsonObject.get("maxScheduleTuples").getAsInt());
         }
 
         if (jsonObject.has("chargingNeeds")) {
-            this.chargingNeeds = new ChargingNeeds();
-            this.chargingNeeds.fromJsonObject(jsonObject.getAsJsonObject("chargingNeeds"));
+            setChargingNeeds(new ChargingNeeds());
+            getChargingNeeds().fromJsonObject(jsonObject.getAsJsonObject("chargingNeeds"));
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -216,21 +177,21 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
         if (!(obj instanceof NotifyEVChargingNeedsRequest))
             return false;
         NotifyEVChargingNeedsRequest that = (NotifyEVChargingNeedsRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maxScheduleTuples, that.maxScheduleTuples)
-                && Objects.equals(this.chargingNeeds, that.chargingNeeds)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getMaxScheduleTuples(), that.getMaxScheduleTuples())
+                && Objects.equals(getChargingNeeds(), that.getChargingNeeds())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maxScheduleTuples != null ? this.maxScheduleTuples.hashCode() : 0);
-        result = 31 * result + (this.chargingNeeds != null ? this.chargingNeeds.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getMaxScheduleTuples(),
+                getChargingNeeds(),
+                getTimestamp(),
+                getCustomData()
+        );
     }
 }

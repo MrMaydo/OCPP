@@ -11,140 +11,113 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetDERControlRequest implements JsonInterface {
 
     /**
      * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean isDefault;
+
     /**
      * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String controlId;
+
     /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
+     * Type of control. Determines which setting field below is used.
      */
     @Required
     private DERControlEnum controlType;
+
+    /**
+     * Voltage/Frequency/Active/Reactive curve
+     */
     @Optional
     private DERCurve curve;
+
+    /**
+     * Enter service after trip parameters (default control only)
+     */
     @Optional
     private EnterService enterService;
+
+    /**
+     * Fixed power factor setpoint when absorbing active power
+     */
     @Optional
     private FixedPF fixedPFAbsorb;
+
+    /**
+     * Fixed power factor setpoint when injecting active power
+     */
     @Optional
     private FixedPF fixedPFInject;
+
+    /**
+     * Fixed reactive power
+     */
     @Optional
     private FixedVar fixedVar;
+
+    /**
+     * Frequency-Watt parameterized mode
+     */
     @Optional
     private FreqDroop freqDroop;
+
+    /**
+     * Gradient (default ramp rate) settings (default control only)
+     */
     @Optional
     private Gradient gradient;
+
+    /**
+     * Limit maximum discharge as percentage of rated capability
+     */
     @Optional
     private LimitMaxDischarge limitMaxDischarge;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDERControlRequest() {
     }
 
-    /**
-     * @param isDefault True if this is a default DER control
-     *                  <p>
-     *                  .
-     * @param controlId Unique id of this control, e.g. UUID
-     *                  <p>
-     *                  .
-     */
-    public SetDERControlRequest(Boolean isDefault, String controlId, DERControlEnum controlType, DERCurve curve, EnterService enterService, FixedPF fixedPFAbsorb, FixedPF fixedPFInject, FixedVar fixedVar, FreqDroop freqDroop, Gradient gradient, LimitMaxDischarge limitMaxDischarge, CustomData customData) {
-        super();
-        this.isDefault = isDefault;
-        this.controlId = controlId;
-        this.controlType = controlType;
-        this.curve = curve;
-        this.enterService = enterService;
-        this.fixedPFAbsorb = fixedPFAbsorb;
-        this.fixedPFInject = fixedPFInject;
-        this.fixedVar = fixedVar;
-        this.freqDroop = freqDroop;
-        this.gradient = gradient;
-        this.limitMaxDischarge = limitMaxDischarge;
-        this.customData = customData;
-    }
 
-    /**
-     * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Boolean getIsDefault() {
         return isDefault;
     }
 
-    /**
-     * True if this is a default DER control
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIsDefault(Boolean isDefault) {
         this.isDefault = isDefault;
     }
 
-    /**
-     * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getControlId() {
         return controlId;
     }
 
-    /**
-     * Unique id of this control, e.g. UUID
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setControlId(String controlId) {
         this.controlId = controlId;
     }
 
-    /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public DERControlEnum getControlType() {
         return controlType;
     }
 
-    /**
-     * Type of control.  Determines which setting field below is used.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setControlType(DERControlEnum controlType) {
         this.controlType = controlType;
     }
@@ -213,16 +186,12 @@ public class SetDERControlRequest implements JsonInterface {
         this.limitMaxDischarge = limitMaxDischarge;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -235,18 +204,41 @@ public class SetDERControlRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("isDefault", isDefault);
-        json.addProperty("controlId", controlId);
-        json.addProperty("controlType", controlType.toString());
-        json.add("curve", curve.toJsonObject());
-        json.add("enterService", enterService.toJsonObject());
-        json.add("fixedPFAbsorb", fixedPFAbsorb.toJsonObject());
-        json.add("fixedPFInject", fixedPFInject.toJsonObject());
-        json.add("fixedVar", fixedVar.toJsonObject());
-        json.add("freqDroop", freqDroop.toJsonObject());
-        json.add("gradient", gradient.toJsonObject());
-        json.add("limitMaxDischarge", limitMaxDischarge.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("isDefault", getIsDefault());
+
+        json.addProperty("controlId", getControlId());
+
+        json.addProperty("controlType", getControlType().toString());
+
+        if (getCurve() != null) {
+            json.add("curve", getCurve().toJsonObject());
+        }
+        if (getEnterService() != null) {
+            json.add("enterService", getEnterService().toJsonObject());
+        }
+        if (getFixedPFAbsorb() != null) {
+            json.add("fixedPFAbsorb", getFixedPFAbsorb().toJsonObject());
+        }
+        if (getFixedPFInject() != null) {
+            json.add("fixedPFInject", getFixedPFInject().toJsonObject());
+        }
+        if (getFixedVar() != null) {
+            json.add("fixedVar", getFixedVar().toJsonObject());
+        }
+        if (getFreqDroop() != null) {
+            json.add("freqDroop", getFreqDroop().toJsonObject());
+        }
+        if (getGradient() != null) {
+            json.add("gradient", getGradient().toJsonObject());
+        }
+        if (getLimitMaxDischarge() != null) {
+            json.add("limitMaxDischarge", getLimitMaxDischarge().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -259,62 +251,61 @@ public class SetDERControlRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("isDefault")) {
-            this.isDefault = jsonObject.get("isDefault").getAsBoolean();
+            setIsDefault(jsonObject.get("isDefault").getAsBoolean());
         }
 
         if (jsonObject.has("controlId")) {
-            this.controlId = jsonObject.get("controlId").getAsString();
+            setControlId(jsonObject.get("controlId").getAsString());
         }
 
         if (jsonObject.has("controlType")) {
-            this.controlType = DERControlEnum.valueOf(jsonObject.get("controlType").getAsString());
+            setControlType(DERControlEnum.valueOf(jsonObject.get("controlType").getAsString()));
         }
 
         if (jsonObject.has("curve")) {
-            this.curve = new DERCurve();
-            this.curve.fromJsonObject(jsonObject.getAsJsonObject("curve"));
+            setCurve(new DERCurve());
+            getCurve().fromJsonObject(jsonObject.getAsJsonObject("curve"));
         }
 
         if (jsonObject.has("enterService")) {
-            this.enterService = new EnterService();
-            this.enterService.fromJsonObject(jsonObject.getAsJsonObject("enterService"));
+            setEnterService(new EnterService());
+            getEnterService().fromJsonObject(jsonObject.getAsJsonObject("enterService"));
         }
 
         if (jsonObject.has("fixedPFAbsorb")) {
-            this.fixedPFAbsorb = new FixedPF();
-            this.fixedPFAbsorb.fromJsonObject(jsonObject.getAsJsonObject("fixedPFAbsorb"));
+            setFixedPFAbsorb(new FixedPF());
+            getFixedPFAbsorb().fromJsonObject(jsonObject.getAsJsonObject("fixedPFAbsorb"));
         }
 
         if (jsonObject.has("fixedPFInject")) {
-            this.fixedPFInject = new FixedPF();
-            this.fixedPFInject.fromJsonObject(jsonObject.getAsJsonObject("fixedPFInject"));
+            setFixedPFInject(new FixedPF());
+            getFixedPFInject().fromJsonObject(jsonObject.getAsJsonObject("fixedPFInject"));
         }
 
         if (jsonObject.has("fixedVar")) {
-            this.fixedVar = new FixedVar();
-            this.fixedVar.fromJsonObject(jsonObject.getAsJsonObject("fixedVar"));
+            setFixedVar(new FixedVar());
+            getFixedVar().fromJsonObject(jsonObject.getAsJsonObject("fixedVar"));
         }
 
         if (jsonObject.has("freqDroop")) {
-            this.freqDroop = new FreqDroop();
-            this.freqDroop.fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
+            setFreqDroop(new FreqDroop());
+            getFreqDroop().fromJsonObject(jsonObject.getAsJsonObject("freqDroop"));
         }
 
         if (jsonObject.has("gradient")) {
-            this.gradient = new Gradient();
-            this.gradient.fromJsonObject(jsonObject.getAsJsonObject("gradient"));
+            setGradient(new Gradient());
+            getGradient().fromJsonObject(jsonObject.getAsJsonObject("gradient"));
         }
 
         if (jsonObject.has("limitMaxDischarge")) {
-            this.limitMaxDischarge = new LimitMaxDischarge();
-            this.limitMaxDischarge.fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
+            setLimitMaxDischarge(new LimitMaxDischarge());
+            getLimitMaxDischarge().fromJsonObject(jsonObject.getAsJsonObject("limitMaxDischarge"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -324,35 +315,35 @@ public class SetDERControlRequest implements JsonInterface {
         if (!(obj instanceof SetDERControlRequest))
             return false;
         SetDERControlRequest that = (SetDERControlRequest) obj;
-        return Objects.equals(this.curve, that.curve)
-                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb)
-                && Objects.equals(this.fixedPFInject, that.fixedPFInject)
-                && Objects.equals(this.gradient, that.gradient)
-                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.controlId, that.controlId)
-                && Objects.equals(this.freqDroop, that.freqDroop)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.controlType, that.controlType)
-                && Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.fixedVar, that.fixedVar);
+        return Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getControlId(), that.getControlId())
+                && Objects.equals(getControlType(), that.getControlType())
+                && Objects.equals(getCurve(), that.getCurve())
+                && Objects.equals(getEnterService(), that.getEnterService())
+                && Objects.equals(getFixedPFAbsorb(), that.getFixedPFAbsorb())
+                && Objects.equals(getFixedPFInject(), that.getFixedPFInject())
+                && Objects.equals(getFixedVar(), that.getFixedVar())
+                && Objects.equals(getFreqDroop(), that.getFreqDroop())
+                && Objects.equals(getGradient(), that.getGradient())
+                && Objects.equals(getLimitMaxDischarge(), that.getLimitMaxDischarge())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.curve != null ? this.curve.hashCode() : 0);
-        result = 31 * result + (this.fixedPFAbsorb != null ? this.fixedPFAbsorb.hashCode() : 0);
-        result = 31 * result + (this.fixedPFInject != null ? this.fixedPFInject.hashCode() : 0);
-        result = 31 * result + (this.gradient != null ? this.gradient.hashCode() : 0);
-        result = 31 * result + (this.limitMaxDischarge != null ? this.limitMaxDischarge.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.controlId != null ? this.controlId.hashCode() : 0);
-        result = 31 * result + (this.freqDroop != null ? this.freqDroop.hashCode() : 0);
-        result = 31 * result + (this.isDefault != null ? this.isDefault.hashCode() : 0);
-        result = 31 * result + (this.controlType != null ? this.controlType.hashCode() : 0);
-        result = 31 * result + (this.enterService != null ? this.enterService.hashCode() : 0);
-        result = 31 * result + (this.fixedVar != null ? this.fixedVar.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIsDefault(),
+                getControlId(),
+                getControlType(),
+                getCurve(),
+                getEnterService(),
+                getFixedPFAbsorb(),
+                getFixedPFInject(),
+                getFixedVar(),
+                getFreqDroop(),
+                getGradient(),
+                getLimitMaxDischarge(),
+                getCustomData()
+        );
     }
 }

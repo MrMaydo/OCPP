@@ -11,61 +11,44 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the UnpublishFirmwareResponse PDU sent by
+ * the Charging Station to the CSMS in response to a UnpublishFirmwareRequest.
+ */
 public class UnpublishFirmwareResponse implements JsonInterface {
 
     /**
      * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
      */
     @Required
     private UnpublishFirmwareStatusEnum status;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UnpublishFirmwareResponse() {
     }
 
-    public UnpublishFirmwareResponse(UnpublishFirmwareStatusEnum status, CustomData customData) {
-        super();
-        this.status = status;
-        this.customData = customData;
-    }
 
-    /**
-     * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
-     */
     public UnpublishFirmwareStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Indicates whether the Local Controller succeeded in unpublishing the firmware.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(UnpublishFirmwareStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -78,8 +61,13 @@ public class UnpublishFirmwareResponse implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -92,14 +80,13 @@ public class UnpublishFirmwareResponse implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = UnpublishFirmwareStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(UnpublishFirmwareStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -109,15 +96,15 @@ public class UnpublishFirmwareResponse implements JsonInterface {
         if (!(obj instanceof UnpublishFirmwareResponse))
             return false;
         UnpublishFirmwareResponse that = (UnpublishFirmwareResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getCustomData()
+        );
     }
 }

@@ -1,94 +1,72 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ */
 public class ConsumptionCost implements JsonInterface {
 
     /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
+     * The lowest level of consumption that defines the starting point of this consumption block.
+     * The block interval extends to the start of the next interval.
      */
     @Required
     private Float startValue;
+
     /**
-     * (Required)
+     * This field contains the cost details.
      */
     @Required
     private List<Cost> cost;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ConsumptionCost() {
     }
 
-    /**
-     * @param startValue The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     *                   .
-     */
-    public ConsumptionCost(Float startValue, List<Cost> cost, CustomData customData) {
-        super();
-        this.startValue = startValue;
-        this.cost = cost;
-        this.customData = customData;
-    }
 
-    /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
-     */
     public Float getStartValue() {
         return startValue;
     }
 
-    /**
-     * The lowest level of consumption that defines the starting point of this consumption block. The block interval extends to the start of the next interval.
-     * <p>
-     * (Required)
-     */
+
     public void setStartValue(Float startValue) {
         this.startValue = startValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<Cost> getCost() {
         return cost;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCost(List<Cost> cost) {
         this.cost = cost;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -101,8 +79,19 @@ public class ConsumptionCost implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("startValue", startValue);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("startValue", getStartValue());
+
+        JsonArray costArray = new JsonArray();
+        for (Cost item : getCost()) {
+            costArray.add(item.toJsonObject());
+        }
+        json.add("cost", costArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -115,14 +104,23 @@ public class ConsumptionCost implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("startValue")) {
-            this.startValue = jsonObject.get("startValue").getAsFloat();
+            setStartValue(jsonObject.get("startValue").getAsFloat());
+        }
+
+        if (jsonObject.has("cost")) {
+            setCost(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("cost");
+            for (JsonElement el : arr) {
+                Cost item = new Cost();
+                item.fromJsonObject(el.getAsJsonObject());
+                getCost().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -132,17 +130,17 @@ public class ConsumptionCost implements JsonInterface {
         if (!(obj instanceof ConsumptionCost))
             return false;
         ConsumptionCost that = (ConsumptionCost) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.startValue, that.startValue)
-                && Objects.equals(this.cost, that.cost);
+        return Objects.equals(getStartValue(), that.getStartValue())
+                && Objects.equals(getCost(), that.getCost())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.startValue != null ? this.startValue.hashCode() : 0);
-        result = 31 * result + (this.cost != null ? this.cost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStartValue(),
+                getCost(),
+                getCustomData()
+        );
     }
 }

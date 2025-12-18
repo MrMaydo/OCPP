@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.ChargingProfileKindEnum;
@@ -12,397 +14,282 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * A ChargingProfile consists of 1 to 3 ChargingSchedules with a list of ChargingSchedulePeriods,
+ * describing the amount of power or current that can be delivered per time interval.
+ */
 public class ChargingProfile implements JsonInterface {
 
     /**
-     * Id of ChargingProfile. Unique within charging station. Id can have a negative value. This is useful to distinguish charging profiles from an external actor (external constraints) from charging profiles received from CSMS.
-     * <p>
-     * (Required)
+     * Id of ChargingProfile. Unique within charging station. Id can have a negative value.
+     * This is useful to distinguish charging profiles from an external actor (external constraints)
+     * from charging profiles received from CSMS.
      */
     @Required
     private Integer id;
+
     /**
-     * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
-     * <p>
-     * (Required)
+     * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values.
+     * Lowest level is 0.
      */
     @Required
     private Integer stackLevel;
+
     /**
      * Defines the purpose of the schedule transferred by this profile
-     * <p>
-     * (Required)
      */
     @Required
     private ChargingProfilePurposeEnum chargingProfilePurpose;
+
     /**
      * Indicates the kind of schedule.
-     * <p>
-     * (Required)
      */
     @Required
     private ChargingProfileKindEnum chargingProfileKind;
+
+    /**
+     * Schedule that contains limits for the available power or current over time.
+     * In order to support ISO 15118 schedule negotiation, it supports at most three schedules with associated tariff to choose from.
+     * Having multiple chargingSchedules is only allowed for charging profiles of purpose TxProfile
+     * in the context of an ISO 15118 charging session.
+     * For ISO 15118 Dynamic Control Mode only one chargingSchedule shall be provided.
+     */
+    @Required
+    private List<ChargingSchedule> chargingSchedule;
+
     /**
      * Indicates the start point of a recurrence.
      */
     @Optional
     private RecurrencyKindEnum recurrencyKind;
+
     /**
-     * Point in time at which the profile starts to be valid. If absent, the profile is valid as soon as it is received by the Charging Station.
+     * Point in time at which the profile starts to be valid.
+     * If absent, the profile is valid as soon as it is received by the Charging Station.
      */
     @Optional
     private Date validFrom;
+
     /**
-     * Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
+     * Point in time at which the profile stops to be valid.
+     * If absent, the profile is valid until it is replaced by another profile.
      */
     @Optional
     private Date validTo;
+
     /**
-     * SHALL only be included if ChargingProfilePurpose is set to TxProfile in a SetChargingProfileRequest. The transactionId is used to match the profile to a specific transaction.
+     * SHALL only be included if ChargingProfilePurpose is set to TxProfile in a SetChargingProfileRequest.
+     * The transactionId is used to match the profile to a specific transaction.
      */
     @Optional
     private String transactionId;
+
     /**
-     * *(2.1)* Period in seconds that this charging profile remains valid after the Charging Station has gone offline. After this period the charging profile becomes invalid for as long as it is offline and the Charging Station reverts back to a valid profile with a lower stack level.
-     * If _invalidAfterOfflineDuration_ is true, then this charging profile will become permanently invalid.
-     * A value of 0 means that the charging profile is immediately invalid while offline. When the field is absent, then  no timeout applies and the charging profile remains valid when offline.
+     * (2.1) Period in seconds that this charging profile remains valid after the Charging Station has gone offline.
+     * After this period the charging profile becomes invalid for as long as it is offline
+     * and the Charging Station reverts back to a valid profile with a lower stack level.
+     * If invalidAfterOfflineDuration is true, then this charging profile will become permanently invalid.
+     * A value of 0 means that the charging profile is immediately invalid while offline.
+     * When the field is absent, then no timeout applies and the charging profile remains valid when offline.
      */
     @Optional
     private Integer maxOfflineDuration;
+
     /**
-     * (Required)
-     */
-    @Required
-    private List<ChargingSchedule> chargingSchedule;
-    /**
-     * *(2.1)* When set to true this charging profile will not be valid anymore after being offline for more than _maxOfflineDuration_. +
+     * (2.1) When set to true this charging profile will not be valid anymore after being offline for more than maxOfflineDuration.
      * When absent defaults to false.
      */
     @Optional
     private Boolean invalidAfterOfflineDuration;
+
     /**
-     * *(2.1)*  Interval in seconds after receipt of last update, when to request a profile update by sending a PullDynamicScheduleUpdateRequest message.
-     * A value of 0 or no value means that no update interval applies. +
+     * (2.1) Interval in seconds after receipt of last update, when to request a profile update by sending
+     * a PullDynamicScheduleUpdateRequest message. A value of 0 or no value means that no update interval applies.
      * Only relevant in a dynamic charging profile.
      */
     @Optional
     private Integer dynUpdateInterval;
+
     /**
-     * *(2.1)* Time at which limits or setpoints in this charging profile were last updated by a PullDynamicScheduleUpdateRequest or UpdateDynamicScheduleRequest or by an external actor. +
+     * (2.1) Time at which limits or setpoints in this charging profile were last updated
+     * by a PullDynamicScheduleUpdateRequest or UpdateDynamicScheduleRequest or by an external actor.
      * Only relevant in a dynamic charging profile.
      */
     @Optional
     private Date dynUpdateTime;
+
     /**
-     * *(2.1)* ISO 15118-20 signature for all price schedules in _chargingSchedules_. +
-     * Note: for 256-bit elliptic curves (like secp256k1) the ECDSA signature is 512 bits (64 bytes) and for 521-bit curves (like secp521r1) the signature is 1042 bits. This equals 131 bytes, which can be encoded as base64 in 176 bytes.
+     * (2.1) ISO 15118-20 signature for all price schedules in chargingSchedules.
+     * Note: for 256-bit elliptic curves (like secp256k1) the ECDSA signature is 512 bits (64 bytes)
+     * and for 521-bit curves (like secp521r1) the signature is 1042 bits.
+     * This equals 131 bytes, which can be encoded as base64 in 176 bytes
      */
     @Optional
     private String priceScheduleSignature;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChargingProfile() {
     }
 
-    /**
-     * @param invalidAfterOfflineDuration *(2.1)* When set to true this charging profile will not be valid anymore after being offline for more than _maxOfflineDuration_. +
-     *                                    When absent defaults to false.
-     *                                    .
-     * @param dynUpdateTime               *(2.1)* Time at which limits or setpoints in this charging profile were last updated by a PullDynamicScheduleUpdateRequest or UpdateDynamicScheduleRequest or by an external actor. +
-     *                                    Only relevant in a dynamic charging profile.
-     *                                    <p>
-     *                                    .
-     * @param id                          Id of ChargingProfile. Unique within charging station. Id can have a negative value. This is useful to distinguish charging profiles from an external actor (external constraints) from charging profiles received from CSMS.
-     *                                    .
-     * @param validFrom                   Point in time at which the profile starts to be valid. If absent, the profile is valid as soon as it is received by the Charging Station.
-     *                                    .
-     * @param stackLevel                  Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
-     *                                    .
-     * @param maxOfflineDuration          *(2.1)* Period in seconds that this charging profile remains valid after the Charging Station has gone offline. After this period the charging profile becomes invalid for as long as it is offline and the Charging Station reverts back to a valid profile with a lower stack level.
-     *                                    If _invalidAfterOfflineDuration_ is true, then this charging profile will become permanently invalid.
-     *                                    A value of 0 means that the charging profile is immediately invalid while offline. When the field is absent, then  no timeout applies and the charging profile remains valid when offline.
-     *                                    .
-     * @param priceScheduleSignature      *(2.1)* ISO 15118-20 signature for all price schedules in _chargingSchedules_. +
-     *                                    Note: for 256-bit elliptic curves (like secp256k1) the ECDSA signature is 512 bits (64 bytes) and for 521-bit curves (like secp521r1) the signature is 1042 bits. This equals 131 bytes, which can be encoded as base64 in 176 bytes.
-     *                                    .
-     * @param transactionId               SHALL only be included if ChargingProfilePurpose is set to TxProfile in a SetChargingProfileRequest. The transactionId is used to match the profile to a specific transaction.
-     *                                    .
-     * @param validTo                     Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
-     *                                    .
-     * @param dynUpdateInterval           *(2.1)*  Interval in seconds after receipt of last update, when to request a profile update by sending a PullDynamicScheduleUpdateRequest message.
-     *                                    A value of 0 or no value means that no update interval applies. +
-     *                                    Only relevant in a dynamic charging profile.
-     *                                    <p>
-     *                                    .
-     */
-    public ChargingProfile(Integer id, Integer stackLevel, ChargingProfilePurposeEnum chargingProfilePurpose, ChargingProfileKindEnum chargingProfileKind, RecurrencyKindEnum recurrencyKind, Date validFrom, Date validTo, String transactionId, Integer maxOfflineDuration, List<ChargingSchedule> chargingSchedule, Boolean invalidAfterOfflineDuration, Integer dynUpdateInterval, Date dynUpdateTime, String priceScheduleSignature, CustomData customData) {
-        super();
-        this.id = id;
-        this.stackLevel = stackLevel;
-        this.chargingProfilePurpose = chargingProfilePurpose;
-        this.chargingProfileKind = chargingProfileKind;
-        this.recurrencyKind = recurrencyKind;
-        this.validFrom = validFrom;
-        this.validTo = validTo;
-        this.transactionId = transactionId;
-        this.maxOfflineDuration = maxOfflineDuration;
-        this.chargingSchedule = chargingSchedule;
-        this.invalidAfterOfflineDuration = invalidAfterOfflineDuration;
-        this.dynUpdateInterval = dynUpdateInterval;
-        this.dynUpdateTime = dynUpdateTime;
-        this.priceScheduleSignature = priceScheduleSignature;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of ChargingProfile. Unique within charging station. Id can have a negative value. This is useful to distinguish charging profiles from an external actor (external constraints) from charging profiles received from CSMS.
-     * <p>
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of ChargingProfile. Unique within charging station. Id can have a negative value. This is useful to distinguish charging profiles from an external actor (external constraints) from charging profiles received from CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
-     * <p>
-     * (Required)
-     */
+
     public Integer getStackLevel() {
         return stackLevel;
     }
 
-    /**
-     * Value determining level in hierarchy stack of profiles. Higher values have precedence over lower values. Lowest level is 0.
-     * <p>
-     * (Required)
-     */
+
     public void setStackLevel(Integer stackLevel) {
         this.stackLevel = stackLevel;
     }
 
-    /**
-     * Defines the purpose of the schedule transferred by this profile
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfilePurposeEnum getChargingProfilePurpose() {
         return chargingProfilePurpose;
     }
 
-    /**
-     * Defines the purpose of the schedule transferred by this profile
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfilePurpose(ChargingProfilePurposeEnum chargingProfilePurpose) {
         this.chargingProfilePurpose = chargingProfilePurpose;
     }
 
-    /**
-     * Indicates the kind of schedule.
-     * <p>
-     * (Required)
-     */
+
     public ChargingProfileKindEnum getChargingProfileKind() {
         return chargingProfileKind;
     }
 
-    /**
-     * Indicates the kind of schedule.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfileKind(ChargingProfileKindEnum chargingProfileKind) {
         this.chargingProfileKind = chargingProfileKind;
     }
 
-    /**
-     * Indicates the start point of a recurrence.
-     */
+
     public RecurrencyKindEnum getRecurrencyKind() {
         return recurrencyKind;
     }
 
-    /**
-     * Indicates the start point of a recurrence.
-     */
+
     public void setRecurrencyKind(RecurrencyKindEnum recurrencyKind) {
         this.recurrencyKind = recurrencyKind;
     }
 
-    /**
-     * Point in time at which the profile starts to be valid. If absent, the profile is valid as soon as it is received by the Charging Station.
-     */
+
     public Date getValidFrom() {
         return validFrom;
     }
 
-    /**
-     * Point in time at which the profile starts to be valid. If absent, the profile is valid as soon as it is received by the Charging Station.
-     */
+
     public void setValidFrom(Date validFrom) {
         this.validFrom = validFrom;
     }
 
-    /**
-     * Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
-     */
+
     public Date getValidTo() {
         return validTo;
     }
 
-    /**
-     * Point in time at which the profile stops to be valid. If absent, the profile is valid until it is replaced by another profile.
-     */
+
     public void setValidTo(Date validTo) {
         this.validTo = validTo;
     }
 
-    /**
-     * SHALL only be included if ChargingProfilePurpose is set to TxProfile in a SetChargingProfileRequest. The transactionId is used to match the profile to a specific transaction.
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * SHALL only be included if ChargingProfilePurpose is set to TxProfile in a SetChargingProfileRequest. The transactionId is used to match the profile to a specific transaction.
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * *(2.1)* Period in seconds that this charging profile remains valid after the Charging Station has gone offline. After this period the charging profile becomes invalid for as long as it is offline and the Charging Station reverts back to a valid profile with a lower stack level.
-     * If _invalidAfterOfflineDuration_ is true, then this charging profile will become permanently invalid.
-     * A value of 0 means that the charging profile is immediately invalid while offline. When the field is absent, then  no timeout applies and the charging profile remains valid when offline.
-     */
+
     public Integer getMaxOfflineDuration() {
         return maxOfflineDuration;
     }
 
-    /**
-     * *(2.1)* Period in seconds that this charging profile remains valid after the Charging Station has gone offline. After this period the charging profile becomes invalid for as long as it is offline and the Charging Station reverts back to a valid profile with a lower stack level.
-     * If _invalidAfterOfflineDuration_ is true, then this charging profile will become permanently invalid.
-     * A value of 0 means that the charging profile is immediately invalid while offline. When the field is absent, then  no timeout applies and the charging profile remains valid when offline.
-     */
+
     public void setMaxOfflineDuration(Integer maxOfflineDuration) {
         this.maxOfflineDuration = maxOfflineDuration;
     }
 
-    /**
-     * (Required)
-     */
+
     public List<ChargingSchedule> getChargingSchedule() {
         return chargingSchedule;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingSchedule(List<ChargingSchedule> chargingSchedule) {
         this.chargingSchedule = chargingSchedule;
     }
 
-    /**
-     * *(2.1)* When set to true this charging profile will not be valid anymore after being offline for more than _maxOfflineDuration_. +
-     * When absent defaults to false.
-     */
+
     public Boolean getInvalidAfterOfflineDuration() {
         return invalidAfterOfflineDuration;
     }
 
-    /**
-     * *(2.1)* When set to true this charging profile will not be valid anymore after being offline for more than _maxOfflineDuration_. +
-     * When absent defaults to false.
-     */
+
     public void setInvalidAfterOfflineDuration(Boolean invalidAfterOfflineDuration) {
         this.invalidAfterOfflineDuration = invalidAfterOfflineDuration;
     }
 
-    /**
-     * *(2.1)*  Interval in seconds after receipt of last update, when to request a profile update by sending a PullDynamicScheduleUpdateRequest message.
-     * A value of 0 or no value means that no update interval applies. +
-     * Only relevant in a dynamic charging profile.
-     */
+
     public Integer getDynUpdateInterval() {
         return dynUpdateInterval;
     }
 
-    /**
-     * *(2.1)*  Interval in seconds after receipt of last update, when to request a profile update by sending a PullDynamicScheduleUpdateRequest message.
-     * A value of 0 or no value means that no update interval applies. +
-     * Only relevant in a dynamic charging profile.
-     */
+
     public void setDynUpdateInterval(Integer dynUpdateInterval) {
         this.dynUpdateInterval = dynUpdateInterval;
     }
 
-    /**
-     * *(2.1)* Time at which limits or setpoints in this charging profile were last updated by a PullDynamicScheduleUpdateRequest or UpdateDynamicScheduleRequest or by an external actor. +
-     * Only relevant in a dynamic charging profile.
-     */
+
     public Date getDynUpdateTime() {
         return dynUpdateTime;
     }
 
-    /**
-     * *(2.1)* Time at which limits or setpoints in this charging profile were last updated by a PullDynamicScheduleUpdateRequest or UpdateDynamicScheduleRequest or by an external actor. +
-     * Only relevant in a dynamic charging profile.
-     */
+
     public void setDynUpdateTime(Date dynUpdateTime) {
         this.dynUpdateTime = dynUpdateTime;
     }
 
-    /**
-     * *(2.1)* ISO 15118-20 signature for all price schedules in _chargingSchedules_. +
-     * Note: for 256-bit elliptic curves (like secp256k1) the ECDSA signature is 512 bits (64 bytes) and for 521-bit curves (like secp521r1) the signature is 1042 bits. This equals 131 bytes, which can be encoded as base64 in 176 bytes.
-     */
+
     public String getPriceScheduleSignature() {
         return priceScheduleSignature;
     }
 
-    /**
-     * *(2.1)* ISO 15118-20 signature for all price schedules in _chargingSchedules_. +
-     * Note: for 256-bit elliptic curves (like secp256k1) the ECDSA signature is 512 bits (64 bytes) and for 521-bit curves (like secp521r1) the signature is 1042 bits. This equals 131 bytes, which can be encoded as base64 in 176 bytes.
-     */
+
     public void setPriceScheduleSignature(String priceScheduleSignature) {
         this.priceScheduleSignature = priceScheduleSignature;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -415,20 +302,52 @@ public class ChargingProfile implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.addProperty("stackLevel", stackLevel);
-        json.addProperty("chargingProfilePurpose", chargingProfilePurpose.toString());
-        json.addProperty("chargingProfileKind", chargingProfileKind.toString());
-        json.addProperty("recurrencyKind", recurrencyKind.toString());
-        json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(validFrom));
-        json.addProperty("validTo", new SimpleDateFormat(DATE_FORMAT).format(validTo));
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("maxOfflineDuration", maxOfflineDuration);
-        json.addProperty("invalidAfterOfflineDuration", invalidAfterOfflineDuration);
-        json.addProperty("dynUpdateInterval", dynUpdateInterval);
-        json.addProperty("dynUpdateTime", new SimpleDateFormat(DATE_FORMAT).format(dynUpdateTime));
-        json.addProperty("priceScheduleSignature", priceScheduleSignature);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        json.addProperty("stackLevel", getStackLevel());
+
+        json.addProperty("chargingProfilePurpose", getChargingProfilePurpose().toString());
+
+        json.addProperty("chargingProfileKind", getChargingProfileKind().toString());
+
+        JsonArray chargingScheduleArray = new JsonArray();
+        for (ChargingSchedule item : getChargingSchedule()) {
+            chargingScheduleArray.add(item.toJsonObject());
+        }
+        json.add("chargingSchedule", chargingScheduleArray);
+
+        if (getRecurrencyKind() != null) {
+            json.addProperty("recurrencyKind", getRecurrencyKind().toString());
+        }
+        if (getValidFrom() != null) {
+            json.addProperty("validFrom", new SimpleDateFormat(DATE_FORMAT).format(getValidFrom()));
+        }
+        if (getValidTo() != null) {
+            json.addProperty("validTo", new SimpleDateFormat(DATE_FORMAT).format(getValidTo()));
+        }
+        if (getTransactionId() != null) {
+            json.addProperty("transactionId", getTransactionId());
+        }
+        if (getMaxOfflineDuration() != null) {
+            json.addProperty("maxOfflineDuration", getMaxOfflineDuration());
+        }
+        if (getInvalidAfterOfflineDuration() != null) {
+            json.addProperty("invalidAfterOfflineDuration", getInvalidAfterOfflineDuration());
+        }
+        if (getDynUpdateInterval() != null) {
+            json.addProperty("dynUpdateInterval", getDynUpdateInterval());
+        }
+        if (getDynUpdateTime() != null) {
+            json.addProperty("dynUpdateTime", new SimpleDateFormat(DATE_FORMAT).format(getDynUpdateTime()));
+        }
+        if (getPriceScheduleSignature() != null) {
+            json.addProperty("priceScheduleSignature", getPriceScheduleSignature());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -441,29 +360,39 @@ public class ChargingProfile implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("stackLevel")) {
-            this.stackLevel = jsonObject.get("stackLevel").getAsInt();
+            setStackLevel(jsonObject.get("stackLevel").getAsInt());
         }
 
         if (jsonObject.has("chargingProfilePurpose")) {
-            this.chargingProfilePurpose = ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString());
+            setChargingProfilePurpose(ChargingProfilePurposeEnum.valueOf(jsonObject.get("chargingProfilePurpose").getAsString()));
         }
 
         if (jsonObject.has("chargingProfileKind")) {
-            this.chargingProfileKind = ChargingProfileKindEnum.valueOf(jsonObject.get("chargingProfileKind").getAsString());
+            setChargingProfileKind(ChargingProfileKindEnum.valueOf(jsonObject.get("chargingProfileKind").getAsString()));
+        }
+
+        if (jsonObject.has("chargingSchedule")) {
+            setChargingSchedule(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedule");
+            for (JsonElement el : arr) {
+                ChargingSchedule item = new ChargingSchedule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingSchedule().add(item);
+            }
         }
 
         if (jsonObject.has("recurrencyKind")) {
-            this.recurrencyKind = RecurrencyKindEnum.valueOf(jsonObject.get("recurrencyKind").getAsString());
+            setRecurrencyKind(RecurrencyKindEnum.valueOf(jsonObject.get("recurrencyKind").getAsString()));
         }
 
         if (jsonObject.has("validFrom")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validFrom = dateFormat.parse(jsonObject.get("validFrom").getAsString());
+                setValidFrom(dateFormat.parse(jsonObject.get("validFrom").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validFrom" + e);
             }
@@ -472,46 +401,45 @@ public class ChargingProfile implements JsonInterface {
         if (jsonObject.has("validTo")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.validTo = dateFormat.parse(jsonObject.get("validTo").getAsString());
+                setValidTo(dateFormat.parse(jsonObject.get("validTo").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for validTo" + e);
             }
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("maxOfflineDuration")) {
-            this.maxOfflineDuration = jsonObject.get("maxOfflineDuration").getAsInt();
+            setMaxOfflineDuration(jsonObject.get("maxOfflineDuration").getAsInt());
         }
 
         if (jsonObject.has("invalidAfterOfflineDuration")) {
-            this.invalidAfterOfflineDuration = jsonObject.get("invalidAfterOfflineDuration").getAsBoolean();
+            setInvalidAfterOfflineDuration(jsonObject.get("invalidAfterOfflineDuration").getAsBoolean());
         }
 
         if (jsonObject.has("dynUpdateInterval")) {
-            this.dynUpdateInterval = jsonObject.get("dynUpdateInterval").getAsInt();
+            setDynUpdateInterval(jsonObject.get("dynUpdateInterval").getAsInt());
         }
 
         if (jsonObject.has("dynUpdateTime")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.dynUpdateTime = dateFormat.parse(jsonObject.get("dynUpdateTime").getAsString());
+                setDynUpdateTime(dateFormat.parse(jsonObject.get("dynUpdateTime").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for dynUpdateTime" + e);
             }
         }
 
         if (jsonObject.has("priceScheduleSignature")) {
-            this.priceScheduleSignature = jsonObject.get("priceScheduleSignature").getAsString();
+            setPriceScheduleSignature(jsonObject.get("priceScheduleSignature").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -521,41 +449,41 @@ public class ChargingProfile implements JsonInterface {
         if (!(obj instanceof ChargingProfile))
             return false;
         ChargingProfile that = (ChargingProfile) obj;
-        return Objects.equals(this.recurrencyKind, that.recurrencyKind)
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.validFrom, that.validFrom)
-                && Objects.equals(this.stackLevel, that.stackLevel)
-                && Objects.equals(this.priceScheduleSignature, that.priceScheduleSignature)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.chargingProfileKind, that.chargingProfileKind)
-                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.invalidAfterOfflineDuration, that.invalidAfterOfflineDuration)
-                && Objects.equals(this.dynUpdateTime, that.dynUpdateTime)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.maxOfflineDuration, that.maxOfflineDuration)
-                && Objects.equals(this.validTo, that.validTo)
-                && Objects.equals(this.dynUpdateInterval, that.dynUpdateInterval);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getStackLevel(), that.getStackLevel())
+                && Objects.equals(getChargingProfilePurpose(), that.getChargingProfilePurpose())
+                && Objects.equals(getChargingProfileKind(), that.getChargingProfileKind())
+                && Objects.equals(getChargingSchedule(), that.getChargingSchedule())
+                && Objects.equals(getRecurrencyKind(), that.getRecurrencyKind())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getValidTo(), that.getValidTo())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getMaxOfflineDuration(), that.getMaxOfflineDuration())
+                && Objects.equals(getInvalidAfterOfflineDuration(), that.getInvalidAfterOfflineDuration())
+                && Objects.equals(getDynUpdateInterval(), that.getDynUpdateInterval())
+                && Objects.equals(getDynUpdateTime(), that.getDynUpdateTime())
+                && Objects.equals(getPriceScheduleSignature(), that.getPriceScheduleSignature())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.recurrencyKind != null ? this.recurrencyKind.hashCode() : 0);
-        result = 31 * result + (this.chargingSchedule != null ? this.chargingSchedule.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.validFrom != null ? this.validFrom.hashCode() : 0);
-        result = 31 * result + (this.stackLevel != null ? this.stackLevel.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleSignature != null ? this.priceScheduleSignature.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileKind != null ? this.chargingProfileKind.hashCode() : 0);
-        result = 31 * result + (this.chargingProfilePurpose != null ? this.chargingProfilePurpose.hashCode() : 0);
-        result = 31 * result + (this.invalidAfterOfflineDuration != null ? this.invalidAfterOfflineDuration.hashCode() : 0);
-        result = 31 * result + (this.dynUpdateTime != null ? this.dynUpdateTime.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.maxOfflineDuration != null ? this.maxOfflineDuration.hashCode() : 0);
-        result = 31 * result + (this.validTo != null ? this.validTo.hashCode() : 0);
-        result = 31 * result + (this.dynUpdateInterval != null ? this.dynUpdateInterval.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getStackLevel(),
+                getChargingProfilePurpose(),
+                getChargingProfileKind(),
+                getChargingSchedule(),
+                getRecurrencyKind(),
+                getValidFrom(),
+                getValidTo(),
+                getTransactionId(),
+                getMaxOfflineDuration(),
+                getInvalidAfterOfflineDuration(),
+                getDynUpdateInterval(),
+                getDynUpdateTime(),
+                getPriceScheduleSignature(),
+                getCustomData()
+        );
     }
 }

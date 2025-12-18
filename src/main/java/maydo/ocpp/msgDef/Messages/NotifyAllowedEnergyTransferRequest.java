@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -9,96 +11,69 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by CSMS to update the list of authorized energy services,
+ * e.g. to allow bidirectional charging for a charging  session that is already in progress.
+ * One example is that the EV has already started a transaction in charging-only mode and meanwhile the CSMS has found
+ * that this EV is authorized by some secondary actor, such as an aggregating party, to use bidirectional charging.
+ * This message is then used to give the EV the opportunity to change energy service from charging-only to bidirectional charging.
+ * Another example is that the CSMS wishes to change the active energy service.
+ * This is done by updating the list of authorized energy services and omitting the currently active energy service.
+ */
 public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
 
     /**
      * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
      * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
      */
     @Required
     private List<EnergyTransferModeEnum> allowedEnergyTransfer;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyAllowedEnergyTransferRequest() {
     }
 
-    /**
-     * @param allowedEnergyTransfer Modes of energy transfer that are accepted by CSMS.
-     *                              .
-     * @param transactionId         The transaction for which the allowed energy transfer is allowed.
-     *                              .
-     */
-    public NotifyAllowedEnergyTransferRequest(String transactionId, List<EnergyTransferModeEnum> allowedEnergyTransfer, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.allowedEnergyTransfer = allowedEnergyTransfer;
-        this.customData = customData;
-    }
 
-    /**
-     * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
-     */
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The transaction for which the allowed energy transfer is allowed.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
-     */
+
     public List<EnergyTransferModeEnum> getAllowedEnergyTransfer() {
         return allowedEnergyTransfer;
     }
 
-    /**
-     * Modes of energy transfer that are accepted by CSMS.
-     * <p>
-     * (Required)
-     */
+
     public void setAllowedEnergyTransfer(List<EnergyTransferModeEnum> allowedEnergyTransfer) {
         this.allowedEnergyTransfer = allowedEnergyTransfer;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -111,8 +86,19 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        JsonArray allowedEnergyTransferArray = new JsonArray();
+        for (EnergyTransferModeEnum item : getAllowedEnergyTransfer()) {
+            allowedEnergyTransferArray.add(item.toString());
+        }
+        json.add("allowedEnergyTransfer", allowedEnergyTransferArray);
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -125,14 +111,21 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
+        }
+
+        if (jsonObject.has("allowedEnergyTransfer")) {
+            setAllowedEnergyTransfer(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("allowedEnergyTransfer");
+            for (JsonElement el : arr) {
+                getAllowedEnergyTransfer().add(EnergyTransferModeEnum.valueOf(el.getAsString()));
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -142,17 +135,17 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
         if (!(obj instanceof NotifyAllowedEnergyTransferRequest))
             return false;
         NotifyAllowedEnergyTransferRequest that = (NotifyAllowedEnergyTransferRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getAllowedEnergyTransfer(), that.getAllowedEnergyTransfer())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.allowedEnergyTransfer != null ? this.allowedEnergyTransfer.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getAllowedEnergyTransfer(),
+                getCustomData()
+        );
     }
 }

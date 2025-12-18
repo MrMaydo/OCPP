@@ -13,189 +13,144 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Single sampled value in MeterValues. Each value can be accompanied by optional fields.
+ * To save on mobile data usage, default values of all of the optional fields are such that.
+ * The value without any additional fields will be interpreted,
+ * as a register reading of active import energy in Wh (Watt-hour) units.
+ */
 public class SampledValue implements JsonInterface {
 
     /**
-     * Indicates the measured value.
-     * <p>
-     * <p>
-     * (Required)
+     *
      */
     @Required
     private Float value;
+
     /**
-     * Type of measurement. Default = "Energy.Active.Import.Register"
+     * Indicates the measured value.
      */
     @Optional
     private MeasurandEnum measurand = MeasurandEnum.fromValue("Energy.Active.Import.Register");
+
     /**
      * Type of detail value: start, end or sample. Default = "Sample.Periodic"
      */
     @Optional
     private ReadingContextEnum context = ReadingContextEnum.fromValue("Sample.Periodic");
+
     /**
-     * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N) Please note that not all values of phase are applicable to all Measurands. When phase is absent, the measured value is interpreted as an overall value.
+     * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N)
+     * Please note that not all values of phase are applicable to all Measurands.
+     * When phase is absent, the measured value is interpreted as an overall value.
      */
     @Optional
     private PhaseEnum phase;
+
     /**
-     * Indicates where the measured value has been sampled. Default =  "Outlet"
+     * Indicates where the measured value has been sampled. Default = "Outlet"
      */
     @Optional
     private LocationEnum location = LocationEnum.fromValue("Outlet");
+
     /**
-     * Represent a signed version of the meter value.
+     * Contains the MeterValueSignature with sign/encoding method information.
      */
     @Optional
     private SignedMeterValue signedMeterValue;
+
     /**
-     * Represents a UnitOfMeasure with a multiplier
+     * Represents a UnitOfMeasure including a multiplier
      */
     @Optional
     private UnitOfMeasure unitOfMeasure;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SampledValue() {
     }
 
-    /**
-     * @param value Indicates the measured value.
-     *              <p>
-     *              .
-     */
-    public SampledValue(Float value, MeasurandEnum measurand, ReadingContextEnum context, PhaseEnum phase, LocationEnum location, SignedMeterValue signedMeterValue, UnitOfMeasure unitOfMeasure, CustomData customData) {
-        super();
-        this.value = value;
-        this.measurand = measurand;
-        this.context = context;
-        this.phase = phase;
-        this.location = location;
-        this.signedMeterValue = signedMeterValue;
-        this.unitOfMeasure = unitOfMeasure;
-        this.customData = customData;
-    }
 
-    /**
-     * Indicates the measured value.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Float getValue() {
         return value;
     }
 
-    /**
-     * Indicates the measured value.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setValue(Float value) {
         this.value = value;
     }
 
-    /**
-     * Type of measurement. Default = "Energy.Active.Import.Register"
-     */
+
     public MeasurandEnum getMeasurand() {
         return measurand;
     }
 
-    /**
-     * Type of measurement. Default = "Energy.Active.Import.Register"
-     */
+
     public void setMeasurand(MeasurandEnum measurand) {
         this.measurand = measurand;
     }
 
-    /**
-     * Type of detail value: start, end or sample. Default = "Sample.Periodic"
-     */
+
     public ReadingContextEnum getContext() {
         return context;
     }
 
-    /**
-     * Type of detail value: start, end or sample. Default = "Sample.Periodic"
-     */
+
     public void setContext(ReadingContextEnum context) {
         this.context = context;
     }
 
-    /**
-     * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N) Please note that not all values of phase are applicable to all Measurands. When phase is absent, the measured value is interpreted as an overall value.
-     */
+
     public PhaseEnum getPhase() {
         return phase;
     }
 
-    /**
-     * Indicates how the measured value is to be interpreted. For instance between L1 and neutral (L1-N) Please note that not all values of phase are applicable to all Measurands. When phase is absent, the measured value is interpreted as an overall value.
-     */
+
     public void setPhase(PhaseEnum phase) {
         this.phase = phase;
     }
 
-    /**
-     * Indicates where the measured value has been sampled. Default =  "Outlet"
-     */
+
     public LocationEnum getLocation() {
         return location;
     }
 
-    /**
-     * Indicates where the measured value has been sampled. Default =  "Outlet"
-     */
+
     public void setLocation(LocationEnum location) {
         this.location = location;
     }
 
-    /**
-     * Represent a signed version of the meter value.
-     */
+
     public SignedMeterValue getSignedMeterValue() {
         return signedMeterValue;
     }
 
-    /**
-     * Represent a signed version of the meter value.
-     */
+
     public void setSignedMeterValue(SignedMeterValue signedMeterValue) {
         this.signedMeterValue = signedMeterValue;
     }
 
-    /**
-     * Represents a UnitOfMeasure with a multiplier
-     */
+
     public UnitOfMeasure getUnitOfMeasure() {
         return unitOfMeasure;
     }
 
-    /**
-     * Represents a UnitOfMeasure with a multiplier
-     */
+
     public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
         this.unitOfMeasure = unitOfMeasure;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -208,11 +163,31 @@ public class SampledValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("value", value);
-        json.addProperty("phase", phase.toString());
-        json.add("signedMeterValue", signedMeterValue.toJsonObject());
-        json.add("unitOfMeasure", unitOfMeasure.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("value", getValue());
+
+        if (getMeasurand() != null) {
+            json.addProperty("measurand", getMeasurand().toString());
+        }
+        if (getContext() != null) {
+            json.addProperty("context", getContext().toString());
+        }
+        if (getPhase() != null) {
+            json.addProperty("phase", getPhase().toString());
+        }
+        if (getLocation() != null) {
+            json.addProperty("location", getLocation().toString());
+        }
+        if (getSignedMeterValue() != null) {
+            json.add("signedMeterValue", getSignedMeterValue().toJsonObject());
+        }
+        if (getUnitOfMeasure() != null) {
+            json.add("unitOfMeasure", getUnitOfMeasure().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -225,28 +200,39 @@ public class SampledValue implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("value")) {
-            this.value = jsonObject.get("value").getAsFloat();
+            setValue(jsonObject.get("value").getAsFloat());
+        }
+
+        if (jsonObject.has("measurand")) {
+            setMeasurand(MeasurandEnum.valueOf(jsonObject.get("measurand").getAsString()));
+        }
+
+        if (jsonObject.has("context")) {
+            setContext(ReadingContextEnum.valueOf(jsonObject.get("context").getAsString()));
         }
 
         if (jsonObject.has("phase")) {
-            this.phase = PhaseEnum.valueOf(jsonObject.get("phase").getAsString());
+            setPhase(PhaseEnum.valueOf(jsonObject.get("phase").getAsString()));
+        }
+
+        if (jsonObject.has("location")) {
+            setLocation(LocationEnum.valueOf(jsonObject.get("location").getAsString()));
         }
 
         if (jsonObject.has("signedMeterValue")) {
-            this.signedMeterValue = new SignedMeterValue();
-            this.signedMeterValue.fromJsonObject(jsonObject.getAsJsonObject("signedMeterValue"));
+            setSignedMeterValue(new SignedMeterValue());
+            getSignedMeterValue().fromJsonObject(jsonObject.getAsJsonObject("signedMeterValue"));
         }
 
         if (jsonObject.has("unitOfMeasure")) {
-            this.unitOfMeasure = new UnitOfMeasure();
-            this.unitOfMeasure.fromJsonObject(jsonObject.getAsJsonObject("unitOfMeasure"));
+            setUnitOfMeasure(new UnitOfMeasure());
+            getUnitOfMeasure().fromJsonObject(jsonObject.getAsJsonObject("unitOfMeasure"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -256,27 +242,27 @@ public class SampledValue implements JsonInterface {
         if (!(obj instanceof SampledValue))
             return false;
         SampledValue that = (SampledValue) obj;
-        return Objects.equals(this.phase, that.phase)
-                && Objects.equals(this.signedMeterValue, that.signedMeterValue)
-                && Objects.equals(this.unitOfMeasure, that.unitOfMeasure)
-                && Objects.equals(this.context, that.context)
-                && Objects.equals(this.measurand, that.measurand)
-                && Objects.equals(this.location, that.location)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.value, that.value);
+        return Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getMeasurand(), that.getMeasurand())
+                && Objects.equals(getContext(), that.getContext())
+                && Objects.equals(getPhase(), that.getPhase())
+                && Objects.equals(getLocation(), that.getLocation())
+                && Objects.equals(getSignedMeterValue(), that.getSignedMeterValue())
+                && Objects.equals(getUnitOfMeasure(), that.getUnitOfMeasure())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.phase != null ? this.phase.hashCode() : 0);
-        result = 31 * result + (this.signedMeterValue != null ? this.signedMeterValue.hashCode() : 0);
-        result = 31 * result + (this.unitOfMeasure != null ? this.unitOfMeasure.hashCode() : 0);
-        result = 31 * result + (this.context != null ? this.context.hashCode() : 0);
-        result = 31 * result + (this.measurand != null ? this.measurand.hashCode() : 0);
-        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getValue(),
+                getMeasurand(),
+                getContext(),
+                getPhase(),
+                getLocation(),
+                getSignedMeterValue(),
+                getUnitOfMeasure(),
+                getCustomData()
+        );
     }
 }

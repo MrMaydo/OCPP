@@ -11,94 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) This message is used to update a setpoint or limit in a dynamic charging profile.
+ */
 public class UpdateDynamicScheduleRequest implements JsonInterface {
 
     /**
      * Id of charging profile to update.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer chargingProfileId;
+
     /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
+     * Updated values for charging schedule period.
      */
     @Required
     private ChargingScheduleUpdate scheduleUpdate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UpdateDynamicScheduleRequest() {
     }
 
-    /**
-     * @param chargingProfileId Id of charging profile to update.
-     *                          .
-     */
-    public UpdateDynamicScheduleRequest(Integer chargingProfileId, ChargingScheduleUpdate scheduleUpdate, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.scheduleUpdate = scheduleUpdate;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * Id of charging profile to update.
-     * <p>
-     * (Required)
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public ChargingScheduleUpdate getScheduleUpdate() {
         return scheduleUpdate;
     }
 
-    /**
-     * Updates to a ChargingSchedulePeriodType for dynamic charging profiles.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setScheduleUpdate(ChargingScheduleUpdate scheduleUpdate) {
         this.scheduleUpdate = scheduleUpdate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -111,9 +76,15 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("scheduleUpdate", scheduleUpdate.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("chargingProfileId", getChargingProfileId());
+
+        json.add("scheduleUpdate", getScheduleUpdate().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -126,19 +97,18 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingProfileId")) {
-            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+            setChargingProfileId(jsonObject.get("chargingProfileId").getAsInt());
         }
 
         if (jsonObject.has("scheduleUpdate")) {
-            this.scheduleUpdate = new ChargingScheduleUpdate();
-            this.scheduleUpdate.fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
+            setScheduleUpdate(new ChargingScheduleUpdate());
+            getScheduleUpdate().fromJsonObject(jsonObject.getAsJsonObject("scheduleUpdate"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -148,17 +118,17 @@ public class UpdateDynamicScheduleRequest implements JsonInterface {
         if (!(obj instanceof UpdateDynamicScheduleRequest))
             return false;
         UpdateDynamicScheduleRequest that = (UpdateDynamicScheduleRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.scheduleUpdate, that.scheduleUpdate)
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId);
+        return Objects.equals(getChargingProfileId(), that.getChargingProfileId())
+                && Objects.equals(getScheduleUpdate(), that.getScheduleUpdate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.scheduleUpdate != null ? this.scheduleUpdate.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileId != null ? this.chargingProfileId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingProfileId(),
+                getScheduleUpdate(),
+                getCustomData()
+        );
     }
 }

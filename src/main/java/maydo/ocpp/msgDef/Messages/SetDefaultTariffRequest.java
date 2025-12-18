@@ -11,122 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class SetDefaultTariffRequest implements JsonInterface {
 
     /**
-     * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * <p>
-     * <p>
-     * (Required)
+     * EVSE that tariff applies to. When evseId = 0, then tarriff applies to all EVSEs.
      */
     @Required
     private Integer evseId;
+
     /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
+     * Tariff structure.
      */
     @Required
     private Tariff tariff;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SetDefaultTariffRequest() {
     }
 
-    /**
-     * @param evseId EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     *               <p>
-     *               .
-     */
-    public SetDefaultTariffRequest(Integer evseId, Tariff tariff, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.tariff = tariff;
-        this.customData = customData;
-    }
 
-    /**
-     * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE that tariff applies to. When _evseId_ = 0, then tarriff applies to all EVSEs.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
-     */
+
     public Tariff getTariff() {
         return tariff;
     }
 
-    /**
-     * A tariff is described by fields with prices for:
-     * energy,
-     * charging time,
-     * idle time,
-     * fixed fee,
-     * reservation time,
-     * reservation fixed fee. +
-     * Each of these fields may have (optional) conditions that specify when a price is applicable. +
-     * The _description_ contains a human-readable explanation of the tariff to be shown to the user. +
-     * The other fields are parameters that define the tariff. These are used by the charging station to calculate the price.
-     * <p>
-     * (Required)
-     */
+
     public void setTariff(Tariff tariff) {
         this.tariff = tariff;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -139,9 +76,15 @@ public class SetDefaultTariffRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("tariff", tariff.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.add("tariff", getTariff().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -154,19 +97,18 @@ public class SetDefaultTariffRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("tariff")) {
-            this.tariff = new Tariff();
-            this.tariff.fromJsonObject(jsonObject.getAsJsonObject("tariff"));
+            setTariff(new Tariff());
+            getTariff().fromJsonObject(jsonObject.getAsJsonObject("tariff"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -176,17 +118,17 @@ public class SetDefaultTariffRequest implements JsonInterface {
         if (!(obj instanceof SetDefaultTariffRequest))
             return false;
         SetDefaultTariffRequest that = (SetDefaultTariffRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getTariff(), that.getTariff())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.tariff != null ? this.tariff.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getTariff(),
+                getCustomData()
+        );
     }
 }

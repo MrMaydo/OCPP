@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.CustomData;
@@ -9,178 +11,119 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This message is sent by the Charging Station to the CSMS if an ISO 15118 vehicle selects the service Certificate installation.
+ * NOTE:
+ * This message is based on CertificateInstallationReq Res from ISO 15118 2.
+ */
 public class Get15118EVCertificateRequest implements JsonInterface {
 
     /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
+     * Schema version currently used for the 15118 session between EV and Charging Station.
+     * Needed for parsing of the EXI stream by the CSMS.
      */
     @Required
     private String iso15118SchemaVersion;
+
     /**
      * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateActionEnum action;
+
     /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
+     * (2.1) Raw CertificateInstallationReq request from EV, Base64 encoded. Extended to support ISO 15118-20 certificates.
+     * The minimum supported length is 11000. If a longer exiRequest is supported,
+     * then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
      */
     @Required
     private String exiRequest;
+
     /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
+     * (2.1) Absent during ISO 15118-2 session. Required during ISO 15118-20 session.
      * Maximum number of contracts that EV wants to install.
      */
     @Optional
     private Integer maximumContractCertificateChains;
+
     /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
+     * (2.1) Absent during ISO 15118-2 session. Optional during ISO 15118-20 session.
+     * List of EMAIDs for which contract certificates must be requested first,
+     * in case there are more certificates than allowed by maximumContractCertificateChains.
      */
     @Optional
     private List<String> prioritizedEMAIDs;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Get15118EVCertificateRequest() {
     }
 
-    /**
-     * @param iso15118SchemaVersion            Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     *                                         <p>
-     *                                         .
-     * @param prioritizedEMAIDs                *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     *                                         .
-     * @param exiRequest                       *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     *                                         Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     *                                         .
-     * @param maximumContractCertificateChains *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     *                                         Maximum number of contracts that EV wants to install.
-     *                                         .
-     */
-    public Get15118EVCertificateRequest(String iso15118SchemaVersion, CertificateActionEnum action, String exiRequest, Integer maximumContractCertificateChains, List<String> prioritizedEMAIDs, CustomData customData) {
-        super();
-        this.iso15118SchemaVersion = iso15118SchemaVersion;
-        this.action = action;
-        this.exiRequest = exiRequest;
-        this.maximumContractCertificateChains = maximumContractCertificateChains;
-        this.prioritizedEMAIDs = prioritizedEMAIDs;
-        this.customData = customData;
-    }
 
-    /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public String getIso15118SchemaVersion() {
         return iso15118SchemaVersion;
     }
 
-    /**
-     * Schema version currently used for the 15118 session between EV and Charging Station. Needed for parsing of the EXI stream by the CSMS.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setIso15118SchemaVersion(String iso15118SchemaVersion) {
         this.iso15118SchemaVersion = iso15118SchemaVersion;
     }
 
-    /**
-     * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
-     */
+
     public CertificateActionEnum getAction() {
         return action;
     }
 
-    /**
-     * Defines whether certificate needs to be installed or updated.
-     * <p>
-     * (Required)
-     */
+
     public void setAction(CertificateActionEnum action) {
         this.action = action;
     }
 
-    /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
-     */
+
     public String getExiRequest() {
         return exiRequest;
     }
 
-    /**
-     * *(2.1)* Raw CertificateInstallationReq request from EV, Base64 encoded. +
-     * Extended to support ISO 15118-20 certificates. The minimum supported length is 11000. If a longer _exiRequest_ is supported, then the supported length must be communicated in variable OCPPCommCtrlr.FieldLength[ "Get15118EVCertificateRequest.exiRequest" ].
-     * <p>
-     * (Required)
-     */
+
     public void setExiRequest(String exiRequest) {
         this.exiRequest = exiRequest;
     }
 
-    /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     * Maximum number of contracts that EV wants to install.
-     */
+
     public Integer getMaximumContractCertificateChains() {
         return maximumContractCertificateChains;
     }
 
-    /**
-     * *(2.1)* Absent during ISO 15118-2 session. Required during ISO 15118-20 session. +
-     * Maximum number of contracts that EV wants to install.
-     */
+
     public void setMaximumContractCertificateChains(Integer maximumContractCertificateChains) {
         this.maximumContractCertificateChains = maximumContractCertificateChains;
     }
 
-    /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     */
+
     public List<String> getPrioritizedEMAIDs() {
         return prioritizedEMAIDs;
     }
 
-    /**
-     * *(2.1)*  Absent during ISO 15118-2 session. Optional during ISO 15118-20 session. List of EMAIDs for which contract certificates must be requested first, in case there are more certificates than allowed by _maximumContractCertificateChains_.
-     */
+
     public void setPrioritizedEMAIDs(List<String> prioritizedEMAIDs) {
         this.prioritizedEMAIDs = prioritizedEMAIDs;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -193,11 +136,27 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("iso15118SchemaVersion", iso15118SchemaVersion);
-        json.addProperty("action", action.toString());
-        json.addProperty("exiRequest", exiRequest);
-        json.addProperty("maximumContractCertificateChains", maximumContractCertificateChains);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("iso15118SchemaVersion", getIso15118SchemaVersion());
+
+        json.addProperty("action", getAction().toString());
+
+        json.addProperty("exiRequest", getExiRequest());
+
+        if (getMaximumContractCertificateChains() != null) {
+            json.addProperty("maximumContractCertificateChains", getMaximumContractCertificateChains());
+        }
+        if (getPrioritizedEMAIDs() != null) {
+            JsonArray prioritizedEMAIDsArray = new JsonArray();
+            for (String item : getPrioritizedEMAIDs()) {
+                prioritizedEMAIDsArray.add(item);
+            }
+            json.add("prioritizedEMAIDs", prioritizedEMAIDsArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -210,26 +169,33 @@ public class Get15118EVCertificateRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("iso15118SchemaVersion")) {
-            this.iso15118SchemaVersion = jsonObject.get("iso15118SchemaVersion").getAsString();
+            setIso15118SchemaVersion(jsonObject.get("iso15118SchemaVersion").getAsString());
         }
 
         if (jsonObject.has("action")) {
-            this.action = CertificateActionEnum.valueOf(jsonObject.get("action").getAsString());
+            setAction(CertificateActionEnum.valueOf(jsonObject.get("action").getAsString()));
         }
 
         if (jsonObject.has("exiRequest")) {
-            this.exiRequest = jsonObject.get("exiRequest").getAsString();
+            setExiRequest(jsonObject.get("exiRequest").getAsString());
         }
 
         if (jsonObject.has("maximumContractCertificateChains")) {
-            this.maximumContractCertificateChains = jsonObject.get("maximumContractCertificateChains").getAsInt();
+            setMaximumContractCertificateChains(jsonObject.get("maximumContractCertificateChains").getAsInt());
+        }
+
+        if (jsonObject.has("prioritizedEMAIDs")) {
+            setPrioritizedEMAIDs(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("prioritizedEMAIDs");
+            for (JsonElement el : arr) {
+                getPrioritizedEMAIDs().add(el.getAsString());
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -239,23 +205,23 @@ public class Get15118EVCertificateRequest implements JsonInterface {
         if (!(obj instanceof Get15118EVCertificateRequest))
             return false;
         Get15118EVCertificateRequest that = (Get15118EVCertificateRequest) obj;
-        return Objects.equals(this.iso15118SchemaVersion, that.iso15118SchemaVersion)
-                && Objects.equals(this.prioritizedEMAIDs, that.prioritizedEMAIDs)
-                && Objects.equals(this.action, that.action)
-                && Objects.equals(this.exiRequest, that.exiRequest)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maximumContractCertificateChains, that.maximumContractCertificateChains);
+        return Objects.equals(getIso15118SchemaVersion(), that.getIso15118SchemaVersion())
+                && Objects.equals(getAction(), that.getAction())
+                && Objects.equals(getExiRequest(), that.getExiRequest())
+                && Objects.equals(getMaximumContractCertificateChains(), that.getMaximumContractCertificateChains())
+                && Objects.equals(getPrioritizedEMAIDs(), that.getPrioritizedEMAIDs())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.iso15118SchemaVersion != null ? this.iso15118SchemaVersion.hashCode() : 0);
-        result = 31 * result + (this.prioritizedEMAIDs != null ? this.prioritizedEMAIDs.hashCode() : 0);
-        result = 31 * result + (this.action != null ? this.action.hashCode() : 0);
-        result = 31 * result + (this.exiRequest != null ? this.exiRequest.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maximumContractCertificateChains != null ? this.maximumContractCertificateChains.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIso15118SchemaVersion(),
+                getAction(),
+                getExiRequest(),
+                getMaximumContractCertificateChains(),
+                getPrioritizedEMAIDs(),
+                getCustomData()
+        );
     }
 }

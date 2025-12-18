@@ -12,109 +12,76 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the LogStatusNotificationRequest PDU sent by the Charging Station to the CSMS.
+ */
 public class LogStatusNotificationRequest implements JsonInterface {
 
     /**
      * This contains the status of the log upload.
-     * <p>
-     * (Required)
      */
     @Required
     private UploadLogStatusEnum status;
+
     /**
-     * The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
-     * unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
-     */
-    @Optional
-    private Integer requestId;
-    /**
-     * Element providing more information about the status.
+     * (2.1) Detailed status info
      */
     @Optional
     private StatusInfo statusInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     * The request id that was provided in GetLogRequest that started this log upload.
+     * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
+     */
+    @Optional
+    private Integer requestId;
+
+    /**
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public LogStatusNotificationRequest() {
     }
 
-    /**
-     * @param requestId The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
-     *                  unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
-     *                  .
-     */
-    public LogStatusNotificationRequest(UploadLogStatusEnum status, Integer requestId, StatusInfo statusInfo, CustomData customData) {
-        super();
-        this.status = status;
-        this.requestId = requestId;
-        this.statusInfo = statusInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains the status of the log upload.
-     * <p>
-     * (Required)
-     */
     public UploadLogStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * This contains the status of the log upload.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(UploadLogStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
-     * unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The request id that was provided in GetLogRequest that started this log upload. This field is mandatory,
-     * unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public StatusInfo getStatusInfo() {
         return statusInfo;
     }
 
-    /**
-     * Element providing more information about the status.
-     */
+
     public void setStatusInfo(StatusInfo statusInfo) {
         this.statusInfo = statusInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -127,10 +94,19 @@ public class LogStatusNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("status", status.toString());
-        json.addProperty("requestId", requestId);
-        json.add("statusInfo", statusInfo.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -143,23 +119,22 @@ public class LogStatusNotificationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("status")) {
-            this.status = UploadLogStatusEnum.valueOf(jsonObject.get("status").getAsString());
-        }
-
-        if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setStatus(UploadLogStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
-            this.statusInfo = new StatusInfo();
-            this.statusInfo.fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("requestId")) {
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -169,19 +144,19 @@ public class LogStatusNotificationRequest implements JsonInterface {
         if (!(obj instanceof LogStatusNotificationRequest))
             return false;
         LogStatusNotificationRequest that = (LogStatusNotificationRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

@@ -10,97 +10,61 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by CSMS to tell Charging Station to switch to the priority charging profile,
+ * that allows for the maximum possible current or power under current circumstances.
+ * Message contains a transactionId, because it only applies to the transaction in progress.
+ */
 public class UsePriorityChargingRequest implements JsonInterface {
 
     /**
      * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
+     * True to request priority charging. False to request stopping priority charging.
      */
     @Required
     private Boolean activate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public UsePriorityChargingRequest() {
     }
 
-    /**
-     * @param activate      True to request priority charging.
-     *                      False to request stopping priority charging.
-     *                      .
-     * @param transactionId The transaction for which priority charging is requested.
-     *                      .
-     */
-    public UsePriorityChargingRequest(String transactionId, Boolean activate, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.activate = activate;
-        this.customData = customData;
-    }
 
-    /**
-     * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
-     */
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The transaction for which priority charging is requested.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getActivate() {
         return activate;
     }
 
-    /**
-     * True to request priority charging.
-     * False to request stopping priority charging.
-     * <p>
-     * (Required)
-     */
+
     public void setActivate(Boolean activate) {
         this.activate = activate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -113,9 +77,15 @@ public class UsePriorityChargingRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.addProperty("activate", activate);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        json.addProperty("activate", getActivate());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -128,18 +98,17 @@ public class UsePriorityChargingRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("activate")) {
-            this.activate = jsonObject.get("activate").getAsBoolean();
+            setActivate(jsonObject.get("activate").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -149,17 +118,17 @@ public class UsePriorityChargingRequest implements JsonInterface {
         if (!(obj instanceof UsePriorityChargingRequest))
             return false;
         UsePriorityChargingRequest that = (UsePriorityChargingRequest) obj;
-        return Objects.equals(this.activate, that.activate)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getActivate(), that.getActivate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.activate != null ? this.activate.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getActivate(),
+                getCustomData()
+        );
     }
 }

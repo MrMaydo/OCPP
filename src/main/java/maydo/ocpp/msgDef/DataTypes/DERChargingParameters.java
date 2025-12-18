@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.Enumerations.DERControlEnum;
@@ -8,1238 +10,767 @@ import maydo.ocpp.msgDef.Enumerations.IslandingDetectionEnum;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) DERChargingParametersType is used in ChargingNeedsType during an ISO 15118-20 session
+ * for AC_BPT_DER to report the inverter settings related to DER control that were agreed between EVSE and EV.
+ * Fields starting with "ev" contain values from the EV. Other fields contain a value that is supported by both EV and EVSE.
+ * DERChargingParametersType type is only relevant in case of an ISO 15118-20 AC_BPT_DER/AC_DER charging session.
+ */
 public class DERChargingParameters implements JsonInterface {
 
     /**
-     * DER control functions supported by EV. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType:DERControlFunctions (bitmap)
+     * DER control functions supported by EV.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType:DERCon trolFunctions (bitmap)
      */
     @Optional
     private List<DERControlEnum> evSupportedDERControl;
+
     /**
-     * Rated maximum injected active power by EV, at specified over-excited power factor (overExcitedPowerFactor). +
-     * It can also be defined as the rated maximum discharge power at the rated minimum injected reactive power value. This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to overExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * Corresponds to the WOvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedMaximumDischargePower
+     * Rated maximum injected active power by EV, at specified over-excited power factor (overExcitedPowerFactor).
+     * It can also be defined as the rated maximum discharge power at the rated minimum injected reactive power value.
+     * This means that if the EV is providing reactive power support, and it is requested to discharge at max power
+     * (e.g. to satisfy an EMS request), the EV may override the request
+     * and discharge up to overExcitedMaximumDischargePower to meet the minimum reactive power requirements.
+     * Corresponds to the WOvPF attribute in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedMaximumDischargePower </p>
      */
     @Optional
     private Float evOverExcitedMaxDischargePower;
+
     /**
-     * EV power factor when injecting (over excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedPowerFactor
+     * EV power factor when injecting (over excited) the minimum reactive power.
+     * Corresponds to the OvPF attribute in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedPowerFactor </p>
      */
     @Optional
     private Float evOverExcitedPowerFactor;
+
     /**
-     * Rated maximum injected active power by EV supported at specified under-excited power factor (EVUnderExcitedPowerFactor). +
+     * Rated maximum injected active power by EV supported at specified under-excited power factor (EVUnderExcitedPowerFactor).
      * It can also be defined as the rated maximum dischargePower at the rated minimum absorbed reactive power value.
-     * This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to underExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * This corresponds to the WUnPF attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedMaximumDischargePower
+     * This means that if the EV is providing reactive power support,
+     * and it is requested to discharge at max power (e.g. to satisfy an EMS request),
+     * the EV may override the request and discharge up to underExcitedMaximumDischargePower
+     * to meet the minimum reactive power requirements. This corresponds to the WUnPF attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedMaximumDischargePower </p>
      */
     @Optional
     private Float evUnderExcitedMaxDischargePower;
+
     /**
-     * EV power factor when injecting (under excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedPowerFactor
+     * EV power factor when injecting (under excited) the minimum reactive power.
+     * Corresponds to the OvPF attribute in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedPowerFactor </p>
      */
     @Optional
     private Float evUnderExcitedPowerFactor;
+
     /**
-     * Rated maximum total apparent power, defined by min(EV, EVSE) in va.
-     * Corresponds to the VAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumApparentPower
+     * Rated maximum total apparent power, defined by min(EV, EVSE) in va. Corresponds to the VAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumApparentPower </p>
      */
     @Optional
     private Float maxApparentPower;
+
     /**
-     * Rated maximum absorbed apparent power, defined by min(EV, EVSE) in va. +
+     * Rated maximum absorbed apparent power, defined by min(EV, EVSE) in va.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower
+     * in which case this field represents phase L1. Corresponds to the ChaVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower </p>
      */
     @Optional
     private Float maxChargeApparentPower;
+
     /**
      * Rated maximum absorbed apparent power on phase L2, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L2
+     * Corresponds to the ChaVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L2 </p>
      */
     @Optional
     private Float maxChargeApparentPowerL2;
+
     /**
      * Rated maximum absorbed apparent power on phase L3, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L3
+     * Corresponds to the ChaVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L3
      */
     @Optional
     private Float maxChargeApparentPowerL3;
+
     /**
-     * Rated maximum injected apparent power, defined by min(EV, EVSE) in va. +
+     * Rated maximum injected apparent power, defined by min(EV, EVSE) in va.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower
+     * in which case this field represents phase L1. Corresponds to the DisVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower </p>
      */
     @Optional
     private Float maxDischargeApparentPower;
+
     /**
-     * Rated maximum injected apparent power on phase L2, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L2
+     * Rated maximum injected apparent power on phase L2, defined by min(EV, EVSE) in va.
+     * Corresponds to the DisVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L2 </p>
      */
     @Optional
     private Float maxDischargeApparentPowerL2;
+
     /**
-     * Rated maximum injected apparent power on phase L3, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L3
+     * Rated maximum injected apparent power on phase L3, defined by min(EV, EVSE) in va.
+     * Corresponds to the DisVAMaxRtg in IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L3 </p>
      */
     @Optional
     private Float maxDischargeApparentPowerL3;
+
     /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars. +
+     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower
+     * in which case this field represents phase L1. Corresponds to the AvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower </p>
      */
     @Optional
     private Float maxChargeReactivePower;
+
     /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L2
+     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L2.
+     * Corresponds to the AvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L2 </p>
      */
     @Optional
     private Float maxChargeReactivePowerL2;
+
     /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L3
+     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L3.
+     * Corresponds to the AvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L3 </p>
      */
     @Optional
     private Float maxChargeReactivePowerL3;
+
     /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars. +
+     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower
+     * in which case this field represents phase L1.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower </p>
      */
     @Optional
     private Float minChargeReactivePower;
+
     /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L2
+     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L2.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L2 </p>
      */
     @Optional
     private Float minChargeReactivePowerL2;
+
     /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L3
+     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L3.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L3 </p>
      */
     @Optional
     private Float minChargeReactivePowerL3;
+
     /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars. +
+     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower
+     * in which case this field represents phase L1. Corresponds to the IvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower </p>
      */
     @Optional
     private Float maxDischargeReactivePower;
+
     /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L2
+     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L2.
+     * Corresponds to the IvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L2 </p>
      */
     @Optional
     private Float maxDischargeReactivePowerL2;
+
     /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L3
+     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L3.
+     * Corresponds to the IvarMax attribute in the IEC 61850.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L3 </p>
      */
     @Optional
     private Float maxDischargeReactivePowerL3;
+
     /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in vars. +
+     * Rated minimum injected reactive power, defined by max(EV, EVSE), in vars.
      * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower
+     * in which case this field represents phase L1.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower </p>
      */
     @Optional
     private Float minDischargeReactivePower;
+
     /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L2
+     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L2.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L2 </p>
      */
     @Optional
     private Float minDischargeReactivePowerL2;
+
     /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L3
+     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L3.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L3 </p>
      */
     @Optional
     private Float minDischargeReactivePowerL3;
+
     /**
      * Line voltage supported by EVSE and EV.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltage
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltage </p>
      */
     @Optional
     private Float nominalVoltage;
+
     /**
-     * The nominal AC voltage (rms) offset between the Charging Station's electrical connection point and the utility’s point of common coupling. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltageOffset
+     * The nominal AC voltage (rms) offset between the Charging Station’s electrical connection point
+     * and the utility’s point of common coupling.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltageOffset </p>
      */
     @Optional
     private Float nominalVoltageOffset;
+
     /**
-     * Maximum AC rms voltage, as defined by min(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumNominalVoltage
+     * Maximum AC rms voltage, as defined by min(EV, EVSE) to operate with.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumNominalVoltage </p>
      */
     @Optional
     private Float maxNominalVoltage;
+
     /**
-     * Minimum AC rms voltage, as defined by max(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumNominalVoltage
+     * Minimum AC rms voltage, as defined by max(EV, EVSE) to operate with.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumNominalVoltage </p>
      */
     @Optional
     private Float minNominalVoltage;
+
     /**
-     * Manufacturer of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterManufacturer
+     * Manufacturer of the EV inverter.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterManufacturer </p>
      */
     @Optional
     private String evInverterManufacturer;
+
     /**
-     * Model name of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterModel
+     * Model name of the EV inverter.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterModel </p>
      */
     @Optional
     private String evInverterModel;
+
     /**
-     * Serial number of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSerialNumber
+     * Serial number of the EV inverter.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSerialNumber </p>
      */
     @Optional
     private String evInverterSerialNumber;
+
     /**
-     * Software version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSwVersion
+     * Software version of EV inverter.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSwVersion </p>
      */
     @Optional
     private String evInverterSwVersion;
+
     /**
-     * Hardware version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterHwVersion
+     * Hardware version of EV inverter.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterHwVersion </p>
      */
     @Optional
     private String evInverterHwVersion;
+
     /**
-     * Type of islanding detection method. Only mandatory when islanding detection is required at the site, as set in the ISO 15118 Service Details configuration. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingDetectionMethod
+     * Type of islanding detection method.
+     * Only mandatory when islanding detection is required at the site, as set in the ISO 15118 Service Details configuration.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingDetectionMethod </p>
      */
     @Optional
     private List<IslandingDetectionEnum> evIslandingDetectionMethod;
+
     /**
-     * Time after which EV will trip if an island has been detected. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingTripTime
+     * Time after which EV will trip if an island has been detected.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingTripTime </p>
      */
     @Optional
     private Float evIslandingTripTime;
+
     /**
-     * Maximum injected DC current allowed at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel1DCInjection
+     * Maximum injected DC current allowed at level 1 charging.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel1DCInjection </p>
      */
     @Optional
     private Float evMaximumLevel1DCInjection;
+
     /**
-     * Maximum allowed duration of DC injection at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel1DCInjection
+     * Maximum allowed duration of DC injection at level 1 charging.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel1DCInjection </p>
      */
     @Optional
     private Float evDurationLevel1DCInjection;
+
     /**
-     * Maximum injected DC current allowed at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel2DCInjection
+     * Maximum injected DC current allowed at level 2 charging.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel2DCInjection </p>
      */
     @Optional
     private Float evMaximumLevel2DCInjection;
+
     /**
-     * Maximum allowed duration of DC injection at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel2DCInjection
+     * Maximum allowed duration of DC injection at level 2 charging.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel2DCInjection </p>
      */
     @Optional
     private Float evDurationLevel2DCInjection;
+
     /**
-     * Measure of the susceptibility of the circuit to reactance, in Siemens (S). +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVReactiveSusceptance
+     * Measure of the susceptibility of the circuit to reactance, in Siemens (S).
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVReactiveSusceptance </p>
      */
     @Optional
     private Float evReactiveSusceptance;
+
     /**
-     * Total energy value, in Wh, that EV is allowed to provide during the entire V2G session. The value is independent of the V2X Cycling area. Once this value reaches the value of 0, the EV may block any attempt to discharge in order to protect the battery health.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVSessionTotalDischargeEnergyAvailable
+     * Total energy value, in Wh, that EV is allowed to provide during the entire V2G session.
+     * The value is independent of the V2X Cycling area.
+     * Once this value reaches the value of 0, the EV may block any attempt to discharge in order to protect the battery health.
+     * <p> ISO 15118-20: DER_BPT_AC_CPDReqEnergyTransferModeType: EVSessionTotalDischargeEnergyAvailable </p>
      */
     @Optional
     private Float evSessionTotalDischargeEnergyAvailable;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public DERChargingParameters() {
     }
 
-    /**
-     * @param maxDischargeReactivePower              Rated maximum injected reactive power, defined by min(EV, EVSE), in vars. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               Corresponds to the IvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower
-     *                                               .
-     * @param evInverterHwVersion                    Hardware version of EV inverter. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterHwVersion
-     *                                               .
-     * @param evInverterManufacturer                 Manufacturer of the EV inverter. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterManufacturer
-     *                                               .
-     * @param maxDischargeApparentPower              Rated maximum injected apparent power, defined by min(EV, EVSE) in va. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               Corresponds to the DisVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower
-     *                                               .
-     * @param evInverterModel                        Model name of the EV inverter. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterModel
-     *                                               .
-     * @param evDurationLevel1DCInjection            Maximum allowed duration of DC injection at level 1 charging. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel1DCInjection
-     *                                               .
-     * @param evOverExcitedMaxDischargePower         Rated maximum injected active power by EV, at specified over-excited power factor (overExcitedPowerFactor). +
-     *                                               It can also be defined as the rated maximum discharge power at the rated minimum injected reactive power value. This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to overExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     *                                               Corresponds to the WOvPF attribute in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedMaximumDischargePower
-     *                                               .
-     * @param maxNominalVoltage                      Maximum AC rms voltage, as defined by min(EV, EVSE)  to operate with. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumNominalVoltage
-     *                                               .
-     * @param nominalVoltageOffset                   The nominal AC voltage (rms) offset between the Charging Station's electrical connection point and the utility’s point of common coupling. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltageOffset
-     *                                               .
-     * @param evUnderExcitedPowerFactor              EV power factor when injecting (under excited) the minimum reactive power. +
-     *                                               Corresponds to the OvPF attribute in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedPowerFactor
-     *                                               .
-     * @param nominalVoltage                         Line voltage supported by EVSE and EV.
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltage
-     *                                               .
-     * @param evSessionTotalDischargeEnergyAvailable Total energy value, in Wh, that EV is allowed to provide during the entire V2G session. The value is independent of the V2X Cycling area. Once this value reaches the value of 0, the EV may block any attempt to discharge in order to protect the battery health.
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVSessionTotalDischargeEnergyAvailable
-     *                                               <p>
-     *                                               <p>
-     *                                               .
-     * @param evIslandingDetectionMethod             Type of islanding detection method. Only mandatory when islanding detection is required at the site, as set in the ISO 15118 Service Details configuration. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingDetectionMethod
-     *                                               .
-     * @param evMaximumLevel1DCInjection             Maximum injected DC current allowed at level 1 charging. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel1DCInjection
-     *                                               .
-     * @param maxDischargeApparentPowerL2            Rated maximum injected apparent power on phase L2, defined by min(EV, EVSE) in va. +
-     *                                               Corresponds to the DisVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L2
-     *                                               .
-     * @param maxDischargeApparentPowerL3            Rated maximum injected apparent power on phase L3, defined by min(EV, EVSE) in va. +
-     *                                               Corresponds to the DisVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L3
-     *                                               .
-     * @param maxDischargeReactivePowerL2            Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     *                                               Corresponds to the IvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L2
-     *                                               .
-     * @param minDischargeReactivePower              Rated minimum injected reactive power, defined by max(EV, EVSE), in vars. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower
-     *                                               .
-     * @param maxDischargeReactivePowerL3            Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     *                                               Corresponds to the IvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L3
-     *                                               .
-     * @param evReactiveSusceptance                  Measure of the susceptibility of the circuit to reactance, in Siemens (S). +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVReactiveSusceptance
-     *                                               <p>
-     *                                               <p>
-     *                                               .
-     * @param evDurationLevel2DCInjection            Maximum allowed duration of DC injection at level 2 charging. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel2DCInjection
-     *                                               .
-     * @param evSupportedDERControl                  DER control functions supported by EV. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType:DERControlFunctions (bitmap)
-     *                                               .
-     * @param evOverExcitedPowerFactor               EV power factor when injecting (over excited) the minimum reactive power. +
-     *                                               Corresponds to the OvPF attribute in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedPowerFactor
-     *                                               .
-     * @param evUnderExcitedMaxDischargePower        Rated maximum injected active power by EV supported at specified under-excited power factor (EVUnderExcitedPowerFactor). +
-     *                                               It can also be defined as the rated maximum dischargePower at the rated minimum absorbed reactive power value.
-     *                                               This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to underExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     *                                               This corresponds to the WUnPF attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedMaximumDischargePower
-     *                                               .
-     * @param maxChargeReactivePowerL2               Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     *                                               Corresponds to the AvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L2
-     *                                               .
-     * @param evInverterSwVersion                    Software version of EV inverter. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSwVersion
-     *                                               .
-     * @param maxChargeReactivePowerL3               Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     *                                               Corresponds to the AvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L3
-     *                                               .
-     * @param maxChargeApparentPowerL3               Rated maximum absorbed apparent power on phase L3, defined by min(EV, EVSE) in va.
-     *                                               Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L3
-     *                                               .
-     * @param minChargeReactivePowerL2               Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L2. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L2
-     *                                               .
-     * @param minDischargeReactivePowerL3            Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L3. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L3
-     *                                               .
-     * @param maxChargeApparentPowerL2               Rated maximum absorbed apparent power on phase L2, defined by min(EV, EVSE) in va.
-     *                                               Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L2
-     *                                               .
-     * @param minChargeReactivePowerL3               Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L3. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L3
-     *                                               .
-     * @param minDischargeReactivePowerL2            Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L2. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L2
-     *                                               .
-     * @param evIslandingTripTime                    Time after which EV will trip if an island has been detected. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingTripTime
-     *                                               .
-     * @param maxChargeReactivePower                 Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               Corresponds to the AvarMax attribute in the IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower
-     *                                               .
-     * @param maxChargeApparentPower                 Rated maximum absorbed apparent power, defined by min(EV, EVSE) in va. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower
-     *                                               .
-     * @param maxApparentPower                       Rated maximum total apparent power, defined by min(EV, EVSE) in va.
-     *                                               Corresponds to the VAMaxRtg in IEC 61850. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumApparentPower
-     *                                               .
-     * @param evInverterSerialNumber                 Serial number of the EV inverter. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSerialNumber
-     *                                               .
-     * @param evMaximumLevel2DCInjection             Maximum injected DC current allowed at level 2 charging. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel2DCInjection
-     *                                               .
-     * @param minNominalVoltage                      Minimum AC rms voltage, as defined by max(EV, EVSE)  to operate with. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumNominalVoltage
-     *                                               .
-     * @param minChargeReactivePower                 Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars. +
-     *                                               This field represents the sum of all phases, unless values are provided for L2 and L3,
-     *                                               in which case this field represents phase L1. +
-     *                                               *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower
-     *                                               .
-     */
-    public DERChargingParameters(List<DERControlEnum> evSupportedDERControl, Float evOverExcitedMaxDischargePower, Float evOverExcitedPowerFactor, Float evUnderExcitedMaxDischargePower, Float evUnderExcitedPowerFactor, Float maxApparentPower, Float maxChargeApparentPower, Float maxChargeApparentPowerL2, Float maxChargeApparentPowerL3, Float maxDischargeApparentPower, Float maxDischargeApparentPowerL2, Float maxDischargeApparentPowerL3, Float maxChargeReactivePower, Float maxChargeReactivePowerL2, Float maxChargeReactivePowerL3, Float minChargeReactivePower, Float minChargeReactivePowerL2, Float minChargeReactivePowerL3, Float maxDischargeReactivePower, Float maxDischargeReactivePowerL2, Float maxDischargeReactivePowerL3, Float minDischargeReactivePower, Float minDischargeReactivePowerL2, Float minDischargeReactivePowerL3, Float nominalVoltage, Float nominalVoltageOffset, Float maxNominalVoltage, Float minNominalVoltage, String evInverterManufacturer, String evInverterModel, String evInverterSerialNumber, String evInverterSwVersion, String evInverterHwVersion, List<IslandingDetectionEnum> evIslandingDetectionMethod, Float evIslandingTripTime, Float evMaximumLevel1DCInjection, Float evDurationLevel1DCInjection, Float evMaximumLevel2DCInjection, Float evDurationLevel2DCInjection, Float evReactiveSusceptance, Float evSessionTotalDischargeEnergyAvailable, CustomData customData) {
-        super();
-        this.evSupportedDERControl = evSupportedDERControl;
-        this.evOverExcitedMaxDischargePower = evOverExcitedMaxDischargePower;
-        this.evOverExcitedPowerFactor = evOverExcitedPowerFactor;
-        this.evUnderExcitedMaxDischargePower = evUnderExcitedMaxDischargePower;
-        this.evUnderExcitedPowerFactor = evUnderExcitedPowerFactor;
-        this.maxApparentPower = maxApparentPower;
-        this.maxChargeApparentPower = maxChargeApparentPower;
-        this.maxChargeApparentPowerL2 = maxChargeApparentPowerL2;
-        this.maxChargeApparentPowerL3 = maxChargeApparentPowerL3;
-        this.maxDischargeApparentPower = maxDischargeApparentPower;
-        this.maxDischargeApparentPowerL2 = maxDischargeApparentPowerL2;
-        this.maxDischargeApparentPowerL3 = maxDischargeApparentPowerL3;
-        this.maxChargeReactivePower = maxChargeReactivePower;
-        this.maxChargeReactivePowerL2 = maxChargeReactivePowerL2;
-        this.maxChargeReactivePowerL3 = maxChargeReactivePowerL3;
-        this.minChargeReactivePower = minChargeReactivePower;
-        this.minChargeReactivePowerL2 = minChargeReactivePowerL2;
-        this.minChargeReactivePowerL3 = minChargeReactivePowerL3;
-        this.maxDischargeReactivePower = maxDischargeReactivePower;
-        this.maxDischargeReactivePowerL2 = maxDischargeReactivePowerL2;
-        this.maxDischargeReactivePowerL3 = maxDischargeReactivePowerL3;
-        this.minDischargeReactivePower = minDischargeReactivePower;
-        this.minDischargeReactivePowerL2 = minDischargeReactivePowerL2;
-        this.minDischargeReactivePowerL3 = minDischargeReactivePowerL3;
-        this.nominalVoltage = nominalVoltage;
-        this.nominalVoltageOffset = nominalVoltageOffset;
-        this.maxNominalVoltage = maxNominalVoltage;
-        this.minNominalVoltage = minNominalVoltage;
-        this.evInverterManufacturer = evInverterManufacturer;
-        this.evInverterModel = evInverterModel;
-        this.evInverterSerialNumber = evInverterSerialNumber;
-        this.evInverterSwVersion = evInverterSwVersion;
-        this.evInverterHwVersion = evInverterHwVersion;
-        this.evIslandingDetectionMethod = evIslandingDetectionMethod;
-        this.evIslandingTripTime = evIslandingTripTime;
-        this.evMaximumLevel1DCInjection = evMaximumLevel1DCInjection;
-        this.evDurationLevel1DCInjection = evDurationLevel1DCInjection;
-        this.evMaximumLevel2DCInjection = evMaximumLevel2DCInjection;
-        this.evDurationLevel2DCInjection = evDurationLevel2DCInjection;
-        this.evReactiveSusceptance = evReactiveSusceptance;
-        this.evSessionTotalDischargeEnergyAvailable = evSessionTotalDischargeEnergyAvailable;
-        this.customData = customData;
-    }
 
-    /**
-     * DER control functions supported by EV. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType:DERControlFunctions (bitmap)
-     */
     public List<DERControlEnum> getEvSupportedDERControl() {
         return evSupportedDERControl;
     }
 
-    /**
-     * DER control functions supported by EV. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType:DERControlFunctions (bitmap)
-     */
+
     public void setEvSupportedDERControl(List<DERControlEnum> evSupportedDERControl) {
         this.evSupportedDERControl = evSupportedDERControl;
     }
 
-    /**
-     * Rated maximum injected active power by EV, at specified over-excited power factor (overExcitedPowerFactor). +
-     * It can also be defined as the rated maximum discharge power at the rated minimum injected reactive power value. This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to overExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * Corresponds to the WOvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedMaximumDischargePower
-     */
+
     public Float getEvOverExcitedMaxDischargePower() {
         return evOverExcitedMaxDischargePower;
     }
 
-    /**
-     * Rated maximum injected active power by EV, at specified over-excited power factor (overExcitedPowerFactor). +
-     * It can also be defined as the rated maximum discharge power at the rated minimum injected reactive power value. This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to overExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * Corresponds to the WOvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedMaximumDischargePower
-     */
+
     public void setEvOverExcitedMaxDischargePower(Float evOverExcitedMaxDischargePower) {
         this.evOverExcitedMaxDischargePower = evOverExcitedMaxDischargePower;
     }
 
-    /**
-     * EV power factor when injecting (over excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedPowerFactor
-     */
+
     public Float getEvOverExcitedPowerFactor() {
         return evOverExcitedPowerFactor;
     }
 
-    /**
-     * EV power factor when injecting (over excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVOverExcitedPowerFactor
-     */
+
     public void setEvOverExcitedPowerFactor(Float evOverExcitedPowerFactor) {
         this.evOverExcitedPowerFactor = evOverExcitedPowerFactor;
     }
 
-    /**
-     * Rated maximum injected active power by EV supported at specified under-excited power factor (EVUnderExcitedPowerFactor). +
-     * It can also be defined as the rated maximum dischargePower at the rated minimum absorbed reactive power value.
-     * This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to underExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * This corresponds to the WUnPF attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedMaximumDischargePower
-     */
+
     public Float getEvUnderExcitedMaxDischargePower() {
         return evUnderExcitedMaxDischargePower;
     }
 
-    /**
-     * Rated maximum injected active power by EV supported at specified under-excited power factor (EVUnderExcitedPowerFactor). +
-     * It can also be defined as the rated maximum dischargePower at the rated minimum absorbed reactive power value.
-     * This means that if the EV is providing reactive power support, and it is requested to discharge at max power (e.g. to satisfy an EMS request), the EV may override the request and discharge up to underExcitedMaximumDischargePower to meet the minimum reactive power requirements. +
-     * This corresponds to the WUnPF attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedMaximumDischargePower
-     */
+
     public void setEvUnderExcitedMaxDischargePower(Float evUnderExcitedMaxDischargePower) {
         this.evUnderExcitedMaxDischargePower = evUnderExcitedMaxDischargePower;
     }
 
-    /**
-     * EV power factor when injecting (under excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedPowerFactor
-     */
+
     public Float getEvUnderExcitedPowerFactor() {
         return evUnderExcitedPowerFactor;
     }
 
-    /**
-     * EV power factor when injecting (under excited) the minimum reactive power. +
-     * Corresponds to the OvPF attribute in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVUnderExcitedPowerFactor
-     */
+
     public void setEvUnderExcitedPowerFactor(Float evUnderExcitedPowerFactor) {
         this.evUnderExcitedPowerFactor = evUnderExcitedPowerFactor;
     }
 
-    /**
-     * Rated maximum total apparent power, defined by min(EV, EVSE) in va.
-     * Corresponds to the VAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumApparentPower
-     */
+
     public Float getMaxApparentPower() {
         return maxApparentPower;
     }
 
-    /**
-     * Rated maximum total apparent power, defined by min(EV, EVSE) in va.
-     * Corresponds to the VAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumApparentPower
-     */
+
     public void setMaxApparentPower(Float maxApparentPower) {
         this.maxApparentPower = maxApparentPower;
     }
 
-    /**
-     * Rated maximum absorbed apparent power, defined by min(EV, EVSE) in va. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower
-     */
+
     public Float getMaxChargeApparentPower() {
         return maxChargeApparentPower;
     }
 
-    /**
-     * Rated maximum absorbed apparent power, defined by min(EV, EVSE) in va. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower
-     */
+
     public void setMaxChargeApparentPower(Float maxChargeApparentPower) {
         this.maxChargeApparentPower = maxChargeApparentPower;
     }
 
-    /**
-     * Rated maximum absorbed apparent power on phase L2, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L2
-     */
+
     public Float getMaxChargeApparentPowerL2() {
         return maxChargeApparentPowerL2;
     }
 
-    /**
-     * Rated maximum absorbed apparent power on phase L2, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L2
-     */
+
     public void setMaxChargeApparentPowerL2(Float maxChargeApparentPowerL2) {
         this.maxChargeApparentPowerL2 = maxChargeApparentPowerL2;
     }
 
-    /**
-     * Rated maximum absorbed apparent power on phase L3, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L3
-     */
+
     public Float getMaxChargeApparentPowerL3() {
         return maxChargeApparentPowerL3;
     }
 
-    /**
-     * Rated maximum absorbed apparent power on phase L3, defined by min(EV, EVSE) in va.
-     * Corresponds to the ChaVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeApparentPower_L3
-     */
+
     public void setMaxChargeApparentPowerL3(Float maxChargeApparentPowerL3) {
         this.maxChargeApparentPowerL3 = maxChargeApparentPowerL3;
     }
 
-    /**
-     * Rated maximum injected apparent power, defined by min(EV, EVSE) in va. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower
-     */
+
     public Float getMaxDischargeApparentPower() {
         return maxDischargeApparentPower;
     }
 
-    /**
-     * Rated maximum injected apparent power, defined by min(EV, EVSE) in va. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower
-     */
+
     public void setMaxDischargeApparentPower(Float maxDischargeApparentPower) {
         this.maxDischargeApparentPower = maxDischargeApparentPower;
     }
 
-    /**
-     * Rated maximum injected apparent power on phase L2, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L2
-     */
+
     public Float getMaxDischargeApparentPowerL2() {
         return maxDischargeApparentPowerL2;
     }
 
-    /**
-     * Rated maximum injected apparent power on phase L2, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L2
-     */
+
     public void setMaxDischargeApparentPowerL2(Float maxDischargeApparentPowerL2) {
         this.maxDischargeApparentPowerL2 = maxDischargeApparentPowerL2;
     }
 
-    /**
-     * Rated maximum injected apparent power on phase L3, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L3
-     */
+
     public Float getMaxDischargeApparentPowerL3() {
         return maxDischargeApparentPowerL3;
     }
 
-    /**
-     * Rated maximum injected apparent power on phase L3, defined by min(EV, EVSE) in va. +
-     * Corresponds to the DisVAMaxRtg in IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeApparentPower_L3
-     */
+
     public void setMaxDischargeApparentPowerL3(Float maxDischargeApparentPowerL3) {
         this.maxDischargeApparentPowerL3 = maxDischargeApparentPowerL3;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower
-     */
+
     public Float getMaxChargeReactivePower() {
         return maxChargeReactivePower;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower
-     */
+
     public void setMaxChargeReactivePower(Float maxChargeReactivePower) {
         this.maxChargeReactivePower = maxChargeReactivePower;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L2
-     */
+
     public Float getMaxChargeReactivePowerL2() {
         return maxChargeReactivePowerL2;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L2
-     */
+
     public void setMaxChargeReactivePowerL2(Float maxChargeReactivePowerL2) {
         this.maxChargeReactivePowerL2 = maxChargeReactivePowerL2;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L3
-     */
+
     public Float getMaxChargeReactivePowerL3() {
         return maxChargeReactivePowerL3;
     }
 
-    /**
-     * Rated maximum absorbed reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the AvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumChargeReactivePower_L3
-     */
+
     public void setMaxChargeReactivePowerL3(Float maxChargeReactivePowerL3) {
         this.maxChargeReactivePowerL3 = maxChargeReactivePowerL3;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower
-     */
+
     public Float getMinChargeReactivePower() {
         return minChargeReactivePower;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower
-     */
+
     public void setMinChargeReactivePower(Float minChargeReactivePower) {
         this.minChargeReactivePower = minChargeReactivePower;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L2
-     */
+
     public Float getMinChargeReactivePowerL2() {
         return minChargeReactivePowerL2;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L2
-     */
+
     public void setMinChargeReactivePowerL2(Float minChargeReactivePowerL2) {
         this.minChargeReactivePowerL2 = minChargeReactivePowerL2;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L3
-     */
+
     public Float getMinChargeReactivePowerL3() {
         return minChargeReactivePowerL3;
     }
 
-    /**
-     * Rated minimum absorbed reactive power, defined by max(EV, EVSE), in vars on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumChargeReactivePower_L3
-     */
+
     public void setMinChargeReactivePowerL3(Float minChargeReactivePowerL3) {
         this.minChargeReactivePowerL3 = minChargeReactivePowerL3;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower
-     */
+
     public Float getMaxDischargeReactivePower() {
         return maxDischargeReactivePower;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower
-     */
+
     public void setMaxDischargeReactivePower(Float maxDischargeReactivePower) {
         this.maxDischargeReactivePower = maxDischargeReactivePower;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L2
-     */
+
     public Float getMaxDischargeReactivePowerL2() {
         return maxDischargeReactivePowerL2;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L2. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L2
-     */
+
     public void setMaxDischargeReactivePowerL2(Float maxDischargeReactivePowerL2) {
         this.maxDischargeReactivePowerL2 = maxDischargeReactivePowerL2;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L3
-     */
+
     public Float getMaxDischargeReactivePowerL3() {
         return maxDischargeReactivePowerL3;
     }
 
-    /**
-     * Rated maximum injected reactive power, defined by min(EV, EVSE), in vars on phase L3. +
-     * Corresponds to the IvarMax attribute in the IEC 61850. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumDischargeReactivePower_L3
-     */
+
     public void setMaxDischargeReactivePowerL3(Float maxDischargeReactivePowerL3) {
         this.maxDischargeReactivePowerL3 = maxDischargeReactivePowerL3;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower
-     */
+
     public Float getMinDischargeReactivePower() {
         return minDischargeReactivePower;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in vars. +
-     * This field represents the sum of all phases, unless values are provided for L2 and L3,
-     * in which case this field represents phase L1. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower
-     */
+
     public void setMinDischargeReactivePower(Float minDischargeReactivePower) {
         this.minDischargeReactivePower = minDischargeReactivePower;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L2
-     */
+
     public Float getMinDischargeReactivePowerL2() {
         return minDischargeReactivePowerL2;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L2. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L2
-     */
+
     public void setMinDischargeReactivePowerL2(Float minDischargeReactivePowerL2) {
         this.minDischargeReactivePowerL2 = minDischargeReactivePowerL2;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L3
-     */
+
     public Float getMinDischargeReactivePowerL3() {
         return minDischargeReactivePowerL3;
     }
 
-    /**
-     * Rated minimum injected reactive power, defined by max(EV, EVSE), in var on phase L3. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumDischargeReactivePower_L3
-     */
+
     public void setMinDischargeReactivePowerL3(Float minDischargeReactivePowerL3) {
         this.minDischargeReactivePowerL3 = minDischargeReactivePowerL3;
     }
 
-    /**
-     * Line voltage supported by EVSE and EV.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltage
-     */
+
     public Float getNominalVoltage() {
         return nominalVoltage;
     }
 
-    /**
-     * Line voltage supported by EVSE and EV.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltage
-     */
+
     public void setNominalVoltage(Float nominalVoltage) {
         this.nominalVoltage = nominalVoltage;
     }
 
-    /**
-     * The nominal AC voltage (rms) offset between the Charging Station's electrical connection point and the utility’s point of common coupling. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltageOffset
-     */
+
     public Float getNominalVoltageOffset() {
         return nominalVoltageOffset;
     }
 
-    /**
-     * The nominal AC voltage (rms) offset between the Charging Station's electrical connection point and the utility’s point of common coupling. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVNominalVoltageOffset
-     */
+
     public void setNominalVoltageOffset(Float nominalVoltageOffset) {
         this.nominalVoltageOffset = nominalVoltageOffset;
     }
 
-    /**
-     * Maximum AC rms voltage, as defined by min(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumNominalVoltage
-     */
+
     public Float getMaxNominalVoltage() {
         return maxNominalVoltage;
     }
 
-    /**
-     * Maximum AC rms voltage, as defined by min(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumNominalVoltage
-     */
+
     public void setMaxNominalVoltage(Float maxNominalVoltage) {
         this.maxNominalVoltage = maxNominalVoltage;
     }
 
-    /**
-     * Minimum AC rms voltage, as defined by max(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumNominalVoltage
-     */
+
     public Float getMinNominalVoltage() {
         return minNominalVoltage;
     }
 
-    /**
-     * Minimum AC rms voltage, as defined by max(EV, EVSE)  to operate with. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMinimumNominalVoltage
-     */
+
     public void setMinNominalVoltage(Float minNominalVoltage) {
         this.minNominalVoltage = minNominalVoltage;
     }
 
-    /**
-     * Manufacturer of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterManufacturer
-     */
+
     public String getEvInverterManufacturer() {
         return evInverterManufacturer;
     }
 
-    /**
-     * Manufacturer of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterManufacturer
-     */
+
     public void setEvInverterManufacturer(String evInverterManufacturer) {
         this.evInverterManufacturer = evInverterManufacturer;
     }
 
-    /**
-     * Model name of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterModel
-     */
+
     public String getEvInverterModel() {
         return evInverterModel;
     }
 
-    /**
-     * Model name of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterModel
-     */
+
     public void setEvInverterModel(String evInverterModel) {
         this.evInverterModel = evInverterModel;
     }
 
-    /**
-     * Serial number of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSerialNumber
-     */
+
     public String getEvInverterSerialNumber() {
         return evInverterSerialNumber;
     }
 
-    /**
-     * Serial number of the EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSerialNumber
-     */
+
     public void setEvInverterSerialNumber(String evInverterSerialNumber) {
         this.evInverterSerialNumber = evInverterSerialNumber;
     }
 
-    /**
-     * Software version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSwVersion
-     */
+
     public String getEvInverterSwVersion() {
         return evInverterSwVersion;
     }
 
-    /**
-     * Software version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterSwVersion
-     */
+
     public void setEvInverterSwVersion(String evInverterSwVersion) {
         this.evInverterSwVersion = evInverterSwVersion;
     }
 
-    /**
-     * Hardware version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterHwVersion
-     */
+
     public String getEvInverterHwVersion() {
         return evInverterHwVersion;
     }
 
-    /**
-     * Hardware version of EV inverter. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVInverterHwVersion
-     */
+
     public void setEvInverterHwVersion(String evInverterHwVersion) {
         this.evInverterHwVersion = evInverterHwVersion;
     }
 
-    /**
-     * Type of islanding detection method. Only mandatory when islanding detection is required at the site, as set in the ISO 15118 Service Details configuration. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingDetectionMethod
-     */
+
     public List<IslandingDetectionEnum> getEvIslandingDetectionMethod() {
         return evIslandingDetectionMethod;
     }
 
-    /**
-     * Type of islanding detection method. Only mandatory when islanding detection is required at the site, as set in the ISO 15118 Service Details configuration. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingDetectionMethod
-     */
+
     public void setEvIslandingDetectionMethod(List<IslandingDetectionEnum> evIslandingDetectionMethod) {
         this.evIslandingDetectionMethod = evIslandingDetectionMethod;
     }
 
-    /**
-     * Time after which EV will trip if an island has been detected. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingTripTime
-     */
+
     public Float getEvIslandingTripTime() {
         return evIslandingTripTime;
     }
 
-    /**
-     * Time after which EV will trip if an island has been detected. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVIslandingTripTime
-     */
+
     public void setEvIslandingTripTime(Float evIslandingTripTime) {
         this.evIslandingTripTime = evIslandingTripTime;
     }
 
-    /**
-     * Maximum injected DC current allowed at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel1DCInjection
-     */
+
     public Float getEvMaximumLevel1DCInjection() {
         return evMaximumLevel1DCInjection;
     }
 
-    /**
-     * Maximum injected DC current allowed at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel1DCInjection
-     */
+
     public void setEvMaximumLevel1DCInjection(Float evMaximumLevel1DCInjection) {
         this.evMaximumLevel1DCInjection = evMaximumLevel1DCInjection;
     }
 
-    /**
-     * Maximum allowed duration of DC injection at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel1DCInjection
-     */
+
     public Float getEvDurationLevel1DCInjection() {
         return evDurationLevel1DCInjection;
     }
 
-    /**
-     * Maximum allowed duration of DC injection at level 1 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel1DCInjection
-     */
+
     public void setEvDurationLevel1DCInjection(Float evDurationLevel1DCInjection) {
         this.evDurationLevel1DCInjection = evDurationLevel1DCInjection;
     }
 
-    /**
-     * Maximum injected DC current allowed at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel2DCInjection
-     */
+
     public Float getEvMaximumLevel2DCInjection() {
         return evMaximumLevel2DCInjection;
     }
 
-    /**
-     * Maximum injected DC current allowed at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVMaximumLevel2DCInjection
-     */
+
     public void setEvMaximumLevel2DCInjection(Float evMaximumLevel2DCInjection) {
         this.evMaximumLevel2DCInjection = evMaximumLevel2DCInjection;
     }
 
-    /**
-     * Maximum allowed duration of DC injection at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel2DCInjection
-     */
+
     public Float getEvDurationLevel2DCInjection() {
         return evDurationLevel2DCInjection;
     }
 
-    /**
-     * Maximum allowed duration of DC injection at level 2 charging. +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVDurationLevel2DCInjection
-     */
+
     public void setEvDurationLevel2DCInjection(Float evDurationLevel2DCInjection) {
         this.evDurationLevel2DCInjection = evDurationLevel2DCInjection;
     }
 
-    /**
-     * Measure of the susceptibility of the circuit to reactance, in Siemens (S). +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVReactiveSusceptance
-     */
+
     public Float getEvReactiveSusceptance() {
         return evReactiveSusceptance;
     }
 
-    /**
-     * Measure of the susceptibility of the circuit to reactance, in Siemens (S). +
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVReactiveSusceptance
-     */
+
     public void setEvReactiveSusceptance(Float evReactiveSusceptance) {
         this.evReactiveSusceptance = evReactiveSusceptance;
     }
 
-    /**
-     * Total energy value, in Wh, that EV is allowed to provide during the entire V2G session. The value is independent of the V2X Cycling area. Once this value reaches the value of 0, the EV may block any attempt to discharge in order to protect the battery health.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVSessionTotalDischargeEnergyAvailable
-     */
+
     public Float getEvSessionTotalDischargeEnergyAvailable() {
         return evSessionTotalDischargeEnergyAvailable;
     }
 
-    /**
-     * Total energy value, in Wh, that EV is allowed to provide during the entire V2G session. The value is independent of the V2X Cycling area. Once this value reaches the value of 0, the EV may block any attempt to discharge in order to protect the battery health.
-     * *ISO 15118-20*: DER_BPT_AC_CPDReqEnergyTransferModeType: EVSessionTotalDischargeEnergyAvailable
-     */
+
     public void setEvSessionTotalDischargeEnergyAvailable(Float evSessionTotalDischargeEnergyAvailable) {
         this.evSessionTotalDischargeEnergyAvailable = evSessionTotalDischargeEnergyAvailable;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -1252,46 +783,142 @@ public class DERChargingParameters implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evOverExcitedMaxDischargePower", evOverExcitedMaxDischargePower);
-        json.addProperty("evOverExcitedPowerFactor", evOverExcitedPowerFactor);
-        json.addProperty("evUnderExcitedMaxDischargePower", evUnderExcitedMaxDischargePower);
-        json.addProperty("evUnderExcitedPowerFactor", evUnderExcitedPowerFactor);
-        json.addProperty("maxApparentPower", maxApparentPower);
-        json.addProperty("maxChargeApparentPower", maxChargeApparentPower);
-        json.addProperty("maxChargeApparentPowerL2", maxChargeApparentPowerL2);
-        json.addProperty("maxChargeApparentPowerL3", maxChargeApparentPowerL3);
-        json.addProperty("maxDischargeApparentPower", maxDischargeApparentPower);
-        json.addProperty("maxDischargeApparentPowerL2", maxDischargeApparentPowerL2);
-        json.addProperty("maxDischargeApparentPowerL3", maxDischargeApparentPowerL3);
-        json.addProperty("maxChargeReactivePower", maxChargeReactivePower);
-        json.addProperty("maxChargeReactivePowerL2", maxChargeReactivePowerL2);
-        json.addProperty("maxChargeReactivePowerL3", maxChargeReactivePowerL3);
-        json.addProperty("minChargeReactivePower", minChargeReactivePower);
-        json.addProperty("minChargeReactivePowerL2", minChargeReactivePowerL2);
-        json.addProperty("minChargeReactivePowerL3", minChargeReactivePowerL3);
-        json.addProperty("maxDischargeReactivePower", maxDischargeReactivePower);
-        json.addProperty("maxDischargeReactivePowerL2", maxDischargeReactivePowerL2);
-        json.addProperty("maxDischargeReactivePowerL3", maxDischargeReactivePowerL3);
-        json.addProperty("minDischargeReactivePower", minDischargeReactivePower);
-        json.addProperty("minDischargeReactivePowerL2", minDischargeReactivePowerL2);
-        json.addProperty("minDischargeReactivePowerL3", minDischargeReactivePowerL3);
-        json.addProperty("nominalVoltage", nominalVoltage);
-        json.addProperty("nominalVoltageOffset", nominalVoltageOffset);
-        json.addProperty("maxNominalVoltage", maxNominalVoltage);
-        json.addProperty("minNominalVoltage", minNominalVoltage);
-        json.addProperty("evInverterManufacturer", evInverterManufacturer);
-        json.addProperty("evInverterModel", evInverterModel);
-        json.addProperty("evInverterSerialNumber", evInverterSerialNumber);
-        json.addProperty("evInverterSwVersion", evInverterSwVersion);
-        json.addProperty("evInverterHwVersion", evInverterHwVersion);
-        json.addProperty("evIslandingTripTime", evIslandingTripTime);
-        json.addProperty("evMaximumLevel1DCInjection", evMaximumLevel1DCInjection);
-        json.addProperty("evDurationLevel1DCInjection", evDurationLevel1DCInjection);
-        json.addProperty("evMaximumLevel2DCInjection", evMaximumLevel2DCInjection);
-        json.addProperty("evDurationLevel2DCInjection", evDurationLevel2DCInjection);
-        json.addProperty("evReactiveSusceptance", evReactiveSusceptance);
-        json.addProperty("evSessionTotalDischargeEnergyAvailable", evSessionTotalDischargeEnergyAvailable);
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvSupportedDERControl() != null) {
+            JsonArray evSupportedDERControlArray = new JsonArray();
+            for (DERControlEnum item : getEvSupportedDERControl()) {
+                evSupportedDERControlArray.add(item.toString());
+            }
+            json.add("evSupportedDERControl", evSupportedDERControlArray);
+        }
+        if (getEvOverExcitedMaxDischargePower() != null) {
+            json.addProperty("evOverExcitedMaxDischargePower", getEvOverExcitedMaxDischargePower());
+        }
+        if (getEvOverExcitedPowerFactor() != null) {
+            json.addProperty("evOverExcitedPowerFactor", getEvOverExcitedPowerFactor());
+        }
+        if (getEvUnderExcitedMaxDischargePower() != null) {
+            json.addProperty("evUnderExcitedMaxDischargePower", getEvUnderExcitedMaxDischargePower());
+        }
+        if (getEvUnderExcitedPowerFactor() != null) {
+            json.addProperty("evUnderExcitedPowerFactor", getEvUnderExcitedPowerFactor());
+        }
+        if (getMaxApparentPower() != null) {
+            json.addProperty("maxApparentPower", getMaxApparentPower());
+        }
+        if (getMaxChargeApparentPower() != null) {
+            json.addProperty("maxChargeApparentPower", getMaxChargeApparentPower());
+        }
+        if (getMaxChargeApparentPowerL2() != null) {
+            json.addProperty("maxChargeApparentPowerL2", getMaxChargeApparentPowerL2());
+        }
+        if (getMaxChargeApparentPowerL3() != null) {
+            json.addProperty("maxChargeApparentPowerL3", getMaxChargeApparentPowerL3());
+        }
+        if (getMaxDischargeApparentPower() != null) {
+            json.addProperty("maxDischargeApparentPower", getMaxDischargeApparentPower());
+        }
+        if (getMaxDischargeApparentPowerL2() != null) {
+            json.addProperty("maxDischargeApparentPowerL2", getMaxDischargeApparentPowerL2());
+        }
+        if (getMaxDischargeApparentPowerL3() != null) {
+            json.addProperty("maxDischargeApparentPowerL3", getMaxDischargeApparentPowerL3());
+        }
+        if (getMaxChargeReactivePower() != null) {
+            json.addProperty("maxChargeReactivePower", getMaxChargeReactivePower());
+        }
+        if (getMaxChargeReactivePowerL2() != null) {
+            json.addProperty("maxChargeReactivePowerL2", getMaxChargeReactivePowerL2());
+        }
+        if (getMaxChargeReactivePowerL3() != null) {
+            json.addProperty("maxChargeReactivePowerL3", getMaxChargeReactivePowerL3());
+        }
+        if (getMinChargeReactivePower() != null) {
+            json.addProperty("minChargeReactivePower", getMinChargeReactivePower());
+        }
+        if (getMinChargeReactivePowerL2() != null) {
+            json.addProperty("minChargeReactivePowerL2", getMinChargeReactivePowerL2());
+        }
+        if (getMinChargeReactivePowerL3() != null) {
+            json.addProperty("minChargeReactivePowerL3", getMinChargeReactivePowerL3());
+        }
+        if (getMaxDischargeReactivePower() != null) {
+            json.addProperty("maxDischargeReactivePower", getMaxDischargeReactivePower());
+        }
+        if (getMaxDischargeReactivePowerL2() != null) {
+            json.addProperty("maxDischargeReactivePowerL2", getMaxDischargeReactivePowerL2());
+        }
+        if (getMaxDischargeReactivePowerL3() != null) {
+            json.addProperty("maxDischargeReactivePowerL3", getMaxDischargeReactivePowerL3());
+        }
+        if (getMinDischargeReactivePower() != null) {
+            json.addProperty("minDischargeReactivePower", getMinDischargeReactivePower());
+        }
+        if (getMinDischargeReactivePowerL2() != null) {
+            json.addProperty("minDischargeReactivePowerL2", getMinDischargeReactivePowerL2());
+        }
+        if (getMinDischargeReactivePowerL3() != null) {
+            json.addProperty("minDischargeReactivePowerL3", getMinDischargeReactivePowerL3());
+        }
+        if (getNominalVoltage() != null) {
+            json.addProperty("nominalVoltage", getNominalVoltage());
+        }
+        if (getNominalVoltageOffset() != null) {
+            json.addProperty("nominalVoltageOffset", getNominalVoltageOffset());
+        }
+        if (getMaxNominalVoltage() != null) {
+            json.addProperty("maxNominalVoltage", getMaxNominalVoltage());
+        }
+        if (getMinNominalVoltage() != null) {
+            json.addProperty("minNominalVoltage", getMinNominalVoltage());
+        }
+        if (getEvInverterManufacturer() != null) {
+            json.addProperty("evInverterManufacturer", getEvInverterManufacturer());
+        }
+        if (getEvInverterModel() != null) {
+            json.addProperty("evInverterModel", getEvInverterModel());
+        }
+        if (getEvInverterSerialNumber() != null) {
+            json.addProperty("evInverterSerialNumber", getEvInverterSerialNumber());
+        }
+        if (getEvInverterSwVersion() != null) {
+            json.addProperty("evInverterSwVersion", getEvInverterSwVersion());
+        }
+        if (getEvInverterHwVersion() != null) {
+            json.addProperty("evInverterHwVersion", getEvInverterHwVersion());
+        }
+        if (getEvIslandingDetectionMethod() != null) {
+            JsonArray evIslandingDetectionMethodArray = new JsonArray();
+            for (IslandingDetectionEnum item : getEvIslandingDetectionMethod()) {
+                evIslandingDetectionMethodArray.add(item.toString());
+            }
+            json.add("evIslandingDetectionMethod", evIslandingDetectionMethodArray);
+        }
+        if (getEvIslandingTripTime() != null) {
+            json.addProperty("evIslandingTripTime", getEvIslandingTripTime());
+        }
+        if (getEvMaximumLevel1DCInjection() != null) {
+            json.addProperty("evMaximumLevel1DCInjection", getEvMaximumLevel1DCInjection());
+        }
+        if (getEvDurationLevel1DCInjection() != null) {
+            json.addProperty("evDurationLevel1DCInjection", getEvDurationLevel1DCInjection());
+        }
+        if (getEvMaximumLevel2DCInjection() != null) {
+            json.addProperty("evMaximumLevel2DCInjection", getEvMaximumLevel2DCInjection());
+        }
+        if (getEvDurationLevel2DCInjection() != null) {
+            json.addProperty("evDurationLevel2DCInjection", getEvDurationLevel2DCInjection());
+        }
+        if (getEvReactiveSusceptance() != null) {
+            json.addProperty("evReactiveSusceptance", getEvReactiveSusceptance());
+        }
+        if (getEvSessionTotalDischargeEnergyAvailable() != null) {
+            json.addProperty("evSessionTotalDischargeEnergyAvailable", getEvSessionTotalDischargeEnergyAvailable());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -1303,167 +930,182 @@ public class DERChargingParameters implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evSupportedDERControl")) {
+            setEvSupportedDERControl(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evSupportedDERControl");
+            for (JsonElement el : arr) {
+                getEvSupportedDERControl().add(DERControlEnum.valueOf(el.getAsString()));
+            }
+        }
+
         if (jsonObject.has("evOverExcitedMaxDischargePower")) {
-            this.evOverExcitedMaxDischargePower = jsonObject.get("evOverExcitedMaxDischargePower").getAsFloat();
+            setEvOverExcitedMaxDischargePower(jsonObject.get("evOverExcitedMaxDischargePower").getAsFloat());
         }
 
         if (jsonObject.has("evOverExcitedPowerFactor")) {
-            this.evOverExcitedPowerFactor = jsonObject.get("evOverExcitedPowerFactor").getAsFloat();
+            setEvOverExcitedPowerFactor(jsonObject.get("evOverExcitedPowerFactor").getAsFloat());
         }
 
         if (jsonObject.has("evUnderExcitedMaxDischargePower")) {
-            this.evUnderExcitedMaxDischargePower = jsonObject.get("evUnderExcitedMaxDischargePower").getAsFloat();
+            setEvUnderExcitedMaxDischargePower(jsonObject.get("evUnderExcitedMaxDischargePower").getAsFloat());
         }
 
         if (jsonObject.has("evUnderExcitedPowerFactor")) {
-            this.evUnderExcitedPowerFactor = jsonObject.get("evUnderExcitedPowerFactor").getAsFloat();
+            setEvUnderExcitedPowerFactor(jsonObject.get("evUnderExcitedPowerFactor").getAsFloat());
         }
 
         if (jsonObject.has("maxApparentPower")) {
-            this.maxApparentPower = jsonObject.get("maxApparentPower").getAsFloat();
+            setMaxApparentPower(jsonObject.get("maxApparentPower").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeApparentPower")) {
-            this.maxChargeApparentPower = jsonObject.get("maxChargeApparentPower").getAsFloat();
+            setMaxChargeApparentPower(jsonObject.get("maxChargeApparentPower").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeApparentPowerL2")) {
-            this.maxChargeApparentPowerL2 = jsonObject.get("maxChargeApparentPowerL2").getAsFloat();
+            setMaxChargeApparentPowerL2(jsonObject.get("maxChargeApparentPowerL2").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeApparentPowerL3")) {
-            this.maxChargeApparentPowerL3 = jsonObject.get("maxChargeApparentPowerL3").getAsFloat();
+            setMaxChargeApparentPowerL3(jsonObject.get("maxChargeApparentPowerL3").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeApparentPower")) {
-            this.maxDischargeApparentPower = jsonObject.get("maxDischargeApparentPower").getAsFloat();
+            setMaxDischargeApparentPower(jsonObject.get("maxDischargeApparentPower").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeApparentPowerL2")) {
-            this.maxDischargeApparentPowerL2 = jsonObject.get("maxDischargeApparentPowerL2").getAsFloat();
+            setMaxDischargeApparentPowerL2(jsonObject.get("maxDischargeApparentPowerL2").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeApparentPowerL3")) {
-            this.maxDischargeApparentPowerL3 = jsonObject.get("maxDischargeApparentPowerL3").getAsFloat();
+            setMaxDischargeApparentPowerL3(jsonObject.get("maxDischargeApparentPowerL3").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeReactivePower")) {
-            this.maxChargeReactivePower = jsonObject.get("maxChargeReactivePower").getAsFloat();
+            setMaxChargeReactivePower(jsonObject.get("maxChargeReactivePower").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeReactivePowerL2")) {
-            this.maxChargeReactivePowerL2 = jsonObject.get("maxChargeReactivePowerL2").getAsFloat();
+            setMaxChargeReactivePowerL2(jsonObject.get("maxChargeReactivePowerL2").getAsFloat());
         }
 
         if (jsonObject.has("maxChargeReactivePowerL3")) {
-            this.maxChargeReactivePowerL3 = jsonObject.get("maxChargeReactivePowerL3").getAsFloat();
+            setMaxChargeReactivePowerL3(jsonObject.get("maxChargeReactivePowerL3").getAsFloat());
         }
 
         if (jsonObject.has("minChargeReactivePower")) {
-            this.minChargeReactivePower = jsonObject.get("minChargeReactivePower").getAsFloat();
+            setMinChargeReactivePower(jsonObject.get("minChargeReactivePower").getAsFloat());
         }
 
         if (jsonObject.has("minChargeReactivePowerL2")) {
-            this.minChargeReactivePowerL2 = jsonObject.get("minChargeReactivePowerL2").getAsFloat();
+            setMinChargeReactivePowerL2(jsonObject.get("minChargeReactivePowerL2").getAsFloat());
         }
 
         if (jsonObject.has("minChargeReactivePowerL3")) {
-            this.minChargeReactivePowerL3 = jsonObject.get("minChargeReactivePowerL3").getAsFloat();
+            setMinChargeReactivePowerL3(jsonObject.get("minChargeReactivePowerL3").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeReactivePower")) {
-            this.maxDischargeReactivePower = jsonObject.get("maxDischargeReactivePower").getAsFloat();
+            setMaxDischargeReactivePower(jsonObject.get("maxDischargeReactivePower").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeReactivePowerL2")) {
-            this.maxDischargeReactivePowerL2 = jsonObject.get("maxDischargeReactivePowerL2").getAsFloat();
+            setMaxDischargeReactivePowerL2(jsonObject.get("maxDischargeReactivePowerL2").getAsFloat());
         }
 
         if (jsonObject.has("maxDischargeReactivePowerL3")) {
-            this.maxDischargeReactivePowerL3 = jsonObject.get("maxDischargeReactivePowerL3").getAsFloat();
+            setMaxDischargeReactivePowerL3(jsonObject.get("maxDischargeReactivePowerL3").getAsFloat());
         }
 
         if (jsonObject.has("minDischargeReactivePower")) {
-            this.minDischargeReactivePower = jsonObject.get("minDischargeReactivePower").getAsFloat();
+            setMinDischargeReactivePower(jsonObject.get("minDischargeReactivePower").getAsFloat());
         }
 
         if (jsonObject.has("minDischargeReactivePowerL2")) {
-            this.minDischargeReactivePowerL2 = jsonObject.get("minDischargeReactivePowerL2").getAsFloat();
+            setMinDischargeReactivePowerL2(jsonObject.get("minDischargeReactivePowerL2").getAsFloat());
         }
 
         if (jsonObject.has("minDischargeReactivePowerL3")) {
-            this.minDischargeReactivePowerL3 = jsonObject.get("minDischargeReactivePowerL3").getAsFloat();
+            setMinDischargeReactivePowerL3(jsonObject.get("minDischargeReactivePowerL3").getAsFloat());
         }
 
         if (jsonObject.has("nominalVoltage")) {
-            this.nominalVoltage = jsonObject.get("nominalVoltage").getAsFloat();
+            setNominalVoltage(jsonObject.get("nominalVoltage").getAsFloat());
         }
 
         if (jsonObject.has("nominalVoltageOffset")) {
-            this.nominalVoltageOffset = jsonObject.get("nominalVoltageOffset").getAsFloat();
+            setNominalVoltageOffset(jsonObject.get("nominalVoltageOffset").getAsFloat());
         }
 
         if (jsonObject.has("maxNominalVoltage")) {
-            this.maxNominalVoltage = jsonObject.get("maxNominalVoltage").getAsFloat();
+            setMaxNominalVoltage(jsonObject.get("maxNominalVoltage").getAsFloat());
         }
 
         if (jsonObject.has("minNominalVoltage")) {
-            this.minNominalVoltage = jsonObject.get("minNominalVoltage").getAsFloat();
+            setMinNominalVoltage(jsonObject.get("minNominalVoltage").getAsFloat());
         }
 
         if (jsonObject.has("evInverterManufacturer")) {
-            this.evInverterManufacturer = jsonObject.get("evInverterManufacturer").getAsString();
+            setEvInverterManufacturer(jsonObject.get("evInverterManufacturer").getAsString());
         }
 
         if (jsonObject.has("evInverterModel")) {
-            this.evInverterModel = jsonObject.get("evInverterModel").getAsString();
+            setEvInverterModel(jsonObject.get("evInverterModel").getAsString());
         }
 
         if (jsonObject.has("evInverterSerialNumber")) {
-            this.evInverterSerialNumber = jsonObject.get("evInverterSerialNumber").getAsString();
+            setEvInverterSerialNumber(jsonObject.get("evInverterSerialNumber").getAsString());
         }
 
         if (jsonObject.has("evInverterSwVersion")) {
-            this.evInverterSwVersion = jsonObject.get("evInverterSwVersion").getAsString();
+            setEvInverterSwVersion(jsonObject.get("evInverterSwVersion").getAsString());
         }
 
         if (jsonObject.has("evInverterHwVersion")) {
-            this.evInverterHwVersion = jsonObject.get("evInverterHwVersion").getAsString();
+            setEvInverterHwVersion(jsonObject.get("evInverterHwVersion").getAsString());
+        }
+
+        if (jsonObject.has("evIslandingDetectionMethod")) {
+            setEvIslandingDetectionMethod(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("evIslandingDetectionMethod");
+            for (JsonElement el : arr) {
+                getEvIslandingDetectionMethod().add(IslandingDetectionEnum.valueOf(el.getAsString()));
+            }
         }
 
         if (jsonObject.has("evIslandingTripTime")) {
-            this.evIslandingTripTime = jsonObject.get("evIslandingTripTime").getAsFloat();
+            setEvIslandingTripTime(jsonObject.get("evIslandingTripTime").getAsFloat());
         }
 
         if (jsonObject.has("evMaximumLevel1DCInjection")) {
-            this.evMaximumLevel1DCInjection = jsonObject.get("evMaximumLevel1DCInjection").getAsFloat();
+            setEvMaximumLevel1DCInjection(jsonObject.get("evMaximumLevel1DCInjection").getAsFloat());
         }
 
         if (jsonObject.has("evDurationLevel1DCInjection")) {
-            this.evDurationLevel1DCInjection = jsonObject.get("evDurationLevel1DCInjection").getAsFloat();
+            setEvDurationLevel1DCInjection(jsonObject.get("evDurationLevel1DCInjection").getAsFloat());
         }
 
         if (jsonObject.has("evMaximumLevel2DCInjection")) {
-            this.evMaximumLevel2DCInjection = jsonObject.get("evMaximumLevel2DCInjection").getAsFloat();
+            setEvMaximumLevel2DCInjection(jsonObject.get("evMaximumLevel2DCInjection").getAsFloat());
         }
 
         if (jsonObject.has("evDurationLevel2DCInjection")) {
-            this.evDurationLevel2DCInjection = jsonObject.get("evDurationLevel2DCInjection").getAsFloat();
+            setEvDurationLevel2DCInjection(jsonObject.get("evDurationLevel2DCInjection").getAsFloat());
         }
 
         if (jsonObject.has("evReactiveSusceptance")) {
-            this.evReactiveSusceptance = jsonObject.get("evReactiveSusceptance").getAsFloat();
+            setEvReactiveSusceptance(jsonObject.get("evReactiveSusceptance").getAsFloat());
         }
 
         if (jsonObject.has("evSessionTotalDischargeEnergyAvailable")) {
-            this.evSessionTotalDischargeEnergyAvailable = jsonObject.get("evSessionTotalDischargeEnergyAvailable").getAsFloat();
+            setEvSessionTotalDischargeEnergyAvailable(jsonObject.get("evSessionTotalDischargeEnergyAvailable").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -1473,95 +1115,95 @@ public class DERChargingParameters implements JsonInterface {
         if (!(obj instanceof DERChargingParameters))
             return false;
         DERChargingParameters that = (DERChargingParameters) obj;
-        return Objects.equals(this.maxDischargeReactivePower, that.maxDischargeReactivePower)
-                && Objects.equals(this.evInverterHwVersion, that.evInverterHwVersion)
-                && Objects.equals(this.evInverterManufacturer, that.evInverterManufacturer)
-                && Objects.equals(this.maxDischargeApparentPower, that.maxDischargeApparentPower)
-                && Objects.equals(this.evInverterModel, that.evInverterModel)
-                && Objects.equals(this.evDurationLevel1DCInjection, that.evDurationLevel1DCInjection)
-                && Objects.equals(this.evOverExcitedMaxDischargePower, that.evOverExcitedMaxDischargePower)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maxNominalVoltage, that.maxNominalVoltage)
-                && Objects.equals(this.nominalVoltageOffset, that.nominalVoltageOffset)
-                && Objects.equals(this.evUnderExcitedPowerFactor, that.evUnderExcitedPowerFactor)
-                && Objects.equals(this.nominalVoltage, that.nominalVoltage)
-                && Objects.equals(this.evSessionTotalDischargeEnergyAvailable, that.evSessionTotalDischargeEnergyAvailable)
-                && Objects.equals(this.evIslandingDetectionMethod, that.evIslandingDetectionMethod)
-                && Objects.equals(this.evMaximumLevel1DCInjection, that.evMaximumLevel1DCInjection)
-                && Objects.equals(this.maxDischargeApparentPowerL2, that.maxDischargeApparentPowerL2)
-                && Objects.equals(this.maxDischargeApparentPowerL3, that.maxDischargeApparentPowerL3)
-                && Objects.equals(this.maxDischargeReactivePowerL2, that.maxDischargeReactivePowerL2)
-                && Objects.equals(this.minDischargeReactivePower, that.minDischargeReactivePower)
-                && Objects.equals(this.maxDischargeReactivePowerL3, that.maxDischargeReactivePowerL3)
-                && Objects.equals(this.evReactiveSusceptance, that.evReactiveSusceptance)
-                && Objects.equals(this.evDurationLevel2DCInjection, that.evDurationLevel2DCInjection)
-                && Objects.equals(this.evSupportedDERControl, that.evSupportedDERControl)
-                && Objects.equals(this.evOverExcitedPowerFactor, that.evOverExcitedPowerFactor)
-                && Objects.equals(this.evUnderExcitedMaxDischargePower, that.evUnderExcitedMaxDischargePower)
-                && Objects.equals(this.maxChargeReactivePowerL2, that.maxChargeReactivePowerL2)
-                && Objects.equals(this.evInverterSwVersion, that.evInverterSwVersion)
-                && Objects.equals(this.maxChargeReactivePowerL3, that.maxChargeReactivePowerL3)
-                && Objects.equals(this.maxChargeApparentPowerL3, that.maxChargeApparentPowerL3)
-                && Objects.equals(this.minChargeReactivePowerL2, that.minChargeReactivePowerL2)
-                && Objects.equals(this.minDischargeReactivePowerL3, that.minDischargeReactivePowerL3)
-                && Objects.equals(this.maxChargeApparentPowerL2, that.maxChargeApparentPowerL2)
-                && Objects.equals(this.minChargeReactivePowerL3, that.minChargeReactivePowerL3)
-                && Objects.equals(this.minDischargeReactivePowerL2, that.minDischargeReactivePowerL2)
-                && Objects.equals(this.evIslandingTripTime, that.evIslandingTripTime)
-                && Objects.equals(this.maxChargeReactivePower, that.maxChargeReactivePower)
-                && Objects.equals(this.maxChargeApparentPower, that.maxChargeApparentPower)
-                && Objects.equals(this.maxApparentPower, that.maxApparentPower)
-                && Objects.equals(this.evInverterSerialNumber, that.evInverterSerialNumber)
-                && Objects.equals(this.evMaximumLevel2DCInjection, that.evMaximumLevel2DCInjection)
-                && Objects.equals(this.minNominalVoltage, that.minNominalVoltage)
-                && Objects.equals(this.minChargeReactivePower, that.minChargeReactivePower);
+        return Objects.equals(getEvSupportedDERControl(), that.getEvSupportedDERControl())
+                && Objects.equals(getEvOverExcitedMaxDischargePower(), that.getEvOverExcitedMaxDischargePower())
+                && Objects.equals(getEvOverExcitedPowerFactor(), that.getEvOverExcitedPowerFactor())
+                && Objects.equals(getEvUnderExcitedMaxDischargePower(), that.getEvUnderExcitedMaxDischargePower())
+                && Objects.equals(getEvUnderExcitedPowerFactor(), that.getEvUnderExcitedPowerFactor())
+                && Objects.equals(getMaxApparentPower(), that.getMaxApparentPower())
+                && Objects.equals(getMaxChargeApparentPower(), that.getMaxChargeApparentPower())
+                && Objects.equals(getMaxChargeApparentPowerL2(), that.getMaxChargeApparentPowerL2())
+                && Objects.equals(getMaxChargeApparentPowerL3(), that.getMaxChargeApparentPowerL3())
+                && Objects.equals(getMaxDischargeApparentPower(), that.getMaxDischargeApparentPower())
+                && Objects.equals(getMaxDischargeApparentPowerL2(), that.getMaxDischargeApparentPowerL2())
+                && Objects.equals(getMaxDischargeApparentPowerL3(), that.getMaxDischargeApparentPowerL3())
+                && Objects.equals(getMaxChargeReactivePower(), that.getMaxChargeReactivePower())
+                && Objects.equals(getMaxChargeReactivePowerL2(), that.getMaxChargeReactivePowerL2())
+                && Objects.equals(getMaxChargeReactivePowerL3(), that.getMaxChargeReactivePowerL3())
+                && Objects.equals(getMinChargeReactivePower(), that.getMinChargeReactivePower())
+                && Objects.equals(getMinChargeReactivePowerL2(), that.getMinChargeReactivePowerL2())
+                && Objects.equals(getMinChargeReactivePowerL3(), that.getMinChargeReactivePowerL3())
+                && Objects.equals(getMaxDischargeReactivePower(), that.getMaxDischargeReactivePower())
+                && Objects.equals(getMaxDischargeReactivePowerL2(), that.getMaxDischargeReactivePowerL2())
+                && Objects.equals(getMaxDischargeReactivePowerL3(), that.getMaxDischargeReactivePowerL3())
+                && Objects.equals(getMinDischargeReactivePower(), that.getMinDischargeReactivePower())
+                && Objects.equals(getMinDischargeReactivePowerL2(), that.getMinDischargeReactivePowerL2())
+                && Objects.equals(getMinDischargeReactivePowerL3(), that.getMinDischargeReactivePowerL3())
+                && Objects.equals(getNominalVoltage(), that.getNominalVoltage())
+                && Objects.equals(getNominalVoltageOffset(), that.getNominalVoltageOffset())
+                && Objects.equals(getMaxNominalVoltage(), that.getMaxNominalVoltage())
+                && Objects.equals(getMinNominalVoltage(), that.getMinNominalVoltage())
+                && Objects.equals(getEvInverterManufacturer(), that.getEvInverterManufacturer())
+                && Objects.equals(getEvInverterModel(), that.getEvInverterModel())
+                && Objects.equals(getEvInverterSerialNumber(), that.getEvInverterSerialNumber())
+                && Objects.equals(getEvInverterSwVersion(), that.getEvInverterSwVersion())
+                && Objects.equals(getEvInverterHwVersion(), that.getEvInverterHwVersion())
+                && Objects.equals(getEvIslandingDetectionMethod(), that.getEvIslandingDetectionMethod())
+                && Objects.equals(getEvIslandingTripTime(), that.getEvIslandingTripTime())
+                && Objects.equals(getEvMaximumLevel1DCInjection(), that.getEvMaximumLevel1DCInjection())
+                && Objects.equals(getEvDurationLevel1DCInjection(), that.getEvDurationLevel1DCInjection())
+                && Objects.equals(getEvMaximumLevel2DCInjection(), that.getEvMaximumLevel2DCInjection())
+                && Objects.equals(getEvDurationLevel2DCInjection(), that.getEvDurationLevel2DCInjection())
+                && Objects.equals(getEvReactiveSusceptance(), that.getEvReactiveSusceptance())
+                && Objects.equals(getEvSessionTotalDischargeEnergyAvailable(), that.getEvSessionTotalDischargeEnergyAvailable())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.maxDischargeReactivePower != null ? this.maxDischargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.evInverterHwVersion != null ? this.evInverterHwVersion.hashCode() : 0);
-        result = 31 * result + (this.evInverterManufacturer != null ? this.evInverterManufacturer.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPower != null ? this.maxDischargeApparentPower.hashCode() : 0);
-        result = 31 * result + (this.evInverterModel != null ? this.evInverterModel.hashCode() : 0);
-        result = 31 * result + (this.evDurationLevel1DCInjection != null ? this.evDurationLevel1DCInjection.hashCode() : 0);
-        result = 31 * result + (this.evOverExcitedMaxDischargePower != null ? this.evOverExcitedMaxDischargePower.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maxNominalVoltage != null ? this.maxNominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.nominalVoltageOffset != null ? this.nominalVoltageOffset.hashCode() : 0);
-        result = 31 * result + (this.evUnderExcitedPowerFactor != null ? this.evUnderExcitedPowerFactor.hashCode() : 0);
-        result = 31 * result + (this.nominalVoltage != null ? this.nominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.evSessionTotalDischargeEnergyAvailable != null ? this.evSessionTotalDischargeEnergyAvailable.hashCode() : 0);
-        result = 31 * result + (this.evIslandingDetectionMethod != null ? this.evIslandingDetectionMethod.hashCode() : 0);
-        result = 31 * result + (this.evMaximumLevel1DCInjection != null ? this.evMaximumLevel1DCInjection.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPowerL2 != null ? this.maxDischargeApparentPowerL2.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPowerL3 != null ? this.maxDischargeApparentPowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeReactivePowerL2 != null ? this.maxDischargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePower != null ? this.minDischargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeReactivePowerL3 != null ? this.maxDischargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.evReactiveSusceptance != null ? this.evReactiveSusceptance.hashCode() : 0);
-        result = 31 * result + (this.evDurationLevel2DCInjection != null ? this.evDurationLevel2DCInjection.hashCode() : 0);
-        result = 31 * result + (this.evSupportedDERControl != null ? this.evSupportedDERControl.hashCode() : 0);
-        result = 31 * result + (this.evOverExcitedPowerFactor != null ? this.evOverExcitedPowerFactor.hashCode() : 0);
-        result = 31 * result + (this.evUnderExcitedMaxDischargePower != null ? this.evUnderExcitedMaxDischargePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePowerL2 != null ? this.maxChargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.evInverterSwVersion != null ? this.evInverterSwVersion.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePowerL3 != null ? this.maxChargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPowerL3 != null ? this.maxChargeApparentPowerL3.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePowerL2 != null ? this.minChargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePowerL3 != null ? this.minDischargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPowerL2 != null ? this.maxChargeApparentPowerL2.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePowerL3 != null ? this.minChargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePowerL2 != null ? this.minDischargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.evIslandingTripTime != null ? this.evIslandingTripTime.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePower != null ? this.maxChargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPower != null ? this.maxChargeApparentPower.hashCode() : 0);
-        result = 31 * result + (this.maxApparentPower != null ? this.maxApparentPower.hashCode() : 0);
-        result = 31 * result + (this.evInverterSerialNumber != null ? this.evInverterSerialNumber.hashCode() : 0);
-        result = 31 * result + (this.evMaximumLevel2DCInjection != null ? this.evMaximumLevel2DCInjection.hashCode() : 0);
-        result = 31 * result + (this.minNominalVoltage != null ? this.minNominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePower != null ? this.minChargeReactivePower.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvSupportedDERControl(),
+                getEvOverExcitedMaxDischargePower(),
+                getEvOverExcitedPowerFactor(),
+                getEvUnderExcitedMaxDischargePower(),
+                getEvUnderExcitedPowerFactor(),
+                getMaxApparentPower(),
+                getMaxChargeApparentPower(),
+                getMaxChargeApparentPowerL2(),
+                getMaxChargeApparentPowerL3(),
+                getMaxDischargeApparentPower(),
+                getMaxDischargeApparentPowerL2(),
+                getMaxDischargeApparentPowerL3(),
+                getMaxChargeReactivePower(),
+                getMaxChargeReactivePowerL2(),
+                getMaxChargeReactivePowerL3(),
+                getMinChargeReactivePower(),
+                getMinChargeReactivePowerL2(),
+                getMinChargeReactivePowerL3(),
+                getMaxDischargeReactivePower(),
+                getMaxDischargeReactivePowerL2(),
+                getMaxDischargeReactivePowerL3(),
+                getMinDischargeReactivePower(),
+                getMinDischargeReactivePowerL2(),
+                getMinDischargeReactivePowerL3(),
+                getNominalVoltage(),
+                getNominalVoltageOffset(),
+                getMaxNominalVoltage(),
+                getMinNominalVoltage(),
+                getEvInverterManufacturer(),
+                getEvInverterModel(),
+                getEvInverterSerialNumber(),
+                getEvInverterSwVersion(),
+                getEvInverterHwVersion(),
+                getEvIslandingDetectionMethod(),
+                getEvIslandingTripTime(),
+                getEvMaximumLevel1DCInjection(),
+                getEvDurationLevel1DCInjection(),
+                getEvMaximumLevel2DCInjection(),
+                getEvDurationLevel2DCInjection(),
+                getEvReactiveSusceptance(),
+                getEvSessionTotalDischargeEnergyAvailable(),
+                getCustomData()
+        );
     }
 }

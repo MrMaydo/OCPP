@@ -1,78 +1,66 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Price with and without tax. At least one of exclTax, inclTax must be present.
+ */
 public class Price implements JsonInterface {
 
     /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
+     * Price/cost excluding tax. Can be absent if inclTax is present.
      */
     @Optional
     private Float exclTax;
+
     /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
+     * Price/cost including tax. Can be absent if exclTax is present.
      */
     @Optional
     private Float inclTax;
+
+    /**
+     * Tax percentages that were used to calculate inclTax from exclTax (for displaying/printing on invoices)
+     */
     @Optional
     private List<TaxRate> taxRates;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Price() {
     }
 
-    /**
-     * @param inclTax Price/cost including tax. Can be absent if _exclTax_ is present.
-     *                .
-     * @param exclTax Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     *                .
-     */
-    public Price(Float exclTax, Float inclTax, List<TaxRate> taxRates, CustomData customData) {
-        super();
-        this.exclTax = exclTax;
-        this.inclTax = inclTax;
-        this.taxRates = taxRates;
-        this.customData = customData;
-    }
 
-    /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     */
     public Float getExclTax() {
         return exclTax;
     }
 
-    /**
-     * Price/cost excluding tax. Can be absent if _inclTax_ is present.
-     */
+
     public void setExclTax(Float exclTax) {
         this.exclTax = exclTax;
     }
 
-    /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
-     */
+
     public Float getInclTax() {
         return inclTax;
     }
 
-    /**
-     * Price/cost including tax. Can be absent if _exclTax_ is present.
-     */
+
     public void setInclTax(Float inclTax) {
         this.inclTax = inclTax;
     }
@@ -85,16 +73,12 @@ public class Price implements JsonInterface {
         this.taxRates = taxRates;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -107,9 +91,24 @@ public class Price implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("exclTax", exclTax);
-        json.addProperty("inclTax", inclTax);
-        json.add("customData", customData.toJsonObject());
+
+        if (getExclTax() != null) {
+            json.addProperty("exclTax", getExclTax());
+        }
+        if (getInclTax() != null) {
+            json.addProperty("inclTax", getInclTax());
+        }
+        if (getTaxRates() != null) {
+            JsonArray taxRatesArray = new JsonArray();
+            for (TaxRate item : getTaxRates()) {
+                taxRatesArray.add(item.toJsonObject());
+            }
+            json.add("taxRates", taxRatesArray);
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -122,18 +121,27 @@ public class Price implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("exclTax")) {
-            this.exclTax = jsonObject.get("exclTax").getAsFloat();
+            setExclTax(jsonObject.get("exclTax").getAsFloat());
         }
 
         if (jsonObject.has("inclTax")) {
-            this.inclTax = jsonObject.get("inclTax").getAsFloat();
+            setInclTax(jsonObject.get("inclTax").getAsFloat());
+        }
+
+        if (jsonObject.has("taxRates")) {
+            setTaxRates(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("taxRates");
+            for (JsonElement el : arr) {
+                TaxRate item = new TaxRate();
+                item.fromJsonObject(el.getAsJsonObject());
+                getTaxRates().add(item);
+            }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -143,19 +151,19 @@ public class Price implements JsonInterface {
         if (!(obj instanceof Price))
             return false;
         Price that = (Price) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxRates, that.taxRates)
-                && Objects.equals(this.inclTax, that.inclTax)
-                && Objects.equals(this.exclTax, that.exclTax);
+        return Objects.equals(getExclTax(), that.getExclTax())
+                && Objects.equals(getInclTax(), that.getInclTax())
+                && Objects.equals(getTaxRates(), that.getTaxRates())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.taxRates != null ? this.taxRates.hashCode() : 0);
-        result = 31 * result + (this.inclTax != null ? this.inclTax.hashCode() : 0);
-        result = 31 * result + (this.exclTax != null ? this.exclTax.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getExclTax(),
+                getInclTax(),
+                getTaxRates(),
+                getCustomData()
+        );
     }
 }

@@ -12,84 +12,60 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ChangeAvailabilityRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class ChangeAvailabilityRequest implements JsonInterface {
 
     /**
-     * Electric Vehicle Supply Equipment
+     * Contains Id’s to designate a specific EVSE/connector by index numbers.
+     * When omitted, the message refers to the Charging Station as a whole.
      */
     @Optional
     private EVSE evse;
+
     /**
      * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private OperationalStatusEnum operationalStatus;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ChangeAvailabilityRequest() {
     }
 
-    public ChangeAvailabilityRequest(EVSE evse, OperationalStatusEnum operationalStatus, CustomData customData) {
-        super();
-        this.evse = evse;
-        this.operationalStatus = operationalStatus;
-        this.customData = customData;
-    }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
     public EVSE getEvse() {
         return evse;
     }
 
-    /**
-     * Electric Vehicle Supply Equipment
-     */
+
     public void setEvse(EVSE evse) {
         this.evse = evse;
     }
 
-    /**
-     * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public OperationalStatusEnum getOperationalStatus() {
         return operationalStatus;
     }
 
-    /**
-     * This contains the type of availability change that the Charging Station should perform.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setOperationalStatus(OperationalStatusEnum operationalStatus) {
         this.operationalStatus = operationalStatus;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -102,9 +78,16 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("evse", evse.toJsonObject());
-        json.addProperty("operationalStatus", operationalStatus.toString());
-        json.add("customData", customData.toJsonObject());
+
+        if (getEvse() != null) {
+            json.add("evse", getEvse().toJsonObject());
+        }
+        json.addProperty("operationalStatus", getOperationalStatus().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -117,19 +100,18 @@ public class ChangeAvailabilityRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evse")) {
-            this.evse = new EVSE();
-            this.evse.fromJsonObject(jsonObject.getAsJsonObject("evse"));
+            setEvse(new EVSE());
+            getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
         }
 
         if (jsonObject.has("operationalStatus")) {
-            this.operationalStatus = OperationalStatusEnum.valueOf(jsonObject.get("operationalStatus").getAsString());
+            setOperationalStatus(OperationalStatusEnum.valueOf(jsonObject.get("operationalStatus").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -139,17 +121,17 @@ public class ChangeAvailabilityRequest implements JsonInterface {
         if (!(obj instanceof ChangeAvailabilityRequest))
             return false;
         ChangeAvailabilityRequest that = (ChangeAvailabilityRequest) obj;
-        return Objects.equals(this.operationalStatus, that.operationalStatus)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evse, that.evse);
+        return Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getOperationalStatus(), that.getOperationalStatus())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.operationalStatus != null ? this.operationalStatus.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvse(),
+                getOperationalStatus(),
+                getCustomData()
+        );
     }
 }

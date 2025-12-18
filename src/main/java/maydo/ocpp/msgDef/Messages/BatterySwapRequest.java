@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.BatteryData;
@@ -11,148 +13,95 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * (2.1) Message sent by Charging Station when a battery is swapped in or out of a battery swap station.
+ */
 public class BatterySwapRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Info on batteries inserted or taken out.
      */
     @Required
     private List<BatteryData> batteryData;
+
     /**
      * Battery in/out
-     * <p>
-     * (Required)
      */
     @Required
     private BatterySwapEventEnum eventType;
+
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
+     * Id token of EV Driver
      */
     @Required
     private IdToken idToken;
+
     /**
      * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public BatterySwapRequest() {
     }
 
-    /**
-     * @param requestId RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     *                  <p>
-     *                  <p>
-     *                  .
-     */
-    public BatterySwapRequest(List<BatteryData> batteryData, BatterySwapEventEnum eventType, IdToken idToken, Integer requestId, CustomData customData) {
-        super();
-        this.batteryData = batteryData;
-        this.eventType = eventType;
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<BatteryData> getBatteryData() {
         return batteryData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setBatteryData(List<BatteryData> batteryData) {
         this.batteryData = batteryData;
     }
 
-    /**
-     * Battery in/out
-     * <p>
-     * (Required)
-     */
+
     public BatterySwapEventEnum getEventType() {
         return eventType;
     }
 
-    /**
-     * Battery in/out
-     * <p>
-     * (Required)
-     */
+
     public void setEventType(BatterySwapEventEnum eventType) {
         this.eventType = eventType;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     * <p>
-     * (Required)
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * RequestId to correlate BatteryIn/Out events and optional RequestBatterySwapRequest.
-     * <p>
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -165,10 +114,23 @@ public class BatterySwapRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("eventType", eventType.toString());
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray batteryDataArray = new JsonArray();
+        for (BatteryData item : getBatteryData()) {
+            batteryDataArray.add(item.toJsonObject());
+        }
+        json.add("batteryData", batteryDataArray);
+
+        json.addProperty("eventType", getEventType().toString());
+
+        json.add("idToken", getIdToken().toJsonObject());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -180,24 +142,33 @@ public class BatterySwapRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("batteryData")) {
+            setBatteryData(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("batteryData");
+            for (JsonElement el : arr) {
+                BatteryData item = new BatteryData();
+                item.fromJsonObject(el.getAsJsonObject());
+                getBatteryData().add(item);
+            }
+        }
+
         if (jsonObject.has("eventType")) {
-            this.eventType = BatterySwapEventEnum.valueOf(jsonObject.get("eventType").getAsString());
+            setEventType(BatterySwapEventEnum.valueOf(jsonObject.get("eventType").getAsString()));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -207,21 +178,21 @@ public class BatterySwapRequest implements JsonInterface {
         if (!(obj instanceof BatterySwapRequest))
             return false;
         BatterySwapRequest that = (BatterySwapRequest) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.eventType, that.eventType)
-                && Objects.equals(this.batteryData, that.batteryData)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getBatteryData(), that.getBatteryData())
+                && Objects.equals(getEventType(), that.getEventType())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.eventType != null ? this.eventType.hashCode() : 0);
-        result = 31 * result + (this.batteryData != null ? this.batteryData.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getBatteryData(),
+                getEventType(),
+                getIdToken(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

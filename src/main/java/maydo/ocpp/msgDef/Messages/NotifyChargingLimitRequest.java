@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.Messages;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.DataTypes.ChargingLimit;
@@ -10,45 +12,44 @@ import maydo.ocpp.msgDef.JsonInterface;
 import maydo.ocpp.msgDef.annotations.Optional;
 import maydo.ocpp.msgDef.annotations.Required;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The message NotifyChargingLimitRequest can be used to communicate a charging limit, set by an external system on the Charging
+ * Station (Not installed by the CSO via SetChargingProfileRequest), to the CSMS.
+ */
 public class NotifyChargingLimitRequest implements JsonInterface {
 
+    /**
+     * Contains limits for the available power or current over time, as set by the external source.
+     */
+    @Optional
     private List<ChargingSchedule> chargingSchedule;
+
     /**
      * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * (Required)
+     * This contains the source of the charging limit and whether it is grid critical.
      */
     @Required
     private ChargingLimit chargingLimit;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyChargingLimitRequest() {
     }
 
-    /**
-     * @param evseId The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     *               .
-     */
-    public NotifyChargingLimitRequest(List<ChargingSchedule> chargingSchedule, Integer evseId, ChargingLimit chargingLimit, CustomData customData) {
-        super();
-        this.chargingSchedule = chargingSchedule;
-        this.evseId = evseId;
-        this.chargingLimit = chargingLimit;
-        this.customData = customData;
-    }
 
     public List<ChargingSchedule> getChargingSchedule() {
         return chargingSchedule;
@@ -58,44 +59,32 @@ public class NotifyChargingLimitRequest implements JsonInterface {
         this.chargingSchedule = chargingSchedule;
     }
 
-    /**
-     * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * The EVSE to which the charging limit is set. If absent or when zero, it applies to the entire Charging Station.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * (Required)
-     */
+
     public ChargingLimit getChargingLimit() {
         return chargingLimit;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setChargingLimit(ChargingLimit chargingLimit) {
         this.chargingLimit = chargingLimit;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -108,9 +97,23 @@ public class NotifyChargingLimitRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.add("chargingLimit", chargingLimit.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingSchedule() != null) {
+            JsonArray chargingScheduleArray = new JsonArray();
+            for (ChargingSchedule item : getChargingSchedule()) {
+                chargingScheduleArray.add(item.toJsonObject());
+            }
+            json.add("chargingSchedule", chargingScheduleArray);
+        }
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        json.add("chargingLimit", getChargingLimit().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -122,20 +125,29 @@ public class NotifyChargingLimitRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("chargingSchedule")) {
+            setChargingSchedule(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedule");
+            for (JsonElement el : arr) {
+                ChargingSchedule item = new ChargingSchedule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingSchedule().add(item);
+            }
+        }
+
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("chargingLimit")) {
-            this.chargingLimit = new ChargingLimit();
-            this.chargingLimit.fromJsonObject(jsonObject.getAsJsonObject("chargingLimit"));
+            setChargingLimit(new ChargingLimit());
+            getChargingLimit().fromJsonObject(jsonObject.getAsJsonObject("chargingLimit"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -145,19 +157,19 @@ public class NotifyChargingLimitRequest implements JsonInterface {
         if (!(obj instanceof NotifyChargingLimitRequest))
             return false;
         NotifyChargingLimitRequest that = (NotifyChargingLimitRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
-                && Objects.equals(this.chargingLimit, that.chargingLimit);
+        return Objects.equals(getChargingSchedule(), that.getChargingSchedule())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingLimit(), that.getChargingLimit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingSchedule != null ? this.chargingSchedule.hashCode() : 0);
-        result = 31 * result + (this.chargingLimit != null ? this.chargingLimit.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingSchedule(),
+                getEvseId(),
+                getChargingLimit(),
+                getCustomData()
+        );
     }
 }

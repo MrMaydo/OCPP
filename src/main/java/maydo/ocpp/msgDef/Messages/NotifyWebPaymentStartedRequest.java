@@ -10,97 +10,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class NotifyWebPaymentStartedRequest implements JsonInterface {
 
     /**
      * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer evseId;
+
     /**
      * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer timeout;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public NotifyWebPaymentStartedRequest() {
     }
 
-    /**
-     * @param evseId  EVSE id for which transaction is requested.
-     *                <p>
-     *                .
-     * @param timeout Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     *                .
-     */
-    public NotifyWebPaymentStartedRequest(Integer evseId, Integer timeout, CustomData customData) {
-        super();
-        this.evseId = evseId;
-        this.timeout = timeout;
-        this.customData = customData;
-    }
 
-    /**
-     * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * EVSE id for which transaction is requested.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
-     */
+
     public Integer getTimeout() {
         return timeout;
     }
 
-    /**
-     * Timeout value in seconds after which no result of web payment process (e.g. QR code scanning) is to be expected anymore.
-     * <p>
-     * (Required)
-     */
+
     public void setTimeout(Integer timeout) {
         this.timeout = timeout;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -113,9 +75,15 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("evseId", evseId);
-        json.addProperty("timeout", timeout);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("evseId", getEvseId());
+
+        json.addProperty("timeout", getTimeout());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -128,18 +96,17 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("timeout")) {
-            this.timeout = jsonObject.get("timeout").getAsInt();
+            setTimeout(jsonObject.get("timeout").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -149,17 +116,17 @@ public class NotifyWebPaymentStartedRequest implements JsonInterface {
         if (!(obj instanceof NotifyWebPaymentStartedRequest))
             return false;
         NotifyWebPaymentStartedRequest that = (NotifyWebPaymentStartedRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.timeout, that.timeout);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getTimeout(), that.getTimeout())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.timeout != null ? this.timeout.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getTimeout(),
+                getCustomData()
+        );
     }
 }

@@ -9,90 +9,62 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+
 /**
  * Reference key to a component-variable.
  */
 public class Variable implements JsonInterface {
 
     /**
-     * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
-     * (Required)
+     * Name of the variable. Name should be taken from the list of standardized variable names whenever possible.
+     * Case Insensitive. strongly advised to use Camel Case.
      */
     @Required
     private String name;
+
     /**
-     * Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
+     * Name of instance in case the variable exists as multiple instances.
+     * Case Insensitive. strongly advised to use Camel Case
      */
     @Optional
     private String instance;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public Variable() {
     }
 
-    /**
-     * @param instance Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
-     *                 .
-     * @param name     Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     *                 .
-     */
-    public Variable(String name, String instance, CustomData customData) {
-        super();
-        this.name = name;
-        this.instance = instance;
-        this.customData = customData;
-    }
 
-    /**
-     * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
-     * (Required)
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Name of the variable. Name should be taken from the list of standardized variable names whenever possible. Case Insensitive. strongly advised to use Camel Case.
-     * <p>
-     * (Required)
-     */
+
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
-     */
+
     public String getInstance() {
         return instance;
     }
 
-    /**
-     * Name of instance in case the variable exists as multiple instances. Case Insensitive. strongly advised to use Camel Case.
-     */
+
     public void setInstance(String instance) {
         this.instance = instance;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -105,9 +77,16 @@ public class Variable implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("name", name);
-        json.addProperty("instance", instance);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("name", getName());
+
+        if (getInstance() != null) {
+            json.addProperty("instance", getInstance());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -120,18 +99,17 @@ public class Variable implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("name")) {
-            this.name = jsonObject.get("name").getAsString();
+            setName(jsonObject.get("name").getAsString());
         }
 
         if (jsonObject.has("instance")) {
-            this.instance = jsonObject.get("instance").getAsString();
+            setInstance(jsonObject.get("instance").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -141,17 +119,17 @@ public class Variable implements JsonInterface {
         if (!(obj instanceof Variable))
             return false;
         Variable that = (Variable) obj;
-        return Objects.equals(this.name, that.name)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.instance, that.instance);
+        return Objects.equals(getName(), that.getName())
+                && Objects.equals(getInstance(), that.getInstance())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.instance != null ? this.instance.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getName(),
+                getInstance(),
+                getCustomData()
+        );
     }
 }

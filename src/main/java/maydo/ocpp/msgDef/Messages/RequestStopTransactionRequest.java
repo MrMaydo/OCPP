@@ -10,65 +10,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definitions of the RequestStopTransactionRequest PDU sent to Charging Station by CSMS.
+ */
 public class RequestStopTransactionRequest implements JsonInterface {
 
     /**
      * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public RequestStopTransactionRequest() {
     }
 
-    /**
-     * @param transactionId The identifier of the transaction which the Charging Station is requested to stop.
-     *                      .
-     */
-    public RequestStopTransactionRequest(String transactionId, CustomData customData) {
-        super();
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
 
-    /**
-     * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
-     */
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * The identifier of the transaction which the Charging Station is requested to stop.
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +59,13 @@ public class RequestStopTransactionRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +78,13 @@ public class RequestStopTransactionRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +94,15 @@ public class RequestStopTransactionRequest implements JsonInterface {
         if (!(obj instanceof RequestStopTransactionRequest))
             return false;
         RequestStopTransactionRequest that = (RequestStopTransactionRequest) obj;
-        return Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getCustomData()
+        );
     }
 }

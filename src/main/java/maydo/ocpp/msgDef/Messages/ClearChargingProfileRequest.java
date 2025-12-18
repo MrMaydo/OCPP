@@ -10,6 +10,12 @@ import maydo.ocpp.msgDef.annotations.Optional;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearChargingProfileRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS can use this message to clear (remove) either a specific charging profile (denoted by id)
+ * or a selection of charging profiles that match with the values
+ * of the optional evse, stackLevel and ChargingProfilePurpose fields.
+ */
 public class ClearChargingProfileRequest implements JsonInterface {
 
     /**
@@ -17,72 +23,49 @@ public class ClearChargingProfileRequest implements JsonInterface {
      */
     @Optional
     private Integer chargingProfileId;
+
     /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
+     * Specifies the charging profile.
      */
     @Optional
     private ClearChargingProfile chargingProfileCriteria;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearChargingProfileRequest() {
     }
 
-    /**
-     * @param chargingProfileId The Id of the charging profile to clear.
-     *                          .
-     */
-    public ClearChargingProfileRequest(Integer chargingProfileId, ClearChargingProfile chargingProfileCriteria, CustomData customData) {
-        super();
-        this.chargingProfileId = chargingProfileId;
-        this.chargingProfileCriteria = chargingProfileCriteria;
-        this.customData = customData;
-    }
 
-    /**
-     * The Id of the charging profile to clear.
-     */
     public Integer getChargingProfileId() {
         return chargingProfileId;
     }
 
-    /**
-     * The Id of the charging profile to clear.
-     */
+
     public void setChargingProfileId(Integer chargingProfileId) {
         this.chargingProfileId = chargingProfileId;
     }
 
-    /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     */
+
     public ClearChargingProfile getChargingProfileCriteria() {
         return chargingProfileCriteria;
     }
 
-    /**
-     * A ClearChargingProfileType is a filter for charging profiles to be cleared by ClearChargingProfileRequest.
-     */
+
     public void setChargingProfileCriteria(ClearChargingProfile chargingProfileCriteria) {
         this.chargingProfileCriteria = chargingProfileCriteria;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -95,9 +78,17 @@ public class ClearChargingProfileRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("chargingProfileId", chargingProfileId);
-        json.add("chargingProfileCriteria", chargingProfileCriteria.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        if (getChargingProfileId() != null) {
+            json.addProperty("chargingProfileId", getChargingProfileId());
+        }
+        if (getChargingProfileCriteria() != null) {
+            json.add("chargingProfileCriteria", getChargingProfileCriteria().toJsonObject());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -110,19 +101,18 @@ public class ClearChargingProfileRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("chargingProfileId")) {
-            this.chargingProfileId = jsonObject.get("chargingProfileId").getAsInt();
+            setChargingProfileId(jsonObject.get("chargingProfileId").getAsInt());
         }
 
         if (jsonObject.has("chargingProfileCriteria")) {
-            this.chargingProfileCriteria = new ClearChargingProfile();
-            this.chargingProfileCriteria.fromJsonObject(jsonObject.getAsJsonObject("chargingProfileCriteria"));
+            setChargingProfileCriteria(new ClearChargingProfile());
+            getChargingProfileCriteria().fromJsonObject(jsonObject.getAsJsonObject("chargingProfileCriteria"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -132,17 +122,17 @@ public class ClearChargingProfileRequest implements JsonInterface {
         if (!(obj instanceof ClearChargingProfileRequest))
             return false;
         ClearChargingProfileRequest that = (ClearChargingProfileRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingProfileCriteria, that.chargingProfileCriteria)
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId);
+        return Objects.equals(getChargingProfileId(), that.getChargingProfileId())
+                && Objects.equals(getChargingProfileCriteria(), that.getChargingProfileCriteria())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileCriteria != null ? this.chargingProfileCriteria.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileId != null ? this.chargingProfileId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingProfileId(),
+                getChargingProfileCriteria(),
+                getCustomData()
+        );
     }
 }

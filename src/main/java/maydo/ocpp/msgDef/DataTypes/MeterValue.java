@@ -1,6 +1,8 @@
 package maydo.ocpp.msgDef.DataTypes;
 
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import maydo.ocpp.msgDef.JsonInterface;
@@ -9,91 +11,67 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Collection of one or more sampled values in MeterValuesRequest and TransactionEvent.
+ * All sampled values in a MeterValue are sampled at the same point in time.
+ */
 public class MeterValue implements JsonInterface {
 
     /**
-     * (Required)
+     * One or more measured values
      */
     @Required
     private List<SampledValue> sampledValue;
+
     /**
      * Timestamp for measured value(s).
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public MeterValue() {
     }
 
-    /**
-     * @param timestamp Timestamp for measured value(s).
-     *                  .
-     */
-    public MeterValue(List<SampledValue> sampledValue, Date timestamp, CustomData customData) {
-        super();
-        this.sampledValue = sampledValue;
-        this.timestamp = timestamp;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public List<SampledValue> getSampledValue() {
         return sampledValue;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setSampledValue(List<SampledValue> sampledValue) {
         this.sampledValue = sampledValue;
     }
 
-    /**
-     * Timestamp for measured value(s).
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Timestamp for measured value(s).
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -106,8 +84,19 @@ public class MeterValue implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.add("customData", customData.toJsonObject());
+
+        JsonArray sampledValueArray = new JsonArray();
+        for (SampledValue item : getSampledValue()) {
+            sampledValueArray.add(item.toJsonObject());
+        }
+        json.add("sampledValue", sampledValueArray);
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -119,20 +108,29 @@ public class MeterValue implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("sampledValue")) {
+            setSampledValue(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("sampledValue");
+            for (JsonElement el : arr) {
+                SampledValue item = new SampledValue();
+                item.fromJsonObject(el.getAsJsonObject());
+                getSampledValue().add(item);
+            }
+        }
+
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -142,17 +140,17 @@ public class MeterValue implements JsonInterface {
         if (!(obj instanceof MeterValue))
             return false;
         MeterValue that = (MeterValue) obj;
-        return Objects.equals(this.sampledValue, that.sampledValue)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getSampledValue(), that.getSampledValue())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.sampledValue != null ? this.sampledValue.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getSampledValue(),
+                getTimestamp(),
+                getCustomData()
+        );
     }
 }

@@ -9,89 +9,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class EnterServiceGet implements JsonInterface {
 
     /**
-     * (Required)
+     * Enter Service settings
      */
     @Required
     private EnterService enterService;
+
     /**
      * Id of setting
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public EnterServiceGet() {
     }
 
-    /**
-     * @param id Id of setting
-     *           <p>
-     *           .
-     */
-    public EnterServiceGet(EnterService enterService, String id, CustomData customData) {
-        super();
-        this.enterService = enterService;
-        this.id = id;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public EnterService getEnterService() {
         return enterService;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setEnterService(EnterService enterService) {
         this.enterService = enterService;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Id of setting
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -104,9 +74,15 @@ public class EnterServiceGet implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("enterService", enterService.toJsonObject());
-        json.addProperty("id", id);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("enterService", getEnterService().toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -119,19 +95,18 @@ public class EnterServiceGet implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("enterService")) {
-            this.enterService = new EnterService();
-            this.enterService.fromJsonObject(jsonObject.getAsJsonObject("enterService"));
+            setEnterService(new EnterService());
+            getEnterService().fromJsonObject(jsonObject.getAsJsonObject("enterService"));
         }
 
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsString();
+            setId(jsonObject.get("id").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -141,17 +116,17 @@ public class EnterServiceGet implements JsonInterface {
         if (!(obj instanceof EnterServiceGet))
             return false;
         EnterServiceGet that = (EnterServiceGet) obj;
-        return Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getEnterService(), that.getEnterService())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.enterService != null ? this.enterService.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEnterService(),
+                getId(),
+                getCustomData()
+        );
     }
 }

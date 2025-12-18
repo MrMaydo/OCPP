@@ -11,55 +11,43 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ *
+ */
 public class OpenPeriodicEventStreamRequest implements JsonInterface {
 
     /**
-     * (Required)
+     * Constant part of stream data
      */
     @Required
     private ConstantStreamData constantStreamData;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public OpenPeriodicEventStreamRequest() {
     }
 
-    public OpenPeriodicEventStreamRequest(ConstantStreamData constantStreamData, CustomData customData) {
-        super();
-        this.constantStreamData = constantStreamData;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public ConstantStreamData getConstantStreamData() {
         return constantStreamData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setConstantStreamData(ConstantStreamData constantStreamData) {
         this.constantStreamData = constantStreamData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -72,8 +60,13 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("constantStreamData", constantStreamData.toJsonObject());
-        json.add("customData", customData.toJsonObject());
+
+        json.add("constantStreamData", getConstantStreamData().toJsonObject());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -86,15 +79,14 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("constantStreamData")) {
-            this.constantStreamData = new ConstantStreamData();
-            this.constantStreamData.fromJsonObject(jsonObject.getAsJsonObject("constantStreamData"));
+            setConstantStreamData(new ConstantStreamData());
+            getConstantStreamData().fromJsonObject(jsonObject.getAsJsonObject("constantStreamData"));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -104,15 +96,15 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
         if (!(obj instanceof OpenPeriodicEventStreamRequest))
             return false;
         OpenPeriodicEventStreamRequest that = (OpenPeriodicEventStreamRequest) obj;
-        return Objects.equals(this.constantStreamData, that.constantStreamData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getConstantStreamData(), that.getConstantStreamData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.constantStreamData != null ? this.constantStreamData.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getConstantStreamData(),
+                getCustomData()
+        );
     }
 }

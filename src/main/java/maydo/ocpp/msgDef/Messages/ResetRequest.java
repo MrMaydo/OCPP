@@ -11,85 +11,59 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ResetRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class ResetRequest implements JsonInterface {
 
     /**
      * This contains the type of reset that the Charging Station or EVSE should perform.
-     * <p>
-     * (Required)
      */
     @Required
     private ResetEnum type;
+
     /**
      * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
      */
     @Optional
     private Integer evseId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ResetRequest() {
     }
 
-    /**
-     * @param evseId This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
-     *               .
-     */
-    public ResetRequest(ResetEnum type, Integer evseId, CustomData customData) {
-        super();
-        this.type = type;
-        this.evseId = evseId;
-        this.customData = customData;
-    }
 
-    /**
-     * This contains the type of reset that the Charging Station or EVSE should perform.
-     * <p>
-     * (Required)
-     */
     public ResetEnum getType() {
         return type;
     }
 
-    /**
-     * This contains the type of reset that the Charging Station or EVSE should perform.
-     * <p>
-     * (Required)
-     */
+
     public void setType(ResetEnum type) {
         this.type = type;
     }
 
-    /**
-     * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
-     */
+
     public Integer getEvseId() {
         return evseId;
     }
 
-    /**
-     * This contains the ID of a specific EVSE that needs to be reset, instead of the entire Charging Station.
-     */
+
     public void setEvseId(Integer evseId) {
         this.evseId = evseId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -102,9 +76,16 @@ public class ResetRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("type", type.toString());
-        json.addProperty("evseId", evseId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("type", getType().toString());
+
+        if (getEvseId() != null) {
+            json.addProperty("evseId", getEvseId());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -117,18 +98,17 @@ public class ResetRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("type")) {
-            this.type = ResetEnum.valueOf(jsonObject.get("type").getAsString());
+            setType(ResetEnum.valueOf(jsonObject.get("type").getAsString()));
         }
 
         if (jsonObject.has("evseId")) {
-            this.evseId = jsonObject.get("evseId").getAsInt();
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -138,17 +118,17 @@ public class ResetRequest implements JsonInterface {
         if (!(obj instanceof ResetRequest))
             return false;
         ResetRequest that = (ResetRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getType(),
+                getEvseId(),
+                getCustomData()
+        );
     }
 }

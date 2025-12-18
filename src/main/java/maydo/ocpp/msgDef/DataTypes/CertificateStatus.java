@@ -16,127 +16,91 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Revocation status of certificate
+ */
 public class CertificateStatus implements JsonInterface {
 
     /**
-     * (Required)
+     * Hash data of the certificate.
      */
     @Required
     private CertificateHashData certificateHashData;
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
-    @Required
-    private CertificateStatusSourceEnum source;
+
     /**
      * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
      */
     @Required
     private CertificateStatusEnum status;
+
     /**
-     * (Required)
+     * Source of status: OCSP, CRL
+     */
+    @Required
+    private CertificateStatusSourceEnum source;
+
+    /**
+     *
      */
     @Required
     private Date nextUpdate;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CertificateStatus() {
     }
 
-    public CertificateStatus(CertificateHashData certificateHashData, CertificateStatusSourceEnum source, CertificateStatusEnum status, Date nextUpdate, CustomData customData) {
-        super();
-        this.certificateHashData = certificateHashData;
-        this.source = source;
-        this.status = status;
-        this.nextUpdate = nextUpdate;
-        this.customData = customData;
-    }
 
-    /**
-     * (Required)
-     */
     public CertificateHashData getCertificateHashData() {
         return certificateHashData;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setCertificateHashData(CertificateHashData certificateHashData) {
         this.certificateHashData = certificateHashData;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusSourceEnum getSource() {
         return source;
     }
 
-    /**
-     * Source of status: OCSP, CRL
-     * <p>
-     * (Required)
-     */
+
     public void setSource(CertificateStatusSourceEnum source) {
         this.source = source;
     }
 
-    /**
-     * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
-     */
+
     public CertificateStatusEnum getStatus() {
         return status;
     }
 
-    /**
-     * Status of certificate: good, revoked or unknown.
-     * <p>
-     * (Required)
-     */
+
     public void setStatus(CertificateStatusEnum status) {
         this.status = status;
     }
 
-    /**
-     * (Required)
-     */
+
     public Date getNextUpdate() {
         return nextUpdate;
     }
 
-    /**
-     * (Required)
-     */
+
     public void setNextUpdate(Date nextUpdate) {
         this.nextUpdate = nextUpdate;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -149,11 +113,19 @@ public class CertificateStatus implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("certificateHashData", certificateHashData.toJsonObject());
-        json.addProperty("source", source.toString());
-        json.addProperty("status", status.toString());
-        json.addProperty("nextUpdate", new SimpleDateFormat(DATE_FORMAT).format(nextUpdate));
-        json.add("customData", customData.toJsonObject());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
+
+        json.addProperty("status", getStatus().toString());
+
+        json.addProperty("source", getSource().toString());
+
+        json.addProperty("nextUpdate", new SimpleDateFormat(DATE_FORMAT).format(getNextUpdate()));
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -166,32 +138,31 @@ public class CertificateStatus implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("certificateHashData")) {
-            this.certificateHashData = new CertificateHashData();
-            this.certificateHashData.fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
-        }
-
-        if (jsonObject.has("source")) {
-            this.source = CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString());
+            setCertificateHashData(new CertificateHashData());
+            getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
         if (jsonObject.has("status")) {
-            this.status = CertificateStatusEnum.valueOf(jsonObject.get("status").getAsString());
+            setStatus(CertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        }
+
+        if (jsonObject.has("source")) {
+            setSource(CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString()));
         }
 
         if (jsonObject.has("nextUpdate")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.nextUpdate = dateFormat.parse(jsonObject.get("nextUpdate").getAsString());
+                setNextUpdate(dateFormat.parse(jsonObject.get("nextUpdate").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for nextUpdate" + e);
             }
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -201,21 +172,21 @@ public class CertificateStatus implements JsonInterface {
         if (!(obj instanceof CertificateStatus))
             return false;
         CertificateStatus that = (CertificateStatus) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData)
-                && Objects.equals(this.source, that.source)
-                && Objects.equals(this.status, that.status)
-                && Objects.equals(this.nextUpdate, that.nextUpdate);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getSource(), that.getSource())
+                && Objects.equals(getNextUpdate(), that.getNextUpdate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        result = 31 * result + (this.source != null ? this.source.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        result = 31 * result + (this.nextUpdate != null ? this.nextUpdate.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateHashData(),
+                getStatus(),
+                getSource(),
+                getNextUpdate(),
+                getCustomData()
+        );
     }
 }

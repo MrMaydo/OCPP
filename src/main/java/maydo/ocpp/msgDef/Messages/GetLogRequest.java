@@ -12,164 +12,110 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the GetLogRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class GetLogRequest implements JsonInterface {
 
     /**
-     * Generic class for the configuration of logging entries.
-     * <p>
-     * (Required)
+     * This field specifies the requested log and the location to which the log should be sent.
      */
     @Required
     private LogParameters log;
+
     /**
-     * This contains the type of log file that the Charging Station
-     * should send.
-     * <p>
-     * (Required)
+     * This contains the type of log file that the Charging Station should send.
      */
     @Required
     private LogEnum logType;
+
     /**
      * The Id of this request
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
+     * This specifies how many times the Charging Station must retry to upload the log before giving up.
+     * If this field is not present, it is left to Charging Station to decide how many times it wants to retry.
+     * If the value is 0, it means: no retries.
      */
     @Optional
     private Integer retries;
+
     /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
+     * The interval in seconds after which a retry may be attempted.
+     * If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
      */
     @Optional
     private Integer retryInterval;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public GetLogRequest() {
     }
 
-    /**
-     * @param retries       This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
-     *                      .
-     * @param requestId     The Id of this request
-     *                      .
-     * @param retryInterval The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     *                      .
-     */
-    public GetLogRequest(LogParameters log, LogEnum logType, Integer requestId, Integer retries, Integer retryInterval, CustomData customData) {
-        super();
-        this.log = log;
-        this.logType = logType;
-        this.requestId = requestId;
-        this.retries = retries;
-        this.retryInterval = retryInterval;
-        this.customData = customData;
-    }
 
-    /**
-     * Generic class for the configuration of logging entries.
-     * <p>
-     * (Required)
-     */
     public LogParameters getLog() {
         return log;
     }
 
-    /**
-     * Generic class for the configuration of logging entries.
-     * <p>
-     * (Required)
-     */
+
     public void setLog(LogParameters log) {
         this.log = log;
     }
 
-    /**
-     * This contains the type of log file that the Charging Station
-     * should send.
-     * <p>
-     * (Required)
-     */
+
     public LogEnum getLogType() {
         return logType;
     }
 
-    /**
-     * This contains the type of log file that the Charging Station
-     * should send.
-     * <p>
-     * (Required)
-     */
+
     public void setLogType(LogEnum logType) {
         this.logType = logType;
     }
 
-    /**
-     * The Id of this request
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of this request
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
-     */
+
     public Integer getRetries() {
         return retries;
     }
 
-    /**
-     * This specifies how many times the Charging Station must retry to upload the log before giving up. If this field is not present, it is left to Charging Station to decide how many times it wants to retry. If the value is 0, it means: no retries.
-     */
+
     public void setRetries(Integer retries) {
         this.retries = retries;
     }
 
-    /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     */
+
     public Integer getRetryInterval() {
         return retryInterval;
     }
 
-    /**
-     * The interval in seconds after which a retry may be attempted. If this field is not present, it is left to Charging Station to decide how long to wait between attempts.
-     */
+
     public void setRetryInterval(Integer retryInterval) {
         this.retryInterval = retryInterval;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -182,12 +128,23 @@ public class GetLogRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("log", log.toJsonObject());
-        json.addProperty("logType", logType.toString());
-        json.addProperty("requestId", requestId);
-        json.addProperty("retries", retries);
-        json.addProperty("retryInterval", retryInterval);
-        json.add("customData", customData.toJsonObject());
+
+        json.add("log", getLog().toJsonObject());
+
+        json.addProperty("logType", getLogType().toString());
+
+        json.addProperty("requestId", getRequestId());
+
+        if (getRetries() != null) {
+            json.addProperty("retries", getRetries());
+        }
+        if (getRetryInterval() != null) {
+            json.addProperty("retryInterval", getRetryInterval());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -200,31 +157,30 @@ public class GetLogRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("log")) {
-            this.log = new LogParameters();
-            this.log.fromJsonObject(jsonObject.getAsJsonObject("log"));
+            setLog(new LogParameters());
+            getLog().fromJsonObject(jsonObject.getAsJsonObject("log"));
         }
 
         if (jsonObject.has("logType")) {
-            this.logType = LogEnum.valueOf(jsonObject.get("logType").getAsString());
+            setLogType(LogEnum.valueOf(jsonObject.get("logType").getAsString()));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("retries")) {
-            this.retries = jsonObject.get("retries").getAsInt();
+            setRetries(jsonObject.get("retries").getAsInt());
         }
 
         if (jsonObject.has("retryInterval")) {
-            this.retryInterval = jsonObject.get("retryInterval").getAsInt();
+            setRetryInterval(jsonObject.get("retryInterval").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -234,23 +190,23 @@ public class GetLogRequest implements JsonInterface {
         if (!(obj instanceof GetLogRequest))
             return false;
         GetLogRequest that = (GetLogRequest) obj;
-        return Objects.equals(this.logType, that.logType)
-                && Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.log, that.log)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.retryInterval, that.retryInterval)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getLog(), that.getLog())
+                && Objects.equals(getLogType(), that.getLogType())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getRetries(), that.getRetries())
+                && Objects.equals(getRetryInterval(), that.getRetryInterval())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.logType != null ? this.logType.hashCode() : 0);
-        result = 31 * result + (this.retries != null ? this.retries.hashCode() : 0);
-        result = 31 * result + (this.log != null ? this.log.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.retryInterval != null ? this.retryInterval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLog(),
+                getLogType(),
+                getRequestId(),
+                getRetries(),
+                getRetryInterval(),
+                getCustomData()
+        );
     }
 }

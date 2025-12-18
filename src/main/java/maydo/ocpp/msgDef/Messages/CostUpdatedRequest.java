@@ -10,101 +10,61 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the CostUpdatedRequest PDU sent by
+ * the CSMS to the Charging Station. With this request the CSMS can send the current cost of a transaction to a Charging Station.
+ */
 public class CostUpdatedRequest implements JsonInterface {
 
     /**
-     * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * <p>
-     * <p>
-     * (Required)
+     * Current total cost, based on the information known by the CSMS, of the transaction including taxes.
+     * In the currency configured with the configuration Variable: [Currency]
      */
     @Required
     private Float totalCost;
+
     /**
      * Transaction Id of the transaction the current cost are asked for.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private String transactionId;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CostUpdatedRequest() {
     }
 
-    /**
-     * @param totalCost     Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     *                      <p>
-     *                      .
-     * @param transactionId Transaction Id of the transaction the current cost are asked for.
-     *                      <p>
-     *                      .
-     */
-    public CostUpdatedRequest(Float totalCost, String transactionId, CustomData customData) {
-        super();
-        this.totalCost = totalCost;
-        this.transactionId = transactionId;
-        this.customData = customData;
-    }
 
-    /**
-     * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * <p>
-     * <p>
-     * (Required)
-     */
     public Float getTotalCost() {
         return totalCost;
     }
 
-    /**
-     * Current total cost, based on the information known by the CSMS, of the transaction including taxes. In the currency configured with the configuration Variable: [&lt;&lt;configkey-currency, Currency&gt;&gt;]
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setTotalCost(Float totalCost) {
         this.totalCost = totalCost;
     }
 
-    /**
-     * Transaction Id of the transaction the current cost are asked for.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public String getTransactionId() {
         return transactionId;
     }
 
-    /**
-     * Transaction Id of the transaction the current cost are asked for.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setTransactionId(String transactionId) {
         this.transactionId = transactionId;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -117,9 +77,15 @@ public class CostUpdatedRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("totalCost", totalCost);
-        json.addProperty("transactionId", transactionId);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("totalCost", getTotalCost());
+
+        json.addProperty("transactionId", getTransactionId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -132,18 +98,17 @@ public class CostUpdatedRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("totalCost")) {
-            this.totalCost = jsonObject.get("totalCost").getAsFloat();
+            setTotalCost(jsonObject.get("totalCost").getAsFloat());
         }
 
         if (jsonObject.has("transactionId")) {
-            this.transactionId = jsonObject.get("transactionId").getAsString();
+            setTransactionId(jsonObject.get("transactionId").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -153,17 +118,17 @@ public class CostUpdatedRequest implements JsonInterface {
         if (!(obj instanceof CostUpdatedRequest))
             return false;
         CostUpdatedRequest that = (CostUpdatedRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.totalCost, that.totalCost)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTotalCost(), that.getTotalCost())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.totalCost != null ? this.totalCost.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTotalCost(),
+                getTransactionId(),
+                getCustomData()
+        );
     }
 }

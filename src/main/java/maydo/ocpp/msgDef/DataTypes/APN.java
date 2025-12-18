@@ -10,205 +10,139 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * Collection of configuration data needed to make a data-connection over a cellular network.
+ */
 public class APN implements JsonInterface {
 
     /**
      * The Access Point Name as an URL.
-     * <p>
-     * (Required)
      */
     @Required
     private String apn;
+
     /**
      * APN username.
      */
     @Optional
     private String apnUserName;
+
     /**
-     * *(2.1)* APN Password.
+     * (2.1) APN Password.
      */
     @Optional
     private String apnPassword;
+
     /**
      * SIM card pin code.
      */
     @Optional
     private Integer simPin;
+
     /**
-     * Preferred network, written as MCC and MNC concatenated. See note.
+     * Preferred network, written as MCC and MNC concatenated.
      */
     @Optional
     private String preferredNetwork;
+
     /**
-     * Default: false. Use only the preferred Network, do
-     * not dial in when not available. See Note.
+     * Default: false. Use only the preferred Network, do not dial in when not available.
      */
     @Optional
     private Boolean useOnlyPreferredNetwork = false;
+
     /**
      * Authentication method.
-     * <p>
-     * (Required)
      */
     @Required
     private APNAuthenticationEnum apnAuthentication;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public APN() {
     }
 
-    /**
-     * @param preferredNetwork        Preferred network, written as MCC and MNC concatenated. See note.
-     *                                .
-     * @param apnUserName             APN username.
-     *                                .
-     * @param useOnlyPreferredNetwork Default: false. Use only the preferred Network, do
-     *                                not dial in when not available. See Note.
-     *                                .
-     * @param simPin                  SIM card pin code.
-     *                                .
-     * @param apn                     The Access Point Name as an URL.
-     *                                .
-     * @param apnPassword             *(2.1)* APN Password.
-     *                                .
-     */
-    public APN(String apn, String apnUserName, String apnPassword, Integer simPin, String preferredNetwork, Boolean useOnlyPreferredNetwork, APNAuthenticationEnum apnAuthentication, CustomData customData) {
-        super();
-        this.apn = apn;
-        this.apnUserName = apnUserName;
-        this.apnPassword = apnPassword;
-        this.simPin = simPin;
-        this.preferredNetwork = preferredNetwork;
-        this.useOnlyPreferredNetwork = useOnlyPreferredNetwork;
-        this.apnAuthentication = apnAuthentication;
-        this.customData = customData;
-    }
 
-    /**
-     * The Access Point Name as an URL.
-     * <p>
-     * (Required)
-     */
     public String getApn() {
         return apn;
     }
 
-    /**
-     * The Access Point Name as an URL.
-     * <p>
-     * (Required)
-     */
+
     public void setApn(String apn) {
         this.apn = apn;
     }
 
-    /**
-     * APN username.
-     */
+
     public String getApnUserName() {
         return apnUserName;
     }
 
-    /**
-     * APN username.
-     */
+
     public void setApnUserName(String apnUserName) {
         this.apnUserName = apnUserName;
     }
 
-    /**
-     * *(2.1)* APN Password.
-     */
+
     public String getApnPassword() {
         return apnPassword;
     }
 
-    /**
-     * *(2.1)* APN Password.
-     */
+
     public void setApnPassword(String apnPassword) {
         this.apnPassword = apnPassword;
     }
 
-    /**
-     * SIM card pin code.
-     */
+
     public Integer getSimPin() {
         return simPin;
     }
 
-    /**
-     * SIM card pin code.
-     */
+
     public void setSimPin(Integer simPin) {
         this.simPin = simPin;
     }
 
-    /**
-     * Preferred network, written as MCC and MNC concatenated. See note.
-     */
+
     public String getPreferredNetwork() {
         return preferredNetwork;
     }
 
-    /**
-     * Preferred network, written as MCC and MNC concatenated. See note.
-     */
+
     public void setPreferredNetwork(String preferredNetwork) {
         this.preferredNetwork = preferredNetwork;
     }
 
-    /**
-     * Default: false. Use only the preferred Network, do
-     * not dial in when not available. See Note.
-     */
+
     public Boolean getUseOnlyPreferredNetwork() {
         return useOnlyPreferredNetwork;
     }
 
-    /**
-     * Default: false. Use only the preferred Network, do
-     * not dial in when not available. See Note.
-     */
+
     public void setUseOnlyPreferredNetwork(Boolean useOnlyPreferredNetwork) {
         this.useOnlyPreferredNetwork = useOnlyPreferredNetwork;
     }
 
-    /**
-     * Authentication method.
-     * <p>
-     * (Required)
-     */
+
     public APNAuthenticationEnum getApnAuthentication() {
         return apnAuthentication;
     }
 
-    /**
-     * Authentication method.
-     * <p>
-     * (Required)
-     */
+
     public void setApnAuthentication(APNAuthenticationEnum apnAuthentication) {
         this.apnAuthentication = apnAuthentication;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -221,13 +155,30 @@ public class APN implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("apn", apn);
-        json.addProperty("apnUserName", apnUserName);
-        json.addProperty("apnPassword", apnPassword);
-        json.addProperty("simPin", simPin);
-        json.addProperty("preferredNetwork", preferredNetwork);
-        json.addProperty("apnAuthentication", apnAuthentication.toString());
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("apn", getApn());
+
+        if (getApnUserName() != null) {
+            json.addProperty("apnUserName", getApnUserName());
+        }
+        if (getApnPassword() != null) {
+            json.addProperty("apnPassword", getApnPassword());
+        }
+        if (getSimPin() != null) {
+            json.addProperty("simPin", getSimPin());
+        }
+        if (getPreferredNetwork() != null) {
+            json.addProperty("preferredNetwork", getPreferredNetwork());
+        }
+        if (getUseOnlyPreferredNetwork() != null) {
+            json.addProperty("useOnlyPreferredNetwork", getUseOnlyPreferredNetwork());
+        }
+        json.addProperty("apnAuthentication", getApnAuthentication().toString());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -240,34 +191,37 @@ public class APN implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("apn")) {
-            this.apn = jsonObject.get("apn").getAsString();
+            setApn(jsonObject.get("apn").getAsString());
         }
 
         if (jsonObject.has("apnUserName")) {
-            this.apnUserName = jsonObject.get("apnUserName").getAsString();
+            setApnUserName(jsonObject.get("apnUserName").getAsString());
         }
 
         if (jsonObject.has("apnPassword")) {
-            this.apnPassword = jsonObject.get("apnPassword").getAsString();
+            setApnPassword(jsonObject.get("apnPassword").getAsString());
         }
 
         if (jsonObject.has("simPin")) {
-            this.simPin = jsonObject.get("simPin").getAsInt();
+            setSimPin(jsonObject.get("simPin").getAsInt());
         }
 
         if (jsonObject.has("preferredNetwork")) {
-            this.preferredNetwork = jsonObject.get("preferredNetwork").getAsString();
+            setPreferredNetwork(jsonObject.get("preferredNetwork").getAsString());
+        }
+
+        if (jsonObject.has("useOnlyPreferredNetwork")) {
+            setUseOnlyPreferredNetwork(jsonObject.get("useOnlyPreferredNetwork").getAsBoolean());
         }
 
         if (jsonObject.has("apnAuthentication")) {
-            this.apnAuthentication = APNAuthenticationEnum.valueOf(jsonObject.get("apnAuthentication").getAsString());
+            setApnAuthentication(APNAuthenticationEnum.valueOf(jsonObject.get("apnAuthentication").getAsString()));
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -277,27 +231,27 @@ public class APN implements JsonInterface {
         if (!(obj instanceof APN))
             return false;
         APN that = (APN) obj;
-        return Objects.equals(this.preferredNetwork, that.preferredNetwork)
-                && Objects.equals(this.apnUserName, that.apnUserName)
-                && Objects.equals(this.apnAuthentication, that.apnAuthentication)
-                && Objects.equals(this.useOnlyPreferredNetwork, that.useOnlyPreferredNetwork)
-                && Objects.equals(this.simPin, that.simPin)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.apn, that.apn)
-                && Objects.equals(this.apnPassword, that.apnPassword);
+        return Objects.equals(getApn(), that.getApn())
+                && Objects.equals(getApnUserName(), that.getApnUserName())
+                && Objects.equals(getApnPassword(), that.getApnPassword())
+                && Objects.equals(getSimPin(), that.getSimPin())
+                && Objects.equals(getPreferredNetwork(), that.getPreferredNetwork())
+                && Objects.equals(getUseOnlyPreferredNetwork(), that.getUseOnlyPreferredNetwork())
+                && Objects.equals(getApnAuthentication(), that.getApnAuthentication())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.preferredNetwork != null ? this.preferredNetwork.hashCode() : 0);
-        result = 31 * result + (this.apnUserName != null ? this.apnUserName.hashCode() : 0);
-        result = 31 * result + (this.apnAuthentication != null ? this.apnAuthentication.hashCode() : 0);
-        result = 31 * result + (this.useOnlyPreferredNetwork != null ? this.useOnlyPreferredNetwork.hashCode() : 0);
-        result = 31 * result + (this.simPin != null ? this.simPin.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.apn != null ? this.apn.hashCode() : 0);
-        result = 31 * result + (this.apnPassword != null ? this.apnPassword.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getApn(),
+                getApnUserName(),
+                getApnPassword(),
+                getSimPin(),
+                getPreferredNetwork(),
+                getUseOnlyPreferredNetwork(),
+                getApnAuthentication(),
+                getCustomData()
+        );
     }
 }

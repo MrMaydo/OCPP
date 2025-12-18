@@ -15,115 +15,75 @@ import java.util.Objects;
 
 import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 
+/**
+ * Sent by the Charging Station to the CSMS in case of a security event.
+ */
 public class SecurityEventNotificationRequest implements JsonInterface {
 
     /**
      * Type of the security event. This value should be taken from the Security events list.
-     * <p>
-     * (Required)
      */
     @Required
     private String type;
+
     /**
      * Date and time at which the event occurred.
-     * <p>
-     * (Required)
      */
     @Required
     private Date timestamp;
+
     /**
      * Additional information about the occurred security event.
      */
     @Optional
     private String techInfo;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public SecurityEventNotificationRequest() {
     }
 
-    /**
-     * @param type      Type of the security event. This value should be taken from the Security events list.
-     *                  .
-     * @param techInfo  Additional information about the occurred security event.
-     *                  .
-     * @param timestamp Date and time at which the event occurred.
-     *                  .
-     */
-    public SecurityEventNotificationRequest(String type, Date timestamp, String techInfo, CustomData customData) {
-        super();
-        this.type = type;
-        this.timestamp = timestamp;
-        this.techInfo = techInfo;
-        this.customData = customData;
-    }
 
-    /**
-     * Type of the security event. This value should be taken from the Security events list.
-     * <p>
-     * (Required)
-     */
     public String getType() {
         return type;
     }
 
-    /**
-     * Type of the security event. This value should be taken from the Security events list.
-     * <p>
-     * (Required)
-     */
+
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * Date and time at which the event occurred.
-     * <p>
-     * (Required)
-     */
+
     public Date getTimestamp() {
         return timestamp;
     }
 
-    /**
-     * Date and time at which the event occurred.
-     * <p>
-     * (Required)
-     */
+
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
-    /**
-     * Additional information about the occurred security event.
-     */
+
     public String getTechInfo() {
         return techInfo;
     }
 
-    /**
-     * Additional information about the occurred security event.
-     */
+
     public void setTechInfo(String techInfo) {
         this.techInfo = techInfo;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -136,10 +96,18 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("type", type);
-        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(timestamp));
-        json.addProperty("techInfo", techInfo);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("type", getType());
+
+        json.addProperty("timestamp", new SimpleDateFormat(DATE_FORMAT).format(getTimestamp()));
+
+        if (getTechInfo() != null) {
+            json.addProperty("techInfo", getTechInfo());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -152,27 +120,26 @@ public class SecurityEventNotificationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("type")) {
-            this.type = jsonObject.get("type").getAsString();
+            setType(jsonObject.get("type").getAsString());
         }
 
         if (jsonObject.has("timestamp")) {
             try {
                 SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                this.timestamp = dateFormat.parse(jsonObject.get("timestamp").getAsString());
+                setTimestamp(dateFormat.parse(jsonObject.get("timestamp").getAsString()));
             } catch (ParseException e) {
                 System.out.println("Invalid date format for timestamp" + e);
             }
         }
 
         if (jsonObject.has("techInfo")) {
-            this.techInfo = jsonObject.get("techInfo").getAsString();
+            setTechInfo(jsonObject.get("techInfo").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -182,19 +149,19 @@ public class SecurityEventNotificationRequest implements JsonInterface {
         if (!(obj instanceof SecurityEventNotificationRequest))
             return false;
         SecurityEventNotificationRequest that = (SecurityEventNotificationRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.techInfo, that.techInfo)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getTechInfo(), that.getTechInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.techInfo != null ? this.techInfo.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getType(),
+                getTimestamp(),
+                getTechInfo(),
+                getCustomData()
+        );
     }
 }

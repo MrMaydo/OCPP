@@ -10,65 +10,46 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the ClearDisplayMessageRequest PDU sent by the CSMS to the Charging Station.
+ * The CSMS asks the Charging Station to clear a display message
+ * that has been configured in the Charging Station to be cleared/removed.
+ * See also O05 - Clear a Display Message.
+ */
 public class ClearDisplayMessageRequest implements JsonInterface {
 
     /**
      * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
      */
     @Required
     private Integer id;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public ClearDisplayMessageRequest() {
     }
 
-    /**
-     * @param id Id of the message that SHALL be removed from the Charging Station.
-     *           .
-     */
-    public ClearDisplayMessageRequest(Integer id, CustomData customData) {
-        super();
-        this.id = id;
-        this.customData = customData;
-    }
 
-    /**
-     * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * Id of the message that SHALL be removed from the Charging Station.
-     * <p>
-     * (Required)
-     */
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -81,8 +62,13 @@ public class ClearDisplayMessageRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.addProperty("id", id);
-        json.add("customData", customData.toJsonObject());
+
+        json.addProperty("id", getId());
+
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -95,14 +81,13 @@ public class ClearDisplayMessageRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("id")) {
-            this.id = jsonObject.get("id").getAsInt();
+            setId(jsonObject.get("id").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -112,15 +97,15 @@ public class ClearDisplayMessageRequest implements JsonInterface {
         if (!(obj instanceof ClearDisplayMessageRequest))
             return false;
         ClearDisplayMessageRequest that = (ClearDisplayMessageRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getCustomData()
+        );
     }
 }

@@ -12,76 +12,62 @@ import maydo.ocpp.msgDef.annotations.Required;
 
 import java.util.Objects;
 
+/**
+ * This contains the field definition of the CustomerInformationRequest PDU sent by the CSMS to the Charging Station.
+ */
 public class CustomerInformationRequest implements JsonInterface {
 
-    private CertificateHashData customerCertificate;
     /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
+     * The Certificate of the customer this request refers to.
+     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
+     */
+    @Optional
+    private CertificateHashData customerCertificate;
+
+    /**
+     * The IdToken of the customer this request refers to.
+     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
      */
     @Optional
     private IdToken idToken;
+
     /**
      * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
      */
     @Required
     private Integer requestId;
+
     /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
+     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages
+     * containing information about the customer referred to.
      */
     @Required
     private Boolean report;
+
     /**
      * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
      */
     @Required
     private Boolean clear;
+
     /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
+     * A (e.g. vendor specific) identifier of the customer this request refers to.
+     * This field contains a custom identifier other than IdToken and Certificate.
      * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
      */
     @Optional
     private String customerIdentifier;
+
     /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
+     *
      */
     @Optional
     private CustomData customData;
 
-    /**
-     * No args constructor for use in serialization
-     */
+
     public CustomerInformationRequest() {
     }
 
-    /**
-     * @param requestId          The Id of the request.
-     *                           <p>
-     *                           .
-     * @param report             Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     *                           .
-     * @param clear              Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     *                           .
-     * @param customerIdentifier A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     *                           One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     *                           .
-     */
-    public CustomerInformationRequest(CertificateHashData customerCertificate, IdToken idToken, Integer requestId, Boolean report, Boolean clear, String customerIdentifier, CustomData customData) {
-        super();
-        this.customerCertificate = customerCertificate;
-        this.idToken = idToken;
-        this.requestId = requestId;
-        this.report = report;
-        this.clear = clear;
-        this.customerIdentifier = customerIdentifier;
-        this.customData = customData;
-    }
 
     public CertificateHashData getCustomerCertificate() {
         return customerCertificate;
@@ -91,102 +77,62 @@ public class CustomerInformationRequest implements JsonInterface {
         this.customerCertificate = customerCertificate;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public IdToken getIdToken() {
         return idToken;
     }
 
-    /**
-     * Contains a case insensitive identifier to use for the authorization and the type of authorization to support multiple forms of identifiers.
-     */
+
     public void setIdToken(IdToken idToken) {
         this.idToken = idToken;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public Integer getRequestId() {
         return requestId;
     }
 
-    /**
-     * The Id of the request.
-     * <p>
-     * <p>
-     * (Required)
-     */
+
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getReport() {
         return report;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should return NotifyCustomerInformationRequest messages containing information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public void setReport(Boolean report) {
         this.report = report;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public Boolean getClear() {
         return clear;
     }
 
-    /**
-     * Flag indicating whether the Charging Station should clear all information about the customer referred to.
-     * <p>
-     * (Required)
-     */
+
     public void setClear(Boolean clear) {
         this.clear = clear;
     }
 
-    /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     */
+
     public String getCustomerIdentifier() {
         return customerIdentifier;
     }
 
-    /**
-     * A (e.g. vendor specific) identifier of the customer this request refers to. This field contains a custom identifier other than IdToken and Certificate.
-     * One of the possible identifiers (customerIdentifier, customerIdToken or customerCertificate) should be in the request message.
-     */
+
     public void setCustomerIdentifier(String customerIdentifier) {
         this.customerIdentifier = customerIdentifier;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public CustomData getCustomData() {
         return customData;
     }
 
-    /**
-     * This class does not get 'AdditionalProperties = false' in the schema generation, so it can be extended with arbitrary JSON properties to allow adding custom data.
-     */
+
     public void setCustomData(CustomData customData) {
         this.customData = customData;
     }
@@ -199,13 +145,26 @@ public class CustomerInformationRequest implements JsonInterface {
     @Override
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
-        json.add("customerCertificate", customerCertificate.toJsonObject());
-        json.add("idToken", idToken.toJsonObject());
-        json.addProperty("requestId", requestId);
-        json.addProperty("report", report);
-        json.addProperty("clear", clear);
-        json.addProperty("customerIdentifier", customerIdentifier);
-        json.add("customData", customData.toJsonObject());
+
+        if (getCustomerCertificate() != null) {
+            json.add("customerCertificate", getCustomerCertificate().toJsonObject());
+        }
+        if (getIdToken() != null) {
+            json.add("idToken", getIdToken().toJsonObject());
+        }
+        json.addProperty("requestId", getRequestId());
+
+        json.addProperty("report", getReport());
+
+        json.addProperty("clear", getClear());
+
+        if (getCustomerIdentifier() != null) {
+            json.addProperty("customerIdentifier", getCustomerIdentifier());
+        }
+        if (getCustomData() != null) {
+            json.add("customData", getCustomData().toJsonObject());
+        }
+
         return json;
     }
 
@@ -218,36 +177,35 @@ public class CustomerInformationRequest implements JsonInterface {
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("customerCertificate")) {
-            this.customerCertificate = new CertificateHashData();
-            this.customerCertificate.fromJsonObject(jsonObject.getAsJsonObject("customerCertificate"));
+            setCustomerCertificate(new CertificateHashData());
+            getCustomerCertificate().fromJsonObject(jsonObject.getAsJsonObject("customerCertificate"));
         }
 
         if (jsonObject.has("idToken")) {
-            this.idToken = new IdToken();
-            this.idToken.fromJsonObject(jsonObject.getAsJsonObject("idToken"));
+            setIdToken(new IdToken());
+            getIdToken().fromJsonObject(jsonObject.getAsJsonObject("idToken"));
         }
 
         if (jsonObject.has("requestId")) {
-            this.requestId = jsonObject.get("requestId").getAsInt();
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("report")) {
-            this.report = jsonObject.get("report").getAsBoolean();
+            setReport(jsonObject.get("report").getAsBoolean());
         }
 
         if (jsonObject.has("clear")) {
-            this.clear = jsonObject.get("clear").getAsBoolean();
+            setClear(jsonObject.get("clear").getAsBoolean());
         }
 
         if (jsonObject.has("customerIdentifier")) {
-            this.customerIdentifier = jsonObject.get("customerIdentifier").getAsString();
+            setCustomerIdentifier(jsonObject.get("customerIdentifier").getAsString());
         }
 
         if (jsonObject.has("customData")) {
-            this.customData = new CustomData();
-            this.customData.fromJsonObject(jsonObject.getAsJsonObject("customData"));
+            setCustomData(new CustomData());
+            getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
         }
-
     }
 
     @Override
@@ -257,25 +215,25 @@ public class CustomerInformationRequest implements JsonInterface {
         if (!(obj instanceof CustomerInformationRequest))
             return false;
         CustomerInformationRequest that = (CustomerInformationRequest) obj;
-        return Objects.equals(this.customerCertificate, that.customerCertificate)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.report, that.report)
-                && Objects.equals(this.clear, that.clear)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.customerIdentifier, that.customerIdentifier);
+        return Objects.equals(getCustomerCertificate(), that.getCustomerCertificate())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getReport(), that.getReport())
+                && Objects.equals(getClear(), that.getClear())
+                && Objects.equals(getCustomerIdentifier(), that.getCustomerIdentifier())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customerCertificate != null ? this.customerCertificate.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.report != null ? this.report.hashCode() : 0);
-        result = 31 * result + (this.clear != null ? this.clear.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.customerIdentifier != null ? this.customerIdentifier.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCustomerCertificate(),
+                getIdToken(),
+                getRequestId(),
+                getReport(),
+                getClear(),
+                getCustomerIdentifier(),
+                getCustomData()
+        );
     }
 }
