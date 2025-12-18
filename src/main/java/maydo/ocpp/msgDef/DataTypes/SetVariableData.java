@@ -159,11 +159,10 @@ public class SetVariableData implements JsonInterface {
         if (!(obj instanceof SetVariableData))
             return false;
         SetVariableData that = (SetVariableData) obj;
-        return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.attributeValue, that.attributeValue)
-                && Objects.equals(this.attributeType, that.attributeType);
+        return Objects.equals(getAttributeValue(), that.getAttributeValue())
+                && Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

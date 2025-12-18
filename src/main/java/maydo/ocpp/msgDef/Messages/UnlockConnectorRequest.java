@@ -116,9 +116,9 @@ public class UnlockConnectorRequest implements JsonInterface {
         if (!(obj instanceof UnlockConnectorRequest))
             return false;
         UnlockConnectorRequest that = (UnlockConnectorRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.connectorId, that.connectorId);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getConnectorId(), that.getConnectorId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

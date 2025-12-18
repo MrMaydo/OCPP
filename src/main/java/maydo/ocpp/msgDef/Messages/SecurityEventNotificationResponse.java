@@ -72,7 +72,7 @@ public class SecurityEventNotificationResponse implements JsonInterface {
         if (!(obj instanceof SecurityEventNotificationResponse))
             return false;
         SecurityEventNotificationResponse that = (SecurityEventNotificationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

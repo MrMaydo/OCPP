@@ -206,12 +206,12 @@ public class CompositeSchedule implements JsonInterface {
         if (!(obj instanceof CompositeSchedule))
             return false;
         CompositeSchedule that = (CompositeSchedule) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.scheduleStart, that.scheduleStart)
-                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod)
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getScheduleStart(), that.getScheduleStart())
+                && Objects.equals(getChargingRateUnit(), that.getChargingRateUnit())
+                && Objects.equals(getChargingSchedulePeriod(), that.getChargingSchedulePeriod())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

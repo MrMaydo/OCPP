@@ -215,13 +215,13 @@ public class CustomerInformationRequest implements JsonInterface {
         if (!(obj instanceof CustomerInformationRequest))
             return false;
         CustomerInformationRequest that = (CustomerInformationRequest) obj;
-        return Objects.equals(this.customerCertificate, that.customerCertificate)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.report, that.report)
-                && Objects.equals(this.clear, that.clear)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.customerIdentifier, that.customerIdentifier);
+        return Objects.equals(getCustomerCertificate(), that.getCustomerCertificate())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getReport(), that.getReport())
+                && Objects.equals(getClear(), that.getClear())
+                && Objects.equals(getCustomerIdentifier(), that.getCustomerIdentifier())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

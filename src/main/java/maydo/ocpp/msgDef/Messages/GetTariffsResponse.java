@@ -156,10 +156,10 @@ public class GetTariffsResponse implements JsonInterface {
         if (!(obj instanceof GetTariffsResponse))
             return false;
         GetTariffsResponse that = (GetTariffsResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.tariffAssignments, that.tariffAssignments)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getTariffAssignments(), that.getTariffAssignments())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

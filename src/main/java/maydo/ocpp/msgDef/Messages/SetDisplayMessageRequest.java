@@ -98,8 +98,8 @@ public class SetDisplayMessageRequest implements JsonInterface {
         if (!(obj instanceof SetDisplayMessageRequest))
             return false;
         SetDisplayMessageRequest that = (SetDisplayMessageRequest) obj;
-        return Objects.equals(this.message, that.message)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getMessage(), that.getMessage())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

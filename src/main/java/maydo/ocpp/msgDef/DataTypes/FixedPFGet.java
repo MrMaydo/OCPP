@@ -160,11 +160,11 @@ public class FixedPFGet implements JsonInterface {
         if (!(obj instanceof FixedPFGet))
             return false;
         FixedPFGet that = (FixedPFGet) obj;
-        return Objects.equals(this.fixedPF, that.fixedPF)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.isSuperseded, that.isSuperseded);
+        return Objects.equals(getFixedPF(), that.getFixedPF())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getIsSuperseded(), that.getIsSuperseded())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -169,11 +169,11 @@ public class Get15118EVCertificateResponse implements JsonInterface {
         if (!(obj instanceof Get15118EVCertificateResponse))
             return false;
         Get15118EVCertificateResponse that = (Get15118EVCertificateResponse) obj;
-        return Objects.equals(this.remainingContracts, that.remainingContracts)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.exiResponse, that.exiResponse)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getExiResponse(), that.getExiResponse())
+                && Objects.equals(getRemainingContracts(), that.getRemainingContracts())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

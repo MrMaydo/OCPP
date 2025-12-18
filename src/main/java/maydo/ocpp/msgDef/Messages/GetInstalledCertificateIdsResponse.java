@@ -156,10 +156,10 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
         if (!(obj instanceof GetInstalledCertificateIdsResponse))
             return false;
         GetInstalledCertificateIdsResponse that = (GetInstalledCertificateIdsResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.certificateHashDataChain, that.certificateHashDataChain)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCertificateHashDataChain(), that.getCertificateHashDataChain())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

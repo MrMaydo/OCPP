@@ -117,9 +117,9 @@ public class EVSE implements JsonInterface {
         if (!(obj instanceof EVSE))
             return false;
         EVSE that = (EVSE) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.connectorId, that.connectorId);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getConnectorId(), that.getConnectorId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -250,14 +250,14 @@ public class SetMonitoringResult implements JsonInterface {
         if (!(obj instanceof SetMonitoringResult))
             return false;
         SetMonitoringResult that = (SetMonitoringResult) obj;
-        return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getSeverity(), that.getSeverity())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

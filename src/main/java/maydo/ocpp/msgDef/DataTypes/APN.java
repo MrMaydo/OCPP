@@ -224,14 +224,13 @@ public class APN implements JsonInterface {
         if (!(obj instanceof APN))
             return false;
         APN that = (APN) obj;
-        return Objects.equals(this.preferredNetwork, that.preferredNetwork)
-                && Objects.equals(this.apnUserName, that.apnUserName)
-                && Objects.equals(this.apnAuthentication, that.apnAuthentication)
-                && Objects.equals(this.useOnlyPreferredNetwork, that.useOnlyPreferredNetwork)
-                && Objects.equals(this.simPin, that.simPin)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.apn, that.apn)
-                && Objects.equals(this.apnPassword, that.apnPassword);
+        return Objects.equals(getApn(), that.getApn())
+                && Objects.equals(getApnUserName(), that.getApnUserName())
+                && Objects.equals(getApnPassword(), that.getApnPassword())
+                && Objects.equals(getSimPin(), that.getSimPin())
+                && Objects.equals(getPreferredNetwork(), that.getPreferredNetwork())
+                && Objects.equals(getApnAuthentication(), that.getApnAuthentication())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -181,12 +181,11 @@ public class SetVariableResult implements JsonInterface {
         if (!(obj instanceof SetVariableResult))
             return false;
         SetVariableResult that = (SetVariableResult) obj;
-        return Objects.equals(this.attributeStatus, that.attributeStatus)
-                && Objects.equals(this.attributeStatusInfo, that.attributeStatusInfo)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.attributeType, that.attributeType)
-                && Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getAttributeStatus(), that.getAttributeStatus())
+                && Objects.equals(getAttributeStatusInfo(), that.getAttributeStatusInfo())
+                && Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

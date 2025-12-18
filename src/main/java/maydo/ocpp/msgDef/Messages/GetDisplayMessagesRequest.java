@@ -178,11 +178,11 @@ public class GetDisplayMessagesRequest implements JsonInterface {
         if (!(obj instanceof GetDisplayMessagesRequest))
             return false;
         GetDisplayMessagesRequest that = (GetDisplayMessagesRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.state, that.state)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getState(), that.getState())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

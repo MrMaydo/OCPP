@@ -119,9 +119,9 @@ public class ComponentVariable implements JsonInterface {
         if (!(obj instanceof ComponentVariable))
             return false;
         ComponentVariable that = (ComponentVariable) obj;
-        return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -162,11 +162,11 @@ public class TotalUsage implements JsonInterface {
         if (!(obj instanceof TotalUsage))
             return false;
         TotalUsage that = (TotalUsage) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.idleTime, that.idleTime)
-                && Objects.equals(this.chargingTime, that.chargingTime)
-                && Objects.equals(this.energy, that.energy)
-                && Objects.equals(this.reservationTime, that.reservationTime);
+        return Objects.equals(getEnergy(), that.getEnergy())
+                && Objects.equals(getChargingTime(), that.getChargingTime())
+                && Objects.equals(getIdleTime(), that.getIdleTime())
+                && Objects.equals(getReservationTime(), that.getReservationTime())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

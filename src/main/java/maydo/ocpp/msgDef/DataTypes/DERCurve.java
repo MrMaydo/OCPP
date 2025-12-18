@@ -298,16 +298,16 @@ public class DERCurve implements JsonInterface {
         if (!(obj instanceof DERCurve))
             return false;
         DERCurve that = (DERCurve) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.responseTime, that.responseTime)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.curveData, that.curveData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.yUnit, that.yUnit)
-                && Objects.equals(this.reactivePowerParams, that.reactivePowerParams)
-                && Objects.equals(this.voltageParams, that.voltageParams)
-                && Objects.equals(this.hysteresis, that.hysteresis);
+        return Objects.equals(getCurveData(), that.getCurveData())
+                && Objects.equals(getHysteresis(), that.getHysteresis())
+                && Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getReactivePowerParams(), that.getReactivePowerParams())
+                && Objects.equals(getVoltageParams(), that.getVoltageParams())
+                && Objects.equals(getYUnit(), that.getYUnit())
+                && Objects.equals(getResponseTime(), that.getResponseTime())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

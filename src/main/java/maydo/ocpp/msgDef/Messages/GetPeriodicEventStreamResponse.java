@@ -107,8 +107,8 @@ public class GetPeriodicEventStreamResponse implements JsonInterface {
         if (!(obj instanceof GetPeriodicEventStreamResponse))
             return false;
         GetPeriodicEventStreamResponse that = (GetPeriodicEventStreamResponse) obj;
-        return Objects.equals(this.constantStreamData, that.constantStreamData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getConstantStreamData(), that.getConstantStreamData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

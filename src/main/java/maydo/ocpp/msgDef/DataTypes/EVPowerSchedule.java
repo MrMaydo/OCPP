@@ -139,9 +139,9 @@ public class EVPowerSchedule implements JsonInterface {
         if (!(obj instanceof EVPowerSchedule))
             return false;
         EVPowerSchedule that = (EVPowerSchedule) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evPowerScheduleEntries, that.evPowerScheduleEntries)
-                && Objects.equals(this.timeAnchor, that.timeAnchor);
+        return Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getEvPowerScheduleEntries(), that.getEvPowerScheduleEntries())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

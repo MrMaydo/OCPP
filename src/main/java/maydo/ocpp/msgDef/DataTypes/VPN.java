@@ -205,13 +205,13 @@ public class VPN implements JsonInterface {
         if (!(obj instanceof VPN))
             return false;
         VPN that = (VPN) obj;
-        return Objects.equals(this.server, that.server)
-                && Objects.equals(this.password, that.password)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.user, that.user)
-                && Objects.equals(this.key, that.key)
-                && Objects.equals(this.group, that.group);
+        return Objects.equals(getServer(), that.getServer())
+                && Objects.equals(getUser(), that.getUser())
+                && Objects.equals(getGroup(), that.getGroup())
+                && Objects.equals(getPassword(), that.getPassword())
+                && Objects.equals(getKey(), that.getKey())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

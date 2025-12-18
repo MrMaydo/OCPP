@@ -118,9 +118,9 @@ public class TariffEnergyPrice implements JsonInterface {
         if (!(obj instanceof TariffEnergyPrice))
             return false;
         TariffEnergyPrice that = (TariffEnergyPrice) obj;
-        return Objects.equals(this.priceKwh, that.priceKwh)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.conditions, that.conditions);
+        return Objects.equals(getPriceKwh(), that.getPriceKwh())
+                && Objects.equals(getConditions(), that.getConditions())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -187,12 +187,11 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
         if (!(obj instanceof NotifyCustomerInformationRequest))
             return false;
         NotifyCustomerInformationRequest that = (NotifyCustomerInformationRequest) obj;
-        return Objects.equals(this.data, that.data)
-                && Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.seqNo, that.seqNo)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.generatedAt, that.generatedAt)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getData(), that.getData())
+                && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getGeneratedAt(), that.getGeneratedAt())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

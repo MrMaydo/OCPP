@@ -73,7 +73,7 @@ public class NotifyChargingLimitResponse implements JsonInterface {
         if (!(obj instanceof NotifyChargingLimitResponse))
             return false;
         NotifyChargingLimitResponse that = (NotifyChargingLimitResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

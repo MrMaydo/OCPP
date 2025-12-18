@@ -109,8 +109,8 @@ public class SetVariableMonitoringRequest implements JsonInterface {
         if (!(obj instanceof SetVariableMonitoringRequest))
             return false;
         SetVariableMonitoringRequest that = (SetVariableMonitoringRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.setMonitoringData, that.setMonitoringData);
+        return Objects.equals(getSetMonitoringData(), that.getSetMonitoringData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

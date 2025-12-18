@@ -96,8 +96,8 @@ public class OpenPeriodicEventStreamRequest implements JsonInterface {
         if (!(obj instanceof OpenPeriodicEventStreamRequest))
             return false;
         OpenPeriodicEventStreamRequest that = (OpenPeriodicEventStreamRequest) obj;
-        return Objects.equals(this.constantStreamData, that.constantStreamData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getConstantStreamData(), that.getConstantStreamData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

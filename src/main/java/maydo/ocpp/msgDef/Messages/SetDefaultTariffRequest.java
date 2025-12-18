@@ -118,9 +118,9 @@ public class SetDefaultTariffRequest implements JsonInterface {
         if (!(obj instanceof SetDefaultTariffRequest))
             return false;
         SetDefaultTariffRequest that = (SetDefaultTariffRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getTariff(), that.getTariff())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

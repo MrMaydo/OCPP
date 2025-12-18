@@ -72,7 +72,7 @@ public class NotifyReportResponse implements JsonInterface {
         if (!(obj instanceof NotifyReportResponse))
             return false;
         NotifyReportResponse that = (NotifyReportResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

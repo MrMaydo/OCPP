@@ -117,9 +117,9 @@ public class GetTransactionStatusResponse implements JsonInterface {
         if (!(obj instanceof GetTransactionStatusResponse))
             return false;
         GetTransactionStatusResponse that = (GetTransactionStatusResponse) obj;
-        return Objects.equals(this.messagesInQueue, that.messagesInQueue)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.ongoingIndicator, that.ongoingIndicator);
+        return Objects.equals(getOngoingIndicator(), that.getOngoingIndicator())
+                && Objects.equals(getMessagesInQueue(), that.getMessagesInQueue())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

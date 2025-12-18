@@ -140,10 +140,10 @@ public class DataTransferRequest implements JsonInterface {
         if (!(obj instanceof DataTransferRequest))
             return false;
         DataTransferRequest that = (DataTransferRequest) obj;
-        return Objects.equals(this.messageId, that.messageId)
-                && Objects.equals(this.vendorId, that.vendorId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.data, that.data);
+        return Objects.equals(getMessageId(), that.getMessageId())
+                && Objects.equals(getData(), that.getData())
+                && Objects.equals(getVendorId(), that.getVendorId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

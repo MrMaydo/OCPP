@@ -117,9 +117,9 @@ public class ClearedChargingLimitRequest implements JsonInterface {
         if (!(obj instanceof ClearedChargingLimitRequest))
             return false;
         ClearedChargingLimitRequest that = (ClearedChargingLimitRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
+        return Objects.equals(getChargingLimitSource(), that.getChargingLimitSource())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

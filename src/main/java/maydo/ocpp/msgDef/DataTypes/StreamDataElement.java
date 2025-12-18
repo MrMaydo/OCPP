@@ -115,9 +115,9 @@ public class StreamDataElement implements JsonInterface {
         if (!(obj instanceof StreamDataElement))
             return false;
         StreamDataElement that = (StreamDataElement) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.t, that.t)
-                && Objects.equals(this.v, that.v);
+        return Objects.equals(getT(), that.getT())
+                && Objects.equals(getV(), that.getV())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

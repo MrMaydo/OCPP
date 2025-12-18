@@ -72,7 +72,7 @@ public class PublishFirmwareStatusNotificationResponse implements JsonInterface 
         if (!(obj instanceof PublishFirmwareStatusNotificationResponse))
             return false;
         PublishFirmwareStatusNotificationResponse that = (PublishFirmwareStatusNotificationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

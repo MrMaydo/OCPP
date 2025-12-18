@@ -177,11 +177,11 @@ public class BootNotificationResponse implements JsonInterface {
         if (!(obj instanceof BootNotificationResponse))
             return false;
         BootNotificationResponse that = (BootNotificationResponse) obj;
-        return Objects.equals(this.currentTime, that.currentTime)
-                && Objects.equals(this.interval, that.interval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getCurrentTime(), that.getCurrentTime())
+                && Objects.equals(getInterval(), that.getInterval())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

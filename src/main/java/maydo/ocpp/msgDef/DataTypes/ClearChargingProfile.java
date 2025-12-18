@@ -142,10 +142,10 @@ public class ClearChargingProfile implements JsonInterface {
         if (!(obj instanceof ClearChargingProfile))
             return false;
         ClearChargingProfile that = (ClearChargingProfile) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.stackLevel, that.stackLevel);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingProfilePurpose(), that.getChargingProfilePurpose())
+                && Objects.equals(getStackLevel(), that.getStackLevel())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

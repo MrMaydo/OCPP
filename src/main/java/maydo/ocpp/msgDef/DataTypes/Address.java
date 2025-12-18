@@ -206,13 +206,13 @@ public class Address implements JsonInterface {
         if (!(obj instanceof Address))
             return false;
         Address that = (Address) obj;
-        return Objects.equals(this.country, that.country)
-                && Objects.equals(this.address2, that.address2)
-                && Objects.equals(this.city, that.city)
-                && Objects.equals(this.address1, that.address1)
-                && Objects.equals(this.postalCode, that.postalCode)
-                && Objects.equals(this.name, that.name)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getName(), that.getName())
+                && Objects.equals(getAddress1(), that.getAddress1())
+                && Objects.equals(getAddress2(), that.getAddress2())
+                && Objects.equals(getCity(), that.getCity())
+                && Objects.equals(getPostalCode(), that.getPostalCode())
+                && Objects.equals(getCountry(), that.getCountry())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

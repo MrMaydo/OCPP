@@ -390,19 +390,19 @@ public class AbsolutePriceSchedule implements JsonInterface {
         if (!(obj instanceof AbsolutePriceSchedule))
             return false;
         AbsolutePriceSchedule that = (AbsolutePriceSchedule) obj;
-        return Objects.equals(this.taxRules, that.taxRules)
-                && Objects.equals(this.additionalSelectedServices, that.additionalSelectedServices)
-                && Objects.equals(this.overstayRuleList, that.overstayRuleList)
-                && Objects.equals(this.language, that.language)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.minimumCost, that.minimumCost)
-                && Objects.equals(this.priceAlgorithm, that.priceAlgorithm)
-                && Objects.equals(this.priceScheduleID, that.priceScheduleID)
-                && Objects.equals(this.priceRuleStacks, that.priceRuleStacks)
-                && Objects.equals(this.timeAnchor, that.timeAnchor)
-                && Objects.equals(this.priceScheduleDescription, that.priceScheduleDescription)
-                && Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.maximumCost, that.maximumCost);
+        return Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getPriceScheduleID(), that.getPriceScheduleID())
+                && Objects.equals(getPriceScheduleDescription(), that.getPriceScheduleDescription())
+                && Objects.equals(getCurrency(), that.getCurrency())
+                && Objects.equals(getLanguage(), that.getLanguage())
+                && Objects.equals(getPriceAlgorithm(), that.getPriceAlgorithm())
+                && Objects.equals(getMinimumCost(), that.getMinimumCost())
+                && Objects.equals(getMaximumCost(), that.getMaximumCost())
+                && Objects.equals(getPriceRuleStacks(), that.getPriceRuleStacks())
+                && Objects.equals(getTaxRules(), that.getTaxRules())
+                && Objects.equals(getOverstayRuleList(), that.getOverstayRuleList())
+                && Objects.equals(getAdditionalSelectedServices(), that.getAdditionalSelectedServices())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

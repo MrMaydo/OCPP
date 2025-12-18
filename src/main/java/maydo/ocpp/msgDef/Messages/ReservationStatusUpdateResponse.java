@@ -73,7 +73,7 @@ public class ReservationStatusUpdateResponse implements JsonInterface {
         if (!(obj instanceof ReservationStatusUpdateResponse))
             return false;
         ReservationStatusUpdateResponse that = (ReservationStatusUpdateResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

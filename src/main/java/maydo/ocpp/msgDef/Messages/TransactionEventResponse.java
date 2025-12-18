@@ -238,13 +238,13 @@ public class TransactionEventResponse implements JsonInterface {
         if (!(obj instanceof TransactionEventResponse))
             return false;
         TransactionEventResponse that = (TransactionEventResponse) obj;
-        return Objects.equals(this.idTokenInfo, that.idTokenInfo)
-                && Objects.equals(this.updatedPersonalMessageExtra, that.updatedPersonalMessageExtra)
-                && Objects.equals(this.updatedPersonalMessage, that.updatedPersonalMessage)
-                && Objects.equals(this.chargingPriority, that.chargingPriority)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionLimit, that.transactionLimit)
-                && Objects.equals(this.totalCost, that.totalCost);
+        return Objects.equals(getTotalCost(), that.getTotalCost())
+                && Objects.equals(getChargingPriority(), that.getChargingPriority())
+                && Objects.equals(getIdTokenInfo(), that.getIdTokenInfo())
+                && Objects.equals(getTransactionLimit(), that.getTransactionLimit())
+                && Objects.equals(getUpdatedPersonalMessage(), that.getUpdatedPersonalMessage())
+                && Objects.equals(getUpdatedPersonalMessageExtra(), that.getUpdatedPersonalMessageExtra())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

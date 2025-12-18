@@ -154,10 +154,10 @@ public class OverstayRuleList implements JsonInterface {
         if (!(obj instanceof OverstayRuleList))
             return false;
         OverstayRuleList that = (OverstayRuleList) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.overstayTimeThreshold, that.overstayTimeThreshold)
-                && Objects.equals(this.overstayPowerThreshold, that.overstayPowerThreshold)
-                && Objects.equals(this.overstayRule, that.overstayRule);
+        return Objects.equals(getOverstayPowerThreshold(), that.getOverstayPowerThreshold())
+                && Objects.equals(getOverstayRule(), that.getOverstayRule())
+                && Objects.equals(getOverstayTimeThreshold(), that.getOverstayTimeThreshold())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

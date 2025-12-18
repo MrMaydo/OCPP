@@ -109,8 +109,8 @@ public class ClearVariableMonitoringResponse implements JsonInterface {
         if (!(obj instanceof ClearVariableMonitoringResponse))
             return false;
         ClearVariableMonitoringResponse that = (ClearVariableMonitoringResponse) obj;
-        return Objects.equals(this.clearMonitoringResult, that.clearMonitoringResult)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getClearMonitoringResult(), that.getClearMonitoringResult())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -190,12 +190,12 @@ public class GetLogRequest implements JsonInterface {
         if (!(obj instanceof GetLogRequest))
             return false;
         GetLogRequest that = (GetLogRequest) obj;
-        return Objects.equals(this.logType, that.logType)
-                && Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.log, that.log)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.retryInterval, that.retryInterval)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getLog(), that.getLog())
+                && Objects.equals(getLogType(), that.getLogType())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getRetries(), that.getRetries())
+                && Objects.equals(getRetryInterval(), that.getRetryInterval())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

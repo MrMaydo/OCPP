@@ -215,13 +215,13 @@ public class BatteryData implements JsonInterface {
         if (!(obj instanceof BatteryData))
             return false;
         BatteryData that = (BatteryData) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.serialNumber, that.serialNumber)
-                && Objects.equals(this.productionDate, that.productionDate)
-                && Objects.equals(this.soC, that.soC)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.vendorInfo, that.vendorInfo)
-                && Objects.equals(this.soH, that.soH);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getSerialNumber(), that.getSerialNumber())
+                && Objects.equals(getSoC(), that.getSoC())
+                && Objects.equals(getSoH(), that.getSoH())
+                && Objects.equals(getProductionDate(), that.getProductionDate())
+                && Objects.equals(getVendorInfo(), that.getVendorInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

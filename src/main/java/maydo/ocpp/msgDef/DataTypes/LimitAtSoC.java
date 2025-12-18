@@ -115,9 +115,9 @@ public class LimitAtSoC implements JsonInterface {
         if (!(obj instanceof LimitAtSoC))
             return false;
         LimitAtSoC that = (LimitAtSoC) obj;
-        return Objects.equals(this.limit, that.limit)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.soc, that.soc);
+        return Objects.equals(getSoc(), that.getSoc())
+                && Objects.equals(getLimit(), that.getLimit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

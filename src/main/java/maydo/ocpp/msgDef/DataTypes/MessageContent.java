@@ -141,10 +141,10 @@ public class MessageContent implements JsonInterface {
         if (!(obj instanceof MessageContent))
             return false;
         MessageContent that = (MessageContent) obj;
-        return Objects.equals(this.format, that.format)
-                && Objects.equals(this.language, that.language)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.content, that.content);
+        return Objects.equals(getContent(), that.getContent())
+                && Objects.equals(getFormat(), that.getFormat())
+                && Objects.equals(getLanguage(), that.getLanguage())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

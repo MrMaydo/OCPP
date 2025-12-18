@@ -117,9 +117,9 @@ public class Modem implements JsonInterface {
         if (!(obj instanceof Modem))
             return false;
         Modem that = (Modem) obj;
-        return Objects.equals(this.iccid, that.iccid)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.imsi, that.imsi);
+        return Objects.equals(getIccid(), that.getIccid())
+                && Objects.equals(getImsi(), that.getImsi())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

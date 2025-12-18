@@ -195,12 +195,11 @@ public class ReportChargingProfilesRequest implements JsonInterface {
         if (!(obj instanceof ReportChargingProfilesRequest))
             return false;
         ReportChargingProfilesRequest that = (ReportChargingProfilesRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingLimitSource(), that.getChargingLimitSource())
+                && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

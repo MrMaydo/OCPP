@@ -259,15 +259,15 @@ public class FreqDroop implements JsonInterface {
         if (!(obj instanceof FreqDroop))
             return false;
         FreqDroop that = (FreqDroop) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.underDroop, that.underDroop)
-                && Objects.equals(this.overDroop, that.overDroop)
-                && Objects.equals(this.responseTime, that.responseTime)
-                && Objects.equals(this.underFreq, that.underFreq)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.overFreq, that.overFreq);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getOverFreq(), that.getOverFreq())
+                && Objects.equals(getUnderFreq(), that.getUnderFreq())
+                && Objects.equals(getOverDroop(), that.getOverDroop())
+                && Objects.equals(getUnderDroop(), that.getUnderDroop())
+                && Objects.equals(getResponseTime(), that.getResponseTime())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -213,12 +213,12 @@ public class TariffAssignment implements JsonInterface {
         if (!(obj instanceof TariffAssignment))
             return false;
         TariffAssignment that = (TariffAssignment) obj;
-        return Objects.equals(this.tariffKind, that.tariffKind)
-                && Objects.equals(this.evseIds, that.evseIds)
-                && Objects.equals(this.idTokens, that.idTokens)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.validFrom, that.validFrom);
+        return Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getTariffKind(), that.getTariffKind())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getEvseIds(), that.getEvseIds())
+                && Objects.equals(getIdTokens(), that.getIdTokens())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

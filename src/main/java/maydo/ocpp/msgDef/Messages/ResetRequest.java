@@ -118,9 +118,9 @@ public class ResetRequest implements JsonInterface {
         if (!(obj instanceof ResetRequest))
             return false;
         ResetRequest that = (ResetRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

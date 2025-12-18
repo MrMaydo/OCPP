@@ -119,9 +119,9 @@ public class SetNetworkProfileRequest implements JsonInterface {
         if (!(obj instanceof SetNetworkProfileRequest))
             return false;
         SetNetworkProfileRequest that = (SetNetworkProfileRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.connectionData, that.connectionData)
-                && Objects.equals(this.configurationSlot, that.configurationSlot);
+        return Objects.equals(getConfigurationSlot(), that.getConfigurationSlot())
+                && Objects.equals(getConnectionData(), that.getConnectionData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

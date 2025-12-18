@@ -71,7 +71,7 @@ public class NotifyDERAlarmResponse implements JsonInterface {
         if (!(obj instanceof NotifyDERAlarmResponse))
             return false;
         NotifyDERAlarmResponse that = (NotifyDERAlarmResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

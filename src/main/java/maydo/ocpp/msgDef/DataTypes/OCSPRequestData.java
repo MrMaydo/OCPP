@@ -184,12 +184,12 @@ public class OCSPRequestData implements JsonInterface {
         if (!(obj instanceof OCSPRequestData))
             return false;
         OCSPRequestData that = (OCSPRequestData) obj;
-        return Objects.equals(this.responderURL, that.responderURL)
-                && Objects.equals(this.issuerNameHash, that.issuerNameHash)
-                && Objects.equals(this.issuerKeyHash, that.issuerKeyHash)
-                && Objects.equals(this.serialNumber, that.serialNumber)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.hashAlgorithm, that.hashAlgorithm);
+        return Objects.equals(getHashAlgorithm(), that.getHashAlgorithm())
+                && Objects.equals(getIssuerNameHash(), that.getIssuerNameHash())
+                && Objects.equals(getIssuerKeyHash(), that.getIssuerKeyHash())
+                && Objects.equals(getSerialNumber(), that.getSerialNumber())
+                && Objects.equals(getResponderURL(), that.getResponderURL())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

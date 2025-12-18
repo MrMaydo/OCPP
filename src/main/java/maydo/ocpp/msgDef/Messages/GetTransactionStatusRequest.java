@@ -95,8 +95,8 @@ public class GetTransactionStatusRequest implements JsonInterface {
         if (!(obj instanceof GetTransactionStatusRequest))
             return false;
         GetTransactionStatusRequest that = (GetTransactionStatusRequest) obj;
-        return Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

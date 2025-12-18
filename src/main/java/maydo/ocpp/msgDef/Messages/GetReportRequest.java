@@ -163,10 +163,10 @@ public class GetReportRequest implements JsonInterface {
         if (!(obj instanceof GetReportRequest))
             return false;
         GetReportRequest that = (GetReportRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.componentVariable, that.componentVariable)
-                && Objects.equals(this.componentCriteria, that.componentCriteria)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getComponentVariable(), that.getComponentVariable())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getComponentCriteria(), that.getComponentCriteria())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

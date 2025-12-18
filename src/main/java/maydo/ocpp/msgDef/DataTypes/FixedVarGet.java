@@ -160,11 +160,11 @@ public class FixedVarGet implements JsonInterface {
         if (!(obj instanceof FixedVarGet))
             return false;
         FixedVarGet that = (FixedVarGet) obj;
-        return Objects.equals(this.fixedVar, that.fixedVar)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.isSuperseded, that.isSuperseded);
+        return Objects.equals(getFixedVar(), that.getFixedVar())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getIsSuperseded(), that.getIsSuperseded())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

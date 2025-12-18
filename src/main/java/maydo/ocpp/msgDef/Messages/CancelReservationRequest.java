@@ -94,8 +94,8 @@ public class CancelReservationRequest implements JsonInterface {
         if (!(obj instanceof CancelReservationRequest))
             return false;
         CancelReservationRequest that = (CancelReservationRequest) obj;
-        return Objects.equals(this.reservationId, that.reservationId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getReservationId(), that.getReservationId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

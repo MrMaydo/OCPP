@@ -139,10 +139,10 @@ public class ChargingLimit implements JsonInterface {
         if (!(obj instanceof ChargingLimit))
             return false;
         ChargingLimit that = (ChargingLimit) obj;
-        return Objects.equals(this.isLocalGeneration, that.isLocalGeneration)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource)
-                && Objects.equals(this.isGridCritical, that.isGridCritical);
+        return Objects.equals(getChargingLimitSource(), that.getChargingLimitSource())
+                && Objects.equals(getIsLocalGeneration(), that.getIsLocalGeneration())
+                && Objects.equals(getIsGridCritical(), that.getIsGridCritical())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

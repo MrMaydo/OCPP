@@ -141,10 +141,10 @@ public class ClearDERControlRequest implements JsonInterface {
         if (!(obj instanceof ClearDERControlRequest))
             return false;
         ClearDERControlRequest that = (ClearDERControlRequest) obj;
-        return Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.controlId, that.controlId)
-                && Objects.equals(this.controlType, that.controlType);
+        return Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getControlType(), that.getControlType())
+                && Objects.equals(getControlId(), that.getControlId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

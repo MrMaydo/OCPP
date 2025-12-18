@@ -118,9 +118,9 @@ public class ChangeTransactionTariffRequest implements JsonInterface {
         if (!(obj instanceof ChangeTransactionTariffRequest))
             return false;
         ChangeTransactionTariffRequest that = (ChangeTransactionTariffRequest) obj;
-        return Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTariff(), that.getTariff())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

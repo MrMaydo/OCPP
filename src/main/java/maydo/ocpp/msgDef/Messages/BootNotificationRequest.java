@@ -119,9 +119,9 @@ public class BootNotificationRequest implements JsonInterface {
         if (!(obj instanceof BootNotificationRequest))
             return false;
         BootNotificationRequest that = (BootNotificationRequest) obj;
-        return Objects.equals(this.reason, that.reason)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingStation, that.chargingStation);
+        return Objects.equals(getChargingStation(), that.getChargingStation())
+                && Objects.equals(getReason(), that.getReason())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

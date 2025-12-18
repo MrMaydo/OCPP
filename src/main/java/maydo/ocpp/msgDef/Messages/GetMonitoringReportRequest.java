@@ -163,10 +163,10 @@ public class GetMonitoringReportRequest implements JsonInterface {
         if (!(obj instanceof GetMonitoringReportRequest))
             return false;
         GetMonitoringReportRequest that = (GetMonitoringReportRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.monitoringCriteria, that.monitoringCriteria)
-                && Objects.equals(this.componentVariable, that.componentVariable)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getComponentVariable(), that.getComponentVariable())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getMonitoringCriteria(), that.getMonitoringCriteria())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

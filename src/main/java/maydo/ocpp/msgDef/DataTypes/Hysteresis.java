@@ -165,11 +165,11 @@ public class Hysteresis implements JsonInterface {
         if (!(obj instanceof Hysteresis))
             return false;
         Hysteresis that = (Hysteresis) obj;
-        return Objects.equals(this.hysteresisHigh, that.hysteresisHigh)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.hysteresisGradient, that.hysteresisGradient)
-                && Objects.equals(this.hysteresisDelay, that.hysteresisDelay)
-                && Objects.equals(this.hysteresisLow, that.hysteresisLow);
+        return Objects.equals(getHysteresisHigh(), that.getHysteresisHigh())
+                && Objects.equals(getHysteresisLow(), that.getHysteresisLow())
+                && Objects.equals(getHysteresisDelay(), that.getHysteresisDelay())
+                && Objects.equals(getHysteresisGradient(), that.getHysteresisGradient())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -270,15 +270,15 @@ public class DCChargingParameters implements JsonInterface {
         if (!(obj instanceof DCChargingParameters))
             return false;
         DCChargingParameters that = (DCChargingParameters) obj;
-        return Objects.equals(this.evMaxCurrent, that.evMaxCurrent)
-                && Objects.equals(this.stateOfCharge, that.stateOfCharge)
-                && Objects.equals(this.evEnergyCapacity, that.evEnergyCapacity)
-                && Objects.equals(this.evMaxVoltage, that.evMaxVoltage)
-                && Objects.equals(this.energyAmount, that.energyAmount)
-                && Objects.equals(this.bulkSoC, that.bulkSoC)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evMaxPower, that.evMaxPower)
-                && Objects.equals(this.fullSoC, that.fullSoC);
+        return Objects.equals(getEvMaxCurrent(), that.getEvMaxCurrent())
+                && Objects.equals(getEvMaxVoltage(), that.getEvMaxVoltage())
+                && Objects.equals(getEvMaxPower(), that.getEvMaxPower())
+                && Objects.equals(getEvEnergyCapacity(), that.getEvEnergyCapacity())
+                && Objects.equals(getEnergyAmount(), that.getEnergyAmount())
+                && Objects.equals(getStateOfCharge(), that.getStateOfCharge())
+                && Objects.equals(getFullSoC(), that.getFullSoC())
+                && Objects.equals(getBulkSoC(), that.getBulkSoC())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

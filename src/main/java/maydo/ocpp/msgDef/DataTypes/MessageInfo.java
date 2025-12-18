@@ -308,16 +308,16 @@ public class MessageInfo implements JsonInterface {
         if (!(obj instanceof MessageInfo))
             return false;
         MessageInfo that = (MessageInfo) obj;
-        return Objects.equals(this.messageExtra, that.messageExtra)
-                && Objects.equals(this.startDateTime, that.startDateTime)
-                && Objects.equals(this.display, that.display)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.state, that.state)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.endDateTime, that.endDateTime)
-                && Objects.equals(this.message, that.message)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getMessage(), that.getMessage())
+                && Objects.equals(getMessageExtra(), that.getMessageExtra())
+                && Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getDisplay(), that.getDisplay())
+                && Objects.equals(getState(), that.getState())
+                && Objects.equals(getStartDateTime(), that.getStartDateTime())
+                && Objects.equals(getEndDateTime(), that.getEndDateTime())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

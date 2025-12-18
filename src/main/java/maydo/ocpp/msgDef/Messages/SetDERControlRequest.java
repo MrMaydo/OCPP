@@ -315,18 +315,18 @@ public class SetDERControlRequest implements JsonInterface {
         if (!(obj instanceof SetDERControlRequest))
             return false;
         SetDERControlRequest that = (SetDERControlRequest) obj;
-        return Objects.equals(this.curve, that.curve)
-                && Objects.equals(this.fixedPFAbsorb, that.fixedPFAbsorb)
-                && Objects.equals(this.fixedPFInject, that.fixedPFInject)
-                && Objects.equals(this.gradient, that.gradient)
-                && Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.controlId, that.controlId)
-                && Objects.equals(this.freqDroop, that.freqDroop)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.controlType, that.controlType)
-                && Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.fixedVar, that.fixedVar);
+        return Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getControlId(), that.getControlId())
+                && Objects.equals(getControlType(), that.getControlType())
+                && Objects.equals(getCurve(), that.getCurve())
+                && Objects.equals(getEnterService(), that.getEnterService())
+                && Objects.equals(getFixedPFAbsorb(), that.getFixedPFAbsorb())
+                && Objects.equals(getFixedPFInject(), that.getFixedPFInject())
+                && Objects.equals(getFixedVar(), that.getFixedVar())
+                && Objects.equals(getFreqDroop(), that.getFreqDroop())
+                && Objects.equals(getGradient(), that.getGradient())
+                && Objects.equals(getLimitMaxDischarge(), that.getLimitMaxDischarge())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -109,8 +109,8 @@ public class GetVariablesRequest implements JsonInterface {
         if (!(obj instanceof GetVariablesRequest))
             return false;
         GetVariablesRequest that = (GetVariablesRequest) obj;
-        return Objects.equals(this.getVariableData, that.getVariableData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getGetVariableData(), that.getGetVariableData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

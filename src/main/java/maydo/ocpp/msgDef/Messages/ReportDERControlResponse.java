@@ -71,7 +71,7 @@ public class ReportDERControlResponse implements JsonInterface {
         if (!(obj instanceof ReportDERControlResponse))
             return false;
         ReportDERControlResponse that = (ReportDERControlResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

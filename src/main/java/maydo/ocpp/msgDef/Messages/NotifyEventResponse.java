@@ -71,7 +71,7 @@ public class NotifyEventResponse implements JsonInterface {
         if (!(obj instanceof NotifyEventResponse))
             return false;
         NotifyEventResponse that = (NotifyEventResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

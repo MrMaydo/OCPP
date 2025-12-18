@@ -162,11 +162,11 @@ public class OverstayRule implements JsonInterface {
         if (!(obj instanceof OverstayRule))
             return false;
         OverstayRule that = (OverstayRule) obj;
-        return Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.overstayFee, that.overstayFee)
-                && Objects.equals(this.overstayFeePeriod, that.overstayFeePeriod)
-                && Objects.equals(this.overstayRuleDescription, that.overstayRuleDescription);
+        return Objects.equals(getOverstayFee(), that.getOverstayFee())
+                && Objects.equals(getOverstayRuleDescription(), that.getOverstayRuleDescription())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getOverstayFeePeriod(), that.getOverstayFeePeriod())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

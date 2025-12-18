@@ -201,12 +201,12 @@ public class CostDetails implements JsonInterface {
         if (!(obj instanceof CostDetails))
             return false;
         CostDetails that = (CostDetails) obj;
-        return Objects.equals(this.failureToCalculate, that.failureToCalculate)
-                && Objects.equals(this.failureReason, that.failureReason)
-                && Objects.equals(this.totalUsage, that.totalUsage)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingPeriods, that.chargingPeriods)
-                && Objects.equals(this.totalCost, that.totalCost);
+        return Objects.equals(getTotalCost(), that.getTotalCost())
+                && Objects.equals(getTotalUsage(), that.getTotalUsage())
+                && Objects.equals(getChargingPeriods(), that.getChargingPeriods())
+                && Objects.equals(getFailureToCalculate(), that.getFailureToCalculate())
+                && Objects.equals(getFailureReason(), that.getFailureReason())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

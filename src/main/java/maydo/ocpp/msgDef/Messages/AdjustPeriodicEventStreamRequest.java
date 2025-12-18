@@ -118,9 +118,9 @@ public class AdjustPeriodicEventStreamRequest implements JsonInterface {
         if (!(obj instanceof AdjustPeriodicEventStreamRequest))
             return false;
         AdjustPeriodicEventStreamRequest that = (AdjustPeriodicEventStreamRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.params, that.params);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getParams(), that.getParams())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

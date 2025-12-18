@@ -456,22 +456,22 @@ public class ChargingSchedule implements JsonInterface {
         if (!(obj instanceof ChargingSchedule))
             return false;
         ChargingSchedule that = (ChargingSchedule) obj;
-        return Objects.equals(this.startSchedule, that.startSchedule)
-                && Objects.equals(this.chargingSchedulePeriod, that.chargingSchedulePeriod)
-                && Objects.equals(this.salesTariff, that.salesTariff)
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit)
-                && Objects.equals(this.powerTolerance, that.powerTolerance)
-                && Objects.equals(this.signatureId, that.signatureId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.limitAtSoC, that.limitAtSoC)
-                && Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.minChargingRate, that.minChargingRate)
-                && Objects.equals(this.digestValue, that.digestValue)
-                && Objects.equals(this.useLocalTime, that.useLocalTime)
-                && Objects.equals(this.priceLevelSchedule, that.priceLevelSchedule)
-                && Objects.equals(this.randomizedDelay, that.randomizedDelay)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.absolutePriceSchedule, that.absolutePriceSchedule);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getLimitAtSoC(), that.getLimitAtSoC())
+                && Objects.equals(getStartSchedule(), that.getStartSchedule())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getChargingRateUnit(), that.getChargingRateUnit())
+                && Objects.equals(getMinChargingRate(), that.getMinChargingRate())
+                && Objects.equals(getPowerTolerance(), that.getPowerTolerance())
+                && Objects.equals(getSignatureId(), that.getSignatureId())
+                && Objects.equals(getDigestValue(), that.getDigestValue())
+                && Objects.equals(getUseLocalTime(), that.getUseLocalTime())
+                && Objects.equals(getChargingSchedulePeriod(), that.getChargingSchedulePeriod())
+                && Objects.equals(getRandomizedDelay(), that.getRandomizedDelay())
+                && Objects.equals(getSalesTariff(), that.getSalesTariff())
+                && Objects.equals(getAbsolutePriceSchedule(), that.getAbsolutePriceSchedule())
+                && Objects.equals(getPriceLevelSchedule(), that.getPriceLevelSchedule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

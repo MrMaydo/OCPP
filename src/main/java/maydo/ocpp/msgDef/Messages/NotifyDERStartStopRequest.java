@@ -183,11 +183,11 @@ public class NotifyDERStartStopRequest implements JsonInterface {
         if (!(obj instanceof NotifyDERStartStopRequest))
             return false;
         NotifyDERStartStopRequest that = (NotifyDERStartStopRequest) obj;
-        return Objects.equals(this.started, that.started)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.controlId, that.controlId)
-                && Objects.equals(this.supersededIds, that.supersededIds)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getControlId(), that.getControlId())
+                && Objects.equals(getStarted(), that.getStarted())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getSupersededIds(), that.getSupersededIds())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

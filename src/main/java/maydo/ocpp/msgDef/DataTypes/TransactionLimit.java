@@ -163,11 +163,11 @@ public class TransactionLimit implements JsonInterface {
         if (!(obj instanceof TransactionLimit))
             return false;
         TransactionLimit that = (TransactionLimit) obj;
-        return Objects.equals(this.maxCost, that.maxCost)
-                && Objects.equals(this.maxEnergy, that.maxEnergy)
-                && Objects.equals(this.maxTime, that.maxTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maxSoC, that.maxSoC);
+        return Objects.equals(getMaxCost(), that.getMaxCost())
+                && Objects.equals(getMaxEnergy(), that.getMaxEnergy())
+                && Objects.equals(getMaxTime(), that.getMaxTime())
+                && Objects.equals(getMaxSoC(), that.getMaxSoC())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

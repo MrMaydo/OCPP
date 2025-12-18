@@ -138,10 +138,10 @@ public class ConstantStreamData implements JsonInterface {
         if (!(obj instanceof ConstantStreamData))
             return false;
         ConstantStreamData that = (ConstantStreamData) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.params, that.params)
-                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getParams(), that.getParams())
+                && Objects.equals(getVariableMonitoringId(), that.getVariableMonitoringId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

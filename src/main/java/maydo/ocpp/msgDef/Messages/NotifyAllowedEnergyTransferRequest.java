@@ -135,9 +135,9 @@ public class NotifyAllowedEnergyTransferRequest implements JsonInterface {
         if (!(obj instanceof NotifyAllowedEnergyTransferRequest))
             return false;
         NotifyAllowedEnergyTransferRequest that = (NotifyAllowedEnergyTransferRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getAllowedEnergyTransfer(), that.getAllowedEnergyTransfer())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -117,9 +117,9 @@ public class VatNumberValidationRequest implements JsonInterface {
         if (!(obj instanceof VatNumberValidationRequest))
             return false;
         VatNumberValidationRequest that = (VatNumberValidationRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.vatNumber, that.vatNumber);
+        return Objects.equals(getVatNumber(), that.getVatNumber())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

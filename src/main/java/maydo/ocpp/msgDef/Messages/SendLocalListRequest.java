@@ -158,10 +158,10 @@ public class SendLocalListRequest implements JsonInterface {
         if (!(obj instanceof SendLocalListRequest))
             return false;
         SendLocalListRequest that = (SendLocalListRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.localAuthorizationList, that.localAuthorizationList)
-                && Objects.equals(this.versionNumber, that.versionNumber)
-                && Objects.equals(this.updateType, that.updateType);
+        return Objects.equals(getLocalAuthorizationList(), that.getLocalAuthorizationList())
+                && Objects.equals(getVersionNumber(), that.getVersionNumber())
+                && Objects.equals(getUpdateType(), that.getUpdateType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

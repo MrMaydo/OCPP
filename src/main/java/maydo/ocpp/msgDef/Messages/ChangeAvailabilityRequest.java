@@ -121,9 +121,9 @@ public class ChangeAvailabilityRequest implements JsonInterface {
         if (!(obj instanceof ChangeAvailabilityRequest))
             return false;
         ChangeAvailabilityRequest that = (ChangeAvailabilityRequest) obj;
-        return Objects.equals(this.operationalStatus, that.operationalStatus)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evse, that.evse);
+        return Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getOperationalStatus(), that.getOperationalStatus())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

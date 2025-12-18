@@ -116,9 +116,9 @@ public class CostDimension implements JsonInterface {
         if (!(obj instanceof CostDimension))
             return false;
         CostDimension that = (CostDimension) obj;
-        return Objects.equals(this.volume, that.volume)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getVolume(), that.getVolume())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

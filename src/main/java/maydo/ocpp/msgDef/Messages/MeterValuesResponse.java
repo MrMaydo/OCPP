@@ -75,7 +75,7 @@ public class MeterValuesResponse implements JsonInterface {
         if (!(obj instanceof MeterValuesResponse))
             return false;
         MeterValuesResponse that = (MeterValuesResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -160,11 +160,11 @@ public class LimitMaxDischargeGet implements JsonInterface {
         if (!(obj instanceof LimitMaxDischargeGet))
             return false;
         LimitMaxDischargeGet that = (LimitMaxDischargeGet) obj;
-        return Objects.equals(this.limitMaxDischarge, that.limitMaxDischarge)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.isSuperseded, that.isSuperseded);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getIsSuperseded(), that.getIsSuperseded())
+                && Objects.equals(getLimitMaxDischarge(), that.getLimitMaxDischarge())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

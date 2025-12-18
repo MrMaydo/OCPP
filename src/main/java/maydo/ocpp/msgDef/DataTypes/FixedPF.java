@@ -193,12 +193,12 @@ public class FixedPF implements JsonInterface {
         if (!(obj instanceof FixedPF))
             return false;
         FixedPF that = (FixedPF) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.excitation, that.excitation)
-                && Objects.equals(this.displacement, that.displacement)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getDisplacement(), that.getDisplacement())
+                && Objects.equals(getExcitation(), that.getExcitation())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

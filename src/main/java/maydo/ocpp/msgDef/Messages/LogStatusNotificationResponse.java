@@ -72,7 +72,7 @@ public class LogStatusNotificationResponse implements JsonInterface {
         if (!(obj instanceof LogStatusNotificationResponse))
             return false;
         LogStatusNotificationResponse that = (LogStatusNotificationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

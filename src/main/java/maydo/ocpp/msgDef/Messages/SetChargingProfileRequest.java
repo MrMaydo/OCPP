@@ -121,9 +121,9 @@ public class SetChargingProfileRequest implements JsonInterface {
         if (!(obj instanceof SetChargingProfileRequest))
             return false;
         SetChargingProfileRequest that = (SetChargingProfileRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

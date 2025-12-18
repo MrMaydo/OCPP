@@ -177,11 +177,11 @@ public class SalesTariff implements JsonInterface {
         if (!(obj instanceof SalesTariff))
             return false;
         SalesTariff that = (SalesTariff) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.salesTariffEntry, that.salesTariffEntry)
-                && Objects.equals(this.salesTariffDescription, that.salesTariffDescription)
-                && Objects.equals(this.numEPriceLevels, that.numEPriceLevels);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getSalesTariffDescription(), that.getSalesTariffDescription())
+                && Objects.equals(getNumEPriceLevels(), that.getNumEPriceLevels())
+                && Objects.equals(getSalesTariffEntry(), that.getSalesTariffEntry())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

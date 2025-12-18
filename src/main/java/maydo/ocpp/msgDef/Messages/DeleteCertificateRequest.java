@@ -96,8 +96,8 @@ public class DeleteCertificateRequest implements JsonInterface {
         if (!(obj instanceof DeleteCertificateRequest))
             return false;
         DeleteCertificateRequest that = (DeleteCertificateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

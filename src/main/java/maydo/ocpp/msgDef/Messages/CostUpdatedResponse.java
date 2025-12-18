@@ -73,7 +73,7 @@ public class CostUpdatedResponse implements JsonInterface {
         if (!(obj instanceof CostUpdatedResponse))
             return false;
         CostUpdatedResponse that = (CostUpdatedResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

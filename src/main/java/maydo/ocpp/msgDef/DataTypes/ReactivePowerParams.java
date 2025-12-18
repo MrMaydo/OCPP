@@ -139,10 +139,10 @@ public class ReactivePowerParams implements JsonInterface {
         if (!(obj instanceof ReactivePowerParams))
             return false;
         ReactivePowerParams that = (ReactivePowerParams) obj;
-        return Objects.equals(this.autonomousVRefEnable, that.autonomousVRefEnable)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.vRef, that.vRef)
-                && Objects.equals(this.autonomousVRefTimeConstant, that.autonomousVRefTimeConstant);
+        return Objects.equals(getVRef(), that.getVRef())
+                && Objects.equals(getAutonomousVRefEnable(), that.getAutonomousVRefEnable())
+                && Objects.equals(getAutonomousVRefTimeConstant(), that.getAutonomousVRefTimeConstant())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

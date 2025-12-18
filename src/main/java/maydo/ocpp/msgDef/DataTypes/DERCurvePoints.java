@@ -117,9 +117,9 @@ public class DERCurvePoints implements JsonInterface {
         if (!(obj instanceof DERCurvePoints))
             return false;
         DERCurvePoints that = (DERCurvePoints) obj;
-        return Objects.equals(this.x, that.x)
-                && Objects.equals(this.y, that.y)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getX(), that.getX())
+                && Objects.equals(getY(), that.getY())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

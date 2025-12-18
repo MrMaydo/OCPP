@@ -145,10 +145,10 @@ public class VoltageParams implements JsonInterface {
         if (!(obj instanceof VoltageParams))
             return false;
         VoltageParams that = (VoltageParams) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.hv10MinMeanValue, that.hv10MinMeanValue)
-                && Objects.equals(this.powerDuringCessation, that.powerDuringCessation)
-                && Objects.equals(this.hv10MinMeanTripDelay, that.hv10MinMeanTripDelay);
+        return Objects.equals(getHv10MinMeanValue(), that.getHv10MinMeanValue())
+                && Objects.equals(getHv10MinMeanTripDelay(), that.getHv10MinMeanTripDelay())
+                && Objects.equals(getPowerDuringCessation(), that.getPowerDuringCessation())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

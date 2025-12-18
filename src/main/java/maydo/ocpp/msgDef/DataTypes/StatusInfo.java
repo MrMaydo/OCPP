@@ -118,9 +118,9 @@ public class StatusInfo implements JsonInterface {
         if (!(obj instanceof StatusInfo))
             return false;
         StatusInfo that = (StatusInfo) obj;
-        return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reasonCode, that.reasonCode);
+        return Objects.equals(getReasonCode(), that.getReasonCode())
+                && Objects.equals(getAdditionalInfo(), that.getAdditionalInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

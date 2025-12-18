@@ -137,10 +137,10 @@ public class Gradient implements JsonInterface {
         if (!(obj instanceof Gradient))
             return false;
         Gradient that = (Gradient) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.softGradient, that.softGradient)
-                && Objects.equals(this.gradient, that.gradient);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getGradient(), that.getGradient())
+                && Objects.equals(getSoftGradient(), that.getSoftGradient())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

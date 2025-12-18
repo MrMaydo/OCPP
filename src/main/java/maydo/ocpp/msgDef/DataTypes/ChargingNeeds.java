@@ -338,17 +338,17 @@ public class ChargingNeeds implements JsonInterface {
         if (!(obj instanceof ChargingNeeds))
             return false;
         ChargingNeeds that = (ChargingNeeds) obj;
-        return Objects.equals(this.acChargingParameters, that.acChargingParameters)
-                && Objects.equals(this.controlMode, that.controlMode)
-                && Objects.equals(this.departureTime, that.departureTime)
-                && Objects.equals(this.evEnergyOffer, that.evEnergyOffer)
-                && Objects.equals(this.mobilityNeedsMode, that.mobilityNeedsMode)
-                && Objects.equals(this.availableEnergyTransfer, that.availableEnergyTransfer)
-                && Objects.equals(this.v2xChargingParameters, that.v2xChargingParameters)
-                && Objects.equals(this.dcChargingParameters, that.dcChargingParameters)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.requestedEnergyTransfer, that.requestedEnergyTransfer)
-                && Objects.equals(this.derChargingParameters, that.derChargingParameters);
+        return Objects.equals(getRequestedEnergyTransfer(), that.getRequestedEnergyTransfer())
+                && Objects.equals(getAvailableEnergyTransfer(), that.getAvailableEnergyTransfer())
+                && Objects.equals(getControlMode(), that.getControlMode())
+                && Objects.equals(getMobilityNeedsMode(), that.getMobilityNeedsMode())
+                && Objects.equals(getDepartureTime(), that.getDepartureTime())
+                && Objects.equals(getEvEnergyOffer(), that.getEvEnergyOffer())
+                && Objects.equals(getAcChargingParameters(), that.getAcChargingParameters())
+                && Objects.equals(getDcChargingParameters(), that.getDcChargingParameters())
+                && Objects.equals(getDerChargingParameters(), that.getDerChargingParameters())
+                && Objects.equals(getV2xChargingParameters(), that.getV2xChargingParameters())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

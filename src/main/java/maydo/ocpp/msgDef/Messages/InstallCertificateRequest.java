@@ -119,9 +119,9 @@ public class InstallCertificateRequest implements JsonInterface {
         if (!(obj instanceof InstallCertificateRequest))
             return false;
         InstallCertificateRequest that = (InstallCertificateRequest) obj;
-        return Objects.equals(this.certificate, that.certificate)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateType, that.certificateType);
+        return Objects.equals(getCertificateType(), that.getCertificateType())
+                && Objects.equals(getCertificate(), that.getCertificate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -208,12 +208,12 @@ public class PriceLevelSchedule implements JsonInterface {
         if (!(obj instanceof PriceLevelSchedule))
             return false;
         PriceLevelSchedule that = (PriceLevelSchedule) obj;
-        return Objects.equals(this.priceScheduleId, that.priceScheduleId)
-                && Objects.equals(this.priceLevelScheduleEntries, that.priceLevelScheduleEntries)
-                && Objects.equals(this.timeAnchor, that.timeAnchor)
-                && Objects.equals(this.priceScheduleDescription, that.priceScheduleDescription)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.numberOfPriceLevels, that.numberOfPriceLevels);
+        return Objects.equals(getPriceLevelScheduleEntries(), that.getPriceLevelScheduleEntries())
+                && Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getPriceScheduleId(), that.getPriceScheduleId())
+                && Objects.equals(getPriceScheduleDescription(), that.getPriceScheduleDescription())
+                && Objects.equals(getNumberOfPriceLevels(), that.getNumberOfPriceLevels())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

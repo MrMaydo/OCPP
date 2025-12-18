@@ -116,9 +116,9 @@ public class RationalNumber implements JsonInterface {
         if (!(obj instanceof RationalNumber))
             return false;
         RationalNumber that = (RationalNumber) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.value, that.value)
-                && Objects.equals(this.exponent, that.exponent);
+        return Objects.equals(getExponent(), that.getExponent())
+                && Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

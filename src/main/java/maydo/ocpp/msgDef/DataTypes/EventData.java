@@ -403,21 +403,21 @@ public class EventData implements JsonInterface {
         if (!(obj instanceof EventData))
             return false;
         EventData that = (EventData) obj;
-        return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.eventId, that.eventId)
-                && Objects.equals(this.techCode, that.techCode)
-                && Objects.equals(this.actualValue, that.actualValue)
-                && Objects.equals(this.cause, that.cause)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.trigger, that.trigger)
-                && Objects.equals(this.techInfo, that.techInfo)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.variableMonitoringId, that.variableMonitoringId)
-                && Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
-                && Objects.equals(this.cleared, that.cleared)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getEventId(), that.getEventId())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getTrigger(), that.getTrigger())
+                && Objects.equals(getCause(), that.getCause())
+                && Objects.equals(getActualValue(), that.getActualValue())
+                && Objects.equals(getTechCode(), that.getTechCode())
+                && Objects.equals(getTechInfo(), that.getTechInfo())
+                && Objects.equals(getCleared(), that.getCleared())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariableMonitoringId(), that.getVariableMonitoringId())
+                && Objects.equals(getEventNotificationType(), that.getEventNotificationType())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getSeverity(), that.getSeverity())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

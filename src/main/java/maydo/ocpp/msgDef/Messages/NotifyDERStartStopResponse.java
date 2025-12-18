@@ -71,7 +71,7 @@ public class NotifyDERStartStopResponse implements JsonInterface {
         if (!(obj instanceof NotifyDERStartStopResponse))
             return false;
         NotifyDERStartStopResponse that = (NotifyDERStartStopResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

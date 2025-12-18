@@ -118,9 +118,9 @@ public class TariffTimePrice implements JsonInterface {
         if (!(obj instanceof TariffTimePrice))
             return false;
         TariffTimePrice that = (TariffTimePrice) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceMinute, that.priceMinute)
-                && Objects.equals(this.conditions, that.conditions);
+        return Objects.equals(getPriceMinute(), that.getPriceMinute())
+                && Objects.equals(getConditions(), that.getConditions())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

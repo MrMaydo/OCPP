@@ -162,12 +162,8 @@ public class VariableAttribute implements JsonInterface {
         if (!(obj instanceof VariableAttribute))
             return false;
         VariableAttribute that = (VariableAttribute) obj;
-        return Objects.equals(this.constant, that.constant)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.mutability, that.mutability)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.persistent, that.persistent)
-                && Objects.equals(this.value, that.value);
+        return Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

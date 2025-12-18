@@ -75,7 +75,7 @@ public class StatusNotificationResponse implements JsonInterface {
         if (!(obj instanceof StatusNotificationResponse))
             return false;
         StatusNotificationResponse that = (StatusNotificationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

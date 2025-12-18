@@ -71,7 +71,7 @@ public class BatterySwapResponse implements JsonInterface {
         if (!(obj instanceof BatterySwapResponse))
             return false;
         BatterySwapResponse that = (BatterySwapResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

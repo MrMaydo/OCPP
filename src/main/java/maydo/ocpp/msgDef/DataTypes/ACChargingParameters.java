@@ -169,11 +169,11 @@ public class ACChargingParameters implements JsonInterface {
         if (!(obj instanceof ACChargingParameters))
             return false;
         ACChargingParameters that = (ACChargingParameters) obj;
-        return Objects.equals(this.energyAmount, that.energyAmount)
-                && Objects.equals(this.evMaxCurrent, that.evMaxCurrent)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evMinCurrent, that.evMinCurrent)
-                && Objects.equals(this.evMaxVoltage, that.evMaxVoltage);
+        return Objects.equals(getEnergyAmount(), that.getEnergyAmount())
+                && Objects.equals(getEvMinCurrent(), that.getEvMinCurrent())
+                && Objects.equals(getEvMaxCurrent(), that.getEvMaxCurrent())
+                && Objects.equals(getEvMaxVoltage(), that.getEvMaxVoltage())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

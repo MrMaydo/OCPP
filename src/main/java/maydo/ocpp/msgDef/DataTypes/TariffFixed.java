@@ -139,9 +139,9 @@ public class TariffFixed implements JsonInterface {
         if (!(obj instanceof TariffFixed))
             return false;
         TariffFixed that = (TariffFixed) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxRates, that.taxRates)
-                && Objects.equals(this.prices, that.prices);
+        return Objects.equals(getPrices(), that.getPrices())
+                && Objects.equals(getTaxRates(), that.getTaxRates())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

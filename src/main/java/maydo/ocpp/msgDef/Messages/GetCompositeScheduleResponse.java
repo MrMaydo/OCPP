@@ -145,10 +145,10 @@ public class GetCompositeScheduleResponse implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleResponse))
             return false;
         GetCompositeScheduleResponse that = (GetCompositeScheduleResponse) obj;
-        return Objects.equals(this.schedule, that.schedule)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getSchedule(), that.getSchedule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

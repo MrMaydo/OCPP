@@ -145,10 +145,10 @@ public class GetChargingProfilesRequest implements JsonInterface {
         if (!(obj instanceof GetChargingProfilesRequest))
             return false;
         GetChargingProfilesRequest that = (GetChargingProfilesRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.chargingProfile, that.chargingProfile)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

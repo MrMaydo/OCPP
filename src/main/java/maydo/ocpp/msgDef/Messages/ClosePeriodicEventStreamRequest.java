@@ -94,8 +94,8 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
         if (!(obj instanceof ClosePeriodicEventStreamRequest))
             return false;
         ClosePeriodicEventStreamRequest that = (ClosePeriodicEventStreamRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

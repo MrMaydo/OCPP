@@ -140,10 +140,10 @@ public class ClearMonitoringResult implements JsonInterface {
         if (!(obj instanceof ClearMonitoringResult))
             return false;
         ClearMonitoringResult that = (ClearMonitoringResult) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

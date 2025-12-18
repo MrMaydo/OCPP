@@ -94,8 +94,8 @@ public class GetTariffsRequest implements JsonInterface {
         if (!(obj instanceof GetTariffsRequest))
             return false;
         GetTariffsRequest that = (GetTariffsRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -94,8 +94,8 @@ public class RequestStopTransactionRequest implements JsonInterface {
         if (!(obj instanceof RequestStopTransactionRequest))
             return false;
         RequestStopTransactionRequest that = (RequestStopTransactionRequest) obj;
-        return Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -449,21 +449,21 @@ public class ChargingProfile implements JsonInterface {
         if (!(obj instanceof ChargingProfile))
             return false;
         ChargingProfile that = (ChargingProfile) obj;
-        return Objects.equals(this.recurrencyKind, that.recurrencyKind)
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.validFrom, that.validFrom)
-                && Objects.equals(this.stackLevel, that.stackLevel)
-                && Objects.equals(this.priceScheduleSignature, that.priceScheduleSignature)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.chargingProfileKind, that.chargingProfileKind)
-                && Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.invalidAfterOfflineDuration, that.invalidAfterOfflineDuration)
-                && Objects.equals(this.dynUpdateTime, that.dynUpdateTime)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.maxOfflineDuration, that.maxOfflineDuration)
-                && Objects.equals(this.validTo, that.validTo)
-                && Objects.equals(this.dynUpdateInterval, that.dynUpdateInterval);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getStackLevel(), that.getStackLevel())
+                && Objects.equals(getChargingProfilePurpose(), that.getChargingProfilePurpose())
+                && Objects.equals(getChargingProfileKind(), that.getChargingProfileKind())
+                && Objects.equals(getChargingSchedule(), that.getChargingSchedule())
+                && Objects.equals(getRecurrencyKind(), that.getRecurrencyKind())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getValidTo(), that.getValidTo())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getMaxOfflineDuration(), that.getMaxOfflineDuration())
+                && Objects.equals(getInvalidAfterOfflineDuration(), that.getInvalidAfterOfflineDuration())
+                && Objects.equals(getDynUpdateInterval(), that.getDynUpdateInterval())
+                && Objects.equals(getDynUpdateTime(), that.getDynUpdateTime())
+                && Objects.equals(getPriceScheduleSignature(), that.getPriceScheduleSignature())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

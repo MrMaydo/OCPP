@@ -119,9 +119,9 @@ public class TotalPrice implements JsonInterface {
         if (!(obj instanceof TotalPrice))
             return false;
         TotalPrice that = (TotalPrice) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.inclTax, that.inclTax)
-                && Objects.equals(this.exclTax, that.exclTax);
+        return Objects.equals(getExclTax(), that.getExclTax())
+                && Objects.equals(getInclTax(), that.getInclTax())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

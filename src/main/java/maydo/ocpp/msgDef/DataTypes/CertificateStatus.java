@@ -172,11 +172,11 @@ public class CertificateStatus implements JsonInterface {
         if (!(obj instanceof CertificateStatus))
             return false;
         CertificateStatus that = (CertificateStatus) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData)
-                && Objects.equals(this.source, that.source)
-                && Objects.equals(this.status, that.status)
-                && Objects.equals(this.nextUpdate, that.nextUpdate);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getSource(), that.getSource())
+                && Objects.equals(getNextUpdate(), that.getNextUpdate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -95,8 +95,8 @@ public class PullDynamicScheduleUpdateRequest implements JsonInterface {
         if (!(obj instanceof PullDynamicScheduleUpdateRequest))
             return false;
         PullDynamicScheduleUpdateRequest that = (PullDynamicScheduleUpdateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId);
+        return Objects.equals(getChargingProfileId(), that.getChargingProfileId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

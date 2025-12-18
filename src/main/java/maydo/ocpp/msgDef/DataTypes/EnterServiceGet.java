@@ -116,9 +116,9 @@ public class EnterServiceGet implements JsonInterface {
         if (!(obj instanceof EnterServiceGet))
             return false;
         EnterServiceGet that = (EnterServiceGet) obj;
-        return Objects.equals(this.enterService, that.enterService)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getEnterService(), that.getEnterService())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

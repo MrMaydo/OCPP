@@ -140,9 +140,9 @@ public class MeterValue implements JsonInterface {
         if (!(obj instanceof MeterValue))
             return false;
         MeterValue that = (MeterValue) obj;
-        return Objects.equals(this.sampledValue, that.sampledValue)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getSampledValue(), that.getSampledValue())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

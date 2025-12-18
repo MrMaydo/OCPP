@@ -158,10 +158,10 @@ public class AuthorizeRequest implements JsonInterface {
         if (!(obj instanceof AuthorizeRequest))
             return false;
         AuthorizeRequest that = (AuthorizeRequest) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.certificate, that.certificate)
-                && Objects.equals(this.iso15118CertificateHashData, that.iso15118CertificateHashData)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getCertificate(), that.getCertificate())
+                && Objects.equals(getIso15118CertificateHashData(), that.getIso15118CertificateHashData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -200,12 +200,12 @@ public class LimitMaxDischarge implements JsonInterface {
         if (!(obj instanceof LimitMaxDischarge))
             return false;
         LimitMaxDischarge that = (LimitMaxDischarge) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.powerMonitoringMustTrip, that.powerMonitoringMustTrip)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.pctMaxDischargePower, that.pctMaxDischargePower);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getPctMaxDischargePower(), that.getPctMaxDischargePower())
+                && Objects.equals(getPowerMonitoringMustTrip(), that.getPowerMonitoringMustTrip())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

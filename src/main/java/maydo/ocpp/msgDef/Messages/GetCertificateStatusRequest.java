@@ -96,8 +96,8 @@ public class GetCertificateStatusRequest implements JsonInterface {
         if (!(obj instanceof GetCertificateStatusRequest))
             return false;
         GetCertificateStatusRequest that = (GetCertificateStatusRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.ocspRequestData, that.ocspRequestData);
+        return Objects.equals(getOcspRequestData(), that.getOcspRequestData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

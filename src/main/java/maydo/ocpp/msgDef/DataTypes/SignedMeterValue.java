@@ -165,11 +165,11 @@ public class SignedMeterValue implements JsonInterface {
         if (!(obj instanceof SignedMeterValue))
             return false;
         SignedMeterValue that = (SignedMeterValue) obj;
-        return Objects.equals(this.signedMeterData, that.signedMeterData)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.publicKey, that.publicKey)
-                && Objects.equals(this.signingMethod, that.signingMethod)
-                && Objects.equals(this.encodingMethod, that.encodingMethod);
+        return Objects.equals(getSignedMeterData(), that.getSignedMeterData())
+                && Objects.equals(getSigningMethod(), that.getSigningMethod())
+                && Objects.equals(getEncodingMethod(), that.getEncodingMethod())
+                && Objects.equals(getPublicKey(), that.getPublicKey())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

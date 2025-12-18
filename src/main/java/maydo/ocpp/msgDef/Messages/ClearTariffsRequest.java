@@ -129,9 +129,9 @@ public class ClearTariffsRequest implements JsonInterface {
         if (!(obj instanceof ClearTariffsRequest))
             return false;
         ClearTariffsRequest that = (ClearTariffsRequest) obj;
-        return Objects.equals(this.tariffIds, that.tariffIds)
-                && Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getTariffIds(), that.getTariffIds())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

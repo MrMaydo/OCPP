@@ -251,15 +251,15 @@ public class TaxRule implements JsonInterface {
         if (!(obj instanceof TaxRule))
             return false;
         TaxRule that = (TaxRule) obj;
-        return Objects.equals(this.appliesToEnergyFee, that.appliesToEnergyFee)
-                && Objects.equals(this.taxRate, that.taxRate)
-                && Objects.equals(this.taxRuleID, that.taxRuleID)
-                && Objects.equals(this.taxRuleName, that.taxRuleName)
-                && Objects.equals(this.appliesToOverstayFee, that.appliesToOverstayFee)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxIncludedInPrice, that.taxIncludedInPrice)
-                && Objects.equals(this.appliesToParkingFee, that.appliesToParkingFee)
-                && Objects.equals(this.appliesToMinimumMaximumCost, that.appliesToMinimumMaximumCost);
+        return Objects.equals(getTaxRuleID(), that.getTaxRuleID())
+                && Objects.equals(getTaxRuleName(), that.getTaxRuleName())
+                && Objects.equals(getTaxIncludedInPrice(), that.getTaxIncludedInPrice())
+                && Objects.equals(getAppliesToEnergyFee(), that.getAppliesToEnergyFee())
+                && Objects.equals(getAppliesToParkingFee(), that.getAppliesToParkingFee())
+                && Objects.equals(getAppliesToOverstayFee(), that.getAppliesToOverstayFee())
+                && Objects.equals(getAppliesToMinimumMaximumCost(), that.getAppliesToMinimumMaximumCost())
+                && Objects.equals(getTaxRate(), that.getTaxRate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

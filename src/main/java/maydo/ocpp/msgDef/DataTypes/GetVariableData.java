@@ -134,10 +134,9 @@ public class GetVariableData implements JsonInterface {
         if (!(obj instanceof GetVariableData))
             return false;
         GetVariableData that = (GetVariableData) obj;
-        return Objects.equals(this.variable, that.variable)
-                && Objects.equals(this.component, that.component)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.attributeType, that.attributeType);
+        return Objects.equals(getComponent(), that.getComponent())
+                && Objects.equals(getVariable(), that.getVariable())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -105,8 +105,8 @@ public class HeartbeatResponse implements JsonInterface {
         if (!(obj instanceof HeartbeatResponse))
             return false;
         HeartbeatResponse that = (HeartbeatResponse) obj;
-        return Objects.equals(this.currentTime, that.currentTime)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCurrentTime(), that.getCurrentTime())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

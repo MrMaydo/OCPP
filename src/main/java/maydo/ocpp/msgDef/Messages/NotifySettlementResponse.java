@@ -118,9 +118,9 @@ public class NotifySettlementResponse implements JsonInterface {
         if (!(obj instanceof NotifySettlementResponse))
             return false;
         NotifySettlementResponse that = (NotifySettlementResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.receiptUrl, that.receiptUrl)
-                && Objects.equals(this.receiptId, that.receiptId);
+        return Objects.equals(getReceiptUrl(), that.getReceiptUrl())
+                && Objects.equals(getReceiptId(), that.getReceiptId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

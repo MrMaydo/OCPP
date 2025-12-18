@@ -285,16 +285,16 @@ public class TotalCost implements JsonInterface {
         if (!(obj instanceof TotalCost))
             return false;
         TotalCost that = (TotalCost) obj;
-        return Objects.equals(this.total, that.total)
-                && Objects.equals(this.chargingTime, that.chargingTime)
-                && Objects.equals(this.reservationTime, that.reservationTime)
-                && Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.fixed, that.fixed)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.typeOfCost, that.typeOfCost)
-                && Objects.equals(this.idleTime, that.idleTime)
-                && Objects.equals(this.reservationFixed, that.reservationFixed)
-                && Objects.equals(this.energy, that.energy);
+        return Objects.equals(getCurrency(), that.getCurrency())
+                && Objects.equals(getTypeOfCost(), that.getTypeOfCost())
+                && Objects.equals(getFixed(), that.getFixed())
+                && Objects.equals(getEnergy(), that.getEnergy())
+                && Objects.equals(getChargingTime(), that.getChargingTime())
+                && Objects.equals(getIdleTime(), that.getIdleTime())
+                && Objects.equals(getReservationTime(), that.getReservationTime())
+                && Objects.equals(getReservationFixed(), that.getReservationFixed())
+                && Objects.equals(getTotal(), that.getTotal())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -307,17 +307,17 @@ public class NetworkConnectionProfile implements JsonInterface {
         if (!(obj instanceof NetworkConnectionProfile))
             return false;
         NetworkConnectionProfile that = (NetworkConnectionProfile) obj;
-        return Objects.equals(this.ocppTransport, that.ocppTransport)
-                && Objects.equals(this.securityProfile, that.securityProfile)
-                && Objects.equals(this.vpn, that.vpn)
-                && Objects.equals(this.ocppVersion, that.ocppVersion)
-                && Objects.equals(this.identity, that.identity)
-                && Objects.equals(this.basicAuthPassword, that.basicAuthPassword)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.ocppCsmsUrl, that.ocppCsmsUrl)
-                && Objects.equals(this.apn, that.apn)
-                && Objects.equals(this.ocppInterface, that.ocppInterface)
-                && Objects.equals(this.messageTimeout, that.messageTimeout);
+        return Objects.equals(getApn(), that.getApn())
+                && Objects.equals(getOcppVersion(), that.getOcppVersion())
+                && Objects.equals(getOcppInterface(), that.getOcppInterface())
+                && Objects.equals(getOcppTransport(), that.getOcppTransport())
+                && Objects.equals(getMessageTimeout(), that.getMessageTimeout())
+                && Objects.equals(getOcppCsmsUrl(), that.getOcppCsmsUrl())
+                && Objects.equals(getSecurityProfile(), that.getSecurityProfile())
+                && Objects.equals(getIdentity(), that.getIdentity())
+                && Objects.equals(getBasicAuthPassword(), that.getBasicAuthPassword())
+                && Objects.equals(getVpn(), that.getVpn())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -109,8 +109,8 @@ public class GetCertificateChainStatusRequest implements JsonInterface {
         if (!(obj instanceof GetCertificateChainStatusRequest))
             return false;
         GetCertificateChainStatusRequest that = (GetCertificateChainStatusRequest) obj;
-        return Objects.equals(this.certificateStatusRequests, that.certificateStatusRequests)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCertificateStatusRequests(), that.getCertificateStatusRequests())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

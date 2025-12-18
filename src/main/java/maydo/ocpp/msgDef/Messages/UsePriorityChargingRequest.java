@@ -118,9 +118,9 @@ public class UsePriorityChargingRequest implements JsonInterface {
         if (!(obj instanceof UsePriorityChargingRequest))
             return false;
         UsePriorityChargingRequest that = (UsePriorityChargingRequest) obj;
-        return Objects.equals(this.activate, that.activate)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getActivate(), that.getActivate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

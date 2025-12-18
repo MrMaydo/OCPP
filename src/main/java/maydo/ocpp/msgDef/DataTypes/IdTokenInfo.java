@@ -283,15 +283,15 @@ public class IdTokenInfo implements JsonInterface {
         if (!(obj instanceof IdTokenInfo))
             return false;
         IdTokenInfo that = (IdTokenInfo) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.language2, that.language2)
-                && Objects.equals(this.language1, that.language1)
-                && Objects.equals(this.cacheExpiryDateTime, that.cacheExpiryDateTime)
-                && Objects.equals(this.chargingPriority, that.chargingPriority)
-                && Objects.equals(this.personalMessage, that.personalMessage)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.groupIdToken, that.groupIdToken)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getCacheExpiryDateTime(), that.getCacheExpiryDateTime())
+                && Objects.equals(getChargingPriority(), that.getChargingPriority())
+                && Objects.equals(getGroupIdToken(), that.getGroupIdToken())
+                && Objects.equals(getLanguage1(), that.getLanguage1())
+                && Objects.equals(getLanguage2(), that.getLanguage2())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getPersonalMessage(), that.getPersonalMessage())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -184,11 +184,10 @@ public class NotifyEventRequest implements JsonInterface {
         if (!(obj instanceof NotifyEventRequest))
             return false;
         NotifyEventRequest that = (NotifyEventRequest) obj;
-        return Objects.equals(this.generatedAt, that.generatedAt)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.eventData, that.eventData)
-                && Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.seqNo, that.seqNo);
+        return Objects.equals(getGeneratedAt(), that.getGeneratedAt())
+                && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getEventData(), that.getEventData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

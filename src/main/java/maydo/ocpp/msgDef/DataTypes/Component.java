@@ -144,10 +144,10 @@ public class Component implements JsonInterface {
         if (!(obj instanceof Component))
             return false;
         Component that = (Component) obj;
-        return Objects.equals(this.name, that.name)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.instance, that.instance)
-                && Objects.equals(this.evse, that.evse);
+        return Objects.equals(getName(), that.getName())
+                && Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getInstance(), that.getInstance())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

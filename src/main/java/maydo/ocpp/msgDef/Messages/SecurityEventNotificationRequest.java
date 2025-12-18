@@ -149,10 +149,10 @@ public class SecurityEventNotificationRequest implements JsonInterface {
         if (!(obj instanceof SecurityEventNotificationRequest))
             return false;
         SecurityEventNotificationRequest that = (SecurityEventNotificationRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.techInfo, that.techInfo)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getTechInfo(), that.getTechInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

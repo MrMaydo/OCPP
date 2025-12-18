@@ -116,9 +116,9 @@ public class V2XSignalWattPoint implements JsonInterface {
         if (!(obj instanceof V2XSignalWattPoint))
             return false;
         V2XSignalWattPoint that = (V2XSignalWattPoint) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.power, that.power)
-                && Objects.equals(this.signal, that.signal);
+        return Objects.equals(getSignal(), that.getSignal())
+                && Objects.equals(getPower(), that.getPower())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -94,8 +94,8 @@ public class UnpublishFirmwareRequest implements JsonInterface {
         if (!(obj instanceof UnpublishFirmwareRequest))
             return false;
         UnpublishFirmwareRequest that = (UnpublishFirmwareRequest) obj;
-        return Objects.equals(this.checksum, that.checksum)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getChecksum(), that.getChecksum())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

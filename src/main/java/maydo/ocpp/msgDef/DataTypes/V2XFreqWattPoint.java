@@ -116,9 +116,9 @@ public class V2XFreqWattPoint implements JsonInterface {
         if (!(obj instanceof V2XFreqWattPoint))
             return false;
         V2XFreqWattPoint that = (V2XFreqWattPoint) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.power, that.power)
-                && Objects.equals(this.frequency, that.frequency);
+        return Objects.equals(getFrequency(), that.getFrequency())
+                && Objects.equals(getPower(), that.getPower())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

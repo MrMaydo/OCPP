@@ -266,15 +266,15 @@ public class Transaction implements JsonInterface {
         if (!(obj instanceof Transaction))
             return false;
         Transaction that = (Transaction) obj;
-        return Objects.equals(this.operationMode, that.operationMode)
-                && Objects.equals(this.remoteStartId, that.remoteStartId)
-                && Objects.equals(this.stoppedReason, that.stoppedReason)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.transactionLimit, that.transactionLimit)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.timeSpentCharging, that.timeSpentCharging)
-                && Objects.equals(this.chargingState, that.chargingState);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getChargingState(), that.getChargingState())
+                && Objects.equals(getTimeSpentCharging(), that.getTimeSpentCharging())
+                && Objects.equals(getStoppedReason(), that.getStoppedReason())
+                && Objects.equals(getRemoteStartId(), that.getRemoteStartId())
+                && Objects.equals(getOperationMode(), that.getOperationMode())
+                && Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getTransactionLimit(), that.getTransactionLimit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

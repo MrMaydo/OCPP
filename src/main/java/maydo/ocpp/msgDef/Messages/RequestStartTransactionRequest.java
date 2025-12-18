@@ -195,12 +195,12 @@ public class RequestStartTransactionRequest implements JsonInterface {
         if (!(obj instanceof RequestStartTransactionRequest))
             return false;
         RequestStartTransactionRequest that = (RequestStartTransactionRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.remoteStartId, that.remoteStartId)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.chargingProfile, that.chargingProfile)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.groupIdToken, that.groupIdToken);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getGroupIdToken(), that.getGroupIdToken())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRemoteStartId(), that.getRemoteStartId())
+                && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

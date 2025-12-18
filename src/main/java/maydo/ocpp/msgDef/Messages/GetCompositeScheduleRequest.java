@@ -141,10 +141,10 @@ public class GetCompositeScheduleRequest implements JsonInterface {
         if (!(obj instanceof GetCompositeScheduleRequest))
             return false;
         GetCompositeScheduleRequest that = (GetCompositeScheduleRequest) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingRateUnit, that.chargingRateUnit);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getChargingRateUnit(), that.getChargingRateUnit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

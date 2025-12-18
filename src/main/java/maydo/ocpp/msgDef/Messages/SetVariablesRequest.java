@@ -109,8 +109,8 @@ public class SetVariablesRequest implements JsonInterface {
         if (!(obj instanceof SetVariablesRequest))
             return false;
         SetVariablesRequest that = (SetVariablesRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.setVariableData, that.setVariableData);
+        return Objects.equals(getSetVariableData(), that.getSetVariableData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

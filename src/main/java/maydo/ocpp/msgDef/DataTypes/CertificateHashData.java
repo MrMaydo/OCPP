@@ -162,11 +162,11 @@ public class CertificateHashData implements JsonInterface {
         if (!(obj instanceof CertificateHashData))
             return false;
         CertificateHashData that = (CertificateHashData) obj;
-        return Objects.equals(this.issuerNameHash, that.issuerNameHash)
-                && Objects.equals(this.issuerKeyHash, that.issuerKeyHash)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.serialNumber, that.serialNumber)
-                && Objects.equals(this.hashAlgorithm, that.hashAlgorithm);
+        return Objects.equals(getHashAlgorithm(), that.getHashAlgorithm())
+                && Objects.equals(getIssuerNameHash(), that.getIssuerNameHash())
+                && Objects.equals(getIssuerKeyHash(), that.getIssuerKeyHash())
+                && Objects.equals(getSerialNumber(), that.getSerialNumber())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

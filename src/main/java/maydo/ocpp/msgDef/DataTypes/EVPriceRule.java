@@ -118,9 +118,9 @@ public class EVPriceRule implements JsonInterface {
         if (!(obj instanceof EVPriceRule))
             return false;
         EVPriceRule that = (EVPriceRule) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.energyFee, that.energyFee)
-                && Objects.equals(this.powerRangeStart, that.powerRangeStart);
+        return Objects.equals(getEnergyFee(), that.getEnergyFee())
+                && Objects.equals(getPowerRangeStart(), that.getPowerRangeStart())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

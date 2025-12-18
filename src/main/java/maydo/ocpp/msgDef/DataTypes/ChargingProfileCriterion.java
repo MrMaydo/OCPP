@@ -187,11 +187,11 @@ public class ChargingProfileCriterion implements JsonInterface {
         if (!(obj instanceof ChargingProfileCriterion))
             return false;
         ChargingProfileCriterion that = (ChargingProfileCriterion) obj;
-        return Objects.equals(this.chargingProfilePurpose, that.chargingProfilePurpose)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.stackLevel, that.stackLevel)
-                && Objects.equals(this.chargingProfileId, that.chargingProfileId)
-                && Objects.equals(this.chargingLimitSource, that.chargingLimitSource);
+        return Objects.equals(getChargingProfilePurpose(), that.getChargingProfilePurpose())
+                && Objects.equals(getStackLevel(), that.getStackLevel())
+                && Objects.equals(getChargingProfileId(), that.getChargingProfileId())
+                && Objects.equals(getChargingLimitSource(), that.getChargingLimitSource())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -71,7 +71,7 @@ public class NotifyPriorityChargingResponse implements JsonInterface {
         if (!(obj instanceof NotifyPriorityChargingResponse))
             return false;
         NotifyPriorityChargingResponse that = (NotifyPriorityChargingResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

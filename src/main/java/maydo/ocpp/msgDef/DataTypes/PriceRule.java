@@ -215,13 +215,13 @@ public class PriceRule implements JsonInterface {
         if (!(obj instanceof PriceRule))
             return false;
         PriceRule that = (PriceRule) obj;
-        return Objects.equals(this.renewableGenerationPercentage, that.renewableGenerationPercentage)
-                && Objects.equals(this.parkingFee, that.parkingFee)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.parkingFeePeriod, that.parkingFeePeriod)
-                && Objects.equals(this.energyFee, that.energyFee)
-                && Objects.equals(this.powerRangeStart, that.powerRangeStart)
-                && Objects.equals(this.carbonDioxideEmission, that.carbonDioxideEmission);
+        return Objects.equals(getParkingFeePeriod(), that.getParkingFeePeriod())
+                && Objects.equals(getCarbonDioxideEmission(), that.getCarbonDioxideEmission())
+                && Objects.equals(getRenewableGenerationPercentage(), that.getRenewableGenerationPercentage())
+                && Objects.equals(getEnergyFee(), that.getEnergyFee())
+                && Objects.equals(getParkingFee(), that.getParkingFee())
+                && Objects.equals(getPowerRangeStart(), that.getPowerRangeStart())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

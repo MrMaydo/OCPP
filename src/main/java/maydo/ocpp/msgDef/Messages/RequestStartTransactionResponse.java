@@ -145,10 +145,10 @@ public class RequestStartTransactionResponse implements JsonInterface {
         if (!(obj instanceof RequestStartTransactionResponse))
             return false;
         RequestStartTransactionResponse that = (RequestStartTransactionResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

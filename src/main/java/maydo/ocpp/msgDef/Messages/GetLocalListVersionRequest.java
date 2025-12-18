@@ -72,7 +72,7 @@ public class GetLocalListVersionRequest implements JsonInterface {
         if (!(obj instanceof GetLocalListVersionRequest))
             return false;
         GetLocalListVersionRequest that = (GetLocalListVersionRequest) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

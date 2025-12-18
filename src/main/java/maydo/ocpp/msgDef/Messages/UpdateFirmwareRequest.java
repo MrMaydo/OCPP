@@ -167,11 +167,11 @@ public class UpdateFirmwareRequest implements JsonInterface {
         if (!(obj instanceof UpdateFirmwareRequest))
             return false;
         UpdateFirmwareRequest that = (UpdateFirmwareRequest) obj;
-        return Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.retryInterval, that.retryInterval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.firmware, that.firmware)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRetries(), that.getRetries())
+                && Objects.equals(getRetryInterval(), that.getRetryInterval())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getFirmware(), that.getFirmware())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

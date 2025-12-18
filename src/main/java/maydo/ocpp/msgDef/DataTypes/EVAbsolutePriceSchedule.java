@@ -183,11 +183,11 @@ public class EVAbsolutePriceSchedule implements JsonInterface {
         if (!(obj instanceof EVAbsolutePriceSchedule))
             return false;
         EVAbsolutePriceSchedule that = (EVAbsolutePriceSchedule) obj;
-        return Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.evAbsolutePriceScheduleEntries, that.evAbsolutePriceScheduleEntries)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceAlgorithm, that.priceAlgorithm)
-                && Objects.equals(this.timeAnchor, that.timeAnchor);
+        return Objects.equals(getTimeAnchor(), that.getTimeAnchor())
+                && Objects.equals(getCurrency(), that.getCurrency())
+                && Objects.equals(getEvAbsolutePriceScheduleEntries(), that.getEvAbsolutePriceScheduleEntries())
+                && Objects.equals(getPriceAlgorithm(), that.getPriceAlgorithm())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

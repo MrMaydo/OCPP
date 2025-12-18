@@ -122,9 +122,9 @@ public class AuthorizationData implements JsonInterface {
         if (!(obj instanceof AuthorizationData))
             return false;
         AuthorizationData that = (AuthorizationData) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.idTokenInfo, that.idTokenInfo);
+        return Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getIdTokenInfo(), that.getIdTokenInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

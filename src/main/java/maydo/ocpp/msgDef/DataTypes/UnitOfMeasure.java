@@ -107,9 +107,7 @@ public class UnitOfMeasure implements JsonInterface {
         if (!(obj instanceof UnitOfMeasure))
             return false;
         UnitOfMeasure that = (UnitOfMeasure) obj;
-        return Objects.equals(this.unit, that.unit)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.multiplier, that.multiplier);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

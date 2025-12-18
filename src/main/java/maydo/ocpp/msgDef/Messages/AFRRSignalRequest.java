@@ -128,9 +128,9 @@ public class AFRRSignalRequest implements JsonInterface {
         if (!(obj instanceof AFRRSignalRequest))
             return false;
         AFRRSignalRequest that = (AFRRSignalRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.signal, that.signal)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getSignal(), that.getSignal())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

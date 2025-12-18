@@ -250,15 +250,15 @@ public class EnterService implements JsonInterface {
         if (!(obj instanceof EnterService))
             return false;
         EnterService that = (EnterService) obj;
-        return Objects.equals(this.rampRate, that.rampRate)
-                && Objects.equals(this.delay, that.delay)
-                && Objects.equals(this.lowFreq, that.lowFreq)
-                && Objects.equals(this.lowVoltage, that.lowVoltage)
-                && Objects.equals(this.highVoltage, that.highVoltage)
-                && Objects.equals(this.randomDelay, that.randomDelay)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority)
-                && Objects.equals(this.highFreq, that.highFreq);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getHighVoltage(), that.getHighVoltage())
+                && Objects.equals(getLowVoltage(), that.getLowVoltage())
+                && Objects.equals(getHighFreq(), that.getHighFreq())
+                && Objects.equals(getLowFreq(), that.getLowFreq())
+                && Objects.equals(getDelay(), that.getDelay())
+                && Objects.equals(getRandomDelay(), that.getRandomDelay())
+                && Objects.equals(getRampRate(), that.getRampRate())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

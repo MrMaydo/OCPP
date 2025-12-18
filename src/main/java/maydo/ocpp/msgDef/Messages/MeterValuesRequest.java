@@ -136,9 +136,9 @@ public class MeterValuesRequest implements JsonInterface {
         if (!(obj instanceof MeterValuesRequest))
             return false;
         MeterValuesRequest that = (MeterValuesRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.meterValue, that.meterValue);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getMeterValue(), that.getMeterValue())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

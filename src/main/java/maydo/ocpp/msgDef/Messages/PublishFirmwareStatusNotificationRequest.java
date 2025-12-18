@@ -178,11 +178,11 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
         if (!(obj instanceof PublishFirmwareStatusNotificationRequest))
             return false;
         PublishFirmwareStatusNotificationRequest that = (PublishFirmwareStatusNotificationRequest) obj;
-        return Objects.equals(this.location, that.location)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getLocation(), that.getLocation())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

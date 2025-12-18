@@ -142,10 +142,10 @@ public class TaxRate implements JsonInterface {
         if (!(obj instanceof TaxRate))
             return false;
         TaxRate that = (TaxRate) obj;
-        return Objects.equals(this.tax, that.tax)
-                && Objects.equals(this.stack, that.stack)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getTax(), that.getTax())
+                && Objects.equals(getStack(), that.getStack())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

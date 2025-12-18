@@ -106,8 +106,8 @@ public class SetMonitoringLevelRequest implements JsonInterface {
         if (!(obj instanceof SetMonitoringLevelRequest))
             return false;
         SetMonitoringLevelRequest that = (SetMonitoringLevelRequest) obj;
-        return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getSeverity(), that.getSeverity())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

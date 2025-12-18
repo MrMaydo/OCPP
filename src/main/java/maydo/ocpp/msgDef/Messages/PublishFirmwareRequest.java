@@ -187,12 +187,12 @@ public class PublishFirmwareRequest implements JsonInterface {
         if (!(obj instanceof PublishFirmwareRequest))
             return false;
         PublishFirmwareRequest that = (PublishFirmwareRequest) obj;
-        return Objects.equals(this.retries, that.retries)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.checksum, that.checksum)
-                && Objects.equals(this.location, that.location)
-                && Objects.equals(this.retryInterval, that.retryInterval)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getLocation(), that.getLocation())
+                && Objects.equals(getRetries(), that.getRetries())
+                && Objects.equals(getChecksum(), that.getChecksum())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getRetryInterval(), that.getRetryInterval())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

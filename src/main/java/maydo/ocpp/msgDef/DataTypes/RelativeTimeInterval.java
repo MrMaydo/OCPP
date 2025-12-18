@@ -116,9 +116,9 @@ public class RelativeTimeInterval implements JsonInterface {
         if (!(obj instanceof RelativeTimeInterval))
             return false;
         RelativeTimeInterval that = (RelativeTimeInterval) obj;
-        return Objects.equals(this.start, that.start)
-                && Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getStart(), that.getStart())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

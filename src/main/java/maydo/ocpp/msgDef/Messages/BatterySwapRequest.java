@@ -178,11 +178,11 @@ public class BatterySwapRequest implements JsonInterface {
         if (!(obj instanceof BatterySwapRequest))
             return false;
         BatterySwapRequest that = (BatterySwapRequest) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.eventType, that.eventType)
-                && Objects.equals(this.batteryData, that.batteryData)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getBatteryData(), that.getBatteryData())
+                && Objects.equals(getEventType(), that.getEventType())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

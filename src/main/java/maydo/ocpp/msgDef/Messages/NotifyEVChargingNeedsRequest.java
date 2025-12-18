@@ -177,11 +177,11 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
         if (!(obj instanceof NotifyEVChargingNeedsRequest))
             return false;
         NotifyEVChargingNeedsRequest that = (NotifyEVChargingNeedsRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maxScheduleTuples, that.maxScheduleTuples)
-                && Objects.equals(this.chargingNeeds, that.chargingNeeds)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getMaxScheduleTuples(), that.getMaxScheduleTuples())
+                && Objects.equals(getChargingNeeds(), that.getChargingNeeds())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

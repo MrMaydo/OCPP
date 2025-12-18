@@ -447,22 +447,21 @@ public class TransactionEventRequest implements JsonInterface {
         if (!(obj instanceof TransactionEventRequest))
             return false;
         TransactionEventRequest that = (TransactionEventRequest) obj;
-        return Objects.equals(this.preconditioningStatus, that.preconditioningStatus)
-                && Objects.equals(this.evseSleep, that.evseSleep)
-                && Objects.equals(this.seqNo, that.seqNo)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.eventType, that.eventType)
-                && Objects.equals(this.evse, that.evse)
-                && Objects.equals(this.transactionInfo, that.transactionInfo)
-                && Objects.equals(this.offline, that.offline)
-                && Objects.equals(this.reservationId, that.reservationId)
-                && Objects.equals(this.costDetails, that.costDetails)
-                && Objects.equals(this.triggerReason, that.triggerReason)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.meterValue, that.meterValue)
-                && Objects.equals(this.cableMaxCurrent, that.cableMaxCurrent)
-                && Objects.equals(this.numberOfPhasesUsed, that.numberOfPhasesUsed)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getCostDetails(), that.getCostDetails())
+                && Objects.equals(getEventType(), that.getEventType())
+                && Objects.equals(getMeterValue(), that.getMeterValue())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getTriggerReason(), that.getTriggerReason())
+                && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getNumberOfPhasesUsed(), that.getNumberOfPhasesUsed())
+                && Objects.equals(getCableMaxCurrent(), that.getCableMaxCurrent())
+                && Objects.equals(getReservationId(), that.getReservationId())
+                && Objects.equals(getPreconditioningStatus(), that.getPreconditioningStatus())
+                && Objects.equals(getEvseSleep(), that.getEvseSleep())
+                && Objects.equals(getTransactionInfo(), that.getTransactionInfo())
+                && Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

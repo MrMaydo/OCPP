@@ -129,9 +129,9 @@ public class PriceRuleStack implements JsonInterface {
         if (!(obj instanceof PriceRuleStack))
             return false;
         PriceRuleStack that = (PriceRuleStack) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceRule, that.priceRule);
+        return Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getPriceRule(), that.getPriceRule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -283,15 +283,15 @@ public class TariffConditionsFixed implements JsonInterface {
         if (!(obj instanceof TariffConditionsFixed))
             return false;
         TariffConditionsFixed that = (TariffConditionsFixed) obj;
-        return Objects.equals(this.evseKind, that.evseKind)
-                && Objects.equals(this.paymentRecognition, that.paymentRecognition)
-                && Objects.equals(this.dayOfWeek, that.dayOfWeek)
-                && Objects.equals(this.paymentBrand, that.paymentBrand)
-                && Objects.equals(this.endTimeOfDay, that.endTimeOfDay)
-                && Objects.equals(this.validFromDate, that.validFromDate)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.startTimeOfDay, that.startTimeOfDay)
-                && Objects.equals(this.validToDate, that.validToDate);
+        return Objects.equals(getStartTimeOfDay(), that.getStartTimeOfDay())
+                && Objects.equals(getEndTimeOfDay(), that.getEndTimeOfDay())
+                && Objects.equals(getDayOfWeek(), that.getDayOfWeek())
+                && Objects.equals(getValidFromDate(), that.getValidFromDate())
+                && Objects.equals(getValidToDate(), that.getValidToDate())
+                && Objects.equals(getEvseKind(), that.getEvseKind())
+                && Objects.equals(getPaymentBrand(), that.getPaymentBrand())
+                && Objects.equals(getPaymentRecognition(), that.getPaymentRecognition())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

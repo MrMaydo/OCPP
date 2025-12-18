@@ -118,9 +118,9 @@ public class PriceLevelScheduleEntry implements JsonInterface {
         if (!(obj instanceof PriceLevelScheduleEntry))
             return false;
         PriceLevelScheduleEntry that = (PriceLevelScheduleEntry) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priceLevel, that.priceLevel);
+        return Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getPriceLevel(), that.getPriceLevel())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

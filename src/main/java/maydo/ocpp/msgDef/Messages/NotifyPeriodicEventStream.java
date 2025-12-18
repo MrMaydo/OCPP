@@ -185,11 +185,11 @@ public class NotifyPeriodicEventStream implements JsonInterface {
         if (!(obj instanceof NotifyPeriodicEventStream))
             return false;
         NotifyPeriodicEventStream that = (NotifyPeriodicEventStream) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.data, that.data)
-                && Objects.equals(this.basetime, that.basetime)
-                && Objects.equals(this.pending, that.pending);
+        return Objects.equals(getData(), that.getData())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getPending(), that.getPending())
+                && Objects.equals(getBasetime(), that.getBasetime())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

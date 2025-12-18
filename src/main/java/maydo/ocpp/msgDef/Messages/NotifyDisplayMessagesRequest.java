@@ -148,10 +148,9 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         if (!(obj instanceof NotifyDisplayMessagesRequest))
             return false;
         NotifyDisplayMessagesRequest that = (NotifyDisplayMessagesRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.messageInfo, that.messageInfo)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getMessageInfo(), that.getMessageInfo())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

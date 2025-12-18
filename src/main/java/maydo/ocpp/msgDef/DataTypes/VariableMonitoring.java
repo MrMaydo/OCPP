@@ -220,13 +220,13 @@ public class VariableMonitoring implements JsonInterface {
         if (!(obj instanceof VariableMonitoring))
             return false;
         VariableMonitoring that = (VariableMonitoring) obj;
-        return Objects.equals(this.severity, that.severity)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.eventNotificationType, that.eventNotificationType)
-                && Objects.equals(this.type, that.type)
-                && Objects.equals(this.value, that.value)
-                && Objects.equals(this.transaction, that.transaction);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getTransaction(), that.getTransaction())
+                && Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getSeverity(), that.getSeverity())
+                && Objects.equals(getEventNotificationType(), that.getEventNotificationType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -73,7 +73,7 @@ public class ClearedChargingLimitResponse implements JsonInterface {
         if (!(obj instanceof ClearedChargingLimitResponse))
             return false;
         ClearedChargingLimitResponse that = (ClearedChargingLimitResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

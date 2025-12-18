@@ -117,9 +117,9 @@ public class AdditionalSelectedServices implements JsonInterface {
         if (!(obj instanceof AdditionalSelectedServices))
             return false;
         AdditionalSelectedServices that = (AdditionalSelectedServices) obj;
-        return Objects.equals(this.serviceFee, that.serviceFee)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.serviceName, that.serviceName);
+        return Objects.equals(getServiceName(), that.getServiceName())
+                && Objects.equals(getServiceFee(), that.getServiceFee())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

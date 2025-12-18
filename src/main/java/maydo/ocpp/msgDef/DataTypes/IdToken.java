@@ -154,10 +154,10 @@ public class IdToken implements JsonInterface {
         if (!(obj instanceof IdToken))
             return false;
         IdToken that = (IdToken) obj;
-        return Objects.equals(this.additionalInfo, that.additionalInfo)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getAdditionalInfo(), that.getAdditionalInfo())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

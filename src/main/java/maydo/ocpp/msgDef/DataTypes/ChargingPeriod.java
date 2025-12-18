@@ -165,10 +165,10 @@ public class ChargingPeriod implements JsonInterface {
         if (!(obj instanceof ChargingPeriod))
             return false;
         ChargingPeriod that = (ChargingPeriod) obj;
-        return Objects.equals(this.startPeriod, that.startPeriod)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.dimensions, that.dimensions);
+        return Objects.equals(getStartPeriod(), that.getStartPeriod())
+                && Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getDimensions(), that.getDimensions())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

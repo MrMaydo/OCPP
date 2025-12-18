@@ -144,10 +144,10 @@ public class DataTransferResponse implements JsonInterface {
         if (!(obj instanceof DataTransferResponse))
             return false;
         DataTransferResponse that = (DataTransferResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.data, that.data)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getData(), that.getData())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -72,7 +72,7 @@ public class ClearCacheRequest implements JsonInterface {
         if (!(obj instanceof ClearCacheRequest))
             return false;
         ClearCacheRequest that = (ClearCacheRequest) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -377,19 +377,19 @@ public class Tariff implements JsonInterface {
         if (!(obj instanceof Tariff))
             return false;
         Tariff that = (Tariff) obj;
-        return Objects.equals(this.chargingTime, that.chargingTime)
-                && Objects.equals(this.reservationTime, that.reservationTime)
-                && Objects.equals(this.description, that.description)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.validFrom, that.validFrom)
-                && Objects.equals(this.idleTime, that.idleTime)
-                && Objects.equals(this.reservationFixed, that.reservationFixed)
-                && Objects.equals(this.maxCost, that.maxCost)
-                && Objects.equals(this.currency, that.currency)
-                && Objects.equals(this.tariffId, that.tariffId)
-                && Objects.equals(this.fixedFee, that.fixedFee)
-                && Objects.equals(this.minCost, that.minCost)
-                && Objects.equals(this.energy, that.energy);
+        return Objects.equals(getTariffId(), that.getTariffId())
+                && Objects.equals(getDescription(), that.getDescription())
+                && Objects.equals(getCurrency(), that.getCurrency())
+                && Objects.equals(getEnergy(), that.getEnergy())
+                && Objects.equals(getValidFrom(), that.getValidFrom())
+                && Objects.equals(getChargingTime(), that.getChargingTime())
+                && Objects.equals(getIdleTime(), that.getIdleTime())
+                && Objects.equals(getFixedFee(), that.getFixedFee())
+                && Objects.equals(getReservationTime(), that.getReservationTime())
+                && Objects.equals(getReservationFixed(), that.getReservationFixed())
+                && Objects.equals(getMinCost(), that.getMinCost())
+                && Objects.equals(getMaxCost(), that.getMaxCost())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

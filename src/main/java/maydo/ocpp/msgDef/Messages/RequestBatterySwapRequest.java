@@ -118,9 +118,9 @@ public class RequestBatterySwapRequest implements JsonInterface {
         if (!(obj instanceof RequestBatterySwapRequest))
             return false;
         RequestBatterySwapRequest that = (RequestBatterySwapRequest) obj;
-        return Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

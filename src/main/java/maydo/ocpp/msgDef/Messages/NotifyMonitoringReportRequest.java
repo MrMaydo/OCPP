@@ -201,12 +201,11 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
         if (!(obj instanceof NotifyMonitoringReportRequest))
             return false;
         NotifyMonitoringReportRequest that = (NotifyMonitoringReportRequest) obj;
-        return Objects.equals(this.tbc, that.tbc)
-                && Objects.equals(this.seqNo, that.seqNo)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.generatedAt, that.generatedAt)
-                && Objects.equals(this.monitor, that.monitor)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getMonitor(), that.getMonitor())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getGeneratedAt(), that.getGeneratedAt())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

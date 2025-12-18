@@ -154,10 +154,10 @@ public class LogParameters implements JsonInterface {
         if (!(obj instanceof LogParameters))
             return false;
         LogParameters that = (LogParameters) obj;
-        return Objects.equals(this.remoteLocation, that.remoteLocation)
-                && Objects.equals(this.oldestTimestamp, that.oldestTimestamp)
-                && Objects.equals(this.latestTimestamp, that.latestTimestamp)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getRemoteLocation(), that.getRemoteLocation())
+                && Objects.equals(getOldestTimestamp(), that.getOldestTimestamp())
+                && Objects.equals(getLatestTimestamp(), that.getLatestTimestamp())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

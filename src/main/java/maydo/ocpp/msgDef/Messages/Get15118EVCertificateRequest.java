@@ -205,12 +205,12 @@ public class Get15118EVCertificateRequest implements JsonInterface {
         if (!(obj instanceof Get15118EVCertificateRequest))
             return false;
         Get15118EVCertificateRequest that = (Get15118EVCertificateRequest) obj;
-        return Objects.equals(this.iso15118SchemaVersion, that.iso15118SchemaVersion)
-                && Objects.equals(this.prioritizedEMAIDs, that.prioritizedEMAIDs)
-                && Objects.equals(this.action, that.action)
-                && Objects.equals(this.exiRequest, that.exiRequest)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.maximumContractCertificateChains, that.maximumContractCertificateChains);
+        return Objects.equals(getIso15118SchemaVersion(), that.getIso15118SchemaVersion())
+                && Objects.equals(getAction(), that.getAction())
+                && Objects.equals(getExiRequest(), that.getExiRequest())
+                && Objects.equals(getMaximumContractCertificateChains(), that.getMaximumContractCertificateChains())
+                && Objects.equals(getPrioritizedEMAIDs(), that.getPrioritizedEMAIDs())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

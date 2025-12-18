@@ -184,11 +184,11 @@ public class AuthorizeResponse implements JsonInterface {
         if (!(obj instanceof AuthorizeResponse))
             return false;
         AuthorizeResponse that = (AuthorizeResponse) obj;
-        return Objects.equals(this.tariff, that.tariff)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateStatus, that.certificateStatus)
-                && Objects.equals(this.allowedEnergyTransfer, that.allowedEnergyTransfer)
-                && Objects.equals(this.idTokenInfo, that.idTokenInfo);
+        return Objects.equals(getIdTokenInfo(), that.getIdTokenInfo())
+                && Objects.equals(getCertificateStatus(), that.getCertificateStatus())
+                && Objects.equals(getAllowedEnergyTransfer(), that.getAllowedEnergyTransfer())
+                && Objects.equals(getTariff(), that.getTariff())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

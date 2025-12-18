@@ -116,9 +116,9 @@ public class GradientGet implements JsonInterface {
         if (!(obj instanceof GradientGet))
             return false;
         GradientGet that = (GradientGet) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.gradient, that.gradient);
+        return Objects.equals(getGradient(), that.getGradient())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

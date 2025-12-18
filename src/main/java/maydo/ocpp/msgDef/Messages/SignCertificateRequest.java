@@ -167,11 +167,11 @@ public class SignCertificateRequest implements JsonInterface {
         if (!(obj instanceof SignCertificateRequest))
             return false;
         SignCertificateRequest that = (SignCertificateRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.csr, that.csr)
-                && Objects.equals(this.hashRootCertificate, that.hashRootCertificate)
-                && Objects.equals(this.requestId, that.requestId)
-                && Objects.equals(this.certificateType, that.certificateType);
+        return Objects.equals(getCsr(), that.getCsr())
+                && Objects.equals(getCertificateType(), that.getCertificateType())
+                && Objects.equals(getHashRootCertificate(), that.getHashRootCertificate())
+                && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

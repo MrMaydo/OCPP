@@ -157,10 +157,10 @@ public class NotifyChargingLimitRequest implements JsonInterface {
         if (!(obj instanceof NotifyChargingLimitRequest))
             return false;
         NotifyChargingLimitRequest that = (NotifyChargingLimitRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.chargingSchedule, that.chargingSchedule)
-                && Objects.equals(this.chargingLimit, that.chargingLimit);
+        return Objects.equals(getChargingSchedule(), that.getChargingSchedule())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getChargingLimit(), that.getChargingLimit())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

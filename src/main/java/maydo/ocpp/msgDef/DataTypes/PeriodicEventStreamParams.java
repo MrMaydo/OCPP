@@ -116,9 +116,9 @@ public class PeriodicEventStreamParams implements JsonInterface {
         if (!(obj instanceof PeriodicEventStreamParams))
             return false;
         PeriodicEventStreamParams that = (PeriodicEventStreamParams) obj;
-        return Objects.equals(this.interval, that.interval)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.values, that.values);
+        return Objects.equals(getInterval(), that.getInterval())
+                && Objects.equals(getValues(), that.getValues())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

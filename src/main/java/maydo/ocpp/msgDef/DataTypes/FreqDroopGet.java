@@ -160,11 +160,11 @@ public class FreqDroopGet implements JsonInterface {
         if (!(obj instanceof FreqDroopGet))
             return false;
         FreqDroopGet that = (FreqDroopGet) obj;
-        return Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.freqDroop, that.freqDroop)
-                && Objects.equals(this.isSuperseded, that.isSuperseded);
+        return Objects.equals(getFreqDroop(), that.getFreqDroop())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getIsSuperseded(), that.getIsSuperseded())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

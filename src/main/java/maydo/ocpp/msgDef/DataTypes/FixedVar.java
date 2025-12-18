@@ -196,12 +196,12 @@ public class FixedVar implements JsonInterface {
         if (!(obj instanceof FixedVar))
             return false;
         FixedVar that = (FixedVar) obj;
-        return Objects.equals(this.duration, that.duration)
-                && Objects.equals(this.unit, that.unit)
-                && Objects.equals(this.setpoint, that.setpoint)
-                && Objects.equals(this.startTime, that.startTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.priority, that.priority);
+        return Objects.equals(getPriority(), that.getPriority())
+                && Objects.equals(getSetpoint(), that.getSetpoint())
+                && Objects.equals(getUnit(), that.getUnit())
+                && Objects.equals(getStartTime(), that.getStartTime())
+                && Objects.equals(getDuration(), that.getDuration())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

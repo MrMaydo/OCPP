@@ -155,10 +155,10 @@ public class SetDERControlResponse implements JsonInterface {
         if (!(obj instanceof SetDERControlResponse))
             return false;
         SetDERControlResponse that = (SetDERControlResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.supersededIds, that.supersededIds)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getSupersededIds(), that.getSupersededIds())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

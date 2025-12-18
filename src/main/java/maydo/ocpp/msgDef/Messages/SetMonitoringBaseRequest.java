@@ -95,8 +95,8 @@ public class SetMonitoringBaseRequest implements JsonInterface {
         if (!(obj instanceof SetMonitoringBaseRequest))
             return false;
         SetMonitoringBaseRequest that = (SetMonitoringBaseRequest) obj;
-        return Objects.equals(this.monitoringBase, that.monitoringBase)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getMonitoringBase(), that.getMonitoringBase())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

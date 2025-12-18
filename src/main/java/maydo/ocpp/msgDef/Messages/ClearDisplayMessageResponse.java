@@ -122,9 +122,9 @@ public class ClearDisplayMessageResponse implements JsonInterface {
         if (!(obj instanceof ClearDisplayMessageResponse))
             return false;
         ClearDisplayMessageResponse that = (ClearDisplayMessageResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

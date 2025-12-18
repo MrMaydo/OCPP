@@ -199,12 +199,12 @@ public class Firmware implements JsonInterface {
         if (!(obj instanceof Firmware))
             return false;
         Firmware that = (Firmware) obj;
-        return Objects.equals(this.signingCertificate, that.signingCertificate)
-                && Objects.equals(this.retrieveDateTime, that.retrieveDateTime)
-                && Objects.equals(this.signature, that.signature)
-                && Objects.equals(this.location, that.location)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.installDateTime, that.installDateTime);
+        return Objects.equals(getLocation(), that.getLocation())
+                && Objects.equals(getRetrieveDateTime(), that.getRetrieveDateTime())
+                && Objects.equals(getInstallDateTime(), that.getInstallDateTime())
+                && Objects.equals(getSigningCertificate(), that.getSigningCertificate())
+                && Objects.equals(getSignature(), that.getSignature())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

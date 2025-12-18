@@ -144,10 +144,10 @@ public class TriggerMessageRequest implements JsonInterface {
         if (!(obj instanceof TriggerMessageRequest))
             return false;
         TriggerMessageRequest that = (TriggerMessageRequest) obj;
-        return Objects.equals(this.customTrigger, that.customTrigger)
-                && Objects.equals(this.requestedMessage, that.requestedMessage)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evse, that.evse);
+        return Objects.equals(getEvse(), that.getEvse())
+                && Objects.equals(getRequestedMessage(), that.getRequestedMessage())
+                && Objects.equals(getCustomTrigger(), that.getCustomTrigger())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -183,12 +183,12 @@ public class DERCurveGet implements JsonInterface {
         if (!(obj instanceof DERCurveGet))
             return false;
         DERCurveGet that = (DERCurveGet) obj;
-        return Objects.equals(this.curveType, that.curveType)
-                && Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.isSuperseded, that.isSuperseded)
-                && Objects.equals(this.curve, that.curve)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getCurve(), that.getCurve())
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getCurveType(), that.getCurveType())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getIsSuperseded(), that.getIsSuperseded())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -140,10 +140,10 @@ public class Cost implements JsonInterface {
         if (!(obj instanceof Cost))
             return false;
         Cost that = (Cost) obj;
-        return Objects.equals(this.costKind, that.costKind)
-                && Objects.equals(this.amount, that.amount)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.amountMultiplier, that.amountMultiplier);
+        return Objects.equals(getCostKind(), that.getCostKind())
+                && Objects.equals(getAmount(), that.getAmount())
+                && Objects.equals(getAmountMultiplier(), that.getAmountMultiplier())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

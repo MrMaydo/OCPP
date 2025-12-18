@@ -96,8 +96,8 @@ public class UnpublishFirmwareResponse implements JsonInterface {
         if (!(obj instanceof UnpublishFirmwareResponse))
             return false;
         UnpublishFirmwareResponse that = (UnpublishFirmwareResponse) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.status, that.status);
+        return Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -186,12 +186,12 @@ public class ChargingStation implements JsonInterface {
         if (!(obj instanceof ChargingStation))
             return false;
         ChargingStation that = (ChargingStation) obj;
-        return Objects.equals(this.serialNumber, that.serialNumber)
-                && Objects.equals(this.modem, that.modem)
-                && Objects.equals(this.model, that.model)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.vendorName, that.vendorName)
-                && Objects.equals(this.firmwareVersion, that.firmwareVersion);
+        return Objects.equals(getModel(), that.getModel())
+                && Objects.equals(getSerialNumber(), that.getSerialNumber())
+                && Objects.equals(getModem(), that.getModem())
+                && Objects.equals(getVendorName(), that.getVendorName())
+                && Objects.equals(getFirmwareVersion(), that.getFirmwareVersion())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

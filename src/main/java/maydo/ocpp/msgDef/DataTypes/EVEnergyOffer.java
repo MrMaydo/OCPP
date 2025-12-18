@@ -121,9 +121,9 @@ public class EVEnergyOffer implements JsonInterface {
         if (!(obj instanceof EVEnergyOffer))
             return false;
         EVEnergyOffer that = (EVEnergyOffer) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.evPowerSchedule, that.evPowerSchedule)
-                && Objects.equals(this.evAbsolutePriceSchedule, that.evAbsolutePriceSchedule);
+        return Objects.equals(getEvPowerSchedule(), that.getEvPowerSchedule())
+                && Objects.equals(getEvAbsolutePriceSchedule(), that.getEvAbsolutePriceSchedule())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

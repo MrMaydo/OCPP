@@ -71,7 +71,7 @@ public class NotifyCustomerInformationResponse implements JsonInterface {
         if (!(obj instanceof NotifyCustomerInformationResponse))
             return false;
         NotifyCustomerInformationResponse that = (NotifyCustomerInformationResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

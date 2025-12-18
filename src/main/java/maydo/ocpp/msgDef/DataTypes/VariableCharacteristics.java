@@ -242,14 +242,14 @@ public class VariableCharacteristics implements JsonInterface {
         if (!(obj instanceof VariableCharacteristics))
             return false;
         VariableCharacteristics that = (VariableCharacteristics) obj;
-        return Objects.equals(this.unit, that.unit)
-                && Objects.equals(this.valuesList, that.valuesList)
-                && Objects.equals(this.supportsMonitoring, that.supportsMonitoring)
-                && Objects.equals(this.maxLimit, that.maxLimit)
-                && Objects.equals(this.dataType, that.dataType)
-                && Objects.equals(this.maxElements, that.maxElements)
-                && Objects.equals(this.minLimit, that.minLimit)
-                && Objects.equals(this.customData, that.customData);
+        return Objects.equals(getDataType(), that.getDataType())
+                && Objects.equals(getUnit(), that.getUnit())
+                && Objects.equals(getMinLimit(), that.getMinLimit())
+                && Objects.equals(getMaxLimit(), that.getMaxLimit())
+                && Objects.equals(getMaxElements(), that.getMaxElements())
+                && Objects.equals(getValuesList(), that.getValuesList())
+                && Objects.equals(getSupportsMonitoring(), that.getSupportsMonitoring())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

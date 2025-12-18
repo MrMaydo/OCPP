@@ -72,7 +72,7 @@ public class ReportChargingProfilesResponse implements JsonInterface {
         if (!(obj instanceof ReportChargingProfilesResponse))
             return false;
         ReportChargingProfilesResponse that = (ReportChargingProfilesResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

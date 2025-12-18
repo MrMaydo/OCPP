@@ -173,11 +173,11 @@ public class StatusNotificationRequest implements JsonInterface {
         if (!(obj instanceof StatusNotificationRequest))
             return false;
         StatusNotificationRequest that = (StatusNotificationRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.connectorStatus, that.connectorStatus)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.connectorId, that.connectorId)
-                && Objects.equals(this.timestamp, that.timestamp);
+        return Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getConnectorStatus(), that.getConnectorStatus())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getConnectorId(), that.getConnectorId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

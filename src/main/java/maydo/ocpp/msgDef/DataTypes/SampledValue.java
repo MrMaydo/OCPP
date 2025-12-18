@@ -221,14 +221,11 @@ public class SampledValue implements JsonInterface {
         if (!(obj instanceof SampledValue))
             return false;
         SampledValue that = (SampledValue) obj;
-        return Objects.equals(this.phase, that.phase)
-                && Objects.equals(this.signedMeterValue, that.signedMeterValue)
-                && Objects.equals(this.unitOfMeasure, that.unitOfMeasure)
-                && Objects.equals(this.context, that.context)
-                && Objects.equals(this.measurand, that.measurand)
-                && Objects.equals(this.location, that.location)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.value, that.value);
+        return Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getPhase(), that.getPhase())
+                && Objects.equals(getSignedMeterValue(), that.getSignedMeterValue())
+                && Objects.equals(getUnitOfMeasure(), that.getUnitOfMeasure())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

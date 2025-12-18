@@ -106,8 +106,8 @@ public class ClearVariableMonitoringRequest implements JsonInterface {
         if (!(obj instanceof ClearVariableMonitoringRequest))
             return false;
         ClearVariableMonitoringRequest that = (ClearVariableMonitoringRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

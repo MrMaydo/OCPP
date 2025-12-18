@@ -118,9 +118,9 @@ public class CostUpdatedRequest implements JsonInterface {
         if (!(obj instanceof CostUpdatedRequest))
             return false;
         CostUpdatedRequest that = (CostUpdatedRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.totalCost, that.totalCost)
-                && Objects.equals(this.transactionId, that.transactionId);
+        return Objects.equals(getTotalCost(), that.getTotalCost())
+                && Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

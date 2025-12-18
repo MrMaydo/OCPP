@@ -362,19 +362,19 @@ public class ChargingScheduleUpdate implements JsonInterface {
         if (!(obj instanceof ChargingScheduleUpdate))
             return false;
         ChargingScheduleUpdate that = (ChargingScheduleUpdate) obj;
-        return Objects.equals(this.setpoint, that.setpoint)
-                && Objects.equals(this.dischargeLimitL3, that.dischargeLimitL3)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.setpointL3, that.setpointL3)
-                && Objects.equals(this.setpointL2, that.setpointL2)
-                && Objects.equals(this.setpointReactive, that.setpointReactive)
-                && Objects.equals(this.limit, that.limit)
-                && Objects.equals(this.setpointReactiveL2, that.setpointReactiveL2)
-                && Objects.equals(this.setpointReactiveL3, that.setpointReactiveL3)
-                && Objects.equals(this.dischargeLimitL2, that.dischargeLimitL2)
-                && Objects.equals(this.limitL3, that.limitL3)
-                && Objects.equals(this.dischargeLimit, that.dischargeLimit)
-                && Objects.equals(this.limitL2, that.limitL2);
+        return Objects.equals(getLimit(), that.getLimit())
+                && Objects.equals(getLimitL2(), that.getLimitL2())
+                && Objects.equals(getLimitL3(), that.getLimitL3())
+                && Objects.equals(getDischargeLimit(), that.getDischargeLimit())
+                && Objects.equals(getDischargeLimitL2(), that.getDischargeLimitL2())
+                && Objects.equals(getDischargeLimitL3(), that.getDischargeLimitL3())
+                && Objects.equals(getSetpoint(), that.getSetpoint())
+                && Objects.equals(getSetpointL2(), that.getSetpointL2())
+                && Objects.equals(getSetpointL3(), that.getSetpointL3())
+                && Objects.equals(getSetpointReactive(), that.getSetpointReactive())
+                && Objects.equals(getSetpointReactiveL2(), that.getSetpointReactiveL2())
+                && Objects.equals(getSetpointReactiveL3(), that.getSetpointReactiveL3())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

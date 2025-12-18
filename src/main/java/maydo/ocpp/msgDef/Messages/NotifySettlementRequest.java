@@ -310,17 +310,17 @@ public class NotifySettlementRequest implements JsonInterface {
         if (!(obj instanceof NotifySettlementRequest))
             return false;
         NotifySettlementRequest that = (NotifySettlementRequest) obj;
-        return Objects.equals(this.pspRef, that.pspRef)
-                && Objects.equals(this.statusInfo, that.statusInfo)
-                && Objects.equals(this.vatCompany, that.vatCompany)
-                && Objects.equals(this.settlementTime, that.settlementTime)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.settlementAmount, that.settlementAmount)
-                && Objects.equals(this.receiptUrl, that.receiptUrl)
-                && Objects.equals(this.receiptId, that.receiptId)
-                && Objects.equals(this.transactionId, that.transactionId)
-                && Objects.equals(this.status, that.status)
-                && Objects.equals(this.vatNumber, that.vatNumber);
+        return Objects.equals(getTransactionId(), that.getTransactionId())
+                && Objects.equals(getPspRef(), that.getPspRef())
+                && Objects.equals(getStatus(), that.getStatus())
+                && Objects.equals(getStatusInfo(), that.getStatusInfo())
+                && Objects.equals(getSettlementAmount(), that.getSettlementAmount())
+                && Objects.equals(getSettlementTime(), that.getSettlementTime())
+                && Objects.equals(getReceiptId(), that.getReceiptId())
+                && Objects.equals(getReceiptUrl(), that.getReceiptUrl())
+                && Objects.equals(getVatCompany(), that.getVatCompany())
+                && Objects.equals(getVatNumber(), that.getVatNumber())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

@@ -130,9 +130,9 @@ public class ConsumptionCost implements JsonInterface {
         if (!(obj instanceof ConsumptionCost))
             return false;
         ConsumptionCost that = (ConsumptionCost) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.startValue, that.startValue)
-                && Objects.equals(this.cost, that.cost);
+        return Objects.equals(getStartValue(), that.getStartValue())
+                && Objects.equals(getCost(), that.getCost())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

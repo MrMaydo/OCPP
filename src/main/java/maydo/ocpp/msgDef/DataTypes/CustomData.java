@@ -74,7 +74,7 @@ public class CustomData implements JsonInterface {
         if (!(obj instanceof CustomData))
             return false;
         CustomData that = (CustomData) obj;
-        return Objects.equals(this.vendorId, that.vendorId);
+        return Objects.equals(getVendorId(), that.getVendorId());
     }
 
     @Override

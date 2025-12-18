@@ -71,7 +71,7 @@ public class NotifyWebPaymentStartedResponse implements JsonInterface {
         if (!(obj instanceof NotifyWebPaymentStartedResponse))
             return false;
         NotifyWebPaymentStartedResponse that = (NotifyWebPaymentStartedResponse) obj;
-        return Objects.equals(this.customData, that.customData);
+        return Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

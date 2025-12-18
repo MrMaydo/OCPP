@@ -117,9 +117,9 @@ public class GetBaseReportRequest implements JsonInterface {
         if (!(obj instanceof GetBaseReportRequest))
             return false;
         GetBaseReportRequest that = (GetBaseReportRequest) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.reportBase, that.reportBase)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getReportBase(), that.getReportBase())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

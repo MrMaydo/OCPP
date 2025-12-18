@@ -151,10 +151,10 @@ public class CertificateStatusRequestInfo implements JsonInterface {
         if (!(obj instanceof CertificateStatusRequestInfo))
             return false;
         CertificateStatusRequestInfo that = (CertificateStatusRequestInfo) obj;
-        return Objects.equals(this.urls, that.urls)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.certificateHashData, that.certificateHashData)
-                && Objects.equals(this.source, that.source);
+        return Objects.equals(getCertificateHashData(), that.getCertificateHashData())
+                && Objects.equals(getSource(), that.getSource())
+                && Objects.equals(getUrls(), that.getUrls())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

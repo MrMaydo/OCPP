@@ -220,13 +220,13 @@ public class ReserveNowRequest implements JsonInterface {
         if (!(obj instanceof ReserveNowRequest))
             return false;
         ReserveNowRequest that = (ReserveNowRequest) obj;
-        return Objects.equals(this.evseId, that.evseId)
-                && Objects.equals(this.connectorType, that.connectorType)
-                && Objects.equals(this.idToken, that.idToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.id, that.id)
-                && Objects.equals(this.expiryDateTime, that.expiryDateTime)
-                && Objects.equals(this.groupIdToken, that.groupIdToken);
+        return Objects.equals(getId(), that.getId())
+                && Objects.equals(getExpiryDateTime(), that.getExpiryDateTime())
+                && Objects.equals(getConnectorType(), that.getConnectorType())
+                && Objects.equals(getIdToken(), that.getIdToken())
+                && Objects.equals(getEvseId(), that.getEvseId())
+                && Objects.equals(getGroupIdToken(), that.getGroupIdToken())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

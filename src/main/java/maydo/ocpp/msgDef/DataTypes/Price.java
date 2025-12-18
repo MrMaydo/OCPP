@@ -151,10 +151,10 @@ public class Price implements JsonInterface {
         if (!(obj instanceof Price))
             return false;
         Price that = (Price) obj;
-        return Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.taxRates, that.taxRates)
-                && Objects.equals(this.inclTax, that.inclTax)
-                && Objects.equals(this.exclTax, that.exclTax);
+        return Objects.equals(getExclTax(), that.getExclTax())
+                && Objects.equals(getInclTax(), that.getInclTax())
+                && Objects.equals(getTaxRates(), that.getTaxRates())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

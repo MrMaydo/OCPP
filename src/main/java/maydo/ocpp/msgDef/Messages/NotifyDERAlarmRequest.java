@@ -197,12 +197,12 @@ public class NotifyDERAlarmRequest implements JsonInterface {
         if (!(obj instanceof NotifyDERAlarmRequest))
             return false;
         NotifyDERAlarmRequest that = (NotifyDERAlarmRequest) obj;
-        return Objects.equals(this.gridEventFault, that.gridEventFault)
-                && Objects.equals(this.alarmEnded, that.alarmEnded)
-                && Objects.equals(this.controlType, that.controlType)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.timestamp, that.timestamp)
-                && Objects.equals(this.extraInfo, that.extraInfo);
+        return Objects.equals(getControlType(), that.getControlType())
+                && Objects.equals(getGridEventFault(), that.getGridEventFault())
+                && Objects.equals(getAlarmEnded(), that.getAlarmEnded())
+                && Objects.equals(getTimestamp(), that.getTimestamp())
+                && Objects.equals(getExtraInfo(), that.getExtraInfo())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

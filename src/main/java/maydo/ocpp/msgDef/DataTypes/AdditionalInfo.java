@@ -119,9 +119,9 @@ public class AdditionalInfo implements JsonInterface {
         if (!(obj instanceof AdditionalInfo))
             return false;
         AdditionalInfo that = (AdditionalInfo) obj;
-        return Objects.equals(this.additionalIdToken, that.additionalIdToken)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.type, that.type);
+        return Objects.equals(getAdditionalIdToken(), that.getAdditionalIdToken())
+                && Objects.equals(getType(), that.getType())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override

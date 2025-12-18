@@ -164,11 +164,11 @@ public class GetDERControlRequest implements JsonInterface {
         if (!(obj instanceof GetDERControlRequest))
             return false;
         GetDERControlRequest that = (GetDERControlRequest) obj;
-        return Objects.equals(this.isDefault, that.isDefault)
-                && Objects.equals(this.customData, that.customData)
-                && Objects.equals(this.controlId, that.controlId)
-                && Objects.equals(this.controlType, that.controlType)
-                && Objects.equals(this.requestId, that.requestId);
+        return Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getIsDefault(), that.getIsDefault())
+                && Objects.equals(getControlType(), that.getControlType())
+                && Objects.equals(getControlId(), that.getControlId())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
