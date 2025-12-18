@@ -171,12 +171,12 @@ public class TotalUsage implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.idleTime != null ? this.idleTime.hashCode() : 0);
-        result = 31 * result + (this.chargingTime != null ? this.chargingTime.hashCode() : 0);
-        result = 31 * result + (this.energy != null ? this.energy.hashCode() : 0);
-        result = 31 * result + (this.reservationTime != null ? this.reservationTime.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEnergy(),
+                getChargingTime(),
+                getIdleTime(),
+                getReservationTime(),
+                getCustomData()
+        );
     }
 }

@@ -126,10 +126,10 @@ public class AdditionalInfo implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.additionalIdToken != null ? this.additionalIdToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getAdditionalIdToken(),
+                getType(),
+                getCustomData()
+        );
     }
 }

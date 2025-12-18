@@ -279,16 +279,16 @@ public class Transaction implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.operationMode != null ? this.operationMode.hashCode() : 0);
-        result = 31 * result + (this.remoteStartId != null ? this.remoteStartId.hashCode() : 0);
-        result = 31 * result + (this.stoppedReason != null ? this.stoppedReason.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.transactionLimit != null ? this.transactionLimit.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.timeSpentCharging != null ? this.timeSpentCharging.hashCode() : 0);
-        result = 31 * result + (this.chargingState != null ? this.chargingState.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getChargingState(),
+                getTimeSpentCharging(),
+                getStoppedReason(),
+                getRemoteStartId(),
+                getOperationMode(),
+                getTariffId(),
+                getTransactionLimit(),
+                getCustomData()
+        );
     }
 }

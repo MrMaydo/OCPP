@@ -122,10 +122,10 @@ public class StreamDataElement implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.t != null ? this.t.hashCode() : 0);
-        result = 31 * result + (this.v != null ? this.v.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getT(),
+                getV(),
+                getCustomData()
+        );
     }
 }

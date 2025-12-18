@@ -171,12 +171,12 @@ public class CertificateHashData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.issuerNameHash != null ? this.issuerNameHash.hashCode() : 0);
-        result = 31 * result + (this.issuerKeyHash != null ? this.issuerKeyHash.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.serialNumber != null ? this.serialNumber.hashCode() : 0);
-        result = 31 * result + (this.hashAlgorithm != null ? this.hashAlgorithm.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getHashAlgorithm(),
+                getIssuerNameHash(),
+                getIssuerKeyHash(),
+                getSerialNumber(),
+                getCustomData()
+        );
     }
 }

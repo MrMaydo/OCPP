@@ -123,10 +123,10 @@ public class GradientGet implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.gradient != null ? this.gradient.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getGradient(),
+                getId(),
+                getCustomData()
+        );
     }
 }

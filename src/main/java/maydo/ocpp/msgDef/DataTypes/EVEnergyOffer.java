@@ -128,10 +128,10 @@ public class EVEnergyOffer implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evPowerSchedule != null ? this.evPowerSchedule.hashCode() : 0);
-        result = 31 * result + (this.evAbsolutePriceSchedule != null ? this.evAbsolutePriceSchedule.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvPowerSchedule(),
+                getEvAbsolutePriceSchedule(),
+                getCustomData()
+        );
     }
 }

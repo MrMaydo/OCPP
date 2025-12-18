@@ -172,13 +172,9 @@ public class VariableAttribute implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.constant != null ? this.constant.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.mutability != null ? this.mutability.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.persistent != null ? this.persistent.hashCode() : 0);
-        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getValue(),
+                getCustomData()
+        );
     }
 }

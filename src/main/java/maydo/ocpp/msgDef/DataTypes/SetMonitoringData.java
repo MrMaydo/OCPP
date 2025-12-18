@@ -277,16 +277,15 @@ public class SetMonitoringData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
-        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
-        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.periodicEventStream != null ? this.periodicEventStream.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
-        result = 31 * result + (this.transaction != null ? this.transaction.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getPeriodicEventStream(),
+                getValue(),
+                getType(),
+                getSeverity(),
+                getComponent(),
+                getVariable(),
+                getCustomData()
+        );
     }
 }

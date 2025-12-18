@@ -115,9 +115,9 @@ public class ClearTariffsResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.clearTariffsResult != null ? this.clearTariffsResult.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getClearTariffsResult(),
+                getCustomData()
+        );
     }
 }

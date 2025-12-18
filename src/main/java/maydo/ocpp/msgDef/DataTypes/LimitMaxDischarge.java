@@ -210,13 +210,13 @@ public class LimitMaxDischarge implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.powerMonitoringMustTrip != null ? this.powerMonitoringMustTrip.hashCode() : 0);
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.pctMaxDischargePower != null ? this.pctMaxDischargePower.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriority(),
+                getPctMaxDischargePower(),
+                getPowerMonitoringMustTrip(),
+                getStartTime(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

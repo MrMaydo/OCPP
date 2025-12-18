@@ -146,10 +146,10 @@ public class EVPowerSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evPowerScheduleEntries != null ? this.evPowerScheduleEntries.hashCode() : 0);
-        result = 31 * result + (this.timeAnchor != null ? this.timeAnchor.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTimeAnchor(),
+                getEvPowerScheduleEntries(),
+                getCustomData()
+        );
     }
 }

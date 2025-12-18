@@ -174,12 +174,12 @@ public class SignedMeterValue implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.signedMeterData != null ? this.signedMeterData.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.publicKey != null ? this.publicKey.hashCode() : 0);
-        result = 31 * result + (this.signingMethod != null ? this.signingMethod.hashCode() : 0);
-        result = 31 * result + (this.encodingMethod != null ? this.encodingMethod.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getSignedMeterData(),
+                getSigningMethod(),
+                getEncodingMethod(),
+                getPublicKey(),
+                getCustomData()
+        );
     }
 }

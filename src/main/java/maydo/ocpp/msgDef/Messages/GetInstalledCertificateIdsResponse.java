@@ -164,11 +164,11 @@ public class GetInstalledCertificateIdsResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.certificateHashDataChain != null ? this.certificateHashDataChain.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getCertificateHashDataChain(),
+                getCustomData()
+        );
     }
 }

@@ -296,16 +296,16 @@ public class TariffConditionsFixed implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseKind != null ? this.evseKind.hashCode() : 0);
-        result = 31 * result + (this.paymentRecognition != null ? this.paymentRecognition.hashCode() : 0);
-        result = 31 * result + (this.dayOfWeek != null ? this.dayOfWeek.hashCode() : 0);
-        result = 31 * result + (this.paymentBrand != null ? this.paymentBrand.hashCode() : 0);
-        result = 31 * result + (this.endTimeOfDay != null ? this.endTimeOfDay.hashCode() : 0);
-        result = 31 * result + (this.validFromDate != null ? this.validFromDate.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.startTimeOfDay != null ? this.startTimeOfDay.hashCode() : 0);
-        result = 31 * result + (this.validToDate != null ? this.validToDate.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStartTimeOfDay(),
+                getEndTimeOfDay(),
+                getDayOfWeek(),
+                getValidFromDate(),
+                getValidToDate(),
+                getEvseKind(),
+                getPaymentBrand(),
+                getPaymentRecognition(),
+                getCustomData()
+        );
     }
 }

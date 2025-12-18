@@ -125,10 +125,10 @@ public class EVPriceRule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.energyFee != null ? this.energyFee.hashCode() : 0);
-        result = 31 * result + (this.powerRangeStart != null ? this.powerRangeStart.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEnergyFee(),
+                getPowerRangeStart(),
+                getCustomData()
+        );
     }
 }

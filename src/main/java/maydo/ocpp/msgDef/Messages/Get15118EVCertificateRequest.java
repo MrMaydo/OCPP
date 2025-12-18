@@ -215,13 +215,13 @@ public class Get15118EVCertificateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.iso15118SchemaVersion != null ? this.iso15118SchemaVersion.hashCode() : 0);
-        result = 31 * result + (this.prioritizedEMAIDs != null ? this.prioritizedEMAIDs.hashCode() : 0);
-        result = 31 * result + (this.action != null ? this.action.hashCode() : 0);
-        result = 31 * result + (this.exiRequest != null ? this.exiRequest.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maximumContractCertificateChains != null ? this.maximumContractCertificateChains.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIso15118SchemaVersion(),
+                getAction(),
+                getExiRequest(),
+                getMaximumContractCertificateChains(),
+                getPrioritizedEMAIDs(),
+                getCustomData()
+        );
     }
 }

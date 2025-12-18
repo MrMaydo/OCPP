@@ -122,10 +122,10 @@ public class LimitAtSoC implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.limit != null ? this.limit.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.soc != null ? this.soc.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getSoc(),
+                getLimit(),
+                getCustomData()
+        );
     }
 }

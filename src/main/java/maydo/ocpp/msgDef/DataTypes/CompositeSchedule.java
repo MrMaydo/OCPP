@@ -216,13 +216,13 @@ public class CompositeSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.scheduleStart != null ? this.scheduleStart.hashCode() : 0);
-        result = 31 * result + (this.chargingSchedulePeriod != null ? this.chargingSchedulePeriod.hashCode() : 0);
-        result = 31 * result + (this.chargingRateUnit != null ? this.chargingRateUnit.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getDuration(),
+                getScheduleStart(),
+                getChargingRateUnit(),
+                getChargingSchedulePeriod(),
+                getCustomData()
+        );
     }
 }

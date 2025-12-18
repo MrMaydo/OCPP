@@ -124,10 +124,10 @@ public class ReservationStatusUpdateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
-        result = 31 * result + (this.reservationUpdateStatus != null ? this.reservationUpdateStatus.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getReservationId(),
+                getReservationUpdateStatus(),
+                getCustomData()
+        );
     }
 }

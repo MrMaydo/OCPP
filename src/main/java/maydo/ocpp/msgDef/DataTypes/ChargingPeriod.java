@@ -173,11 +173,11 @@ public class ChargingPeriod implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.startPeriod != null ? this.startPeriod.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.dimensions != null ? this.dimensions.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStartPeriod(),
+                getTariffId(),
+                getDimensions(),
+                getCustomData()
+        );
     }
 }

@@ -100,9 +100,9 @@ public class ClosePeriodicEventStreamRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getCustomData()
+        );
     }
 }

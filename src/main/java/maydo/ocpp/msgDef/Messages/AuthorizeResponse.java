@@ -193,12 +193,12 @@ public class AuthorizeResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tariff != null ? this.tariff.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateStatus != null ? this.certificateStatus.hashCode() : 0);
-        result = 31 * result + (this.allowedEnergyTransfer != null ? this.allowedEnergyTransfer.hashCode() : 0);
-        result = 31 * result + (this.idTokenInfo != null ? this.idTokenInfo.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIdTokenInfo(),
+                getCertificateStatus(),
+                getAllowedEnergyTransfer(),
+                getTariff(),
+                getCustomData()
+        );
     }
 }

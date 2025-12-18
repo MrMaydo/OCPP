@@ -147,11 +147,11 @@ public class ReactivePowerParams implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.autonomousVRefEnable != null ? this.autonomousVRefEnable.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.vRef != null ? this.vRef.hashCode() : 0);
-        result = 31 * result + (this.autonomousVRefTimeConstant != null ? this.autonomousVRefTimeConstant.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getVRef(),
+                getAutonomousVRefEnable(),
+                getAutonomousVRefTimeConstant(),
+                getCustomData()
+        );
     }
 }

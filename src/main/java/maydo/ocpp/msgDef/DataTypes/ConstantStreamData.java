@@ -146,11 +146,11 @@ public class ConstantStreamData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.params != null ? this.params.hashCode() : 0);
-        result = 31 * result + (this.variableMonitoringId != null ? this.variableMonitoringId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getParams(),
+                getVariableMonitoringId(),
+                getCustomData()
+        );
     }
 }

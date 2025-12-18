@@ -187,12 +187,12 @@ public class BatterySwapRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.eventType != null ? this.eventType.hashCode() : 0);
-        result = 31 * result + (this.batteryData != null ? this.batteryData.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getBatteryData(),
+                getEventType(),
+                getIdToken(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

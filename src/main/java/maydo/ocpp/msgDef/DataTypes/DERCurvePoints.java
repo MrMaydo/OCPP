@@ -124,10 +124,10 @@ public class DERCurvePoints implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.x != null ? this.x.hashCode() : 0);
-        result = 31 * result + (this.y != null ? this.y.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getX(),
+                getY(),
+                getCustomData()
+        );
     }
 }

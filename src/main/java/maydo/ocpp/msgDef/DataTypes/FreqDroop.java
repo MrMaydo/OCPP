@@ -272,16 +272,16 @@ public class FreqDroop implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.underDroop != null ? this.underDroop.hashCode() : 0);
-        result = 31 * result + (this.overDroop != null ? this.overDroop.hashCode() : 0);
-        result = 31 * result + (this.responseTime != null ? this.responseTime.hashCode() : 0);
-        result = 31 * result + (this.underFreq != null ? this.underFreq.hashCode() : 0);
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.overFreq != null ? this.overFreq.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriority(),
+                getOverFreq(),
+                getUnderFreq(),
+                getOverDroop(),
+                getUnderDroop(),
+                getResponseTime(),
+                getStartTime(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

@@ -136,11 +136,11 @@ public class EVAbsolutePriceScheduleEntry implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evPriceRule != null ? this.evPriceRule.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDuration(),
+                getEvPriceRule(),
+                getCustomData()
+        );
     }
 
 }

@@ -379,20 +379,20 @@ public class ChargingScheduleUpdate implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.setpoint != null ? this.setpoint.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimitL3 != null ? this.dischargeLimitL3.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.setpointL3 != null ? this.setpointL3.hashCode() : 0);
-        result = 31 * result + (this.setpointL2 != null ? this.setpointL2.hashCode() : 0);
-        result = 31 * result + (this.setpointReactive != null ? this.setpointReactive.hashCode() : 0);
-        result = 31 * result + (this.limit != null ? this.limit.hashCode() : 0);
-        result = 31 * result + (this.setpointReactiveL2 != null ? this.setpointReactiveL2.hashCode() : 0);
-        result = 31 * result + (this.setpointReactiveL3 != null ? this.setpointReactiveL3.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimitL2 != null ? this.dischargeLimitL2.hashCode() : 0);
-        result = 31 * result + (this.limitL3 != null ? this.limitL3.hashCode() : 0);
-        result = 31 * result + (this.dischargeLimit != null ? this.dischargeLimit.hashCode() : 0);
-        result = 31 * result + (this.limitL2 != null ? this.limitL2.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLimit(),
+                getLimitL2(),
+                getLimitL3(),
+                getDischargeLimit(),
+                getDischargeLimitL2(),
+                getDischargeLimitL3(),
+                getSetpoint(),
+                getSetpointL2(),
+                getSetpointL3(),
+                getSetpointReactive(),
+                getSetpointReactiveL2(),
+                getSetpointReactiveL3(),
+                getCustomData()
+        );
     }
 }

@@ -148,11 +148,11 @@ public class Cost implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.costKind != null ? this.costKind.hashCode() : 0);
-        result = 31 * result + (this.amount != null ? this.amount.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.amountMultiplier != null ? this.amountMultiplier.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCostKind(),
+                getAmount(),
+                getAmountMultiplier(),
+                getCustomData()
+        );
     }
 }

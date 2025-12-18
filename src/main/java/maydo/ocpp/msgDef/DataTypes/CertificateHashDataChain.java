@@ -160,11 +160,11 @@ public class CertificateHashDataChain implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.childCertificateHashData != null ? this.childCertificateHashData.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateType(),
+                getCertificateHashData(),
+                getChildCertificateHashData(),
+                getCustomData()
+        );
     }
 }

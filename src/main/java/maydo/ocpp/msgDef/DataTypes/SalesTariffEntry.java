@@ -162,11 +162,11 @@ public class SalesTariffEntry implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.consumptionCost != null ? this.consumptionCost.hashCode() : 0);
-        result = 31 * result + (this.relativeTimeInterval != null ? this.relativeTimeInterval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.ePriceLevel != null ? this.ePriceLevel.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRelativeTimeInterval(),
+                getEPriceLevel(),
+                getConsumptionCost(),
+                getCustomData()
+        );
     }
 }

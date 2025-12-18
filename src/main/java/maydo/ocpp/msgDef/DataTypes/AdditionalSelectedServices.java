@@ -124,10 +124,10 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.serviceFee != null ? this.serviceFee.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.serviceName != null ? this.serviceName.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getServiceName(),
+                getServiceFee(),
+                getCustomData()
+        );
     }
 }

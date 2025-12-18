@@ -226,14 +226,14 @@ public class PriceRule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.renewableGenerationPercentage != null ? this.renewableGenerationPercentage.hashCode() : 0);
-        result = 31 * result + (this.parkingFee != null ? this.parkingFee.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.parkingFeePeriod != null ? this.parkingFeePeriod.hashCode() : 0);
-        result = 31 * result + (this.energyFee != null ? this.energyFee.hashCode() : 0);
-        result = 31 * result + (this.powerRangeStart != null ? this.powerRangeStart.hashCode() : 0);
-        result = 31 * result + (this.carbonDioxideEmission != null ? this.carbonDioxideEmission.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getParkingFeePeriod(),
+                getCarbonDioxideEmission(),
+                getRenewableGenerationPercentage(),
+                getEnergyFee(),
+                getParkingFee(),
+                getPowerRangeStart(),
+                getCustomData()
+        );
     }
 }

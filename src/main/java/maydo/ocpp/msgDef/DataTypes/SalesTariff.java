@@ -186,12 +186,12 @@ public class SalesTariff implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.salesTariffEntry != null ? this.salesTariffEntry.hashCode() : 0);
-        result = 31 * result + (this.salesTariffDescription != null ? this.salesTariffDescription.hashCode() : 0);
-        result = 31 * result + (this.numEPriceLevels != null ? this.numEPriceLevels.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getSalesTariffDescription(),
+                getNumEPriceLevels(),
+                getSalesTariffEntry(),
+                getCustomData()
+        );
     }
 }

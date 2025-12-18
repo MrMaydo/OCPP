@@ -559,26 +559,26 @@ public class TariffConditions implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.maxTime != null ? this.maxTime.hashCode() : 0);
-        result = 31 * result + (this.minChargingTime != null ? this.minChargingTime.hashCode() : 0);
-        result = 31 * result + (this.maxChargingTime != null ? this.maxChargingTime.hashCode() : 0);
-        result = 31 * result + (this.maxIdleTime != null ? this.maxIdleTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.minPower != null ? this.minPower.hashCode() : 0);
-        result = 31 * result + (this.evseKind != null ? this.evseKind.hashCode() : 0);
-        result = 31 * result + (this.maxEnergy != null ? this.maxEnergy.hashCode() : 0);
-        result = 31 * result + (this.maxCurrent != null ? this.maxCurrent.hashCode() : 0);
-        result = 31 * result + (this.minEnergy != null ? this.minEnergy.hashCode() : 0);
-        result = 31 * result + (this.dayOfWeek != null ? this.dayOfWeek.hashCode() : 0);
-        result = 31 * result + (this.minTime != null ? this.minTime.hashCode() : 0);
-        result = 31 * result + (this.endTimeOfDay != null ? this.endTimeOfDay.hashCode() : 0);
-        result = 31 * result + (this.validFromDate != null ? this.validFromDate.hashCode() : 0);
-        result = 31 * result + (this.minCurrent != null ? this.minCurrent.hashCode() : 0);
-        result = 31 * result + (this.maxPower != null ? this.maxPower.hashCode() : 0);
-        result = 31 * result + (this.minIdleTime != null ? this.minIdleTime.hashCode() : 0);
-        result = 31 * result + (this.startTimeOfDay != null ? this.startTimeOfDay.hashCode() : 0);
-        result = 31 * result + (this.validToDate != null ? this.validToDate.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStartTimeOfDay(),
+                getEndTimeOfDay(),
+                getDayOfWeek(),
+                getValidFromDate(),
+                getValidToDate(),
+                getEvseKind(),
+                getMinEnergy(),
+                getMaxEnergy(),
+                getMinCurrent(),
+                getMaxCurrent(),
+                getMinPower(),
+                getMaxPower(),
+                getMinTime(),
+                getMaxTime(),
+                getMinChargingTime(),
+                getMaxChargingTime(),
+                getMinIdleTime(),
+                getMaxIdleTime(),
+                getCustomData()
+        );
     }
 }

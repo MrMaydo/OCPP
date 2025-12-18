@@ -467,23 +467,22 @@ public class TransactionEventRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.preconditioningStatus != null ? this.preconditioningStatus.hashCode() : 0);
-        result = 31 * result + (this.evseSleep != null ? this.evseSleep.hashCode() : 0);
-        result = 31 * result + (this.seqNo != null ? this.seqNo.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.eventType != null ? this.eventType.hashCode() : 0);
-        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
-        result = 31 * result + (this.transactionInfo != null ? this.transactionInfo.hashCode() : 0);
-        result = 31 * result + (this.offline != null ? this.offline.hashCode() : 0);
-        result = 31 * result + (this.reservationId != null ? this.reservationId.hashCode() : 0);
-        result = 31 * result + (this.costDetails != null ? this.costDetails.hashCode() : 0);
-        result = 31 * result + (this.triggerReason != null ? this.triggerReason.hashCode() : 0);
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.meterValue != null ? this.meterValue.hashCode() : 0);
-        result = 31 * result + (this.cableMaxCurrent != null ? this.cableMaxCurrent.hashCode() : 0);
-        result = 31 * result + (this.numberOfPhasesUsed != null ? this.numberOfPhasesUsed.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCostDetails(),
+                getEventType(),
+                getMeterValue(),
+                getTimestamp(),
+                getTriggerReason(),
+                getSeqNo(),
+                getNumberOfPhasesUsed(),
+                getCableMaxCurrent(),
+                getReservationId(),
+                getPreconditioningStatus(),
+                getEvseSleep(),
+                getTransactionInfo(),
+                getEvse(),
+                getIdToken(),
+                getCustomData()
+        );
     }
 }

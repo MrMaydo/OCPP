@@ -422,22 +422,22 @@ public class EventData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.severity != null ? this.severity.hashCode() : 0);
-        result = 31 * result + (this.eventId != null ? this.eventId.hashCode() : 0);
-        result = 31 * result + (this.techCode != null ? this.techCode.hashCode() : 0);
-        result = 31 * result + (this.actualValue != null ? this.actualValue.hashCode() : 0);
-        result = 31 * result + (this.cause != null ? this.cause.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.trigger != null ? this.trigger.hashCode() : 0);
-        result = 31 * result + (this.techInfo != null ? this.techInfo.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
-        result = 31 * result + (this.variableMonitoringId != null ? this.variableMonitoringId.hashCode() : 0);
-        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
-        result = 31 * result + (this.eventNotificationType != null ? this.eventNotificationType.hashCode() : 0);
-        result = 31 * result + (this.cleared != null ? this.cleared.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEventId(),
+                getTimestamp(),
+                getTrigger(),
+                getCause(),
+                getActualValue(),
+                getTechCode(),
+                getTechInfo(),
+                getCleared(),
+                getTransactionId(),
+                getComponent(),
+                getVariableMonitoringId(),
+                getEventNotificationType(),
+                getVariable(),
+                getSeverity(),
+                getCustomData()
+        );
     }
 }

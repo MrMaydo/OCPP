@@ -353,18 +353,18 @@ public class ChargingNeeds implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.acChargingParameters != null ? this.acChargingParameters.hashCode() : 0);
-        result = 31 * result + (this.controlMode != null ? this.controlMode.hashCode() : 0);
-        result = 31 * result + (this.departureTime != null ? this.departureTime.hashCode() : 0);
-        result = 31 * result + (this.evEnergyOffer != null ? this.evEnergyOffer.hashCode() : 0);
-        result = 31 * result + (this.mobilityNeedsMode != null ? this.mobilityNeedsMode.hashCode() : 0);
-        result = 31 * result + (this.availableEnergyTransfer != null ? this.availableEnergyTransfer.hashCode() : 0);
-        result = 31 * result + (this.v2xChargingParameters != null ? this.v2xChargingParameters.hashCode() : 0);
-        result = 31 * result + (this.dcChargingParameters != null ? this.dcChargingParameters.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.requestedEnergyTransfer != null ? this.requestedEnergyTransfer.hashCode() : 0);
-        result = 31 * result + (this.derChargingParameters != null ? this.derChargingParameters.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRequestedEnergyTransfer(),
+                getAvailableEnergyTransfer(),
+                getControlMode(),
+                getMobilityNeedsMode(),
+                getDepartureTime(),
+                getEvEnergyOffer(),
+                getAcChargingParameters(),
+                getDcChargingParameters(),
+                getDerChargingParameters(),
+                getV2xChargingParameters(),
+                getCustomData()
+        );
     }
 }

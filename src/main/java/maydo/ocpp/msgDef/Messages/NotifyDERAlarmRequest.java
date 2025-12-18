@@ -207,13 +207,13 @@ public class NotifyDERAlarmRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.gridEventFault != null ? this.gridEventFault.hashCode() : 0);
-        result = 31 * result + (this.alarmEnded != null ? this.alarmEnded.hashCode() : 0);
-        result = 31 * result + (this.controlType != null ? this.controlType.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        result = 31 * result + (this.extraInfo != null ? this.extraInfo.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getControlType(),
+                getGridEventFault(),
+                getAlarmEnded(),
+                getTimestamp(),
+                getExtraInfo(),
+                getCustomData()
+        );
     }
 }

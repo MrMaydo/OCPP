@@ -1161,49 +1161,49 @@ public class DERChargingParameters implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.maxDischargeReactivePower != null ? this.maxDischargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.evInverterHwVersion != null ? this.evInverterHwVersion.hashCode() : 0);
-        result = 31 * result + (this.evInverterManufacturer != null ? this.evInverterManufacturer.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPower != null ? this.maxDischargeApparentPower.hashCode() : 0);
-        result = 31 * result + (this.evInverterModel != null ? this.evInverterModel.hashCode() : 0);
-        result = 31 * result + (this.evDurationLevel1DCInjection != null ? this.evDurationLevel1DCInjection.hashCode() : 0);
-        result = 31 * result + (this.evOverExcitedMaxDischargePower != null ? this.evOverExcitedMaxDischargePower.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maxNominalVoltage != null ? this.maxNominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.nominalVoltageOffset != null ? this.nominalVoltageOffset.hashCode() : 0);
-        result = 31 * result + (this.evUnderExcitedPowerFactor != null ? this.evUnderExcitedPowerFactor.hashCode() : 0);
-        result = 31 * result + (this.nominalVoltage != null ? this.nominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.evSessionTotalDischargeEnergyAvailable != null ? this.evSessionTotalDischargeEnergyAvailable.hashCode() : 0);
-        result = 31 * result + (this.evIslandingDetectionMethod != null ? this.evIslandingDetectionMethod.hashCode() : 0);
-        result = 31 * result + (this.evMaximumLevel1DCInjection != null ? this.evMaximumLevel1DCInjection.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPowerL2 != null ? this.maxDischargeApparentPowerL2.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeApparentPowerL3 != null ? this.maxDischargeApparentPowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeReactivePowerL2 != null ? this.maxDischargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePower != null ? this.minDischargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeReactivePowerL3 != null ? this.maxDischargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.evReactiveSusceptance != null ? this.evReactiveSusceptance.hashCode() : 0);
-        result = 31 * result + (this.evDurationLevel2DCInjection != null ? this.evDurationLevel2DCInjection.hashCode() : 0);
-        result = 31 * result + (this.evSupportedDERControl != null ? this.evSupportedDERControl.hashCode() : 0);
-        result = 31 * result + (this.evOverExcitedPowerFactor != null ? this.evOverExcitedPowerFactor.hashCode() : 0);
-        result = 31 * result + (this.evUnderExcitedMaxDischargePower != null ? this.evUnderExcitedMaxDischargePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePowerL2 != null ? this.maxChargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.evInverterSwVersion != null ? this.evInverterSwVersion.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePowerL3 != null ? this.maxChargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPowerL3 != null ? this.maxChargeApparentPowerL3.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePowerL2 != null ? this.minChargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePowerL3 != null ? this.minDischargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPowerL2 != null ? this.maxChargeApparentPowerL2.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePowerL3 != null ? this.minChargeReactivePowerL3.hashCode() : 0);
-        result = 31 * result + (this.minDischargeReactivePowerL2 != null ? this.minDischargeReactivePowerL2.hashCode() : 0);
-        result = 31 * result + (this.evIslandingTripTime != null ? this.evIslandingTripTime.hashCode() : 0);
-        result = 31 * result + (this.maxChargeReactivePower != null ? this.maxChargeReactivePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargeApparentPower != null ? this.maxChargeApparentPower.hashCode() : 0);
-        result = 31 * result + (this.maxApparentPower != null ? this.maxApparentPower.hashCode() : 0);
-        result = 31 * result + (this.evInverterSerialNumber != null ? this.evInverterSerialNumber.hashCode() : 0);
-        result = 31 * result + (this.evMaximumLevel2DCInjection != null ? this.evMaximumLevel2DCInjection.hashCode() : 0);
-        result = 31 * result + (this.minNominalVoltage != null ? this.minNominalVoltage.hashCode() : 0);
-        result = 31 * result + (this.minChargeReactivePower != null ? this.minChargeReactivePower.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvSupportedDERControl(),
+                getEvOverExcitedMaxDischargePower(),
+                getEvOverExcitedPowerFactor(),
+                getEvUnderExcitedMaxDischargePower(),
+                getEvUnderExcitedPowerFactor(),
+                getMaxApparentPower(),
+                getMaxChargeApparentPower(),
+                getMaxChargeApparentPowerL2(),
+                getMaxChargeApparentPowerL3(),
+                getMaxDischargeApparentPower(),
+                getMaxDischargeApparentPowerL2(),
+                getMaxDischargeApparentPowerL3(),
+                getMaxChargeReactivePower(),
+                getMaxChargeReactivePowerL2(),
+                getMaxChargeReactivePowerL3(),
+                getMinChargeReactivePower(),
+                getMinChargeReactivePowerL2(),
+                getMinChargeReactivePowerL3(),
+                getMaxDischargeReactivePower(),
+                getMaxDischargeReactivePowerL2(),
+                getMaxDischargeReactivePowerL3(),
+                getMinDischargeReactivePower(),
+                getMinDischargeReactivePowerL2(),
+                getMinDischargeReactivePowerL3(),
+                getNominalVoltage(),
+                getNominalVoltageOffset(),
+                getMaxNominalVoltage(),
+                getMinNominalVoltage(),
+                getEvInverterManufacturer(),
+                getEvInverterModel(),
+                getEvInverterSerialNumber(),
+                getEvInverterSwVersion(),
+                getEvInverterHwVersion(),
+                getEvIslandingDetectionMethod(),
+                getEvIslandingTripTime(),
+                getEvMaximumLevel1DCInjection(),
+                getEvDurationLevel1DCInjection(),
+                getEvMaximumLevel2DCInjection(),
+                getEvDurationLevel2DCInjection(),
+                getEvReactiveSusceptance(),
+                getEvSessionTotalDischargeEnergyAvailable(),
+                getCustomData()
+        );
     }
 }

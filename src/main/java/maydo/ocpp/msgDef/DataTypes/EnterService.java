@@ -263,16 +263,16 @@ public class EnterService implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.rampRate != null ? this.rampRate.hashCode() : 0);
-        result = 31 * result + (this.delay != null ? this.delay.hashCode() : 0);
-        result = 31 * result + (this.lowFreq != null ? this.lowFreq.hashCode() : 0);
-        result = 31 * result + (this.lowVoltage != null ? this.lowVoltage.hashCode() : 0);
-        result = 31 * result + (this.highVoltage != null ? this.highVoltage.hashCode() : 0);
-        result = 31 * result + (this.randomDelay != null ? this.randomDelay.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.highFreq != null ? this.highFreq.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriority(),
+                getHighVoltage(),
+                getLowVoltage(),
+                getHighFreq(),
+                getLowFreq(),
+                getDelay(),
+                getRandomDelay(),
+                getRampRate(),
+                getCustomData()
+        );
     }
 }

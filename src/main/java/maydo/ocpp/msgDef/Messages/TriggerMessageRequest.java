@@ -152,11 +152,11 @@ public class TriggerMessageRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customTrigger != null ? this.customTrigger.hashCode() : 0);
-        result = 31 * result + (this.requestedMessage != null ? this.requestedMessage.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.evse != null ? this.evse.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvse(),
+                getRequestedMessage(),
+                getCustomTrigger(),
+                getCustomData()
+        );
     }
 }

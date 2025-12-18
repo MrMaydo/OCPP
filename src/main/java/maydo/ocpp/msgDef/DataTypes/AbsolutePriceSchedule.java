@@ -407,20 +407,20 @@ public class AbsolutePriceSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.taxRules != null ? this.taxRules.hashCode() : 0);
-        result = 31 * result + (this.additionalSelectedServices != null ? this.additionalSelectedServices.hashCode() : 0);
-        result = 31 * result + (this.overstayRuleList != null ? this.overstayRuleList.hashCode() : 0);
-        result = 31 * result + (this.language != null ? this.language.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.minimumCost != null ? this.minimumCost.hashCode() : 0);
-        result = 31 * result + (this.priceAlgorithm != null ? this.priceAlgorithm.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleID != null ? this.priceScheduleID.hashCode() : 0);
-        result = 31 * result + (this.priceRuleStacks != null ? this.priceRuleStacks.hashCode() : 0);
-        result = 31 * result + (this.timeAnchor != null ? this.timeAnchor.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleDescription != null ? this.priceScheduleDescription.hashCode() : 0);
-        result = 31 * result + (this.currency != null ? this.currency.hashCode() : 0);
-        result = 31 * result + (this.maximumCost != null ? this.maximumCost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTimeAnchor(),
+                getPriceScheduleID(),
+                getPriceScheduleDescription(),
+                getCurrency(),
+                getLanguage(),
+                getPriceAlgorithm(),
+                getMinimumCost(),
+                getMaximumCost(),
+                getPriceRuleStacks(),
+                getTaxRules(),
+                getOverstayRuleList(),
+                getAdditionalSelectedServices(),
+                getCustomData()
+        );
     }
 }

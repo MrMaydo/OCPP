@@ -127,10 +127,10 @@ public class EVPowerScheduleEntry implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.power != null ? this.power.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDuration(),
+                getPower(),
+                getCustomData()
+        );
     }
 }

@@ -149,11 +149,11 @@ public class ClearDERControlRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.isDefault != null ? this.isDefault.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.controlId != null ? this.controlId.hashCode() : 0);
-        result = 31 * result + (this.controlType != null ? this.controlType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIsDefault(),
+                getControlType(),
+                getControlId(),
+                getCustomData()
+        );
     }
 }

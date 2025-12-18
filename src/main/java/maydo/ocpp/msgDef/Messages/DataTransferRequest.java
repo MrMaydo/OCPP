@@ -148,11 +148,11 @@ public class DataTransferRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.messageId != null ? this.messageId.hashCode() : 0);
-        result = 31 * result + (this.vendorId != null ? this.vendorId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.data != null ? this.data.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMessageId(),
+                getData(),
+                getVendorId(),
+                getCustomData()
+        );
     }
 }

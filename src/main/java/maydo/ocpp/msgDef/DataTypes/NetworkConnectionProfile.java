@@ -322,18 +322,18 @@ public class NetworkConnectionProfile implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.ocppTransport != null ? this.ocppTransport.hashCode() : 0);
-        result = 31 * result + (this.securityProfile != null ? this.securityProfile.hashCode() : 0);
-        result = 31 * result + (this.vpn != null ? this.vpn.hashCode() : 0);
-        result = 31 * result + (this.ocppVersion != null ? this.ocppVersion.hashCode() : 0);
-        result = 31 * result + (this.identity != null ? this.identity.hashCode() : 0);
-        result = 31 * result + (this.basicAuthPassword != null ? this.basicAuthPassword.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.ocppCsmsUrl != null ? this.ocppCsmsUrl.hashCode() : 0);
-        result = 31 * result + (this.apn != null ? this.apn.hashCode() : 0);
-        result = 31 * result + (this.ocppInterface != null ? this.ocppInterface.hashCode() : 0);
-        result = 31 * result + (this.messageTimeout != null ? this.messageTimeout.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getApn(),
+                getOcppVersion(),
+                getOcppInterface(),
+                getOcppTransport(),
+                getMessageTimeout(),
+                getOcppCsmsUrl(),
+                getSecurityProfile(),
+                getIdentity(),
+                getBasicAuthPassword(),
+                getVpn(),
+                getCustomData()
+        );
     }
 }

@@ -126,10 +126,10 @@ public class TotalPrice implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.inclTax != null ? this.inclTax.hashCode() : 0);
-        result = 31 * result + (this.exclTax != null ? this.exclTax.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getExclTax(),
+                getInclTax(),
+                getCustomData()
+        );
     }
 }

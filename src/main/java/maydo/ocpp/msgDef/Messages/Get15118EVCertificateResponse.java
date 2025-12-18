@@ -178,12 +178,12 @@ public class Get15118EVCertificateResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.remainingContracts != null ? this.remainingContracts.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.exiResponse != null ? this.exiResponse.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStatus(),
+                getStatusInfo(),
+                getExiResponse(),
+                getRemainingContracts(),
+                getCustomData()
+        );
     }
 }

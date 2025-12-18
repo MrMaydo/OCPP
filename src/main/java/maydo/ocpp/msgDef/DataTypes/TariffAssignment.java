@@ -223,13 +223,13 @@ public class TariffAssignment implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tariffKind != null ? this.tariffKind.hashCode() : 0);
-        result = 31 * result + (this.evseIds != null ? this.evseIds.hashCode() : 0);
-        result = 31 * result + (this.idTokens != null ? this.idTokens.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.tariffId != null ? this.tariffId.hashCode() : 0);
-        result = 31 * result + (this.validFrom != null ? this.validFrom.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTariffId(),
+                getTariffKind(),
+                getValidFrom(),
+                getEvseIds(),
+                getIdTokens(),
+                getCustomData()
+        );
     }
 }

@@ -169,12 +169,12 @@ public class FreqDroopGet implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.isDefault != null ? this.isDefault.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.freqDroop != null ? this.freqDroop.hashCode() : 0);
-        result = 31 * result + (this.isSuperseded != null ? this.isSuperseded.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getFreqDroop(),
+                getId(),
+                getIsDefault(),
+                getIsSuperseded(),
+                getCustomData()
+        );
     }
 }

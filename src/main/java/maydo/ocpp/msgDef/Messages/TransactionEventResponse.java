@@ -249,14 +249,14 @@ public class TransactionEventResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idTokenInfo != null ? this.idTokenInfo.hashCode() : 0);
-        result = 31 * result + (this.updatedPersonalMessageExtra != null ? this.updatedPersonalMessageExtra.hashCode() : 0);
-        result = 31 * result + (this.updatedPersonalMessage != null ? this.updatedPersonalMessage.hashCode() : 0);
-        result = 31 * result + (this.chargingPriority != null ? this.chargingPriority.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.transactionLimit != null ? this.transactionLimit.hashCode() : 0);
-        result = 31 * result + (this.totalCost != null ? this.totalCost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTotalCost(),
+                getChargingPriority(),
+                getIdTokenInfo(),
+                getTransactionLimit(),
+                getUpdatedPersonalMessage(),
+                getUpdatedPersonalMessageExtra(),
+                getCustomData()
+        );
     }
 }

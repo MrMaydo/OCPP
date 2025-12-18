@@ -153,11 +153,11 @@ public class VoltageParams implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.hv10MinMeanValue != null ? this.hv10MinMeanValue.hashCode() : 0);
-        result = 31 * result + (this.powerDuringCessation != null ? this.powerDuringCessation.hashCode() : 0);
-        result = 31 * result + (this.hv10MinMeanTripDelay != null ? this.hv10MinMeanTripDelay.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getHv10MinMeanValue(),
+                getHv10MinMeanTripDelay(),
+                getPowerDuringCessation(),
+                getCustomData()
+        );
     }
 }

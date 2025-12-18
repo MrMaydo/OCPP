@@ -216,14 +216,14 @@ public class VPN implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.server != null ? this.server.hashCode() : 0);
-        result = 31 * result + (this.password != null ? this.password.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.type != null ? this.type.hashCode() : 0);
-        result = 31 * result + (this.user != null ? this.user.hashCode() : 0);
-        result = 31 * result + (this.key != null ? this.key.hashCode() : 0);
-        result = 31 * result + (this.group != null ? this.group.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getServer(),
+                getUser(),
+                getGroup(),
+                getPassword(),
+                getKey(),
+                getType(),
+                getCustomData()
+        );
     }
 }

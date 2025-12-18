@@ -126,10 +126,10 @@ public class SetNetworkProfileRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.connectionData != null ? this.connectionData.hashCode() : 0);
-        result = 31 * result + (this.configurationSlot != null ? this.configurationSlot.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getConfigurationSlot(),
+                getConnectionData(),
+                getCustomData()
+        );
     }
 }

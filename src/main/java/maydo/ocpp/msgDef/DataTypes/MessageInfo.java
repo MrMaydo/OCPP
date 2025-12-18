@@ -322,17 +322,17 @@ public class MessageInfo implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.messageExtra != null ? this.messageExtra.hashCode() : 0);
-        result = 31 * result + (this.startDateTime != null ? this.startDateTime.hashCode() : 0);
-        result = 31 * result + (this.display != null ? this.display.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.state != null ? this.state.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.endDateTime != null ? this.endDateTime.hashCode() : 0);
-        result = 31 * result + (this.message != null ? this.message.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getMessage(),
+                getMessageExtra(),
+                getPriority(),
+                getDisplay(),
+                getState(),
+                getStartDateTime(),
+                getEndDateTime(),
+                getTransactionId(),
+                getCustomData()
+        );
     }
 }

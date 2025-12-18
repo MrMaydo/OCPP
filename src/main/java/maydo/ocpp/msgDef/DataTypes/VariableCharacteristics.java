@@ -254,15 +254,15 @@ public class VariableCharacteristics implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.unit != null ? this.unit.hashCode() : 0);
-        result = 31 * result + (this.valuesList != null ? this.valuesList.hashCode() : 0);
-        result = 31 * result + (this.supportsMonitoring != null ? this.supportsMonitoring.hashCode() : 0);
-        result = 31 * result + (this.maxLimit != null ? this.maxLimit.hashCode() : 0);
-        result = 31 * result + (this.dataType != null ? this.dataType.hashCode() : 0);
-        result = 31 * result + (this.maxElements != null ? this.maxElements.hashCode() : 0);
-        result = 31 * result + (this.minLimit != null ? this.minLimit.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDataType(),
+                getUnit(),
+                getMinLimit(),
+                getMaxLimit(),
+                getMaxElements(),
+                getValuesList(),
+                getSupportsMonitoring(),
+                getCustomData()
+        );
     }
 }

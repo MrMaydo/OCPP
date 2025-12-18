@@ -186,12 +186,12 @@ public class NotifyEVChargingNeedsRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maxScheduleTuples != null ? this.maxScheduleTuples.hashCode() : 0);
-        result = 31 * result + (this.chargingNeeds != null ? this.chargingNeeds.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getMaxScheduleTuples(),
+                getChargingNeeds(),
+                getTimestamp(),
+                getCustomData()
+        );
     }
 }

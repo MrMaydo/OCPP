@@ -212,13 +212,12 @@ public class NotifyReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
-        result = 31 * result + (this.seqNo != null ? this.seqNo.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.generatedAt != null ? this.generatedAt.hashCode() : 0);
-        result = 31 * result + (this.reportData != null ? this.reportData.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRequestId(),
+                getGeneratedAt(),
+                getReportData(),
+                getSeqNo(),
+                getCustomData()
+        );
     }
 }

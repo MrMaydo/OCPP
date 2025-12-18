@@ -145,11 +145,11 @@ public class Gradient implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.softGradient != null ? this.softGradient.hashCode() : 0);
-        result = 31 * result + (this.gradient != null ? this.gradient.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriority(),
+                getGradient(),
+                getSoftGradient(),
+                getCustomData()
+        );
     }
 }

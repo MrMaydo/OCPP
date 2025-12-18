@@ -159,11 +159,11 @@ public class CertificateStatusRequestInfo implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.urls != null ? this.urls.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        result = 31 * result + (this.source != null ? this.source.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateHashData(),
+                getSource(),
+                getUrls(),
+                getCustomData()
+        );
     }
 }

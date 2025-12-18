@@ -147,11 +147,11 @@ public class ChargingLimit implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.isLocalGeneration != null ? this.isLocalGeneration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingLimitSource != null ? this.chargingLimitSource.hashCode() : 0);
-        result = 31 * result + (this.isGridCritical != null ? this.isGridCritical.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getChargingLimitSource(),
+                getIsLocalGeneration(),
+                getIsGridCritical(),
+                getCustomData()
+        );
     }
 }

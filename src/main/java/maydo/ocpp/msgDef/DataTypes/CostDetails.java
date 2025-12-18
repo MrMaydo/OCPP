@@ -211,13 +211,13 @@ public class CostDetails implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.failureToCalculate != null ? this.failureToCalculate.hashCode() : 0);
-        result = 31 * result + (this.failureReason != null ? this.failureReason.hashCode() : 0);
-        result = 31 * result + (this.totalUsage != null ? this.totalUsage.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.chargingPeriods != null ? this.chargingPeriods.hashCode() : 0);
-        result = 31 * result + (this.totalCost != null ? this.totalCost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTotalCost(),
+                getTotalUsage(),
+                getChargingPeriods(),
+                getFailureToCalculate(),
+                getFailureReason(),
+                getCustomData()
+        );
     }
 }

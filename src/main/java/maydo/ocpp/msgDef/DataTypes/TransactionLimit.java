@@ -172,12 +172,12 @@ public class TransactionLimit implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.maxCost != null ? this.maxCost.hashCode() : 0);
-        result = 31 * result + (this.maxEnergy != null ? this.maxEnergy.hashCode() : 0);
-        result = 31 * result + (this.maxTime != null ? this.maxTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.maxSoC != null ? this.maxSoC.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMaxCost(),
+                getMaxEnergy(),
+                getMaxTime(),
+                getMaxSoC(),
+                getCustomData()
+        );
     }
 }

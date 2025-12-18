@@ -171,11 +171,11 @@ public class GetMonitoringReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.monitoringCriteria != null ? this.monitoringCriteria.hashCode() : 0);
-        result = 31 * result + (this.componentVariable != null ? this.componentVariable.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getComponentVariable(),
+                getRequestId(),
+                getMonitoringCriteria(),
+                getCustomData()
+        );
     }
 }

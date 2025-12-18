@@ -137,10 +137,10 @@ public class ConsumptionCost implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.startValue != null ? this.startValue.hashCode() : 0);
-        result = 31 * result + (this.cost != null ? this.cost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getStartValue(),
+                getCost(),
+                getCustomData()
+        );
     }
 }

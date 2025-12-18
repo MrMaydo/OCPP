@@ -166,11 +166,11 @@ public class SendLocalListRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.localAuthorizationList != null ? this.localAuthorizationList.hashCode() : 0);
-        result = 31 * result + (this.versionNumber != null ? this.versionNumber.hashCode() : 0);
-        result = 31 * result + (this.updateType != null ? this.updateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLocalAuthorizationList(),
+                getVersionNumber(),
+                getUpdateType(),
+                getCustomData()
+        );
     }
 }

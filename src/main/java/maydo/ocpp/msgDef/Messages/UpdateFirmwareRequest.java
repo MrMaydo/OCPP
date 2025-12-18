@@ -176,12 +176,12 @@ public class UpdateFirmwareRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.retries != null ? this.retries.hashCode() : 0);
-        result = 31 * result + (this.retryInterval != null ? this.retryInterval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.firmware != null ? this.firmware.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRetries(),
+                getRetryInterval(),
+                getRequestId(),
+                getFirmware(),
+                getCustomData()
+        );
     }
 }

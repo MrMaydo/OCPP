@@ -125,10 +125,10 @@ public class TariffEnergyPrice implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.priceKwh != null ? this.priceKwh.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.conditions != null ? this.conditions.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriceKwh(),
+                getConditions(),
+                getCustomData()
+        );
     }
 }

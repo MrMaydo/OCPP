@@ -123,10 +123,10 @@ public class RationalNumber implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.value != null ? this.value.hashCode() : 0);
-        result = 31 * result + (this.exponent != null ? this.exponent.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getExponent(),
+                getValue(),
+                getCustomData()
+        );
     }
 }

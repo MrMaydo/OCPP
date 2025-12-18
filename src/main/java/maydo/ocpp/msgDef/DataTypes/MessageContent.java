@@ -149,11 +149,11 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.format != null ? this.format.hashCode() : 0);
-        result = 31 * result + (this.language != null ? this.language.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.content != null ? this.content.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getContent(),
+                getFormat(),
+                getLanguage(),
+                getCustomData()
+        );
     }
 }

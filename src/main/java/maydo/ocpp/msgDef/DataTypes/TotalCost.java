@@ -299,17 +299,17 @@ public class TotalCost implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.total != null ? this.total.hashCode() : 0);
-        result = 31 * result + (this.chargingTime != null ? this.chargingTime.hashCode() : 0);
-        result = 31 * result + (this.reservationTime != null ? this.reservationTime.hashCode() : 0);
-        result = 31 * result + (this.currency != null ? this.currency.hashCode() : 0);
-        result = 31 * result + (this.fixed != null ? this.fixed.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.typeOfCost != null ? this.typeOfCost.hashCode() : 0);
-        result = 31 * result + (this.idleTime != null ? this.idleTime.hashCode() : 0);
-        result = 31 * result + (this.reservationFixed != null ? this.reservationFixed.hashCode() : 0);
-        result = 31 * result + (this.energy != null ? this.energy.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurrency(),
+                getTypeOfCost(),
+                getFixed(),
+                getEnergy(),
+                getChargingTime(),
+                getIdleTime(),
+                getReservationTime(),
+                getReservationFixed(),
+                getTotal(),
+                getCustomData()
+        );
     }
 }

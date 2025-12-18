@@ -217,14 +217,14 @@ public class Address implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.country != null ? this.country.hashCode() : 0);
-        result = 31 * result + (this.address2 != null ? this.address2.hashCode() : 0);
-        result = 31 * result + (this.city != null ? this.city.hashCode() : 0);
-        result = 31 * result + (this.address1 != null ? this.address1.hashCode() : 0);
-        result = 31 * result + (this.postalCode != null ? this.postalCode.hashCode() : 0);
-        result = 31 * result + (this.name != null ? this.name.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getName(),
+                getAddress1(),
+                getAddress2(),
+                getCity(),
+                getPostalCode(),
+                getCountry(),
+                getCustomData()
+        );
     }
 }

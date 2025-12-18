@@ -226,14 +226,14 @@ public class BatteryData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.evseId != null ? this.evseId.hashCode() : 0);
-        result = 31 * result + (this.serialNumber != null ? this.serialNumber.hashCode() : 0);
-        result = 31 * result + (this.productionDate != null ? this.productionDate.hashCode() : 0);
-        result = 31 * result + (this.soC != null ? this.soC.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.vendorInfo != null ? this.vendorInfo.hashCode() : 0);
-        result = 31 * result + (this.soH != null ? this.soH.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getEvseId(),
+                getSerialNumber(),
+                getSoC(),
+                getSoH(),
+                getProductionDate(),
+                getVendorInfo(),
+                getCustomData()
+        );
     }
 }

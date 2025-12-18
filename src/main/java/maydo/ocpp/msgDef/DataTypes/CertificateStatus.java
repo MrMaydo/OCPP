@@ -181,12 +181,12 @@ public class CertificateStatus implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateHashData != null ? this.certificateHashData.hashCode() : 0);
-        result = 31 * result + (this.source != null ? this.source.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        result = 31 * result + (this.nextUpdate != null ? this.nextUpdate.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateHashData(),
+                getStatus(),
+                getSource(),
+                getNextUpdate(),
+                getCustomData()
+        );
     }
 }

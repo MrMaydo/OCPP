@@ -385,18 +385,18 @@ public class ReportDERControlRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
-        result = 31 * result + (this.curve != null ? this.curve.hashCode() : 0);
-        result = 31 * result + (this.fixedPFAbsorb != null ? this.fixedPFAbsorb.hashCode() : 0);
-        result = 31 * result + (this.fixedPFInject != null ? this.fixedPFInject.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.gradient != null ? this.gradient.hashCode() : 0);
-        result = 31 * result + (this.enterService != null ? this.enterService.hashCode() : 0);
-        result = 31 * result + (this.limitMaxDischarge != null ? this.limitMaxDischarge.hashCode() : 0);
-        result = 31 * result + (this.fixedVar != null ? this.fixedVar.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.freqDroop != null ? this.freqDroop.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getRequestId(),
+                getCurve(),
+                getEnterService(),
+                getFixedPFAbsorb(),
+                getFixedPFInject(),
+                getFixedVar(),
+                getFreqDroop(),
+                getGradient(),
+                getLimitMaxDischarge(),
+                getTbc(),
+                getCustomData()
+        );
     }
 }

@@ -226,14 +226,14 @@ public class CustomerInformationRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customerCertificate != null ? this.customerCertificate.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.report != null ? this.report.hashCode() : 0);
-        result = 31 * result + (this.clear != null ? this.clear.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.customerIdentifier != null ? this.customerIdentifier.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCustomerCertificate(),
+                getIdToken(),
+                getRequestId(),
+                getReport(),
+                getClear(),
+                getCustomerIdentifier(),
+                getCustomData()
+        );
     }
 }

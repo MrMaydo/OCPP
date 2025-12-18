@@ -264,16 +264,16 @@ public class TaxRule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.appliesToEnergyFee != null ? this.appliesToEnergyFee.hashCode() : 0);
-        result = 31 * result + (this.taxRate != null ? this.taxRate.hashCode() : 0);
-        result = 31 * result + (this.taxRuleID != null ? this.taxRuleID.hashCode() : 0);
-        result = 31 * result + (this.taxRuleName != null ? this.taxRuleName.hashCode() : 0);
-        result = 31 * result + (this.appliesToOverstayFee != null ? this.appliesToOverstayFee.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.taxIncludedInPrice != null ? this.taxIncludedInPrice.hashCode() : 0);
-        result = 31 * result + (this.appliesToParkingFee != null ? this.appliesToParkingFee.hashCode() : 0);
-        result = 31 * result + (this.appliesToMinimumMaximumCost != null ? this.appliesToMinimumMaximumCost.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTaxRuleID(),
+                getTaxRuleName(),
+                getTaxIncludedInPrice(),
+                getAppliesToEnergyFee(),
+                getAppliesToParkingFee(),
+                getAppliesToOverstayFee(),
+                getAppliesToMinimumMaximumCost(),
+                getTaxRate(),
+                getCustomData()
+        );
     }
 }

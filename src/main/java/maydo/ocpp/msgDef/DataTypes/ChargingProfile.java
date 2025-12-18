@@ -468,22 +468,22 @@ public class ChargingProfile implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.recurrencyKind != null ? this.recurrencyKind.hashCode() : 0);
-        result = 31 * result + (this.chargingSchedule != null ? this.chargingSchedule.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.validFrom != null ? this.validFrom.hashCode() : 0);
-        result = 31 * result + (this.stackLevel != null ? this.stackLevel.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleSignature != null ? this.priceScheduleSignature.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.chargingProfileKind != null ? this.chargingProfileKind.hashCode() : 0);
-        result = 31 * result + (this.chargingProfilePurpose != null ? this.chargingProfilePurpose.hashCode() : 0);
-        result = 31 * result + (this.invalidAfterOfflineDuration != null ? this.invalidAfterOfflineDuration.hashCode() : 0);
-        result = 31 * result + (this.dynUpdateTime != null ? this.dynUpdateTime.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.maxOfflineDuration != null ? this.maxOfflineDuration.hashCode() : 0);
-        result = 31 * result + (this.validTo != null ? this.validTo.hashCode() : 0);
-        result = 31 * result + (this.dynUpdateInterval != null ? this.dynUpdateInterval.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getStackLevel(),
+                getChargingProfilePurpose(),
+                getChargingProfileKind(),
+                getChargingSchedule(),
+                getRecurrencyKind(),
+                getValidFrom(),
+                getValidTo(),
+                getTransactionId(),
+                getMaxOfflineDuration(),
+                getInvalidAfterOfflineDuration(),
+                getDynUpdateInterval(),
+                getDynUpdateTime(),
+                getPriceScheduleSignature(),
+                getCustomData()
+        );
     }
 }

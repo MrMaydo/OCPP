@@ -176,12 +176,12 @@ public class SignCertificateRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.csr != null ? this.csr.hashCode() : 0);
-        result = 31 * result + (this.hashRootCertificate != null ? this.hashRootCertificate.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCsr(),
+                getCertificateType(),
+                getHashRootCertificate(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

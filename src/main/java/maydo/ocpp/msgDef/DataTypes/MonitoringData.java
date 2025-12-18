@@ -161,11 +161,11 @@ public class MonitoringData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.variable != null ? this.variable.hashCode() : 0);
-        result = 31 * result + (this.component != null ? this.component.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.variableMonitoring != null ? this.variableMonitoring.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getComponent(),
+                getVariable(),
+                getVariableMonitoring(),
+                getCustomData()
+        );
     }
 }

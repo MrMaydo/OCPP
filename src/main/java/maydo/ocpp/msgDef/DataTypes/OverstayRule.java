@@ -171,12 +171,12 @@ public class OverstayRule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.overstayFee != null ? this.overstayFee.hashCode() : 0);
-        result = 31 * result + (this.overstayFeePeriod != null ? this.overstayFeePeriod.hashCode() : 0);
-        result = 31 * result + (this.overstayRuleDescription != null ? this.overstayRuleDescription.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getOverstayFee(),
+                getOverstayRuleDescription(),
+                getStartTime(),
+                getOverstayFeePeriod(),
+                getCustomData()
+        );
     }
 }

@@ -714,32 +714,32 @@ public class V2XChargingParameters implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.minChargePower != null ? this.minChargePower.hashCode() : 0);
-        result = 31 * result + (this.evMinV2XEnergyRequest != null ? this.evMinV2XEnergyRequest.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.minChargeCurrent != null ? this.minChargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.minDischargePowerL2 != null ? this.minDischargePowerL2.hashCode() : 0);
-        result = 31 * result + (this.evMaxEnergyRequest != null ? this.evMaxEnergyRequest.hashCode() : 0);
-        result = 31 * result + (this.minChargePowerL2 != null ? this.minChargePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minDischargePowerL3 != null ? this.minDischargePowerL3.hashCode() : 0);
-        result = 31 * result + (this.minChargePowerL3 != null ? this.minChargePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxDischargeCurrent != null ? this.maxDischargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.evMinEnergyRequest != null ? this.evMinEnergyRequest.hashCode() : 0);
-        result = 31 * result + (this.maxDischargePower != null ? this.maxDischargePower.hashCode() : 0);
-        result = 31 * result + (this.minDischargePower != null ? this.minDischargePower.hashCode() : 0);
-        result = 31 * result + (this.maxChargePowerL3 != null ? this.maxChargePowerL3.hashCode() : 0);
-        result = 31 * result + (this.maxChargeCurrent != null ? this.maxChargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.maxChargePowerL2 != null ? this.maxChargePowerL2.hashCode() : 0);
-        result = 31 * result + (this.minVoltage != null ? this.minVoltage.hashCode() : 0);
-        result = 31 * result + (this.maxVoltage != null ? this.maxVoltage.hashCode() : 0);
-        result = 31 * result + (this.maxDischargePowerL2 != null ? this.maxDischargePowerL2.hashCode() : 0);
-        result = 31 * result + (this.maxDischargePowerL3 != null ? this.maxDischargePowerL3.hashCode() : 0);
-        result = 31 * result + (this.targetSoC != null ? this.targetSoC.hashCode() : 0);
-        result = 31 * result + (this.maxChargePower != null ? this.maxChargePower.hashCode() : 0);
-        result = 31 * result + (this.minDischargeCurrent != null ? this.minDischargeCurrent.hashCode() : 0);
-        result = 31 * result + (this.evTargetEnergyRequest != null ? this.evTargetEnergyRequest.hashCode() : 0);
-        result = 31 * result + (this.evMaxV2XEnergyRequest != null ? this.evMaxV2XEnergyRequest.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMinChargePower(),
+                getMinChargePowerL2(),
+                getMinChargePowerL3(),
+                getMaxChargePower(),
+                getMaxChargePowerL2(),
+                getMaxChargePowerL3(),
+                getMinDischargePower(),
+                getMinDischargePowerL2(),
+                getMinDischargePowerL3(),
+                getMaxDischargePower(),
+                getMaxDischargePowerL2(),
+                getMaxDischargePowerL3(),
+                getMinChargeCurrent(),
+                getMaxChargeCurrent(),
+                getMinDischargeCurrent(),
+                getMaxDischargeCurrent(),
+                getMinVoltage(),
+                getMaxVoltage(),
+                getEvTargetEnergyRequest(),
+                getEvMinEnergyRequest(),
+                getEvMaxEnergyRequest(),
+                getEvMinV2XEnergyRequest(),
+                getEvMaxV2XEnergyRequest(),
+                getTargetSoC(),
+                getCustomData()
+        );
     }
 }

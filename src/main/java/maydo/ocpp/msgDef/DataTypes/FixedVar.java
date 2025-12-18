@@ -206,13 +206,13 @@ public class FixedVar implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.unit != null ? this.unit.hashCode() : 0);
-        result = 31 * result + (this.setpoint != null ? this.setpoint.hashCode() : 0);
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriority(),
+                getSetpoint(),
+                getUnit(),
+                getStartTime(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

@@ -115,9 +115,9 @@ public class GetCertificateChainStatusResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateStatus != null ? this.certificateStatus.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateStatus(),
+                getCustomData()
+        );
     }
 }

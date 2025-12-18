@@ -157,11 +157,11 @@ public class CertificateSignedRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.certificateChain != null ? this.certificateChain.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.certificateType != null ? this.certificateType.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCertificateChain(),
+                getCertificateType(),
+                getRequestId(),
+                getCustomData()
+        );
     }
 }

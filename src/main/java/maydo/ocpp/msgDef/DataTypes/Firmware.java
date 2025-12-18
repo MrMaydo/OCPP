@@ -209,13 +209,13 @@ public class Firmware implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.signingCertificate != null ? this.signingCertificate.hashCode() : 0);
-        result = 31 * result + (this.retrieveDateTime != null ? this.retrieveDateTime.hashCode() : 0);
-        result = 31 * result + (this.signature != null ? this.signature.hashCode() : 0);
-        result = 31 * result + (this.location != null ? this.location.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.installDateTime != null ? this.installDateTime.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getLocation(),
+                getRetrieveDateTime(),
+                getInstallDateTime(),
+                getSigningCertificate(),
+                getSignature(),
+                getCustomData()
+        );
     }
 }

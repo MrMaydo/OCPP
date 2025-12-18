@@ -218,13 +218,13 @@ public class PriceLevelSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.priceScheduleId != null ? this.priceScheduleId.hashCode() : 0);
-        result = 31 * result + (this.priceLevelScheduleEntries != null ? this.priceLevelScheduleEntries.hashCode() : 0);
-        result = 31 * result + (this.timeAnchor != null ? this.timeAnchor.hashCode() : 0);
-        result = 31 * result + (this.priceScheduleDescription != null ? this.priceScheduleDescription.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.numberOfPriceLevels != null ? this.numberOfPriceLevels.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getPriceLevelScheduleEntries(),
+                getTimeAnchor(),
+                getPriceScheduleId(),
+                getPriceScheduleDescription(),
+                getNumberOfPriceLevels(),
+                getCustomData()
+        );
     }
 }

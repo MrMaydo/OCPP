@@ -136,10 +136,10 @@ public class PriceRuleStack implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.priceRule != null ? this.priceRule.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getDuration(),
+                getPriceRule(),
+                getCustomData()
+        );
     }
 }

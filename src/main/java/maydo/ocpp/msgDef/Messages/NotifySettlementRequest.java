@@ -325,18 +325,18 @@ public class NotifySettlementRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.pspRef != null ? this.pspRef.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.vatCompany != null ? this.vatCompany.hashCode() : 0);
-        result = 31 * result + (this.settlementTime != null ? this.settlementTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.settlementAmount != null ? this.settlementAmount.hashCode() : 0);
-        result = 31 * result + (this.receiptUrl != null ? this.receiptUrl.hashCode() : 0);
-        result = 31 * result + (this.receiptId != null ? this.receiptId.hashCode() : 0);
-        result = 31 * result + (this.transactionId != null ? this.transactionId.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        result = 31 * result + (this.vatNumber != null ? this.vatNumber.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getTransactionId(),
+                getPspRef(),
+                getStatus(),
+                getStatusInfo(),
+                getSettlementAmount(),
+                getSettlementTime(),
+                getReceiptId(),
+                getReceiptUrl(),
+                getVatCompany(),
+                getVatNumber(),
+                getCustomData()
+        );
     }
 }

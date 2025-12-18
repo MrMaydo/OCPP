@@ -211,13 +211,12 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.tbc != null ? this.tbc.hashCode() : 0);
-        result = 31 * result + (this.seqNo != null ? this.seqNo.hashCode() : 0);
-        result = 31 * result + (this.requestId != null ? this.requestId.hashCode() : 0);
-        result = 31 * result + (this.generatedAt != null ? this.generatedAt.hashCode() : 0);
-        result = 31 * result + (this.monitor != null ? this.monitor.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getMonitor(),
+                getRequestId(),
+                getSeqNo(),
+                getGeneratedAt(),
+                getCustomData()
+        );
     }
 }

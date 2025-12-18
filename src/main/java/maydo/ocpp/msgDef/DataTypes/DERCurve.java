@@ -312,17 +312,17 @@ public class DERCurve implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.responseTime != null ? this.responseTime.hashCode() : 0);
-        result = 31 * result + (this.startTime != null ? this.startTime.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.curveData != null ? this.curveData.hashCode() : 0);
-        result = 31 * result + (this.priority != null ? this.priority.hashCode() : 0);
-        result = 31 * result + (this.yUnit != null ? this.yUnit.hashCode() : 0);
-        result = 31 * result + (this.reactivePowerParams != null ? this.reactivePowerParams.hashCode() : 0);
-        result = 31 * result + (this.voltageParams != null ? this.voltageParams.hashCode() : 0);
-        result = 31 * result + (this.hysteresis != null ? this.hysteresis.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurveData(),
+                getHysteresis(),
+                getPriority(),
+                getReactivePowerParams(),
+                getVoltageParams(),
+                getYUnit(),
+                getResponseTime(),
+                getStartTime(),
+                getDuration(),
+                getCustomData()
+        );
     }
 }

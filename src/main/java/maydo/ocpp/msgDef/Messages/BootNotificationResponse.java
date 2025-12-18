@@ -186,12 +186,12 @@ public class BootNotificationResponse implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.currentTime != null ? this.currentTime.hashCode() : 0);
-        result = 31 * result + (this.interval != null ? this.interval.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.statusInfo != null ? this.statusInfo.hashCode() : 0);
-        result = 31 * result + (this.status != null ? this.status.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getCurrentTime(),
+                getInterval(),
+                getStatus(),
+                getStatusInfo(),
+                getCustomData()
+        );
     }
 }

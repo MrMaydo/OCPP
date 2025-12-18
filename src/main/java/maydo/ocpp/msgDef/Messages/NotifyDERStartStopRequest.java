@@ -192,12 +192,12 @@ public class NotifyDERStartStopRequest implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.started != null ? this.started.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.controlId != null ? this.controlId.hashCode() : 0);
-        result = 31 * result + (this.supersededIds != null ? this.supersededIds.hashCode() : 0);
-        result = 31 * result + (this.timestamp != null ? this.timestamp.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getControlId(),
+                getStarted(),
+                getTimestamp(),
+                getSupersededIds(),
+                getCustomData()
+        );
     }
 }

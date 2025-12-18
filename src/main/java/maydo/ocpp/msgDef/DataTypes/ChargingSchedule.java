@@ -476,23 +476,23 @@ public class ChargingSchedule implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.startSchedule != null ? this.startSchedule.hashCode() : 0);
-        result = 31 * result + (this.chargingSchedulePeriod != null ? this.chargingSchedulePeriod.hashCode() : 0);
-        result = 31 * result + (this.salesTariff != null ? this.salesTariff.hashCode() : 0);
-        result = 31 * result + (this.chargingRateUnit != null ? this.chargingRateUnit.hashCode() : 0);
-        result = 31 * result + (this.powerTolerance != null ? this.powerTolerance.hashCode() : 0);
-        result = 31 * result + (this.signatureId != null ? this.signatureId.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.limitAtSoC != null ? this.limitAtSoC.hashCode() : 0);
-        result = 31 * result + (this.duration != null ? this.duration.hashCode() : 0);
-        result = 31 * result + (this.minChargingRate != null ? this.minChargingRate.hashCode() : 0);
-        result = 31 * result + (this.digestValue != null ? this.digestValue.hashCode() : 0);
-        result = 31 * result + (this.useLocalTime != null ? this.useLocalTime.hashCode() : 0);
-        result = 31 * result + (this.priceLevelSchedule != null ? this.priceLevelSchedule.hashCode() : 0);
-        result = 31 * result + (this.randomizedDelay != null ? this.randomizedDelay.hashCode() : 0);
-        result = 31 * result + (this.id != null ? this.id.hashCode() : 0);
-        result = 31 * result + (this.absolutePriceSchedule != null ? this.absolutePriceSchedule.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getId(),
+                getLimitAtSoC(),
+                getStartSchedule(),
+                getDuration(),
+                getChargingRateUnit(),
+                getMinChargingRate(),
+                getPowerTolerance(),
+                getSignatureId(),
+                getDigestValue(),
+                getUseLocalTime(),
+                getChargingSchedulePeriod(),
+                getRandomizedDelay(),
+                getSalesTariff(),
+                getAbsolutePriceSchedule(),
+                getPriceLevelSchedule(),
+                getCustomData()
+        );
     }
 }

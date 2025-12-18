@@ -129,10 +129,10 @@ public class AuthorizationData implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.idToken != null ? this.idToken.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.idTokenInfo != null ? this.idTokenInfo.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getIdToken(),
+                getIdTokenInfo(),
+                getCustomData()
+        );
     }
 }

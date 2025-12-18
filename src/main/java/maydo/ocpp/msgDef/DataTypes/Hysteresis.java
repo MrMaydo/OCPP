@@ -174,12 +174,12 @@ public class Hysteresis implements JsonInterface {
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = 31 * result + (this.hysteresisHigh != null ? this.hysteresisHigh.hashCode() : 0);
-        result = 31 * result + (this.customData != null ? this.customData.hashCode() : 0);
-        result = 31 * result + (this.hysteresisGradient != null ? this.hysteresisGradient.hashCode() : 0);
-        result = 31 * result + (this.hysteresisDelay != null ? this.hysteresisDelay.hashCode() : 0);
-        result = 31 * result + (this.hysteresisLow != null ? this.hysteresisLow.hashCode() : 0);
-        return result;
+        return Objects.hash(
+                getHysteresisHigh(),
+                getHysteresisLow(),
+                getHysteresisDelay(),
+                getHysteresisGradient(),
+                getCustomData()
+        );
     }
 }
