@@ -19,10 +19,10 @@ import java.util.Objects;
 public class VatNumberValidationResponse implements JsonInterface {
 
     /**
-     * Company address associated with vatNumber.
+     * Result of operation.
      */
-    @Optional
-    private Address company;
+    @Required
+    private GenericStatusEnum status;
 
     /**
      * Additional info on status
@@ -37,16 +37,16 @@ public class VatNumberValidationResponse implements JsonInterface {
     private String vatNumber;
 
     /**
+     * Company address associated with vatNumber.
+     */
+    @Optional
+    private Address company;
+
+    /**
      * EVSE id for which check was requested.
      */
     @Optional
     private Integer evseId;
-
-    /**
-     * Result of operation.
-     */
-    @Required
-    private GenericStatusEnum status;
 
     /**
      *
@@ -127,19 +127,19 @@ public class VatNumberValidationResponse implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
-        if (getCompany() != null) {
-            json.add("company", getCompany().toJsonObject());
-        }
+        json.addProperty("status", getStatus().toString());
+
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
         }
         json.addProperty("vatNumber", getVatNumber());
 
+        if (getCompany() != null) {
+            json.add("company", getCompany().toJsonObject());
+        }
         if (getEvseId() != null) {
             json.addProperty("evseId", getEvseId());
         }
-        json.addProperty("status", getStatus().toString());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -155,9 +155,8 @@ public class VatNumberValidationResponse implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("company")) {
-            setCompany(new Address());
-            getCompany().fromJsonObject(jsonObject.getAsJsonObject("company"));
+        if (jsonObject.has("status")) {
+            setStatus(GenericStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {
@@ -169,12 +168,13 @@ public class VatNumberValidationResponse implements JsonInterface {
             setVatNumber(jsonObject.get("vatNumber").getAsString());
         }
 
-        if (jsonObject.has("evseId")) {
-            setEvseId(jsonObject.get("evseId").getAsInt());
+        if (jsonObject.has("company")) {
+            setCompany(new Address());
+            getCompany().fromJsonObject(jsonObject.getAsJsonObject("company"));
         }
 
-        if (jsonObject.has("status")) {
-            setStatus(GenericStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        if (jsonObject.has("evseId")) {
+            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {

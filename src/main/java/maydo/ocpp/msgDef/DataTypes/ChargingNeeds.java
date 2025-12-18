@@ -27,42 +27,10 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 public class ChargingNeeds implements JsonInterface {
 
     /**
-     * EV AC charging parameters.
-     */
-    @Optional
-    private ACChargingParameters acChargingParameters;
-
-    /**
-     * (2.1) Additional charging parameters for ISO 15118-20 AC bidirectional sessions with DER control (AC_BPT_DER)
-     */
-    @Optional
-    private DERChargingParameters derChargingParameters;
-
-    /**
-     * (2.1) Discharging and associated price offered by EV.
-     * Schedule periods during which EV is willing to discharge have a negative value for power.
-     */
-    @Optional
-    private EVEnergyOffer evEnergyOffer;
-
-    /**
      * (2.1) Mode of energy transfer requested by the EV.
      */
     @Required
     private EnergyTransferModeEnum requestedEnergyTransfer;
-
-    /**
-     * EV DC charging parameters
-     */
-    @Optional
-    private DCChargingParameters dcChargingParameters;
-
-    /**
-     * (2.1) The list of charging parameters that apply to an ISO 15118-20 session
-     * or any other session that supports bidirectional charging.
-     */
-    @Optional
-    private V2XChargingParameters v2xChargingParameters;
 
     /**
      * Modes of energy transfer that are marked as available by EV.
@@ -93,6 +61,38 @@ public class ChargingNeeds implements JsonInterface {
      */
     @Optional
     private Date departureTime;
+
+    /**
+     * (2.1) Discharging and associated price offered by EV.
+     * Schedule periods during which EV is willing to discharge have a negative value for power.
+     */
+    @Optional
+    private EVEnergyOffer evEnergyOffer;
+
+    /**
+     * EV AC charging parameters.
+     */
+    @Optional
+    private ACChargingParameters acChargingParameters;
+
+    /**
+     * EV DC charging parameters
+     */
+    @Optional
+    private DCChargingParameters dcChargingParameters;
+
+    /**
+     * (2.1) Additional charging parameters for ISO 15118-20 AC bidirectional sessions with DER control (AC_BPT_DER)
+     */
+    @Optional
+    private DERChargingParameters derChargingParameters;
+
+    /**
+     * (2.1) The list of charging parameters that apply to an ISO 15118-20 session
+     * or any other session that supports bidirectional charging.
+     */
+    @Optional
+    private V2XChargingParameters v2xChargingParameters;
 
     /**
      *
@@ -223,23 +223,8 @@ public class ChargingNeeds implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
-        if (getAcChargingParameters() != null) {
-            json.add("acChargingParameters", getAcChargingParameters().toJsonObject());
-        }
-        if (getDerChargingParameters() != null) {
-            json.add("derChargingParameters", getDerChargingParameters().toJsonObject());
-        }
-        if (getEvEnergyOffer() != null) {
-            json.add("evEnergyOffer", getEvEnergyOffer().toJsonObject());
-        }
         json.addProperty("requestedEnergyTransfer", getRequestedEnergyTransfer().toString());
 
-        if (getDcChargingParameters() != null) {
-            json.add("dcChargingParameters", getDcChargingParameters().toJsonObject());
-        }
-        if (getV2xChargingParameters() != null) {
-            json.add("v2xChargingParameters", getV2xChargingParameters().toJsonObject());
-        }
         if (getAvailableEnergyTransfer() != null) {
             JsonArray availableEnergyTransferArray = new JsonArray();
             for (EnergyTransferModeEnum item : getAvailableEnergyTransfer()) {
@@ -256,6 +241,21 @@ public class ChargingNeeds implements JsonInterface {
         if (getDepartureTime() != null) {
             json.addProperty("departureTime", new SimpleDateFormat(DATE_FORMAT).format(getDepartureTime()));
         }
+        if (getEvEnergyOffer() != null) {
+            json.add("evEnergyOffer", getEvEnergyOffer().toJsonObject());
+        }
+        if (getAcChargingParameters() != null) {
+            json.add("acChargingParameters", getAcChargingParameters().toJsonObject());
+        }
+        if (getDcChargingParameters() != null) {
+            json.add("dcChargingParameters", getDcChargingParameters().toJsonObject());
+        }
+        if (getDerChargingParameters() != null) {
+            json.add("derChargingParameters", getDerChargingParameters().toJsonObject());
+        }
+        if (getV2xChargingParameters() != null) {
+            json.add("v2xChargingParameters", getV2xChargingParameters().toJsonObject());
+        }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -271,33 +271,8 @@ public class ChargingNeeds implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("acChargingParameters")) {
-            setAcChargingParameters(new ACChargingParameters());
-            getAcChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("acChargingParameters"));
-        }
-
-        if (jsonObject.has("derChargingParameters")) {
-            setDerChargingParameters(new DERChargingParameters());
-            getDerChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("derChargingParameters"));
-        }
-
-        if (jsonObject.has("evEnergyOffer")) {
-            setEvEnergyOffer(new EVEnergyOffer());
-            getEvEnergyOffer().fromJsonObject(jsonObject.getAsJsonObject("evEnergyOffer"));
-        }
-
         if (jsonObject.has("requestedEnergyTransfer")) {
             setRequestedEnergyTransfer(EnergyTransferModeEnum.valueOf(jsonObject.get("requestedEnergyTransfer").getAsString()));
-        }
-
-        if (jsonObject.has("dcChargingParameters")) {
-            setDcChargingParameters(new DCChargingParameters());
-            getDcChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("dcChargingParameters"));
-        }
-
-        if (jsonObject.has("v2xChargingParameters")) {
-            setV2xChargingParameters(new V2XChargingParameters());
-            getV2xChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("v2xChargingParameters"));
         }
 
         if (jsonObject.has("availableEnergyTransfer")) {
@@ -323,6 +298,31 @@ public class ChargingNeeds implements JsonInterface {
             } catch (ParseException e) {
                 System.out.println("Invalid date format for departureTime" + e);
             }
+        }
+
+        if (jsonObject.has("evEnergyOffer")) {
+            setEvEnergyOffer(new EVEnergyOffer());
+            getEvEnergyOffer().fromJsonObject(jsonObject.getAsJsonObject("evEnergyOffer"));
+        }
+
+        if (jsonObject.has("acChargingParameters")) {
+            setAcChargingParameters(new ACChargingParameters());
+            getAcChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("acChargingParameters"));
+        }
+
+        if (jsonObject.has("dcChargingParameters")) {
+            setDcChargingParameters(new DCChargingParameters());
+            getDcChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("dcChargingParameters"));
+        }
+
+        if (jsonObject.has("derChargingParameters")) {
+            setDerChargingParameters(new DERChargingParameters());
+            getDerChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("derChargingParameters"));
+        }
+
+        if (jsonObject.has("v2xChargingParameters")) {
+            setV2xChargingParameters(new V2XChargingParameters());
+            getV2xChargingParameters().fromJsonObject(jsonObject.getAsJsonObject("v2xChargingParameters"));
         }
 
         if (jsonObject.has("customData")) {

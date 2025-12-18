@@ -20,16 +20,16 @@ import java.util.Objects;
 public class CertificateHashDataChain implements JsonInterface {
 
     /**
-     * Information to identify a certificate.
-     */
-    @Required
-    private CertificateHashData certificateHashData;
-
-    /**
      * Indicates the type of the requested certificate(s)
      */
     @Required
     private GetCertificateIdUseEnum certificateType;
+
+    /**
+     * Information to identify a certificate.
+     */
+    @Required
+    private CertificateHashData certificateHashData;
 
     /**
      * Information to identify the child certificate(s).
@@ -94,9 +94,9 @@ public class CertificateHashDataChain implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
-        json.add("certificateHashData", getCertificateHashData().toJsonObject());
-
         json.addProperty("certificateType", getCertificateType().toString());
+
+        json.add("certificateHashData", getCertificateHashData().toJsonObject());
 
         if (getChildCertificateHashData() != null) {
             JsonArray childCertificateHashDataArray = new JsonArray();
@@ -120,13 +120,13 @@ public class CertificateHashDataChain implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("certificateType")) {
+            setCertificateType(GetCertificateIdUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
+        }
+
         if (jsonObject.has("certificateHashData")) {
             setCertificateHashData(new CertificateHashData());
             getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
-        }
-
-        if (jsonObject.has("certificateType")) {
-            setCertificateType(GetCertificateIdUseEnum.valueOf(jsonObject.get("certificateType").getAsString()));
         }
 
         if (jsonObject.has("childCertificateHashData")) {

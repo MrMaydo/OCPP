@@ -16,16 +16,16 @@ import java.util.Objects;
 public class TariffFixedPrice implements JsonInterface {
 
     /**
-     * Conditions when this tariff element price is applicable. When absent always applicable,
-     */
-    @Optional
-    private TariffConditionsFixed conditions;
-
-    /**
      * Fixed price for this element e.g. a start fee.
      */
     @Required
     private Float priceFixed;
+
+    /**
+     * Conditions when this tariff element price is applicable. When absent always applicable,
+     */
+    @Optional
+    private TariffConditionsFixed conditions;
 
     /**
      *
@@ -76,11 +76,11 @@ public class TariffFixedPrice implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("priceFixed", getPriceFixed());
+
         if (getConditions() != null) {
             json.add("conditions", getConditions().toJsonObject());
         }
-        json.addProperty("priceFixed", getPriceFixed());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -96,13 +96,13 @@ public class TariffFixedPrice implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("priceFixed")) {
+            setPriceFixed(jsonObject.get("priceFixed").getAsFloat());
+        }
+
         if (jsonObject.has("conditions")) {
             setConditions(new TariffConditionsFixed());
             getConditions().fromJsonObject(jsonObject.getAsJsonObject("conditions"));
-        }
-
-        if (jsonObject.has("priceFixed")) {
-            setPriceFixed(jsonObject.get("priceFixed").getAsFloat());
         }
 
         if (jsonObject.has("customData")) {

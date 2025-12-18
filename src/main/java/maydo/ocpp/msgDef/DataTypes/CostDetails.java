@@ -19,14 +19,6 @@ import java.util.Objects;
 public class CostDetails implements JsonInterface {
 
     /**
-     * List of Charging Periods that make up this charging session.
-     * A finished session has of 1 or more periods, where each period has a different list of dimensions that determined the price.
-     * When sent as a running cost update during a transaction chargingPeriods are omitted.
-     */
-    @Optional
-    private List<ChargingPeriod> chargingPeriods;
-
-    /**
      * Total sum of all the costs of this transaction in the specified currency.
      */
     @Required
@@ -37,6 +29,14 @@ public class CostDetails implements JsonInterface {
      */
     @Required
     private TotalUsage totalUsage;
+
+    /**
+     * List of Charging Periods that make up this charging session.
+     * A finished session has of 1 or more periods, where each period has a different list of dimensions that determined the price.
+     * When sent as a running cost update during a transaction chargingPeriods are omitted.
+     */
+    @Optional
+    private List<ChargingPeriod> chargingPeriods;
 
     /**
      * If set to true, then Charging Station has failed to calculate the cost.
@@ -128,6 +128,10 @@ public class CostDetails implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.add("totalCost", getTotalCost().toJsonObject());
+
+        json.add("totalUsage", getTotalUsage().toJsonObject());
+
         if (getChargingPeriods() != null) {
             JsonArray chargingPeriodsArray = new JsonArray();
             for (ChargingPeriod item : getChargingPeriods()) {
@@ -135,10 +139,6 @@ public class CostDetails implements JsonInterface {
             }
             json.add("chargingPeriods", chargingPeriodsArray);
         }
-        json.add("totalCost", getTotalCost().toJsonObject());
-
-        json.add("totalUsage", getTotalUsage().toJsonObject());
-
         if (getFailureToCalculate() != null) {
             json.addProperty("failureToCalculate", getFailureToCalculate());
         }
@@ -160,16 +160,6 @@ public class CostDetails implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("chargingPeriods")) {
-            setChargingPeriods(new ArrayList<>());
-            JsonArray arr = jsonObject.getAsJsonArray("chargingPeriods");
-            for (JsonElement el : arr) {
-                ChargingPeriod item = new ChargingPeriod();
-                item.fromJsonObject(el.getAsJsonObject());
-                getChargingPeriods().add(item);
-            }
-        }
-
         if (jsonObject.has("totalCost")) {
             setTotalCost(new TotalCost());
             getTotalCost().fromJsonObject(jsonObject.getAsJsonObject("totalCost"));
@@ -178,6 +168,16 @@ public class CostDetails implements JsonInterface {
         if (jsonObject.has("totalUsage")) {
             setTotalUsage(new TotalUsage());
             getTotalUsage().fromJsonObject(jsonObject.getAsJsonObject("totalUsage"));
+        }
+
+        if (jsonObject.has("chargingPeriods")) {
+            setChargingPeriods(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingPeriods");
+            for (JsonElement el : arr) {
+                ChargingPeriod item = new ChargingPeriod();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingPeriods().add(item);
+            }
         }
 
         if (jsonObject.has("failureToCalculate")) {

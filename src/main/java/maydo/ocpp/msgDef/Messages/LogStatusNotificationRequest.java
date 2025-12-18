@@ -24,17 +24,17 @@ public class LogStatusNotificationRequest implements JsonInterface {
     private UploadLogStatusEnum status;
 
     /**
+     * (2.1) Detailed status info
+     */
+    @Optional
+    private StatusInfo statusInfo;
+
+    /**
      * The request id that was provided in GetLogRequest that started this log upload.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no log upload ongoing.
      */
     @Optional
     private Integer requestId;
-
-    /**
-     * (2.1) Detailed status info
-     */
-    @Optional
-    private StatusInfo statusInfo;
 
     /**
      *
@@ -97,11 +97,11 @@ public class LogStatusNotificationRequest implements JsonInterface {
 
         json.addProperty("status", getStatus().toString());
 
-        if (getRequestId() != null) {
-            json.addProperty("requestId", getRequestId());
-        }
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
         }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -122,13 +122,13 @@ public class LogStatusNotificationRequest implements JsonInterface {
             setStatus(UploadLogStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
-        if (jsonObject.has("requestId")) {
-            setRequestId(jsonObject.get("requestId").getAsInt());
-        }
-
         if (jsonObject.has("statusInfo")) {
             setStatusInfo(new StatusInfo());
             getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("requestId")) {
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {

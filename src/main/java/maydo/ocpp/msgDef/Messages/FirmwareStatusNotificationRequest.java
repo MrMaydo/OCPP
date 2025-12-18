@@ -24,17 +24,17 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
     private FirmwareStatusEnum status;
 
     /**
+     * (2.1) Detailed status info
+     */
+    @Optional
+    private StatusInfo statusInfo;
+
+    /**
      * The request id that was provided in the UpdateFirmwareRequest that started this firmware update.
      * This field is mandatory, unless the message was triggered by a TriggerMessageRequest AND there is no firmware update ongoing.
      */
     @Optional
     private Integer requestId;
-
-    /**
-     * (2.1) Detailed status info
-     */
-    @Optional
-    private StatusInfo statusInfo;
 
     /**
      *
@@ -97,11 +97,11 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
 
         json.addProperty("status", getStatus().toString());
 
-        if (getRequestId() != null) {
-            json.addProperty("requestId", getRequestId());
-        }
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
+        if (getRequestId() != null) {
+            json.addProperty("requestId", getRequestId());
         }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -122,13 +122,13 @@ public class FirmwareStatusNotificationRequest implements JsonInterface {
             setStatus(FirmwareStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
-        if (jsonObject.has("requestId")) {
-            setRequestId(jsonObject.get("requestId").getAsInt());
-        }
-
         if (jsonObject.has("statusInfo")) {
             setStatusInfo(new StatusInfo());
             getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
+        if (jsonObject.has("requestId")) {
+            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {

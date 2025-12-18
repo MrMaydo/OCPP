@@ -24,16 +24,16 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 public class EVPowerSchedule implements JsonInterface {
 
     /**
-     * List of EVPowerScheduleEntries.
-     */
-    @Required
-    private List<EVPowerScheduleEntry> evPowerScheduleEntries;
-
-    /**
      * The time that defines the starting point for the EVEnergyOffer.
      */
     @Required
     private Date timeAnchor;
+
+    /**
+     * List of EVPowerScheduleEntries.
+     */
+    @Required
+    private List<EVPowerScheduleEntry> evPowerScheduleEntries;
 
     /**
      *
@@ -84,13 +84,13 @@ public class EVPowerSchedule implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
+
         JsonArray evPowerScheduleEntriesArray = new JsonArray();
         for (EVPowerScheduleEntry item : getEvPowerScheduleEntries()) {
             evPowerScheduleEntriesArray.add(item.toJsonObject());
         }
         json.add("evPowerScheduleEntries", evPowerScheduleEntriesArray);
-
-        json.addProperty("timeAnchor", new SimpleDateFormat(DATE_FORMAT).format(getTimeAnchor()));
 
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -107,6 +107,15 @@ public class EVPowerSchedule implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("timeAnchor")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for timeAnchor" + e);
+            }
+        }
+
         if (jsonObject.has("evPowerScheduleEntries")) {
             setEvPowerScheduleEntries(new ArrayList<>());
             JsonArray arr = jsonObject.getAsJsonArray("evPowerScheduleEntries");
@@ -114,15 +123,6 @@ public class EVPowerSchedule implements JsonInterface {
                 EVPowerScheduleEntry item = new EVPowerScheduleEntry();
                 item.fromJsonObject(el.getAsJsonObject());
                 getEvPowerScheduleEntries().add(item);
-            }
-        }
-
-        if (jsonObject.has("timeAnchor")) {
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                setTimeAnchor(dateFormat.parse(jsonObject.get("timeAnchor").getAsString()));
-            } catch (ParseException e) {
-                System.out.println("Invalid date format for timeAnchor" + e);
             }
         }
 

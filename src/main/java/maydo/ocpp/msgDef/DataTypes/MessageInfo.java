@@ -26,12 +26,6 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 public class MessageInfo implements JsonInterface {
 
     /**
-     * When a Charging Station has multiple Displays, this field can be used to define to which Display this message belongs.
-     */
-    @Optional
-    private Component display;
-
-    /**
      * Unique id within an exchange context.
      * It is defined within the OCPP context as a positive Integer value (greater or equal to zero).
      */
@@ -39,10 +33,28 @@ public class MessageInfo implements JsonInterface {
     private Integer id;
 
     /**
+     * Contains message details for the message to be displayed on a Charging Station.
+     */
+    @Required
+    private MessageContent message;
+
+    /**
+     * (2.1) Contains message details for extra languages to be displayed on a Charging Station.
+     */
+    @Optional
+    private List<MessageContent> messageExtra;
+
+    /**
      * With what priority should this message be shown
      */
     @Required
     private MessagePriorityEnum priority;
+
+    /**
+     * When a Charging Station has multiple Displays, this field can be used to define to which Display this message belongs.
+     */
+    @Optional
+    private Component display;
 
     /**
      * During what state should this message be shown. When omitted this message should be shown in any state of the Charging Station.
@@ -68,18 +80,6 @@ public class MessageInfo implements JsonInterface {
      */
     @Optional
     private String transactionId;
-
-    /**
-     * Contains message details for the message to be displayed on a Charging Station.
-     */
-    @Required
-    private MessageContent message;
-
-    /**
-     * (2.1) Contains message details for extra languages to be displayed on a Charging Station.
-     */
-    @Optional
-    private List<MessageContent> messageExtra;
 
     /**
      *
@@ -198,13 +198,22 @@ public class MessageInfo implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("id", getId());
+
+        json.add("message", getMessage().toJsonObject());
+
+        if (getMessageExtra() != null) {
+            JsonArray messageExtraArray = new JsonArray();
+            for (MessageContent item : getMessageExtra()) {
+                messageExtraArray.add(item.toJsonObject());
+            }
+            json.add("messageExtra", messageExtraArray);
+        }
+        json.addProperty("priority", getPriority().toString());
+
         if (getDisplay() != null) {
             json.add("display", getDisplay().toJsonObject());
         }
-        json.addProperty("id", getId());
-
-        json.addProperty("priority", getPriority().toString());
-
         if (getState() != null) {
             json.addProperty("state", getState().toString());
         }
@@ -216,15 +225,6 @@ public class MessageInfo implements JsonInterface {
         }
         if (getTransactionId() != null) {
             json.addProperty("transactionId", getTransactionId());
-        }
-        json.add("message", getMessage().toJsonObject());
-
-        if (getMessageExtra() != null) {
-            JsonArray messageExtraArray = new JsonArray();
-            for (MessageContent item : getMessageExtra()) {
-                messageExtraArray.add(item.toJsonObject());
-            }
-            json.add("messageExtra", messageExtraArray);
         }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -241,17 +241,32 @@ public class MessageInfo implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("display")) {
-            setDisplay(new Component());
-            getDisplay().fromJsonObject(jsonObject.getAsJsonObject("display"));
-        }
-
         if (jsonObject.has("id")) {
             setId(jsonObject.get("id").getAsInt());
         }
 
+        if (jsonObject.has("message")) {
+            setMessage(new MessageContent());
+            getMessage().fromJsonObject(jsonObject.getAsJsonObject("message"));
+        }
+
+        if (jsonObject.has("messageExtra")) {
+            setMessageExtra(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("messageExtra");
+            for (JsonElement el : arr) {
+                MessageContent item = new MessageContent();
+                item.fromJsonObject(el.getAsJsonObject());
+                getMessageExtra().add(item);
+            }
+        }
+
         if (jsonObject.has("priority")) {
             setPriority(MessagePriorityEnum.valueOf(jsonObject.get("priority").getAsString()));
+        }
+
+        if (jsonObject.has("display")) {
+            setDisplay(new Component());
+            getDisplay().fromJsonObject(jsonObject.getAsJsonObject("display"));
         }
 
         if (jsonObject.has("state")) {
@@ -278,21 +293,6 @@ public class MessageInfo implements JsonInterface {
 
         if (jsonObject.has("transactionId")) {
             setTransactionId(jsonObject.get("transactionId").getAsString());
-        }
-
-        if (jsonObject.has("message")) {
-            setMessage(new MessageContent());
-            getMessage().fromJsonObject(jsonObject.getAsJsonObject("message"));
-        }
-
-        if (jsonObject.has("messageExtra")) {
-            setMessageExtra(new ArrayList<>());
-            JsonArray arr = jsonObject.getAsJsonArray("messageExtra");
-            for (JsonElement el : arr) {
-                MessageContent item = new MessageContent();
-                item.fromJsonObject(el.getAsJsonObject());
-                getMessageExtra().add(item);
-            }
         }
 
         if (jsonObject.has("customData")) {

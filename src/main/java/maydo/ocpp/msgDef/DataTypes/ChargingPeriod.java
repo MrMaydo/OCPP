@@ -25,10 +25,11 @@ import static maydo.ocpp.config.Configuration.DATE_FORMAT;
 public class ChargingPeriod implements JsonInterface {
 
     /**
-     * List of volume per cost dimension for this charging period.
+     * Start timestamp of charging period. A period ends when the next period starts.
+     * The last period ends when the session ends.
      */
-    @Optional
-    private List<CostDimension> dimensions;
+    @Required
+    private Date startPeriod;
 
     /**
      * Unique identifier of the Tariff that was used to calculate cost.
@@ -38,11 +39,10 @@ public class ChargingPeriod implements JsonInterface {
     private String tariffId;
 
     /**
-     * Start timestamp of charging period. A period ends when the next period starts.
-     * The last period ends when the session ends.
+     * List of volume per cost dimension for this charging period.
      */
-    @Required
-    private Date startPeriod;
+    @Optional
+    private List<CostDimension> dimensions;
 
     /**
      *
@@ -102,6 +102,11 @@ public class ChargingPeriod implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("startPeriod", new SimpleDateFormat(DATE_FORMAT).format(getStartPeriod()));
+
+        if (getTariffId() != null) {
+            json.addProperty("tariffId", getTariffId());
+        }
         if (getDimensions() != null) {
             JsonArray dimensionsArray = new JsonArray();
             for (CostDimension item : getDimensions()) {
@@ -109,11 +114,6 @@ public class ChargingPeriod implements JsonInterface {
             }
             json.add("dimensions", dimensionsArray);
         }
-        if (getTariffId() != null) {
-            json.addProperty("tariffId", getTariffId());
-        }
-        json.addProperty("startPeriod", new SimpleDateFormat(DATE_FORMAT).format(getStartPeriod()));
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -129,13 +129,12 @@ public class ChargingPeriod implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("dimensions")) {
-            setDimensions(new ArrayList<>());
-            JsonArray arr = jsonObject.getAsJsonArray("dimensions");
-            for (JsonElement el : arr) {
-                CostDimension item = new CostDimension();
-                item.fromJsonObject(el.getAsJsonObject());
-                getDimensions().add(item);
+        if (jsonObject.has("startPeriod")) {
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                setStartPeriod(dateFormat.parse(jsonObject.get("startPeriod").getAsString()));
+            } catch (ParseException e) {
+                System.out.println("Invalid date format for startPeriod" + e);
             }
         }
 
@@ -143,12 +142,13 @@ public class ChargingPeriod implements JsonInterface {
             setTariffId(jsonObject.get("tariffId").getAsString());
         }
 
-        if (jsonObject.has("startPeriod")) {
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-                setStartPeriod(dateFormat.parse(jsonObject.get("startPeriod").getAsString()));
-            } catch (ParseException e) {
-                System.out.println("Invalid date format for startPeriod" + e);
+        if (jsonObject.has("dimensions")) {
+            setDimensions(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("dimensions");
+            for (JsonElement el : arr) {
+                CostDimension item = new CostDimension();
+                item.fromJsonObject(el.getAsJsonObject());
+                getDimensions().add(item);
             }
         }
 

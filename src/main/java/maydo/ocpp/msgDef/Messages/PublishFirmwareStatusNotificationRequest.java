@@ -28,6 +28,12 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
     private PublishFirmwareStatusEnum status;
 
     /**
+     * (2.1) Detailed status info
+     */
+    @Optional
+    private StatusInfo statusInfo;
+
+    /**
      * Required if status is Published. Can be multiple URI’s, if the Local Controller supports e.g. HTTP, HTTPS, and FTP.
      */
     @Optional
@@ -38,12 +44,6 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
      */
     @Optional
     private Integer requestId;
-
-    /**
-     * (2.1) Detailed status info
-     */
-    @Optional
-    private StatusInfo statusInfo;
 
     /**
      *
@@ -116,6 +116,9 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
         json.addProperty("status", getStatus().toString());
 
+        if (getStatusInfo() != null) {
+            json.add("statusInfo", getStatusInfo().toJsonObject());
+        }
         if (getLocation() != null) {
             JsonArray locationArray = new JsonArray();
             for (String item : getLocation()) {
@@ -125,9 +128,6 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
         }
         if (getRequestId() != null) {
             json.addProperty("requestId", getRequestId());
-        }
-        if (getStatusInfo() != null) {
-            json.add("statusInfo", getStatusInfo().toJsonObject());
         }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -148,6 +148,11 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
             setStatus(PublishFirmwareStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
+        if (jsonObject.has("statusInfo")) {
+            setStatusInfo(new StatusInfo());
+            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
+        }
+
         if (jsonObject.has("location")) {
             setLocation(new ArrayList<>());
             JsonArray arr = jsonObject.getAsJsonArray("location");
@@ -158,11 +163,6 @@ public class PublishFirmwareStatusNotificationRequest implements JsonInterface {
 
         if (jsonObject.has("requestId")) {
             setRequestId(jsonObject.get("requestId").getAsInt());
-        }
-
-        if (jsonObject.has("statusInfo")) {
-            setStatusInfo(new StatusInfo());
-            getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
         }
 
         if (jsonObject.has("customData")) {

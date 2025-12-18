@@ -18,16 +18,16 @@ import java.util.Objects;
 public class EVEnergyOffer implements JsonInterface {
 
     /**
-     * Price schedule for which EV is willing to discharge.
-     */
-    @Optional
-    private EVAbsolutePriceSchedule evAbsolutePriceSchedule;
-
-    /**
      * Power schedule offered for discharging.
      */
     @Required
     private EVPowerSchedule evPowerSchedule;
+
+    /**
+     * Price schedule for which EV is willing to discharge.
+     */
+    @Optional
+    private EVAbsolutePriceSchedule evAbsolutePriceSchedule;
 
     /**
      *
@@ -78,11 +78,11 @@ public class EVEnergyOffer implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.add("evPowerSchedule", getEvPowerSchedule().toJsonObject());
+
         if (getEvAbsolutePriceSchedule() != null) {
             json.add("evAbsolutePriceSchedule", getEvAbsolutePriceSchedule().toJsonObject());
         }
-        json.add("evPowerSchedule", getEvPowerSchedule().toJsonObject());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -98,14 +98,14 @@ public class EVEnergyOffer implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("evAbsolutePriceSchedule")) {
-            setEvAbsolutePriceSchedule(new EVAbsolutePriceSchedule());
-            getEvAbsolutePriceSchedule().fromJsonObject(jsonObject.getAsJsonObject("evAbsolutePriceSchedule"));
-        }
-
         if (jsonObject.has("evPowerSchedule")) {
             setEvPowerSchedule(new EVPowerSchedule());
             getEvPowerSchedule().fromJsonObject(jsonObject.getAsJsonObject("evPowerSchedule"));
+        }
+
+        if (jsonObject.has("evAbsolutePriceSchedule")) {
+            setEvAbsolutePriceSchedule(new EVAbsolutePriceSchedule());
+            getEvAbsolutePriceSchedule().fromJsonObject(jsonObject.getAsJsonObject("evAbsolutePriceSchedule"));
         }
 
         if (jsonObject.has("customData")) {

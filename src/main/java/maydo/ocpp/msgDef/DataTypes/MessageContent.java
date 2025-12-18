@@ -16,6 +16,14 @@ import java.util.Objects;
 public class MessageContent implements JsonInterface {
 
     /**
+     * (2.1) Required. Message contents. Maximum length supported by Charging Station is given
+     * in OCPPCommCtrlr.FieldLength["MessageContentType.cont ent"].
+     * Maximum length defaults to 1024.
+     */
+    @Required
+    private String content;
+
+    /**
      * Format of the message.
      */
     @Required
@@ -26,14 +34,6 @@ public class MessageContent implements JsonInterface {
      */
     @Optional
     private String language;
-
-    /**
-     * (2.1) Required. Message contents. Maximum length supported by Charging Station is given
-     * in OCPPCommCtrlr.FieldLength["MessageContentType.cont ent"].
-     * Maximum length defaults to 1024.
-     */
-    @Required
-    private String content;
 
     /**
      *
@@ -94,13 +94,13 @@ public class MessageContent implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("content", getContent());
+
         json.addProperty("format", getFormat().toString());
 
         if (getLanguage() != null) {
             json.addProperty("language", getLanguage());
         }
-        json.addProperty("content", getContent());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -116,16 +116,16 @@ public class MessageContent implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("content")) {
+            setContent(jsonObject.get("content").getAsString());
+        }
+
         if (jsonObject.has("format")) {
             setFormat(MessageFormatEnum.valueOf(jsonObject.get("format").getAsString()));
         }
 
         if (jsonObject.has("language")) {
             setLanguage(jsonObject.get("language").getAsString());
-        }
-
-        if (jsonObject.has("content")) {
-            setContent(jsonObject.get("content").getAsString());
         }
 
         if (jsonObject.has("customData")) {

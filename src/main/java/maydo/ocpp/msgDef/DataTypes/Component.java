@@ -16,18 +16,18 @@ import java.util.Objects;
 public class Component implements JsonInterface {
 
     /**
-     * Specifies the EVSE when component is located at EVSE level,
-     * also specifies the connector when component is located at Connector level.
-     */
-    @Optional
-    private EVSE evse;
-
-    /**
      * Name of the component. Name should be taken from the list of standardized component names whenever possible.
      * Case Insensitive. strongly advised to use Camel Case.
      */
     @Required
     private String name;
+
+    /**
+     * Specifies the EVSE when component is located at EVSE level,
+     * also specifies the connector when component is located at Connector level.
+     */
+    @Optional
+    private EVSE evse;
 
     /**
      * Name of instance in case the component exists as multiple instances.
@@ -95,11 +95,11 @@ public class Component implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("name", getName());
+
         if (getEvse() != null) {
             json.add("evse", getEvse().toJsonObject());
         }
-        json.addProperty("name", getName());
-
         if (getInstance() != null) {
             json.addProperty("instance", getInstance());
         }
@@ -118,13 +118,13 @@ public class Component implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("name")) {
+            setName(jsonObject.get("name").getAsString());
+        }
+
         if (jsonObject.has("evse")) {
             setEvse(new EVSE());
             getEvse().fromJsonObject(jsonObject.getAsJsonObject("evse"));
-        }
-
-        if (jsonObject.has("name")) {
-            setName(jsonObject.get("name").getAsString());
         }
 
         if (jsonObject.has("instance")) {

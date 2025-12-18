@@ -20,6 +20,12 @@ import java.util.Objects;
 public class ReportDERControlRequest implements JsonInterface {
 
     /**
+     * RequestId from GetDERControlRequest.
+     */
+    @Required
+    private Integer requestId;
+
+    /**
      * Voltage/Frequency/Active/Reactive curve
      */
     @Optional
@@ -66,12 +72,6 @@ public class ReportDERControlRequest implements JsonInterface {
      */
     @Optional
     private List<LimitMaxDischargeGet> limitMaxDischarge;
-
-    /**
-     * RequestId from GetDERControlRequest.
-     */
-    @Required
-    private Integer requestId;
 
     /**
      * To Be Continued. Default value when omitted: false. False indicates that there are no further messages as part of this report.
@@ -193,6 +193,8 @@ public class ReportDERControlRequest implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("requestId", getRequestId());
+
         if (getCurve() != null) {
             JsonArray curveArray = new JsonArray();
             for (DERCurveGet item : getCurve()) {
@@ -249,8 +251,6 @@ public class ReportDERControlRequest implements JsonInterface {
             }
             json.add("limitMaxDischarge", limitMaxDischargeArray);
         }
-        json.addProperty("requestId", getRequestId());
-
         if (getTbc() != null) {
             json.addProperty("tbc", getTbc());
         }
@@ -269,6 +269,10 @@ public class ReportDERControlRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("requestId")) {
+            setRequestId(jsonObject.get("requestId").getAsInt());
+        }
+
         if (jsonObject.has("curve")) {
             setCurve(new ArrayList<>());
             JsonArray arr = jsonObject.getAsJsonArray("curve");
@@ -347,10 +351,6 @@ public class ReportDERControlRequest implements JsonInterface {
                 item.fromJsonObject(el.getAsJsonObject());
                 getLimitMaxDischarge().add(item);
             }
-        }
-
-        if (jsonObject.has("requestId")) {
-            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("tbc")) {

@@ -31,6 +31,12 @@ public class ReportChargingProfilesRequest implements JsonInterface {
     private Integer requestId;
 
     /**
+     * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
+     */
+    @Required
+    private Integer evseId;
+
+    /**
      * Source that has installed this charging profile. Values defined in Appendix as ChargingLimitSourceEnumStringType.
      */
     @Required
@@ -47,12 +53,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
      */
     @Optional
     private Boolean tbc = false;
-
-    /**
-     * The evse to which the charging profile applies. If evseId = 0, the message contains an overall limit for the Charging Station.
-     */
-    @Required
-    private Integer evseId;
 
     /**
      *
@@ -135,6 +135,8 @@ public class ReportChargingProfilesRequest implements JsonInterface {
 
         json.addProperty("requestId", getRequestId());
 
+        json.addProperty("evseId", getEvseId());
+
         json.addProperty("chargingLimitSource", getChargingLimitSource());
 
         JsonArray chargingProfileArray = new JsonArray();
@@ -142,8 +144,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
             chargingProfileArray.add(item.toJsonObject());
         }
         json.add("chargingProfile", chargingProfileArray);
-
-        json.addProperty("evseId", getEvseId());
 
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -164,6 +164,10 @@ public class ReportChargingProfilesRequest implements JsonInterface {
             setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
+        if (jsonObject.has("evseId")) {
+            setEvseId(jsonObject.get("evseId").getAsInt());
+        }
+
         if (jsonObject.has("chargingLimitSource")) {
             setChargingLimitSource(jsonObject.get("chargingLimitSource").getAsString());
         }
@@ -176,10 +180,6 @@ public class ReportChargingProfilesRequest implements JsonInterface {
                 item.fromJsonObject(el.getAsJsonObject());
                 getChargingProfile().add(item);
             }
-        }
-
-        if (jsonObject.has("evseId")) {
-            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {

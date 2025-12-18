@@ -16,16 +16,16 @@ import java.util.Objects;
 public class AdditionalSelectedServices implements JsonInterface {
 
     /**
+     * Human-readable string to identify this service.
+     */
+    @Required
+    private String serviceName;
+
+    /**
      * Part of ISO 15118-20 price schedule.
      */
     @Required
     private RationalNumber serviceFee;
-
-    /**
-     * Human readable string to identify this service.
-     */
-    @Required
-    private String serviceName;
 
     /**
      * Cost of the service.
@@ -76,9 +76,9 @@ public class AdditionalSelectedServices implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
-        json.add("serviceFee", getServiceFee().toJsonObject());
-
         json.addProperty("serviceName", getServiceName());
+
+        json.add("serviceFee", getServiceFee().toJsonObject());
 
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -95,13 +95,13 @@ public class AdditionalSelectedServices implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("serviceName")) {
+            setServiceName(jsonObject.get("serviceName").getAsString());
+        }
+
         if (jsonObject.has("serviceFee")) {
             setServiceFee(new RationalNumber());
             getServiceFee().fromJsonObject(jsonObject.getAsJsonObject("serviceFee"));
-        }
-
-        if (jsonObject.has("serviceName")) {
-            setServiceName(jsonObject.get("serviceName").getAsString());
         }
 
         if (jsonObject.has("customData")) {

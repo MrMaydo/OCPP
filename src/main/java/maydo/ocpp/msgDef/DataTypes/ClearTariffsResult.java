@@ -16,6 +16,12 @@ import java.util.Objects;
 public class ClearTariffsResult implements JsonInterface {
 
     /**
+     *
+     */
+    @Required
+    private TariffClearStatusEnum status;
+
+    /**
      * Additional info on status
      */
     @Optional
@@ -27,12 +33,6 @@ public class ClearTariffsResult implements JsonInterface {
      */
     @Optional
     private String tariffId;
-
-    /**
-     *
-     */
-    @Required
-    private TariffClearStatusEnum status;
 
     /**
      *
@@ -93,14 +93,14 @@ public class ClearTariffsResult implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("status", getStatus().toString());
+
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
         }
         if (getTariffId() != null) {
             json.addProperty("tariffId", getTariffId());
         }
-        json.addProperty("status", getStatus().toString());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -116,6 +116,10 @@ public class ClearTariffsResult implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("status")) {
+            setStatus(TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        }
+
         if (jsonObject.has("statusInfo")) {
             setStatusInfo(new StatusInfo());
             getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
@@ -123,10 +127,6 @@ public class ClearTariffsResult implements JsonInterface {
 
         if (jsonObject.has("tariffId")) {
             setTariffId(jsonObject.get("tariffId").getAsString());
-        }
-
-        if (jsonObject.has("status")) {
-            setStatus(TariffClearStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("customData")) {

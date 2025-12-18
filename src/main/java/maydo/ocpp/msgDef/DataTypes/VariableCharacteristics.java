@@ -16,16 +16,16 @@ import java.util.Objects;
 public class VariableCharacteristics implements JsonInterface {
 
     /**
-     * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
-     */
-    @Optional
-    private String unit;
-
-    /**
      * Data type of this variable.
      */
     @Required
     private DataEnum dataType;
+
+    /**
+     * Unit of the variable. When the transmitted value has a unit, this field SHALL be included.
+     */
+    @Optional
+    private String unit;
 
     /**
      * Minimum possible value of this variable.
@@ -167,11 +167,11 @@ public class VariableCharacteristics implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("dataType", getDataType().toString());
+
         if (getUnit() != null) {
             json.addProperty("unit", getUnit());
         }
-        json.addProperty("dataType", getDataType().toString());
-
         if (getMinLimit() != null) {
             json.addProperty("minLimit", getMinLimit());
         }
@@ -201,12 +201,12 @@ public class VariableCharacteristics implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("unit")) {
-            setUnit(jsonObject.get("unit").getAsString());
-        }
-
         if (jsonObject.has("dataType")) {
             setDataType(DataEnum.valueOf(jsonObject.get("dataType").getAsString()));
+        }
+
+        if (jsonObject.has("unit")) {
+            setUnit(jsonObject.get("unit").getAsString());
         }
 
         if (jsonObject.has("minLimit")) {

@@ -25,16 +25,16 @@ public class SetMonitoringResult implements JsonInterface {
     private Integer id;
 
     /**
-     * Detailed status information.
-     */
-    @Optional
-    private StatusInfo statusInfo;
-
-    /**
      * Status is OK if a value could be returned. Otherwise this will indicate the reason why a value could not be returned.
      */
     @Required
     private SetMonitoringStatusEnum status;
+
+    /**
+     * Detailed status information.
+     */
+    @Optional
+    private StatusInfo statusInfo;
 
     /**
      * The type of this monitor, e.g. a threshold, delta or periodic monitor.
@@ -178,11 +178,11 @@ public class SetMonitoringResult implements JsonInterface {
         if (getId() != null) {
             json.addProperty("id", getId());
         }
+        json.addProperty("status", getStatus().toString());
+
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
         }
-        json.addProperty("status", getStatus().toString());
-
         json.addProperty("type", getType().toString());
 
         json.add("component", getComponent().toJsonObject());
@@ -210,13 +210,13 @@ public class SetMonitoringResult implements JsonInterface {
             setId(jsonObject.get("id").getAsInt());
         }
 
+        if (jsonObject.has("status")) {
+            setStatus(SetMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        }
+
         if (jsonObject.has("statusInfo")) {
             setStatusInfo(new StatusInfo());
             getStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("statusInfo"));
-        }
-
-        if (jsonObject.has("status")) {
-            setStatus(SetMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("type")) {

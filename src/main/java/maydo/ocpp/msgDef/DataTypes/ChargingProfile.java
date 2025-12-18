@@ -55,6 +55,16 @@ public class ChargingProfile implements JsonInterface {
     private ChargingProfileKindEnum chargingProfileKind;
 
     /**
+     * Schedule that contains limits for the available power or current over time.
+     * In order to support ISO 15118 schedule negotiation, it supports at most three schedules with associated tariff to choose from.
+     * Having multiple chargingSchedules is only allowed for charging profiles of purpose TxProfile
+     * in the context of an ISO 15118 charging session.
+     * For ISO 15118 Dynamic Control Mode only one chargingSchedule shall be provided.
+     */
+    @Required
+    private List<ChargingSchedule> chargingSchedule;
+
+    /**
      * Indicates the start point of a recurrence.
      */
     @Optional
@@ -91,16 +101,6 @@ public class ChargingProfile implements JsonInterface {
      */
     @Optional
     private Integer maxOfflineDuration;
-
-    /**
-     * Schedule that contains limits for the available power or current over time.
-     * In order to support ISO 15118 schedule negotiation, it supports at most three schedules with associated tariff to choose from.
-     * Having multiple chargingSchedules is only allowed for charging profiles of purpose TxProfile
-     * in the context of an ISO 15118 charging session.
-     * For ISO 15118 Dynamic Control Mode only one chargingSchedule shall be provided.
-     */
-    @Required
-    private List<ChargingSchedule> chargingSchedule;
 
     /**
      * (2.1) When set to true this charging profile will not be valid anymore after being offline for more than maxOfflineDuration.
@@ -311,6 +311,12 @@ public class ChargingProfile implements JsonInterface {
 
         json.addProperty("chargingProfileKind", getChargingProfileKind().toString());
 
+        JsonArray chargingScheduleArray = new JsonArray();
+        for (ChargingSchedule item : getChargingSchedule()) {
+            chargingScheduleArray.add(item.toJsonObject());
+        }
+        json.add("chargingSchedule", chargingScheduleArray);
+
         if (getRecurrencyKind() != null) {
             json.addProperty("recurrencyKind", getRecurrencyKind().toString());
         }
@@ -326,12 +332,6 @@ public class ChargingProfile implements JsonInterface {
         if (getMaxOfflineDuration() != null) {
             json.addProperty("maxOfflineDuration", getMaxOfflineDuration());
         }
-        JsonArray chargingScheduleArray = new JsonArray();
-        for (ChargingSchedule item : getChargingSchedule()) {
-            chargingScheduleArray.add(item.toJsonObject());
-        }
-        json.add("chargingSchedule", chargingScheduleArray);
-
         if (getInvalidAfterOfflineDuration() != null) {
             json.addProperty("invalidAfterOfflineDuration", getInvalidAfterOfflineDuration());
         }
@@ -375,6 +375,16 @@ public class ChargingProfile implements JsonInterface {
             setChargingProfileKind(ChargingProfileKindEnum.valueOf(jsonObject.get("chargingProfileKind").getAsString()));
         }
 
+        if (jsonObject.has("chargingSchedule")) {
+            setChargingSchedule(new ArrayList<>());
+            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedule");
+            for (JsonElement el : arr) {
+                ChargingSchedule item = new ChargingSchedule();
+                item.fromJsonObject(el.getAsJsonObject());
+                getChargingSchedule().add(item);
+            }
+        }
+
         if (jsonObject.has("recurrencyKind")) {
             setRecurrencyKind(RecurrencyKindEnum.valueOf(jsonObject.get("recurrencyKind").getAsString()));
         }
@@ -403,16 +413,6 @@ public class ChargingProfile implements JsonInterface {
 
         if (jsonObject.has("maxOfflineDuration")) {
             setMaxOfflineDuration(jsonObject.get("maxOfflineDuration").getAsInt());
-        }
-
-        if (jsonObject.has("chargingSchedule")) {
-            setChargingSchedule(new ArrayList<>());
-            JsonArray arr = jsonObject.getAsJsonArray("chargingSchedule");
-            for (JsonElement el : arr) {
-                ChargingSchedule item = new ChargingSchedule();
-                item.fromJsonObject(el.getAsJsonObject());
-                getChargingSchedule().add(item);
-            }
         }
 
         if (jsonObject.has("invalidAfterOfflineDuration")) {

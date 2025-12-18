@@ -28,16 +28,16 @@ public class CertificateStatus implements JsonInterface {
     private CertificateHashData certificateHashData;
 
     /**
-     * Source of status: OCSP, CRL
-     */
-    @Required
-    private CertificateStatusSourceEnum source;
-
-    /**
      * Status of certificate: good, revoked or unknown.
      */
     @Required
     private CertificateStatusEnum status;
+
+    /**
+     * Source of status: OCSP, CRL
+     */
+    @Required
+    private CertificateStatusSourceEnum source;
 
     /**
      *
@@ -116,9 +116,9 @@ public class CertificateStatus implements JsonInterface {
 
         json.add("certificateHashData", getCertificateHashData().toJsonObject());
 
-        json.addProperty("source", getSource().toString());
-
         json.addProperty("status", getStatus().toString());
+
+        json.addProperty("source", getSource().toString());
 
         json.addProperty("nextUpdate", new SimpleDateFormat(DATE_FORMAT).format(getNextUpdate()));
 
@@ -142,12 +142,12 @@ public class CertificateStatus implements JsonInterface {
             getCertificateHashData().fromJsonObject(jsonObject.getAsJsonObject("certificateHashData"));
         }
 
-        if (jsonObject.has("source")) {
-            setSource(CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString()));
-        }
-
         if (jsonObject.has("status")) {
             setStatus(CertificateStatusEnum.valueOf(jsonObject.get("status").getAsString()));
+        }
+
+        if (jsonObject.has("source")) {
+            setSource(CertificateStatusSourceEnum.valueOf(jsonObject.get("source").getAsString()));
         }
 
         if (jsonObject.has("nextUpdate")) {

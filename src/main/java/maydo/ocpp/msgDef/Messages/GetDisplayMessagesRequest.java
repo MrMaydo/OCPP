@@ -22,17 +22,17 @@ import java.util.Objects;
 public class GetDisplayMessagesRequest implements JsonInterface {
 
     /**
+     * The Id of this request.
+     */
+    @Required
+    private Integer requestId;
+
+    /**
      * If provided the Charging Station shall return Display Messages of the given ids.
      * This field SHALL NOT contain more ids than set in NumberOfDisplayMessages.maxLimit
      */
     @Optional
     private List<Integer> id;
-
-    /**
-     * The Id of this request.
-     */
-    @Required
-    private Integer requestId;
 
     /**
      * If provided the Charging Station shall return Display Messages with the given priority only.
@@ -115,6 +115,8 @@ public class GetDisplayMessagesRequest implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("requestId", getRequestId());
+
         if (getId() != null) {
             JsonArray idArray = new JsonArray();
             for (Integer item : getId()) {
@@ -122,8 +124,6 @@ public class GetDisplayMessagesRequest implements JsonInterface {
             }
             json.add("id", idArray);
         }
-        json.addProperty("requestId", getRequestId());
-
         if (getPriority() != null) {
             json.addProperty("priority", getPriority().toString());
         }
@@ -145,16 +145,16 @@ public class GetDisplayMessagesRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("requestId")) {
+            setRequestId(jsonObject.get("requestId").getAsInt());
+        }
+
         if (jsonObject.has("id")) {
             setId(new ArrayList<>());
             JsonArray arr = jsonObject.getAsJsonArray("id");
             for (JsonElement el : arr) {
                 getId().add(el.getAsInt());
             }
-        }
-
-        if (jsonObject.has("requestId")) {
-            setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
         if (jsonObject.has("priority")) {

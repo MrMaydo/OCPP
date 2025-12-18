@@ -16,16 +16,16 @@ import java.util.Objects;
 public class ClearMonitoringResult implements JsonInterface {
 
     /**
-     * Result of the clear request for this monitor, identified by its Id.
-     */
-    @Required
-    private ClearMonitoringStatusEnum status;
-
-    /**
      * Id of the monitor of which a clear was requested.
      */
     @Required
     private Integer id;
+
+    /**
+     * Result of the clear request for this monitor, identified by its Id.
+     */
+    @Required
+    private ClearMonitoringStatusEnum status;
 
     /**
      * Element providing more information about the status.
@@ -92,9 +92,9 @@ public class ClearMonitoringResult implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
-        json.addProperty("status", getStatus().toString());
-
         json.addProperty("id", getId());
+
+        json.addProperty("status", getStatus().toString());
 
         if (getStatusInfo() != null) {
             json.add("statusInfo", getStatusInfo().toJsonObject());
@@ -114,12 +114,12 @@ public class ClearMonitoringResult implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("status")) {
-            setStatus(ClearMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
-        }
-
         if (jsonObject.has("id")) {
             setId(jsonObject.get("id").getAsInt());
+        }
+
+        if (jsonObject.has("status")) {
+            setStatus(ClearMonitoringStatusEnum.valueOf(jsonObject.get("status").getAsString()));
         }
 
         if (jsonObject.has("statusInfo")) {

@@ -16,16 +16,16 @@ import java.util.Objects;
 public class ChargingStation implements JsonInterface {
 
     /**
-     * Vendor-specific device identifier.
-     */
-    @Optional
-    private String serialNumber;
-
-    /**
      * Defines the model of the device.
      */
     @Required
     private String model;
+
+    /**
+     * Vendor-specific device identifier.
+     */
+    @Optional
+    private String serialNumber;
 
     /**
      * Defines the functional parameters of a communication link.
@@ -124,11 +124,11 @@ public class ChargingStation implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("model", getModel());
+
         if (getSerialNumber() != null) {
             json.addProperty("serialNumber", getSerialNumber());
         }
-        json.addProperty("model", getModel());
-
         if (getModem() != null) {
             json.add("modem", getModem().toJsonObject());
         }
@@ -152,12 +152,12 @@ public class ChargingStation implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
-        if (jsonObject.has("serialNumber")) {
-            setSerialNumber(jsonObject.get("serialNumber").getAsString());
-        }
-
         if (jsonObject.has("model")) {
             setModel(jsonObject.get("model").getAsString());
+        }
+
+        if (jsonObject.has("serialNumber")) {
+            setSerialNumber(jsonObject.get("serialNumber").getAsString());
         }
 
         if (jsonObject.has("modem")) {

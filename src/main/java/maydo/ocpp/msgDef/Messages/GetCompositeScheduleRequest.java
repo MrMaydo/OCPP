@@ -17,6 +17,13 @@ import java.util.Objects;
 public class GetCompositeScheduleRequest implements JsonInterface {
 
     /**
+     * The ID of the EVSE for which the schedule is requested.
+     * When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
+     */
+    @Required
+    private Integer evseId;
+
+    /**
      * Length of the requested schedule in seconds.
      */
     @Required
@@ -27,13 +34,6 @@ public class GetCompositeScheduleRequest implements JsonInterface {
      */
     @Optional
     private ChargingRateUnitEnum chargingRateUnit;
-
-    /**
-     * The ID of the EVSE for which the schedule is requested.
-     * When evseid=0, the Charging Station will calculate the expected consumption for the grid connection.
-     */
-    @Required
-    private Integer evseId;
 
     /**
      *
@@ -94,13 +94,13 @@ public class GetCompositeScheduleRequest implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        json.addProperty("evseId", getEvseId());
+
         json.addProperty("duration", getDuration());
 
         if (getChargingRateUnit() != null) {
             json.addProperty("chargingRateUnit", getChargingRateUnit().toString());
         }
-        json.addProperty("evseId", getEvseId());
-
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -116,16 +116,16 @@ public class GetCompositeScheduleRequest implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("evseId")) {
+            setEvseId(jsonObject.get("evseId").getAsInt());
+        }
+
         if (jsonObject.has("duration")) {
             setDuration(jsonObject.get("duration").getAsInt());
         }
 
         if (jsonObject.has("chargingRateUnit")) {
             setChargingRateUnit(ChargingRateUnitEnum.valueOf(jsonObject.get("chargingRateUnit").getAsString()));
-        }
-
-        if (jsonObject.has("evseId")) {
-            setEvseId(jsonObject.get("evseId").getAsInt());
         }
 
         if (jsonObject.has("customData")) {
