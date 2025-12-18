@@ -325,6 +325,9 @@ public class TransactionEventRequest implements JsonInterface {
 
         json.addProperty("seqNo", getSeqNo());
 
+        if (getOffline() != null) {
+            json.addProperty("offline", getOffline());
+        }
         if (getNumberOfPhasesUsed() != null) {
             json.addProperty("numberOfPhasesUsed", getNumberOfPhasesUsed());
         }
@@ -399,6 +402,10 @@ public class TransactionEventRequest implements JsonInterface {
             setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
 
+        if (jsonObject.has("offline")) {
+            setOffline(jsonObject.get("offline").getAsBoolean());
+        }
+
         if (jsonObject.has("numberOfPhasesUsed")) {
             setNumberOfPhasesUsed(jsonObject.get("numberOfPhasesUsed").getAsInt());
         }
@@ -453,6 +460,7 @@ public class TransactionEventRequest implements JsonInterface {
                 && Objects.equals(getTimestamp(), that.getTimestamp())
                 && Objects.equals(getTriggerReason(), that.getTriggerReason())
                 && Objects.equals(getSeqNo(), that.getSeqNo())
+                && Objects.equals(getOffline(), that.getOffline())
                 && Objects.equals(getNumberOfPhasesUsed(), that.getNumberOfPhasesUsed())
                 && Objects.equals(getCableMaxCurrent(), that.getCableMaxCurrent())
                 && Objects.equals(getReservationId(), that.getReservationId())
@@ -473,6 +481,7 @@ public class TransactionEventRequest implements JsonInterface {
                 getTimestamp(),
                 getTriggerReason(),
                 getSeqNo(),
+                getOffline(),
                 getNumberOfPhasesUsed(),
                 getCableMaxCurrent(),
                 getReservationId(),

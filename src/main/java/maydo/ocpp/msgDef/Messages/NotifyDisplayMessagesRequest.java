@@ -106,6 +106,9 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         }
         json.addProperty("requestId", getRequestId());
 
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -135,6 +138,10 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
             setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
+        }
+
         if (jsonObject.has("customData")) {
             setCustomData(new CustomData());
             getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
@@ -150,6 +157,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         NotifyDisplayMessagesRequest that = (NotifyDisplayMessagesRequest) obj;
         return Objects.equals(getMessageInfo(), that.getMessageInfo())
                 && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
 
@@ -158,6 +166,7 @@ public class NotifyDisplayMessagesRequest implements JsonInterface {
         return Objects.hash(
                 getMessageInfo(),
                 getRequestId(),
+                getTbc(),
                 getCustomData()
         );
     }

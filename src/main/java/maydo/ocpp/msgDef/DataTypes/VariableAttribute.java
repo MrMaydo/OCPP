@@ -127,8 +127,20 @@ public class VariableAttribute implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        if (getType() != null) {
+            json.addProperty("type", getType().toString());
+        }
         if (getValue() != null) {
             json.addProperty("value", getValue());
+        }
+        if (getMutability() != null) {
+            json.addProperty("mutability", getMutability().toString());
+        }
+        if (getPersistent() != null) {
+            json.addProperty("persistent", getPersistent());
+        }
+        if (getConstant() != null) {
+            json.addProperty("constant", getConstant());
         }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
@@ -145,8 +157,24 @@ public class VariableAttribute implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("type")) {
+            setType(AttributeEnum.valueOf(jsonObject.get("type").getAsString()));
+        }
+
         if (jsonObject.has("value")) {
             setValue(jsonObject.get("value").getAsString());
+        }
+
+        if (jsonObject.has("mutability")) {
+            setMutability(MutabilityEnum.valueOf(jsonObject.get("mutability").getAsString()));
+        }
+
+        if (jsonObject.has("persistent")) {
+            setPersistent(jsonObject.get("persistent").getAsBoolean());
+        }
+
+        if (jsonObject.has("constant")) {
+            setConstant(jsonObject.get("constant").getAsBoolean());
         }
 
         if (jsonObject.has("customData")) {
@@ -162,14 +190,22 @@ public class VariableAttribute implements JsonInterface {
         if (!(obj instanceof VariableAttribute))
             return false;
         VariableAttribute that = (VariableAttribute) obj;
-        return Objects.equals(getValue(), that.getValue())
+        return Objects.equals(getType(), that.getType())
+                && Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getMutability(), that.getMutability())
+                && Objects.equals(getPersistent(), that.getPersistent())
+                && Objects.equals(getConstant(), that.getConstant())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
+                getType(),
                 getValue(),
+                getMutability(),
+                getPersistent(),
+                getConstant(),
                 getCustomData()
         );
     }

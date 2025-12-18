@@ -79,6 +79,12 @@ public class UnitOfMeasure implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        if (getUnit() != null) {
+            json.addProperty("unit", getUnit());
+        }
+        if (getMultiplier() != null) {
+            json.addProperty("multiplier", getMultiplier());
+        }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -94,6 +100,14 @@ public class UnitOfMeasure implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("unit")) {
+            setUnit(jsonObject.get("unit").getAsString());
+        }
+
+        if (jsonObject.has("multiplier")) {
+            setMultiplier(jsonObject.get("multiplier").getAsInt());
+        }
+
         if (jsonObject.has("customData")) {
             setCustomData(new CustomData());
             getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
@@ -107,11 +121,17 @@ public class UnitOfMeasure implements JsonInterface {
         if (!(obj instanceof UnitOfMeasure))
             return false;
         UnitOfMeasure that = (UnitOfMeasure) obj;
-        return Objects.equals(getCustomData(), that.getCustomData());
+        return Objects.equals(getUnit(), that.getUnit())
+                && Objects.equals(getMultiplier(), that.getMultiplier())
+                && Objects.equals(getCustomData(), that.getCustomData());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCustomData());
+        return Objects.hash(
+                getUnit(),
+                getMultiplier(),
+                getCustomData()
+        );
     }
 }

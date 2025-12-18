@@ -145,6 +145,9 @@ public class NotifyReportRequest implements JsonInterface {
             }
             json.add("reportData", reportDataArray);
         }
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         json.addProperty("seqNo", getSeqNo());
 
         if (getCustomData() != null) {
@@ -185,6 +188,10 @@ public class NotifyReportRequest implements JsonInterface {
             }
         }
 
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
+        }
+
         if (jsonObject.has("seqNo")) {
             setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
@@ -205,6 +212,7 @@ public class NotifyReportRequest implements JsonInterface {
         return Objects.equals(getRequestId(), that.getRequestId())
                 && Objects.equals(getGeneratedAt(), that.getGeneratedAt())
                 && Objects.equals(getReportData(), that.getReportData())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getSeqNo(), that.getSeqNo())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
@@ -215,6 +223,7 @@ public class NotifyReportRequest implements JsonInterface {
                 getRequestId(),
                 getGeneratedAt(),
                 getReportData(),
+                getTbc(),
                 getSeqNo(),
                 getCustomData()
         );

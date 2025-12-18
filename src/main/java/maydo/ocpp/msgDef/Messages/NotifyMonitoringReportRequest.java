@@ -142,6 +142,9 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
 
         json.addProperty("requestId", getRequestId());
 
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         json.addProperty("seqNo", getSeqNo());
 
         json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
@@ -175,6 +178,10 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
             setRequestId(jsonObject.get("requestId").getAsInt());
         }
 
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
+        }
+
         if (jsonObject.has("seqNo")) {
             setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
@@ -203,6 +210,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
         NotifyMonitoringReportRequest that = (NotifyMonitoringReportRequest) obj;
         return Objects.equals(getMonitor(), that.getMonitor())
                 && Objects.equals(getRequestId(), that.getRequestId())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getSeqNo(), that.getSeqNo())
                 && Objects.equals(getGeneratedAt(), that.getGeneratedAt())
                 && Objects.equals(getCustomData(), that.getCustomData());
@@ -213,6 +221,7 @@ public class NotifyMonitoringReportRequest implements JsonInterface {
         return Objects.hash(
                 getMonitor(),
                 getRequestId(),
+                getTbc(),
                 getSeqNo(),
                 getGeneratedAt(),
                 getCustomData()

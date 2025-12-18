@@ -92,6 +92,9 @@ public class GetVariableData implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        if (getAttributeType() != null) {
+            json.addProperty("attributeType", getAttributeType().toString());
+        }
         json.add("component", getComponent().toJsonObject());
 
         json.add("variable", getVariable().toJsonObject());
@@ -111,6 +114,10 @@ public class GetVariableData implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("attributeType")) {
+            setAttributeType(AttributeEnum.valueOf(jsonObject.get("attributeType").getAsString()));
+        }
+
         if (jsonObject.has("component")) {
             setComponent(new Component());
             getComponent().fromJsonObject(jsonObject.getAsJsonObject("component"));
@@ -134,7 +141,8 @@ public class GetVariableData implements JsonInterface {
         if (!(obj instanceof GetVariableData))
             return false;
         GetVariableData that = (GetVariableData) obj;
-        return Objects.equals(getComponent(), that.getComponent())
+        return Objects.equals(getAttributeType(), that.getAttributeType())
+                && Objects.equals(getComponent(), that.getComponent())
                 && Objects.equals(getVariable(), that.getVariable())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
@@ -142,6 +150,7 @@ public class GetVariableData implements JsonInterface {
     @Override
     public int hashCode() {
         return Objects.hash(
+                getAttributeType(),
                 getComponent(),
                 getVariable(),
                 getCustomData()

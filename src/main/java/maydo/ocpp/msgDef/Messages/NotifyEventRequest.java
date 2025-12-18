@@ -125,6 +125,9 @@ public class NotifyEventRequest implements JsonInterface {
 
         json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
 
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         json.addProperty("seqNo", getSeqNo());
 
         JsonArray eventDataArray = new JsonArray();
@@ -157,6 +160,10 @@ public class NotifyEventRequest implements JsonInterface {
             }
         }
 
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
+        }
+
         if (jsonObject.has("seqNo")) {
             setSeqNo(jsonObject.get("seqNo").getAsInt());
         }
@@ -185,6 +192,7 @@ public class NotifyEventRequest implements JsonInterface {
             return false;
         NotifyEventRequest that = (NotifyEventRequest) obj;
         return Objects.equals(getGeneratedAt(), that.getGeneratedAt())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getSeqNo(), that.getSeqNo())
                 && Objects.equals(getEventData(), that.getEventData())
                 && Objects.equals(getCustomData(), that.getCustomData());
@@ -194,6 +202,7 @@ public class NotifyEventRequest implements JsonInterface {
     public int hashCode() {
         return Objects.hash(
                 getGeneratedAt(),
+                getTbc(),
                 getSeqNo(),
                 getEventData(),
                 getCustomData()

@@ -166,8 +166,17 @@ public class SampledValue implements JsonInterface {
 
         json.addProperty("value", getValue());
 
+        if (getMeasurand() != null) {
+            json.addProperty("measurand", getMeasurand().toString());
+        }
+        if (getContext() != null) {
+            json.addProperty("context", getContext().toString());
+        }
         if (getPhase() != null) {
             json.addProperty("phase", getPhase().toString());
+        }
+        if (getLocation() != null) {
+            json.addProperty("location", getLocation().toString());
         }
         if (getSignedMeterValue() != null) {
             json.add("signedMeterValue", getSignedMeterValue().toJsonObject());
@@ -194,8 +203,20 @@ public class SampledValue implements JsonInterface {
             setValue(jsonObject.get("value").getAsFloat());
         }
 
+        if (jsonObject.has("measurand")) {
+            setMeasurand(MeasurandEnum.valueOf(jsonObject.get("measurand").getAsString()));
+        }
+
+        if (jsonObject.has("context")) {
+            setContext(ReadingContextEnum.valueOf(jsonObject.get("context").getAsString()));
+        }
+
         if (jsonObject.has("phase")) {
             setPhase(PhaseEnum.valueOf(jsonObject.get("phase").getAsString()));
+        }
+
+        if (jsonObject.has("location")) {
+            setLocation(LocationEnum.valueOf(jsonObject.get("location").getAsString()));
         }
 
         if (jsonObject.has("signedMeterValue")) {
@@ -222,7 +243,10 @@ public class SampledValue implements JsonInterface {
             return false;
         SampledValue that = (SampledValue) obj;
         return Objects.equals(getValue(), that.getValue())
+                && Objects.equals(getMeasurand(), that.getMeasurand())
+                && Objects.equals(getContext(), that.getContext())
                 && Objects.equals(getPhase(), that.getPhase())
+                && Objects.equals(getLocation(), that.getLocation())
                 && Objects.equals(getSignedMeterValue(), that.getSignedMeterValue())
                 && Objects.equals(getUnitOfMeasure(), that.getUnitOfMeasure())
                 && Objects.equals(getCustomData(), that.getCustomData());
@@ -232,7 +256,10 @@ public class SampledValue implements JsonInterface {
     public int hashCode() {
         return Objects.hash(
                 getValue(),
+                getMeasurand(),
+                getContext(),
                 getPhase(),
+                getLocation(),
                 getSignedMeterValue(),
                 getUnitOfMeasure(),
                 getCustomData()

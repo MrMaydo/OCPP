@@ -125,6 +125,9 @@ public class SetVariableResult implements JsonInterface {
     public JsonObject toJsonObject() {
         JsonObject json = new JsonObject();
 
+        if (getAttributeType() != null) {
+            json.addProperty("attributeType", getAttributeType().toString());
+        }
         json.addProperty("attributeStatus", getAttributeStatus().toString());
 
         if (getAttributeStatusInfo() != null) {
@@ -149,6 +152,10 @@ public class SetVariableResult implements JsonInterface {
 
     @Override
     public void fromJsonObject(JsonObject jsonObject) {
+        if (jsonObject.has("attributeType")) {
+            setAttributeType(AttributeEnum.valueOf(jsonObject.get("attributeType").getAsString()));
+        }
+
         if (jsonObject.has("attributeStatus")) {
             setAttributeStatus(SetVariableStatusEnum.valueOf(jsonObject.get("attributeStatus").getAsString()));
         }
@@ -181,7 +188,8 @@ public class SetVariableResult implements JsonInterface {
         if (!(obj instanceof SetVariableResult))
             return false;
         SetVariableResult that = (SetVariableResult) obj;
-        return Objects.equals(getAttributeStatus(), that.getAttributeStatus())
+        return Objects.equals(getAttributeType(), that.getAttributeType())
+                && Objects.equals(getAttributeStatus(), that.getAttributeStatus())
                 && Objects.equals(getAttributeStatusInfo(), that.getAttributeStatusInfo())
                 && Objects.equals(getComponent(), that.getComponent())
                 && Objects.equals(getVariable(), that.getVariable())
@@ -191,6 +199,7 @@ public class SetVariableResult implements JsonInterface {
     @Override
     public int hashCode() {
         return Objects.hash(
+                getAttributeType(),
                 getAttributeStatus(),
                 getAttributeStatusInfo(),
                 getComponent(),

@@ -148,6 +148,9 @@ public class GetVariableResult implements JsonInterface {
         if (getAttributeStatusInfo() != null) {
             json.add("attributeStatusInfo", getAttributeStatusInfo().toJsonObject());
         }
+        if (getAttributeType() != null) {
+            json.addProperty("attributeType", getAttributeType().toString());
+        }
         if (getAttributeValue() != null) {
             json.addProperty("attributeValue", getAttributeValue());
         }
@@ -179,6 +182,10 @@ public class GetVariableResult implements JsonInterface {
             getAttributeStatusInfo().fromJsonObject(jsonObject.getAsJsonObject("attributeStatusInfo"));
         }
 
+        if (jsonObject.has("attributeType")) {
+            setAttributeType(AttributeEnum.valueOf(jsonObject.get("attributeType").getAsString()));
+        }
+
         if (jsonObject.has("attributeValue")) {
             setAttributeValue(jsonObject.get("attributeValue").getAsString());
         }
@@ -208,6 +215,7 @@ public class GetVariableResult implements JsonInterface {
         GetVariableResult that = (GetVariableResult) obj;
         return Objects.equals(getAttributeStatus(), that.getAttributeStatus())
                 && Objects.equals(getAttributeStatusInfo(), that.getAttributeStatusInfo())
+                && Objects.equals(getAttributeType(), that.getAttributeType())
                 && Objects.equals(getAttributeValue(), that.getAttributeValue())
                 && Objects.equals(getComponent(), that.getComponent())
                 && Objects.equals(getVariable(), that.getVariable())
@@ -219,6 +227,7 @@ public class GetVariableResult implements JsonInterface {
         return Objects.hash(
                 getAttributeStatus(),
                 getAttributeStatusInfo(),
+                getAttributeType(),
                 getAttributeValue(),
                 getComponent(),
                 getVariable(),

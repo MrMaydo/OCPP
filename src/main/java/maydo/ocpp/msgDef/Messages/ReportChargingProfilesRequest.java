@@ -145,6 +145,9 @@ public class ReportChargingProfilesRequest implements JsonInterface {
         }
         json.add("chargingProfile", chargingProfileArray);
 
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         if (getCustomData() != null) {
             json.add("customData", getCustomData().toJsonObject());
         }
@@ -182,6 +185,10 @@ public class ReportChargingProfilesRequest implements JsonInterface {
             }
         }
 
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
+        }
+
         if (jsonObject.has("customData")) {
             setCustomData(new CustomData());
             getCustomData().fromJsonObject(jsonObject.getAsJsonObject("customData"));
@@ -199,6 +206,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
                 && Objects.equals(getEvseId(), that.getEvseId())
                 && Objects.equals(getChargingLimitSource(), that.getChargingLimitSource())
                 && Objects.equals(getChargingProfile(), that.getChargingProfile())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
 
@@ -209,6 +217,7 @@ public class ReportChargingProfilesRequest implements JsonInterface {
                 getEvseId(),
                 getChargingLimitSource(),
                 getChargingProfile(),
+                getTbc(),
                 getCustomData()
         );
     }

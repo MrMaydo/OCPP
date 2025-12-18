@@ -132,6 +132,9 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
 
         json.addProperty("data", getData());
 
+        if (getTbc() != null) {
+            json.addProperty("tbc", getTbc());
+        }
         json.addProperty("seqNo", getSeqNo());
 
         json.addProperty("generatedAt", new SimpleDateFormat(DATE_FORMAT).format(getGeneratedAt()));
@@ -155,6 +158,10 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     public void fromJsonObject(JsonObject jsonObject) {
         if (jsonObject.has("data")) {
             setData(jsonObject.get("data").getAsString());
+        }
+
+        if (jsonObject.has("tbc")) {
+            setTbc(jsonObject.get("tbc").getAsBoolean());
         }
 
         if (jsonObject.has("seqNo")) {
@@ -188,6 +195,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
             return false;
         NotifyCustomerInformationRequest that = (NotifyCustomerInformationRequest) obj;
         return Objects.equals(getData(), that.getData())
+                && Objects.equals(getTbc(), that.getTbc())
                 && Objects.equals(getSeqNo(), that.getSeqNo())
                 && Objects.equals(getGeneratedAt(), that.getGeneratedAt())
                 && Objects.equals(getRequestId(), that.getRequestId())
@@ -198,6 +206,7 @@ public class NotifyCustomerInformationRequest implements JsonInterface {
     public int hashCode() {
         return Objects.hash(
                 getData(),
+                getTbc(),
                 getSeqNo(),
                 getGeneratedAt(),
                 getRequestId(),

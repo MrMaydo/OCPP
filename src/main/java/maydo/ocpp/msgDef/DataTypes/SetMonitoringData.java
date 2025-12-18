@@ -195,6 +195,9 @@ public class SetMonitoringData implements JsonInterface {
         if (getPeriodicEventStream() != null) {
             json.add("periodicEventStream", getPeriodicEventStream().toJsonObject());
         }
+        if (getTransaction() != null) {
+            json.addProperty("transaction", getTransaction());
+        }
         json.addProperty("value", getValue());
 
         json.addProperty("type", getType().toString());
@@ -227,6 +230,10 @@ public class SetMonitoringData implements JsonInterface {
         if (jsonObject.has("periodicEventStream")) {
             setPeriodicEventStream(new PeriodicEventStreamParams());
             getPeriodicEventStream().fromJsonObject(jsonObject.getAsJsonObject("periodicEventStream"));
+        }
+
+        if (jsonObject.has("transaction")) {
+            setTransaction(jsonObject.get("transaction").getAsBoolean());
         }
 
         if (jsonObject.has("value")) {
@@ -266,6 +273,7 @@ public class SetMonitoringData implements JsonInterface {
         SetMonitoringData that = (SetMonitoringData) obj;
         return Objects.equals(getId(), that.getId())
                 && Objects.equals(getPeriodicEventStream(), that.getPeriodicEventStream())
+                && Objects.equals(getTransaction(), that.getTransaction())
                 && Objects.equals(getValue(), that.getValue())
                 && Objects.equals(getType(), that.getType())
                 && Objects.equals(getSeverity(), that.getSeverity())
@@ -279,6 +287,7 @@ public class SetMonitoringData implements JsonInterface {
         return Objects.hash(
                 getId(),
                 getPeriodicEventStream(),
+                getTransaction(),
                 getValue(),
                 getType(),
                 getSeverity(),

@@ -170,6 +170,9 @@ public class APN implements JsonInterface {
         if (getPreferredNetwork() != null) {
             json.addProperty("preferredNetwork", getPreferredNetwork());
         }
+        if (getUseOnlyPreferredNetwork() != null) {
+            json.addProperty("useOnlyPreferredNetwork", getUseOnlyPreferredNetwork());
+        }
         json.addProperty("apnAuthentication", getApnAuthentication().toString());
 
         if (getCustomData() != null) {
@@ -207,6 +210,10 @@ public class APN implements JsonInterface {
             setPreferredNetwork(jsonObject.get("preferredNetwork").getAsString());
         }
 
+        if (jsonObject.has("useOnlyPreferredNetwork")) {
+            setUseOnlyPreferredNetwork(jsonObject.get("useOnlyPreferredNetwork").getAsBoolean());
+        }
+
         if (jsonObject.has("apnAuthentication")) {
             setApnAuthentication(APNAuthenticationEnum.valueOf(jsonObject.get("apnAuthentication").getAsString()));
         }
@@ -229,6 +236,7 @@ public class APN implements JsonInterface {
                 && Objects.equals(getApnPassword(), that.getApnPassword())
                 && Objects.equals(getSimPin(), that.getSimPin())
                 && Objects.equals(getPreferredNetwork(), that.getPreferredNetwork())
+                && Objects.equals(getUseOnlyPreferredNetwork(), that.getUseOnlyPreferredNetwork())
                 && Objects.equals(getApnAuthentication(), that.getApnAuthentication())
                 && Objects.equals(getCustomData(), that.getCustomData());
     }
@@ -241,6 +249,7 @@ public class APN implements JsonInterface {
                 getApnPassword(),
                 getSimPin(),
                 getPreferredNetwork(),
+                getUseOnlyPreferredNetwork(),
                 getApnAuthentication(),
                 getCustomData()
         );
